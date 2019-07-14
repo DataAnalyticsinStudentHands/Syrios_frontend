@@ -15,7 +15,7 @@ body {
 }
 
 .App-logo_2 {
-    height: 8vmin;
+    height: 9vmin;
     position: fixed; /* or absolute */
     top: 29%;
     left: 36%;
@@ -26,4 +26,28 @@ body {
     position: fixed; /* or absolute */
     top: 42%;
     left: 31%;
+}
+.App-logo_4 {
+    height: 6vmin;
+    position: fixed; /* or absolute */
+    top: 29%;
+    left: 44%;
+}
+.App-logo_5 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 42%;
+    left: 38%;
+}
+.App-logo_6 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 36%;
+    left: 46%;
+}
+.App-logo_7 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 36%;
+    left: 57%;
 }

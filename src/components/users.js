@@ -1,7 +1,12 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import logo from './images/image1.png'
 import logo_2 from './images/image2.png'
 import logo_3 from './images/image3.png'
+import logo_4 from './images/image4.png'
+import logo_5 from './images/image5.png'
+import logo_6 from './images/image6.png'
+import logo_7 from './images/image7.png'
 import './users.css'
 
 
@@ -11,9 +16,13 @@ const UsersPage = () => {
       <body>
           <div>
               <p>
-                <img src={logo} className="App-logo_1" alt="logo" />
+                <img src={logo} className="App-logo_1" alt="logo" /> 
                 <img src={logo_2} className="App-logo_2" alt="logo" />
                 <img src={logo_3} className="App-logo_3" alt="logo" />
+                <img src={logo_4} className="App-logo_4" alt="logo" />
+                <img src={logo_5} className="App-logo_5" alt="logo" />
+                <img src={logo_6} className="App-logo_6" alt="logo" />
+                <img src={logo_7} className="App-logo_7" alt="logo" />
               </p>
           </div>
       </body>
