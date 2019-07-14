@@ -1,0 +1,48 @@
+.App {
+    text-align: center;
+  
+  }
+  .App-h1 {
+    color: goldenrod;
+    font-family: fantasy;
+  }
+  
+  .App-b1 {
+    width: 10cm;
+    height: 1.4cm;
+    background-color: goldenrod ;
+    border-radius: 12px;
+    font-size: 19pt;
+    font-family: fantasy;
+    margin-left: 30%;
+    margin-top: 15%;
+  }
+  .App-logo {
+    height: 75vmin;
+    pointer-events: none;
+    margin-right: 60%;
+  }
+  
+  .App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    background-color: black
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+

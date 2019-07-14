@@ -1,0 +1,29 @@
+body {
+    background-image: url("users_1.jpg");
+    background-repeat: no-repeat;
+    height: 800px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+   }
+
+.App-logo_1 {
+    height: 12vmin;
+    position: fixed; /* or absolute */
+    top: 48%;
+    left: 49%;
+}
+
+.App-logo_2 {
+    height: 8vmin;
+    position: fixed; /* or absolute */
+    top: 29%;
+    left: 36%;
+}
+
+.App-logo_3 {
+    height: 10vmin;
+    position: fixed; /* or absolute */
+    top: 42%;
+    left: 31%;
+}
