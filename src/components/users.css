@@ -55,3 +55,73 @@ body {
     color: white;
     size: 7cm;
 }
+
+.b1 {
+    margin-top: 10%;
+    margin-left: 13%;
+    background-color: rgba(172, 149, 73, 0.904);
+    border: 12px;
+    color: white;
+    padding: 70px 52px;
+    font-size: 16px;
+    border-radius: 75%/70%;
+    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904);
+
+    
+}
+.b2 {
+    margin-top: 3%;
+    margin-left: 13%;
+    background-color: rgba(172, 149, 73, 0.904);
+    border: 12px;
+    color: white;
+    padding: 70px 52px;
+    font-size: 16px;
+    border-radius: 75%/70%;
+    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904);
+}
+
+.b3 {
+    margin-top: 3%;
+    margin-left: 13%;
+    background-color: rgba(172, 149, 73, 0.904);
+    border: 12px;
+    color: white;
+    padding: 70px 52px;
+    font-size: 16px;
+    border-radius: 75%/70%;
+    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904);
+}
+
+.b4{
+    margin-left: 59%;
+    background-color: rgba(168, 118, 51, 0.904);
+    border: 12px;
+    color: white;
+    padding: 70px 52px;
+    font-size: 16px;
+    border-radius: 75%/70%;
+    box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);
+}
+
+.b5{
+    margin-left: 59%;
+    background-color: rgba(168, 118, 51, 0.904);
+    border: 12px;
+    color: white;
+    padding: 70px 52px;
+    font-size: 16px;
+    border-radius: 75%/70%;
+    box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);
+}
+
+.b6{
+    margin-left: 59%;
+    background-color: rgba(168, 118, 51, 0.904);
+    border: 12px;
+    color: white;
+    padding: 70px 52px;
+    font-size: 16px;
+    border-radius: 75%/70%;
+    box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);
+}

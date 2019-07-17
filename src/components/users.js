@@ -7,6 +7,7 @@ import logo_4 from './images/image4.png'
 import logo_5 from './images/image5.png'
 import logo_6 from './images/image6.png'
 import logo_7 from './images/image7.png'
+import logo_8 from './images/image8.png'
 import './users.css'
 
 
@@ -23,6 +24,16 @@ const UsersPage = () => {
                 <img src={logo_5} className="App-logo_5" alt="logo" />
                 <img src={logo_6} className="App-logo_6" alt="logo" />
                 <img src={logo_7} className="App-logo_7" alt="logo" />
+                <button className = 'b1'> </button>
+                <button className = 'b4'> </button>
+              </p>
+              <p>
+              <button className = 'b2'> </button>
+              <button className = 'b5'></button>
+              </p>
+              <p>
+              <button className = 'b3'> </button>
+              <button className = 'b6'></button>
               </p>
           </div>
       </body>
