@@ -6,19 +6,125 @@ body {
     background-repeat: no-repeat; 
     background-size: cover;
    }
-
+.h2{
+    color: white;
+    font-family: fantasy;
+    margin-left: 45%;
+    font-size: 25px;
+}
+.h2b{
+    margin-top: 3.5%;
+    color: white;
+    font-family: fantasy;
+    margin-left: 46%;
+    font-size: 25px;
+}
+.bm{
+    padding: 6px 7px;
+    margin-left: 20%;
+    text-align: center;
+    background-color:black;
+    border: none;
+    font-family: fantasy;
+    color: white;
+    font-size: 25px;
+    transform: rotate(90deg);
+    white-space: nowrap;
+}
+.bx{
+    margin-left: 610%;
+    text-align: center;
+    background-color:black;
+    border: none;
+    font-family: fantasy;
+    color: white;
+    font-size: 25px;
+    transform: rotate(270deg);
+    white-space: nowrap;
+}
+.hb1{
+    margin-left: 8%;
+    text-align: center;
+    font-family: fantasy;
+    background-color: #9e8f8ff3;
+    padding: 3px 45px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+.hb2{
+    margin-left: 3%;
+    font-family: fantasy;
+    background-color: #9e8f8ff3;
+    padding: 3px 45px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+.hb3{
+    margin-left: 3%;
+    font-family: fantasy;
+    background-color: #9e8f8ff3;
+    padding: 3px 45px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+.hb4{
+    margin-left: 3%;
+    font-family: fantasy;
+    background-color: #9e8f8ff3;
+    padding: 3px 45px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+.hb5{
+    margin-left: 3%;
+    font-family: fantasy;
+    background-color: #9e8f8ff3;
+    padding: 3px 45px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color:black;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
 .App-logo_1 {
-    height: 12vmin;
+    height: 9vmin;
     position: fixed; /* or absolute */
-    top: 48%;
-    left: 49%;
+    top: 14%;
+    left: 48%;
 }
 
 .App-logo_2 {
     height: 9vmin;
     position: fixed; /* or absolute */
-    top: 29%;
-    left: 36%;
+    top: 17%;
+    left: 35%;
 }
 
 .App-logo_3 {
@@ -30,20 +136,20 @@ body {
 .App-logo_4 {
     height: 6vmin;
     position: fixed; /* or absolute */
-    top: 29%;
-    left: 44%;
+    top: 17%;
+    left: 43%;
 }
 .App-logo_5 {
     height: 9vmin;
     position: fixed; /* or absolute */
-    top: 42%;
-    left: 38%;
+    top: 29%;
+    left: 37%;
 }
 .App-logo_6 {
     height: 9vmin;
     position: fixed; /* or absolute */
-    top: 36%;
-    left: 46%;
+    top: 25%;
+    left: 44%;
 }
 .App-logo_7 {
     height: 9vmin;
@@ -51,6 +157,43 @@ body {
     top: 36%;
     left: 57%;
 }
+.App-logo_9 {
+    height: 11vmin;
+    position: fixed; /* or absolute */
+    top: 55%;
+    left: 40%;
+}
+.App-logo_10 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 59%;
+    left: 33%;
+}
+.App-logo_11 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 59%;
+    left: 47%;
+}
+.App-logo_12 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 45%;
+    left: 44%;
+}
+.App-logo_13 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 60%;
+}
+.App-logo_14 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 36%;
+    left: 46%;
+}
+
 .p1{
     color: white;
     size: 7cm;
@@ -59,7 +202,6 @@ body {
 .b1 {
     background-image: url("images/image9.png");
     background-size: 100%;
-    margin-top: 10%;
     margin-left: 10%;
     background-color: rgba(172, 149, 73, 0.904);
     border: 12px;
@@ -74,8 +216,8 @@ body {
 .b2 {
     background-image: url("images/image10.png");
     background-size: 100%;
-    margin-top: 3%;
-    margin-left: 10%;
+    margin-top: 5%;
+    margin-left: 130%;
     background-color: rgba(172, 149, 73, 0.904);
     border: 12px;
     color: white;
@@ -88,7 +230,6 @@ body {
 .b3 {
     background-image: url("images/image11.png");
     background-size: 100%;
-    margin-top: 3%;
     margin-left: 10%;
     background-color: rgba(172, 149, 73, 0.904);
     border: 12px;
@@ -100,7 +241,7 @@ body {
 }
 
 .b4{
-    margin-left: 67%;
+    margin-left: 64%;
     background-color: rgba(168, 118, 51, 0.904);
     border: 12px;
     color: white;
@@ -111,7 +252,7 @@ body {
 }
 
 .b5{
-    margin-left: 67%;
+    margin-left: 618%;
     background-color: rgba(168, 118, 51, 0.904);
     border: 12px;
     color: white;
@@ -122,7 +263,7 @@ body {
 }
 
 .b6{
-    margin-left: 67%;
+    margin-left: 64%;
     background-color: rgba(168, 118, 51, 0.904);
     border: 12px;
     color: white;
@@ -133,7 +274,8 @@ body {
 }
 
 .b7{
-    margin-bottom: 2%;
+    background-image: url("images/image13.png");
+    background-size: 100%;
     margin-left: 18%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;
@@ -145,6 +287,10 @@ body {
 }
 
 .b8{
+    background-image: url("images/image14.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     margin-left: 5%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;
@@ -156,6 +302,8 @@ body {
 }
 
 .b9{
+    background-image: url("images/image15.png");
+    background-size: 100%;
     margin-left: 5%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;
@@ -167,6 +315,8 @@ body {
 }
 
 .b10{
+    background-image: url("images/image16.png");
+    background-size: 100%;
     margin-left: 5%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;
@@ -177,6 +327,8 @@ body {
     box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
 }
 .b11{
+    background-image: url("images/image17.png");
+    background-size: 100%;
     margin-left: 5%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;
@@ -199,6 +351,8 @@ body {
 }
 
 .b13{
+    background-image: url("images/image18.png");
+    background-size: 100%;
     margin-left: 5%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;

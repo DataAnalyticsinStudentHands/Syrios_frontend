@@ -16,6 +16,8 @@
     font-family: fantasy;
     margin-left: 30%;
     margin-top: 15%;
+    color: black;
+    text-decoration: none;
   }
   .App-logo {
     height: 75vmin;
