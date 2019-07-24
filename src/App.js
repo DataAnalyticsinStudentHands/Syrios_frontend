@@ -18,8 +18,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={MainPage} />
           <Route exact path="/404" component={NotFoundPage} />
+          <Route exact path="/" component={MainPage} />
           <Route exact path = '/users' component = {UsersPage} />
           <Redirect to = '/404' />
         </Switch>
