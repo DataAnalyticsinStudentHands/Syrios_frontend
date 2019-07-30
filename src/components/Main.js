@@ -6,7 +6,7 @@ import logo from './img_2.png';
 class MainPage extends React.Component{
     render(){
         return(
-            <div className="App">
+          <div className="App">
           <header className="App-header">
           <h1 className="App-h1">Finding Connections in Ancient Syria</h1>
           <table className='App-t1' cellSpacing= '1'>
@@ -17,11 +17,11 @@ class MainPage extends React.Component{
               <td>
                 <tr>
                 <button className = 'App-b1'> 
-                <Link to="/users" className = 'words'> Explore the Collection </Link>
+                <Link to = "/users" className = 'words'> Explore the Collection </Link>
                 </button>
                 </tr>
                 <tr>
-                <button className = 'App-b1' type = "button" onClick= {this.handleClick} >Follow The Coins
+                <button className = 'App-b1'> <Link to = '/gold_coins'> Follow the Coins </Link>
                 </button>
                 </tr>
                 <tr>
