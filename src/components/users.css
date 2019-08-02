@@ -13,7 +13,7 @@ body {
     font-size: 25px;
 }
 .h2b{
-    margin-top: 3.5%;
+    margin-top: 2.5%;
     color: white;
     font-family: fantasy;
     margin-left: 46%;
@@ -245,7 +245,7 @@ body {
     background-color: rgba(168, 118, 51, 0.904);
     border: 12px;
     color: white;
-    padding: 70px 52px;
+    padding: 58px 35px;
     font-size: 16px;
     border-radius: 75%/70%;
     box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);

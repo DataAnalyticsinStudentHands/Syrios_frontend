@@ -16,8 +16,8 @@ class MainPage extends React.Component{
               </td>
               <td>
                 <tr>
-                <button className = 'App-b1'> 
-                <Link to = "/users" className = 'words'> Explore the Collection </Link>
+                <button className = 'App-b1'>
+                  <Link to = "/users" className = 'words'> Explore the Collection </Link>
                 </button>
                 </tr>
                 <tr>
