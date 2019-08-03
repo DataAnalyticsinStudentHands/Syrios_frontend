@@ -19,10 +19,41 @@
     color: black;
     text-decoration: none;
   }
+  .App-logo1{
+    height: 10vmin;
+    margin-left: 120%;
+    position: relative;
+    bottom: 10px;
+  }
+  .App-logo2{
+    height: 10vmin;
+    margin-left: 120%;
+    position: relative;
+    bottom: -10px;
+  }
+  .App-logo3{
+    height: 10vmin;
+    margin-left: 120%;
+    position: relative;
+    bottom: -30px;
+    
+  }
+  .App-logo4{
+    height: 10vmin;
+    margin-left: 120%;
+    position: relative;
+    bottom: -50px;
+  }
+  .App-logo5{
+    height: 10vmin;
+    margin-left: 120%;
+    position: relative;
+    bottom: -73px;
+  }
   .App-logo {
-    height: 75vmin;
+    height: 23%;
     pointer-events: none;
-    margin-right: 60%;
+    margin-left: -20%;
   }
   
   .App-header {

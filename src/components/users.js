@@ -12,13 +12,16 @@ import logo_11 from './images/gold/image21.png'
 import logo_12 from './images/bronze/image22.png'
 import logo_13 from './images/bronze/image23.png'
 import logo_14 from './images/silver/image24.png'
+import logo_15 from './images/gold/image1.png'
+import logo_16 from './images/gold/image2.png'
+import logo_17 from './images/gold/image4.png'
+import logo_18 from './images/silver/image1.png'
 import './users.css'
 import {Link} from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from "react-router-dom";
 
 
@@ -67,8 +70,12 @@ class UsersPage extends React.Component{
                     <img src={logo_12} className="App-logo_12" alt="logo" /> 
                     <img src={logo_13} className="App-logo_13" alt="logo" /> 
                     <img src={logo_14} className="App-logo_14" alt="logo" />
+                    <img src={logo_15} className="App-logo_15" alt="logo" />
+                    <img src={logo_16} className="App-logo_16" alt="logo" />
+                    <img src={logo_17} className="App-logo_17" alt="logo" />
+                    <img src={logo_18} className="App-logo_18" alt="logo" />
                     <button className = 'b1'> </button>
-                    <button className = 'b4'> <Link to = '/gcoins'> gold </Link>  </button>
+                    <button className = 'b4'> <Link to = '/goldcoins'> gold </Link>  </button>
                   </p>
                   <p>
                     <table>

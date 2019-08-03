@@ -13,7 +13,7 @@ body {
     font-size: 25px;
 }
 .h2b{
-    margin-top: 2.5%;
+    margin-top: 3%;
     color: white;
     font-family: fantasy;
     margin-left: 46%;
@@ -170,9 +170,9 @@ body {
     left: 33%;
 }
 .App-logo_11 {
-    height: 9vmin;
+    height: 19vmin;
     position: fixed; /* or absolute */
-    top: 59%;
+    top: 36%;
     left: 47%;
 }
 .App-logo_12 {
@@ -192,6 +192,30 @@ body {
     position: fixed; /* or absolute */
     top: 36%;
     left: 46%;
+}
+.App-logo_15 {
+    height: 9vmin;
+    position: fixed; /* or absolute */
+    top: 23%;
+    left: 59%;
+}
+.App-logo_16 {
+    height: 7vmin;
+    position: fixed; /* or absolute */
+    top: 30%;
+    left: 30%;
+}
+.App-logo_17 {
+    height: 7vmin;
+    position: fixed; /* or absolute */
+    top: 18.5%;
+    left: 53%;
+}
+.App-logo_18 {
+    height: 10vmin;
+    position: fixed; /* or absolute */
+    top: 69.5%;
+    left: 48%;
 }
 
 .p1{
