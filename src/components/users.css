@@ -12,25 +12,7 @@ body {
     margin-left: 45%;
     font-size: 25px;
 }
-.h2b{
-    margin-top: 3%;
-    color: white;
-    font-family: fantasy;
-    margin-left: 46%;
-    font-size: 25px;
-}
-.bm{
-    padding: 6px 7px;
-    margin-left: 20%;
-    text-align: center;
-    background-color:black;
-    border: none;
-    font-family: fantasy;
-    color: white;
-    font-size: 25px;
-    transform: rotate(90deg);
-    white-space: nowrap;
-}
+.h2a{margin-top: 3%;}
 .bx{
     margin-left: 610%;
     text-align: center;
@@ -42,6 +24,7 @@ body {
     transform: rotate(270deg);
     white-space: nowrap;
 }
+.bm{padding: 6px 7px;margin-left: 20%;transform: rotate(90deg);}
 .hb1{
     margin-left: 8%;
     text-align: center;
@@ -57,117 +40,38 @@ body {
     border-radius: 10px;
     box-shadow: 0 9px #999;
 }
-.hb2{
-    margin-left: 3%;
-    font-family: fantasy;
-    background-color: #9e8f8ff3;
-    padding: 3px 45px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: black;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
-}
-.hb3{
-    margin-left: 3%;
-    font-family: fantasy;
-    background-color: #9e8f8ff3;
-    padding: 3px 45px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: black;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
-}
-.hb4{
-    margin-left: 3%;
-    font-family: fantasy;
-    background-color: #9e8f8ff3;
-    padding: 3px 45px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: black;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
-}
-.hb5{
-    margin-left: 3%;
-    font-family: fantasy;
-    background-color: #9e8f8ff3;
-    padding: 3px 45px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color:black;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
-}
+.hba{margin-left: 3%;}
+
 .App-logo_1 {
     height: 9vmin;
     position: fixed; /* or absolute */
     top: 14%;
     left: 48%;
 }
-
-.App-logo_2 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 17%;
-    left: 35%;
-}
+.logo2 {top: 17%;left: 35%;}
+.logo5 {top: 29%;left: 37%;}
+.logo6 {top: 25%;left: 44%;}
+.logo7{top: 36%;left: 57%;}
+.logo10 {top: 59%;left: 33%;}
+.logo12 {top: 45%;left: 44%;}
+.logo13 {top: 50%;left: 60%;}
+.logo14 {top: 36%;left: 46%;}
+.logo15 {top: 23%;left: 59%;}
 
 .App-logo_3 {
     height: 10vmin;
     position: fixed; /* or absolute */
     top: 42%;
-    left: 31%;
+    left: 25%;
 }
+.logo18 {top: 68.5%;left: 44%;}
+.logo9 {top: 55%;left: 40%;}
+
 .App-logo_4 {
     height: 6vmin;
     position: fixed; /* or absolute */
     top: 17%;
     left: 43%;
-}
-.App-logo_5 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 29%;
-    left: 37%;
-}
-.App-logo_6 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 25%;
-    left: 44%;
-}
-.App-logo_7 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 36%;
-    left: 57%;
-}
-.App-logo_9 {
-    height: 11vmin;
-    position: fixed; /* or absolute */
-    top: 55%;
-    left: 40%;
-}
-.App-logo_10 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 59%;
-    left: 33%;
 }
 .App-logo_11 {
     height: 19vmin;
@@ -175,48 +79,21 @@ body {
     top: 36%;
     left: 47%;
 }
-.App-logo_12 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 45%;
-    left: 44%;
-}
-.App-logo_13 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 50%;
-    left: 60%;
-}
-.App-logo_14 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 36%;
-    left: 46%;
-}
-.App-logo_15 {
-    height: 9vmin;
-    position: fixed; /* or absolute */
-    top: 23%;
-    left: 59%;
-}
 .App-logo_16 {
     height: 7vmin;
     position: fixed; /* or absolute */
     top: 30%;
     left: 30%;
 }
-.App-logo_17 {
-    height: 7vmin;
+.logo17 {top: 18.5%;left: 53%;}
+
+.App-logo_19 {
+    height: 8vmin;
     position: fixed; /* or absolute */
-    top: 18.5%;
-    left: 53%;
+    top: 39.5%;
+    left: 37%;
 }
-.App-logo_18 {
-    height: 10vmin;
-    position: fixed; /* or absolute */
-    top: 69.5%;
-    left: 48%;
-}
+.logo20 {top: 49.5%;left: 27%;}
 
 .p1{
     color: white;
@@ -233,89 +110,31 @@ body {
     padding: 70px 52px;
     font-size: 16px;
     border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904);
-
-    
+    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904); 
 }
-.b2 {
-    background-image: url("images/image10.png");
-    background-size: 100%;
-    margin-top: 5%;
-    margin-left: 130%;
-    background-color: rgba(172, 149, 73, 0.904);
-    border: 12px;
-    color: white;
-    padding: 70px 52px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904);
-}
-
-.b3 {
-    background-image: url("images/image11.png");
-    background-size: 100%;
-    margin-left: 10%;
-    background-color: rgba(172, 149, 73, 0.904);
-    border: 12px;
-    color: white;
-    padding: 70px 52px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(172, 149, 73, 0.904);
-}
+.b2 {margin-left : 130%; background-image: url("images/image10.png");}
+.b3 {background-image: url("images/image11.png")}
 
 .b4{
     margin-left: 64%;
     background-color: rgba(168, 118, 51, 0.904);
     border: 12px;
     color: white;
-    padding: 58px 35px;
+    padding: 65px 30px;
     font-size: 16px;
     border-radius: 75%/70%;
     box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);
 }
+.b5{margin-left: 618%;padding: 70px 52px;}
+.b6{padding: 60px 20px;}
 
-.b5{
-    margin-left: 618%;
-    background-color: rgba(168, 118, 51, 0.904);
-    border: 12px;
-    color: white;
-    padding: 70px 52px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);
-}
-
-.b6{
-    margin-left: 64%;
-    background-color: rgba(168, 118, 51, 0.904);
-    border: 12px;
-    color: white;
-    padding: 70px 52px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(168, 118, 51, 0.904);
-}
 
 .b7{
     background-image: url("images/image13.png");
     background-size: 100%;
     margin-left: 18%;
-    background-color: rgba(54, 99, 71, 0.904);
-    border: 12px;
-    color: white;
-    padding: 50px 35px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
-}
-
-.b8{
-    background-image: url("images/image14.png");
-    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    margin-left: 5%;
     background-color: rgba(54, 99, 71, 0.904);
     border: 12px;
     color: white;
@@ -324,65 +143,9 @@ body {
     border-radius: 75%/70%;
     box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
 }
-
-.b9{
-    background-image: url("images/image15.png");
-    background-size: 100%;
-    margin-left: 5%;
-    background-color: rgba(54, 99, 71, 0.904);
-    border: 12px;
-    color: white;
-    padding: 50px 35px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
-}
-
-.b10{
-    background-image: url("images/image16.png");
-    background-size: 100%;
-    margin-left: 5%;
-    background-color: rgba(54, 99, 71, 0.904);
-    border: 12px;
-    color: white;
-    padding: 50px 35px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
-}
-.b11{
-    background-image: url("images/image17.png");
-    background-size: 100%;
-    margin-left: 5%;
-    background-color: rgba(54, 99, 71, 0.904);
-    border: 12px;
-    color: white;
-    padding: 50px 35px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
-}
-
-.b12{
-    margin-left: 5%;
-    background-color: rgba(54, 99, 71, 0.904);
-    border: 12px;
-    color: white;
-    padding: 50px 35px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
-}
-
-.b13{
-    background-image: url("images/image18.png");
-    background-size: 100%;
-    margin-left: 5%;
-    background-color: rgba(54, 99, 71, 0.904);
-    border: 12px;
-    color: white;
-    padding: 50px 35px;
-    font-size: 16px;
-    border-radius: 75%/70%;
-    box-shadow: inset 10px 5px 15px rgba(54, 99, 71, 0.904);
-}
+.b8{background-image: url("images/image14.png");margin-left: 5%;}
+.b9{background-image: url("images/image15.png");margin-left: 5%;}
+.b10{background-image: url("images/image16.png");margin-left: 5%;}
+.b11{background-image: url("images/image17.png");margin-left: 5%;}
+.b12{background-image : none; margin-left: 5%;}
+.b13{background-image: url("images/image18.png");margin-left: 5%;}
