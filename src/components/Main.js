@@ -24,16 +24,16 @@ class MainPage extends React.Component{
                 <img src={logo1} className="App-logo1" alt="logo" />
                 </tr>
                 <tr>
-                <img src={logo2} className="App-logo2" alt="logo" />
+                <img src={logo2} className="App-logo1 logo2" alt="logo" />
                 </tr>
                 <tr>
-                <img src={logo3} className="App-logo3" alt="logo" />
+                <img src={logo3} className="App-logo1 logo3" alt="logo" />
                 </tr>
                 <tr>
-                <img src={logo4} className="App-logo4" alt="logo" />
+                <img src={logo4} className="App-logo1 logo4" alt="logo" />
                 </tr>
                 <tr>
-                <img src={logo5} className="App-logo5" alt="logo" />
+                <img src={logo5} className="App-logo1 logo5" alt="logo" />
                 </tr>
               </td>
               <td>

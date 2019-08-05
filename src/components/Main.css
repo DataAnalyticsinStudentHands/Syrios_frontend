@@ -25,31 +25,11 @@
     position: relative;
     bottom: 10px;
   }
-  .App-logo2{
-    height: 10vmin;
-    margin-left: 120%;
-    position: relative;
-    bottom: -10px;
-  }
-  .App-logo3{
-    height: 10vmin;
-    margin-left: 120%;
-    position: relative;
-    bottom: -30px;
-    
-  }
-  .App-logo4{
-    height: 10vmin;
-    margin-left: 120%;
-    position: relative;
-    bottom: -50px;
-  }
-  .App-logo5{
-    height: 10vmin;
-    margin-left: 120%;
-    position: relative;
-    bottom: -73px;
-  }
+  .logo2{bottom: -10px; margin-left: 90%}
+  .logo3{bottom: -30px;}
+  .logo4{bottom: -50px;}
+  .logo5{bottom: -73px;margin-left: 90%}
+
   .App-logo {
     height: 23%;
     pointer-events: none;
