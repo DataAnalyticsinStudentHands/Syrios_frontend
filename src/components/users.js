@@ -30,6 +30,9 @@ import {
 
 /* We simply can use an array and loop and print each user */
 class UsersPage extends React.Component{
+  state = {
+    selectedButton : ''
+  };
   render(){
     return (
         <Router>
@@ -79,7 +82,8 @@ class UsersPage extends React.Component{
                     <img src={logo_19} className="App-logo_19" alt="logo" />
                     <img src={logo_20} className="App-logo_19 logo20" alt="logo" />
                     <button className = 'b1'> </button>
-                    <button className = 'b4'> <Link to = '/goldcoins'> GOLD </Link>  </button>
+                    {this.renderButtonSelector()}
+                
                   </p>
                   <p>
                     <table>
@@ -119,6 +123,11 @@ class UsersPage extends React.Component{
               
           </body>
         </Router>
+    );
+  }
+  renderButtonSelector() {
+    return(
+      <button className = 'b4' onClick = {(e) => {this.setState({selectedButton: e.target.value})}}> GOLD </button>
     );
   }
 };
