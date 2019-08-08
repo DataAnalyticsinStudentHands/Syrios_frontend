@@ -64,7 +64,8 @@ body {
     top: 42%;
     left: 25%;
 }
-
+.logo18 {top: 68.5%;left: 44%; position:absolute;}
+.logo9 {top: 55%;left: 40%; position: absolute;}
 
 .App-logo_4 {
     height: 6vmin;

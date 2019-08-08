@@ -70,7 +70,7 @@ class UsersPage extends React.Component{
                     <img src={logo_5} className="App-logo_1 logo5" alt="logo" />
                     <img src={logo_6} className="App-logo_1 logo6" alt="logo" />
                     <img src={logo_7} className="App-logo_1 logo7" alt="logo" />
-                    <img src={logo_9} className="App-logo_3 logo_9" alt="logo" /> 
+                    <img src={logo_9} className="App-logo_3 logo9" alt="logo" /> 
                     <img src={logo_10} className="App-logo_1 logo10" alt="logo" /> 
                     <img src={logo_11} className="App-logo_11" alt="logo" /> 
                     <img src={logo_12} className="App-logo_1 logo12" alt="logo" /> 
@@ -79,7 +79,7 @@ class UsersPage extends React.Component{
                     <img src={logo_15} className="App-logo_1 logo15" alt="logo" />
                     <img src={logo_16} className="App-logo_16" alt="logo" />
                     <img src={logo_17} className="App-logo_16 logo17" alt="logo" />
-                    <img src={logo_18} className="App-logo_3 logo_18" alt="logo" />
+                    <img src={logo_18} className="App-logo_3 logo18" alt="logo" />
                     <img src={logo_19} className="App-logo_19" alt="logo" />
                     <img src={logo_20} className="App-logo_19 logo20" alt="logo" />
                     <button className = 'b1'> </button>
