@@ -44,9 +44,9 @@ body {
 
 .App-logo_1 {
     height: 9vmin;
-    position: fixed; /* or absolute */
     top: 14%;
     left: 48%;
+    position: absolute;
 }
 .logo2 {top: 17%;left: 35%;}
 .logo5 {top: 29%;left: 37%;}
@@ -60,28 +60,27 @@ body {
 
 .App-logo_3 {
     height: 10vmin;
-    position: fixed; /* or absolute */
+    position: absolute; /* or absolute */
     top: 42%;
     left: 25%;
 }
-.logo18 {top: 68.5%;left: 44%;}
-.logo9 {top: 55%;left: 40%;}
+
 
 .App-logo_4 {
     height: 6vmin;
-    position: fixed; /* or absolute */
+    position: absolute; /* or absolute */
     top: 17%;
     left: 43%;
 }
 .App-logo_11 {
     height: 19vmin;
-    position: fixed; /* or absolute */
+    position: absolute; /* or absolute */
     top: 36%;
     left: 47%;
 }
 .App-logo_16 {
     height: 7vmin;
-    position: fixed; /* or absolute */
+    position: absolute; /* or absolute */
     top: 30%;
     left: 30%;
 }
@@ -89,7 +88,7 @@ body {
 
 .App-logo_19 {
     height: 8vmin;
-    position: fixed; /* or absolute */
+    position: absolute; /* or absolute */
     top: 39.5%;
     left: 37%;
 }
@@ -149,3 +148,21 @@ body {
 .b11{background-image: url("images/image17.png");margin-left: 5%;}
 .b12{background-image : none; margin-left: 5%;}
 .b13{background-image: url("images/image18.png");margin-left: 5%;}
+
+.div2{
+    font-family: fantasy;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+.App-logo_uh{
+    height: 8vmin;
+}
+.td1{
+    margin-left: 20%;
+}
+
+.td1 td{
+    border-right: 5px;
+    border-color: white;
+}

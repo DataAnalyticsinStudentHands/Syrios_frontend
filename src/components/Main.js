@@ -2,11 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Main.css'
 import logo from './img_2.png';
+import uhlogo from './images/uh.png'
 import logo1 from './images/homepage/home1.png'
 import logo2 from './images/homepage/home2.png'
 import logo3 from './images/homepage/home3.png'
 import logo4 from './images/homepage/home4.png'
 import logo5 from './images/homepage/home5.png'
+import './users.css'
 
 class MainPage extends React.Component{
     render(){
@@ -58,6 +60,36 @@ class MainPage extends React.Component{
               </td>
             </tr>
           </table>
+          <div>
+                <table cellSpacing = '25' className ='tdm'>
+                  <tr>
+                    <td>
+                    <img src={uhlogo} className="App-logo_uh" alt="logo" /> 
+                    </td>
+                    <td>
+                    <a href="/" className = 'div2'>Home</a>
+                    </td>
+                    <td>
+                      <p className = 'div2'> Partners </p>
+                    </td>
+                    <td>
+                      <p className = 'div2'> <nobr>Contact Us</nobr></p>
+                    </td>
+                    <td>
+                      <p className = 'div2'> Credits </p>
+                    </td>
+                    <td>
+                      <p className = 'div2'> <nobr> Terms of Use </nobr></p>
+                    </td>
+                    <td>
+                    <a href="#top" className = 'div2'> <nobr> Go to top </nobr> </a>
+                    </td>
+                    <td>
+                    <img src={uhlogo} className="App-logo_uh" alt="logo" /> 
+                    </td>
+                  </tr>
+                </table>
+            </div>
         
           </header>
         </div>

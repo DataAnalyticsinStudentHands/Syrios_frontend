@@ -1,4 +1,5 @@
 import React from "react";
+import uhlogo from './images/uh.png'
 import logo from './images/bronze/image1.png'
 import logo_2 from './images/silver/image2.png'
 import logo_3 from './images/gold/image3.png'
@@ -69,7 +70,7 @@ class UsersPage extends React.Component{
                     <img src={logo_5} className="App-logo_1 logo5" alt="logo" />
                     <img src={logo_6} className="App-logo_1 logo6" alt="logo" />
                     <img src={logo_7} className="App-logo_1 logo7" alt="logo" />
-                    <img src={logo_9} className="App-logo_3 logo9" alt="logo" /> 
+                    <img src={logo_9} className="App-logo_3 logo_9" alt="logo" /> 
                     <img src={logo_10} className="App-logo_1 logo10" alt="logo" /> 
                     <img src={logo_11} className="App-logo_11" alt="logo" /> 
                     <img src={logo_12} className="App-logo_1 logo12" alt="logo" /> 
@@ -78,7 +79,7 @@ class UsersPage extends React.Component{
                     <img src={logo_15} className="App-logo_1 logo15" alt="logo" />
                     <img src={logo_16} className="App-logo_16" alt="logo" />
                     <img src={logo_17} className="App-logo_16 logo17" alt="logo" />
-                    <img src={logo_18} className="App-logo_3 logo188" alt="logo" />
+                    <img src={logo_18} className="App-logo_3 logo_18" alt="logo" />
                     <img src={logo_19} className="App-logo_19" alt="logo" />
                     <img src={logo_20} className="App-logo_19 logo20" alt="logo" />
                     <button className = 'b1'> </button>
@@ -98,7 +99,7 @@ class UsersPage extends React.Component{
                         <button className = 'bx'> METAL </button>
                         </td>
                         <td>
-                        <button className = 'b4 b5'>  </button>
+                        <button className = 'b4 b5'> </button>
                         </td>
                       </tr>
                     </table>
@@ -117,6 +118,36 @@ class UsersPage extends React.Component{
                     <button className = 'b7 b12'></button>
                     <button className = 'b7 b13'></button>
                   </p>
+              </div>
+              <div>
+                <table cellSpacing = '20' className ='td1'>
+                  <tr>
+                    <td>
+                    <img src={uhlogo} className="App-logo_uh" alt="logo" /> 
+                    </td>
+                    <td>
+                    <a href="/" className = 'div2'>Home</a>
+                    </td>
+                    <td>
+                      <p className = 'div2'> Partners </p>
+                    </td>
+                    <td>
+                      <p className = 'div2'> Contact Us</p>
+                    </td>
+                    <td>
+                      <p className = 'div2'> Credits </p>
+                    </td>
+                    <td>
+                      <p className = 'div2'> Terms of Use</p>
+                    </td>
+                    <td>
+                    <a href="#top" className = 'div2'>Go to top</a>
+                    </td>
+                    <td>
+                    <img src={uhlogo} className="App-logo_uh" alt="logo" /> 
+                    </td>
+                  </tr>
+                </table>
               </div>
               
 
