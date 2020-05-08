@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+/* logo styling */
+body{
+  height: 20px;
+  color: red;
+}
+
+.red {
+  color: red;
+  font-size: large;
+}
+
+.class-tweets {
+  color: blue;
+}

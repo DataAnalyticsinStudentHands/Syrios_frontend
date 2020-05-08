@@ -1,0 +1,25 @@
+.coin-bg {
+    height: 600px;
+    width: 600px;
+    position: absolute;
+    background-color: purple;
+    shape-margin: 5px;
+    /* background-image: url('../images/users_1.jpg'); */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    /* border-radius: 50%; */
+}
+
+.red {
+    background-color: red;
+}
+
+.App-logo-1 {
+    height: 10vmin;
+} 
+
+.para-test{
+    color: black;
+}
