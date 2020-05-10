@@ -1,49 +1,35 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import Attributes from "./items";
+import axios from "axios";
 // import dataJson from "../data/items.json";
 
 //? Enable CORS in the header
 //? Access-Control-Allow-Origin: 'https://sites.lib.uh.edu/kmneuma2/api/items'
 
-class Syrios extends Component {
-  constructor(props) {
-    super(props);
+const Syrios = () => {
+  const [attributes, setAttributes] = useState([]);
 
-    this.state = {
-      items: [],
-      isLoaded: false,
-    };
-  }
-
-  componentDidMount() {
-    fetch("https://sites.lib.uh.edu/kmneuma2/api/items")
-      .then((res) => res.json())
-      .then((json) => {
-        this.setState({
-          items: json,
-          isLoaded: true,
-        });
+  useEffect(() => {
+    axios
+      .get(`https://sites.lib.uh.edu/kmneuma2/api/items`)
+      .then((res) => {
+        console.log(res);
+        setAttributes(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  }, []);
 
-  render() {
-    const { isLoaded, items } = this.state;
+  return (
+    <div className="App">
+      <ul>
+        {attributes.map((item) => (
+          <Attributes id={item.id} url={item.url} added={item.added} />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-    if (!isLoaded) return <div>Loading...</div>;
-
-    return (
-      <div className="App">
-        <ul>
-          {items.map((item) => (
-            <li key={item.id}>
-              Name: {item.id} | Email: {item.url} | Added : {item.added}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
 export default Syrios;
