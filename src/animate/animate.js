@@ -18,15 +18,20 @@ const Animate = () => {
   // }
   // const images = this.state;
 
+    const imageClick = () => {
+        console.log('click');
+    }
+
   return (
     <div className="animate">
       <div className="coin-bg">
         {Coins.coins.map((image) => (
-          <img
+          <input
+            type="image"
             src={require("../images" + image.src)}
-            key={image.id}
             className={image.className}
             alt={image.alt}
+            onClick={imageClick}
           />
         ))}
       </div>
