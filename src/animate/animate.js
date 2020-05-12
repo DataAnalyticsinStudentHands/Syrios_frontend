@@ -1,9 +1,10 @@
 import React from "react";
 import "./animate.css";
 import Coins from "../data/images.json";
+import { motion } from "framer-motion";
 
 const Animate = () => {
-  //TODO- We can use componentDidMount while fetching images from APIs
+  // TODO- We can use componentDidMount while fetching images from APIs
   // componentDidMount() {
   // fetch('../data/images.json')
   // .then((res) => res.json())
@@ -18,20 +19,34 @@ const Animate = () => {
   // }
   // const images = this.state;
 
-    const imageClick = () => {
-        console.log('click');
-    }
+  // TODO: attribute to be used onClick the images
+  // const imageClick = () => {
+  // console.log('click');
+  //     alert('Click');
+  // }
 
   return (
     <div className="animate">
+      <h1 style={{textAlign: 'center', fontFamily: 'Helvetica', color: 'brown'}}>FINDING CONNECTIONS IN ANCIENT SYRIA</h1>
       <div className="coin-bg">
         {Coins.coins.map((image) => (
-          <input
+          <motion.input
             type="image"
             src={require("../images" + image.src)}
             className={image.className}
             alt={image.alt}
-            onClick={imageClick}
+            // onClick={imageClick}  //? To be used for onClick functionality
+            whileHover={{ scale: 1.5 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ scale: 0 }}
+            animate={{
+              scale: 1,
+              rotate: 360,
+              borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+            }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            drag
+            dragConstraints={{ top: -50, left: -50, right: 50, bottom: 50 }}
           />
         ))}
       </div>

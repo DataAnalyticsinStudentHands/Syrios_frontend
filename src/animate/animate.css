@@ -1,15 +1,17 @@
-.coin-bg {
-  height: 345px;
-  width: 390px;
+.coin-bg {    
+  height: 500px;
+  width: 585px;
+  padding: 1%;
+  
   position: absolute;
-  background-color: black;
+  /* background-color: black; */
   shape-margin: 5px;
-  /* background-image: url('../images/users_1.jpg'); */
+  background-image: url('../images/bg-2.png');
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
-  /* border-radius: 50%; */
+  border-radius: 5%;
 }
 
 .red {

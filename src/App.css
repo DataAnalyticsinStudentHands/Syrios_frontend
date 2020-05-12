@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.main {
+  background-color: aqua;
+}
+
 /* logo styling */
 body {
   height: 20px;
