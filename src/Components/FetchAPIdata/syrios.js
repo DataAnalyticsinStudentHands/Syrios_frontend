@@ -22,7 +22,8 @@ const Syrios = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style={{textAlign:'center', color: 'white'}}>
+      <h1> This is a Story to tell!</h1>
       <ul>
         {attributes.map((item) => (
           <Attributes id={item.id} url={item.url} added={item.added} />
