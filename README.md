@@ -1,8 +1,30 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Publish your code on Server
 
-In the project directory, you can run:
+1. Download and install Cisco AnyConnect VPN secure mobility client. 
+
+2. Enter 'full-vpn.uh.edu' and connect to the server. Set the Group to full-vpn and enter your CougarNet credentials to connect successfully.
+
+3. Open terminal and enter the following command 'ssh -l [username] hnetdev.hnet.uh.edu' by placing your username and enter your corresponding password. 
+
+4. Now, to access webadmin, enter 'sudo su - webadmin' followed by the password to enter webadmin@hnetdev. 
+
+5. You can see the list in the directory with command 'ls'. Enter 'cd FindingConnectionsAncientSyria.git/' and pull the latest version by 'git pull' command.
+
+6. After the changes are updated, run 'npm run build' to build the app for production. It correctly bundles React in production mode and optimizes the build for the best performance.
+
+7. Move back a folder by 'cd ..' and edit the syrios_3000.json file. You can use vim editor by running 'vi syrios_3000.json'
+
+8. The script holds the path that points to start.js which triggers the application to build. You can choose the port to be on 3000. 
+
+9. PM2 is a process manager and manages your application states. The 'pm2 start node_modules/react-scripts/scripts/start.js --name syrios' command allows you to start the process.
+
+10. Enter 'pm2 list' to check existing processes and it's status. 
+
+11. You can stop the process with 'pm2 stop syrios', restart with 'pm2 restart syrios', delete with 'pm2 delete syrios'
+
+## Run your code locally
 
 ### `npm start`
 
