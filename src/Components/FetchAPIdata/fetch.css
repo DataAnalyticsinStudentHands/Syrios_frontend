@@ -1,0 +1,16 @@
+:root {
+    --height: 100px;
+    --width: 100px;
+}
+
+
+.obverse-image {
+    height: var(--height);
+    width: var(--height);
+}
+
+.reverse-image {
+    height: var(--height);
+    width: var(--width);
+}
+

@@ -8,12 +8,29 @@
      /* url('../data/DalekPinpointBold.ttf') format('truetype'); Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
   /* }  */
 
-.intro-page {
-    background-image: url(../data/images/bg-2.png);
-    font-family: fantasy;
-    font-size: larger;
-    color: goldenrod;
+@font-face {
+  font-family: 'cartogothic_stdbook';
+  src: url('../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2') format('woff2'),
+       url('../data/fonts/cartogothic/cartogothicstd-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
+
+@font-face {
+    font-family: 'cartogothic_stdbook_bold';
+    src: url('../data/fonts/cartogothic/CartoGothicStd-Bold.woff2') format('woff2'),
+         url('../data/fonts/cartogothic/CartoGothicStd-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.intro-page {
+    /* background-image: url(../data/images/bg-2.png);  */
+    font-family: cartogothic_stdbook_bold;
+    font-size: larger;
+    color: rgb(0, 0, 0);
+}
+
 .class-title {
   position: absolute;
   width: 100%;
@@ -21,39 +38,64 @@
   overflow: hidden;
   text-align: center;
   margin: 0;
+  /* padding: 0; */
   font-size: calc(10px + 2vmin);
   vertical-align: top;
   display: inline-block;
-  font-family: fantasy;
-  font-weight: bold;
 }
 
 .intro-main-title {
     position: absolute;
     margin: 0;
     padding: 0;
+    overflow: hidden;
     text-align: center;
     top: 35%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
+.intro-main-subtitle{
+    margin-top: -40px;
+    width: 500px;
+    font-family:'cartogothic_stdbook_bold';
+    font-size:15px;
+}
+
+.title-logo {
+    height: 280px;
+    width: 250px;
+}
+
+.intro-main-title-h1 {
+    color: #2d616a;
+    font-size: calc(20px + 6vmin);
+    margin-top: -40px;
+    font-family: cartogothic_stdbook_bold;
+}
+
+.intro-main-title-h2 {
+    font-family: cartogothic_stdbook_bold;
+    margin-top: -65px;
+    color:'#2d616a'
+}
+
 .intro-read-coin {
     position: absolute;
     margin: 0;
     padding: 0;
-    text-align: center;
-    font-size: larger;
-    top: 65%;
+    font-size: 25px;
+    text-align: center; 
+    top: 78%;
     left: 50%;
     transform: translate(-50%,-50%);
-    color: antiquewhite;
 }
 
 
 .class-scroll {
     height: 50px;
     width: 50px;
+    margin-top: 20px;
 }
 
 .header-explore-left {
@@ -61,9 +103,9 @@
     top:80%;
     font-size: x-large;
     font-weight: bold;
-    color: antiquewhite;
     margin-left: 20%;
     text-decoration: solid;
+    color: black;
 }
 
 .header-explore-right {
@@ -71,9 +113,9 @@
     top:80%;
     font-size: x-large;
     font-weight: bold;
-    color: antiquewhite;
     margin-left: 65%;
     text-decoration: solid;
+    color: black;
 }
 
 .read-coin {
@@ -82,7 +124,6 @@
     padding: 0;
     text-align: center;
     top:90%;
-    color: antiquewhite;
 }
 
 .size-images{
@@ -105,7 +146,7 @@
 }
 
 .label-image {
-    vertical-align: top;
+    /* vertical-align: top; */
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -114,14 +155,24 @@
 .caption {
     display: block;
     width: 200px;
-    color: antiquewhite;
+}
+
+.component-mix {
+    color: black;
+}
+
+.threeD-coin {
+    position: absolute;
+    top:130%;
+    font-size: larger;
+    margin-left: 30%;
+    text-decoration: solid;
 }
 
 .component-1 {
     position: absolute;
-    top:120%;
+    top:240%;
     font-size: larger;
-    color: goldenrod;
     margin-left: 15%;
     text-decoration: solid;
 }
@@ -129,16 +180,14 @@
 .component-2 {
     position: absolute;
     font-size: larger;
-    top: 200%;
-    color: goldenrod;
+    top: 280%;
     margin-left: 15%;
 }
 
 .component-3 {
     position: absolute;
     font-size: larger;
-    top: 280%;
-    color: goldenrod;
+    top: 320%;
     margin-left: 10%;
 }
 
@@ -146,7 +195,6 @@
     position: absolute;
     font-size: larger;
     top: 360%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -154,7 +202,6 @@
     position: absolute;
     font-size: larger;
     top: 460%;
-    color: goldenrod;
     margin-left: 2%;
 }
 
@@ -162,7 +209,6 @@
     position: absolute;
     font-size: larger;
     top: 540%;
-    color: goldenrod;
     margin-left: 18%;
 }
 
@@ -170,7 +216,6 @@
     position: absolute;
     font-size: larger;
     top: 660%;
-    color: goldenrod;
     margin-left: 10%;
 }
 
@@ -178,7 +223,6 @@
     position: absolute;
     font-size: larger;
     top: 750%;
-    color: goldenrod;
     margin-left: 25%;
     width: 600px;
 }
@@ -187,7 +231,6 @@
     position: absolute;
     font-size: larger;
     top: 840%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -195,7 +238,6 @@
     position: absolute;
     font-size: larger;
     top: 900%;
-    color: goldenrod;
     margin-left: 25%;
     width: 600px;
 }
@@ -204,7 +246,6 @@
     position: absolute;
     font-size: larger;
     top: 990%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -212,7 +253,6 @@
     position: absolute;
     font-size: larger;
     top: 1070%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -220,7 +260,6 @@
     position: absolute;
     font-size: larger;
     top: 1150%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -235,7 +274,6 @@
     position: absolute;
     font-size: larger;
     top: 1240%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -243,7 +281,6 @@
     position: absolute;
     font-size: larger;
     top: 1330%;
-    color: goldenrod;
     margin-left: 20%;
 }
 
@@ -251,7 +288,6 @@
     position: absolute;
     font-size: larger;
     top: 1420%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -259,7 +295,6 @@
     position: absolute;
     font-size: larger;
     top: 1510%;
-    color: goldenrod;
     margin-left: 20%;
 }
 
@@ -267,7 +302,6 @@
     position: absolute;
     font-size: larger;
     top: 1600%;
-    color: goldenrod;
     margin-left: 20%;
 }
 
@@ -275,7 +309,6 @@
     position: absolute;
     font-size: larger;
     top: 1690%;
-    color: goldenrod;
     margin-left: 15%;
 }
 
@@ -283,7 +316,6 @@
     position: absolute;
     font-size: larger;
     top: 1780%;
-    color: goldenrod;
     margin-left: 20%;
 }
 
@@ -291,7 +323,6 @@
     position: absolute;
     font-size: larger;
     top: 1870%;
-    color: goldenrod;
     margin-left: 25%;
 }
 
@@ -299,7 +330,6 @@
     position: absolute;
     font-size: larger;
     top: 1940%;
-    color: goldenrod;
     margin-left: 35%;
 }
 
@@ -319,12 +349,6 @@
     color: antiquewhite;
     margin-left: 75%;
     text-decoration: solid;
-}
-
-
-h1 {
-  margin: 0;
-  font-family: fantasy;
 }
 
 img {

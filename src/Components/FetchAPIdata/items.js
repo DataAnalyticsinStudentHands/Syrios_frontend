@@ -1,13 +1,11 @@
 import React from "react";
 
-const Attributes = ({ id, url, added }) => {
+const Attributes = ({ id, diameter, image }) => {
   return (
     <div className="Attributes">
-      <ul>
-        <li>
-          Name: {id} | Email: {url} | Added : {added}
-        </li>
-      </ul>
+      <h1>{id}</h1>
+      <p>{diameter}</p>
+      <img src={image} alt=""/>
     </div>
   );
 };

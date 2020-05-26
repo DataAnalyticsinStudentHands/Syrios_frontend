@@ -1,25 +1,26 @@
 import React from "react";
 import "./animate.css";
-import Coins from "../data/images.json";
+import Coins from "../data/items.json";
 import { motion } from "framer-motion";
 
 const Animate = () => {
   return (
     <div className="animate">
       <h1
-        style={{ textAlign: "center", fontFamily: "Fantasy", color: "goldenrod" }}
+        style={{ textAlign: "center", fontFamily: "Fantasy", color: "goldenrod"}}
       >
         Choose a coin from the pile!
       </h1>
       <div className="coin-bg">
-        {Coins.coins.map((image) => (
+        {Coins.items.map((image) => (
           <motion.input
             type="image"
-            src={require("../data/images" + image.src)}
-            className={image.className}
-            alt={image.alt}
+            src={image.obverse}
+            style={{height: image.diameter*2.5, width: image.diameter*2.5}}   //! Scale the images here
+            alt={image.id}
+            
             // onClick={imageClick}  //TODO- To be used for onClick functionality
-            whileHover={{ scale: 1.5 }}
+            whileHover={{ scale: 2 }}
             whileTap={{ scale: 0.9 }}
             initial={{ scale: 0 }}
             animate={{

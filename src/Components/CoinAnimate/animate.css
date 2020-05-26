@@ -1,12 +1,11 @@
 .coin-bg {    
-  height: 550px;
-  width: 585px;
-  padding: 1%;
-  
+  height: 350px;
+  width: 550px;
+  padding: 10%;
   position: absolute;
   /* background-color: black; */
   shape-margin: 5px;
-  background-image: url('../data/images/bg-2.png');
+  /* background-image: url('../data/images/bg-2.png');  */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
