@@ -280,8 +280,8 @@ const civicStory = () => {
         </p>
       </div>
       <div className="civic-component-22">
-        <Link to="/civic-story" id="c22-left">Where did the civic coins move?</Link>
-        <Link to="/coins" id="c22-right">Tell me another story!</Link>
+        <Link to="/civic-story" className="c22-left" data-aos="fade-right">Where did the civic coins move?</Link>
+        <Link to="/coins" className="c22-right" data-aos="fade-left">Tell me another story!</Link>
       </div>
     </div>
   );

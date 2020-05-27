@@ -501,7 +501,7 @@
 
 .civic-component-21 {
   top: 2400%;
-  left: 30%;
+  left: 33%;
   position: absolute;
   display: flex;
   text-align: center;
@@ -516,23 +516,30 @@
   width: 500px;
 }
 
-.civic-component-22 {
+/* .civic-component-22 {
   top: 2420%;
   position: absolute;
   display: flex;
   text-align: center;
   align-items: center;
-}
+} */
 
-#c22-left {
-  margin-left: 20px;
+.c22-left {
+  top: 2400%; 
+  left: 5%;
+  position: absolute;
+  text-decoration: solid;
   background-image: var(--div-bg);
   color: white;
   padding: 10px;
   border-radius: 10px;
 }
 
-#c22-right {
+.c22-right {
+  top: 2400%;
+  right: 5%;
+  position: absolute;
+  text-decoration: solid; 
   background-image: var(--div-bg);
   color: white;
   padding: 10px;
