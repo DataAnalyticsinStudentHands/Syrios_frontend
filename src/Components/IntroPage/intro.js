@@ -81,7 +81,7 @@ const Intro = () => {
       </div>
       <div>
         <Link
-          to="/economic-story"
+          to="/civic-story"
           className="header-explore-left"
           data-aos="fade-left"
         >

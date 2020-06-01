@@ -22,11 +22,11 @@ import zeus from "../data/civic-images/zeus.png";
 import protest from "../data/civic-images/protest.png";
 import protest_2 from "../data/civic-images/protest-2.png";
 import inscription from "../data/civic-images/inscription.png";
-import ancient_coin from "../data/civic-images/ancient-coin.png";
+// import ancient_coin from "../data/civic-images/ancient-coin.png";
 
 const civicStory = () => {
   AOS.init({
-    duration: 2000
+    duration: 2000,
   });
 
   return (
@@ -38,7 +38,7 @@ const civicStory = () => {
         </h1>
         <p data-aos="slide-up">Story</p>
       </div>
-      <div className="civic-component-1" data-aos="fade-right">
+      <div className="civic-component-1">
         <img
           src={comp_1}
           alt="Logo"
@@ -50,7 +50,7 @@ const civicStory = () => {
           of Antioch for use by the citizens of Antioch.
         </p>
       </div>
-      <div className="civic-component-2" data-aos="fade-up">
+      <div className="civic-component-2">
         <div className="civic-comp-2-left" data-aos="fade-right">
           <p>
             “Antioch – the metropolis of Syria, and, without dispute, deserves
@@ -77,10 +77,12 @@ const civicStory = () => {
           </p>
         </div>
       </div>
-      <div className="civic-component-3" data-aos="fade-up">
-        <p>Antioch compared to Rome was like Chicago is to New York City!</p>
+      <div className="civic-component-3">
+        <p id="civic-style-para">
+          Antioch compared to Rome was like Chicago is to New York City!
+        </p>
       </div>
-      <div className="civic-component-4" data-aos="fade-in">
+      <div className="civic-component-4">
         <div
           style={{ backgroundColor: "#2d616a", padding: "10px" }}
           data-aos="slide-up"
@@ -89,31 +91,28 @@ const civicStory = () => {
           <br></br>
           And the coins are an important reminder of this.
         </div>
-        <img src={citizens} />
+        <img src={citizens} alt="Logo" />
       </div>
       <div className="civic-component-5">
         <div className="civic-comp-5-left" data-aos="fade-right">
           <img src={comp_5_left} alt="Logo" />
         </div>
-        <p className="" data-aos="fade-left">
-          On the front of the coins, the citizens wrote their name: ΑΝΤΙΟΧΕΩΝ,{" "}
-          <br></br>
+        <p id="civic-style-para" data-aos="fade-left">
+          On the front of the coins, the citizens wrote their name: ΑΝΤΙΟΧΕΩΝ,
           which means “Belongs to the Antiochians.”
         </p>
       </div>
       <div className="civic-component-6">
-        <p data-aos="fade-in" data-aos="fade-in">
+        <p id="civic-style-para">
           The government also added another message in Greek (just barely
           visible on this worn coin): MHTROPOLEWS. This means metropolis. This
           was a special civic status, which emphasized the size, culture, and
           history of the city.
         </p>
-        <div className="civic-comp-5-left" data-aos="fade-down">
-          <img src={comp_5_right} alt="Logo" />
-        </div>
+        <img src={comp_5_right} alt="Logo" />
       </div>
       <div className="civic-component-7">
-        <p style={{ width: "500px" }} data-aos="fade-in">
+        <p id="civic-style-para">
           The Antiochians were so proud of this special title, they included it
           on their coins for over 300 years!
         </p>
@@ -157,32 +156,32 @@ const civicStory = () => {
       </div>
       <div className="civic-component-8">
         <img src={boule} alt="Logo" data-aos="fade-right" />
-        <p data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-left">
           The images on the coins celebrate the local government. Here we see a
           personification of the city’s boule – or council.
         </p>
       </div>
       <div className="civic-component-9">
-        <p data-aos="fade-down">
+        <p id="civic-style-para" data-aos="fade-down">
           The boule was like our own local government and city councils.
         </p>
         <img src={council} alt="Logo" data-aos="fade-in" />
       </div>
       <div className="civic-component-10">
-        <p style={{ width: "500px" }} data-aos="flip-down">
+        <p id="civic-style-para" data-aos="flip-down">
           For example, ancient historians record that the boule gathered the
           demos – the citizen body – together to debate publicly in the city’s
           theatre.
         </p>
         <img src={theatre} alt="Logo" data-aos="fade-in" />
-        <p style={{ width: "750px" }} data-aos="flip-up">
+        <p id="civic-style-para" data-aos="flip-up">
           Then the emperor’s lieutenant entered the theatre at Antioch, where
           the people regularly hold their public assemblies, and addressed the
           crowd which hurried there. -Tacitus, Histories 2.80
         </p>
       </div>
       <div className="civic-component-11">
-        <p data-aos="flip-down">
+        <p id="civic-style-para" data-aos="flip-down">
           This is just like the debates and public forums that happen in our own
           local governments!
         </p>
@@ -190,7 +189,7 @@ const civicStory = () => {
       </div>
       <div className="civic-component-12">
         <img src={boule} alt="Logo" data-aos="fade-right" />
-        <p data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-left">
           Voting was an important job of the boule and demos. The coin even
           shows this! Notice how the boule votes by dropping a pebble into a
           bucket!
@@ -198,18 +197,18 @@ const civicStory = () => {
       </div>
       <div className="civic-component-13">
         <img src={vote} alt="Logo" data-aos="fade-right" />
-        <p data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-left">
           Just like today, the citizens had a say in the operations of their
           city government!
         </p>
       </div>
       <div className="civic-component-14">
-        <p data-aos="flip-up">
+        <p id="civic-style-para">
           The boule and magistrates also hosted many civic celebrations for
           their community.
         </p>
-        <img src={festival} alt="Logo" data-aos="fade-in" />
-        <p style={{ width: "600px" }} data-aos="fade-down">
+        <img src={festival} alt="Logo" />
+        <p id="civic-style-para">
           “The citizens of Antioch, a large and prosperous city, celebrate
           festivals virtually every day of the year in the city and in the
           surrounding area.” Herodian, History of the Roman Empire 2.7.9
@@ -217,29 +216,29 @@ const civicStory = () => {
       </div>
       <div className="civic-component-15">
         <img src={zeus} alt="Logo" data-aos="fade-right" />
-        <p data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-left">
           Many of these civic festivals celebrated the gods. This includes Zeus,
           who is featured on the front of this coin!
         </p>
       </div>
       <div className="civic-component-16">
-        <p data-aos="flip-up">
+        <p id="civic-style-para" data-aos="flip-up">
           Finally, the boule could lead the people in protest if they didn’t
           agree with the Roman emperor.
         </p>
         <img src={protest} alt="Logo" />
-        <p data-aos="fade-down">
+        <p id="civic-style-para" data-aos="fade-down">
           Today, peaceful demonstrations remain an important right of our
           citizens.
         </p>
       </div>
       <div className="civic-component-17">
-        <p data-aos="flip-up">
+        <p id="civic-style-para" data-aos="flip-up">
           Sometimes, though, the Antiochians could lose the power of their local
           government.
         </p>
         <img src={protest_2} alt="Logo" />
-        <p data-aos="fade-down">
+        <p id="civic-style-para" data-aos="fade-down">
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
           The emperor had previously taken away their shows and public
@@ -249,7 +248,7 @@ const civicStory = () => {
         </p>
       </div>
       <div className="civic-component-18">
-        <p data-aos="slide-up">
+        <p id="civic-style-para" data-aos="slide-up">
           This is a major difference between then and now! Even though the local
           government was democratic, the Antiochians lived under the absolute
           rule of the emperor.
@@ -257,14 +256,14 @@ const civicStory = () => {
       </div>
       <div className="civic-component-19">
         <img src={boule} alt="Logo" data-aos="fade-right" />
-        <p data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-left">
           Unfortunately, detailed records for the boule have not survived, so we
           don’t know a lot about the individual officials.
         </p>
       </div>
       <div className="civic-component-20">
         <img src={inscription} alt="Logo" data-aos="fade-right" />
-        <p data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-left">
           An inscription from Palmyra does mention the name of one city
           magistrate – Marcus Aemilius Marcianus Asclepiades, the bouleutes of
           the Antiochians – who also worked as a tax-collector for the Romans.{" "}
@@ -273,15 +272,17 @@ const civicStory = () => {
         </p>
       </div>
       <div className="civic-component-21">
-        <p style={{ width: "500px" }}>
+        <Link to="/civic-story">
+          Where did the civic coins move?
+        </Link>
+        <p id="civic-style-para">
           Because so few records have survived, our ancient coin is a very
           important reminder of the local government who minted it and the local
           citizens who used it.
         </p>
-      </div>
-      <div className="civic-component-22">
-        <Link to="/civic-story" className="c22-left" data-aos="fade-right">Where did the civic coins move?</Link>
-        <Link to="/coins" className="c22-right" data-aos="fade-left">Tell me another story!</Link>
+        <Link to="/coins">
+          Tell me another story!
+        </Link>
       </div>
     </div>
   );
