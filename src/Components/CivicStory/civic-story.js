@@ -26,7 +26,7 @@ import ancient_coin from "../data/civic-images/ancient-coin.png";
 
 const civicStory = () => {
   AOS.init({
-    duration: 2000,
+    duration: 2000
   });
 
   return (

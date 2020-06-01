@@ -76,7 +76,7 @@
 
 .intro-main-title-h2 {
     font-family: cartogothic_stdbook_bold;
-    margin-top: -65px;
+    margin-top: -25px;
     color:'#2d616a'
 }
 
@@ -96,6 +96,15 @@
     height: 50px;
     width: 50px;
     margin-top: 20px;
+}
+
+#intro-style-para {
+    background-image: var(--div-bg);
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
 }
 
 .header-explore-left {
@@ -129,7 +138,6 @@
 .size-images{
     height: 120px;
     width: 120px;
-    vertical-align: middle;
     padding: 20px;
 }
 
@@ -163,17 +171,24 @@
 
 .threeD-coin {
     position: absolute;
-    top:130%;
+    top: 160%;
+    left: 50%;
+    display: flex;
     font-size: larger;
-    margin-left: 30%;
+    align-items: center;
+    transform: translate(-50%, -50%);
     text-decoration: solid;
 }
 
 .component-1 {
     position: absolute;
     top:240%;
+    left: 50%;
+    display: flex;
     font-size: larger;
-    margin-left: 15%;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
     text-decoration: solid;
 }
 
@@ -181,86 +196,147 @@
     position: absolute;
     font-size: larger;
     top: 280%;
-    margin-left: 15%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-3 {
     position: absolute;
     font-size: larger;
-    top: 320%;
-    margin-left: 10%;
+    top: 330%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-4 {
     position: absolute;
     font-size: larger;
-    top: 360%;
-    margin-left: 15%;
+    top: 390%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-5 {
     position: absolute;
     font-size: larger;
     top: 460%;
-    margin-left: 2%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-6 {
     position: absolute;
     font-size: larger;
-    top: 540%;
-    margin-left: 18%;
+    top: 530%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-7 {
     position: absolute;
     font-size: larger;
-    top: 660%;
-    margin-left: 10%;
+    top: 600%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-8 {
     position: absolute;
     font-size: larger;
-    top: 750%;
-    margin-left: 25%;
+    top: 680%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
     width: 600px;
 }
 
 .component-9 {
     position: absolute;
     font-size: larger;
-    top: 840%;
-    margin-left: 15%;
+    top: 750%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-10 {
     position: absolute;
     font-size: larger;
-    top: 900%;
-    margin-left: 25%;
+    top: 830%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
     width: 600px;
 }
 
 .component-11 {
     position: absolute;
     font-size: larger;
-    top: 990%;
-    margin-left: 15%;
+    top: 900%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
+    width: 600px;
 }
 
 .component-12 {
     position: absolute;
     font-size: larger;
-    top: 1070%;
-    margin-left: 15%;
+    top: 960%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-13 {
     position: absolute;
     font-size: larger;
-    top: 1150%;
-    margin-left: 15%;
+    top: 1020%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .align-subtitle-caption {
@@ -273,69 +349,114 @@
 .component-14 {
     position: absolute;
     font-size: larger;
-    top: 1240%;
-    margin-left: 15%;
+    top: 1090%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-15 {
     position: absolute;
     font-size: larger;
-    top: 1330%;
-    margin-left: 20%;
+    top: 1150%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-16 {
     position: absolute;
     font-size: larger;
-    top: 1420%;
-    margin-left: 15%;
+    top: 1210%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-17 {
     position: absolute;
     font-size: larger;
-    top: 1510%;
-    margin-left: 20%;
+    top: 1270%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-18 {
     position: absolute;
     font-size: larger;
-    top: 1600%;
-    margin-left: 20%;
+    top: 1330%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-19 {
     position: absolute;
     font-size: larger;
-    top: 1690%;
-    margin-left: 15%;
+    top: 1390%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-20 {
     position: absolute;
     font-size: larger;
-    top: 1780%;
-    margin-left: 20%;
+    top: 1460%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-21 {
     position: absolute;
     font-size: larger;
-    top: 1870%;
-    margin-left: 25%;
+    top: 1520%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .component-22 {
     position: absolute;
     font-size: larger;
-    top: 1940%;
-    margin-left: 35%;
+    top: 1600%;
+    left: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-decoration: solid;
 }
 
 .footer-explore-left {
     position: absolute;
-    top: 1960%;
+    top: 1600%;
     font-size: xx-large;
     color: antiquewhite;
     margin-left: 15%;
@@ -344,7 +465,7 @@
 
 .footer-explore-right {
     position: absolute;
-    top: 1960%;
+    top: 1600%;
     font-size: xx-large;
     color: antiquewhite;
     margin-left: 75%;
