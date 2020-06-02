@@ -14,6 +14,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "serve": "^11.3.0"
+    "tableau-api": "^2.2.3",
+    "tableau-react-embed": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

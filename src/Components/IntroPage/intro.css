@@ -3,32 +3,35 @@
 } */
 
 /* @font-face { */
-    /* font-family: 'MyWebFont'; */
-    /* src: url('../data/dalekpinpointbold-webfont.woff') format('woff'); Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-     /* url('../data/DalekPinpointBold.ttf') format('truetype'); Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
-  /* }  */
+/* font-family: 'MyWebFont'; */
+/* src: url('../data/dalekpinpointbold-webfont.woff') format('woff'); Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+/* url('../data/DalekPinpointBold.ttf') format('truetype'); Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+/* }  */
 
 @font-face {
-  font-family: 'cartogothic_stdbook';
-  src: url('../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2') format('woff2'),
-       url('../data/fonts/cartogothic/cartogothicstd-book-webfont.woff') format('woff');
+  font-family: "cartogothic_stdbook";
+  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
+      format("woff2"),
+    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-    font-family: 'cartogothic_stdbook_bold';
-    src: url('../data/fonts/cartogothic/CartoGothicStd-Bold.woff2') format('woff2'),
-         url('../data/fonts/cartogothic/CartoGothicStd-Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "cartogothic_stdbook_bold";
+  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
+      format("woff2"),
+    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .intro-page {
-    /* background-image: url(../data/images/bg-2.png);  */
-    font-family: cartogothic_stdbook_bold;
-    font-size: larger;
-    color: rgb(0, 0, 0);
+  /* background-image: url(../data/images/bg-2.png);  */
+  font-family: cartogothic_stdbook_bold;
+  font-size: larger;
+  color: rgb(0, 0, 0);
 }
 
 .class-title {
@@ -45,311 +48,434 @@
 }
 
 .intro-main-title {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    
-    text-align: center;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.intro-main-subtitle{
-    margin-top: -40px;
-    width: 500px;
-    font-family:'cartogothic_stdbook_bold';
-    font-size:15px;
+.intro-main-subtitle {
+  margin-top: -40px;
+  width: 500px;
+  font-family: "cartogothic_stdbook_bold";
+  font-size: 15px;
 }
 
 .title-logo {
-    height: 280px;
-    width: 250px;
+  height: 280px;
+  width: 250px;
 }
 
 .intro-main-title-h1 {
-    color: #2d616a;
-    font-size: calc(20px + 6vmin);
-    margin-top: -40px;
-    font-family: cartogothic_stdbook_bold;
+  color: #2d616a;
+  font-size: calc(20px + 6vmin);
+  margin-top: -40px;
+  font-family: cartogothic_stdbook_bold;
 }
 
 .intro-main-title-h2 {
-    font-family: cartogothic_stdbook_bold;
-    margin-top: -65px;
-    color:'#2d616a'
+  font-family: cartogothic_stdbook_bold;
+  margin-top: -25px;
+  color: "#2d616a";
 }
 
 .intro-read-coin {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    font-size: 25px;
-    text-align: center; 
-    top: 78%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  text-align: center;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-
 .class-scroll {
-    height: 50px;
-    width: 50px;
-    margin-top: 20px;
+  height: 50px;
+  width: 50px;
+  margin-top: 20px;
+}
+
+#intro-style-para {
+  background-image: var(--div-bg);
+  width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
 }
 
 .header-explore-left {
-    position: absolute;
-    top:80%;
-    font-size: x-large;
-    font-weight: bold;
-    margin-left: 20%;
-    text-decoration: solid;
-    color: black;
+  position: absolute;
+  top: 80%;
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 20%;
+  text-decoration: solid;
+  color: black;
 }
 
 .header-explore-right {
-    position: absolute;
-    top:80%;
-    font-size: x-large;
-    font-weight: bold;
-    margin-left: 65%;
-    text-decoration: solid;
-    color: black;
+  position: absolute;
+  top: 80%;
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 65%;
+  text-decoration: solid;
+  color: black;
 }
 
 .read-coin {
-    /* position: absolute; */
-    /* display: block; */
-    padding: 0;
-    text-align: center;
-    top:90%;
+  /* position: absolute; */
+  /* display: block; */
+  padding: 0;
+  text-align: center;
+  top: 90%;
 }
 
-.size-images{
-    height: 120px;
-    width: 120px;
-    vertical-align: middle;
-    padding: 20px;
+.size-images {
+  height: 140px;
+  width: 140px;
+  padding: 20px;
 }
 
 .size-images-mix {
-    height: 220px;
-    width: 240px;
-    vertical-align: middle;
-    padding: 20px;
+  height: 220px;
+  width: 240px;
+  vertical-align: middle;
+  padding: 20px;
 }
 
 .align-subtitle {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .label-image {
-    /* vertical-align: top; */
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
+  /* vertical-align: top; */
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .caption {
-    display: block;
-    width: 200px;
+  display: block;
+  width: 200px;
+}
+
+#style-caption {
+  display: block;
+  width: 200px;
+  color: white;
+  background-image: var(--div-bg-2);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
 }
 
 .component-mix {
-    color: black;
+  color: black;
 }
 
 .threeD-coin {
-    position: absolute;
-    top:130%;
-    font-size: larger;
-    margin-left: 30%;
-    text-decoration: solid;
+  position: absolute;
+  top: 160%;
+  left: 50%;
+  display: flex;
+  font-size: larger;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-1 {
-    position: absolute;
-    top:240%;
-    font-size: larger;
-    margin-left: 15%;
-    text-decoration: solid;
+  position: absolute;
+  top: 240%;
+  left: 50%;
+  display: flex;
+  font-size: larger;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-2 {
-    position: absolute;
-    font-size: larger;
-    top: 280%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 280%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-3 {
-    position: absolute;
-    font-size: larger;
-    top: 320%;
-    margin-left: 10%;
+  position: absolute;
+  font-size: larger;
+  top: 330%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-4 {
-    position: absolute;
-    font-size: larger;
-    top: 360%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 390%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-5 {
-    position: absolute;
-    font-size: larger;
-    top: 460%;
-    margin-left: 2%;
+  position: absolute;
+  font-size: larger;
+  top: 460%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-6 {
-    position: absolute;
-    font-size: larger;
-    top: 540%;
-    margin-left: 18%;
+  position: absolute;
+  font-size: larger;
+  top: 530%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-7 {
-    position: absolute;
-    font-size: larger;
-    top: 660%;
-    margin-left: 10%;
+  position: absolute;
+  font-size: larger;
+  top: 600%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-8 {
-    position: absolute;
-    font-size: larger;
-    top: 750%;
-    margin-left: 25%;
-    width: 600px;
+  position: absolute;
+  font-size: larger;
+  top: 680%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-9 {
-    position: absolute;
-    font-size: larger;
-    top: 840%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 750%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-10 {
-    position: absolute;
-    font-size: larger;
-    top: 900%;
-    margin-left: 25%;
-    width: 600px;
+  position: absolute;
+  font-size: larger;
+  top: 830%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-11 {
-    position: absolute;
-    font-size: larger;
-    top: 990%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 900%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
+
 .component-12 {
-    position: absolute;
-    font-size: larger;
-    top: 1070%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 960%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-13 {
-    position: absolute;
-    font-size: larger;
-    top: 1150%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 1020%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .align-subtitle-caption {
-    text-align: center;
-    padding: 20px;
-    position: absolute;
-    width: 400px;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  width: 400px;
 }
 
 .component-14 {
-    position: absolute;
-    font-size: larger;
-    top: 1240%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 1090%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-15 {
-    position: absolute;
-    font-size: larger;
-    top: 1330%;
-    margin-left: 20%;
+  position: absolute;
+  font-size: larger;
+  top: 1150%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-16 {
-    position: absolute;
-    font-size: larger;
-    top: 1420%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 1210%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-17 {
-    position: absolute;
-    font-size: larger;
-    top: 1510%;
-    margin-left: 20%;
+  position: absolute;
+  font-size: larger;
+  top: 1270%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-18 {
-    position: absolute;
-    font-size: larger;
-    top: 1600%;
-    margin-left: 20%;
+  position: absolute;
+  font-size: larger;
+  top: 1330%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-19 {
-    position: absolute;
-    font-size: larger;
-    top: 1690%;
-    margin-left: 15%;
+  position: absolute;
+  font-size: larger;
+  top: 1390%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-20 {
-    position: absolute;
-    font-size: larger;
-    top: 1780%;
-    margin-left: 20%;
+  position: absolute;
+  font-size: larger;
+  top: 1460%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-21 {
-    position: absolute;
-    font-size: larger;
-    top: 1870%;
-    margin-left: 25%;
+  position: absolute;
+  font-size: larger;
+  top: 1520%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
 .component-22 {
-    position: absolute;
-    font-size: larger;
-    top: 1940%;
-    margin-left: 35%;
+  position: absolute;
+  font-size: larger;
+  top: 1600%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
 }
 
-.footer-explore-left {
-    position: absolute;
-    top: 1960%;
-    font-size: xx-large;
-    color: antiquewhite;
-    margin-left: 15%;
-    text-decoration: solid;
-}
+#intro-style-footer {
+    background-image: var(--div-bg-2);
+    text-decoration: none;
+    padding: 10px;
+    width: 200px;
+    margin: 20px;
+    margin-bottom:500px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+  }
 
-.footer-explore-right {
-    position: absolute;
-    top: 1960%;
-    font-size: xx-large;
-    color: antiquewhite;
-    margin-left: 75%;
-    text-decoration: solid;
-}
 
 img {
   height: 250px;
