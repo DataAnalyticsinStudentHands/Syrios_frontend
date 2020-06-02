@@ -18,7 +18,7 @@ import milk from "../data/economic-images/milk.png"
 
 const Economic = () => {
   AOS.init({
-    duration: 2000,
+    duration: 1000,
   });
 
   // const [setInitViz] = useState([]);
@@ -173,38 +173,38 @@ const Economic = () => {
           of these bronze coins a day.{" "}
         </p>
       </div>
-      <div className="eco-component-3">
-        <p id="style-para">
+      <div className="eco-component-3" >
+        <p id="style-para" data-aos="fade-down">
           People needed these coins to buy things in Antioch’s markets
         </p>
-        <img src={people} alt="Logo" />
+        <img src={people} alt="Logo" data-aos="fade-in"/>
         <p id="style-para">
           “Antioch, a city known to all the world…so rich is it in imported and
           local goods.” Ammianus Marcellinus, Roman Antiquities 14.8.8{" "}
         </p>
       </div>
       <div className="eco-component-4">
-        <p id="style-para">
+        <p id="style-para" data-aos="fade-in">
           But this coin wasn’t worth very much, as it was made out of cheap
           bronze and not valuable gold or silver.{" "}
         </p>
         <div>
-          <img src={bronze_caption} alt="Logo" />
-          <img src={silver_caption} alt="Logo" />
-          <img src={gold_caption} alt="Logo" />
+          <img src={bronze_caption} alt="Logo" data-aos="fade-right"/>
+          <img src={silver_caption} alt="Logo" data-aos="fade-in" />
+          <img src={gold_caption} alt="Logo" data-aos="fade-left" />
         </div>
       </div>
       <div className="eco-component-5">
-        <p id="style-para">
+        <p id="style-para" data-aos="fade-in">
           In fact, some scholars think that it might have taken over 100 of
           these bronze coins to equal the value of only 1 silver tetradrachm!{" "}
         </p>
         <div className="flex-column">
           <div>
-            <img src={silver} alt="Logo" id="comp-5-silver-coin" />
+            <img src={silver} alt="Logo" id="comp-5-silver-coin" data-aos="fade-in"/>
           </div>
           <div>
-            <img src={equal_to} alt="Logo"/>
+            <img src={equal_to} alt="Logo" data-aos="fade-in"/>
           </div>
           <div>
             <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>

@@ -1,5 +1,6 @@
 :root {
   --div-bg: url(../data/images/bg-13.png);
+  --div-bg-2: url(../data/images/bg-5.png);
 }
 
 @font-face {
@@ -134,7 +135,7 @@
 .civic-comp-2-center p {
   margin: 0;
   color: white;
-  background-image: url(../data/images/bg-5.png);
+  background-image: var(--div-bg-2);
   border-radius: 10px;
   padding: 10px;
 }
