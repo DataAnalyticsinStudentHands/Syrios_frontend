@@ -26,7 +26,7 @@ import inscription from "../data/civic-images/inscription.png";
 
 const civicStory = () => {
   AOS.init({
-    duration: 2000,
+    duration: 1000,
   });
 
   return (
@@ -45,7 +45,7 @@ const civicStory = () => {
           className="civic-size-images"
           data-aos="fade-right"
         />
-        <p className="bg-texture">
+        <p id="civic-style-para" data-aos="fade-left">
           This is a <strong>bronze coin</strong> minted by the civic government
           of Antioch for use by the citizens of Antioch.
         </p>
@@ -78,7 +78,7 @@ const civicStory = () => {
         </div>
       </div>
       <div className="civic-component-3">
-        <p id="civic-style-para">
+        <p id="civic-style-para" data-aos="fade-down">
           Antioch compared to Rome was like Chicago is to New York City!
         </p>
       </div>
@@ -103,16 +103,16 @@ const civicStory = () => {
         </p>
       </div>
       <div className="civic-component-6">
-        <p id="civic-style-para">
+        <p id="civic-style-para" data-aos="fade-right">
           The government also added another message in Greek (just barely
           visible on this worn coin): MHTROPOLEWS. This means metropolis. This
           was a special civic status, which emphasized the size, culture, and
           history of the city.
         </p>
-        <img src={comp_5_right} alt="Logo" />
+        <img src={comp_5_right} alt="Logo" data-aos="fade-left"/>
       </div>
       <div className="civic-component-7">
-        <p id="civic-style-para">
+        <p id="civic-style-para" data-aos="fade-down">
           The Antiochians were so proud of this special title, they included it
           on their coins for over 300 years!
         </p>
@@ -158,30 +158,29 @@ const civicStory = () => {
         <img src={boule} alt="Logo" data-aos="fade-right" />
         <p id="civic-style-para" data-aos="fade-left">
           The images on the coins celebrate the local government. Here we see a
-          personification of the city’s boule – or council.
+          personification of the city’s <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>boule</span> – or council.
         </p>
       </div>
       <div className="civic-component-9">
-        <p id="civic-style-para" data-aos="fade-down">
+        <p id="civic-style-para-blue" data-aos="fade-down">
           The boule was like our own local government and city councils.
         </p>
         <img src={council} alt="Logo" data-aos="fade-in" />
       </div>
       <div className="civic-component-10">
-        <p id="civic-style-para" data-aos="flip-down">
-          For example, ancient historians record that the boule gathered the
-          demos – the citizen body – together to debate publicly in the city’s
+        <p id="civic-style-para" data-aos="fade-down">
+          For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder'}}>demos</span> – the citizen body – together to debate publicly in the city’s
           theatre.
         </p>
         <img src={theatre} alt="Logo" data-aos="fade-in" />
-        <p id="civic-style-para" data-aos="flip-up">
-          Then the emperor’s lieutenant entered the theatre at Antioch, where
+        <p id="civic-style-para-blue" data-aos="fade-in">
+          "Then the emperor’s lieutenant entered the theatre at Antioch, where
           the people regularly hold their public assemblies, and addressed the
-          crowd which hurried there. -Tacitus, Histories 2.80
+          crowd which hurried there." -Tacitus, <span style={{fontStyle:"italic"}}>Histories</span> 2.80
         </p>
       </div>
       <div className="civic-component-11">
-        <p id="civic-style-para" data-aos="flip-down">
+        <p id="civic-style-para-blue" data-aos="fade-down">
           This is just like the debates and public forums that happen in our own
           local governments!
         </p>
@@ -196,22 +195,22 @@ const civicStory = () => {
         </p>
       </div>
       <div className="civic-component-13">
-        <img src={vote} alt="Logo" data-aos="fade-right" />
         <p id="civic-style-para" data-aos="fade-left">
           Just like today, the citizens had a say in the operations of their
           city government!
         </p>
+        <img src={vote} alt="Logo" data-aos="fade-right" />
       </div>
       <div className="civic-component-14">
-        <p id="civic-style-para">
+        <p id="civic-style-para" data-aos="fade-down">
           The boule and magistrates also hosted many civic celebrations for
           their community.
         </p>
-        <img src={festival} alt="Logo" />
-        <p id="civic-style-para">
+        <img src={festival} alt="Logo" data-aos="fade-in"/>
+        <p id="civic-style-para-blue" data-aos="fade-in">
           “The citizens of Antioch, a large and prosperous city, celebrate
           festivals virtually every day of the year in the city and in the
-          surrounding area.” Herodian, History of the Roman Empire 2.7.9
+          surrounding area.” Herodian, <span style={{fontStyle:"italic"}}>History of the Roman Empire</span> 2.7.9
         </p>
       </div>
       <div className="civic-component-15">
@@ -222,33 +221,33 @@ const civicStory = () => {
         </p>
       </div>
       <div className="civic-component-16">
-        <p id="civic-style-para" data-aos="flip-up">
+        <p id="civic-style-para" data-aos="fade-down">
           Finally, the boule could lead the people in protest if they didn’t
           agree with the Roman emperor.
         </p>
-        <img src={protest} alt="Logo" />
-        <p id="civic-style-para" data-aos="fade-down">
+        <img src={protest} alt="Logo" data-aos="fade-in"/>
+        <p id="civic-style-para" data-aos="fade-up">
           Today, peaceful demonstrations remain an important right of our
           citizens.
         </p>
       </div>
       <div className="civic-component-17">
-        <p id="civic-style-para" data-aos="flip-up">
+        <p id="civic-style-para" data-aos="fade-up">
           Sometimes, though, the Antiochians could lose the power of their local
           government.
         </p>
-        <img src={protest_2} alt="Logo" />
+        <img src={protest_2} alt="Logo" data-aos="fade-in"/>
         <p id="civic-style-para" data-aos="fade-down">
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
           The emperor had previously taken away their shows and public
           assemblies and every type of meeting, and had issued the harshest
-          edict against them.” <br></br>- Scriptores Historiae Augustae, Marcus
-          Aurelius 25.8-12
+          edict against them.” <br></br>- Scriptores Historiae Augustae, <span style={{fontStyle:"italic"}}>Marcus
+          Aurelius</span> 25.8-12
         </p>
       </div>
       <div className="civic-component-18">
-        <p id="civic-style-para" data-aos="slide-up">
+        <p id="civic-style-para" data-aos="fade-up">
           This is a major difference between then and now! Even though the local
           government was democratic, the Antiochians lived under the absolute
           rule of the emperor.
@@ -261,18 +260,25 @@ const civicStory = () => {
           don’t know a lot about the individual officials.
         </p>
       </div>
-      <div className="civic-component-20">
-        <img src={inscription} alt="Logo" data-aos="fade-right" />
+      <div className="civic-component-20-1">
         <p id="civic-style-para" data-aos="fade-left">
           An inscription from Palmyra does mention the name of one city
-          magistrate – Marcus Aemilius Marcianus Asclepiades, the bouleutes of
-          the Antiochians – who also worked as a tax-collector for the Romans.{" "}
-          <br></br>
-          <br></br> Greek - Palmyrene (a local Syrian language)
+          magistrate
         </p>
       </div>
+      <div className="civic-component-20">
+        <img src={inscription} alt="Logo" data-aos="fade-down" />
+        <div style={{margin:'20px'}}>
+        <p id="civic-style-para-blue" data-aos="fade-up" style={{width:'600px'}}>
+          "Marcus Aemilius Marcianus Asclepiades, the bouleutes of
+          the Antiochians."<br></br><br></br>This man also worked as a tax-collector for the Romans.<br></br><br></br>Notice how this inscription is written in both Greek (top) and Palmyrene, a local Syrian language (bottom).
+          <br></br>
+        </p>
+        </div>
+        
+      </div>
       <div className="civic-component-21">
-        <Link to="/civic-story">
+        <Link to="/select-story" id="civic-intro-style-footer">
           Where did the civic coins move?
         </Link>
         <p id="civic-style-para">
@@ -280,7 +286,7 @@ const civicStory = () => {
           important reminder of the local government who minted it and the local
           citizens who used it.
         </p>
-        <Link to="/coins">
+        <Link to="/coins" id="civic-intro-style-footer">
           Tell me another story!
         </Link>
       </div>

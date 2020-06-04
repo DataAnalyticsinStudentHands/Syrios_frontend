@@ -97,7 +97,11 @@ const Intro = () => {
       </div>
       <div className="component-mix">
         <div className="threeD-coin">
-          <div class="sketchfab-embed-wrapper">
+          <p id="intro-style-para" data-aos="fade-left">
+            Ancient coins have a tremendous story to tell, but we must first
+            learn how to read them.
+          </p>
+          <div class="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
               title="A 3D model"
               width="640"
@@ -143,41 +147,84 @@ const Intro = () => {
           </div>
         </div>
         <div className="component-1">
-          <img src={img_2} alt="Logo" className="size-images" data-aos="fade-right"/>
-          <span id="intro-style-para" data-aos="fade-left">
-            Ancient coins have a tremendous story to tell
-          </span>
+          <img
+            src={img_2}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
+          <p id="intro-style-para" data-aos="fade-left">
+            Ancient coins have a tremendous story to tell, but we must first
+            learn how to read them.
+          </p>
+        </div>
+        <div className="component-1-2">
+          <img
+            src={img_2}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
+          <p id="intro-style-para" data-aos="fade-left">
+            A little bronze coin has a lot to say too, just like our own U.S.
+            dime.”
+          </p>
         </div>
         <div className="component-2">
-          <img src={us_dime} alt="Logo" className="size-images" data-aos="fade-right"/>
+          <img
+            src={img_2}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
           <p id="intro-style-para" data-aos="fade-up">
-            This bronze coin from Syria has the same size that of an US dime
+            This bronze coin from Syria is the same size as a dime.
           </p>
-          <img src={img_2} alt="Logo" className="size-images" data-aos="fade-left"/>
+          <img
+            src={us_dime}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-left"
+          />
         </div>
         <div className="component-3">
-          <img src={comp_3_left} alt="Logo" className="size-images" data-aos="fade-right"/>
+          <img
+            src={comp_3_left}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
           <p id="intro-style-para" data-aos="fade-up">
-            Both have images and writing on them called "coin's type"
+            Both have images and writing on them called coin's "<span style={{fontWeight:'bolder', textDecorationLine: 'underline'}}>type</span>"
           </p>
-          <img src={comp_3_right} alt="Logo" className="size-images" data-aos="fade-left"/>
+          <img
+            src={comp_3_right}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-left"
+          />
         </div>
         <div className="component-4">
           <div data-aos="flip-right">
-            <img src={comp_4_left} alt="Logo" className="size-images" data-aos=""/>
-            <span id="style-caption" data-aos="">
+            <img
+              src={comp_4_left}
+              alt="Logo"
+              className="size-images"
+              data-aos=""
+            />
+            <p id="style-caption">
               On the ancient bronze coin is Apollo (the Greek god of archery,
               music, and light).
-            </span>
+            </p>
           </div>
-          <span id="intro-style-para" data-aos="fade-up">
-            On the front, we see the head of an important person
-          </span>
+          <p id="intro-style-para" data-aos="fade-up">
+            On the front or “<span style={{fontWeight:"bolder", textDecorationLine:'underline'}}>obverse</span>”, we see the head of an important person.
+          </p>
           <div data-aos="flip-left">
             <img src={comp_4_right} alt="Logo" className="size-images" />
-            <span id="style-caption">
+            <p id="style-caption">
               On the dime is Franklin D. Roosevelt (the 32nd U.S. President).{" "}
-            </span>
+            </p>
           </div>
         </div>
         <div className="component-5">
@@ -187,9 +234,9 @@ const Intro = () => {
             className="size-images-mix"
             data-aos="fade-up"
           />
-          <span id="intro-style-para" data-aos="fade-in">
-            Just like our coins today, the important person can change
-          </span>
+          <p id="intro-style-para" data-aos="fade-in">
+            Just like our coins today, the important person could change.
+          </p>
           <img
             src={comp_5_right_mix}
             alt="Logo"
@@ -200,13 +247,13 @@ const Intro = () => {
         <div className="component-6">
           <div className="label-image" data-aos="flip-right">
             <img src={comp_6_left} alt="Logo" className="size-images" />
-            <span id="style-caption">
+            <p id="style-caption">
               This coin has a branch from a laurel tree. It was an important
               symbol for the god Apollo and for the trees that grew in Syria.
-            </span>
+            </p>
           </div>
           <span id="intro-style-para" data-aos="fade-up">
-            On the back, we see the important symbols
+            On the back or “<span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>reverse</span>”, we see important symbols.
           </span>
           <div className="label-image" data-aos="zoom-in" data-aos="flip-left">
             <img src={comp_6_right} alt="Logo" className="size-images" />
@@ -217,60 +264,97 @@ const Intro = () => {
           </div>
         </div>
         <div className="component-7">
-          <img src={comp_7_left_mix} alt="Logo" className="size-images-mix" data-aos="fade-up"/>
+          <img
+            src={comp_7_left_mix}
+            alt="Logo"
+            className="size-images-mix"
+            data-aos="fade-up"
+          />
           <span id="intro-style-para" data-aos="fade-in">
             Just like our coins today, the symbols can change
           </span>
-          <img src={comp_7_right_mix} alt="Logo" className="size-images-mix" data-aos="fade-up"/>
+          <img
+            src={comp_7_right_mix}
+            alt="Logo"
+            className="size-images-mix"
+            data-aos="fade-up"
+          />
         </div>
         <div className="component-8">
-          <h2 data-aos="slide-up" id="intro-style-para" style={{width:'800px'}}>
+          <h2
+            data-aos="slide-up"
+            id="intro-style-para"
+            style={{ width: "800px" }}
+          >
             The citizens wanted to make sure that everyone knew that these coins
             belonged to them
           </h2>
         </div>
         <div className="component-9">
-          <img src={comp_9_left} alt="Logo" className="size-images" data-aos="fade-in"/>
+          <img
+            src={comp_9_left}
+            alt="Logo"
+            className="size-images"
+          />
           <img
             src={comp_9_right}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para" data-aos="fade-up">
-            They wrote their name on the coins in Greek: ΑΝΤΙΟΧΕΩΝ, which means
-            'Belongs to Antiochians'
+          <p id="intro-style-para-blue" data-aos="fade-up">
+            They wrote their name on the coins in Greek: ΑΝΤΙΟΧΕΩΝ, which means 'Belongs to the Antiochians'.
           </p>
         </div>
         <div className="component-10">
-          <span className="align-subtitle">
-            <h2 data-aos="slide-up" id="intro-style-para" style={{width:'800px'}}>
-              The name was also important because it made clear the governmental
-              authority who gave the cheap bronze value as money.
+          <p className="align-subtitle">
+            <h2
+              data-aos="slide-up"
+              id="intro-style-para"
+              style={{ width: "800px" }}
+            >
+              The name was also important because it made clear the governmental <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>authority</span> who gave the cheap bronze value as money.
             </h2>
-          </span>
+          </p>
         </div>
         <div className="component-11">
-          <img src={comp_11_left} alt="Logo" className="size-images" data-aos="fade-in"/>
-          <img src={comp_11_right} alt="Logo" className="size-images" data-aos="fade-right"/>
-          <p id="intro-style-para">
+          <img
+            src={comp_11_left}
+            alt="Logo"
+            className="size-images"
+          />
+          <img
+            src={comp_11_right}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
+          <p id="intro-style-para-blue" data-aos="fade-up">
             We do the same with our money! The term 'United States of America'
             carries a lot of weight!
           </p>
         </div>
-        <div className="component-12">
-          <img src={comp_12_left} alt="Logo" className="size-images" data-aos="fade-in"/>
-          <img src={comp_12_right} alt="Logo" className="size-images" data-aos="fade-right"/>
+        {/* <div className="component-12">
+          <img
+            src={comp_12_left}
+            alt="Logo"
+            className="size-images"
+          />
+          <img
+            src={comp_12_right}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
           <p id="intro-style-para">
-            Like our U.S. dime, we can tell when a coin was minted or issued
+            Like our U.S. dime, we can tell when a coin was minted or issued.
           </p>
-        </div>
+        </div> */}
         <div className="component-13">
           <img
             src={comp_13_left}
             alt="Logo"
             className="size-images"
-            data-aos="fade-in"
           />
           <img
             src={comp_13_right}
@@ -278,9 +362,8 @@ const Intro = () => {
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para">
-            People of ancient Syria used Greek letters. ΔΡ tells us the coin was
-            minted in 55/56 CE, during the reign of emperor Nero.
+          <p id="intro-style-para-blue">
+            People in ancient Syria used Greek letters to indicate the date. Here, the ΔΡ tells us that the coin was minted in 55/56 CE, during the reign of emperor Nero.
           </p>
         </div>
         <div className="component-14">
@@ -288,7 +371,6 @@ const Intro = () => {
             src={comp_14_left}
             alt="Logo"
             className="size-images"
-            data-aos="fade-in"
           />
           <img
             src={comp_14_right}
@@ -296,7 +378,7 @@ const Intro = () => {
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para">
+          <p id="intro-style-para" data-aos="fade-left">
             The U.S. dime also has other words or legends. They celebrate our
             government and our values.
           </p>
@@ -309,26 +391,27 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            So did some of the ancient coins!  Here we see  PAX AVGVSTI or
+            So did some of the ancient coins! Here we see PAX AVGVSTI or
             “Peace of the Emperors” being celebrated!
           </p>
         </div>
         <div className="component-16">
           <img
-            src={comp_16_left}
+            src={comp_12_right}
             alt="Logo"
             className="size-images"
-            data-aos="fade-in"
+            data-aos="flip-right"
+            data-aos-duration="2500"
           />
           <img
             src={comp_16_right}
             alt="Logo"
             className="size-images"
-            data-aos="fade-right"
+            data-aos="flip-left"
+            data-aos-duration="2500"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            The U.S. dime also has what's called a 'mint mark'. The "S" stands
-            for the San Francisco mint.
+          Like our U.S. dime, we can tell when a coin was minted or issued.<br></br><p id="intro-style-para-blue">Our U.S. dime tells us when and where a coin was minted or issued. This coin was struck in 2013 at the “S” or San Francisco mint.</p>
           </p>
         </div>
         <div className="component-17">
@@ -338,10 +421,8 @@ const Intro = () => {
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para" data-aos="fade-left">
-            The ancient coins had mint marks too! Sometimes they stand for the
-            minting cities, but it can also indicate a production mark or the
-            person who paid for the coins. Sometimes the mark is a mystery!
+          <p id="intro-style-para-blue" data-aos="fade-left">
+            Mint marks on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
           </p>
         </div>
         <div className="component-18">
@@ -357,9 +438,8 @@ const Intro = () => {
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para">
-            The U.S. dime tells us its denomination, or how much it is worth.
-            One Dime = 10 cents.
+          <p id="intro-style-para" data-aos="fade-in">
+            The U.S. dime tells us its denomination, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
           </p>
         </div>
         <div className="component-19">
@@ -374,7 +454,29 @@ const Intro = () => {
             knew the value based upon a coin’s metal, size, and images.
           </p>
         </div>
-        <div className="component-20">
+        <div className="component-30">
+          <div data-aos="flip-right">
+            <img
+              src={comp_20}
+              alt="Logo"
+              className="size-images"
+              data-aos="fade-in"
+            />
+            <p id="style-caption" data-aos="fade-down">
+              A countermark was stamped on a circulating coin to give it extra value or keep it working as money.
+            </p>
+          </div>
+          <p id="intro-style-para" data-aos="fade-up">
+            And watch out for other marks and modifications to the coins!
+          </p>
+          <div data-aos="flip-left">
+            <img src={comp_21} alt="Logo" className="size-images" data-aos="fade-in"/>
+            <p id="style-caption" data-aos="fade-down">
+              A coin could be cut in half too, likely as an attempt to make more coins when minting stopped.
+            </p>
+          </div>
+        </div>
+        {/* <div className="component-20">
           <img
             src={comp_20}
             alt="Logo"
@@ -399,14 +501,23 @@ const Intro = () => {
             but it likely was an attempt to make more coins when you couldn’t
             mint more.
           </p>
-        </div>
+        </div> */}
         <div className="component-22">
-          <Link to="/select-story" id="intro-style-footer" data-aos="fade-right"> Tell me a Story </Link>
+          <Link
+            to="/select-story"
+            id="intro-style-footer"
+            data-aos="fade-right"
+          >
+            {" "}
+            Tell me a Story{" "}
+          </Link>
           <h2 id="intro-style-para">
-            Overall, there’s so much to explore when it comes to ancient AND
-            modern coins. Are you ready to learn more?
+            There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?  
           </h2>
-          <Link to="/coins" id="intro-style-footer" data-aos="fade-left"> Explore Coins </Link>
+          <Link to="/coins" id="intro-style-footer" data-aos="fade-left">
+            {" "}
+            Explore Coins{" "}
+          </Link>
         </div>
       </div>
     </div>

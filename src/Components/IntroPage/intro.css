@@ -59,7 +59,7 @@
 }
 
 .intro-main-subtitle {
-  margin-top: -40px;
+  margin-top: -30px;
   width: 500px;
   font-family: "cartogothic_stdbook_bold";
   font-size: 15px;
@@ -73,13 +73,13 @@
 .intro-main-title-h1 {
   color: #2d616a;
   font-size: calc(20px + 6vmin);
-  margin-top: -40px;
+  margin-top: -30px;
   font-family: cartogothic_stdbook_bold;
 }
 
 .intro-main-title-h2 {
   font-family: cartogothic_stdbook_bold;
-  margin-top: -25px;
+  margin-top: -15px;
   color: "#2d616a";
 }
 
@@ -101,12 +101,21 @@
 }
 
 #intro-style-para {
+  /* background-image: var(--div-bg); */
+  width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  /* color: white; */
+  font-weight: 400;
+}
+
+#intro-style-para-blue {
   background-image: var(--div-bg);
   width: 500px;
   padding: 10px;
   border-radius: 10px;
   color: white;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .header-explore-left {
@@ -170,8 +179,9 @@
 #style-caption {
   display: block;
   width: 200px;
+  font-size: large;
   color: white;
-  background-image: var(--div-bg-2);
+  background-image: var(--div-bg);
   border-radius: 20px;
   padding: 10px;
   margin: 5px;
@@ -183,10 +193,11 @@
 
 .threeD-coin {
   position: absolute;
-  top: 160%;
+  top: 190%;
   left: 50%;
   display: flex;
   font-size: larger;
+  text-align: center;
   align-items: center;
   transform: translate(-50%, -50%);
   text-decoration: solid;
@@ -194,7 +205,19 @@
 
 .component-1 {
   position: absolute;
-  top: 240%;
+  top: 130%;
+  left: 50%;
+  display: flex;
+  font-size: larger;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
+}
+
+.component-1-2 {
+  position: absolute;
+  top: 260%;
   left: 50%;
   display: flex;
   font-size: larger;
@@ -207,7 +230,7 @@
 .component-2 {
   position: absolute;
   font-size: larger;
-  top: 280%;
+  top: 300%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -219,7 +242,7 @@
 .component-3 {
   position: absolute;
   font-size: larger;
-  top: 330%;
+  top: 345%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -279,7 +302,7 @@
 .component-8 {
   position: absolute;
   font-size: larger;
-  top: 680%;
+  top: 650%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -291,7 +314,7 @@
 .component-9 {
   position: absolute;
   font-size: larger;
-  top: 750%;
+  top: 670%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -303,7 +326,7 @@
 .component-10 {
   position: absolute;
   font-size: larger;
-  top: 830%;
+  top: 720%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -315,7 +338,7 @@
 .component-11 {
   position: absolute;
   font-size: larger;
-  top: 900%;
+  top: 740%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -324,11 +347,10 @@
   text-decoration: solid;
 }
 
-
 .component-12 {
   position: absolute;
   font-size: larger;
-  top: 960%;
+  top: 990%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -340,7 +362,7 @@
 .component-13 {
   position: absolute;
   font-size: larger;
-  top: 1020%;
+  top: 1030%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -359,7 +381,7 @@
 .component-14 {
   position: absolute;
   font-size: larger;
-  top: 1090%;
+  top: 890%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -371,7 +393,7 @@
 .component-15 {
   position: absolute;
   font-size: larger;
-  top: 1150%;
+  top: 930%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -383,7 +405,7 @@
 .component-16 {
   position: absolute;
   font-size: larger;
-  top: 1210%;
+  top: 980%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -395,7 +417,7 @@
 .component-17 {
   position: absolute;
   font-size: larger;
-  top: 1270%;
+  top: 1080%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -407,7 +429,7 @@
 .component-18 {
   position: absolute;
   font-size: larger;
-  top: 1330%;
+  top: 790%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -419,7 +441,19 @@
 .component-19 {
   position: absolute;
   font-size: larger;
-  top: 1390%;
+  top: 840%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: solid;
+}
+
+.component-30 {
+  position: absolute;
+  font-size: larger;
+  top: 1130%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -455,7 +489,7 @@
 .component-22 {
   position: absolute;
   font-size: larger;
-  top: 1600%;
+  top: 1200%;
   left: 50%;
   display: flex;
   text-align: center;
@@ -465,17 +499,16 @@
 }
 
 #intro-style-footer {
-    background-image: var(--div-bg-2);
-    text-decoration: none;
-    padding: 10px;
-    width: 200px;
-    margin: 20px;
-    margin-bottom:500px;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-  }
-
+  background-image: var(--div-bg-2);
+  text-decoration: none;
+  padding: 10px;
+  width: 200px;
+  margin: 20px;
+  margin-bottom: 500px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
 
 img {
   height: 250px;
