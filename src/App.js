@@ -34,7 +34,7 @@ const App = () => {
         <Route exact path="/roman-emperors" component={Roman}/>
         <Route exact path="/gods-portal" component={Gods}/>
         <Route exact path="/omeka-database" component={() => {
-          window.location.href = 'https://sites.lib.uh.edu/kmneuma2/';
+          window.location.href = 'https://sites.lib.uh.edu/kmneuma2/items/browse';
           return null;
         }}/>
         {/* <Redirect to="/404" /> */}

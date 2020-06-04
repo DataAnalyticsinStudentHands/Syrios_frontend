@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import TableauReport from "tableau-react";
 import ReactDOM from "react-dom";
-import Tableau from "./tableau"
+import { Link } from "react-router-dom";
+import Tableau from "./tableau";
 import "tableau-api";
 // import TableauReport from 'tableau-react-embed';
 import "./economic-story.css";
@@ -26,7 +27,6 @@ const Economic = () => {
   return (
     <div className="class-eco-story">
       <div className="class-eco-title">
-        
         <p data-aos="slide-right">The</p>
         <h1 data-aos="slide-left" id="green">
           Economic
@@ -168,9 +168,9 @@ const Economic = () => {
           People needed these coins to buy things in Antioch’s markets
         </p>
         <img src={people} alt="Logo" data-aos="fade-in" />
-        <p id="style-para">
+        <p id="style-para" data-aos="fade-down">
           “Antioch, a city known to all the world…so rich is it in imported and
-          local goods.” Ammianus Marcellinus, Roman Antiquities 14.8.8{" "}
+          local goods.” <span style={{fontStyle:'italic'}}>Ammianus Marcellinus, Roman Antiquities</span> 14.8.8{" "}
         </p>
       </div>
       <div className="eco-component-4">
@@ -936,12 +936,32 @@ const Economic = () => {
         />
       </div>
       <div className="eco-component-9">
-        <p id="style-para">
+        <p id="style-para" data-aos="fade-up">
           Most of the Antioch civic coins were spent locally.
         </p>
       </div>
-      <div className="eco-component-10">
-        <Tableau />
+      <div className="eco-component-10" >
+        <p id="style-para" data-aos="fade-up">
+          Not all coins stayed in Antioch though. Instead some of the coins
+          moved even hundreds of miles away.
+        </p>
+      </div>
+      <div className="eco-component-11" >
+        <Tableau data-aos="fade-in"/>
+      </div>
+      <div className="eco-component-12">
+        <p id="style-para" data-aos="fade-down">
+          This speaks to all the trade routes running in and out of Antioch and
+          all the people coming and going from the city with little bronze coins in their pockets.
+        </p>
+      </div>
+      <div className="eco-component-13">
+        <Link to="" id="eco-intro-style-footer">
+          Where did the civic coins move?
+        </Link>
+        <Link to="/select-story" id="eco-intro-style-footer">
+          Tell me another story!
+        </Link>
       </div>
     </div>
   );
