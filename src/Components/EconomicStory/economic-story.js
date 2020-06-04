@@ -312,39 +312,40 @@ const Economic = () => {
         </div>
       </div>
       <div className="eco-component-6">
-        <img src={bronze} alt="Logo" style={{padding:'10px'}}/>
-        <p id="style-para">
+        <img src={bronze} alt="Logo" style={{padding:'10px'}} data-aos="fade-right"/>
+        <p id="style-para" data-aos="fade-left">
             This coin could still buy important items for a person living in Antioch.  
         </p>
       </div>
       <div className="eco-component-7">
         <div style={{padding:'10px'}}>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="500"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="750"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1000"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1250"/>
         </div>
-        <p id="style-para">
+        <p id="style-para" data-aos="fade-in">
           Four bronze coins could buy a loaf of bread. 
         </p>
-        <img src={bread} alt="Logo" />
+        <img src={bread} alt="Logo" data-aos="fade-left"/>
       </div>
       <div className="eco-component-8">
         <div style={{padding:'10px'}}>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
-            <img src={bronze} alt="Logo" id="comp-7-bronze" />
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="500"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="700"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="900"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1100"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1300"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1500"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1700"/>
+            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1900"/>
         </div>
-        <p id="style-para">
+        <p id="style-para" data-aos="fade-in">
             Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s the same as 2 school milk cartoons.
         </p>
-        <img src={jug} alt="Logo" />
-        <img src={milk} alt="Logo" />
+        <img src={jug} alt="Logo" data-aos="fade-left" data-aos-duration="800"/>
+        <img src={milk} alt="Logo" data-aos="fade-left" data-aos-duration="1000"/>
+        <img src={milk} alt="Logo" data-aos="fade-left" data-aos-duration="1200"/>
       </div>
       <div className="eco-component-9">
         <p id="style-para">

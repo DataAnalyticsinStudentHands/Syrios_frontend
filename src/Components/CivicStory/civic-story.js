@@ -278,7 +278,7 @@ const civicStory = () => {
         
       </div>
       <div className="civic-component-21">
-        <Link to="/select-story" id="civic-intro-style-footer">
+        <Link to="" id="civic-intro-style-footer" data-aos="fade-right">
           Where did the civic coins move?
         </Link>
         <p id="civic-style-para">
@@ -286,7 +286,7 @@ const civicStory = () => {
           important reminder of the local government who minted it and the local
           citizens who used it.
         </p>
-        <Link to="/coins" id="">
+        <Link to="/select-story" id="civic-intro-style-footer" data-aos="fade-left">
           Tell me another story!
         </Link>
       </div>
