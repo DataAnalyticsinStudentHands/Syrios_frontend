@@ -8,6 +8,7 @@ import Civic from "./Components/CivicStory/civic-story";
 import Economic from "./Components/EconomicStory/economic-story";
 import Roman from "./Components/RomanEmperors/romans";
 import Gods from "./Components/GodsPortal/gods";
+// import MetaTags from 'react-meta-tags'; //* importing Meta tags for graph url
 
 // import Demo from "./Components/Demo/demo"
 

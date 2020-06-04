@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
-import 'tableau-api';
+import React, { useEffect, useState, useRef } from "react";
+import TableauReport from "tableau-react";
+import ReactDOM from "react-dom";
+import Tableau from "./tableau"
+import "tableau-api";
 // import TableauReport from 'tableau-react-embed';
 import "./economic-story.css";
 import AOS from "aos";
@@ -11,32 +14,19 @@ import silver_caption from "../data/economic-images/silver-coin-caption.png";
 import gold_caption from "../data/economic-images/gold-coin-caption.png";
 import people from "../data/economic-images/people.png";
 import equal_to from "../data/economic-images/equal-to.png";
-import bread from "../data/economic-images/bread.png"
-import jug from "../data/economic-images/jug.png"
-import milk from "../data/economic-images/milk.png"
-
+import bread from "../data/economic-images/bread.png";
+import jug from "../data/economic-images/jug.png";
+import milk from "../data/economic-images/milk.png";
 
 const Economic = () => {
   AOS.init({
     duration: 1000,
   });
 
-  // const [setInitViz] = useState([]);
-
-  // useEffect(() => {
-  //   getInitViz();
-  // });
-
-  // const getInitViz = () => {
-  //   const vizUrl =
-  //     "https://public.tableau.com/shared/X6RK47F4G?:display_count=n&:origin=viz_share_link";
-  //   const vizContainer = this.vizContainer;
-  //   let tableau = new window.tableau.Viz(setInitViz, vizUrl);
-  // };
-
   return (
     <div className="class-eco-story">
       <div className="class-eco-title">
+        
         <p data-aos="slide-right">The</p>
         <h1 data-aos="slide-left" id="green">
           Economic
@@ -173,11 +163,11 @@ const Economic = () => {
           of these bronze coins a day.{" "}
         </p>
       </div>
-      <div className="eco-component-3" >
+      <div className="eco-component-3">
         <p id="style-para" data-aos="fade-down">
           People needed these coins to buy things in Antioch’s markets
         </p>
-        <img src={people} alt="Logo" data-aos="fade-in"/>
+        <img src={people} alt="Logo" data-aos="fade-in" />
         <p id="style-para">
           “Antioch, a city known to all the world…so rich is it in imported and
           local goods.” Ammianus Marcellinus, Roman Antiquities 14.8.8{" "}
@@ -189,7 +179,7 @@ const Economic = () => {
           bronze and not valuable gold or silver.{" "}
         </p>
         <div>
-          <img src={bronze_caption} alt="Logo" data-aos="fade-right"/>
+          <img src={bronze_caption} alt="Logo" data-aos="fade-right" />
           <img src={silver_caption} alt="Logo" data-aos="fade-in" />
           <img src={gold_caption} alt="Logo" data-aos="fade-left" />
         </div>
@@ -201,161 +191,758 @@ const Economic = () => {
         </p>
         <div className="flex-column">
           <div>
-            <img src={silver} alt="Logo" id="comp-5-silver-coin" data-aos="fade-in"/>
+            <img
+              src={silver}
+              alt="Logo"
+              id="comp-5-silver-coin"
+              data-aos="fade-in"
+            />
           </div>
           <div>
-            <img src={equal_to} alt="Logo" data-aos="fade-in"/>
+            <img src={equal_to} alt="Logo" data-aos="fade-in" />
           </div>
           <div>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="100"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="200"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="300"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="400"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="600"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="800"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" data-aos="fade-right" data-aos-duration="1000"/>
-            
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="100"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="200"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="300"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="400"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="500"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="600"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="700"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="900"
+            />
+            <img
+              src={bronze}
+              alt="Logo"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            />
           </div>
         </div>
       </div>
       <div className="eco-component-6">
-        <img src={bronze} alt="Logo" style={{padding:'10px'}} data-aos="fade-right"/>
+        <img
+          src={bronze}
+          alt="Logo"
+          style={{ padding: "10px" }}
+          data-aos="fade-right"
+        />
         <p id="style-para" data-aos="fade-left">
-            This coin could still buy important items for a person living in Antioch.  
+          This coin could still buy important items for a person living in
+          Antioch.
         </p>
       </div>
       <div className="eco-component-7">
-        <div style={{padding:'10px'}}>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="750"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1000"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1250"/>
+        <div style={{ padding: "10px" }}>
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="500"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="750"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1250"
+          />
         </div>
         <p id="style-para" data-aos="fade-in">
-          Four bronze coins could buy a loaf of bread. 
+          Four bronze coins could buy a loaf of bread.
         </p>
-        <img src={bread} alt="Logo" data-aos="fade-left"/>
+        <img src={bread} alt="Logo" data-aos="fade-left" />
       </div>
       <div className="eco-component-8">
-        <div style={{padding:'10px'}}>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="500"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="700"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="900"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1100"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1300"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1500"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1700"/>
-            <img src={bronze} alt="Logo" id="comp-7-bronze" data-aos="fade-right" data-aos-duration="1900"/>
+        <div style={{ padding: "10px" }}>
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="500"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="700"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="900"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1100"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1300"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1500"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1700"
+          />
+          <img
+            src={bronze}
+            alt="Logo"
+            id="comp-7-bronze"
+            data-aos="fade-right"
+            data-aos-duration="1900"
+          />
         </div>
         <p id="style-para" data-aos="fade-in">
-            Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s the same as 2 school milk cartoons.
+          Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s
+          the same as 2 school milk cartoons.
         </p>
-        <img src={jug} alt="Logo" data-aos="fade-left" data-aos-duration="800"/>
-        <img src={milk} alt="Logo" data-aos="fade-left" data-aos-duration="1000"/>
-        <img src={milk} alt="Logo" data-aos="fade-left" data-aos-duration="1200"/>
+        <img
+          src={jug}
+          alt="Logo"
+          data-aos="fade-left"
+          data-aos-duration="800"
+        />
+        <img
+          src={milk}
+          alt="Logo"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        />
+        <img
+          src={milk}
+          alt="Logo"
+          data-aos="fade-left"
+          data-aos-duration="1200"
+        />
       </div>
       <div className="eco-component-9">
         <p id="style-para">
-            Most of the Antioch civic coins were spent locally.
+          Most of the Antioch civic coins were spent locally.
         </p>
       </div>
-      {/* <div className='eco-component-10'>
-        <iframe><div ref={(tableau) => {setInitViz = tableau}}></div></iframe>
-        
-      </div>  */}
+      <div className="eco-component-10">
+        <Tableau />
+      </div>
     </div>
   );
 };
