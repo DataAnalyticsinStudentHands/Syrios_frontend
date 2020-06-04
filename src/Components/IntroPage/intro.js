@@ -19,14 +19,14 @@ import comp_9_left from "../data/intro-images/comp-9-left.png";
 import comp_9_right from "../data/intro-images/comp-9-right.png";
 import comp_11_left from "../data/intro-images/comp-11-left.png";
 import comp_11_right from "../data/intro-images/comp-11-right.png";
-import comp_12_left from "../data/intro-images/comp-12-left.png";
+// import comp_12_left from "../data/intro-images/comp-12-left.png";
 import comp_12_right from "../data/intro-images/comp-12-right.png";
 import comp_13_left from "../data/intro-images/comp-13-left.png";
 import comp_13_right from "../data/intro-images/comp-13-right.png";
 import comp_14_left from "../data/intro-images/comp-14-left.png";
 import comp_14_right from "../data/intro-images/comp-14-right.png";
 import comp_15 from "../data/intro-images/comp-15.png";
-import comp_16_left from "../data/intro-images/comp-16-left.png";
+// import comp_16_left from "../data/intro-images/comp-16-left.png";
 import comp_16_right from "../data/intro-images/comp-16-right.png";
 import comp_17 from "../data/intro-images/comp-17.png";
 import comp_18_left from "../data/intro-images/comp-18-left.png";
@@ -88,11 +88,11 @@ const Intro = () => {
           TELL ME A STORY
         </Link>
         <Link
-          to="/coins"
+          to="/explore"
           className="header-explore-right"
           data-aos="fade-right"
         >
-          EXPLORE COINS
+          LET ME EXPLORE
         </Link>
       </div>
       <div className="component-mix">

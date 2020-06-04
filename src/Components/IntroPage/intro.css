@@ -123,9 +123,12 @@
   top: 80%;
   font-size: x-large;
   font-weight: bold;
-  margin-left: 20%;
+  margin-left: 15%;
   text-decoration: solid;
-  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  background-image: var(--div-bg-2);
 }
 
 .header-explore-right {
@@ -133,9 +136,12 @@
   top: 80%;
   font-size: x-large;
   font-weight: bold;
-  margin-left: 65%;
+  margin-left: 70%;
   text-decoration: solid;
-  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  background-image: var(--div-bg-2);
 }
 
 .read-coin {

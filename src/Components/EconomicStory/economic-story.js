@@ -5,7 +5,7 @@ import "./economic-story.css";
 import AOS from "aos";
 import bronze from "../data/economic-images/bronze-coin.png";
 import silver from "../data/economic-images/silver-coin.png";
-import gold from "../data/economic-images/gold-coin.png";
+// import gold from "../data/economic-images/gold-coin.png";
 import bronze_caption from "../data/economic-images/bronze-coin-caption.png";
 import silver_caption from "../data/economic-images/silver-coin-caption.png";
 import gold_caption from "../data/economic-images/gold-coin-caption.png";

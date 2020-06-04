@@ -286,7 +286,7 @@ const civicStory = () => {
           important reminder of the local government who minted it and the local
           citizens who used it.
         </p>
-        <Link to="/coins" id="civic-intro-style-footer">
+        <Link to="/coins" id="">
           Tell me another story!
         </Link>
       </div>
