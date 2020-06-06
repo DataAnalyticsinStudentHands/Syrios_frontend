@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
-import TableauReport from "tableau-react";
-import ReactDOM from "react-dom";
+import React from "react";
+// import TableauReport from "tableau-react";
+// import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Tableau from "./tableau";
 import "tableau-api";
 // import TableauReport from 'tableau-react-embed';
@@ -18,6 +19,18 @@ import equal_to from "../data/economic-images/equal-to.png";
 import bread from "../data/economic-images/bread.png";
 import jug from "../data/economic-images/jug.png";
 import milk from "../data/economic-images/milk.png";
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+        color: white;
+    }
+    &:hover {
+      color: #faebd7;
+    }
+`;
 
 const Economic = () => {
   AOS.init({
@@ -950,18 +963,18 @@ const Economic = () => {
         <Tableau data-aos="fade-in"/>
       </div>
       <div className="eco-component-12">
-        <p id="style-para" data-aos="fade-down">
+        <p data-aos="fade-down">
           This speaks to all the trade routes running in and out of Antioch and
           all the people coming and going from the city with little bronze coins in their pockets.
         </p>
       </div>
       <div className="eco-component-13">
-        <Link to="" id="eco-intro-style-footer">
+        <StyledLink to="/tableau-maps" id="eco-intro-style-footer">
           Where did the civic coins move?
-        </Link>
-        <Link to="/select-story" id="eco-intro-style-footer">
+        </StyledLink>
+        <StyledLink to="/select-story" id="eco-intro-style-footer">
           Tell me another story!
-        </Link>
+        </StyledLink>
       </div>
     </div>
   );

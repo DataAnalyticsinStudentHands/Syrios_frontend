@@ -18,7 +18,7 @@ const Select = () => {
           data-aos-duration="800"
           id="style-select-items"
         >
-          The CIVIC story
+          Tell me a Political Story
         </Link>
         <Link
           to="/economic-story"
@@ -26,23 +26,7 @@ const Select = () => {
           data-aos-duration="1600"
           id="style-select-items"
         >
-          The ECONOMIC story
-        </Link>
-        <Link
-        //   to="/economic-story"
-          data-aos="fade-right"
-          data-aos-duration="2400"
-          id="style-select-items"
-        >
-          The ZEUS story
-        </Link>
-        <Link
-        //   to="/economic-story"
-          data-aos="fade-right"
-          data-aos-duration="3200"
-          id="style-select-items"
-        >
-          The Visitor's story
+          Tell me an Economic Story
         </Link>
       </div>
     </div>

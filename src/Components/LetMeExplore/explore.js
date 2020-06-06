@@ -18,23 +18,15 @@ const Explore = () => {
           data-aos-duration="800"
           id="style-select-items"
         >
-          Interactive Pile of Coins
+          Let me Sort Coins
         </Link>
         <Link
-          to="/roman-emperors"
+          to="/tableau-maps"
           data-aos="fade-right"
           data-aos-duration="1600"
           id="style-select-items"
         >
-          Interactive Timeline of Roman Emperors
-        </Link>
-        <Link
-          to="/gods-portal"
-          data-aos="fade-right"
-          data-aos-duration="2400"
-          id="style-select-items"
-        >
-          Interactive Gods Portal
+          Let me Map Coins
         </Link>
         <Link
           to="/omeka-database"
@@ -42,7 +34,7 @@ const Explore = () => {
           data-aos-duration="3200"
           id="style-select-items"
         >
-          Omeka Database
+          Let Me View a Catalog
         </Link>
       </div>
     </div>

@@ -1,0 +1,38 @@
+#maps-style-select-items {
+    text-decoration: none;
+    text-align: center;
+    background-image: var(--div-bg-2);
+    margin: 10px;
+    padding: 10px;
+    font-size: xx-large;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.maps-component-1 {
+    top: 75%;
+    left: 50%;
+    height: 800px;
+    width: 1000px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.maps-component-2 {
+    top: 200%;
+    left: 50%;
+    height: 800px;
+    width: 1000px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.maps-component-3 {
+    top: 330%;
+    left: 50%;
+    height: 800px;
+    width: 1000px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}

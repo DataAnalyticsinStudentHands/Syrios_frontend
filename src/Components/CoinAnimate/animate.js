@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 const Animate = () => {
   return (
     <div className="animate">
-      <h1
-        style={{ textAlign: "center", fontFamily: "Fantasy", color: "goldenrod"}}
+      <p
+       id="coins-style-select-items"
       >
         Choose a coin from the pile!
-      </h1>
+      </p>
       <div className="coin-bg">
         {Coins.items.map((image) => (
           <motion.input

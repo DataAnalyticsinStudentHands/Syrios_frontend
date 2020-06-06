@@ -278,7 +278,7 @@ const civicStory = () => {
         
       </div>
       <div className="civic-component-21">
-        <Link to="" id="civic-intro-style-footer" data-aos="fade-right">
+        <Link to="/tableau-maps" id="civic-intro-style-footer" data-aos="fade-right">
           Where did the civic coins move?
         </Link>
         <p id="civic-style-para">

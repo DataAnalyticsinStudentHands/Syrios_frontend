@@ -10,7 +10,7 @@ const Roman = () => {
         data-aos="fade-right"
         data-aos-duration="800"
       >
-        Interactive Gods Portal
+        Interactive God's 
       </div>
       <div className="gods-component-1">
         <img src={romanGods} alt="Logo" data-aos="fade-up" />

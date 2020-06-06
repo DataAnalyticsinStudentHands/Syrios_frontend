@@ -1,6 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import "aos/dist/aos.css";
 import logo from "../data/intro-images/Logo.png";
 import img_2 from "../data/intro-images/img-1.png";
@@ -38,6 +39,18 @@ import scroll_down from "../data/intro-images/scroll-down-2.png";
 
 import "../IntroPage/intro.css";
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+        color: white;
+    }
+    &:hover {
+      color: #faebd7;
+    }
+`;
+
 const Intro = () => {
   AOS.init({
     duration: 1000,
@@ -69,31 +82,28 @@ const Intro = () => {
             />
           </span>
         </div>
-        <div className="intro-read-coin">
-          <h4 data-aos="fade-in">HOW TO READ A COIN?</h4>
+      </div>
+      <div className="flex-intro-buttons">
+        <StyledLink
+          to="/select-story"
+          className="header-explore-left"
+        >
+          TELL ME A STORY
+        </StyledLink>
+        <div>
+          <h4>HOW TO READ A COIN?</h4>
           <img
             src={scroll_down}
             alt="scroll"
             className="class-scroll"
-            data-aos="slide-down"
           />
         </div>
-      </div>
-      <div>
-        <Link
-          to="/select-story"
-          className="header-explore-left"
-          data-aos="fade-left"
-        >
-          TELL ME A STORY
-        </Link>
-        <Link
+        <StyledLink
           to="/explore"
           className="header-explore-right"
-          data-aos="fade-right"
         >
           LET ME EXPLORE
-        </Link>
+        </StyledLink>
       </div>
       <div className="component-mix">
         <div className="threeD-coin">
@@ -123,6 +133,7 @@ const Intro = () => {
               <a
                 href="https://sketchfab.com/3d-models/eastern-kings-coin-033a5ed32de347e1be254042555ad0c4?utm_medium=embed&utm_source=website&utm_campaign=share-popup"
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ fontWeight: "bold", color: "#1CAAD9" }}
               >
                 Eastern King&#39;s Coin
@@ -131,6 +142,7 @@ const Intro = () => {
               <a
                 href="https://sketchfab.com/peggylind?utm_medium=embed&utm_source=website&utm_campaign=share-popup"
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ fontWeight: "bold", color: "#1CAAD9" }}
               >
                 peggylind
@@ -139,6 +151,7 @@ const Intro = () => {
               <a
                 href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campaign=share-popup"
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ fontWeight: "bold", color: "#1CAAD9" }}
               >
                 Sketchfab
@@ -255,7 +268,7 @@ const Intro = () => {
           <span id="intro-style-para" data-aos="fade-up">
             On the back or “<span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>reverse</span>”, we see important symbols.
           </span>
-          <div className="label-image" data-aos="zoom-in" data-aos="flip-left">
+          <div className="label-image" data-aos="flip-left">
             <img src={comp_6_right} alt="Logo" className="size-images" />
             <span id="style-caption">
               On the dime is an olive branch (meaning peace), a lighted torch
@@ -503,21 +516,21 @@ const Intro = () => {
           </p>
         </div> */}
         <div className="component-22">
-          <Link
+          <StyledLink
             to="/select-story"
             id="intro-style-footer"
             data-aos="fade-right"
           >
             {" "}
             Tell me a Story{" "}
-          </Link>
+          </StyledLink>
           <h2 id="intro-style-para">
             There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?  
           </h2>
-          <Link to="/coins" id="intro-style-footer" data-aos="fade-left">
+          <StyledLink to="/coins" id="intro-style-footer" data-aos="fade-left">
             {" "}
             Explore Coins{" "}
-          </Link>
+          </StyledLink>
         </div>
       </div>
     </div>
