@@ -91,12 +91,13 @@ const Intro = () => {
           TELL ME A STORY
         </StyledLink>
         <div>
-          <h4>HOW TO READ A COIN?</h4>
-          <img
+        <img
             src={scroll_down}
             alt="scroll"
             className="class-scroll"
+            data-aos="fade-down"
           />
+          <h4>HOW TO READ A COIN?</h4>
         </div>
         <StyledLink
           to="/explore"

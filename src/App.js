@@ -53,6 +53,7 @@ const App = () => {
   return (
     <div>
       <Router>
+        <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Link to="/"><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
           <Navbar.Brand>
@@ -93,6 +94,8 @@ const App = () => {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        </div>
+        
         <Switch>
           {/* <Route exact path="/" component={Demo}/> */}
           <Route exact path="/" component={Intro} />

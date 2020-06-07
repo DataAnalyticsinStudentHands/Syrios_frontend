@@ -11,7 +11,12 @@
             "id": 2139,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/9206235ed919c436343af00954d231f7.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/735c4e94e0fb67ba2fb6c534392b4c54.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch bronze Augustus",
+            "date": "5 BCE-14 CE",
+            "mint": "Antioch",
+            "authority": "Augustus",
+            "material": "bronze"
         },
         {
             "item_type_id": 22,
@@ -24,9 +29,12 @@
             "id": 2138,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/e674de22ce93e6cbb38e28c1f1a16305.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/f5cbd464a27d07c8b7af07bdbed81f9c.png",
-            
-
-            "diameter": 21 
+            "diameter": 21,
+            "title": "Antioch silver Marcus Aurelius",
+            "date": "178-179",
+            "mint": "Antioch",
+            "authority": "Provincial",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -39,7 +47,12 @@
             "id": 2137,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/f49507360f70b2c0ceedc5b06223b2c0.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/ad537b29544b0dcb9ca0fdf69e8b554b.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "244 CE-249 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -52,7 +65,12 @@
             "id": 2135,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/c9a87be3c68558c14eba1ea1e7f408a7.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/bf1f575e8c09d8a9a4a0514904e81688.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "244 CE-249 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -65,7 +83,12 @@
             "id": 2134,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/7eab5ee129498d2da6e73c8547802d29.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/d6a4c563639c3027a3ac070e163d0c28.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "249 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -78,7 +101,12 @@
             "id": 2133,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/45af4ff12208b88b6052cd7da28a0194.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/650ad5ecf9912d1744741efbb844f8c9.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "249 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -91,7 +119,12 @@
             "id": 2132,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/779f1e8d1a5c6353512ee4f6f401a001.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/8b1e7d73cf1d0e31d9862f8de6e69177.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "249 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -104,7 +137,12 @@
             "id": 2131,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/30eabf5639e033fc02779cc1ba138589.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/ed1fdb08f31cd6b7e1318f502bcd4a85.png",
-            "diameter": 23
+            "diameter": 23,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "244 CE-246 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -117,7 +155,12 @@
             "id": 2130,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/22b8e6cad4d62d201deb22b2149af775.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/13d4be30f33a150c53f0c04890726c21.png",
-            "diameter": 23
+            "diameter": 23,
+            "title": "Antioch Silver Coin of Philip I",
+            "date": "244 CE-246 CE",
+            "mint": "Antioch",
+            "authority": "Philip I",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -130,7 +173,12 @@
             "id": 2129,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/f8c0862fbcc8be84175c7cb9e4f039e8.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/668b51000172aa7a280a4516123f937c.png",
-            "diameter": 17
+            "diameter": 17,
+            "title": "Antioch Bronze Coin of Antoninus Pius",
+            "date": "158 CE-159 CE",
+            "mint": "Antioch",
+            "authority": "Antoninus Pius",
+            "material": "bronze"
         },
         {
             "item_type_id": 22,
@@ -143,7 +191,12 @@
             "id": 2128,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/113813e8296240ed7da65de4a286b5e3.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/d4f8d4ff4997fa46e22cf06ba8f89001.png",
-            "diameter": 25
+            "diameter": 25,
+            "title": "Antioch Silver Coin of Tigranes II",
+            "date": "c. 83-69 BCE",
+            "mint": "Antioch",
+            "authority": "Tigranes II",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -156,7 +209,12 @@
             "id": 2127,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/cba84003c5ac79445939a173b3c310c5.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/d8c3e470de6ee573db8d44c02187df48.png",
-            "diameter": 15
+            "diameter": 15,
+            "title": "Antioch Bronze Republic",
+            "date": "64 BCE-47 BCE",
+            "mint": "Antioch",
+            "authority": "Civic",
+            "material": "bronze"
         },
         {
             "item_type_id": 22,
@@ -169,7 +227,12 @@
             "id": 2126,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/71b2a464145014bbc4b63568729bc339.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/274fa40b0050f06f2765c38cf863c351.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Diocletian",
+            "date": "285 CE-295 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -182,7 +245,12 @@
             "id": 2125,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/6458151317f20129c78b791c1b0bb9d6.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/97e8924ee50203f2e5e6806ae1778a79.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Silver Coin of Diocletian",
+            "date": "285 CE-295 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -195,7 +263,12 @@
             "id": 2124,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/cda40ca44b2212aefc665f638a05da36.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/c6a57ed1d067d55c8f0a413b2f61a730.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Numerian",
+            "date": "283 CE-284 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -208,7 +281,12 @@
             "id": 2123,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/dde10b0e82de0546c186012668623835.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/3093588f32d5fdd3999b691bd9c61b7b.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Carus",
+            "date": "282 CE-283 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -221,7 +299,12 @@
             "id": 2122,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/7ec0bddfc0dba3f3c1d666d383f3b306.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/312d6245bf207899c578c259facce29a.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Carus",
+            "date": "282 CE-283 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -234,7 +317,12 @@
             "id": 2121,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/9e87eb357e8b85fb8c4315c8ff95ac3f.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/05e3c20b9f04722430c312d87901d3ab.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Silver Coin of Carus",
+            "date": "282 CE-283 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -247,7 +335,12 @@
             "id": 2120,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/5c3c4a8e44e29cbdf7358efcd3aaa691.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/d05c402b9c71466f1a1d1e75167eca75.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Probus",
+            "date": "276 CE-282 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -260,7 +353,12 @@
             "id": 2119,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/94a16ea80b85e4ae3e7e2d40fed75c7d.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/76b43ee6565cf8934472c29bfbaa5f1e.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Probus",
+            "date": "276 CE-282 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -273,7 +371,12 @@
             "id": 2118,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/862671ec7c1b355e607e23e193a1979d.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/1d60df0735d93e6c96a49877f3956566.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Probus",
+            "date": "276 CE-282 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -286,7 +389,12 @@
             "id": 2117,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/df5f9762b37f73e2ab1ba7a3e5cb7ce1.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/6905b88bee0d3192125cea236d091abd.png",
-            "diameter": 23
+            "diameter": 23,
+            "title": "Antioch Silver Coin of Tacitus",
+            "date": "275 CE-276 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -299,7 +407,12 @@
             "id": 2116,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/eeddafd13bf512e886a40c9c8d35039c.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/9ab3acd8682814f1705851390b1f5c76.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Gold Coin of Aurelian",
+            "date": "270 CE-275 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "gold"
         },
         {
             "item_type_id": 22,
@@ -312,7 +425,12 @@
             "id": 2115,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/dfd3a2e10b15514128e848aaa41f8f86.jpg",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/5520b389aeb3db634104c13712c28972.jpg",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Aurelian",
+            "date": "270 CE-275 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -325,7 +443,12 @@
             "id": 2114,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/106ff5c4977061de3123af560c96743c.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/aeef8694fd5ab645e85643f292a672c4.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Aurelian",
+            "date": "270 CE-275 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -338,7 +461,12 @@
             "id": 2113,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/3088c0c8e189bae18350f9bfbcb01e20.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/6b30e7c516f8b5683cfb869aab10b96b.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Aurelian",
+            "date": "270 CE-275 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -351,7 +479,12 @@
             "id": 2112,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/e25746d04d3d35940450a2ef56b7844c.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/1b5ae9581e58dc46ce6e0289ca7dd3bb.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Aurelian",
+            "date": "270 CE-275 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -364,7 +497,12 @@
             "id": 2111,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/190e7c68b41784202445871618c69061.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/4baed9b9ead4d39aaa9456cd88d9f49c.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Aurelian",
+            "date": "270 CE-275 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -377,7 +515,12 @@
             "id": 2109,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/c77c4acaedf2ad9ceeaea6633819d9aa.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/4ccdd1db3e85f1eceede55e5b01994b8.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -390,7 +533,12 @@
             "id": 2108,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/106ff5c4977061de3123af560c96743c.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/aeef8694fd5ab645e85643f292a672c4.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -403,7 +551,12 @@
             "id": 2107,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/85944a1fe4a6feac644c1b4825830712.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/117c79e77673ff100c6a0a419ff0640e.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -416,7 +569,12 @@
             "id": 2106,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/129b929ed5ba7101082f494c1fc71654.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/ad555015daf46233e7dc1f14f2e2d39e.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -429,7 +587,12 @@
             "id": 2105,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/fa18c2070ff8152c2ee386d649247564.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/193e7ebda7030bccb8a4c738a92d941c.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -442,7 +605,12 @@
             "id": 2104,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/3e5c83e6ecc9849db735c5fcf98ed238.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/d234add54d8cb8cf550f75d675fda7b0.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -455,7 +623,12 @@
             "id": 2103,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/3149ec5b41299d7b5c730c62c2b6a05f.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/4522aa90838f5dc5823282f0f14d572a.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -468,7 +641,12 @@
             "id": 2102,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/fd3dd9768b9cac3dfccf906b0b67f0dd.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/bf460d9329a83eb50ff4cd313ed0d4d5.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -481,7 +659,12 @@
             "id": 2101,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/8a4de0e99003ef76dbf4679e47361cb9.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/920ba23dd9b7729cac97bde2ae57ca09.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -494,7 +677,12 @@
             "id": 2100,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/69bc887b067c5ec3c437488bc7182fee.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/1a1b77e9aaa533395dc948ba85333dbe.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -507,7 +695,12 @@
             "id": 2099,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/bbade7f8578eb117bcec6d334f8a32cb.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/a3a51f97f4adf70945fcc96168e8770e.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -520,7 +713,12 @@
             "id": 2098,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/fa00a90f8c04da2c9c9574d9feeff6d7.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/1a1b77e9aaa533395dc948ba85333dbe.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -533,7 +731,12 @@
             "id": 2097,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/e8a077c577ce399c7b5fd1e410e7fa7e.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/0351537aa9600a56030a99336aa21584.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Silver Coin of Claudius Gothicus",
+            "date": "268 CE-270 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -546,7 +749,12 @@
             "id": 2096,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/fc4ada3dab9285847c4005477fc6b40b.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/9c241726bed316c6c1f020297344c4d8.png",
-            "diameter": 19
+            "diameter": 19,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -559,7 +767,12 @@
             "id": 2095,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/9c241726bed316c6c1f020297344c4d8.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/32b17216770227cc5ca2f86390511529.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -572,7 +785,12 @@
             "id": 2094,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/8a3cd74589a3a0449d01a5167612b63d.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/4c3dae39622e3d2ae7c65825c1b19733.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -585,7 +803,12 @@
             "id": 2093,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/e730ba5d19bf8559adafe803e97891fb.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/0054ec206db9fa56b6f8211aa7a13830.png",
-            "diameter": 20
+            "diameter": 20,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -598,7 +821,12 @@
             "id": 2092,
             "obverse": "https://sites.lib.uh.edu/kmneuma2/files/original/9fddd623cddc8f63a57f7f43e34db20c.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/c1a825a6204b5b939008782417c7ac61.png",
-            "diameter": 22
+            "diameter": 22,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -611,7 +839,12 @@
             "id": 2091,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/fd7a168a8b1b6a0b22e12830edfc67ba.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/59bba9e8ba00ea81008b516b1d934299.png",
-            "diameter": 23
+            "diameter": 23,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -624,7 +857,12 @@
             "id": 2090,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/df02eb9c9f468107f0bcef02006e0d1e.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/72dc1085e0ac216a67c87c0c4429ea15.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -637,7 +875,12 @@
             "id": 2088,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/8d8f4f3ae9b2f92385fa2631323e0e32.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/868f09ab924fba6d14c041052cd1436a.png",
-            "diameter": 23
+            "diameter": 23,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         },
         {
             "item_type_id": 22,
@@ -650,7 +893,12 @@
             "id": 2087,
             "obverse": 	"https://sites.lib.uh.edu/kmneuma2/files/original/b36e1349ef2977d898def12507ec7eb3.png",
             "reverse": "https://sites.lib.uh.edu/kmneuma2/files/original/1161b599eb59f5648256c6069179ab37.png",
-            "diameter": 21
+            "diameter": 21,
+            "title": "Antioch Silver Coin of Valerian",
+            "date": "253 CE-260 CE",
+            "mint": "Antioch",
+            "authority": "Central",
+            "material": "silver"
         }
     ],
     "total_results": 50

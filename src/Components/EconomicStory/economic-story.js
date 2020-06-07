@@ -54,7 +54,7 @@ const Economic = () => {
         </p>
       </div>
       <div className="eco-component-1">
-        <img src={bronze} alt="Logo" data-aos="fade-right" />
+        <img src={bronze} alt="Logo" data-aos="fade-right" className="size-images"/>
         <p data-aos="fade-left" id="style-para">
           This is a bronze coin
         </p>
