@@ -28,25 +28,25 @@
 }
 
 #dialogue-text {
-  color: white;
-  background-color: black;
+  /* color: white;
+  background-color: black; */
   width: auto;
   border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  margin: 15px;
+  padding: 0px;
+  /* text-align: center; */
+  margin: 0px;
 }
 
 .coin-bg {    
   /* height: 650px; */
-  width: 900px;
+  width: 1100px;
   padding: 10%;
   position: absolute;
   /* background-color: black; */
   shape-margin: 5px;
   /* background-image: url('../data/images/bg-2.png');  */
   top: 50%;
-  left: 50%;
+  left: 55%;
   transform: translate(-50%, -50%);
   overflow: hidden;
   border-radius: 5%;
@@ -70,7 +70,24 @@
   margin-bottom: 20px;
 }
 
-#coins-style-select-items {
+.parent-class-coin {
+  position: absolute;
+  
+}
+
+.class-coin {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.class-coins-pile {
+  font-family: cartogothic_stdbook_bold;
   text-decoration: none;
   text-align: center;
   background-image: var(--div-bg-2);
@@ -78,8 +95,29 @@
   padding: 10px;
   font-size: xx-large;
   border-radius: 10px;
-  color: white;
   font-weight: bold;
+}
+
+.class-coins-header-para {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  font-family: 'cartogothic_stdbook';
+  transform: translate(-50%, -10%);
+  width: 800px;
+  text-align: center;
+}
+
+.class-coins-footer-para {
+  position: absolute;
+  bottom: 0;
+  font-size: smaller;
+  left: 50%;
+  font-family: 'cartogothic_stdbook';
+  transform: translate(-50%, -10%);
+  width: 800px;
+  text-align: center;
+  
 }
 
 .red {

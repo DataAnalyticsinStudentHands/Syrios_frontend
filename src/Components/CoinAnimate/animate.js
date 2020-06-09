@@ -12,8 +12,9 @@ const Animate = () => {
 
   const [Materialfilter, setMaterialFilter] = useState("");
   const [Authorityfilter, setAuthorityFilter] = useState("");
-  const [Mintfilter, setMintFilter] = useState("");
+  // const [Mintfilter, setMintFilter] = useState("");
   const [Datefilter, setDateFilter] = useState("");
+  const [Typefilter, setTypeFilter] = useState("");
 
   const handleMaterialFilterChange = (el) => {
     setMaterialFilter(el.target.value);
@@ -23,20 +24,29 @@ const Animate = () => {
     setAuthorityFilter(el.target.value);
   };
 
-  const handleMintFilterChange = (el) => {
-    setMintFilter(el.target.value);
-  };
+  // const handleMintFilterChange = (el) => {
+  //   setMintFilter(el.target.value);
+  // };
 
   const handleDateFilterChange = (el) => {
     setDateFilter(el.target.value);
   };
+  
+  const handleTypeFilterChange = (el) => {
+    setTypeFilter(el.target.value);
+  };
 
   const filteredResults = Coins.items.filter(
-    (song) =>
-      song.material.toLowerCase().includes(Materialfilter.toLowerCase()) &&
-      song.authority.toLowerCase().includes(Authorityfilter.toLowerCase()) &&
-      song.mint.toLowerCase().includes(Mintfilter.toLowerCase()) &&
-      song.date.toLowerCase().includes(Datefilter.toLowerCase())
+    (item) =>
+      item.material.toLowerCase().includes(Materialfilter.toLowerCase()) &&
+      item.authority.toLowerCase().includes(Authorityfilter.toLowerCase()) &&
+      // item.mint.toLowerCase().includes(Mintfilter.toLowerCase()) &&
+      item.date.toLowerCase().includes(Datefilter.toLowerCase()) &&
+      item.type.toLowerCase().includes(Typefilter.toLowerCase()) 
+      // item.type2.toLowerCase().includes(Typefilter.toLowerCase())&&
+      // item.type3.toLowerCase().includes(Typefilter.toLowerCase())&&
+      // item.type4.toLowerCase().includes(Typefilter.toLowerCase()
+      // )
   );
 
   const uniqMaterial = ["-", "Gold", "Silver", "Bronze"],
@@ -59,8 +69,13 @@ const Animate = () => {
       return <option>{X}</option>;
     };
 
-  const uniqMint = ["-", "Antioch"],
-    MintList = function (X) {
+  // const uniqMint = ["-", "Antioch"],
+  //   MintList = function (X) {
+  //     return <option>{X}</option>;
+  //   };
+    
+    const uniqType = ["-", "God", "Ruler", "Animal", "Object", "Letter", "Nature", "Idea", "War/Weapon", "Building"],
+    TypeList = function (X) {
       return <option>{X}</option>;
     };
 
@@ -91,13 +106,14 @@ const Animate = () => {
   const clearFilters = () => {
     setMaterialFilter("");
     setAuthorityFilter("");
-    setMintFilter("");
+    // setMintFilter("");
     setDateFilter("");
+    setTypeFilter("");
   };
 
   return (
     <div className="animate">
-      {/* <p id="coins-style-select-items">Choose a coin from the pile!</p> */}
+      
       {/* <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -123,7 +139,7 @@ const Animate = () => {
             {uniqAuthority.map(AuthorityList)}
           </select>
         </div>
-        <div>
+        {/* <div>
           <h3>Mint</h3>
           <select
             className="custom-select"
@@ -132,7 +148,7 @@ const Animate = () => {
           >
             {uniqMint.map(MintList)}
           </select>
-        </div>
+        </div> */}
         <div>
           <h3>Date</h3>
           <select
@@ -141,6 +157,16 @@ const Animate = () => {
             onChange={handleDateFilterChange}
           >
             {uniqDate.map(DateList)}
+          </select>
+        </div>
+        <div>
+          <h3>Type</h3>
+          <select
+            className="custom-select"
+            value={Typefilter}
+            onChange={handleTypeFilterChange}
+          >
+            {uniqType.map(TypeList)}
           </select>
         </div>
         <div>
@@ -153,9 +179,12 @@ const Animate = () => {
           </Button>
         </div>
       </div>
-
       
-
+      <h1 className="class-coins-pile">Let Me Sort the Coins</h1>
+      <p className="class-coins-header-para">The ancient mint at <strong>Antioch</strong> produced a wealth of distinct coins for kings, emperors, governors, and citizens. 
+      Explore the differences in the coins by sorting through the pile or making selections from the drop-down menu about 
+      <strong> 1) material</strong>, <strong> 2) the issuing authority guaranteeing a coin’s value as money</strong>, 
+      <strong> 3) type or design</strong> and/or <strong> 4) date of minting</strong>. At any point, click on an individual coin to view a full description and learn more!</p>
       <div className="coin-bg">
         {filteredResults.map((image) => (
           <React.Fragment key={image.id}>
@@ -163,12 +192,12 @@ const Animate = () => {
               type="image"
               src={image.obverse}
               style={{
-                height: image.diameter * 2.5,
-                width: image.diameter * 2.5,
+                height: image.diameter * 3,
+                width: image.diameter * 3,
               }} //! Scale the images here
               alt={image.id}
               onClick={() => setShow(true)} //TODO- To be used for onClick functionality
-              whileHover={{ scale: 2 }}
+              whileHover={{ scale: 3 }}
               whileTap={{ scale: 0.9 }}
               initial={{ scale: 0 }}
               animate={{
@@ -178,7 +207,7 @@ const Animate = () => {
               }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               drag
-              dragConstraints={{ top: -50, left: -50, right: 50, bottom: 50 }}
+              dragConstraints={{ top: -650, left: -650, right: 650, bottom: 650 }}
             />
             <Modal
         show={show}
@@ -197,14 +226,31 @@ const Animate = () => {
             <img src={image.obverse} alt="" className="modal-image"></img>
             <img src={image.reverse} alt="" className="modal-image"></img>
           </div>
-          <h5 id="dialogue-text">Mint - {image.mint}</h5>
-          <h5 id="dialogue-text">Type - {image.material}</h5>
-          <h5 id="dialogue-text">Diameter - {image.diameter}</h5>
+          <h5 id="dialogue-text"><strong>Region</strong> - {image.Region}</h5>
+          <h5 id="dialogue-text"><strong>Mint</strong> - {image.mint}</h5>
+          <h5 id="dialogue-text"><strong>Material</strong> - {image.material}</h5>
+          <h5 id="dialogue-text"><strong>Diameter</strong> - {image.diameter}</h5>
+          <h5 id="dialogue-text"><strong>Authority</strong> - {image.authority}</h5>
+          <h5 id="dialogue-text"><strong>Date</strong> - {image.date}</h5>
+          <h5 id="dialogue-text"><strong>Type</strong> - {image.type} {image.type2} {image.type3} {image.type4}</h5>
+          <h5 id="dialogue-text"><strong>Obverse Type</strong>  - {image.obverseType}</h5>
+          <h5 id="dialogue-text"><strong>Obverse Legend</strong>  - {image.obverseLegend}</h5>
+          <h5 id="dialogue-text"><strong>Reverse Type</strong> - {image.reverseLegend}</h5>
+          <h5 id="dialogue-text"><strong>Reverse Legend</strong> - {image.reverseLegend}</h5>
+          <h5 id="dialogue-text"><strong>Rights Holder</strong> - {image.rightsHolder}</h5>
+          <h5 id="dialogue-text"><strong>Source Image</strong> - {image.sourceImage}</h5>
         </Modal.Body>
       </Modal>
           </React.Fragment>
         ))}
       </div>
+      <div className="class-coins-footer-para">
+        <span>Acknowledgements: Created by Rahul Raj Mogili in ReactJS, CSS, Bootstrap, NodeJS </span><br></br>
+        <span>For more information about design, contact Dr. Peggy Lindner (plindner@central.uh.edu)</span><br></br>
+        <span>For more information about content, contact Dr. Kristina Neumann (kmneuma2@central.uh.edu)</span><br></br>
+        <span>Part of The SYRIOS Project: Studying Urban Relationships and Identity over Ancient Syria</span>
+      </div>
+      
     </div>
   );
 };
