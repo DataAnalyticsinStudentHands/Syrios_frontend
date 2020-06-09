@@ -1,6 +1,45 @@
+@font-face {
+  font-family: "cartogothic_stdbook";
+  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
+      format("woff2"),
+    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cartogothic_stdbook_bold";
+  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
+      format("woff2"),
+    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.modal-image {
+  height: 150px;
+  width: 150px;
+}
+
+.custom-select {
+  display: none;
+  background-color: DodgerBlue;
+}
+
+#dialogue-text {
+  color: white;
+  background-color: black;
+  width: auto;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  margin: 15px;
+}
+
 .coin-bg {    
-  height: 650px;
-  width: 1080px;
+  /* height: 650px; */
+  width: 900px;
   padding: 10%;
   position: absolute;
   /* background-color: black; */
@@ -11,6 +50,24 @@
   transform: translate(-50%, -50%);
   overflow: hidden;
   border-radius: 5%;
+}
+
+.align-select-boxes {
+  top: 50%;
+  left: 10%;
+  position: absolute;
+  font-family: 'cartogothic_stdbook';
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* align-items: center; */
+}
+
+.align-select-boxes select {
+  width: 150px;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
 
 #coins-style-select-items {
@@ -24,7 +81,6 @@
   color: white;
   font-weight: bold;
 }
-
 
 .red {
   background-color: red;
