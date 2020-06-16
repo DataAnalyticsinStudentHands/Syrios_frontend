@@ -45,7 +45,7 @@
   /* background-color: black; */
   shape-margin: 5px;
   /* background-image: url('../data/images/bg-2.png');  */
-  top: 50%;
+  top: 55%;
   left: 55%;
   transform: translate(-50%, -50%);
   overflow: hidden;
@@ -90,7 +90,7 @@
   font-family: cartogothic_stdbook_bold;
   text-decoration: none;
   text-align: center;
-  background-image: var(--div-bg-2);
+  /* background-image: var(--div-bg-2); */
   margin: 10px;
   padding: 10px;
   font-size: xx-large;
@@ -100,7 +100,7 @@
 
 .class-coins-header-para {
   position: absolute;
-  top: 10%;
+  top: 20%;
   left: 50%;
   font-family: 'cartogothic_stdbook';
   transform: translate(-50%, -10%);

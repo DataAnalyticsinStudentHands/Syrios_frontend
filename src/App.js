@@ -1,18 +1,19 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import styled from "styled-components";
-// import NavBarLogo from "./Components/data/intro-images/Logo.png"
-// import Intro from "./Components/IntroPage/intro";
-// import Syrios from "./Components/FetchAPIdata/syrios"; //* uncomment this import to retrieve objects from "https://sites.lib.uh.edu/kmneuma2/api/items" API
+import styled from "styled-components";
+import NavBarLogo from "./Components/data/intro-images/Logo.png"
+import Intro from "./Components/IntroPage/intro";
+import Syrios from "./Components/FetchAPIdata/syrios"; //* uncomment this import to retrieve objects from "https://sites.lib.uh.edu/kmneuma2/api/items" API
 import Animate from "./Components/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
-// import SelectStory from "./Components/SelectStory/select";
-// import Explore from "./Components/LetMeExplore/explore";
-// import Civic from "./Components/CivicStory/civic-story";
-// import Economic from "./Components/EconomicStory/economic-story";
-// import TableauMaps from "./Components/MapCoins/map";
-// import Gods from "./Components/GodsPortal/gods";
+import SelectStory from "./Components/SelectStory/select";
+import Explore from "./Components/LetMeExplore/explore";
+import Civic from "./Components/CivicStory/civic-story";
+import Economic from "./Components/EconomicStory/economic-story";
+import TableauMaps from "./Components/MapCoins/map";
+import Gods from "./Components/GodsPortal/gods";
+import ContactUs from "./Components/ContactUs/contact"
 // import MetaTags from 'react-meta-tags'; //* importing Meta tags for graph url
 
 // import Demo from "./Components/Demo/demo"
@@ -24,30 +25,30 @@ import {
   // Redirect,
 } from "react-router-dom";
 
-// const StyledLink = styled(Link)`
-//     text-decoration: none;
+const StyledLink = styled(Link)`
+    text-decoration: none;
 
-//     &:focus, &:visited, &:link, &:active {
-//         text-decoration: none;
-//         color: white;
-//     }
-//     &:hover {
-//       color: #faebd7;
-//     }
-// `;
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+        color: white;
+    }
+    &:hover {
+      color: #faebd7;
+    }
+`;
 
-// const DropDownLink = styled(Link)`
-//     text-decoration: none;
+const DropDownLink = styled(Link)`
+    text-decoration: none;
 
-//     &:focus, &:visited, &:link, &:active {
-//         text-decoration: none;
-//         color: black;
-//         font-weight: 400;
-//     }
-//     &:hover {
-//       color: #2d616a;
-//     }
-// `;
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+        color: black;
+        font-weight: 400;
+    }
+    &:hover {
+      color: #2d616a;
+    }
+`;
 
 const App = () => {
   return (
@@ -55,7 +56,7 @@ const App = () => {
       <Router>
 
         {/* !!!!!!!!!!! NAVBAR COMPONENT !!!!!!!!!!!! */}
-        {/* <div>
+        <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Link to="/"><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
           <Navbar.Brand>
@@ -96,19 +97,20 @@ const App = () => {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        </div> */}
+        </div>
         
         <Switch>
+          <Route exact path="/" component={Intro} />
+          <Route exact path="/coins" component={Animate} />
+          <Route exact path="/data-api" component={Syrios} />
+          <Route exact path="/select-story" component={SelectStory} />
+          <Route exact path="/explore" component={Explore} />
+          <Route exact path="/civic-story" component={Civic} />
+          <Route exact path="/economic-story" component={Economic} />
+          <Route exact path="/tableau-maps" component={TableauMaps} />
+          <Route exact path="/gods-portal" component={Gods} />
+          <Route exact path="/contact-us" component={ContactUs} />
           {/* <Route exact path="/" component={Demo}/> */}
-          {/* <Route exact path="/" component={Intro} /> */}
-          <Route exact path="/" component={Animate} />
-          {/* <Route exact path="/data-api" component={Syrios} /> */}
-          {/* <Route exact path="/select-story" component={SelectStory} /> */}
-          {/* <Route exact path="/explore" component={Explore} /> */}
-          {/* <Route exact path="/civic-story" component={Civic} /> */}
-          {/* <Route exact path="/economic-story" component={Economic} /> */}
-          {/* <Route exact path="/tableau-maps" component={TableauMaps} /> */}
-          {/* <Route exact path="/gods-portal" component={Gods} /> */}
           <Route
             exact
             path="/omeka-database"

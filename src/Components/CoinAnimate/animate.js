@@ -245,7 +245,7 @@ const Animate = () => {
         ))}
       </div>
       <div className="class-coins-footer-para">
-        <span>Acknowledgements: Created by Rahul Raj Mogili in ReactJS, CSS, Bootstrap, NodeJS </span><br></br>
+        <span>Acknowledgements: Created by Rahul Raj Mogili in React.js, CSS, Bootstrap, Node.js </span><br></br>
         <span>For more information about design, contact Dr. Peggy Lindner (plindner@central.uh.edu)</span><br></br>
         <span>For more information about content, contact Dr. Kristina Neumann (kmneuma2@central.uh.edu)</span><br></br>
         <span>Part of The SYRIOS Project: Studying Urban Relationships and Identity over Ancient Syria</span>
