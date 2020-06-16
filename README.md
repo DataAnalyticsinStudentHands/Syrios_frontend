@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Prerequsites
+
+[https://nodejs.org/en/](Node.js)
 
 ## Run your code locally
 
