@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Run your code locally
 
+## Install missing packages
+
+### `npm install`
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
