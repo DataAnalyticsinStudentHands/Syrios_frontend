@@ -271,13 +271,25 @@
 
 /* CIVIC COMPONENT 10 */
 
+.civic-component-up-10 {
+  top: 658%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .civic-component-10 {
   top: 700%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   text-align: center;
   align-items: center;
   justify-content: space-between;
@@ -345,6 +357,17 @@
 
 /* CIVIC COMPONENT 14 */
 
+.civic-component-up-14 {
+  top: 985%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .civic-component-14 {
   top: 1030%;
@@ -352,7 +375,7 @@
   position: absolute;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column;
+  /*flex-direction: column;*/
   text-align: center;
   align-items: center;
   justify-content: space-between;
@@ -401,13 +424,24 @@
 
 /* CIVIC COMPONENT 17 */
 
+.civic-component-up-17 {
+  top: 1300%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .civic-component-17 {
   top: 1350%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   text-align: center;
 }
@@ -486,6 +520,17 @@
 
 .civic-component-21 {
   top: 1700%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 500px;
+}
+
+.civic-component-22 {
+  top: 1650%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);

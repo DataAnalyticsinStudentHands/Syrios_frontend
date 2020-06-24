@@ -392,7 +392,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            The U.S. dime also has other words or <span style={{backgroundColor:'#fff2cc'}}>legends</span>. They celebrate our
+            The U.S. dime also has other words or <span style={{backgroundColor:'#ffff66'}}>legends</span>. They celebrate our
             government and our values.
           </p>
         </div>
@@ -435,7 +435,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para-blue" data-aos="fade-left">
-            <span style={{backgroundColor:'#ffff00', color:'#000000'}}>Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
+            <span style={{backgroundColor:'#ffff66', color:'#000000'}}>Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
           </p>
         </div>
         <div className="component-18">
@@ -452,7 +452,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-in">
-            The U.S. dime tells us its <span style={{backgroundColor:'#ffff00'}}>denomination</span>, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
+            The U.S. dime tells us its <span style={{backgroundColor:'#ffff66'}}>denomination</span>, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
           </p>
         </div>
         <div className="component-19">
@@ -476,7 +476,7 @@ const Intro = () => {
               data-aos="fade-in"
             />
             <p id="style-caption" data-aos="fade-down">
-              A <span style={{backgroundColor:'#ffff00', color:'#000000'}}>countermark</span> was stamped on a circulating coin to give it extra value or keep it working as money.
+              A <span style={{backgroundColor:'#ffff66', color:'#000000'}}>countermark</span> was stamped on a circulating coin to give it extra value or keep it working as money.
             </p>
           </div>
           <p id="intro-style-para" data-aos="fade-up">

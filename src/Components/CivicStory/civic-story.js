@@ -167,13 +167,15 @@ const civicStory = () => {
         </p>
         <img src={council} alt="Logo" data-aos="fade-in" />
       </div>
-      <div className="civic-component-10">
+      <div className="civic-component-up-10">
         <p id="civic-style-para" data-aos="fade-down">
           For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>demos</span> – the citizen body – together to debate publicly in the city’s
           theatre.
         </p>
+      </div>
+      <div className="civic-component-10">
         <img src={theatre} alt="Logo" data-aos="fade-in" />
-        <p id="civic-style-para-blue" data-aos="fade-in">
+        <p id="civic-style-para-blue" data-aos="fade-in" style={{width:'300px', height:'420px', padding:'38px'}}>
           "Then the emperor’s lieutenant entered the theatre at Antioch, where
           the people regularly hold their public assemblies, and addressed the
           crowd which hurried there." -Tacitus, <span style={{fontStyle:"italic"}}>Histories</span> 2.80
@@ -201,13 +203,15 @@ const civicStory = () => {
         </p>
         <img src={vote} alt="Logo" data-aos="fade-right" />
       </div>
-      <div className="civic-component-14">
+      <div className="civic-component-up-14">
         <p id="civic-style-para" data-aos="fade-down">
           The boule and magistrates also hosted many civic celebrations for
           their community.
         </p>
+      </div>
+      <div className="civic-component-14">
         <img src={festival} alt="Logo" data-aos="fade-in"/>
-        <p id="civic-style-para-blue" data-aos="fade-in">
+        <p id="civic-style-para-blue" data-aos="fade-in" style={{width:'350px', height:'420px', padding:'53px'}}>
           “The citizens of Antioch, a large and prosperous city, celebrate
           festivals virtually every day of the year in the city and in the
           surrounding area.” Herodian, <span style={{fontStyle:"italic"}}>History of the Roman Empire</span> 2.7.9
@@ -215,7 +219,7 @@ const civicStory = () => {
       </div>
       <div className="civic-component-15">
         <img src={zeus} alt="Logo" data-aos="fade-right" />
-        <p id="civic-style-para" data-aos="fade-left">
+        <p id="civic-style-para" data-aos="fade-right">
           Many of these civic festivals celebrated the gods. This includes Zeus,
           who is featured on the front of this coin!
         </p>
@@ -231,13 +235,15 @@ const civicStory = () => {
           citizens.
         </p>
       </div>
-      <div className="civic-component-17">
+      <div className="civic-component-up-17">
         <p id="civic-style-para" data-aos="fade-up">
           Sometimes, though, the Antiochians could lose the power of their local
           government.
         </p>
+      </div>
+      <div className="civic-component-17">
         <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'600px'}}/>
-        <p id="civic-style-para-blue" data-aos="fade-up" style={{width:'600px'}} >
+        <p id="civic-style-para-blue" data-aos="fade-in" style={{width:'600px'}} >
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
           The emperor had previously taken away their shows and public
@@ -281,14 +287,16 @@ const civicStory = () => {
         <Link to="/tableau-maps" id="civic-intro-style-footer" data-aos="fade-right">
           Where did the civic coins move?
         </Link>
+        <Link to="/select-story" id="civic-intro-style-footer" data-aos="fade-left">
+          Tell me another story!
+        </Link>
+      </div>
+      <div className="civic-component-22">
         <p id="civic-style-para">
           Because so few records have survived, our ancient coin is a very
           important reminder of the local government who minted it and the local
           citizens who used it.
         </p>
-        <Link to="/select-story" id="civic-intro-style-footer" data-aos="fade-left">
-          Tell me another story!
-        </Link>
       </div>
     </div>
   );
