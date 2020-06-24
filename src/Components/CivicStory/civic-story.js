@@ -231,12 +231,13 @@ const civicStory = () => {
           citizens.
         </p>
       </div>
-      <div className="civic-component-17">
+      <div className="civic-component-up-17">
         <p id="civic-style-para" data-aos="fade-up">
           Sometimes, though, the Antiochians could lose the power of their local
           government.
         </p>
-        <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'600px'}}/>
+      </div>
+      <div className="civic-component-17">      
         <p id="civic-style-para-blue" data-aos="fade-up" style={{width:'600px'}} >
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
@@ -245,6 +246,7 @@ const civicStory = () => {
           edict against them.” <br></br>- Scriptores Historiae Augustae, <span style={{fontStyle:"italic"}}>Marcus
           Aurelius</span> 25.8-12
         </p>
+        <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'600px'}}/>
       </div>
       <div className="civic-component-18">
         <p id="civic-style-para" data-aos="fade-up">

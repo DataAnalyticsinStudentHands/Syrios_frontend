@@ -510,7 +510,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            Sometimes, a coin would be cut in half.  We aren’t quite sure why,
+            Sometimes, a coin would be cut in half.We aren’t quite sure why,
             but it likely was an attempt to make more coins when you couldn’t
             mint more.
           </p>
