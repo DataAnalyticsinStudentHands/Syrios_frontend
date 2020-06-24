@@ -109,8 +109,7 @@ const Intro = () => {
       <div className="component-mix">
         <div className="threeD-coin">
           <p id="intro-style-para" data-aos="fade-left">
-            Ancient coins have a tremendous story to tell, but we must first
-            learn how to read them.
+            A coin minted for a king celebrates his power and strength.
           </p>
           <div class="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
@@ -137,7 +136,7 @@ const Intro = () => {
                 rel="noopener noreferrer"
                 style={{ fontWeight: "bold", color: "#1CAAD9" }}
               >
-                Eastern King&#39;s Coin
+                Eastern King&#39;s Coin {" "}
               </a>
               by{" "}
               <a
@@ -146,9 +145,9 @@ const Intro = () => {
                 rel="noopener noreferrer"
                 style={{ fontWeight: "bold", color: "#1CAAD9" }}
               >
-                peggylind
+                peggylind {" "}
               </a>
-              on{" "}
+              on {" "}
               <a
                 href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campaign=share-popup"
                 target="_blank"
@@ -181,7 +180,7 @@ const Intro = () => {
           />
           <p id="intro-style-para" data-aos="fade-left">
             A little bronze coin has a lot to say too, just like our own U.S.
-            dime.”
+            dime.
           </p>
         </div>
         <div className="component-2">
@@ -192,7 +191,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-up">
-            This bronze coin from Syria is the same size as a dime.
+            They are the same size.
           </p>
           <img
             src={us_dime}
@@ -209,7 +208,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-up">
-            Both have images and writing on them called coin's "<span style={{fontWeight:'bolder', textDecorationLine: 'underline'}}>type</span>"
+            Both have images and writing on them called a coin’s <span style={{fontWeight:'bolder', textDecorationLine: 'underline'}}>type</span>
           </p>
           <img
             src={comp_3_right}
@@ -232,7 +231,7 @@ const Intro = () => {
             </p>
           </div>
           <p id="intro-style-para" data-aos="fade-up">
-            On the front or “<span style={{fontWeight:"bolder", textDecorationLine:'underline'}}>obverse</span>”, we see the head of an important person.
+            On the front or <span style={{fontWeight:"bolder", textDecorationLine:'underline'}}>obverse</span>, we see the head of an important person.
           </p>
           <div data-aos="flip-left">
             <img src={comp_4_right} alt="Logo" className="size-images" />
@@ -267,7 +266,7 @@ const Intro = () => {
             </p>
           </div>
           <span id="intro-style-para" data-aos="fade-up">
-            On the back or “<span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>reverse</span>”, we see important symbols.
+            On the back or <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>reverse</span>, we see important symbols.
           </span>
           <div className="label-image" data-aos="flip-left">
             <img src={comp_6_right} alt="Logo" className="size-images" />
@@ -393,7 +392,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            The U.S. dime also has other words or legends. They celebrate our
+            The U.S. dime also has other words or <span style={{backgroundColor:'#fff2cc'}}>legends</span>. They celebrate our
             government and our values.
           </p>
         </div>
@@ -436,7 +435,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para-blue" data-aos="fade-left">
-            Mint marks on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
+            <span style={{backgroundColor:'#ffff00', color:'#000000'}}>Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
           </p>
         </div>
         <div className="component-18">
@@ -453,7 +452,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-in">
-            The U.S. dime tells us its denomination, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
+            The U.S. dime tells us its <span style={{backgroundColor:'#ffff00'}}>denomination</span>, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
           </p>
         </div>
         <div className="component-19">
@@ -477,7 +476,7 @@ const Intro = () => {
               data-aos="fade-in"
             />
             <p id="style-caption" data-aos="fade-down">
-              A countermark was stamped on a circulating coin to give it extra value or keep it working as money.
+              A <span style={{backgroundColor:'#ffff00', color:'#000000'}}>countermark</span> was stamped on a circulating coin to give it extra value or keep it working as money.
             </p>
           </div>
           <p id="intro-style-para" data-aos="fade-up">
@@ -511,7 +510,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            Sometimes, a coin would be cut in half.   We aren’t quite sure why,
+            Sometimes, a coin would be cut in half.  We aren’t quite sure why,
             but it likely was an attempt to make more coins when you couldn’t
             mint more.
           </p>
@@ -526,7 +525,7 @@ const Intro = () => {
             Tell me a Story{" "}
           </StyledLink>
           <h2 id="intro-style-para">
-            There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?  
+            There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?
           </h2>
           <StyledLink to="/coins" id="intro-style-footer" data-aos="fade-left">
             {" "}

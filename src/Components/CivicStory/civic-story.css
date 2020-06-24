@@ -413,8 +413,7 @@
 }
 
 .civic-component-17 p {
-  background-image: var(--div-bg);
-  color: white;
+  color: black;
   padding: 10px;
   border-radius: 10px;
   width: 700px;
@@ -424,6 +423,7 @@
   height: 450px;
   width: 505px;
   padding: 20px;
+  text-align: left;
 }
 
 /* CIVIC COMPONENT 18 */
@@ -503,7 +503,7 @@
 } */
 
 .c22-left {
-  top: 1780%; 
+  top: 1780%;
   left: 5%;
   position: absolute;
   text-decoration: solid;
@@ -517,7 +517,7 @@
   top: 1780%;
   right: 5%;
   position: absolute;
-  text-decoration: solid; 
+  text-decoration: solid;
   background-image: var(--div-bg);
   color: white;
   padding: 10px;

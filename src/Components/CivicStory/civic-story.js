@@ -105,7 +105,7 @@ const civicStory = () => {
       <div className="civic-component-6">
         <p id="civic-style-para" data-aos="fade-right">
           The government also added another message in Greek (just barely
-          visible on this worn coin): MHTROPOLEWS. This means metropolis. This
+          visible on this worn coin): MHTROPOLEWS. This means <span style={{backgroundColor:'#ffff00', fontWeight:'bolder', textDecorationLine:'underline'}}>metropolis</span>. This
           was a special civic status, which emphasized the size, culture, and
           history of the city.
         </p>
@@ -169,7 +169,7 @@ const civicStory = () => {
       </div>
       <div className="civic-component-10">
         <p id="civic-style-para" data-aos="fade-down">
-          For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder'}}>demos</span> – the citizen body – together to debate publicly in the city’s
+          For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>demos</span> – the citizen body – together to debate publicly in the city’s
           theatre.
         </p>
         <img src={theatre} alt="Logo" data-aos="fade-in" />
@@ -236,8 +236,8 @@ const civicStory = () => {
           Sometimes, though, the Antiochians could lose the power of their local
           government.
         </p>
-        <img src={protest_2} alt="Logo" data-aos="fade-in"/>
-        <p id="civic-style-para" data-aos="fade-down">
+        <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'600px'}}/>
+        <p id="civic-style-para-blue" data-aos="fade-up" style={{width:'600px'}} >
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
           The emperor had previously taken away their shows and public
@@ -275,7 +275,7 @@ const civicStory = () => {
           <br></br>
         </p>
         </div>
-        
+
       </div>
       <div className="civic-component-21">
         <Link to="/tableau-maps" id="civic-intro-style-footer" data-aos="fade-right">
