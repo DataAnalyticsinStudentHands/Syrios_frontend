@@ -58,7 +58,7 @@ div[data-aos-duration='4000'] [data-aos],
 
 img {
     height: 150px;
-    width: 150px;    
+    width: 150px;
 }
 
 .eco-component-1 {
@@ -72,11 +72,12 @@ img {
 }
 
 #style-para {
+    margin: 0;
     background-image: var(--div-bg);
-    padding: 10px;
-    border-radius: 10px;
     color: white;
-    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: larger;
 }
 
 .eco-component-1 img {
@@ -99,8 +100,8 @@ img {
     width: 60px;
 }
 
-.eco-component-3 {
-    top: 240%;  
+.eco-component-up-3 {
+    top: 215%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -110,13 +111,26 @@ img {
     transform: translate(-50%, -50%);
 }
 
+.eco-component-3 {
+    top: 240%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    /*flex-direction: column;*/
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .eco-component-3 img{
     height: 305px;
     width: 420px;
+    margin: 20px;
 }
 
 .eco-component-4 {
-    top: 320%;  
+    top: 320%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -133,14 +147,15 @@ img {
 }
 
 .eco-component-5 {
-    top: 380%;  
+    top: 400%;
     left: 50%;
     position: absolute;
+    transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     text-align: center;
     align-items: center;
-    transform: translate(-50%, -50%);
+    justify-content: space-between;
 }
 
 .eco-component-5 img{
@@ -148,15 +163,15 @@ img {
     width: 30px;
 }
 
-.flex-column {
-    top: 380%;  
+/*.flex-column {
+    top: 380%;
     left: 50%;
     position: absolute;
     display: flex;
     text-align: center;
     align-items: center;
     transform: translate(-50%, -50%);
-}
+}*/
 
 .flex-column img {
     height: 30px;
@@ -169,7 +184,7 @@ img {
 }
 
 .eco-component-6 {
-    top: 480%;  
+    top: 470%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -179,7 +194,7 @@ img {
 }
 
 .eco-component-7 {
-    top: 550%;  
+    top: 530%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -193,8 +208,18 @@ img {
     width: 70px;
 }
 
+.eco-component-up-8 {
+    top: 580%;
+    left: 50%;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+}
+
 .eco-component-8 {
-    top: 620%;  
+    top: 600%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -204,7 +229,7 @@ img {
 }
 
 .eco-component-9 {
-    top: 695%;  
+    top: 660%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -214,39 +239,18 @@ img {
 }
 
 .eco-component-10 {
-    top: 715%;  
+    top: 750%;
     left: 50%;
-    height: 600px;
-    width: 800px;
     position: absolute;
     display: flex;
     text-align: center;
     align-items: center;
     transform: translate(-50%, -50%);
+    flex-direction: column;
 }
 
 .eco-component-11 {
-    top: 775%;  
-    left: 50%;
-    position: absolute;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    transform: translate(-50%, -50%);
-}
-
-.eco-component-12 {
-    top: 835%;  
-    left: 50%;
-    position: absolute;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    transform: translate(-50%, -50%);
-}
-
-.eco-component-13 {
-    top: 850%;  
+    top: 830%;
     left: 50%;
     position: absolute;
     display: flex;
@@ -259,7 +263,9 @@ img {
     background-image: var(--div-bg-2);
     text-decoration: none;
     padding: 10px;
+    width: 200px;
     margin: 20px;
+    margin-bottom: 100px;
     border-radius: 10px;
     color: white;
     font-weight: bold;

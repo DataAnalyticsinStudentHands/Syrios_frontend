@@ -55,12 +55,12 @@ const Economic = () => {
       </div>
       <div className="eco-component-1">
         <img src={bronze} alt="Logo" data-aos="fade-right" className="size-images"/>
-        <p data-aos="fade-left" id="style-para">
+        <p data-aos="fade-left">
           This is a bronze coin
         </p>
       </div>
       <div className="eco-component-2">
-        <div className="eco-component-2-images" style={{ width: "800px" }}>
+        <div style={{ width: '800px' }}>
           <img
             src={bronze}
             alt="Logo"
@@ -171,23 +171,25 @@ const Economic = () => {
             data-aos-duration="2800"
           />
         </div>
-        <p id="style-para" data-aos="fade-in">
+        <p data-aos="fade-in" style={{ width: '500px' }}>
           A regular person working on a farm or in a shop would earn around 18
           of these bronze coins a day.{" "}
         </p>
       </div>
-      <div className="eco-component-3">
-        <p id="style-para" data-aos="fade-down">
+      <div className="eco-component-up-3">
+        <p data-aos="fade-down">
           People needed these coins to buy things in Antioch’s markets
         </p>
+      </div>
+      <div className="eco-component-3">
         <img src={people} alt="Logo" data-aos="fade-in" />
-        <p id="style-para" data-aos="fade-down">
-          “Antioch, a city known to all the world…so rich is it in imported and
+        <p id="style-para" data-aos="fade-in" style={{height:'305px', padding:'22px'}}>
+          “Antioch, a city known to all the world… so richÍ is it in imported and
           local goods.” <span style={{fontStyle:'italic'}}>Ammianus Marcellinus, Roman Antiquities</span> 14.8.8{" "}
         </p>
       </div>
       <div className="eco-component-4">
-        <p id="style-para" data-aos="fade-in">
+        <p data-aos="fade-in">
           But this coin wasn’t worth very much, as it was made out of cheap
           bronze and not valuable gold or silver.{" "}
         </p>
@@ -198,11 +200,7 @@ const Economic = () => {
         </div>
       </div>
       <div className="eco-component-5">
-        <p id="style-para" data-aos="fade-in">
-          In fact, some scholars think that it might have taken over 100 of
-          these bronze coins to equal the value of only 1 silver tetradrachm!{" "}
-        </p>
-        <div className="flex-column">
+        <div className="flex-column" style={{margin: '60px', width:'600px'}}>
           <div>
             <img
               src={silver}
@@ -211,9 +209,13 @@ const Economic = () => {
               data-aos="fade-in"
             />
           </div>
+          <br>
+          </br>
           <div>
             <img src={equal_to} alt="Logo" data-aos="fade-in" />
           </div>
+          <br>
+          </br>
           <div>
             <img
               src={bronze}
@@ -817,6 +819,10 @@ const Economic = () => {
             />
           </div>
         </div>
+        <p data-aos="fade-in" style={{width: '300px'}}>
+          In fact, some scholars think that it might have taken over 100 of
+          these bronze coins to equal the value of only 1 silver tetradrachm!
+        </p>
       </div>
       <div className="eco-component-6">
         <img
@@ -825,13 +831,13 @@ const Economic = () => {
           style={{ padding: "10px" }}
           data-aos="fade-right"
         />
-        <p id="style-para" data-aos="fade-left">
+        <p data-aos="fade-left">
           This coin could still buy important items for a person living in
           Antioch.
         </p>
       </div>
       <div className="eco-component-7">
-        <div style={{ padding: "10px" }}>
+        <div style={{ margin: "50px" }}>
           <img
             src={bronze}
             alt="Logo"
@@ -861,10 +867,16 @@ const Economic = () => {
             data-aos-duration="1250"
           />
         </div>
-        <p id="style-para" data-aos="fade-in">
+        <p data-aos="fade-in">
           Four bronze coins could buy a loaf of bread.
         </p>
-        <img src={bread} alt="Logo" data-aos="fade-left" />
+        <img src={bread} alt="Logo" data-aos="fade-left" style={{ margin: "50px" }} />
+      </div>
+      <div className="eco-component-up-8">
+        <p data-aos="fade-in">
+          Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s
+          the same as 2 school milk cartoons.
+        </p>
       </div>
       <div className="eco-component-8">
         <div style={{ padding: "10px" }}>
@@ -925,10 +937,6 @@ const Economic = () => {
             data-aos-duration="1900"
           />
         </div>
-        <p id="style-para" data-aos="fade-in">
-          Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s
-          the same as 2 school milk cartoons.
-        </p>
         <img
           src={jug}
           alt="Logo"
@@ -949,26 +957,19 @@ const Economic = () => {
         />
       </div>
       <div className="eco-component-9">
-        <p id="style-para" data-aos="fade-up">
+        <p data-aos="fade-up">
           Most of the Antioch civic coins were spent locally.
         </p>
       </div>
       <div className="eco-component-10" >
-        <p id="style-para" data-aos="fade-up">
+        <p data-aos="fade-up" style={{margin: '60px'}}>
           Not all coins stayed in Antioch though. Instead some of the coins
-          moved even hundreds of miles away.
-        </p>
-      </div>
-      <div className="eco-component-11" >
-        <Tableau data-aos="fade-in"/>
-      </div>
-      <div className="eco-component-12">
-        <p data-aos="fade-down">
-          This speaks to all the trade routes running in and out of Antioch and
+          moved even hundreds of miles away.This speaks to all the trade routes running in and out of Antioch and
           all the people coming and going from the city with little bronze coins in their pockets.
         </p>
+        <Tableau data-aos="fade-in" />
       </div>
-      <div className="eco-component-13">
+      <div className="eco-component-11">
         <StyledLink to="/tableau-maps" id="eco-intro-style-footer">
           Where did the civic coins move?
         </StyledLink>
