@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Run your code locally
 
-## Install missing packages
+### Install missing packages
 
 ### `npm install`
 
