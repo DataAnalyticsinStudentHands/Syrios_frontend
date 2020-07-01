@@ -208,7 +208,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-up">
-            Both have images and writing on them called a coin’s <span style={{fontWeight:'bolder', textDecorationLine: 'underline'}}>type</span>
+            Both have images and writing on them called a coin’s <span style={{fontWeight:'bolder', fontStyle:"italic"}}>type</span>
           </p>
           <img
             src={comp_3_right}
@@ -231,7 +231,7 @@ const Intro = () => {
             </p>
           </div>
           <p id="intro-style-para" data-aos="fade-up">
-            On the front or <span style={{fontWeight:"bolder", textDecorationLine:'underline'}}>obverse</span>, we see the head of an important person.
+            On the front or <span style={{fontWeight:"bolder", fontStyle:"italic"}}>obverse</span>, we see the head of an important person.
           </p>
           <div data-aos="flip-left">
             <img src={comp_4_right} alt="Logo" className="size-images" />
@@ -266,7 +266,7 @@ const Intro = () => {
             </p>
           </div>
           <span id="intro-style-para" data-aos="fade-up">
-            On the back or <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>reverse</span>, we see important symbols.
+            On the back or <span style={{fontWeight:'bolder', fontStyle:'italic'}}>reverse</span>, we see important symbols.
           </span>
           <div className="label-image" data-aos="flip-left">
             <img src={comp_6_right} alt="Logo" className="size-images" />
@@ -326,7 +326,7 @@ const Intro = () => {
               id="intro-style-para"
               style={{ width: "800px" }}
             >
-              The name was also important because it made clear the governmental <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>authority</span> who gave the cheap bronze value as money.
+              The name was also important because it made clear the governmental <span style={{fontWeight:'bolder', fontStyle:'italic'}}>authority</span> who gave the cheap bronze value as money.
             </h2>
           </p>
         </div>
@@ -392,7 +392,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
-            The U.S. dime also has other words or <span style={{backgroundColor:'#ffff66'}}>legends</span>. They celebrate our
+            The U.S. dime also has other words, or <span style={{fontWeight:'bolder', fontStyle:'italic'}}>legends</span>. They celebrate our
             government and our values.
           </p>
         </div>
@@ -435,7 +435,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para-blue" data-aos="fade-left">
-            <span style={{backgroundColor:'#ffff66', color:'#000000'}}>Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
+            <span style={{fontWeight:'bolder', fontStyle:'italic'}}>Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
           </p>
         </div>
         <div className="component-18">
@@ -452,7 +452,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-in">
-            The U.S. dime tells us its <span style={{backgroundColor:'#ffff66'}}>denomination</span>, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
+            The U.S. dime tells us its <span style={{fontWeight:'bolder', fontStyle:'italic'}}>denomination</span>, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
           </p>
         </div>
         <div className="component-19">
@@ -476,7 +476,7 @@ const Intro = () => {
               data-aos="fade-in"
             />
             <p id="style-caption" data-aos="fade-down">
-              A <span style={{backgroundColor:'#ffff66', color:'#000000'}}>countermark</span> was stamped on a circulating coin to give it extra value or keep it working as money.
+              A <span style={{fontWeight:'bolder', fontStyle:'italic'}}>countermark</span> was stamped on a circulating coin to give it extra value or keep it working as money.
             </p>
           </div>
           <p id="intro-style-para" data-aos="fade-up">

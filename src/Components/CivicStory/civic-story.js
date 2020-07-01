@@ -105,7 +105,7 @@ const civicStory = () => {
       <div className="civic-component-6">
         <p id="civic-style-para" data-aos="fade-right">
           The government also added another message in Greek (just barely
-          visible on this worn coin): MHTROPOLEWS. This means <span style={{backgroundColor:'#ffff00', fontWeight:'bolder', textDecorationLine:'underline'}}>metropolis</span>. This
+          visible on this worn coin): MHTROPOLEWS. This means <span style={{backgroundColor:'#ffff00', fontWeight:'bolder', fontStyle:'italic'}}>metropolis</span>. This
           was a special civic status, which emphasized the size, culture, and
           history of the city.
         </p>
@@ -158,7 +158,7 @@ const civicStory = () => {
         <img src={boule} alt="Logo" data-aos="fade-right" />
         <p id="civic-style-para" data-aos="fade-left">
           The images on the coins celebrate the local government. Here we see a
-          personification of the city’s <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>boule</span> – or council.
+          personification of the city’s <span style={{fontWeight:'bolder', fontStyle:'italic'}}>boule</span> – or council.
         </p>
       </div>
       <div className="civic-component-9">
@@ -169,7 +169,7 @@ const civicStory = () => {
       </div>
       <div className="civic-component-up-10">
         <p id="civic-style-para" data-aos="fade-down">
-          For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder', textDecorationLine:'underline'}}>demos</span> – the citizen body – together to debate publicly in the city’s
+          For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder', fontStyle:'italic'}}>demos</span> – the citizen body – together to debate publicly in the city’s
           theatre.
         </p>
       </div>
