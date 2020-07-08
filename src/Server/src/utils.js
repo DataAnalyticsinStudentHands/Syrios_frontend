@@ -1,6 +1,7 @@
 /* @flow */
 
 import type { TypeComposer } from 'graphql-compose';
+import fetch from 'node-fetch';
 
 export function createFindByIdResolver(tc: TypeComposer, urlAddr: string): void {
   tc.addResolver({
