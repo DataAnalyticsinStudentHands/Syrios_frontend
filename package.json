@@ -8,8 +8,20 @@
     "@testing-library/user-event": "^7.2.1",
     "aos": "^2.3.4",
     "axios": "^0.19.2",
+    "babel-install": "^2.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-runtime": "^6.26.0",
     "bootstrap": "^4.5.0",
+    "dataloader": "^1.3.0",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
     "framer-motion": "^1.10.3",
+    "graphql": "^0.11.7",
+    "graphql-compose": "^2.9.2",
+    "graphql-compose-json": "^1.0.0",
+    "node-fetch": "^1.7.3",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
@@ -17,7 +29,7 @@
     "react-meta-tags": "^0.7.4",
     "react-modal": "^3.11.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "react-select": "^3.1.0",
     "serve": "^11.3.0",
     "styled-components": "^5.1.1",
@@ -27,6 +39,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-graphql": "babel-node ./src/Server/src/index.js",
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run start-graphql\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -46,5 +60,20 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "./"
+  "homepage": "./",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "concurrently": "^5.2.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "flow-bin": "^0.57.3",
+    "nodemon": "^1.12.1",
+    "prettier": "^1.7.4",
+    "rimraf": "^2.6.2"
+  }
 }
