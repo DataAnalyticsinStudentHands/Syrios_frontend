@@ -5,8 +5,9 @@ import graphqlHTTP from 'express-graphql';
 import fetch from 'node-fetch';
 import Dataloader from 'dataloader';
 import schema from './schema/Schema';
+import { graphql } from 'graphql';
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const app = express();
 
 async function loadData(url: string) {
@@ -56,7 +57,7 @@ async function loadData(url: string) {
 }
 
 app.use(
-  '/',
+  '/graphql',
   graphqlHTTP(() => {
     const loader = new Dataloader(keys => Promise.all(keys.map(loadData)));
 
