@@ -10,6 +10,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `npm install`
 
+### `npm run dev`
+
+Runs the two apps concurrently in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view Syrios Project in the browser.
+
+Open [http://localhost:3001/graphql](http://localhost:3001/graphql) to view GraphiQL in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
 ### `npm start`
 
 Runs the app in the development mode.<br>

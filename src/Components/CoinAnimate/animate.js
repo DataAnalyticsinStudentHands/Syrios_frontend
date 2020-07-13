@@ -4,6 +4,8 @@ import Coins from "../data/items.json";
 import { motion } from "framer-motion";
 import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
+import ApolloClient, { gql } from "apollo-boost";
+import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 
 
 const Animate = () => {
@@ -31,7 +33,7 @@ const Animate = () => {
   const handleDateFilterChange = (el) => {
     setDateFilter(el.target.value);
   };
-  
+
   const handleTypeFilterChange = (el) => {
     setTypeFilter(el.target.value);
   };
@@ -42,15 +44,15 @@ const Animate = () => {
       item.authority.toLowerCase().includes(Authorityfilter.toLowerCase()) &&
       // item.mint.toLowerCase().includes(Mintfilter.toLowerCase()) &&
       item.date.toLowerCase().includes(Datefilter.toLowerCase()) &&
-      item.type.toLowerCase().includes(Typefilter.toLowerCase()) 
-      // item.type2.toLowerCase().includes(Typefilter.toLowerCase())&&
-      // item.type3.toLowerCase().includes(Typefilter.toLowerCase())&&
-      // item.type4.toLowerCase().includes(Typefilter.toLowerCase()
-      // )
+      item.type.toLowerCase().includes(Typefilter.toLowerCase())
+    // item.type2.toLowerCase().includes(Typefilter.toLowerCase())&&
+    // item.type3.toLowerCase().includes(Typefilter.toLowerCase())&&
+    // item.type4.toLowerCase().includes(Typefilter.toLowerCase()
+    // )
   );
 
   const uniqMaterial = ["-", "Gold", "Silver", "Bronze"],
-    MaterialList = function (X) {
+    MaterialList = function(X) {
       return <option>{X}</option>;
     };
 
@@ -65,7 +67,7 @@ const Animate = () => {
       "Civic",
       "Alexander II",
     ],
-    AuthorityList = function (X) {
+    AuthorityList = function(X) {
       return <option>{X}</option>;
     };
 
@@ -73,9 +75,20 @@ const Animate = () => {
   //   MintList = function (X) {
   //     return <option>{X}</option>;
   //   };
-    
-    const uniqType = ["-", "God", "Ruler", "Animal", "Object", "Letter", "Nature", "Idea", "War/Weapon", "Building"],
-    TypeList = function (X) {
+
+  const uniqType = [
+      "-",
+      "God",
+      "Ruler",
+      "Animal",
+      "Object",
+      "Letter",
+      "Nature",
+      "Idea",
+      "War/Weapon",
+      "Building",
+    ],
+    TypeList = function(X) {
       return <option>{X}</option>;
     };
 
@@ -99,7 +112,7 @@ const Animate = () => {
       "268 CE - 270 CE",
       "253 CE - 260 CE",
     ],
-    DateList = function (X) {
+    DateList = function(X) {
       return <option>{X}</option>;
     };
 
@@ -113,7 +126,6 @@ const Animate = () => {
 
   return (
     <div className="animate">
-      
       {/* <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -179,12 +191,22 @@ const Animate = () => {
           </Button>
         </div>
       </div>
-      
+
       <h1 className="class-coins-pile">Let Me Sort the Coins</h1>
-      <p className="class-coins-header-para">The ancient mint at <strong>Antioch</strong> produced a wealth of distinct coins for kings, emperors, governors, and citizens. 
-      Explore the differences in the coins by sorting through the pile or making selections from the drop-down menu about 
-      <strong> 1) material</strong>, <strong> 2) the issuing authority guaranteeing a coin’s value as money</strong>, 
-      <strong> 3) type or design</strong> and/or <strong> 4) date of minting</strong>. At any point, click on an individual coin to view a full description and learn more!</p>
+      <p className="class-coins-header-para">
+        The ancient mint at <strong>Antioch</strong> produced a wealth of
+        distinct coins for kings, emperors, governors, and citizens. Explore the
+        differences in the coins by sorting through the pile or making
+        selections from the drop-down menu about
+        <strong> 1) material</strong>,{" "}
+        <strong>
+          {" "}
+          2) the issuing authority guaranteeing a coin’s value as money
+        </strong>
+        ,<strong> 3) type or design</strong> and/or{" "}
+        <strong> 4) date of minting</strong>. At any point, click on an
+        individual coin to view a full description and learn more!
+      </p>
       <div className="coin-bg">
         {filteredResults.map((image) => (
           <React.Fragment key={image.id}>
@@ -207,50 +229,96 @@ const Animate = () => {
               }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               drag
-              dragConstraints={{ top: -650, left: -650, right: 650, bottom: 650 }}
+              dragConstraints={{
+                top: -650,
+                left: -650,
+                right: 650,
+                bottom: 650,
+              }}
             />
             <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        dialogClassName="modal-90w"
-        aria-labelledby="example-custom-modal-styling-title"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
-            Coin Information
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4 style={{textAlign:'center'}}>{image.title}</h4>
-          <div style={{textAlign:'center'}}>
-            <img src={image.obverse} alt="" className="modal-image"></img>
-            <img src={image.reverse} alt="" className="modal-image"></img>
-          </div>
-          <h5 id="dialogue-text"><strong>Region</strong> - {image.Region}</h5>
-          <h5 id="dialogue-text"><strong>Mint</strong> - {image.mint}</h5>
-          <h5 id="dialogue-text"><strong>Material</strong> - {image.material}</h5>
-          <h5 id="dialogue-text"><strong>Diameter</strong> - {image.diameter}</h5>
-          <h5 id="dialogue-text"><strong>Authority</strong> - {image.authority}</h5>
-          <h5 id="dialogue-text"><strong>Date</strong> - {image.date}</h5>
-          <h5 id="dialogue-text"><strong>Type</strong> - {image.type} {image.type2} {image.type3} {image.type4}</h5>
-          <h5 id="dialogue-text"><strong>Obverse Type</strong>  - {image.obverseType}</h5>
-          <h5 id="dialogue-text"><strong>Obverse Legend</strong>  - {image.obverseLegend}</h5>
-          <h5 id="dialogue-text"><strong>Reverse Type</strong> - {image.reverseLegend}</h5>
-          <h5 id="dialogue-text"><strong>Reverse Legend</strong> - {image.reverseLegend}</h5>
-          <h5 id="dialogue-text"><strong>Rights Holder</strong> - {image.rightsHolder}</h5>
-          <h5 id="dialogue-text"><strong>Source Image</strong> - {image.sourceImage}</h5>
-        </Modal.Body>
-      </Modal>
+              show={show}
+              onHide={() => setShow(false)}
+              dialogClassName="modal-90w"
+              aria-labelledby="example-custom-modal-styling-title"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="example-custom-modal-styling-title">
+                  Coin Information
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <h4 style={{ textAlign: "center" }}>{image.title}</h4>
+                <div style={{ textAlign: "center" }}>
+                  <img src={image.obverse} alt="" className="modal-image"></img>
+                  <img src={image.reverse} alt="" className="modal-image"></img>
+                </div>
+                <h5 id="dialogue-text">
+                  <strong>Region</strong> - {image.Region}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Mint</strong> - {image.mint}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Material</strong> - {image.material}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Diameter</strong> - {image.diameter}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Authority</strong> - {image.authority}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Date</strong> - {image.date}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Type</strong> - {image.type} {image.type2}{" "}
+                  {image.type3} {image.type4}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Obverse Type</strong> - {image.obverseType}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Obverse Legend</strong> - {image.obverseLegend}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Reverse Type</strong> - {image.reverseLegend}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Reverse Legend</strong> - {image.reverseLegend}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Rights Holder</strong> - {image.rightsHolder}
+                </h5>
+                <h5 id="dialogue-text">
+                  <strong>Source Image</strong> - {image.sourceImage}
+                </h5>
+              </Modal.Body>
+            </Modal>
           </React.Fragment>
         ))}
       </div>
       <div className="class-coins-footer-para">
-        <span>Acknowledgements: Created by Rahul Raj Mogili in React.js, CSS, Bootstrap, Node.js </span><br></br>
-        <span>For more information about design, contact Dr. Peggy Lindner (plindner@central.uh.edu)</span><br></br>
-        <span>For more information about content, contact Dr. Kristina Neumann (kmneuma2@central.uh.edu)</span><br></br>
-        <span>Part of The SYRIOS Project: Studying Urban Relationships and Identity over Ancient Syria</span>
+        <span>
+          Acknowledgements: Created by Rahul Raj Mogili in React.js, CSS,
+          Bootstrap, Node.js{" "}
+        </span>
+        <br></br>
+        <span>
+          For more information about design, contact Dr. Peggy Lindner
+          (plindner@central.uh.edu)
+        </span>
+        <br></br>
+        <span>
+          For more information about content, contact Dr. Kristina Neumann
+          (kmneuma2@central.uh.edu)
+        </span>
+        <br></br>
+        <span>
+          Part of The SYRIOS Project: Studying Urban Relationships and Identity
+          over Ancient Syria
+        </span>
       </div>
-      
     </div>
   );
 };

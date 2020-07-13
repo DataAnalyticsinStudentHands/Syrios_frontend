@@ -9,6 +9,7 @@ import { graphql } from 'graphql';
 
 const port = process.env.PORT || 3001;
 const app = express();
+const cors = require('cors');
 
 async function loadData(url: string) {
   const paging = 0;
@@ -58,6 +59,7 @@ async function loadData(url: string) {
 
 app.use(
   '/graphql',
+  cors(),
   graphqlHTTP(() => {
     const loader = new Dataloader(keys => Promise.all(keys.map(loadData)));
 
