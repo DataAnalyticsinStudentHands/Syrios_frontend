@@ -28,6 +28,14 @@ const Select = () => {
         >
           Tell me an Economic Story
         </Link>
+        <Link
+          to="/religious-story"
+          data-aos="fade-right"
+          data-aos-duration="1600"
+          id="style-select-items"
+        >
+          Tell me a Religious Story
+        </Link>
       </div>
     </div>
   );

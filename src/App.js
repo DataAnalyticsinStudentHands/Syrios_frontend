@@ -11,6 +11,7 @@ import SelectStory from "./Components/SelectStory/select";
 import Explore from "./Components/LetMeExplore/explore";
 import Civic from "./Components/CivicStory/civic-story";
 import Economic from "./Components/EconomicStory/economic-story";
+import Religious from "./Components/ReligiousStory/religious-story";
 import TableauMaps from "./Components/MapCoins/map";
 import Gods from "./Components/GodsPortal/gods";
 import ContactUs from "./Components/ContactUs/contact"
@@ -75,6 +76,9 @@ const App = () => {
                 <NavDropdown.Item>
                   <DropDownLink to="/economic-story">Economic Story</DropDownLink>
                 </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <DropDownLink to="/religious-story">Religious Story</DropDownLink>
+                </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Let me Explore" id="collasible-nav-dropdown">
                 <NavDropdown.Item>
@@ -98,7 +102,7 @@ const App = () => {
           </Navbar.Collapse>
         </Navbar>
         </div>
-        
+
         <Switch>
           <Route exact path="/" component={Intro} />
           <Route exact path="/coins" component={Animate} />
@@ -107,6 +111,7 @@ const App = () => {
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/civic-story" component={Civic} />
           <Route exact path="/economic-story" component={Economic} />
+          <Route exact path="/religious-story" component={Religious} />
           <Route exact path="/tableau-maps" component={TableauMaps} />
           <Route exact path="/gods-portal" component={Gods} />
           <Route exact path="/contact-us" component={ContactUs} />
