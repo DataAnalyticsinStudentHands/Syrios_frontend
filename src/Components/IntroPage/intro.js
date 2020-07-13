@@ -70,7 +70,7 @@ const Intro = () => {
           <p className="intro-main-subtitle" data-aos="fade-in">
             Studying{" "}
             <span style={{ color: "#2d616a" }}>Urban Relationships</span> and
-            Identify over{" "}
+            Identity over{" "}
             <span style={{ color: "#2d616a" }}>Ancient Syria</span>
           </p>
           <span>

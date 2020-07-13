@@ -1,0 +1,604 @@
+:root {
+  --div-bg: url(../data/images/bg-13.png);
+  --div-bg-2: url(../data/images/bg-5.png);
+}
+
+@font-face {
+  font-family: "cartogothic_stdbook";
+  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
+      format("woff2"),
+    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cartogothic_stdbook_bold";
+  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
+      format("woff2"),
+    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+#religious-style-para {
+  margin: 0;
+  /* background-image: var(--div-bg); */
+  /* color: white; */
+  width: 600px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: larger;
+}
+
+#religious-style-para-blue {
+  margin: 0;
+  background-image: var(--div-bg);
+  color: white;
+  /* width: 600px; */
+  border-radius: 10px;
+  padding: 10px;
+  font-size: larger;
+}
+
+.class-religious-story {
+  font-family: cartogothic_stdbook;
+  font-size: larger;
+}
+
+.class-religious-title {
+  text-align: center;
+  position: absolute;
+  display: flex;
+  font-size: xx-large;
+  flex-direction: column;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.class-religious-title h1 {
+  margin: 0;
+  font-family: "cartogothic_stdbook_bold";
+  color: #2d616a;
+}
+
+.class-religious-title p {
+  margin: 0;
+  font-family: "cartogothic_stdbook_bold";
+}
+
+.religious-size-images {
+  height: 120px;
+  width: 120px;
+  vertical-align: middle;
+  padding: 20px;
+}
+
+/* RELIGIOUS COMPONENT 1 */
+
+.religious-component-1 {
+  top: 120%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+}
+
+.religious-component-1 img {
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+/* RELIGIOUS COMPONENT 2 */
+
+.religious-component-2 {
+  top: 200%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.religious-component-2 img {
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+/* RELIGIOUS COMPONENT 3 */
+
+.religious-component-3 {
+  top: 220%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  width: 500px;
+}
+
+/* RELIGIOUS COMPONENT 4 */
+
+.religious-component-4 {
+  top: 280%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  width: 500px;
+}
+
+.religious-component-4 img {
+  padding: 20px;
+  height: 600px;
+  width: 1000px;
+}
+
+/* RELIGIOUS COMPONENT 5 */
+
+.religious-component-5-up {
+  top: 340%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-5 {
+  top: 360%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-5 img {
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+/* RELIGIOUS COMPONENT 6 */
+
+.religious-component-6-up {
+  top: 420%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  width: 550px;
+}
+
+.religious-component-6 {
+  top: 450%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-6 img {
+  padding: 20px;
+  width: 400px;
+  height: 400px;
+}
+
+/* RELIGIOUS COMPONENT 7 */
+
+.religious-component-7 {
+  top: 520%;
+  left: 50%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* RELIGIOUS COMPONENT 8 */
+
+.religious-component-8 {
+  top: 580%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* RELIGIOUS COMPONENT 9 */
+
+.religious-component-9-up {
+  top: 640%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-9 {
+  top: 670%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-9 img {
+  padding: 20px;
+  height:432px;
+  width: 416px;
+}
+
+/* RELIGIOUS COMPONENT 10 */
+
+.religious-component-10-up {
+  top: 750%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-10 {
+  top: 790%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-10 img {
+  height: 446px;
+  width: 432px;
+  padding: 10px;
+}
+
+/* RELIGIOUS COMPONENT 11 */
+
+.religious-component-11 {
+  top: 870%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-11 img {
+  padding: 20px;
+  height: 393px;
+  width: 719px;
+}
+
+/* RELIGIOUS COMPONENT 12 */
+
+.religious-component-12 {
+  top: 930%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-12 img {
+  padding: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+
+/* RELIGIOUS COMPONENT 13 */
+
+.religious-component-13 {
+  top: 990%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-13 img {
+  padding: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+/* RELIGIOUS COMPONENT 14 */
+
+.religious-component-14 {
+  top: 1050%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-14 img {
+  height: 450px;
+  width: 508px;
+}
+
+/* RELIGIOUS COMPONENT 15 */
+
+.religious-component-15 {
+  top: 1110%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-15 img {
+  padding: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+/* RELIGIOUS COMPONENT 16 */
+
+.religious-component-16 {
+  top: 1170%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* RELIGIOUS COMPONENT 17 */
+
+.religious-component-17 {
+  top: 1240%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  text-align: center;
+}
+
+.religious-component-17 div {
+  flex-direction: column;
+}
+
+.religious-component-17 img {
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+}
+
+/* RELIGIOUS COMPONENT 18 */
+
+.religious-component-18 {
+  top: 1320%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+}
+
+/* RELIGIOUS COMPONENT 19 */
+
+.religious-component-19 {
+  top: 1380%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+
+/* RELIGIOUS COMPONENT 20 */
+
+.religious-component-20-up {
+  top: 1440%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+}
+
+.religious-component-20 {
+  top: 1470%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+}
+
+.religious-component-20 img {
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+}
+
+/* RELIGIOUS COMPONENT 21 */
+
+.religious-component-21 {
+  top: 1540%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.religious-component-21 img {
+  padding: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+/* RELIGIOUS COMPONENT 22 */
+
+.religious-component-22-up {
+  top: 1600%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+}
+
+.religious-component-22 {
+  top: 1630%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+}
+
+.religious-component-22 img {
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+}
+
+/* RELIGIOUS COMPONENT 23 */
+
+.religious-component-23 {
+  top: 1700%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+/* RELIGIOUS COMPONENT 24 */
+
+.religious-component-24 {
+  top: 1750%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 500px;
+}
+
+.religious-component-25 {
+  top: 1770%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+/* .religious-component-22 {
+  top: 2420%;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  align-items: center;
+} */
+
+.c22-left {
+  top: 1780%;
+  left: 5%;
+  position: absolute;
+  text-decoration: solid;
+  background-image: var(--div-bg);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.c22-right {
+  top: 1780%;
+  right: 5%;
+  position: absolute;
+  text-decoration: solid;
+  background-image: var(--div-bg);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#religious-intro-style-footer{
+  background-image: var(--div-bg-2);
+  text-decoration: none;
+  padding: 10px;
+  width: 200px;
+  margin: 20px;
+  margin-bottom: 100px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
