@@ -37,7 +37,7 @@ const Coin = () => {
   );
 };
 
-const ElementTexts = () => {
+const Region = () => {
   const { loading, error, data } = useQuery(gql`
     {
       coin(id: 1415) {
@@ -47,15 +47,37 @@ const ElementTexts = () => {
   `);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-    
-  return data.coin.element_texts.map(({ element, text }) => (
-    <div>
-      <p>---------------------</p>
-      <p>texts: {element.name}</p>
-      <p>texts: {text} </p>
-    </div>
-  ));
+  
+  const dat = data.coin.element_texts.map(({element, text}) => {
+    if (element.name == 'Region') return <p>Region: {text}</p>;
+    if (element.name == 'Mint') return <p>Mint: {text}</p>;
+    if (element.name == 'State') return <p>State: {text}</p>;
+    if (element.name == 'Authority') return <p>Authority: {text}</p>;
+    if (element.name == 'Issuer') return <p>Issuer: {text}</p>;
+    if (element.name == 'Date') return <p>Date: {text}</p>;
+    if (element.name == 'Material') return <p>Material: {text}</p>;
+    if (element.name == 'Denomination') return <p>Denomination: {text}</p>;
+    if (element.name == 'Obverse Type') return <p>Obverse Type: {text}</p>;
+    if (element.name == 'Reverse Type') return <p>Reverse Type: {text}</p>;
+    if (element.name == 'Obverse Legend') return <p>Obverse Legend: {text}</p>;
+    if (element.name == 'Reverse Legend') return <p>Reverse Legend: {text}</p>;
+    if (element.name == 'Bibliography') return <p>Bibliography: {text}</p>;
+    if (element.name == 'Title') return <p>Title: {text}</p>;
+    if (element.name == 'From Date') return <p>From Date: {text}</p>;
+    if (element.name == 'To Date') return <p>To Date: {text}</p>;
+    if (element.name == 'ObverseType') return <p>ObverseType: {text}</p>;
+    if (element.name == 'Image') return <p>Image: {text}</p>;
+    if (element.name == 'Source Image') return <p>Source Image: {text}</p>;
+    if (element.name == 'Rights Holder') return <p>Rights Holder: {text}</p>;
+    if (element.name == 'Type Category') return <p>Type Category: {text}</p>;
+    if (element.name == 'Issuing Authority') return <p>Issuing Authority: {text}</p>;
+    if (element.name == 'Diameter') return <p>Diameter: {text}</p>;
+    }
+  );
+  
+  return dat;
 };
+
 
 const CoinMap = () => {
   const { loading, error, data } = useQuery(gql`
@@ -199,7 +221,7 @@ const GraphQLClient = () => {
           <h2>Syrios Omeka Import 🚀</h2>
           <p>---------------------</p>
           {/* <ID /> */}
-          <ElementTexts />
+          <Region />
           <Coin />
           <h3>Contains ID, URL, Featured, Added, Modified</h3>
           <CoinMap />
