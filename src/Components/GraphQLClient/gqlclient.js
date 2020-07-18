@@ -3,8 +3,59 @@ import ApolloClient, { gql } from "apollo-boost";
 import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3001/graphql",
+  uri: "http://localhost:3002/graphql",
 });
+
+const Coin = () => {
+  const { loading, error, data } = useQuery(gql`
+    {
+      coin(id: 1415) {
+        id
+        obverse {
+          file_urls {
+            original
+          }
+        }
+        reverse {
+          file_urls {
+            original
+          }
+        }
+      }
+    }
+  `);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return (
+    <div>
+      <p>{data.coin.id}</p>
+      <img src={data.coin.obverse.file_urls.original} />
+      <img src={data.coin.reverse.file_urls.original} />
+    </div>
+  );
+};
+
+const ElementTexts = () => {
+  const { loading, error, data } = useQuery(gql`
+    {
+      coin(id: 1415) {
+        element_texts
+      }
+    }
+  `);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+    
+  return data.coin.element_texts.map(({ element, text }) => (
+    <div>
+      <p>---------------------</p>
+      <p>texts: {element.name}</p>
+      <p>texts: {text} </p>
+    </div>
+  ));
+};
 
 const CoinMap = () => {
   const { loading, error, data } = useQuery(gql`
@@ -147,6 +198,9 @@ const GraphQLClient = () => {
         <div>
           <h2>Syrios Omeka Import 🚀</h2>
           <p>---------------------</p>
+          {/* <ID /> */}
+          <ElementTexts />
+          <Coin />
           <h3>Contains ID, URL, Featured, Added, Modified</h3>
           <CoinMap />
           <p>---------------------</p>
