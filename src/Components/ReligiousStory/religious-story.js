@@ -88,7 +88,7 @@ const religiousStory = () => {
             className="religious-size-images"
           />
         </div>
-        <p id="religious-style-sub" data-aos="fade-left" style={{width: "300px", height:"200px", padding:"30px"}}>
+        <p id="religious-style-sub" data-aos="fade-left" style={{width: "300px", height:"200px", padding:"40px"}}>
           In this coin, we see Zeus Nicephorus – he actually carries Victory in his
           hand as he sits on a throne. This type was used over and over again. ​
         </p>
@@ -107,7 +107,7 @@ const religiousStory = () => {
             alt="Logo"
           />
         </div>
-        <p id="religious-style-sub" data-aos="fade-left" style={{width: "450px", height:"350px", padding:"45px"}}>
+        <p id="religious-style-sub" data-aos="fade-left" style={{width: "450px", padding:"40px"}}>
         "Seleucus offered sacrifice to the gods by burning a slain bull on an altar.
         And Zeus sent down his eagle, who grabbed one of the bull thighs and flew away.
         Seleucus sent his son to follow the bird. Eventually, the eagle dropped the sacrificial meat.
@@ -139,7 +139,7 @@ const religiousStory = () => {
       </div>
 
       <div className="religious-3-1">
-        <p id="religious-style-sub" data-aos="fade-left" style={{width:"500px",padding:"20px"}}>
+        <p id="religious-style-sub" data-aos="fade-left" style={{width:"500px",padding:"40px"}}>
           “Truly, Antiochus IV’s magnificence towards the gods is evidenced by the temple
           to [Zeus Olympius] at Athens, the only one in the whole world which begins to
           capture the greatness of the god.”​
@@ -208,7 +208,7 @@ const religiousStory = () => {
         <p id="religious-style-para" data-aos="fade-down">
           The lightning bolt reflects Zeus’ control over the weather.​
         </p>
-        <p id="religious-style-sub" data-aos="fade-in" style={{width:'300px', padding:'20px'}}>
+        <p id="religious-style-sub" data-aos="fade-in" style={{width:'400px', padding:'40px'}}>
           The Homeric poems refer to Zeus as “the gatherer of clouds,” “god of thunder,” and “god of lightning.” ​
         </p>
       </div>
@@ -241,7 +241,7 @@ const religiousStory = () => {
             alt="Logo"
             className="religious-size-images"
             data-aos="fade-right" />
-          <p id="religious-style-sub" data-aos="fade-right" style={{width: '400px'}}>
+          <p id="religious-style-sub" data-aos="fade-right" style={{width: "300px", padding:"40px"}}>
             A much later silver tridrachm possibly minted at Rome for Syria (c. 98 CE)
             features such a Zeus combined with a local god.  ​
           </p>
