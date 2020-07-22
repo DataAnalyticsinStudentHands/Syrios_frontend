@@ -20,7 +20,7 @@ import comp_9_left from "../data/intro-images/comp-9-left.png";
 import comp_9_right from "../data/intro-images/comp-9-right.png";
 import comp_11_left from "../data/intro-images/comp-11-left.png";
 import comp_11_right from "../data/intro-images/comp-11-right.png";
-// import comp_12_left from "../data/intro-images/comp-12-left.png";
+import comp_12_left from "../data/intro-images/comp-12-left.png";
 import comp_12_right from "../data/intro-images/comp-12-right.png";
 import comp_13_left from "../data/intro-images/comp-13-left.png";
 import comp_13_right from "../data/intro-images/comp-13-right.png";
@@ -106,6 +106,9 @@ const Intro = () => {
           LET ME EXPLORE
         </StyledLink>
       </div>
+
+  {/* SECTION 1 */}
+
       <div className="component-mix">
         <div className="threeD-coin">
           <p id="intro-style-para" data-aos="fade-left">
@@ -159,19 +162,21 @@ const Intro = () => {
             </p>
           </div>
         </div>
-        <div className="component-1">
+
+        <div className="intro-1-head" style={{width:"100%", height:"100%"}}>
+          <p id="intro-style-head" data-aos="fade-left">
+            Ancient coins have a tremendous story to tell, but we must first
+            learn how to read them.
+          </p>
           <img
             src={img_2}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para" data-aos="fade-left">
-            Ancient coins have a tremendous story to tell, but we must first
-            learn how to read them.
-          </p>
         </div>
-        <div className="component-1-2">
+
+        <div className="intro-1-2">
           <img
             src={img_2}
             alt="Logo"
@@ -183,7 +188,8 @@ const Intro = () => {
             dime.
           </p>
         </div>
-        <div className="component-2">
+
+        <div className="intro-1-3">
           <img
             src={img_2}
             alt="Logo"
@@ -200,32 +206,38 @@ const Intro = () => {
             data-aos="fade-left"
           />
         </div>
-        <div className="component-3">
-          <img
-            src={comp_3_left}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-up">
-            Both have images and writing on them called a coin’s <span style={{fontWeight:'bolder', fontStyle:"italic"}}>type</span>
+
+  {/* SECTION 2 */}
+
+        <div className="intro-2-head" style={{width:"100%", height:"100%"}}>
+          <p id="intro-style-head" data-aos="fade-up">
+            Both have images and writing on them called a coin’s <span style={{fontWeight:'bolder', fontStyle:"italic"}}>type</span>.
           </p>
-          <img
-            src={comp_3_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-left"
-          />
+          <div>
+            <img
+              src={comp_3_left}
+              alt="Logo"
+              className="size-images-head"
+              data-aos="fade-right"
+            />
+            <img
+              src={comp_3_right}
+              alt="Logo"
+              className="size-images-head"
+              data-aos="fade-left"
+            />
+          </div>
         </div>
-        <div className="component-4">
-          <div data-aos="flip-right">
+
+        <div className="intro-2-1">
+          <div data-aos="flip-right" style={{width:'300px'}}>
             <img
               src={comp_4_left}
               alt="Logo"
               className="size-images"
               data-aos=""
             />
-            <p id="style-caption">
+            <p id="intro-style-sub" style={{width:'300px', padding:'20px'}}>
               On the ancient bronze coin is Apollo (the Greek god of archery,
               music, and light).
             </p>
@@ -233,14 +245,15 @@ const Intro = () => {
           <p id="intro-style-para" data-aos="fade-up">
             On the front or <span style={{fontWeight:"bolder", fontStyle:"italic"}}>obverse</span>, we see the head of an important person.
           </p>
-          <div data-aos="flip-left">
+          <div data-aos="flip-left" style={{width:'300px'}}>
             <img src={comp_4_right} alt="Logo" className="size-images" />
-            <p id="style-caption">
+            <p id="intro-style-sub" style={{width:'300px', padding:'20px'}}>
               On the dime is Franklin D. Roosevelt (the 32nd U.S. President).{" "}
             </p>
           </div>
         </div>
-        <div className="component-5">
+
+        <div className="intro-2-2">
           <img
             src={comp_5_left_mix}
             alt="Logo"
@@ -257,10 +270,11 @@ const Intro = () => {
             data-aos="fade-up"
           />
         </div>
-        <div className="component-6">
-          <div className="label-image" data-aos="flip-right">
+
+        <div className="intro-2-3">
+          <div className="label-image" data-aos="flip-right" style={{width:'300px'}}>
             <img src={comp_6_left} alt="Logo" className="size-images" />
-            <p id="style-caption">
+            <p id="intro-style-sub" style={{width:'300px', padding:'20px'}}>
               This coin has a branch from a laurel tree. It was an important
               symbol for the god Apollo and for the trees that grew in Syria.
             </p>
@@ -268,24 +282,25 @@ const Intro = () => {
           <span id="intro-style-para" data-aos="fade-up">
             On the back or <span style={{fontWeight:'bolder', fontStyle:'italic'}}>reverse</span>, we see important symbols.
           </span>
-          <div className="label-image" data-aos="flip-left">
+          <div className="label-image" data-aos="flip-left" style={{width:'300px'}}>
             <img src={comp_6_right} alt="Logo" className="size-images" />
-            <span id="style-caption">
+            <p id="intro-style-sub" style={{width:'300px', padding:'20px'}}>
               On the dime is an olive branch (meaning peace), a lighted torch
               (meaning liberty), and an oak branch (meaning strength).
-            </span>
+            </p>
           </div>
         </div>
-        <div className="component-7">
+
+        <div className="intro-2-4">
           <img
             src={comp_7_left_mix}
             alt="Logo"
             className="size-images-mix"
             data-aos="fade-up"
           />
-          <span id="intro-style-para" data-aos="fade-in">
-            Just like our coins today, the symbols can change
-          </span>
+          <p id="intro-style-para" data-aos="fade-in">
+            Just like our coins today, the symbols can change.
+          </p>
           <img
             src={comp_7_right_mix}
             alt="Logo"
@@ -293,110 +308,91 @@ const Intro = () => {
             data-aos="fade-up"
           />
         </div>
-        <div className="component-8">
-          <h2
-            data-aos="slide-up"
-            id="intro-style-para"
-            style={{ width: "800px" }}
-          >
+
+  {/* SECTION 3 */}
+
+        <div className="intro-3-head" style={{width:"100%", height:"100%"}}>
+          <p data-aos="slide-up" id="intro-style-head">
             The citizens wanted to make sure that everyone knew that these coins
-            belonged to them
-          </h2>
+            belonged to them.
+          </p>
         </div>
-        <div className="component-9">
-          <img
-            src={comp_9_left}
-            alt="Logo"
-            className="size-images"
-          />
+
+        <div className="intro-3-1">
           <img
             src={comp_9_right}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para-blue" data-aos="fade-up">
+          <p id="intro-style-para" data-aos="fade-up">
             They wrote their name on the coins in Greek: ΑΝΤΙΟΧΕΩΝ, which means 'Belongs to the Antiochians'.
           </p>
         </div>
-        <div className="component-10">
-          <p className="align-subtitle">
-            <h2
-              data-aos="slide-up"
-              id="intro-style-para"
-              style={{ width: "800px" }}
-            >
-              The name was also important because it made clear the governmental <span style={{fontWeight:'bolder', fontStyle:'italic'}}>authority</span> who gave the cheap bronze value as money.
-            </h2>
+
+        <div className="intro-3-2">
+          <p id="intro-style-para" data-aos="fade-right">
+            The name was also important because it made clear the governmental <span style={{fontWeight:'bolder', fontStyle:'italic'}}>authority</span> who gave the cheap bronze value as money.
           </p>
         </div>
-        <div className="component-11">
-          <img
-            src={comp_11_left}
-            alt="Logo"
-            className="size-images"
-          />
+
+        <div className="intro-3-3">
+          <p id="intro-style-para" data-aos="fade-up">
+            We do the same with our money! The term 'United States of America'
+            carries a lot of weight!
+          </p>
           <img
             src={comp_11_right}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para-blue" data-aos="fade-up">
-            We do the same with our money! The term 'United States of America'
-            carries a lot of weight!
-          </p>
         </div>
-        {/* <div className="component-12">
+
+        <div className="intro-3-4">
+          <p id="intro-style-para" data-aos="fade-in">
+            The U.S. dime tells us its <span style={{fontWeight:'bolder', fontStyle:'italic'}}>denomination</span>, or how much it is worth.
+            <br></br>
+            <br></br>
+            <span id="intro-style-sub" style={{width:'300px', padding:'20px'}}>One Dime = 10 cents.</span>
+          </p>
           <img
-            src={comp_12_left}
-            alt="Logo"
-            className="size-images"
-          />
-          <img
-            src={comp_12_right}
+            src={comp_18_right}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para">
-            Like our U.S. dime, we can tell when a coin was minted or issued.
-          </p>
-        </div> */}
-        <div className="component-13">
-          <img
-            src={comp_13_left}
-            alt="Logo"
-            className="size-images"
-          />
-          <img
-            src={comp_13_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para-blue">
-            People in ancient Syria used Greek letters to indicate the date. Here, the ΔΡ tells us that the coin was minted in 55/56 CE, during the reign of emperor Nero.
-          </p>
         </div>
-        <div className="component-14">
+
+        <div className="intro-3-5">
           <img
-            src={comp_14_left}
+            src={comp_19_mix}
             alt="Logo"
-            className="size-images"
-          />
-          <img
-            src={comp_14_right}
-            alt="Logo"
-            className="size-images"
+            className="size-images-mix"
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-left">
+            Denomination marks are very rare for ancient Syria. Instead, people
+            knew the value based upon a coin’s metal, size, and images.
+          </p>
+        </div>
+
+  {/* SECTION 4 */}
+
+        <div className="intro-4-head" style={{width:"100%", height:"100%"}}>
+          <p id="intro-style-head" data-aos="fade-left">
             The U.S. dime also has other words, or <span style={{fontWeight:'bolder', fontStyle:'italic'}}>legends</span>. They celebrate our
             government and our values.
           </p>
+          <img
+            src={comp_14_right}
+            alt="Logo"
+            className="size-images-head"
+            data-aos="fade-right"
+          />
         </div>
-        <div className="component-15">
+
+        <div className="intro-4-1">
           <img
             src={comp_15}
             alt="Logo"
@@ -408,7 +404,14 @@ const Intro = () => {
             “Peace of the Emperors” being celebrated!
           </p>
         </div>
-        <div className="component-16">
+
+        <div className="intro-4-2-up">
+          <p id="intro-style-para" data-aos="fade-left">Like our U.S. dime, we can
+            tell when a coin was minted or <span style={{fontWeight:'bolder', fontStyle:'italic'}}>issued</span>.</p>
+        </div>
+
+        <div className="intro-4-2">
+          <p id="intro-style-sub" data-aos="fade-left" style={{width:'300px', padding:'20px'}}>This dime was struck in 2013 at the “S” or San Francisco mint.</p>
           <img
             src={comp_12_right}
             alt="Logo"
@@ -423,51 +426,36 @@ const Intro = () => {
             data-aos="flip-left"
             data-aos-duration="2500"
           />
-          <p id="intro-style-para" data-aos="fade-left">
-          Like our U.S. dime, we can tell when a coin was minted or issued.<br></br><p id="intro-style-para-blue">Our U.S. dime tells us when and where a coin was minted or issued. This coin was struck in 2013 at the “S” or San Francisco mint.</p>
+        </div>
+
+        <div className="intro-4-3-up">
+          <p id="intro-style-para" data-aos="fade-down"> People in ancient Syria used Greek letters to indicate the date. </p>
+        </div>
+
+        <div className="intro-4-3">
+          <img
+            src={comp_13_right}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
+          <p id="intro-style-sub" data-aos="fade-right" style={{width:'350px', padding:'20px'}}> Here, the ΔΡ tells us that the coin was minted in 55/56 CE, during the reign of emperor Nero.
           </p>
         </div>
-        <div className="component-17">
+
+        <div className="intro-4-4">
           <img
             src={comp_17}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para-blue" data-aos="fade-left">
+          <p id="intro-style-sub" data-aos="fade-left" style={{width:'300px', padding:'20px'}}>
             <span style={{fontWeight:'bolder', fontStyle:'italic'}}>Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
           </p>
         </div>
-        <div className="component-18">
-          <img
-            src={comp_18_left}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-in"
-          />
-          <img
-            src={comp_18_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-in">
-            The U.S. dime tells us its <span style={{fontWeight:'bolder', fontStyle:'italic'}}>denomination</span>, or how much it is worth.<br></br><br></br> <span id="intro-style-para-blue">One Dime = 10 cents.</span>
-          </p>
-        </div>
-        <div className="component-19">
-          <img
-            src={comp_19_mix}
-            alt="Logo"
-            className="size-images-mix"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-left">
-            Denomination marks are very rare for ancient Syria. Instead, people
-            knew the value based upon a coin’s metal, size, and images.
-          </p>
-        </div>
-        <div className="component-30">
+
+        <div className="intro-4-5">
           <div data-aos="flip-right">
             <img
               src={comp_20}
@@ -475,7 +463,7 @@ const Intro = () => {
               className="size-images"
               data-aos="fade-in"
             />
-            <p id="style-caption" data-aos="fade-down">
+            <p id="intro-style-sub" data-aos="fade-down" style={{width:'300px', padding:'20px'}}>
               A <span style={{fontWeight:'bolder', fontStyle:'italic'}}>countermark</span> was stamped on a circulating coin to give it extra value or keep it working as money.
             </p>
           </div>
@@ -484,11 +472,12 @@ const Intro = () => {
           </p>
           <div data-aos="flip-left">
             <img src={comp_21} alt="Logo" className="size-images" data-aos="fade-in"/>
-            <p id="style-caption" data-aos="fade-down">
+            <p id="intro-style-sub" data-aos="fade-down" style={{width:'300px', padding:'20px'}}>
               A coin could be cut in half too, likely as an attempt to make more coins when minting stopped.
             </p>
           </div>
         </div>
+
         {/* <div className="component-20">
           <img
             src={comp_20}
@@ -515,23 +504,73 @@ const Intro = () => {
             mint more.
           </p>
         </div> */}
-        <div className="component-22">
-          <StyledLink
-            to="/select-story"
-            id="intro-style-footer"
-            data-aos="fade-right"
-          >
+
+  {/* SECTION 5 */}
+
+        <div className="intro-5">
+          <h2 id="intro-style-para" data-aos="fade-right">
+            There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?
+          </h2>
+        </div>
+
+        <div className="intro-5-1">
+          <StyledLink to="/select-story" id="intro-style-footer" data-aos="fade-right">
             {" "}
             Tell me a Story{" "}
           </StyledLink>
-          <h2 id="intro-style-para">
-            There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?
-          </h2>
           <StyledLink to="/coins" id="intro-style-footer" data-aos="fade-left">
             {" "}
             Explore Coins{" "}
           </StyledLink>
         </div>
+
+        <div className="intro-resources" style={{width:"100%", height:"1100px"}}>
+            <p id="religious-style-rsrc">
+              Coin Images Courtesy of:
+              <br></br>
+              <br></br>
+              <ul>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 180 </a></li>
+                  <br></br>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+                  <br></br>
+                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald </a></li>
+                  <br></br>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84742087?rk=107296;4" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Chandon de Briailles 1446</a></li>
+                  <br></br>
+                <li><a href="http://numismatics.org/collection/1944.100.32580" target="_blank">American Numismatic Society - 1944.100.32580</a></li>
+                  <br></br>
+                <li><a href="http://numismatics.org/collection/1981.43.1" target="_blank">American Numismatic Society - 1981.43.1</a></li>
+                  <br></br>
+                <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank">American Numismatic Society - 1947.2.372</a></li>
+                  <br></br>
+                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank">Münzkabinett, Staatliche Museen zu Berlin, 18201044</a></li>
+                  <br></br>
+                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank">American Numismatic Society - 1996.71.3 </a></li>
+                  <br></br>
+                <li><a href="http://numismatics.org/collection/1999.2.2" target="_blank">American Numismatic Society - 1999.2.2</a></li>
+                  <br></br>
+                <li><a href="http://numismatics.org/collection/1944.100.65544" target="_blank">American Numismatic Society - 1944.100.65544</a></li>
+            </ul>
+              <br></br>
+              <br></br>
+              To read more, check these out:
+              <br></br>
+              <br></br>
+              <ul>
+                <li>Burnett, A. 1987. <span style={{fontStyle:"italic"}}>Coinage in the Roman World</span>. London: Seaby. </li>
+                  <br></br>
+                <li>Casey, P.J. 1986. <span style={{fontStyle:"italic"}}>Understanding Ancient Coins</span>. Norman: University of Oklahoma Press.</li>
+                  <br></br>
+                <li>Howgego, C. 1995. <span style={{fontStyle:"italic"}}>Ancient History from Coins</span>. London: Routledge.</li>
+                  <br></br>
+                <li>Howgego, C., Heuchert, V., and Burnett, A. (eds.) 2005. <span style={{fontStyle:"italic"}}>Coinage and Identity in the Roman Provinces</span>. Oxford University Press.</li>
+                  <br></br>
+                <li>Metcalf, W.E. (ed.). 2012. <span style={{fontStyle:"italic"}}>The Oxford Handbook of Greek and Roman Coinage</span>. Oxford University Press.</li>
+              </ul>
+            </p>
+        </div>
+
       </div>
     </div>
   );

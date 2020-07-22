@@ -53,14 +53,23 @@ const Economic = () => {
           coin
         </p>
       </div>
-      <div className="eco-component-1">
-        <img src={bronze} alt="Logo" data-aos="fade-right" className="size-images"/>
-        <p data-aos="fade-left">
+
+  {/* SECTION 1 */}
+
+      <div className="eco-1-head" style={{width:"100%", height:"100%"}}>
+        <p id="eco-style-head" data-aos="fade-up">
           This is a bronze coin
         </p>
+        <img
+          src={bronze}
+          alt="Logo"
+          data-aos="fade-right"
+          className="eco-img-head"
+        />
       </div>
-      <div className="eco-component-2">
-        <div style={{ width: '800px' }}>
+
+      <div className="eco-1-1">
+        <div style={{width:'600px'}}>
           <img
             src={bronze}
             alt="Logo"
@@ -171,35 +180,42 @@ const Economic = () => {
             data-aos-duration="2800"
           />
         </div>
-        <p data-aos="fade-in" style={{ width: '500px' }}>
+        <p data-aos="fade-in" style={{ width: '500px' }} id="eco-style-para">
           A regular person working on a farm or in a shop would earn around 18
           of these bronze coins a day.{" "}
         </p>
       </div>
-      <div className="eco-component-up-3">
-        <p data-aos="fade-down">
+
+      <div className="eco-1-2-up">
+        <p id="eco-style-para" data-aos="fade-down">
           People needed these coins to buy things in Antioch’s markets
         </p>
       </div>
-      <div className="eco-component-3">
+
+      <div className="eco-1-2">
         <img src={people} alt="Logo" data-aos="fade-in" />
-        <p id="style-para" data-aos="fade-in" style={{height:'305px', padding:'22px'}}>
+        <p id="eco-style-sub" data-aos="fade-in" style={{width:'350px', padding:'40px'}} >
           “Antioch, a city known to all the world… so richÍ is it in imported and
-          local goods.” <span style={{fontStyle:'italic'}}>Ammianus Marcellinus, Roman Antiquities</span> 14.8.8{" "}
+          local goods.”
+          <br></br>
+          <br></br>
+          - <span style={{fontStyle:'italic'}}>Ammianus Marcellinus, Roman Antiquities</span> 14.8.8{" "}
         </p>
       </div>
-      <div className="eco-component-4">
-        <p data-aos="fade-in">
+
+      <div className="eco-1-3">
+        <p id="eco-style-para" data-aos="fade-in">
           But this coin wasn’t worth very much, as it was made out of cheap
           bronze and not valuable gold or silver.{" "}
         </p>
-        <div>
-          <img src={bronze_caption} alt="Logo" data-aos="fade-right" />
-          <img src={silver_caption} alt="Logo" data-aos="fade-in" />
-          <img src={gold_caption} alt="Logo" data-aos="fade-left" />
+        <div style={{width:"800px"}}>
+          <img src={bronze_caption} alt="Logo" data-aos="fade-right" className="eco-size-images" />
+          <img src={silver_caption} alt="Logo" data-aos="fade-in" className="eco-size-images" />
+          <img src={gold_caption} alt="Logo" data-aos="fade-left" className="eco-size-images" />
         </div>
       </div>
-      <div className="eco-component-5">
+
+      <div className="eco-1-4">
         <div className="flex-column" style={{margin: '60px', width:'600px'}}>
           <div>
             <img
@@ -819,120 +835,126 @@ const Economic = () => {
             />
           </div>
         </div>
-        <p data-aos="fade-in" style={{width: '300px'}}>
+        <p data-aos="fade-in" style={{width: '400px'}} id="eco-style-para">
           In fact, some scholars think that it might have taken over 100 of
           these bronze coins to equal the value of only 1 silver tetradrachm!
         </p>
       </div>
-      <div className="eco-component-6">
-        <img
-          src={bronze}
-          alt="Logo"
-          style={{ padding: "10px" }}
-          data-aos="fade-right"
-        />
-        <p data-aos="fade-left">
+
+  {/* SECTION 2 */}
+
+      <div className="eco-2-head" style={{width:"100%", height:"100%"}}>
+        <p id="eco-style-head" data-aos="fade-up">
           This coin could still buy important items for a person living in
           Antioch.
         </p>
+        <img
+          src={bronze}
+          alt="Logo"
+          data-aos="fade-right"
+          className="eco-img-head"
+        />
       </div>
-      <div className="eco-component-7">
+
+      <div className="eco-2-1">
         <div style={{ margin: "50px" }}>
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="500"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="750"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1000"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1250"
           />
         </div>
-        <p data-aos="fade-in">
+        <p data-aos="fade-in" id="eco-style-para">
           Four bronze coins could buy a loaf of bread.
         </p>
         <img src={bread} alt="Logo" data-aos="fade-left" style={{ margin: "50px" }} />
       </div>
-      <div className="eco-component-up-8">
-        <p data-aos="fade-in">
+
+      <div className="eco-2-2-up">
+        <p data-aos="fade-in" id="eco-style-para">
           Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s
           the same as 2 school milk cartoons.
         </p>
       </div>
-      <div className="eco-component-8">
+
+      <div className="eco-2-2">
         <div style={{ padding: "10px" }}>
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="500"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="700"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="900"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1100"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1300"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1500"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1700"
           />
           <img
             src={bronze}
             alt="Logo"
-            id="comp-7-bronze"
+            id="eco-2-1-bronze"
             data-aos="fade-right"
             data-aos-duration="1900"
           />
@@ -956,27 +978,115 @@ const Economic = () => {
           data-aos-duration="1200"
         />
       </div>
-      <div className="eco-component-9">
-        <p data-aos="fade-up">
+
+  {/* SECTION 3 */}
+
+      <div className="eco-3-head" style={{width:"100%", height:"100%"}}>
+        <p data-aos="fade-up" id="eco-style-head">
           Most of the Antioch civic coins were spent locally.
         </p>
       </div>
-      <div className="eco-component-10" >
-        <p data-aos="fade-up" style={{margin: '60px'}}>
-          Not all coins stayed in Antioch though. Instead some of the coins
-          moved even hundreds of miles away.This speaks to all the trade routes running in and out of Antioch and
-          all the people coming and going from the city with little bronze coins in their pockets.
+
+      <div className="eco-3-1">
+        <p id="eco-style-para" data-aos="fade-down">
+          Not all coins stayed in Antioch though.
+        </p>
+      </div>
+
+      <div className="eco-3-2">
+        <p id="eco-style-para" data-aos="fade-left">
+          Instead some of the coins moved even hundreds of miles away.
+        </p>
+      </div>
+
+      <div className="eco-3-3" >
+        <p data-aos="fade-up" id="eco-style-para">
+          This speaks to all the trade routes running in and out of Antioch and
+          all the people coming and going from the city with little bronze coins
+          in their pockets.
+        </p>
+      </div>
+
+      <div className="eco-3-4" >
+        <p data-aos="fade-up" id="eco-style-para" style={{margin: '60px'}}>
+          Click on the map to explore all the places these little bronze civic
+          coins have been found through excavation.
         </p>
         <Tableau data-aos="fade-in" />
       </div>
-      <div className="eco-component-11">
-        <StyledLink to="/tableau-maps" id="eco-intro-style-footer">
+
+      <div className="eco-3-5" >
+        <p data-aos="fade-right" id="eco-style-para">
+          We cannot be sure that the Antiochians’ civic coins were worth money at
+          all of these places.
+        </p>
+      </div>
+
+      <div className="eco-3-6" >
+        <p data-aos="fade-left" id="eco-style-para">
+          Many other cities minted their own civic coins and may have refused to
+          accept the Antiochians’ coins in the market.
+        </p>
+      </div>
+
+      <div className="eco-4-1" >
+        <p data-aos="fade-up" id="eco-style-para">
+          Still, how far away the coins moved speaks to all the trade routes running
+          in and out of Antioch and all the people coming and going from the city
+          with little bronze coins in their pockets.
+        </p>
+      </div>
+
+      <div className="eco-4-2">
+        <StyledLink to="/tableau-maps" id="eco-intro-style-footer" data-aos="fade-right">
           Where did the civic coins move?
         </StyledLink>
-        <StyledLink to="/select-story" id="eco-intro-style-footer">
+        <StyledLink to="/select-story" id="eco-intro-style-footer" data-aos="fade-left">
           Tell me another story!
         </StyledLink>
       </div>
+
+      <div className="eco-resources" style={{width:"100%", height:"650px"}}>
+          <p id="religious-style-rsrc">
+            Coin Images Courtesy of:
+            <br></br>
+            <br></br>
+            <ul>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+                <br></br>
+              <li><a href="https://rpc.ashmus.ox.ac.uk/coin/73446" target="_blank">Roman Provincial Coinage Project</a></li>
+                <br></br>
+              <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank">American Numismatic Society - 1944.100.39966</a></li>
+            </ul>
+            <br></br>
+            <br></br>
+            To read more, check these out:
+            <br></br>
+            <br></br>
+            <ul>
+              <li>
+                Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley
+                in the Late Hellenistic and Early Roman Periods,” in C. Augé and F.
+                Duyrat (eds.), Les monnayages syriens: quel apport pour l'histoire du
+                Proche-Orient hellénistique et romain?: actes de la table ronde de Damas,
+                10-12 novembre 1999. Beirut: Institut Français d''Archéologie du Proche- Orient.
+                145-152.
+              </li>
+                <br></br>
+              <li>
+                Harl, K.W. 1996. <span style={{fontStyle:"italic"}}>Coinage in the
+                Roman Economy</span>, 300 B.C. to A.D. 700. Baltimore: Johns Hopkins University Press.
+              </li>
+                <br></br>
+              <li>
+                Scheidel, W., Morris, I. and Saller, R. (eds.), 2007, <span style={{fontStyle:"italic"}}>The Cambridge
+                Economic History of the Greco- Roman World. Cambridge University Press</span>.
+              </li>
+            </ul>
+          </p>
+      </div>
+
+
     </div>
   );
 };

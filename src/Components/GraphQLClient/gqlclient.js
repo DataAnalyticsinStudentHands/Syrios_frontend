@@ -3,8 +3,81 @@ import ApolloClient, { gql } from "apollo-boost";
 import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3001/graphql",
+  uri: "http://localhost:3002/graphql",
 });
+
+const Coin = () => {
+  const { loading, error, data } = useQuery(gql`
+    {
+      coin(id: 1415) {
+        id
+        obverse {
+          file_urls {
+            original
+          }
+        }
+        reverse {
+          file_urls {
+            original
+          }
+        }
+      }
+    }
+  `);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return (
+    <div>
+      <p>{data.coin.id}</p>
+      <img src={data.coin.obverse.file_urls.original} />
+      <img src={data.coin.reverse.file_urls.original} />
+    </div>
+  );
+};
+
+const Region = () => {
+  const { loading, error, data } = useQuery(gql`
+    {
+      coin(id: 1415) {
+        element_texts
+      }
+    }
+  `);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  
+  const dat = data.coin.element_texts.map(({element, text}) => {
+    if (element.name == 'Region') return <p>Region: {text}</p>;
+    if (element.name == 'Mint') return <p>Mint: {text}</p>;
+    if (element.name == 'State') return <p>State: {text}</p>;
+    if (element.name == 'Authority') return <p>Authority: {text}</p>;
+    if (element.name == 'Issuer') return <p>Issuer: {text}</p>;
+    if (element.name == 'Date') return <p>Date: {text}</p>;
+    if (element.name == 'Material') return <p>Material: {text}</p>;
+    if (element.name == 'Denomination') return <p>Denomination: {text}</p>;
+    if (element.name == 'Obverse Type') return <p>Obverse Type: {text}</p>;
+    if (element.name == 'Reverse Type') return <p>Reverse Type: {text}</p>;
+    if (element.name == 'Obverse Legend') return <p>Obverse Legend: {text}</p>;
+    if (element.name == 'Reverse Legend') return <p>Reverse Legend: {text}</p>;
+    if (element.name == 'Bibliography') return <p>Bibliography: {text}</p>;
+    if (element.name == 'Title') return <p>Title: {text}</p>;
+    if (element.name == 'From Date') return <p>From Date: {text}</p>;
+    if (element.name == 'To Date') return <p>To Date: {text}</p>;
+    if (element.name == 'ObverseType') return <p>ObverseType: {text}</p>;
+    if (element.name == 'Image') return <p>Image: {text}</p>;
+    if (element.name == 'Source Image') return <p>Source Image: {text}</p>;
+    if (element.name == 'Rights Holder') return <p>Rights Holder: {text}</p>;
+    if (element.name == 'Type Category') return <p>Type Category: {text}</p>;
+    if (element.name == 'Issuing Authority') return <p>Issuing Authority: {text}</p>;
+    if (element.name == 'Diameter') return <p>Diameter: {text}</p>;
+    }
+  );
+  
+  return dat;
+};
+
 
 const CoinMap = () => {
   const { loading, error, data } = useQuery(gql`
@@ -147,6 +220,9 @@ const GraphQLClient = () => {
         <div>
           <h2>Syrios Omeka Import 🚀</h2>
           <p>---------------------</p>
+          {/* <ID /> */}
+          <Region />
+          <Coin />
           <h3>Contains ID, URL, Featured, Added, Modified</h3>
           <CoinMap />
           <p>---------------------</p>
