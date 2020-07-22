@@ -7,7 +7,7 @@ import Dataloader from 'dataloader';
 import schema from './schema/Schema';
 import { graphql } from 'graphql';
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 const app = express();
 const cors = require('cors');
 
