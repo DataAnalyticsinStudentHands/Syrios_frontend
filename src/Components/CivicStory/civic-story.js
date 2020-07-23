@@ -313,7 +313,7 @@ const civicStory = () => {
       </div>
 
       <div className="civic-5-2">
-        <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'600px'}}/>
+        <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'450px'}}/>
         <p id="civic-style-sub" data-aos="fade-in" style={{width:'550px', padding:'40px'}} >
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
