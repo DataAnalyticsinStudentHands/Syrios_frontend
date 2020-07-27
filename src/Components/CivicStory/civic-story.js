@@ -42,7 +42,7 @@ const civicStory = () => {
 
   {/* SECTION 1 */}
 
-      <div className="civic-1-head" style={{width:"100%", height:"100%"}}>
+      <div className="civic-1-head">
         <p id="civic-style-head" data-aos="fade-up">
           This is a <strong>bronze coin</strong> minted by the civic government
           of Antioch for use by the citizens of Antioch.
@@ -63,7 +63,7 @@ const civicStory = () => {
             the Roman Empire.”
             <br></br>
             <br></br>
-            - Josephus, <span style={{fontStyle:"italic"}}>Wars of the Jews</span> 3.29
+            - Josephus, <em>Wars of the Jews</em> 3.29
           </p>
         </div>
         <div
@@ -84,7 +84,7 @@ const civicStory = () => {
             Alexandria in Egypt.” Strabo,
             <br></br>
             <br></br>
-            <span style={{fontStyle:"italic"}}>Geography</span> 16.2
+            <em>Geography</em> 16.2
           </p>
         </div>
       </div>
@@ -109,7 +109,7 @@ const civicStory = () => {
 
   {/* SECTION 2 */}
 
-      <div className="civic-2-head" style={{width:"100%", height:"100%"}}>
+      <div className="civic-2-head">
         <p id="civic-style-head" data-aos="fade-up">
           On the front of the coins, the citizens wrote their name: ΑΝΤΙΟΧΕΩΝ,
           which means “Belongs to the Antiochians.”
@@ -137,7 +137,7 @@ const civicStory = () => {
 
   {/* SECTION 3 */}
 
-      <div className="civic-3-head" style={{width:"100%", height:"100%"}}>
+      <div className="civic-3-head">
         <p id="civic-style-head" data-aos="fade-up">
           The government also added another message in Greek (just barely
           visible on this worn coin): MHTROPOLEWS.
@@ -152,7 +152,7 @@ const civicStory = () => {
 
       <div className="civic-3-1">
         <p id="civic-style-para" data-aos="fade-right">
-          This means <span style={{fontWeight:'bolder', fontStyle:'italic'}}>metropolis</span>.
+          This means <span id="term">metropolis</span>.
         </p>
       </div>
 
@@ -204,10 +204,10 @@ const civicStory = () => {
 
   {/* SECTION 4 */}
 
-      <div className="civic-4-head" style={{width:"100%", height:"900px"}}>
+      <div className="civic-4-head">
         <p id="civic-style-head" data-aos="fade-left">
           The images on the coins celebrate the local government. Here we see a
-          personification of the city’s <span style={{fontWeight:'bolder', fontStyle:'italic'}}>boule</span> – or council.
+          personification of the city’s <span id="term">boule</span> – or council.
         </p>
         <img
           src={boule_edit}
@@ -219,20 +219,20 @@ const civicStory = () => {
 
       <div className="civic-4-1-up">
         <p id="civic-style-para" data-aos="fade-down">
-          For example, ancient historians record that the boule gathered the <span style={{fontWeight:'bolder', fontStyle:'italic'}}>demos</span> – the citizen body – together to debate publicly in the city’s
+          For example, ancient historians record that the boule gathered the <span id="term">demos</span> – the citizen body – together to debate publicly in the city’s
           theatre.
         </p>
       </div>
 
       <div className="civic-4-1">
         <img src={theatre} alt="Logo" data-aos="fade-in" />
-        <p id="civic-style-sub" data-aos="fade-in" style={{width:'300px', padding:'40px'}}>
+        <p id="civic-style-sub" data-aos="fade-in">
           "Then the emperor’s lieutenant entered the theatre at Antioch, where
           the people regularly hold their public assemblies, and addressed the
           crowd which hurried there."
           <br></br>
           <br></br>
-          -Tacitus, <span style={{fontStyle:"italic"}}>Histories</span> 2.80
+          -Tacitus, <em>Histories</em> 2.80
         </p>
       </div>
 
@@ -270,13 +270,13 @@ const civicStory = () => {
 
       <div className="civic-4-5">
         <img src={festival} alt="Logo" data-aos="fade-in"/>
-        <p id="civic-style-sub" data-aos="fade-in" style={{width:'350px', padding:'40px'}}>
+        <p id="civic-style-sub" data-aos="fade-in">
           “The citizens of Antioch, a large and prosperous city, celebrate
           festivals virtually every day of the year in the city and in the
           surrounding area.”
           <br></br>
           <br></br>
-          - Herodian, <span style={{fontStyle:"italic"}}>History of the Roman Empire</span> 2.7.9
+          - Herodian, <em>History of the Roman Empire</em> 2.7.9
         </p>
       </div>
 
@@ -290,7 +290,7 @@ const civicStory = () => {
 
   {/* SECTION 5 */}
 
-      <div className="civic-5-head" style={{width:"100%", height:"100%"}}>
+      <div className="civic-5-head" >
         <p id="civic-style-head" data-aos="fade-up">
           Finally, the boule could lead the people in protest if they didn’t
           agree with the Roman emperor.
@@ -313,8 +313,8 @@ const civicStory = () => {
       </div>
 
       <div className="civic-5-2">
-        <img src={protest_2} alt="Logo" data-aos="fade-in" style={{width:'450px'}}/>
-        <p id="civic-style-sub" data-aos="fade-in" style={{width:'550px', padding:'40px'}} >
+        <img src={protest_2} alt="Logo" data-aos="fade-in"/>
+        <p id="civic-style-sub" data-aos="fade-in" >
           “The emperor Marcus Aurelius pardoned…the Antiochians, who had said
           many things against Marcus in favor of Cassius, a rival to the throne.
           The emperor had previously taken away their shows and public
@@ -322,8 +322,7 @@ const civicStory = () => {
           edict against them.”
           <br></br>
           <br></br>
-          - Scriptores Historiae Augustae, <span style={{fontStyle:"italic"}}>Marcus
-          Aurelius</span> 25.8-12
+          - Scriptores Historiae Augustae, <em>Marcus Aurelius</em> 25.8-12
         </p>
       </div>
 
@@ -337,7 +336,7 @@ const civicStory = () => {
 
   {/* SECTION 6 */}
 
-      <div className="civic-6-head" style={{width:"100%", height:"100%"}}>
+      <div className="civic-6-head">
         <p id="civic-style-head" data-aos="fade-up">
           Unfortunately, detailed records for the boule have not survived, so we
           don’t know a lot about the individual officials.
@@ -353,10 +352,15 @@ const civicStory = () => {
 
       <div className="civic-6-1">
         <img src={inscription} alt="Logo" data-aos="fade-down" />
-        <div style={{margin:'20px'}}>
-        <p id="civic-style-sub" data-aos="fade-up" style={{width:'400px', padding:'40px'}}>
+        <div>
+        <p id="civic-style-sub" data-aos="fade-up">
           "Marcus Aemilius Marcianus Asclepiades, the bouleutes of
-          the Antiochians."<br></br><br></br>This man also worked as a tax-collector for the Romans.<br></br><br></br>Notice how this inscription is written in both Greek (top) and Palmyrene, a local Syrian language (bottom).
+          the Antiochians."
+          <br></br><br></br>
+          This man also worked as a tax-collector for the Romans.
+          <br></br><br></br>
+          Notice how this inscription is written in both Greek (top) and Palmyrene,
+          a local Syrian language (bottom).
           <br></br>
         </p>
         </div>
@@ -380,7 +384,7 @@ const civicStory = () => {
         </p>
       </div>
 
-      <div className="civic-resources" style={{width:"100%", height:"100%"}}>
+      <div className="civic-resources">
           <p id="religious-style-rsrc">
             Coin Images Courtesy of:
             <br></br>
@@ -402,13 +406,27 @@ const civicStory = () => {
             <br></br>
             <br></br>
             <ul>
-              <li>Butcher, K. 2003. <span style={{fontStyle:"italic"}}>Roman Syria and the Near East</span>. Los Angeles: J. Paul Getty Museum. </li>
+              <li>
+                Butcher, K. 2003. <em>Roman Syria and the Near East</em>.
+                Los Angeles: J. Paul Getty Museum.
+              </li>
                 <br></br>
-              <li>Harl, K.W. 1987. <span style={{fontStyle:"italic"}}>Civic Coins and Civic Politics in the Roman East</span>, A.D. 180-275. Berkeley: University of California Press.</li>
+              <li>
+                Harl, K.W. 1987. <em>Civic Coins and Civic Politics in the Roman
+                East</em>, A.D. 180-275. Berkeley: University of California Press.
+              </li>
                 <br></br>
-              <li>Noreña, C.F. 2016. "Heritage and Homogeneity: The Civic Coinage of Roman Antioch," in S. Alcock, M. Egri, and J. Frakes (eds.), <span style={{fontStyle:"italic"}}>Beyond Boundaries: Connecting Visual Cultures in the Provinces of Ancient Rome</span>. Los Angeles: Getty Publications. 294-306.</li>
+              <li>
+                Noreña, C.F. 2016. "Heritage and Homogeneity: The Civic Coinage
+                of Roman Antioch," in S. Alcock, M. Egri, and J. Frakes (eds.),
+                <em>Beyond Boundaries: Connecting Visual Cultures in the Provinces
+                of Ancient Rome</em>. Los Angeles: Getty Publications. 294-306.
+              </li>
                 <br></br>
-              <li>Yon, J.-B. 2012. <span style={{fontStyle:"italic"}}>Inscriptions grecques et latines de la Syrie, XVII/1: Palmyre</span>. Beirut: Presses de l’IFPO, 191-192, no. 196</li>
+              <li>
+                Yon, J.-B. 2012. <em>Inscriptions grecques et latines de la Syrie,
+                XVII/1: Palmyre</em>. Beirut: Presses de l’IFPO, 191-192, no. 196
+              </li>
             </ul>
           </p>
       </div>
