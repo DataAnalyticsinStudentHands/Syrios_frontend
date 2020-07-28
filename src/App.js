@@ -15,6 +15,7 @@ import Religious from "./Components/ReligiousStory/religious-story";
 import TableauMaps from "./Components/MapCoins/map";
 import Gods from "./Components/GodsPortal/gods";
 import ContactUs from "./Components/ContactUs/contact";
+import About from "./Components/About/about";
 import GraphQLClient from "./Components/GraphQLClient/gqlclient";
 // import MetaTags from 'react-meta-tags'; //* importing Meta tags for graph url
 
@@ -98,6 +99,9 @@ const App = () => {
               </NavDropdown>
             </Nav>
             <Nav>
+              <Nav.Link href="about">About</Nav.Link>
+            </Nav>
+            <Nav>
               <Nav.Link href="contact-us">Contact Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -116,6 +120,7 @@ const App = () => {
           <Route exact path="/tableau-maps" component={TableauMaps} />
           <Route exact path="/gods-portal" component={Gods} />
           <Route exact path="/contact-us" component={ContactUs} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/graphql-client" component={GraphQLClient}/>
           {/* <Route exact path="/" component={Demo}/> */}
           <Route
