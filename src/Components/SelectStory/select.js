@@ -36,6 +36,14 @@ const Select = () => {
         >
           Tell me a Religious Story
         </Link>
+        <Link
+          to="/visitors-story"
+          data-aos="fade-right"
+          data-aos-duration="1600"
+          id="style-select-items"
+        >
+          Tell me a Visitors Story
+        </Link>
       </div>
     </div>
   );

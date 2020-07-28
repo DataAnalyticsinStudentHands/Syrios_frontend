@@ -56,7 +56,7 @@ const Economic = () => {
 
   {/* SECTION 1 */}
 
-      <div className="eco-1-head" style={{width:"100%", height:"100%"}}>
+      <div className="eco-1-head">
         <p id="eco-style-head" data-aos="fade-up">
           This is a bronze coin
         </p>
@@ -180,7 +180,7 @@ const Economic = () => {
             data-aos-duration="2800"
           />
         </div>
-        <p data-aos="fade-in" style={{ width: '500px' }} id="eco-style-para">
+        <p data-aos="fade-in" id="eco-style-para">
           A regular person working on a farm or in a shop would earn around 18
           of these bronze coins a day.{" "}
         </p>
@@ -194,12 +194,12 @@ const Economic = () => {
 
       <div className="eco-1-2">
         <img src={people} alt="Logo" data-aos="fade-in" />
-        <p id="eco-style-sub" data-aos="fade-in" style={{width:'350px', padding:'40px'}} >
+        <p id="eco-style-sub" data-aos="fade-in">
           “Antioch, a city known to all the world… so richÍ is it in imported and
           local goods.”
           <br></br>
           <br></br>
-          - <span style={{fontStyle:'italic'}}>Ammianus Marcellinus, Roman Antiquities</span> 14.8.8{" "}
+          - <em>Ammianus Marcellinus, Roman Antiquities</em> 14.8.8
         </p>
       </div>
 
@@ -843,7 +843,7 @@ const Economic = () => {
 
   {/* SECTION 2 */}
 
-      <div className="eco-2-head" style={{width:"100%", height:"100%"}}>
+      <div className="eco-2-head">
         <p id="eco-style-head" data-aos="fade-up">
           This coin could still buy important items for a person living in
           Antioch.
@@ -981,7 +981,7 @@ const Economic = () => {
 
   {/* SECTION 3 */}
 
-      <div className="eco-3-head" style={{width:"100%", height:"100%"}}>
+      <div className="eco-3-head">
         <p data-aos="fade-up" id="eco-style-head">
           Most of the Antioch civic coins were spent locally.
         </p>
@@ -1046,7 +1046,7 @@ const Economic = () => {
         </StyledLink>
       </div>
 
-      <div className="eco-resources" style={{width:"100%", height:"650px"}}>
+      <div className="eco-resources">
           <p id="religious-style-rsrc">
             Coin Images Courtesy of:
             <br></br>
@@ -1074,13 +1074,13 @@ const Economic = () => {
               </li>
                 <br></br>
               <li>
-                Harl, K.W. 1996. <span style={{fontStyle:"italic"}}>Coinage in the
-                Roman Economy</span>, 300 B.C. to A.D. 700. Baltimore: Johns Hopkins University Press.
+                Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C.
+                to A.D. 700. Baltimore: Johns Hopkins University Press.
               </li>
                 <br></br>
               <li>
-                Scheidel, W., Morris, I. and Saller, R. (eds.), 2007, <span style={{fontStyle:"italic"}}>The Cambridge
-                Economic History of the Greco- Roman World. Cambridge University Press</span>.
+                Scheidel, W., Morris, I. and Saller, R. (eds.), 2007, <em>The Cambridge
+                Economic History of the Greco- Roman World. Cambridge University Press</em>.
               </li>
             </ul>
           </p>
