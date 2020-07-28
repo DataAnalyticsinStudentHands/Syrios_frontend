@@ -1,7 +1,8 @@
 #maps-style-select-items {
     text-decoration: none;
     text-align: center;
-    background-image: var(--div-bg-2);
+    /* background-image: var(--div-bg-2); */
+    background-color: #2d616a;
     margin: 10px;
     padding: 10px;
     font-size: xx-large;

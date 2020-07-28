@@ -36,7 +36,7 @@ const religiousStory = () => {
 
   {/* SECTION 1 */}
 
-      <div className="religious-1-head" style={{width:"100%", height:"100%"}}>
+      <div className="religious-1-head" >
         <p id="religious-style-head" data-aos="fade-up">
           This is the Greek god Zeus.
         </p>
@@ -68,7 +68,7 @@ const religiousStory = () => {
 
   {/* SECTION 2 */}
 
-      <div className="religious-2-head" style={{width:"100%", height:"100%"}}>
+      <div className="religious-2-head" >
       <p id="religious-style-head" data-aos="fade-up">
       The kings of the Seleucid Empire especially thought of Zeus as their special protector.
       </p>
@@ -88,7 +88,7 @@ const religiousStory = () => {
             className="religious-size-images"
           />
         </div>
-        <p id="religious-style-sub" data-aos="fade-left" style={{width: "300px", height:"200px", padding:"40px"}}>
+        <p id="religious-style-sub" data-aos="fade-left">
           In this coin, we see Zeus Nicephorus – he actually carries Victory in his
           hand as he sits on a throne. This type was used over and over again. ​
         </p>
@@ -107,7 +107,7 @@ const religiousStory = () => {
             alt="Logo"
           />
         </div>
-        <p id="religious-style-sub" data-aos="fade-left" style={{width: "450px", padding:"40px"}}>
+        <p id="religious-style-sub" data-aos="fade-left">
         "Seleucus offered sacrifice to the gods by burning a slain bull on an altar.
         And Zeus sent down his eagle, who grabbed one of the bull thighs and flew away.
         Seleucus sent his son to follow the bird. Eventually, the eagle dropped the sacrificial meat.
@@ -126,20 +126,20 @@ const religiousStory = () => {
 
   {/* SECTION 3 */}
 
-      <div className="religious-3-head" style={{width:"100%", height:"100%"}}>
+      <div className="religious-3-head" >
         <p id="religious-style-head" data-aos="fade-left">
           King Antiochus IV especially revered Zeus.​
         </p>
       </div>
 
       <div className="religious-3-1-up">
-        <p id="religious-style-para" data-aos="fade-left" style={{width:"800px"}}>
+        <p id="religious-style-para" data-aos="fade-left">
           He contributed to a building of a temple to Zeus in Athens. ​
         </p>
       </div>
 
       <div className="religious-3-1">
-        <p id="religious-style-sub" data-aos="fade-left" style={{width:"500px",padding:"40px"}}>
+        <p id="religious-style-sub" data-aos="fade-left">
           “Truly, Antiochus IV’s magnificence towards the gods is evidenced by the temple
           to [Zeus Olympius] at Athens, the only one in the whole world which begins to
           capture the greatness of the god.”​
@@ -163,7 +163,7 @@ const religiousStory = () => {
 
       <div className="religious-3-2">
         <img src={temple_2} alt="Logo" data-aos="fade-in" />
-        <p id="religious-style-sub" data-aos="fade-in" style={{width:'500px', padding:'40px'}}>
+        <p id="religious-style-sub" data-aos="fade-in">
         “At Antioch he projected a magnificent temple to Jupiter Capitolinus, of which
         not only the ceiling was to be overlaid with gold, but the whole of the walls were
         to be covered with gold leaf.”​
@@ -188,13 +188,14 @@ const religiousStory = () => {
           className="religious-size-images"
         />
         <p id="religious-style-para" data-aos="fade-left">
-          On the <span style={{fontWeight:'bolder', fontStyle:"italic"}}>obverse</span> of this bronze coin is the head of Zeus.
+          On the <span id="term">obverse</span> of this bronze coin is the head of Zeus.
         </p>
       </div>
 
       <div className="religious-3-5">
         <p id="religious-style-para" data-aos="fade-left">
-          On the <span style={{fontWeight:'bolder', fontStyle:"italic"}}>reverse</span> of this coin, we see Zeus’ eagle. In its talons is a lightning bolt.
+          On the <span id="term">reverse</span> of this coin, we see Zeus’ eagle.
+          In its talons is a lightning bolt.
         </p>
         <img
           src={zeus_coin3}
@@ -208,7 +209,7 @@ const religiousStory = () => {
         <p id="religious-style-para" data-aos="fade-down">
           The lightning bolt reflects Zeus’ control over the weather.​
         </p>
-        <p id="religious-style-sub" data-aos="fade-in" style={{width:'400px', padding:'40px'}}>
+        <p id="religious-style-sub" data-aos="fade-in">
           The Homeric poems refer to Zeus as “the gatherer of clouds,” “god of thunder,” and “god of lightning.” ​
         </p>
       </div>
@@ -216,7 +217,7 @@ const religiousStory = () => {
       <div className="religious-3-7">
         <p id="religious-style-para" data-aos="fade-right">
           In fact, many coins minted at Antioch feature a lightning bolt to refer to Zeus.
-          This symbol is one of Zeus’ <span style={{fontWeight:'bolder', fontStyle:"italic"}}>attributes</span>. ​
+          This symbol is one of Zeus’ <span id="term">attributes</span>. ​
         </p>
         <img
           src={zeus_coin4}
@@ -228,7 +229,7 @@ const religiousStory = () => {
 
   {/* SECTION 4 */}
 
-      <div className="religious-4-head" style={{width:"100%", height:"100%"}}>
+      <div className="religious-4-head" >
         <p id="religious-style-head" data-aos="fade-down">
           But Zeus was not only a god for the kings. He was a god for the people too.​
         </p>
@@ -241,7 +242,7 @@ const religiousStory = () => {
             alt="Logo"
             className="religious-size-images"
             data-aos="fade-right" />
-          <p id="religious-style-sub" data-aos="fade-right" style={{width: "300px", padding:"40px"}}>
+          <p id="religious-style-sub" data-aos="fade-right">
             A much later silver tridrachm possibly minted at Rome for Syria (c. 98 CE)
             features such a Zeus combined with a local god.  ​
           </p>
@@ -254,14 +255,14 @@ const religiousStory = () => {
 
       <div className="religious-4-2">
         <p id="religious-style-para" data-aos="fade-up">
-          This is called <span style={{fontWeight:'bolder', fontStyle:"italic"}}>syncretism</span>,
-          where belief systems are blended together. ​
+          This is called <span id="term">syncretism</span>, where belief systems
+          are blended together. ​
         </p>
       </div>
 
   {/* SECTION 5 */}
 
-      <div className="religious-5-head" style={{width:"100%", height:"100%"}}>
+      <div className="religious-5-head" >
         <p id="religious-style-head" data-aos="fade-left">
           The people of Antioch in particular also worshipped Zeus. Our best evidence
           comes from their civic coins. ​
@@ -269,7 +270,7 @@ const religiousStory = () => {
       </div>
 
       <div className="religious-5-1-up">
-        <p id="religious-style-para" data-aos="fade-up" style={{width:'600px'}}>
+        <p id="religious-style-para" data-aos="fade-up">
           The very first coins minted by the citizens under Seleucus I feature Zeus and a
           lightning bolt, plus the name of the Antiochians. ​
         </p>
@@ -344,7 +345,7 @@ const religiousStory = () => {
         </Link>
       </div>
 
-      <div className="religious-resources" style={{width:"100%", height:"100%"}}>
+      <div className="religious-resources" >
           <p id="religious-style-rsrc">
             Coin Images Courtesy of:
             <br></br>
@@ -368,13 +369,13 @@ const religiousStory = () => {
             <br></br>
             <br></br>
             <ul>
-              <li>Nicholas Wright, “Seleucid Royal Cult, Indigenous Religious Traditions, and Radiate Crowns: The Numismatic Evidence,” <span style={{fontStyle:"italic"}}>Mediterranean Archaeology</span> 18 (2005), 67-82.</li>
+              <li>Nicholas Wright, “Seleucid Royal Cult, Indigenous Religious Traditions, and Radiate Crowns: The Numismatic Evidence,” <em>Mediterranean Archaeology</em> 18 (2005), 67-82.</li>
                 <br></br>
-              <li>Nicholas Wright, “Non-Greek Religious Imagery on the Coinage of Seleucid Syria,” <span style={{fontStyle:"italic"}}>Mediterranean Archaeology</span> 22/23 (2009/10), 193-206.</li>
+              <li>Nicholas Wright, “Non-Greek Religious Imagery on the Coinage of Seleucid Syria,” <em>Mediterranean Archaeology</em> 22/23 (2009/10), 193-206.</li>
                 <br></br>
-              <li>Kent J. Rigsby, “Seleucid Notes,” <span style={{fontStyle:"italic"}}>Transactions of the American Philological Association</span> 110 (1980), 233-254.</li>
+              <li>Kent J. Rigsby, “Seleucid Notes,” <em>Transactions of the American Philological Association</em> 110 (1980), 233-254.</li>
                 <br></br>
-              <li><a href="https://journals.openedition.org/syria/344?lang=en" target="_blank">Kevin Butcher, “Two Syrian Deities,” <span style={{fontStyle:"italic"}}>Syria</span> 84 (2007)</a></li>
+              <li><a href="https://journals.openedition.org/syria/344?lang=en" target="_blank">Kevin Butcher, “Two Syrian Deities,” <em>Syria</em> 84 (2007)</a></li>
             </ul>
           </p>
       </div>
