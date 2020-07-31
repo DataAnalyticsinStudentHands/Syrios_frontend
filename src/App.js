@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
-import NavBarLogo from "./Components/data/intro-images/Logo.png"
-import Intro from "./Components/IntroPage/intro";
-import Syrios from "./Components/FetchAPIdata/syrios"; //* uncomment this import to retrieve objects from "https://sites.lib.uh.edu/kmneuma2/api/items" API
-import Animate from "./Components/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
-import SelectStory from "./Components/SelectStory/select";
-import Explore from "./Components/LetMeExplore/explore";
-import Civic from "./Components/CivicStory/civic-story";
-import Economic from "./Components/EconomicStory/economic-story";
-import Religious from "./Components/ReligiousStory/religious-story";
-import Visitors from "./Components/VisitorsStory/visitors-story";
-import TableauMaps from "./Components/MapCoins/map";
-import Gods from "./Components/GodsPortal/gods";
-import ContactUs from "./Components/ContactUs/contact";
-import About from "./Components/About/about";
-import GraphQLClient from "./Components/GraphQLClient/gqlclient";
+import NavBarLogo from "./app/data/intro-images/Logo.png"
+import Intro from "./app/IntroPage/intro";
+import Syrios from "./app/FetchAPIdata/syrios"; //* uncomment this import to retrieve objects from "https://sites.lib.uh.edu/kmneuma2/api/items" API
+import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
+import SelectStory from "./app/SelectStory/select";
+import Explore from "./app/LetMeExplore/explore";
+import Civic from "./app/CivicStory/civic-story";
+import Economic from "./app/EconomicStory/economic-story";
+import Religious from "./app/ReligiousStory/religious-story";
+import Visitors from "./app/VisitorsStory/visitors-story";
+import TableauMaps from "./app/MapCoins/map";
+import Gods from "./app/GodsPortal/gods";
+import ContactUs from "./app/ContactUs/contact";
+import About from "./app/About/about";
+import GraphQLClient from "./app/GraphQLClient/gqlclient";
 // import MetaTags from 'react-meta-tags'; //* importing Meta tags for graph url
 
 // import Demo from "./Components/Demo/demo"
