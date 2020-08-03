@@ -14,6 +14,7 @@ import Economic from "./app/EconomicStory/economic-story";
 import Religious from "./app/ReligiousStory/religious-story";
 import Visitors from "./app/VisitorsStory/visitors-story";
 import TableauMaps from "./app/MapCoins/map";
+import Download from "./app/CoinsDownload/download";
 import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/ContactUs/contact";
 import About from "./app/About/about";
@@ -100,6 +101,10 @@ const App = () => {
                   {" "}
                   <DropDownLink to="/omeka-database">View a Catalog</DropDownLink>
                 </NavDropdown.Item>
+                <NavDropdown.Item>
+                  {" "}
+                  <DropDownLink to="/download">Download Dataset</DropDownLink>
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>
@@ -123,6 +128,7 @@ const App = () => {
           <Route exact path="/religious-story" component={Religious} />
           <Route exact path="/visitors-story" component={Visitors} />
           <Route exact path="/tableau-maps" component={TableauMaps} />
+          <Route exact path="/download" component={Download}/>
           <Route exact path="/gods-portal" component={Gods} />
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
