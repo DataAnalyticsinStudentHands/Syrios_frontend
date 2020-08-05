@@ -1,7 +1,9 @@
 import React from "react";
+import axios from "axios";
 import download from '../data/images/download.png';
 import { FormErrors } from './FormErrors';
 import uploadedFileLink from '../data/Antioch_Dataset_08032020.zip'
+
 
 class Download extends React.Component{
 
@@ -22,8 +24,9 @@ class Download extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        //we need to connect to backend for email and download
-        console.log(this.state);
+        //we still need to connect to backend for download
+        //send data for email
+        axios.post('http://localhost:3002/send', this.state);
     }
 
     handleUserInput = (e) => {
@@ -73,7 +76,7 @@ class Download extends React.Component{
                             </p>
                             <p> Please provide your your name and email address in the form on the left side to start the download.
                             </p>
-                            <img src={download} alt="Screenshot dataset" class="w-100"></img>
+                            <img src={download} alt="Screenshot dataset" className="w-100"></img>
                         </div>
                         <div className="col-3">
                             <form className="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">

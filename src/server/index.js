@@ -3,6 +3,8 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import fetch from 'node-fetch';
+import nodemailer from 'nodemailer';
+import bodyParser from 'body-parser';
 import Dataloader from 'dataloader';
 import schema from './schema/Schema';
 
@@ -51,12 +53,44 @@ async function loadData(url: string) {
   return data;
 }
 
+// setup nodemailer transport - using local sendmail
+const transporter = nodemailer.createTransport({
+  sendmail: true,
+  newline: 'unix',
+  path: '/usr/sbin/sendmail',
+});
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// POST route form email sending from download form
+app.post('/send', (req, res) => {
+  const mailOptions = {
+    from: 'Syrios Site Watcher <dashadmin@uh.edu>',
+    to: 'kmneuma2@central.uh.edu',
+    subject: 'New entry at Syrios download form',
+    text: `From: ${req.body.email} Name: ${req.body.name}`,
+  };
+
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      res.json({
+        status: 'fail',
+        error: err,
+      });
+    } else {
+      res.json({
+        status: `success ${data}`,
+      });
+    }
+  });
+});
+
 app.use(
   '/graphql',
-  cors(),
   graphqlHTTP(() => {
     const loader = new Dataloader(keys => Promise.all(keys.map(loadData)));
-
     return {
       schema,
       graphiql: true,
