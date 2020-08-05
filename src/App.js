@@ -19,10 +19,6 @@ import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/ContactUs/contact";
 import About from "./app/About/about";
 import GraphQLClient from "./app/GraphQLClient/gqlclient";
-// import MetaTags from 'react-meta-tags'; //* importing Meta tags for graph url
-
-// import Demo from "./Components/Demo/demo"
-
 import {
   BrowserRouter as Router,
   Route,

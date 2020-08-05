@@ -1052,11 +1052,11 @@ const Economic = () => {
             <br></br>
             <br></br>
             <ul>
-              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
                 <br></br>
-              <li><a href="https://rpc.ashmus.ox.ac.uk/coin/73446" target="_blank">Roman Provincial Coinage Project</a></li>
+              <li><a href="https://rpc.ashmus.ox.ac.uk/coin/73446" target="_blank" rel="noopener noreferrer">Roman Provincial Coinage Project</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank">American Numismatic Society - 1944.100.39966</a></li>
+              <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.39966</a></li>
             </ul>
             <br></br>
             <br></br>

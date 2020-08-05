@@ -351,17 +351,17 @@ const religiousStory = () => {
             <br></br>
             <br></br>
             <ul>
-              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b85678605" target="_blank">Bibliothèque nationale de France, département Monnaies, médailles et antiques, C 2089</a></li>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b85678605" target="_blank" rel="noopener noreferrer">Bibliothèque nationale de France, département Monnaies, médailles et antiques, C 2089</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1948.19.2338" target="_blank">American Numismatic Society 1948.19.2338</a></li>
+              <li><a href="http://numismatics.org/collection/1948.19.2338" target="_blank" rel="noopener noreferrer">American Numismatic Society 1948.19.2338</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1953.171.1677" target="_blank">American Numismatic Society 1953.171.1677</a></li>
+              <li><a href="http://numismatics.org/collection/1953.171.1677" target="_blank" rel="noopener noreferrer">American Numismatic Society 1953.171.1677</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1948.19.1983" target="_blank">American Numismatic Society 1948.19.1983</a></li>
+              <li><a href="http://numismatics.org/collection/1948.19.1983" target="_blank" rel="noopener noreferrer">American Numismatic Society 1948.19.1983</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1944.100.75011" target="_blank">American Numismatic Society 1944.100.75011 </a></li>
+              <li><a href="http://numismatics.org/collection/1944.100.75011" target="_blank" rel="noopener noreferrer">American Numismatic Society 1944.100.75011 </a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1967.152.609?lang=en" target="_blank">American Numismatic Society - 1967.152.609 </a></li>
+              <li><a href="http://numismatics.org/collection/1967.152.609?lang=en" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1967.152.609 </a></li>
             </ul>
             <br></br>
             <br></br>
@@ -375,7 +375,7 @@ const religiousStory = () => {
                 <br></br>
               <li>Kent J. Rigsby, “Seleucid Notes,” <em>Transactions of the American Philological Association</em> 110 (1980), 233-254.</li>
                 <br></br>
-              <li><a href="https://journals.openedition.org/syria/344?lang=en" target="_blank">Kevin Butcher, “Two Syrian Deities,” <em>Syria</em> 84 (2007)</a></li>
+              <li><a href="https://journals.openedition.org/syria/344?lang=en" target="_blank" rel="noopener noreferrer">Kevin Butcher, “Two Syrian Deities,” <em>Syria</em> 84 (2007)</a></li>
             </ul>
           </p>
       </div>
