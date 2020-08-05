@@ -1,2 +1,13 @@
+# Dependency directory
 node_modules
+
 build
+
+
+# IntelliJ Files
+*.iml
+*.ipr
+*.iws
+/out/
+.idea/
+.idea_modules/
