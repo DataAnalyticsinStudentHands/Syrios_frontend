@@ -19,6 +19,8 @@ import equal_to from "../data/economic-images/equal-to.png";
 import bread from "../data/economic-images/bread.png";
 import jug from "../data/economic-images/jug.png";
 import milk from "../data/economic-images/milk.png";
+import citycoin1 from "../data/economic-images/citycoin1.png";
+import citycoin2 from "../data/economic-images/citycoin2.png";
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -45,7 +47,7 @@ const Economic = () => {
           Economic
         </h1>
         <p data-aos="slide-up">Story</p>
-        <p data-aos-duration="4000" data-aos="fade-in" id="sub-title">
+        <p data-aos-duration="3000" data-aos="fade-in" id="sub-title">
           a{" "}
           <strong data-aos="fade-in" id="bronze">
             BRONZE
@@ -58,7 +60,7 @@ const Economic = () => {
 
       <div className="eco-1-head">
         <p id="eco-style-head" data-aos="fade-up">
-          This is a bronze coin
+          This is a bronze coin.
         </p>
         <img
           src={bronze}
@@ -188,14 +190,21 @@ const Economic = () => {
 
       <div className="eco-1-2-up">
         <p id="eco-style-para" data-aos="fade-down">
-          People needed these coins to buy things in Antioch’s markets
+          People needed these coins to buy things in Antioch’s markets.
         </p>
       </div>
 
       <div className="eco-1-2">
-        <img src={people} alt="Logo" data-aos="fade-in" />
+        <div data-aos="fade-in">
+          <img src={people} alt="Logo" />
+          <p id="captions">
+            This painting is based upon the <em>Departure Mosaic</em> from the
+            “House of Menander” (mid 3rd century CE), which was excavated at Daphne
+            (Antioch’s suburb) and is now at the San Diego Museum of Art.
+          </p>
+        </div>
         <p id="eco-style-sub" data-aos="fade-in">
-          “Antioch, a city known to all the world… so richÍ is it in imported and
+          “Antioch, a city known to all the world… so rich is it in imported and
           local goods.”
           <br></br>
           <br></br>
@@ -1000,19 +1009,19 @@ const Economic = () => {
       </div>
 
       <div className="eco-3-3" >
+          <p data-aos="fade-in" id="eco-style-sub">
+            Click on the map to explore all the places these little bronze civic
+            coins have been found through excavation.
+          </p>
+        <Tableau data-aos="fade-in" />
+      </div>
+
+      <div className="eco-3-4" >
         <p data-aos="fade-up" id="eco-style-para">
           This speaks to all the trade routes running in and out of Antioch and
           all the people coming and going from the city with little bronze coins
           in their pockets.
         </p>
-      </div>
-
-      <div className="eco-3-4" >
-        <p data-aos="fade-up" id="eco-style-para" style={{margin: '60px'}}>
-          Click on the map to explore all the places these little bronze civic
-          coins have been found through excavation.
-        </p>
-        <Tableau data-aos="fade-in" />
       </div>
 
       <div className="eco-3-5" >
@@ -1023,10 +1032,30 @@ const Economic = () => {
       </div>
 
       <div className="eco-3-6" >
+        <div data-aos="flip-right">
+          <img
+            src={citycoin1}
+            alt="Logo"
+            className="eco-size-images"
+          />
+          <p id="eco-style-sub">
+            This civic bronze was minted at Laodicea ad Mare, Antioch’s rival.
+          </p>
+        </div>
         <p data-aos="fade-left" id="eco-style-para">
           Many other cities minted their own civic coins and may have refused to
           accept the Antiochians’ coins in the market.
         </p>
+        <div data-aos="flip-left">
+          <img
+            src={citycoin2}
+            alt="Logo"
+            className="eco-size-images"
+          />
+          <p id="eco-style-sub">
+            This civic bronze coin was minted at Seleucia Pieria, Antioch’s neighbor.
+          </p>
+        </div>
       </div>
 
       <div className="eco-4-1" >
@@ -1057,6 +1086,11 @@ const Economic = () => {
               <li><a href="https://rpc.ashmus.ox.ac.uk/coin/73446" target="_blank">Roman Provincial Coinage Project</a></li>
                 <br></br>
               <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank">American Numismatic Society - 1944.100.39966</a></li>
+                <br></br>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84967440" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, M 5464</a></li>
+                <br></br>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8508048m" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Louis de Clercq 280</a></li>
+
             </ul>
             <br></br>
             <br></br>

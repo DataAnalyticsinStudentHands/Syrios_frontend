@@ -1,7 +1,7 @@
 import React from "react";
 import download from '../data/images/download.png';
 import { FormErrors } from './FormErrors';
-import uploadedFileLink from '../data/Antioch_Dataset_08032020.zip'
+// import uploadedFileLink from '../data/Antioch_Dataset_08032020.zip'
 
 class Download extends React.Component{
 

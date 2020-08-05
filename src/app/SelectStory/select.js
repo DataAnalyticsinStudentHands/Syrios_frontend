@@ -42,7 +42,7 @@ const Select = () => {
           data-aos-duration="1600"
           id="style-select-items"
         >
-          Tell me a Visitors Story
+          Tell me a Visitor's Story
         </Link>
       </div>
     </div>

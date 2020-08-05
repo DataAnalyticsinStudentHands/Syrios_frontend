@@ -55,6 +55,14 @@ const civicStory = () => {
         />
       </div>
 
+      <div className="civic-1-1-up">
+        <p id="civic-style-para" data-aos="fade-up">
+          Antioch was one of the most important cities of the Roman empire.
+          According to the ancient writers Strabo and Josephus, Antioch was
+          the third largest city.
+        </p>
+      </div>
+
       <div className="civic-1-1">
         <div className="civic-1-1-left" data-aos="fade-right">
           <p id="civic-style-sub">
@@ -66,25 +74,14 @@ const civicStory = () => {
             - Josephus, <em>Wars of the Jews</em> 3.29
           </p>
         </div>
-        <div
-          data-aos="fade-down"
-          style={{ fontFamily: "cartogothic_stdbook_bold" }}
-          className="civic-1-1-center"
-        >
-          <p>
-            Antioch was one of the most important cities of the Roman empire.
-            According to the ancient writers Strabo and Josephus, Antioch was
-            the third largest city.
-          </p>
-        </div>
         <div className="civic-1-1-right" data-aos="fade-left">
           <p id="civic-style-sub">
             “Antioch is the metropolis of Syria…and it is does not fall much
             short, either in power or in size, of Seleucia on the Tigris or
-            Alexandria in Egypt.” Strabo,
+            Alexandria in Egypt.”
             <br></br>
             <br></br>
-            <em>Geography</em> 16.2
+            - Strabo, <em>Geography</em> 16.2
           </p>
         </div>
       </div>
@@ -96,15 +93,17 @@ const civicStory = () => {
       </div>
 
       <div className="civic-1-3">
-        <div
-          style={{ backgroundColor: "#2d616a", padding: "10px" }}
-          data-aos="slide-up"
-        >
+        <div id="text-1-3" data-aos="slide-up" >
           But, as big as Antioch grew, it was still a city of citizens.
           <br></br>
           And the coins are an important reminder of this.
         </div>
         <img src={citizens} alt="Logo" />
+        <p id="captions" data-aos="fade-down">
+          This painting is based upon the <em>Mosaic of a Funerary Symposium </em>
+          (late 4th century CE), which was excavated at Antioch and is now at the
+          Worcester Art Museum (Object Number: 1936.26)
+        </p>
       </div>
 
   {/* SECTION 2 */}
@@ -140,7 +139,7 @@ const civicStory = () => {
       <div className="civic-3-head">
         <p id="civic-style-head" data-aos="fade-up">
           The government also added another message in Greek (just barely
-          visible on this worn coin): MHTROPOLEWS.
+          visible on this worn coin): ΜΗΤΡΟΠΟΛΕΩΣ.
         </p>
         <img
           src={comp_5_right}
@@ -219,8 +218,9 @@ const civicStory = () => {
 
       <div className="civic-4-1-up">
         <p id="civic-style-para" data-aos="fade-down">
-          For example, ancient historians record that the boule gathered the <span id="term">demos</span> – the citizen body – together to debate publicly in the city’s
-          theatre.
+          For example, ancient historians record that the boule gathered the
+          <span id="term"> demos</span> – the citizen body – together to debate
+          publicly in the city’s theatre.
         </p>
       </div>
 
@@ -269,7 +269,14 @@ const civicStory = () => {
       </div>
 
       <div className="civic-4-5">
-        <img src={festival} alt="Logo" data-aos="fade-in"/>
+        <div data-aos="fade-in">
+          <img src={festival} alt="Logo"/>
+          <p id="captions">
+            This painting is based upon the <em>Mosaic of Bacchic Dancers </em>
+            (2nd cent. CE), which was excavated at Antioch and is now at the Hatay
+            Archaeology Museum (Antakya, Hatay Province, Turkey).
+          </p>
+        </div>
         <p id="civic-style-sub" data-aos="fade-in">
           “The citizens of Antioch, a large and prosperous city, celebrate
           festivals virtually every day of the year in the city and in the
@@ -346,7 +353,7 @@ const civicStory = () => {
       <div className="civic-6-1-up">
         <p id="civic-style-para" data-aos="fade-left">
           An inscription from Palmyra does mention the name of one city
-          magistrate
+          magistrate.
         </p>
       </div>
 
@@ -413,13 +420,13 @@ const civicStory = () => {
                 <br></br>
               <li>
                 Harl, K.W. 1987. <em>Civic Coins and Civic Politics in the Roman
-                East</em>, A.D. 180-275. Berkeley: University of California Press.
+                East, A.D. 180-275</em>. Berkeley: University of California Press.
               </li>
                 <br></br>
               <li>
                 Noreña, C.F. 2016. "Heritage and Homogeneity: The Civic Coinage
                 of Roman Antioch," in S. Alcock, M. Egri, and J. Frakes (eds.),
-                <em>Beyond Boundaries: Connecting Visual Cultures in the Provinces
+                <em> Beyond Boundaries: Connecting Visual Cultures in the Provinces
                 of Ancient Rome</em>. Los Angeles: Getty Publications. 294-306.
               </li>
                 <br></br>

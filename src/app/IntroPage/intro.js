@@ -112,8 +112,8 @@ const Intro = () => {
       <div className="component-mix">
         <div className="threeD-coin">
           <p id="intro-style-para" data-aos="fade-left">
-            A coin minted for a king celebrates his power and strength. (Click on 
-            the play button to explore the coin in 3D).
+            A coin minted for a king celebrates his power and strength.
+            (Click on the play button to explore the coin in 3D).
           </p>
           <div class="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
@@ -165,16 +165,16 @@ const Intro = () => {
         </div>
 
         <div className="intro-1-head">
-          <p id="intro-style-head" data-aos="fade-left">
-            Ancient coins have a tremendous story to tell, but we must first
-            learn how to read them.
-          </p>
           <img
             src={img_2}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
+          <p id="intro-style-head" data-aos="fade-left">
+            Ancient coins have a tremendous story to tell, but we must first
+            learn how to read them.
+          </p>
         </div>
 
         <div className="intro-1-2">
@@ -333,7 +333,7 @@ const Intro = () => {
         <div className="intro-3-2">
           <p id="intro-style-para" data-aos="fade-right">
             The name was also important because it made clear the governmental
-            <span id="term">authority</span> who gave the cheap bronze value as money.
+            <span id="term"> authority</span> who gave the cheap bronze value as money.
           </p>
         </div>
 
@@ -409,7 +409,7 @@ const Intro = () => {
         <div className="intro-4-2-up">
           <p id="intro-style-para" data-aos="fade-left">
             Like our U.S. dime, we can tell when a coin was minted or
-            <span id="term">issued</span>.
+            <span id="term"> issued</span>.
           </p>
         </div>
 
@@ -460,7 +460,9 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-sub" data-aos="fade-left">
-            <span id="term">Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
+            A <span id="term">mint mark</span> on an ancient coin can indicate the minting city, but it
+            may also be a production mark or hint at who paid for the coins.
+            Sometimes the mint mark is a mystery!
           </p>
         </div>
 
@@ -554,7 +556,7 @@ const Intro = () => {
                   <br></br>
                 <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank">American Numismatic Society - 1947.2.372</a></li>
                   <br></br>
-                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank">Münzkabinett, Staatliche Museen zu Berlin, 18201044</a></li>
+                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank">Münzkabinett, Staatliche Museen zu Berlin, 18201044; photograph by Reinhard Saczewski</a></li>
                   <br></br>
                 <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank">American Numismatic Society - 1996.71.3 </a></li>
                   <br></br>

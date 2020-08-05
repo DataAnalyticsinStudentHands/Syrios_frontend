@@ -126,16 +126,16 @@ const Visitors = () => {
       </div>
 
       <div className="vs-2-1">
-        <p data-aos="fade-in" id="vs-style-para">
-          At Antioch, 960 total identifiable coins were excavated that date to
-          the Roman period.
-        </p>
         <img
           src={coin1}
           alt="Logo"
           data-aos="fade-in"
           className="vs-size-images"
         />
+        <p data-aos="fade-in" id="vs-style-para">
+          At Antioch, 960 total identifiable coins were excavated that date to
+          the Roman period.
+        </p>
       </div>
 
       <div className="vs-2-2">
@@ -270,8 +270,8 @@ const Visitors = () => {
 
       <div className="vs-5-head">
         <p data-aos="fade-up" id="vs-style-head">
-          Perhaps the most important story can be found in the 102 Roman coins
-          found in the city.
+          Perhaps the most important story lies in the 102 Roman coins found in
+          the city.
         </p>
       </div>
 
@@ -432,10 +432,12 @@ const Visitors = () => {
                 Huth, M. and van Alfen, P. G. 2010. <em>Coinage of the Caravan Kingdoms:
                 Studies in Ancient Arabian Monetization</em>. New York: American Numismatic Society.
               </li>
+                <br></br>
               <li>
                 Millar, F. 1993. <em>The Roman Near East, 31 BC-AD 337</em>. Cambridge,
                 MA: Harvard University Press
               </li>
+                <br></br>
               <li>
                 Young, G.K. 2001. <em>Rome’s Eastern Trade: International Commerce
                 and Imperial Policy, 31 BC – AD 305</em>. London: Routledge.
