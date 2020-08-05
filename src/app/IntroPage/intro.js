@@ -16,14 +16,21 @@ import comp_6_left from "../data/intro-images/comp-6-left.png";
 import comp_6_right from "../data/intro-images/comp-6-right.png";
 import comp_7_left_mix from "../data/intro-images/comp-7-left-mix.png";
 import comp_7_right_mix from "../data/intro-images/comp-7-right-mix.png";
+import comp_9_left from "../data/intro-images/comp-9-left.png";
 import comp_9_right from "../data/intro-images/comp-9-right.png";
+import comp_11_left from "../data/intro-images/comp-11-left.png";
 import comp_11_right from "../data/intro-images/comp-11-right.png";
+import comp_12_left from "../data/intro-images/comp-12-left.png";
 import comp_12_right from "../data/intro-images/comp-12-right.png";
+import comp_13_left from "../data/intro-images/comp-13-left.png";
 import comp_13_right from "../data/intro-images/comp-13-right.png";
+import comp_14_left from "../data/intro-images/comp-14-left.png";
 import comp_14_right from "../data/intro-images/comp-14-right.png";
 import comp_15 from "../data/intro-images/comp-15.png";
+// import comp_16_left from "../data/intro-images/comp-16-left.png";
 import comp_16_right from "../data/intro-images/comp-16-right.png";
 import comp_17 from "../data/intro-images/comp-17.png";
+import comp_18_left from "../data/intro-images/comp-18-left.png";
 import comp_18_right from "../data/intro-images/comp-18-right.png";
 import comp_19_mix from "../data/intro-images/comp-19-mix.png";
 import comp_20 from "../data/intro-images/comp-20.png";
@@ -105,16 +112,16 @@ const Intro = () => {
       <div className="component-mix">
         <div className="threeD-coin">
           <p id="intro-style-para" data-aos="fade-left">
-            A coin minted for a king celebrates his power and strength. (Click on 
-            the play button to explore the coin in 3D).
+            A coin minted for a king celebrates his power and strength.
+            (Click on the play button to explore the coin in 3D).
           </p>
-          <div className="sketchfab-embed-wrapper" data-aos="fade-in">
+          <div class="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
               title="A 3D model"
               width="640"
               height="480"
               src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed?preload=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1"
-              frameBorder="0"
+              frameborder="0"
               allow="autoplay; fullscreen; vr"
               mozallowfullscreen="true"
               webkitallowfullscreen="true"
@@ -158,16 +165,16 @@ const Intro = () => {
         </div>
 
         <div className="intro-1-head">
-          <p id="intro-style-head" data-aos="fade-left">
-            Ancient coins have a tremendous story to tell, but we must first
-            learn how to read them.
-          </p>
           <img
             src={img_2}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
+          <p id="intro-style-head" data-aos="fade-left">
+            Ancient coins have a tremendous story to tell, but we must first
+            learn how to read them.
+          </p>
         </div>
 
         <div className="intro-1-2">
@@ -326,7 +333,7 @@ const Intro = () => {
         <div className="intro-3-2">
           <p id="intro-style-para" data-aos="fade-right">
             The name was also important because it made clear the governmental
-            <span id="term">authority</span> who gave the cheap bronze value as money.
+            <span id="term"> authority</span> who gave the cheap bronze value as money.
           </p>
         </div>
 
@@ -402,7 +409,7 @@ const Intro = () => {
         <div className="intro-4-2-up">
           <p id="intro-style-para" data-aos="fade-left">
             Like our U.S. dime, we can tell when a coin was minted or
-            <span id="term">issued</span>.
+            <span id="term"> issued</span>.
           </p>
         </div>
 
@@ -453,7 +460,9 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-sub" data-aos="fade-left">
-            <span id="term">Mint marks</span> on ancient coins can indicate the minting city, but may also be a production mark or who paid for the coins. Sometimes the mint mark is a mystery!
+            A <span id="term">mint mark</span> on an ancient coin can indicate the minting city, but it
+            may also be a production mark or hint at who paid for the coins.
+            Sometimes the mint mark is a mystery!
           </p>
         </div>
 
@@ -533,27 +542,27 @@ const Intro = () => {
               <br></br>
               <br></br>
               <ul>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 180 </a></li>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 180 </a></li>
                   <br></br>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
                   <br></br>
-                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank" rel="noopener noreferrer">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald </a></li>
+                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald </a></li>
                   <br></br>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84742087?rk=107296;4" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Chandon de Briailles 1446</a></li>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84742087?rk=107296;4" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Chandon de Briailles 1446</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1944.100.32580" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.32580</a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.32580" target="_blank">American Numismatic Society - 1944.100.32580</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1981.43.1" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1981.43.1</a></li>
+                <li><a href="http://numismatics.org/collection/1981.43.1" target="_blank">American Numismatic Society - 1981.43.1</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1947.2.372</a></li>
+                <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank">American Numismatic Society - 1947.2.372</a></li>
                   <br></br>
-                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank" rel="noopener noreferrer">Münzkabinett, Staatliche Museen zu Berlin, 18201044</a></li>
+                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank">Münzkabinett, Staatliche Museen zu Berlin, 18201044; photograph by Reinhard Saczewski</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1996.71.3 </a></li>
+                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank">American Numismatic Society - 1996.71.3 </a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1999.2.2" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1999.2.2</a></li>
+                <li><a href="http://numismatics.org/collection/1999.2.2" target="_blank">American Numismatic Society - 1999.2.2</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1944.100.65544" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.65544</a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.65544" target="_blank">American Numismatic Society - 1944.100.65544</a></li>
             </ul>
               <br></br>
               <br></br>

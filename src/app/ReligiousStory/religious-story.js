@@ -32,20 +32,26 @@ const religiousStory = () => {
           RELIGIOUS
         </h1>
         <p data-aos="slide-up">Story</p>
+        <p data-aos-duration="3000" data-aos="fade-in" id="sub-title">
+          a story about{" "}
+          <strong data-aos="fade-in" id="bronze">
+            ZEUS
+          </strong>
+        </p>
       </div>
 
   {/* SECTION 1 */}
 
       <div className="religious-1-head" >
-        <p id="religious-style-head" data-aos="fade-up">
-          This is the Greek god Zeus.
-        </p>
         <img
           src={zeus_coin}
           alt="Logo"
           className="religious-img-head"
           data-aos="fade-up"
         />
+        <p id="religious-style-head" data-aos="fade-up">
+          This is the Greek god Zeus.
+        </p>
       </div>
 
       <div className="religious-1-1">
@@ -69,9 +75,9 @@ const religiousStory = () => {
   {/* SECTION 2 */}
 
       <div className="religious-2-head" >
-      <p id="religious-style-head" data-aos="fade-up">
-      The kings of the Seleucid Empire especially thought of Zeus as their special protector.
-      </p>
+        <p id="religious-style-head" data-aos="fade-up">
+        The kings of the Seleucid Empire especially thought of Zeus as their special protector.
+        </p>
       </div>
 
       <div className="religious-2-1-up">
@@ -96,7 +102,8 @@ const religiousStory = () => {
 
       <div className="religious-2-2-up">
         <p id="religious-style-para" data-aos="fade-left">
-          According to legend, Zeus helped King Seleucus I decide where to build Antioch.​
+          According to legend, Zeus helped King Seleucus I decide where to build
+          Antioch in 300 BCE.
         </p>
       </div>
 
@@ -114,7 +121,7 @@ const religiousStory = () => {
         The king knew that Zeus wanted him to build the city in that place."
         <br></br>
         <br></br>
-        -Libanius Or. 11.84 (adapted)
+        - Libanius <em>Or.</em> 11.84 (adapted)
         </p>
       </div>
 
@@ -134,7 +141,7 @@ const religiousStory = () => {
 
       <div className="religious-3-1-up">
         <p id="religious-style-para" data-aos="fade-left">
-          He contributed to a building of a temple to Zeus in Athens. ​
+          He contributed to the building of a temple to Zeus in Athens, Greece. ​
         </p>
       </div>
 
@@ -264,8 +271,8 @@ const religiousStory = () => {
 
       <div className="religious-5-head" >
         <p id="religious-style-head" data-aos="fade-left">
-          The people of Antioch in particular also worshipped Zeus. Our best evidence
-          comes from their civic coins. ​
+          The people of Antioch also worshipped Zeus. Our best evidence comes from
+          their civic coins.
         </p>
       </div>
 

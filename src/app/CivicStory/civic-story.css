@@ -57,6 +57,14 @@
   font-size: 45px;
 }
 
+#captions {
+  margin: auto;
+  color: #2d616a;
+  padding: 10px 30px;
+  font-size: 14px;
+  width: 500px;
+}
+
 #term {
   font-style: oblique;
   font-weight: bolder;
@@ -119,8 +127,17 @@
       padding: 100px;
     }
 
+    .civic-1-1-up {
+      top: 230%;
+      left: 50%;
+      position: absolute;
+      display: flex;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
     .civic-1-1 {
-      top: 260%;
+      top: 270%;
       left: 50%;
       position: absolute;
       display: flex;
@@ -138,11 +155,11 @@
     }
 
     .civic-1-1-left {
-      margin-left: 20px;
+      margin-left: 80px;
     }
 
     .civic-1-1-right {
-      margin-right: 10px;
+      margin-right: 80px;
     }
 
     .civic-1-1-left p {
@@ -179,11 +196,8 @@
       left: 50%;
       position: absolute;
       transform: translate(-50%, -50%);
-      color: white;
       display: flex;
       flex-direction: column;
-      font-size: larger;
-      font-weight: bolder;
       text-align: center;
       height: 350px;
     }
@@ -191,6 +205,14 @@
     .civic-1-3 img {
       height: 600px;
       width: 1000px;
+    }
+
+    #text-1-3 {
+      background-color: #2d616a;
+      padding: 10px;
+      font-weight: bolder;
+      color: white;
+      font-size: larger;
     }
 
 /* CIVIC SECTION 2 */
@@ -417,7 +439,6 @@
       position: absolute;
       transform: translate(-50%, -50%);
       display: flex;
-
       text-align: center;
       align-items: center;
       justify-content: space-between;
@@ -425,7 +446,7 @@
 
     .civic-4-5 img {
       padding: 20px;
-      height: 550px;
+      height: 400px;
       width: 400px;
     }
 
