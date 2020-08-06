@@ -1,7 +1,9 @@
 import React from "react";
-import download from '../data/images/download.png';
+import axios from "axios";
+import { saveAs } from 'file-saver';
 import { FormErrors } from './FormErrors';
-// import uploadedFileLink from '../data/Antioch_Dataset_08032020.zip'
+
+import downloadImage from '../data/images/download.png';
 
 class Download extends React.Component{
 
@@ -22,8 +24,17 @@ class Download extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        //we need to connect to backend for email and download
-        console.log(this.state);
+        //send data for email
+        axios.post('http://localhost:3002/send', this.state)
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error);
+            });
+        //download the data (currently in public folder)
+        saveAs(
+            process.env.PUBLIC_URL + "/resources/Antioch_Dataset_08032020.zip",
+            "Antioch_Dataset_08032020.zip");
     }
 
     handleUserInput = (e) => {
@@ -41,7 +52,7 @@ class Download extends React.Component{
             case 'email':
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
                 fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-                this.setState({email: value})
+                this.setState({email: value});
                 break;
             default:
                 break;
@@ -73,7 +84,7 @@ class Download extends React.Component{
                             </p>
                             <p> Please provide your your name and email address in the form on the left side to start the download.
                             </p>
-                            <img src={download} alt="Screenshot dataset" class="w-100"></img>
+                            <img src={downloadImage} alt="Screenshot dataset" className="w-100"/>
                         </div>
                         <div className="col-3">
                             <form className="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
@@ -96,12 +107,13 @@ class Download extends React.Component{
                                     <FormErrors formErrors={this.state.formErrors} />
                                 </div>
 
-                                    <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Download</button>
-
-
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                    disabled={!this.state.formValid}
+                                >Download</button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

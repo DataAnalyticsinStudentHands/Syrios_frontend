@@ -1,7 +1,6 @@
 import React from "react";
 import AOS from "aos";
 import { Link } from "react-router-dom";
-// import "aos/dist/aos.css";
 import "./civic-story.css";
 import comp_1 from "../data/civic-images/comp-1.png";
 import comp_5_left from "../data/civic-images/comp-5-left.png";
@@ -14,7 +13,6 @@ import comp_7_5 from "../data/civic-images/comp-7-5.png";
 import citizens from "../data/civic-images/citizens.png";
 import boule from "../data/civic-images/boule.png";
 import boule_edit from "../data/civic-images/boule_edit.png";
-import council from "../data/civic-images/council.png";
 import theatre from "../data/civic-images/theatre.png";
 import forum from "../data/civic-images/forum.png";
 import vote from "../data/civic-images/vote.png";
@@ -23,7 +21,6 @@ import zeus from "../data/civic-images/zeus.png";
 import protest from "../data/civic-images/protest.png";
 import protest_2 from "../data/civic-images/protest-2.png";
 import inscription from "../data/civic-images/inscription.png";
-// import ancient_coin from "../data/civic-images/ancient-coin.png";
 
 const civicStory = () => {
   AOS.init({
@@ -397,15 +394,15 @@ const civicStory = () => {
             <br></br>
             <br></br>
             <ul>
-              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1948.19.1983" target="_blank">American Numismatic Society 1948.19.1983</a></li>
+              <li><a href="http://numismatics.org/collection/1948.19.1983" target="_blank" rel="noopener noreferrer">American Numismatic Society 1948.19.1983</a></li>
                 <br></br>
-              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b85073668.r=Auguste%20Auguste?rk=193134;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 122</a></li>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b85073668.r=Auguste%20Auguste?rk=193134;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 122</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1944.100.65906" target="_blank">American Numismatic Society - 1944.100.65906</a></li>
+              <li><a href="http://numismatics.org/collection/1944.100.65906" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.65906</a></li>
                 <br></br>
-              <li><a href="https://ikmk.smb.museum/object?lang=en&id=18257614" target="_blank">Münzkabinet, Staatliche Museen zu Berlin, 18257614; photograph by Bernhard Weisser</a></li>
+              <li><a href="https://ikmk.smb.museum/object?lang=en&id=18257614" target="_blank" rel="noopener noreferrer">Münzkabinet, Staatliche Museen zu Berlin, 18257614; photograph by Bernhard Weisser</a></li>
             </ul>
             <br></br>
             <br></br>
