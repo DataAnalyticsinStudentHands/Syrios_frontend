@@ -13,7 +13,7 @@ import Civic from "./app/CivicStory/civic-story";
 import Economic from "./app/EconomicStory/economic-story";
 import Religious from "./app/ReligiousStory/religious-story";
 import Visitors from "./app/VisitorsStory/visitors-story";
-import TableauMaps from "./app/MapCoins/map";
+import Maps from "./app/MapCoins/map";
 import Download from "./app/CoinsDownload/download";
 import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/ContactUs/contact";
@@ -94,7 +94,7 @@ const App = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   {" "}
-                  <DropDownLink to="/tableau-maps">Map Coins</DropDownLink>
+                  <DropDownLink to="/maps">Map Coins</DropDownLink>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
@@ -127,7 +127,7 @@ const App = () => {
           <Route exact path="/economic-story" component={Economic} />
           <Route exact path="/religious-story" component={Religious} />
           <Route exact path="/visitors-story" component={Visitors} />
-          <Route exact path="/tableau-maps" component={TableauMaps} />
+          <Route exact path="/maps" component={Maps} />
           <Route exact path="/download" component={Download}/>
           <Route exact path="/gods-portal" component={Gods} />
           <Route exact path="/contact-us" component={ContactUs} />
