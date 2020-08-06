@@ -390,7 +390,7 @@ const Visitors = () => {
       </div>
 
       <div className="vs-resources">
-          <p id="religious-style-rsrc">
+          <p id="vs-style-rsrc">
             Coin Images Courtesy of:
             <br></br>
             <br></br>
