@@ -394,19 +394,19 @@ const Visitors = () => {
             <br></br>
             <br></br>
             <ul>
-              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8479972c?rk=1051507;2" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Vogüé 227</a></li>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8479972c?rk=1051507;2" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Vogüé 227</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/2017.32.62" target="_blank">American Numismatic Society 2017.32.62</a></li>
+              <li><a href="http://numismatics.org/collection/2017.32.62" target="_blank" rel="noopener noreferrer">American Numismatic Society 2017.32.62</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1935.117.369" target="_blank">American Numismatic Society 1935.117.369</a></li>
+              <li><a href="http://numismatics.org/collection/1935.117.369" target="_blank" rel="noopener noreferrer">American Numismatic Society 1935.117.369</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1995.11.491" target="_blank">American Numismatic Society 1995.11.491</a></li>
+              <li><a href="http://numismatics.org/collection/1995.11.491" target="_blank" rel="noopener noreferrer">American Numismatic Society 1995.11.491</a></li>
                 <br></br>
-              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507176z.r=%22M%205158%22?rk=21459;2" target="_blank">Bibliothèque nationale de France, Département Monnaies, médailles et antiques, M 5158</a></li>
+              <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507176z.r=%22M%205158%22?rk=21459;2" target="_blank" rel="noopener noreferrer">Bibliothèque nationale de France, Département Monnaies, médailles et antiques, M 5158</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1944.100.38396" target="_blank">American Numismatic Society 1944.100.38396</a></li>
+              <li><a href="http://numismatics.org/collection/1944.100.38396" target="_blank" rel="noopener noreferrer">American Numismatic Society 1944.100.38396</a></li>
                 <br></br>
-              <li><a href="http://numismatics.org/collection/1956.127.1143" target="_blank">American Numismatic Society 1956.127.1143</a></li>
+              <li><a href="http://numismatics.org/collection/1956.127.1143" target="_blank" rel="noopener noreferrer">American Numismatic Society 1956.127.1143</a></li>
             </ul>
             <br></br>
             <br></br>

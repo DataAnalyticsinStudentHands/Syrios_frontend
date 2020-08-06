@@ -16,21 +16,14 @@ import comp_6_left from "../data/intro-images/comp-6-left.png";
 import comp_6_right from "../data/intro-images/comp-6-right.png";
 import comp_7_left_mix from "../data/intro-images/comp-7-left-mix.png";
 import comp_7_right_mix from "../data/intro-images/comp-7-right-mix.png";
-import comp_9_left from "../data/intro-images/comp-9-left.png";
 import comp_9_right from "../data/intro-images/comp-9-right.png";
-import comp_11_left from "../data/intro-images/comp-11-left.png";
 import comp_11_right from "../data/intro-images/comp-11-right.png";
-import comp_12_left from "../data/intro-images/comp-12-left.png";
 import comp_12_right from "../data/intro-images/comp-12-right.png";
-import comp_13_left from "../data/intro-images/comp-13-left.png";
 import comp_13_right from "../data/intro-images/comp-13-right.png";
-import comp_14_left from "../data/intro-images/comp-14-left.png";
 import comp_14_right from "../data/intro-images/comp-14-right.png";
 import comp_15 from "../data/intro-images/comp-15.png";
-// import comp_16_left from "../data/intro-images/comp-16-left.png";
 import comp_16_right from "../data/intro-images/comp-16-right.png";
 import comp_17 from "../data/intro-images/comp-17.png";
-import comp_18_left from "../data/intro-images/comp-18-left.png";
 import comp_18_right from "../data/intro-images/comp-18-right.png";
 import comp_19_mix from "../data/intro-images/comp-19-mix.png";
 import comp_20 from "../data/intro-images/comp-20.png";
@@ -542,27 +535,27 @@ const Intro = () => {
               <br></br>
               <br></br>
               <ul>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 180 </a></li>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 180 </a></li>
                   <br></br>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
                   <br></br>
-                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald </a></li>
+                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank" rel="noopener noreferrer">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald </a></li>
                   <br></br>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84742087?rk=107296;4" target="_blank">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Chandon de Briailles 1446</a></li>
+                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84742087?rk=107296;4" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Chandon de Briailles 1446</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1944.100.32580" target="_blank">American Numismatic Society - 1944.100.32580</a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.32580" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.32580</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1981.43.1" target="_blank">American Numismatic Society - 1981.43.1</a></li>
+                <li><a href="http://numismatics.org/collection/1981.43.1" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1981.43.1</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank">American Numismatic Society - 1947.2.372</a></li>
+                <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1947.2.372</a></li>
                   <br></br>
-                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank">Münzkabinett, Staatliche Museen zu Berlin, 18201044; photograph by Reinhard Saczewski</a></li>
+                <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank" rel="noopener noreferrer">Münzkabinett, Staatliche Museen zu Berlin, 18201044; photograph by Reinhard Saczewski</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank">American Numismatic Society - 1996.71.3 </a></li>
+                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1996.71.3 </a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1999.2.2" target="_blank">American Numismatic Society - 1999.2.2</a></li>
+                <li><a href="http://numismatics.org/collection/1999.2.2" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1999.2.2</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1944.100.65544" target="_blank">American Numismatic Society - 1944.100.65544</a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.65544" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.65544</a></li>
             </ul>
               <br></br>
               <br></br>
