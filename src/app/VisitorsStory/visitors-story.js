@@ -42,6 +42,7 @@ const StyledLink = styled(Link)`
 const Visitors = () => {
   AOS.init({
     duration: 1000,
+    offset: -25,
   });
 
   return (
@@ -380,16 +381,16 @@ const Visitors = () => {
       </div>
 
       <div className="vs-6-3">
-        <StyledLink to="/tableau-maps" id="vs-intro-style-footer" data-aos="fade-right">
+        <StyledLink to="/tableau-maps" id="vs-button" data-aos="fade-right">
           Where did the civic coins move?
         </StyledLink>
-        <StyledLink to="/select-story" id="vs-intro-style-footer" data-aos="fade-left">
+        <StyledLink to="/select-story" id="vs-button" data-aos="fade-left">
           Tell me another story!
         </StyledLink>
       </div>
 
       <div className="vs-resources">
-          <p id="religious-style-rsrc">
+          <p id="vs-style-rsrc">
             Coin Images Courtesy of:
             <br></br>
             <br></br>

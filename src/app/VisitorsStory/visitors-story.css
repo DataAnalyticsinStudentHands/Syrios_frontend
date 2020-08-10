@@ -107,6 +107,18 @@ div[data-aos-duration='4000'] [data-aos],
   font-size: 45px;
 }
 
+#vs-button{
+    background-image: var(--div-bg-2);
+    text-decoration: none;
+    padding: 10px;
+    width: 200px;
+    margin: 20px;
+    margin-bottom: 100px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+  }
+
 #term {
   font-style: oblique;
   font-weight: bolder;
@@ -127,15 +139,15 @@ div[data-aos-duration='4000'] [data-aos],
         height: 800px;
     }
 
-    .vs-1-head img {
-      height: 800px;
-      width: 800px;
-      object-fit: cover;
-    }
+        .vs-1-head img {
+          height: 800px;
+          width: 800px;
+          object-fit: cover;
+        }
 
-    .vs-1-head p {
-      width: 400px;
-    }
+        .vs-1-head p {
+          width: 400px;
+        }
 
     .vs-1-1 {
         top: 250%;
@@ -160,10 +172,10 @@ div[data-aos-duration='4000'] [data-aos],
         transform: translate(-50%, -50%);
     }
 
-    .vs-1-2 img{
-        width: 840px;
-        height: 430px;
-    }
+        .vs-1-2 img{
+            width: 840px;
+            height: 430px;
+        }
 
     .vs-1-3 {
         top: 410%;
@@ -191,18 +203,18 @@ div[data-aos-duration='4000'] [data-aos],
         height: 800px;
     }
 
-    .vs-2-head img {
-      height: 800px;
-      width: 800px;
-      object-fit: cover;
-    }
+        .vs-2-head img {
+          height: 800px;
+          width: 800px;
+          object-fit: cover;
+        }
 
-    .vs-2-head p {
-      width: 500px;
-    }
+        .vs-2-head p {
+          width: 500px;
+        }
 
     .vs-2-1 {
-        top: 640%;
+        top: 600%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -213,7 +225,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-2-2 {
-        top: 700%;
+        top: 660%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -223,7 +235,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-2-3 {
-        top: 760%;
+        top: 720%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -235,7 +247,7 @@ div[data-aos-duration='4000'] [data-aos],
 /* SECTION 3 */
 
     .vs-3-head {
-        top: 860%;
+        top: 820%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -249,7 +261,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-3-1 {
-        top: 960%;
+        top: 930%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -259,7 +271,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-3-2 {
-        top: 1050%;
+        top: 985%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -270,7 +282,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-3-3 {
-        top: 1140%;
+        top: 1080%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -281,7 +293,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-3-4 {
-        top: 1240%;
+        top: 1160%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -294,7 +306,7 @@ div[data-aos-duration='4000'] [data-aos],
 /* SECTION 4 */
 
     .vs-4-head {
-        top: 1340%;
+        top: 1260%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -308,7 +320,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-4-1 {
-        top: 1440%;
+        top: 1360%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -318,7 +330,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-4-2 {
-        top: 1520%;
+        top: 1460%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -327,13 +339,13 @@ div[data-aos-duration='4000'] [data-aos],
         transform: translate(-50%, -50%);
     }
 
-    .vs-4-2 img {
-        width: 600px;
-        height: 550px;
-    }
+        .vs-4-2 img {
+            width: 600px;
+            height: 550px;
+        }
 
     .vs-4-3 {
-        top: 1589%;
+        top: 1529%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -342,13 +354,13 @@ div[data-aos-duration='4000'] [data-aos],
         transform: translate(-50%, -50%);
     }
 
-    .vs-4-3 img {
-        width: 600px;
-        height: 550px;
-    }
+        .vs-4-3 img {
+            width: 600px;
+            height: 550px;
+        }
 
     .vs-4-4 {
-        top: 1700%;
+        top: 1640%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -359,7 +371,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-4-5 {
-        top: 1790%;
+        top: 1740%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -372,7 +384,7 @@ div[data-aos-duration='4000'] [data-aos],
 /* SECTION 5 */
 
     .vs-5-head {
-        top: 1880%;
+        top: 1840%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -386,7 +398,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-5-1-up {
-        top: 1960%;
+        top: 1920%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -396,7 +408,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-5-1 {
-        top: 2000%;
+        top: 1965%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -405,23 +417,23 @@ div[data-aos-duration='4000'] [data-aos],
         transform: translate(-50%, -50%);
     }
 
-    #vs-5-1 {
-        width: 350px;
-        flex-direction: column;
-    }
+        #vs-5-1 {
+            width: 350px;
+            flex-direction: column;
+        }
 
-    #vs-5-1-sub {
-        margin: 0;
-        background-color: WhiteSmoke;
-        color: #2d616a;
-        padding: 20px;
-        font-size: 18px;
-        width: 300px;
-        margin: auto;
-    }
+        #vs-5-1-sub {
+            margin: 0;
+            background-color: WhiteSmoke;
+            color: #2d616a;
+            padding: 20px;
+            font-size: 18px;
+            width: 300px;
+            margin: auto;
+        }
 
     .vs-5-2-up {
-        top: 2080%;
+        top: 2040%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -431,7 +443,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-5-2 {
-        top: 2120%;
+        top: 2080%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -440,16 +452,16 @@ div[data-aos-duration='4000'] [data-aos],
         transform: translate(-50%, -50%);
     }
 
-    .vs-5-2-chart {
-        width: 700px;
-        height: 410px;
-        flex-direction: column;
-    }
+        .vs-5-2-chart {
+            width: 700px;
+            height: 410px;
+            flex-direction: column;
+        }
 
 /* SECTION 6 */
 
     .vs-6-head {
-        top: 2220%;
+        top: 2180%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -462,13 +474,13 @@ div[data-aos-duration='4000'] [data-aos],
         padding: 100px;
     }
 
-    .vs-6-head p {
-      position: relative;
-      background-color: rgba(45, 97, 106, 0.9);
-    }
+        .vs-6-head p {
+          position: relative;
+          background-color: rgba(45, 97, 106, 0.9);
+        }
 
     .vs-6-1 {
-        top: 2320%;
+        top: 2270%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -478,7 +490,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-6-2 {
-        top: 2380%;
+        top: 2320%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -488,7 +500,7 @@ div[data-aos-duration='4000'] [data-aos],
     }
 
     .vs-6-3 {
-        top: 2400%;
+        top: 2340%;
         left: 50%;
         position: absolute;
         display: flex;
@@ -499,7 +511,7 @@ div[data-aos-duration='4000'] [data-aos],
 
 
 .vs-resources {
-  top: 2470%;
+  top: 2410%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -511,16 +523,3 @@ div[data-aos-duration='4000'] [data-aos],
   width: 100%;
   height: 940px;
 }
-
-
-#vs-intro-style-footer{
-    background-image: var(--div-bg-2);
-    text-decoration: none;
-    padding: 10px;
-    width: 200px;
-    margin: 20px;
-    margin-bottom: 100px;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-  }
