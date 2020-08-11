@@ -47,6 +47,7 @@ const StyledLink = styled(Link)`
 const Intro = () => {
   AOS.init({
     duration: 1000,
+    offset: -25,
   });
 
   return (
