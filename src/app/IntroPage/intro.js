@@ -47,6 +47,7 @@ const StyledLink = styled(Link)`
 const Intro = () => {
   AOS.init({
     duration: 1000,
+    offset: -25,
   });
 
   return (
@@ -113,7 +114,7 @@ const Intro = () => {
               title="A 3D model"
               width="640"
               height="480"
-              src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed?preload=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1"
+              src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed?autostart=1&autospin=0.5&preload=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1"
               frameborder="0"
               allow="autoplay; fullscreen; vr"
               mozallowfullscreen="true"

@@ -22,6 +22,7 @@ import zeus_coin10 from "../data/religious-images/zeus_coin10.png";
 const religiousStory = () => {
   AOS.init({
     duration: 1000,
+    offset: -25,
   });
 
   return (

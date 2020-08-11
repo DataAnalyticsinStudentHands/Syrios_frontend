@@ -25,6 +25,7 @@ import inscription from "../data/civic-images/inscription.png";
 const civicStory = () => {
   AOS.init({
     duration: 1000,
+    offset: -25,
   });
 
   return (

@@ -37,6 +37,7 @@ const StyledLink = styled(Link)`
 const Economic = () => {
   AOS.init({
     duration: 1000,
+    offset: -25,
   });
 
   return (
