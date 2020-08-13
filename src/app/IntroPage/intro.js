@@ -10,12 +10,8 @@ import comp_3_left from "../data/intro-images/comp-3-left.png";
 import comp_3_right from "../data/intro-images/comp-3-right.png";
 import comp_4_left from "../data/intro-images/comp-4-left.png";
 import comp_4_right from "../data/intro-images/comp-4-right.png";
-import comp_5_left_mix from "../data/intro-images/comp-5-left-mix.png";
-import comp_5_right_mix from "../data/intro-images/comp-5-right-mix.png";
 import comp_6_left from "../data/intro-images/comp-6-left.png";
 import comp_6_right from "../data/intro-images/comp-6-right.png";
-import comp_7_left_mix from "../data/intro-images/comp-7-left-mix.png";
-import comp_7_right_mix from "../data/intro-images/comp-7-right-mix.png";
 import comp_9_right from "../data/intro-images/comp-9-right.png";
 import comp_11_right from "../data/intro-images/comp-11-right.png";
 import comp_12_right from "../data/intro-images/comp-12-right.png";
@@ -29,6 +25,24 @@ import comp_19_mix from "../data/intro-images/comp-19-mix.png";
 import comp_20 from "../data/intro-images/comp-20.png";
 import comp_21 from "../data/intro-images/comp-21.png";
 import scroll_down from "../data/intro-images/scroll-down-2.png";
+import seleucidTetradrachm from "../data/mapcoins-images/seleucidTetradrachm.png";
+import romanAureus from "../data/mapcoins-images/romanAureus.png";
+import usQuarter from "../data/mapcoins-images/usQuarter.png";
+import euro from "../data/mapcoins-images/euro.png";
+import syrianProvincial from "../data/mapcoins-images/syrianProvincial.png";
+import egyptianTetradrachm from "../data/mapcoins-images/egyptianTetradrachm.png";
+import usStateQuarter from "../data/mapcoins-images/usStateQuarter.png";
+import germanPfennig from "../data/mapcoins-images/germanPfennig.png";
+import antiochCoin from "../data/mapcoins-images/antiochCoin.png";
+import zeugmaCoin from "../data/mapcoins-images/zeugmaCoin.png";
+import nycFinal from "../data/mapcoins-images/nycFinal.png";
+import parisCoin from "../data/mapcoins-images/parisCoin.png";
+import maps from "../data/mapcoins-images/maps.png";
+import circulationMap from "../data/mapcoins-images/circulationMap.png";
+import bronze_17mm from "../data/intro-images/bronze_17mm.png";
+import silver_24mm from "../data/intro-images/silver_24mm.png";
+import dime_17mm from "../data/intro-images/dime_17mm.png";
+import quarter_24mm from "../data/intro-images/quarter_24mm.png";
 
 import "../IntroPage/intro.css";
 
@@ -103,11 +117,62 @@ const Intro = () => {
 
   {/* SECTION 1 */}
 
-      <div className="component-mix">
+    <div className="component-mix">
+
+        <div className="intro-1-head">
+          <img
+            src={img_2}
+            alt="Logo"
+            className="size-images"
+            data-aos="fade-right"
+          />
+          <p id="intro-style-head" data-aos="fade-left">
+            During the time of the Greeks and Romans, many different governments
+            minted their own coins within Syria. To learn their stories, we must
+            first learn how to read them.
+          </p>
+        </div>
+
+        <div className="intro-1-1">
+          <div data-aos="flip-right">
+            <img
+              src={seleucidTetradrachm}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={romanAureus}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              A royal Seleucid tetradrachm and an imperial Roman aureus.
+            </p>
+          </div>
+          <p data-aos="fade-in" id="intro-style-para">
+            Some of these coins were for kings and emperors. These are like our federal
+            U.S. coins or the European Union coins.
+          </p>
+          <div data-aos="flip-left">
+            <img
+              src={usQuarter}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={euro}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              A U.S. quarter and a 1 Euro coin.
+            </p>
+          </div>
+        </div>
+
         <div className="threeD-coin">
           <p id="intro-style-para" data-aos="fade-left">
             A coin minted for a king celebrates his power and strength.
-            (Click on the play button to explore the coin in 3D).
           </p>
           <div class="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
@@ -158,33 +223,108 @@ const Intro = () => {
           </div>
         </div>
 
-        <div className="intro-1-head">
+        <div className="intro-1-2">
+          <div data-aos="flip-right">
+            <img
+              src={syrianProvincial}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={egyptianTetradrachm}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              A Syrian provincial coin and an Egyptian tetradrachm.
+            </p>
+          </div>
+          <p data-aos="fade-in" id="intro-style-para">
+            Other coins were for provinces or regions. This would be like if the
+            states of America minted their own coins.
+          </p>
+          <div data-aos="flip-left">
+            <img
+              src={usStateQuarter}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={germanPfennig}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              A U.S. state quarter and a 10 German pfennig.
+            </p>
+          </div>
+        </div>
+
+        <div className="intro-1-3">
+          <div data-aos="flip-right">
+            <img
+              src={antiochCoin}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={zeugmaCoin}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              Civic coins from Antioch and Zeugma in Syria.
+            </p>
+          </div>
+          <p data-aos="fade-in" id="intro-style-para">
+            Many individual cities and peoples in Syria and the Middle East also
+            minted their own coins. This is like if New York or Chicago or Paris
+            or London minted their own coins.
+          </p>
+          <div data-aos="flip-left">
+            <img
+              src={nycFinal}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={parisCoin}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              Imagined civic coins from New York and Paris.
+            </p>
+          </div>
+        </div>
+
+        <div className="intro-1-4">
+          <p data-aos="fade-right" id="intro-style-para">
+            All of this minting continued in Syria, even while the region was ruled
+            by the Seleucid kings and Roman empire.</p>
+          <img
+            src={maps}
+            alt="Logo"
+            data-aos="fade-left"
+          />
+        </div>
+
+    {/* SECTION 2 */}
+
+        <div className="intro-2-head">
           <img
             src={img_2}
             alt="Logo"
-            className="size-images"
+            className="size-images-head"
             data-aos="fade-right"
           />
           <p id="intro-style-head" data-aos="fade-left">
-            Ancient coins have a tremendous story to tell, but we must first
-            learn how to read them.
-          </p>
-        </div>
-
-        <div className="intro-1-2">
-          <img
-            src={img_2}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-left">
             A little bronze coin has a lot to say too, just like our own U.S.
             dime.
           </p>
         </div>
 
-        <div className="intro-1-3">
+        <div className="intro-2-1">
           <img
             src={img_2}
             alt="Logo"
@@ -192,7 +332,7 @@ const Intro = () => {
             data-aos="fade-right"
           />
           <p id="intro-style-para" data-aos="fade-up">
-            They are the same size.
+             In fact, this coin has a lot in common with a U.S. dime.
           </p>
           <img
             src={us_dime}
@@ -202,28 +342,32 @@ const Intro = () => {
           />
         </div>
 
-  {/* SECTION 2 */}
+        <div className="intro-2-2">
+          <p id="intro-style-para" data-aos="fade-up">
+             They are the same size.
+          </p>
+        </div>
 
-        <div className="intro-2-head">
+        <div className="intro-2-3">
           <img
             src={comp_3_left}
             alt="Logo"
-            className="size-images-head"
+            className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-head" data-aos="fade-up">
-            Both have images and writing on them called a coin’s <span id="term">type</span>.
+          <p id="intro-style-para" data-aos="fade-up">
+            Like the dime, the little bronze coin has images and writing which form its <span id="term">type</span>.
           </p>
           <img
             src={comp_3_right}
             alt="Logo"
-            className="size-images-head"
+            className="size-images"
             data-aos="fade-left"
           />
         </div>
 
-        <div className="intro-2-1">
-          <div data-aos="flip-right" style={{width:'300px'}}>
+        <div className="intro-2-4">
+          <div data-aos="flip-right">
             <img
               src={comp_4_left}
               alt="Logo"
@@ -238,7 +382,7 @@ const Intro = () => {
           <p id="intro-style-para" data-aos="fade-up">
             On the front or <span id="term">obverse</span>, we see the head of an important person.
           </p>
-          <div data-aos="flip-left" style={{width:'300px'}}>
+          <div data-aos="flip-left">
             <img src={comp_4_right} alt="Logo" className="size-images" />
             <p id="intro-style-sub">
               On the dime is Franklin D. Roosevelt (the 32nd U.S. President).
@@ -246,26 +390,8 @@ const Intro = () => {
           </div>
         </div>
 
-        <div className="intro-2-2">
-          <img
-            src={comp_5_left_mix}
-            alt="Logo"
-            className="size-images-mix"
-            data-aos="fade-up"
-          />
-          <p id="intro-style-para" data-aos="fade-in">
-            Just like our coins today, the important person could change.
-          </p>
-          <img
-            src={comp_5_right_mix}
-            alt="Logo"
-            className="size-images-mix"
-            data-aos="fade-up"
-          />
-        </div>
-
-        <div className="intro-2-3">
-          <div className="label-image" data-aos="flip-right" style={{width:'300px'}}>
+        <div className="intro-2-5">
+          <div className="label-image" data-aos="flip-right">
             <img src={comp_6_left} alt="Logo" className="size-images" />
             <p id="intro-style-sub">
               This coin has a branch from a laurel tree. It was an important
@@ -275,7 +401,7 @@ const Intro = () => {
           <span id="intro-style-para" data-aos="fade-up">
             On the back or <span id="term">reverse</span>, we see important symbols.
           </span>
-          <div className="label-image" data-aos="flip-left" style={{width:'300px'}}>
+          <div className="label-image" data-aos="flip-left">
             <img src={comp_6_right} alt="Logo" className="size-images" />
             <p id="intro-style-sub">
               On the dime is an olive branch (meaning peace), a lighted torch
@@ -284,91 +410,91 @@ const Intro = () => {
           </div>
         </div>
 
-        <div className="intro-2-4">
-          <img
-            src={comp_7_left_mix}
-            alt="Logo"
-            className="size-images-mix"
-            data-aos="fade-up"
-          />
-          <p id="intro-style-para" data-aos="fade-in">
-            Just like our coins today, the symbols can change.
+        <div className="intro-2-6">
+          <p id="intro-style-para" data-aos="fade-up">
+             In addition to symbols, many coins also have <span id="term">legends </span>
+             or writing on them
           </p>
-          <img
-            src={comp_7_right_mix}
-            alt="Logo"
-            className="size-images-mix"
-            data-aos="fade-up"
-          />
+        </div>
+
+        <div className="intro-2-7">
+          <div className="label-image" data-aos="flip-right">
+            <img src={comp_9_right} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              This bronze coin has a civic <span id="term">ethnic</span> or name
+              of the citizens in Greek. It reads ΑΝΤΙΟΧΕΩΝ, which means 'Belongs
+              to the Antiochians'
+            </p>
+          </div>
+          <span id="intro-style-para" data-aos="fade-up">
+            Sometimes the <span id="term">legend</span> tells us about the government
+            behind the minting of the coin.
+          </span>
+          <div className="label-image" data-aos="flip-left">
+            <img src={comp_11_right} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              On the right side caption under the image: This dime identifies
+              itself as belonging to the United States of America.
+            </p>
+          </div>
+        </div>
+
+        <div className="intro-2-8">
+          <div className="label-image" data-aos="flip-right">
+            <img src={comp_15} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              On the left side caption under the image: This silver radiate
+              celebrates PAX AVGVSTI or “Peace of the Emperors.”
+            </p>
+          </div>
+          <span id="intro-style-para" data-aos="fade-up">
+            Sometimes the <span id="term">legend</span> celebrates the government
+            or community values.
+          </span>
+          <div className="label-image" data-aos="flip-left">
+            <img src={comp_14_right} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              This dime celebrates the official national motto and a key value of
+              the United States.
+            </p>
+          </div>
         </div>
 
   {/* SECTION 3 */}
 
         <div className="intro-3-head">
           <p data-aos="slide-up" id="intro-style-head">
-            The citizens wanted to make sure that everyone knew that these coins
-            belonged to them.
+            With these images and legends, coins made clear which governmental
+            authority gave the coins value as money.
+          </p>
+        </div>
+
+        <div className="intro-3-1-up">
+          <p data-aos="fade-in" id="intro-style-para" style={{width: "800px"}}>
+            Because of the uniqueness of each coin and the issuing authority that
+            guaranteed its value (e.g., individual cities, provinces, kingdoms,
+            imperial governments), not all coins were accepted everywhere as currency.
           </p>
         </div>
 
         <div className="intro-3-1">
           <img
-            src={comp_9_right}
+            src={circulationMap}
             alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
           />
-          <p id="intro-style-para" data-aos="fade-up">
-            They wrote their name on the coins in Greek: ΑΝΤΙΟΧΕΩΝ, which means
-            'Belongs to the Antiochians'.
+          <p id="intro-style-sub">
+            This map shows how the coins of different authorities are believed to
+            have generally circulated. Actual evidence, however, shows tremendous
+            variation.
           </p>
         </div>
 
         <div className="intro-3-2">
-          <p id="intro-style-para" data-aos="fade-right">
-            The name was also important because it made clear the governmental
-            <span id="term"> authority</span> who gave the cheap bronze value as money.
-          </p>
-        </div>
-
-        <div className="intro-3-3">
-          <p id="intro-style-para" data-aos="fade-up">
-            We do the same with our money! The term 'United States of America'
-            carries a lot of weight!
-          </p>
-          <img
-            src={comp_11_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-        </div>
-
-        <div className="intro-3-4">
-          <p id="intro-style-para" data-aos="fade-in">
-            The U.S. dime tells us its <span id="term">denomination</span>, or how much it is worth.
-            <br></br>
-            <br></br>
-            <span id="intro-style-sub">One Dime = 10 cents.</span>
-          </p>
-          <img
-            src={comp_18_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-        </div>
-
-        <div className="intro-3-5">
-          <img
-            src={comp_19_mix}
-            alt="Logo"
-            className="size-images-mix"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-left">
-            Denomination marks are very rare for ancient Syria. Instead, people
-            knew the value based upon a coin’s metal, size, and images.
+          <p data-aos="fade-in" id="intro-style-para" style={{width: "800px"}}>
+            We can use digital technologies to map where, when, and in what quantities
+            each Syrian community’s coins appear in the archaeological record. This
+            can help us identify regional and empire-wide limits in their movement
+            and in their <span id="term">circulation</span> as money.
           </p>
         </div>
 
@@ -376,91 +502,88 @@ const Intro = () => {
 
         <div className="intro-4-head">
           <p id="intro-style-head" data-aos="fade-left">
-            The U.S. dime also has other words, or <span id="term">legends</span>. They celebrate our
-            government and our values.
+            The coins have many other features to notice.
           </p>
-          <img
-            src={comp_14_right}
-            alt="Logo"
-            className="size-images-head"
-            data-aos="fade-right"
-          />
         </div>
 
         <div className="intro-4-1">
-          <img
-            src={comp_15}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-left">
-            So did some of the ancient coins! Here we see PAX AVGVSTI or
-            “Peace of the Emperors” being celebrated!
+          <div data-aos="flip-right">
+            <img
+              src={bronze_17mm}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={silver_24mm}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              Denomination marks are very rare for ancient Syria. instead, people
+              knew the value based upon a coin’s metal, size, and images.
+            </p>
+          </div>
+          <p data-aos="fade-in" id="intro-style-para">
+            The <span id="term">denomination</span> of a coin means how
+            much a coin is worth as money.
           </p>
-        </div>
-
-        <div className="intro-4-2-up">
-          <p id="intro-style-para" data-aos="fade-left">
-            Like our U.S. dime, we can tell when a coin was minted or
-            <span id="term"> issued</span>.
-          </p>
+          <div data-aos="flip-left">
+            <img
+              src={dime_17mm}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <img
+              src={quarter_24mm}
+              alt="Logo"
+              className="size-images-sm"
+            />
+            <p id="intro-style-sub">
+              Modern coins are different metals and sizes, but they also tell us
+              how much they are worth.
+            </p>
+          </div>
         </div>
 
         <div className="intro-4-2">
-          <p id="intro-style-sub" data-aos="fade-left">
-            This dime was struck in 2013 at the “S” or San Francisco mint.
-          </p>
-          <img
-            src={comp_12_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="flip-right"
-            data-aos-duration="2500"
-          />
-          <img
-            src={comp_16_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="flip-left"
-            data-aos-duration="2500"
-          />
-        </div>
-
-        <div className="intro-4-3-up">
-          <p id="intro-style-para" data-aos="fade-down">
-            People in ancient Syria used Greek letters to indicate the date.
-          </p>
+          <div className="label-image" data-aos="flip-right">
+            <img src={comp_13_right} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              Greek letters indicate the date on Syrian coins. The ΔΡ tells us that
+              the coin was minted in 55/56 CE, during the reign of emperor Nero.
+            </p>
+          </div>
+          <span id="intro-style-para" data-aos="fade-up">
+            Letters and numbers can tell us when a coin was minted.
+          </span>
+          <div className="label-image" data-aos="flip-left">
+            <img src={comp_12_right} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              This dime was minted in 2013.
+            </p>
+          </div>
         </div>
 
         <div className="intro-4-3">
-          <img
-            src={comp_13_right}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-sub" data-aos="fade-right">
-            Here, the ΔΡ tells us that the coin was minted in 55/56 CE, during
-            the reign of emperor Nero.
-          </p>
+          <div className="label-image" data-aos="flip-right">
+            <img src={comp_17} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              Ancient mint marks may indicate the minting city, but it may also
+              be a production mark hinting at who paid for the coins or remain a mystery.
+            </p>
+          </div>
+          <span id="intro-style-para" data-aos="fade-up">
+            <span id="term">Mint marks</span> are letters or symbols which can indicate where a coin was struck.
+          </span>
+          <div className="label-image" data-aos="flip-left">
+            <img src={comp_16_right} alt="Logo" className="size-images" />
+            <p id="intro-style-sub">
+              This dime was struck at the San Francisco mint.
+            </p>
+          </div>
         </div>
 
         <div className="intro-4-4">
-          <img
-            src={comp_17}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-sub" data-aos="fade-left">
-            A <span id="term">mint mark</span> on an ancient coin can indicate the minting city, but it
-            may also be a production mark or hint at who paid for the coins.
-            Sometimes the mint mark is a mystery!
-          </p>
-        </div>
-
-        <div className="intro-4-5">
           <div data-aos="flip-right">
             <img
               src={comp_20}
@@ -479,43 +602,19 @@ const Intro = () => {
           <div data-aos="flip-left">
             <img src={comp_21} alt="Logo" className="size-images" data-aos="fade-in"/>
             <p id="intro-style-sub" data-aos="fade-down">
-              A coin could be cut in half too, likely as an attempt to make more coins when minting stopped.
+              A coin could be cut in half too, likely as an attempt to make more
+              coins when minting stopped.
             </p>
           </div>
         </div>
-
-        {/* <div className="component-20">
-          <img
-            src={comp_20}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-left">
-            Sometimes we see countermarks. These are marks stamped on a
-            circulating coin to give it extra value or keep it working as money.
-            Cities and governments could do this, but so could the military.
-          </p>
-        </div>
-        <div className="component-21">
-          <img
-            src={comp_21}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
-          <p id="intro-style-para" data-aos="fade-left">
-            Sometimes, a coin would be cut in half.We aren’t quite sure why,
-            but it likely was an attempt to make more coins when you couldn’t
-            mint more.
-          </p>
-        </div> */}
 
   {/* SECTION 5 */}
 
         <div className="intro-5">
           <h2 id="intro-style-para" data-aos="fade-right">
-            There’s so much to explore when it comes to ancient AND modern coins. Are you ready to learn more?
+            Ancient coins have so much to say, as pieces of art, as objects that
+            move, and as representatives of the people who minted and used them.
+            Are you ready to learn more?
           </h2>
         </div>
 
@@ -530,7 +629,7 @@ const Intro = () => {
           </StyledLink>
         </div>
 
-        <div className="intro-resources" style={{width:"100%", height:"1100px"}}>
+        <div className="intro-resources">
             <p id="religious-style-rsrc">
               Coin Images Courtesy of:
               <br></br>
@@ -538,21 +637,19 @@ const Intro = () => {
               <ul>
                 <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 180 </a></li>
                   <br></br>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.75243" target="_blank" rel="noopener noreferrer">American Numismatic Society 1944.100.75243</a></li>
                   <br></br>
-                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank" rel="noopener noreferrer">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald </a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank" rel="noopener noreferrer">American Numismatic Society 1944.100.39966</a></li>
                   <br></br>
-                <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84742087?rk=107296;4" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Chandon de Briailles 1446</a></li>
+                <li><a href="https://ikmk.smb.museum/object?lang=en&id=18215628" target="_blank" rel="noopener noreferrer">Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1944.100.32580" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.32580</a></li>
+                <li><a href="http://numismatics.org/collection/1937.999.318" target="_blank" rel="noopener noreferrer">American Numismatic Society 1937.999.318</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1981.43.1" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1981.43.1</a></li>
-                  <br></br>
-                <li><a href="http://numismatics.org/collection/1947.2.372" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1947.2.372</a></li>
+                <li><a href="http://numismatics.org/collection/1944.100.65231" target="_blank" rel="noopener noreferrer">American Numismatic Society 1944.100.65231</a></li>
                   <br></br>
                 <li><a href="https://ikmk.smb.museum/object?id=18201044" target="_blank" rel="noopener noreferrer">Münzkabinett, Staatliche Museen zu Berlin, 18201044; photograph by Reinhard Saczewski</a></li>
                   <br></br>
-                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1996.71.3 </a></li>
+                <li><a href="http://numismatics.org/collection/1996.71.3?lang=en" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1996.71.3</a></li>
                   <br></br>
                 <li><a href="http://numismatics.org/collection/1999.2.2" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1999.2.2</a></li>
                   <br></br>
@@ -566,6 +663,8 @@ const Intro = () => {
               <ul>
                 <li>Burnett, A. 1987. <em>Coinage in the Roman World</em>. London: Seaby. </li>
                   <br></br>
+                <li>Butcher, K. 2001-2002. “Small Change in Ancient Beirut: The Coin Finds from BEY 006 and BEY 045: Persian, Hellenistic, Roman, and Byzantine Periods,” <em>Berytus</em> 45-46.</li>
+                  <br></br>
                 <li>Casey, P.J. 1986. <em>Understanding Ancient Coins</em>. Norman: University of Oklahoma Press.</li>
                   <br></br>
                 <li>Howgego, C. 1995. <em>Ancient History from Coins</em>. London: Routledge.</li>
@@ -573,6 +672,8 @@ const Intro = () => {
                 <li>Howgego, C., Heuchert, V., and Burnett, A. (eds.) 2005. <em>Coinage and Identity in the Roman Provinces</em>. Oxford University Press.</li>
                   <br></br>
                 <li>Metcalf, W.E. (ed.). 2012. <em>The Oxford Handbook of Greek and Roman Coinage</em>. Oxford University Press.</li>
+                  <br></br>
+                <li>Neumann, K. Forthcoming. <em>Antioch in Syria: A History from Coins, 300 BCE-450 CE</em> (Cambridge University Press).</li>
               </ul>
             </p>
         </div>

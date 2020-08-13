@@ -21,12 +21,12 @@ const Explore = () => {
           Let me Sort Coins
         </Link>
         <Link
-          to="/tableau-maps"
+          to="/maps"
           data-aos="fade-right"
           data-aos-duration="1600"
           id="style-select-items"
         >
-          Let me Map Coins
+          Let Me Map Coins
         </Link>
         <Link
           to="/omeka-database"

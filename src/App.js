@@ -71,7 +71,7 @@ const App = () => {
               </Nav.Link>
               <NavDropdown title="Tell me a Story" id="collasible-nav-dropdown">
                 <NavDropdown.Item>
-                  <DropDownLink to="/civic-story">Political Story</DropDownLink>
+                  <DropDownLink to="/civic-story">Civic Story</DropDownLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <DropDownLink to="/economic-story">Economic Story</DropDownLink>
