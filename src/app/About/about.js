@@ -6,6 +6,7 @@ import drRodwell from "../data/about-images/DrRodwell.jpg"
 import martin from "../data/about-images/Martin.jpg"
 import rahul from "../data/about-images/Rahul.jpg"
 import jinelly from "../data/about-images/Jinelly.jpg"
+import xandria from "../data/about-images/Xandria.jpg"
 
 
 const About = () => {
@@ -203,39 +204,23 @@ const About = () => {
         </p>
       </div>
 
-      <div className="team-1-8">
-        <img
-          src={jinelly}
-          alt="Logo"
-        />
-        <p id="about-style-para2">
-          <strong>Jinelly Swasey</strong>
-          <br></br>
-          <em>Graduate Usability (UX) Assistant</em>
-          <br></br>
-          <br></br>
-          In May 2020, Swasey graduated from the University with a B.S. in Digital
-          Media. While studying, she developed skills in UI/UX design, omnichannel
-          marketing, and branding. During the 2019-2020 academic year, she served
-          as the president of the student-led organization, GCEA, known as the
-          Graphic Communications Education Association. Swasey assists Dr. Rodwell
-          in user research and usability testing.
-        </p>
-      </div>
-
       <div className="team-1-9">
         <img
-          src={jinelly}
+          src={xandria}
           alt="Logo"
         />
         <p id="about-style-para2">
           <strong>Xandria Outing</strong>
           <br></br>
-          <em>Graduate Assistant</em>
+          <em>Graduate Assistant in Data Development and Curation </em>
           <br></br>
           <br></br>
-          Outing is a 2020 graduate from the MA Program in Public History from
-          the University of Houston.
+          Outing is a 2020 graduate from the University of Houston with a M.A. in
+          Public History. For the project, Outing built, maintained, and updated
+          digital spreadsheets with coin data. She oversaw the creation and editing
+          of the Omeka catalog and matched each entry with coin images from museum
+          databases. Outing seeks to become a museum curator and find new ways to
+          introduce history to the public.
         </p>
       </div>
 
