@@ -315,7 +315,14 @@
         align-items: center;
         transform: translate(-50%, -50%);
         text-decoration: solid;
+        flex-direction: column;
     }
+
+        .intro-1-4 img {
+          width: 1000px;
+          height: 280px;
+          padding: 20px;
+        }
 
 /* INTRO SECTION 2 */
 

@@ -195,7 +195,7 @@ const About = () => {
           <em>Graduate Usability (UX) Assistant</em>
           <br></br>
           <br></br>
-          In May 2020, Swasey graduated from the University with a B.S. in Digital
+          In May 2020, Swasey graduated from the University of Houston with a B.S. in Digital
           Media. While studying, she developed skills in UI/UX design, omnichannel
           marketing, and branding. During the 2019-2020 academic year, she served
           as the president of the student-led organization, GCEA, known as the
@@ -229,17 +229,14 @@ const About = () => {
           <strong>Past Student Research Assistants</strong>
           <br></br>
           <br></br>
-          Alberto Wilson, Ph.D. Candidate in the Department of History at the University of Houston
-          <br></br>
-          Tara Sewell, Ph.D. 2020 from the Department of History at the University of Houston
-          <br></br>
-          Matthew Finnie, Ph.D. Candidate in the Department of History at the University of Houston
-          <br></br>
-          Delfina Denari, B.S. from the University of Houston
-          <br></br>
-          Abigail Chetlain, B.S. from the University of Houston
-          <br></br>
-          Anjana Kummari, M.A. from the University of Houston
+          <ul>
+            <li><strong>Alberto Wilson, Ph.D.</strong> Candidate in the Department of History at the University of Houston</li>
+            <li><strong>Tara Sewell, Ph.D.</strong> 2020 from the Department of History at the University of Houston</li>
+            <li><strong>Matthew Finnie, Ph.D.</strong> Candidate in the Department of History at the University of Houston</li>
+            <li><strong>Delfina Denari, B.S.</strong> from the University of Houston</li>
+            <li><strong>Abigail Chetlain, B.S.</strong> from the University of Houston</li>
+            <li><strong>Anjana Kummari, M.A.</strong> from the University of Houston</li>
+          </ul>
         </p>
       </div>
 

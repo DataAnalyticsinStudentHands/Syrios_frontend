@@ -4,19 +4,6 @@ import styled from "styled-components";
 import "./map.css";
 import AOS from "aos";
 import TableauReport from 'tableau-react';
-import seleucidTetradrachm from "../data/mapcoins-images/seleucidTetradrachm.png";
-import romanAureus from "../data/mapcoins-images/romanAureus.png";
-import usQuarter from "../data/mapcoins-images/usQuarter.png";
-import euro from "../data/mapcoins-images/euro.png";
-import syrianProvincial from "../data/mapcoins-images/syrianProvincial.png";
-import egyptianTetradrachm from "../data/mapcoins-images/egyptianTetradrachm.png";
-import usStateQuarter from "../data/mapcoins-images/usStateQuarter.png";
-import germanPfennig from "../data/mapcoins-images/germanPfennig.png";
-import zeugmaCoin from "../data/mapcoins-images/zeugmaCoin.png";
-import nycFinal from "../data/mapcoins-images/nycFinal.png";
-import parisCoin from "../data/mapcoins-images/parisCoin.png";
-import maps from "../data/mapcoins-images/maps.png";
-import circulationMap from "../data/mapcoins-images/circulationMap.png";
 
 const CoinsExcavations = props => (
   <TableauReport
