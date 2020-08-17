@@ -50,7 +50,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-backend": "babel-node src/server/index.js",
+    "start-backend": "babel-node src/server/server.js",
     "start:watchbackend": "nodemon ./src/index.js --exec babel-node",
     "dev": "concurrently --kill-others \"npm run start\" \"npm run start-backend\"",
     "build": "react-scripts build",
