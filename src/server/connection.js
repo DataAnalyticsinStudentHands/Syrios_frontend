@@ -24,10 +24,9 @@ client.connect(
     cursor.forEach(
       function(doc) {
           console.log(doc);     // comment this
-        // coins.push(doc);     // uncomment this
-      },
+          console.log(typeof(doc))
+      }, 
       function(err) {
-        // console.log(coins);      // uncomment this - follow the upper 3 comments to get list of coin images. But redundant.
         client.close();
       }
     );

@@ -21,6 +21,7 @@ import zeus from "../data/civic-images/zeus.png";
 import protest from "../data/civic-images/protest.png";
 import protest_2 from "../data/civic-images/protest-2.png";
 import inscription from "../data/civic-images/inscription.png";
+import council from "../data/civic-images/council.png";
 
 const civicStory = () => {
   AOS.init({
@@ -214,15 +215,22 @@ const civicStory = () => {
         />
       </div>
 
-      <div className="civic-4-1-up">
+      <div className="civic-4-1">
         <p id="civic-style-para" data-aos="fade-down">
-          For example, ancient historians record that the boule gathered the
+          The <span id="term">boule</span> was like our own local government and civic councils.
+        </p>
+        <img src={council} alt="Logo" data-aos="fade-in" />
+      </div>
+
+      <div className="civic-4-2-up">
+        <p id="civic-style-para" data-aos="fade-down">
+          The boule was like our own local government and civic councils.
           <span id="term"> demos</span> – the citizen body – together to debate
           publicly in the city’s theatre.
         </p>
       </div>
 
-      <div className="civic-4-1">
+      <div className="civic-4-2">
         <img src={theatre} alt="Logo" data-aos="fade-in" />
         <p id="civic-style-sub" data-aos="fade-in">
           "Then the emperor’s lieutenant entered the theatre at Antioch, where
@@ -234,7 +242,7 @@ const civicStory = () => {
         </p>
       </div>
 
-      <div className="civic-4-2">
+      <div className="civic-4-3">
         <p id="civic-style-para" data-aos="fade-down">
           This is just like the debates and public forums that happen in our own
           local governments!
@@ -242,7 +250,7 @@ const civicStory = () => {
         <img src={forum} alt="Logo" data-aos="fade-in" />
       </div>
 
-      <div className="civic-4-3">
+      <div className="civic-4-4">
         <img src={boule} alt="Logo" data-aos="fade-right" />
         <p id="civic-style-para" data-aos="fade-left">
           Voting was an important job of the boule and demos. The coin even
@@ -251,7 +259,7 @@ const civicStory = () => {
         </p>
       </div>
 
-      <div className="civic-4-4">
+      <div className="civic-4-5">
         <p id="civic-style-para" data-aos="fade-left">
           Just like today, the citizens had a say in the operations of their
           city government!
@@ -259,14 +267,14 @@ const civicStory = () => {
         <img src={vote} alt="Logo" data-aos="fade-right" />
       </div>
 
-      <div className="civic-4-5-up">
+      <div className="civic-4-6-up">
         <p id="civic-style-para" data-aos="fade-down">
           The boule and magistrates also hosted many civic celebrations for
           their community.
         </p>
       </div>
 
-      <div className="civic-4-5">
+      <div className="civic-4-6">
         <div data-aos="fade-in">
           <img src={festival} alt="Logo"/>
           <p id="captions">
@@ -285,7 +293,7 @@ const civicStory = () => {
         </p>
       </div>
 
-      <div className="civic-4-6">
+      <div className="civic-4-7">
         <img src={zeus} alt="Logo" data-aos="fade-right" />
         <p id="civic-style-para" data-aos="fade-right">
           Many of these civic festivals celebrated the gods. This includes Zeus,
