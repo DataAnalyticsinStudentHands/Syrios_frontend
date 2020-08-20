@@ -19,6 +19,7 @@ import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/ContactUs/contact";
 import About from "./app/About/about";
 import GraphQLClient from "./app/GraphQLClient/gqlclient";
+import Footer from "./app/Footer/footer";
 import {
   BrowserRouter as Router,
   Route,
@@ -141,6 +142,10 @@ const App = () => {
           />
           {/* <Redirect to="/404" /> */}
         </Switch>
+        <div>
+          <Footer />
+        </div>
+
       </Router>
     </div>
   );
