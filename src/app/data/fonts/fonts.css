@@ -1,7 +1,35 @@
+/* font-face for all components */
+@font-face {
+    font-family: "CormorantGaramond-Regular";
+    src: url("./cormorant_garamond/CormorantGaramond-Regular.woff")
+    format("woff2"),
+    url("./cormorant_garamond/CormorantGaramond-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CormorantGaramond-Bold";
+    src: url("./cormorant_garamond/CormorantGaramond-Bold.woff")
+    format("woff2"),
+    url("./cormorant_garamond/CormorantGaramond-Bold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CormorantGaramond-BoldItalic";
+    src: url("./cormorant_garamond/CormorantGaramond-BoldItalic.woff")
+    format("woff2"),
+    url("./cormorant_garamond/CormorantGaramond-BoldItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'cartogothic_stdbook';
     src: url('./cartogothic/cartogothicstd-book-webfont.woff2') format('woff2'),
-         url('./cartogothic/cartogothicstd-book-webfont.woff') format('woff');
+    url('./cartogothic/cartogothicstd-book-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,7 +37,9 @@
 @font-face {
     font-family: 'cartogothic_stdbook_bold';
     src: url('./cartogothic/CartoGothicStd-Bold.woff2') format('woff2'),
-         url('./cartogothic/CartoGothicStd-Bold.woff') format('woff');
+    url('./cartogothic/CartoGothicStd-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
+
+

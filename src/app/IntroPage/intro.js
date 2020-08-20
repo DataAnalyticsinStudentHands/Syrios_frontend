@@ -172,14 +172,14 @@ const Intro = () => {
           <p id="intro-para-left" data-aos="fade-left">
             A coin minted for a king celebrates his power and strength.
           </p>
-          <div class="sketchfab-embed-wrapper" data-aos="fade-in">
+          <div className="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
               title="A 3D model"
               width="640"
               height="480"
               src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed?autostart=1&autospin=0.5&preload=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1"
-              frameborder="0"
-              allow="autoplay; fullscreen; vr"
+              frameBorder="0"
+              allow="autoplay; fullscreen"
               mozallowfullscreen="true"
               webkitallowfullscreen="true"
             ></iframe>
@@ -628,7 +628,7 @@ const Intro = () => {
         </div>
 
         <div className="intro-resources">
-            <p id="religious-style-rsrc">
+            <div id="religious-style-rsrc">
               Coin Images Courtesy of:
               <br></br>
               <br></br>
@@ -673,7 +673,7 @@ const Intro = () => {
                   <br></br>
                 <li>Neumann, K. Forthcoming. <em>Antioch in Syria: A History from Coins, 300 BCE-450 CE</em> (Cambridge University Press).</li>
               </ul>
-            </p>
+            </div>
         </div>
 
       </div>
