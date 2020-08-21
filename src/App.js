@@ -19,6 +19,7 @@ import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/ContactUs/contact";
 import About from "./app/About/about";
 import GraphQLClient from "./app/GraphQLClient/gqlclient";
+import Footer from "./app/Footer/footer";
 import {
   BrowserRouter as Router,
   Route,
@@ -28,13 +29,14 @@ import {
 
 const StyledLink = styled(Link)`
     text-decoration: none;
+    
 
     &:focus, &:visited, &:link, &:active {
         text-decoration: none;
-        color: white;
+        color: #2D616A
     }
     &:hover {
-      color: #faebd7;
+      color: #E3B287;
     }
 `;
 
@@ -43,11 +45,11 @@ const DropDownLink = styled(Link)`
 
     &:focus, &:visited, &:link, &:active {
         text-decoration: none;
-        color: black;
-        font-weight: 400;
+        color: #2D616A;
+        
     }
     &:hover {
-      color: #2d616a;
+      color: #E3B287;
     }
 `;
 
@@ -58,18 +60,18 @@ const App = () => {
 
         {/* !!!!!!!!!!! NAVBAR COMPONENT !!!!!!!!!!!! */}
         <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="color-nav" collapseOnSelect expand="xl">
         <Link to="/"><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
           <Navbar.Brand>
             <StyledLink to="/" style={{marginLeft:'10px'}}>The Syrios Project</StyledLink>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav className="ml-auto">
               <Nav.Link>
-                <StyledLink to="/">Home</StyledLink>
+                <StyledLink to="/">HOME</StyledLink>
               </Nav.Link>
-              <NavDropdown title="Tell me a Story" id="collasible-nav-dropdown">
+              <NavDropdown title="TELL ME A STORY" id="collasible-nav-dropdown">
                 <NavDropdown.Item>
                   <DropDownLink to="/civic-story">Civic Story</DropDownLink>
                 </NavDropdown.Item>
@@ -83,7 +85,7 @@ const App = () => {
                   <DropDownLink to="/visitors-story">Visitor's Story</DropDownLink>
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="Let me Explore" id="collasible-nav-dropdown">
+              <NavDropdown title="LET ME EXPLORE" id="collasible-nav-dropdown">
                 <NavDropdown.Item>
                   {" "}
                   <DropDownLink to="/coins">Sort Coins</DropDownLink>
@@ -103,12 +105,13 @@ const App = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Nav>
-              <Nav.Link href="about">About</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link href="contact-us">Contact Us</Nav.Link>
-            </Nav>
+
+            <Nav.Link>
+              <StyledLink to="about">ABOUT</StyledLink>
+            </Nav.Link>
+            <Nav.Link>
+              <StyledLink to="contact-us">CONTACT US</StyledLink>
+            </Nav.Link>
           </Navbar.Collapse>
         </Navbar>
         </div>
@@ -141,6 +144,10 @@ const App = () => {
           />
           {/* <Redirect to="/404" /> */}
         </Switch>
+        <div>
+          <Footer />
+        </div>
+
       </Router>
     </div>
   );

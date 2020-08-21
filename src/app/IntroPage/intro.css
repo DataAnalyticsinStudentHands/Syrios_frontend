@@ -1,47 +1,17 @@
-  /* * {
-  box-sizing: border-box;
-} */
-
-/* @font-face { */
-/* font-family: 'MyWebFont'; */
-/* src: url('../data/dalekpinpointbold-webfont.woff') format('woff'); Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-/* url('../data/DalekPinpointBold.ttf') format('truetype'); Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
-/* }  */
-
-@font-face {
-  font-family: "cartogothic_stdbook";
-  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "cartogothic_stdbook_bold";
-  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .intro-page {
-  /* background-image: url(../data/images/bg-2.png);  */
-  font-family: cartogothic_stdbook;
-  font-size: larger;
+  font-family: CormorantGaramond-Regular;
   color: rgb(0, 0, 0);
 }
+
+.top-buffer { margin-top:150px; }
 
 .class-title {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  text-align: center;
+  /*text-align: center;*/
   margin: 0;
-  /* padding: 0; */
   font-size: calc(10px + 2vmin);
   vertical-align: top;
   display: inline-block;
@@ -51,7 +21,6 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-
   text-align: center;
   top: 35%;
   left: 50%;
@@ -61,7 +30,7 @@
 .intro-main-subtitle {
   margin-top: -10px;
   width: 500px;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
   font-size: 15px;
 }
 
@@ -80,21 +49,22 @@
 }
 
 .title-logo {
-  height: 280px;
-  width: 250px;
+  padding-right: 100px;
+  height: 100%;
+  width: 100%;
 }
 
 .intro-main-title-h1 {
   color: #2d616a;
-  font-size: calc(20px + 6vmin);
-  margin-top: -30px;
-  font-family: cartogothic_stdbook_bold;
+  font-size: calc(11px + 5vmin);
+  font-family: 'CormorantGaramond-Bold';
 }
 
 .intro-main-title-h2 {
-  font-family: cartogothic_stdbook_bold;
-  margin-top: -15px;
-  color: "#2d616a";
+  font-family: 'CormorantGaramond-Regular';
+  font-size: calc(3px + 3vmin);
+  color: #2d616a;
+  line-height: 110%;
 }
 
 .intro-read-coin {
@@ -111,15 +81,22 @@
 .class-scroll {
   height: 50px;
   width: 50px;
-  margin-top: 20px;
 }
 
-#intro-style-para {
+#intro-para-center {
   margin: auto;
   width: 600px;
-  padding: 10px;
-  font-size: 30px;
-  font-family: cartogothic_stdbook;
+  padding: 10px 100px;
+  font-size: 24px;
+  text-align: center;
+}
+
+#intro-para-left {
+  margin: auto;
+  width: 400px;
+  padding-right: 100px;
+  font-size: 24px;
+  text-align: left;
 }
 
 #intro-style-rsrc {
@@ -131,59 +108,43 @@
 }
 
 #intro-style-sub {
-  margin: 0;
+  margin: auto;
   background-color: WhiteSmoke;
   color: #2d616a;
   border-radius: 10px;
   padding: 40px;
   font-size: 18px;
-  width: 400px;
+  width: 300px;
 }
 
 #intro-style-head {
-  margin: auto;
-  color: white;
-  width: 1000px;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 45px;
+  color: #2d616a;
+  font-size: 48px;
+  font-family: CormorantGaramond-Bold;
+  text-align: left;
+  width: 600px;
+  align-items: center;
+  margin: 0px 150px;
 }
 
 #term {
-  font-style: oblique;
-  font-weight: bolder;
+  font-family: CormorantGaramond-BoldItalic;
+  color: #E3B287;
 }
 
- .header-explore-left {
+.title-button {
   color: white;
-  border-radius: 20px;
-  padding: 5px;
-  margin-right: 40px;
-  width: 300px;
-  background-image: var(--div-bg-2);
-}
-
-.header-explore-right {
-  color: white;
-  border-radius: 20px;
-  padding: 5px;
-  margin-left: 40px;
-  width: 300px;
-  background-image: var(--div-bg-2);
-}
-
-.read-coin {
-  /* position: absolute; */
-  /* display: block; */
-  padding: 0;
-  text-align: center;
-  top: 90%;
+  font-size: calc(2px + 2vmin);;
+  border-radius: 7px;
+  padding: 10px 15px 10px 15px;
+  background-color: #7EA274;
 }
 
 .size-images-sm {
-  height: 200px;
-  width: 200px;
-  padding: 20px;
+  height: 150px;
+  width: 150px;
+  padding: 10px;
+  padding-bottom: 20px;
 }
 
 .size-images {
@@ -193,16 +154,9 @@
 }
 
 .size-images-head {
-  height: 400px;
-  width: 400px;
-  padding: 60px;
-}
-
-.size-images-mix {
-  height: 220px;
-  width: 240px;
-  vertical-align: middle;
-  padding: 20px;
+  height: 300px;
+  width: 300px;
+  margin-left: 150px;
 }
 
 .align-subtitle {
@@ -211,7 +165,6 @@
 }
 
 .label-image {
-  /* vertical-align: top; */
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -233,25 +186,15 @@
       top: 150%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
-      background-color: #2d616a;
       width: 100%;
       height: 100%;
-      padding: 100px;
     }
-
-        .intro-1-head img {
-          padding: 20px;
-          width: 400px;
-          height: 400px;
-          margin: auto;
-        }
 
     .intro-1-1 {
       position: absolute;
-      top: 250%;
+      top: 220%;
       left: 50%;
       display: flex;
       font-size: larger;
@@ -261,16 +204,11 @@
       text-decoration: solid;
     }
 
-        .intro-1-1 div p {
-          width: 400px;
-        }
-
     .threeD-coin {
       position: absolute;
       top: 320%;
       left: 50%;
       display: flex;
-      font-size: larger;
       text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
@@ -282,8 +220,6 @@
       top: 400%;
       left: 50%;
       display: flex;
-      font-size: larger;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -298,8 +234,6 @@
       top: 470%;
       left: 50%;
       display: flex;
-      font-size: larger;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -310,11 +244,8 @@
         left: 50%;
         position: absolute;
         display: flex;
-        font-size: larger;
-        text-align: center;
         align-items: center;
         transform: translate(-50%, -50%);
-        text-decoration: solid;
         flex-direction: column;
     }
 
@@ -334,23 +265,16 @@
       text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
-      background-color: #2d616a;
       width: 100%;
       height: 100%;
       padding: 100px;
     }
-
-        .intro-2-head img {
-          padding: 80px;
-          margin: auto;
-        }
 
     .intro-2-1 {
       position: absolute;
       top: 750%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -361,7 +285,6 @@
       top: 800%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
     }
@@ -371,7 +294,6 @@
       top: 860%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -382,10 +304,10 @@
       top: 930%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
+      text-align: center;
     }
 
     .intro-2-5 {
@@ -393,7 +315,6 @@
       top: 1000%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -404,7 +325,6 @@
       top: 1060%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -415,7 +335,6 @@
       top: 1120%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
       text-decoration: solid;
@@ -426,7 +345,6 @@
       top: 1200%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
     }
@@ -438,13 +356,10 @@
       top: 1300%;
       left: 50%;
       display: flex;
-      text-align: center;
-      align-items: center;
+      align-items: left;
       transform: translate(-50%, -50%);
-      background-color: #2d616a;
       width: 100%;
       height: 100%;
-      padding: 100px;
     }
 
     .intro-3-1-up {
@@ -452,65 +367,27 @@
       top: 1380%;
       left: 50%;
       display: flex;
-      text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
     }
 
     .intro-3-1 {
-      top: 1425%;
+      top: 1415%;
       left: 50%;
       position: absolute;
       display: flex;
       text-align: center;
       align-items: center;
       transform: translate(-50%, -50%);
-      justify-content: space-between;
-      flex-direction: column;
     }
 
         .intro-3-1 img {
           width: 500px;
           height: 323px;
-        }
-
-        .intro-3-1 div p {
-          width: 500px;
+          padding-right: 30px;
         }
 
     .intro-3-2 {
-      position: absolute;
-      top: 1500%;
-      left: 50%;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      transform: translate(-50%, -50%);
-    }
-
-    .intro-3-3 {
-      position: absolute;
-      font-size: larger;
-      top: 1380%;
-      left: 50%;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      transform: translate(-50%, -50%);
-      text-decoration: solid;
-    }
-
-    .intro-3-4 {
-      position: absolute;
-      top: 1440%;
-      left: 50%;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      transform: translate(-50%, -50%);
-    }
-
-    .intro-3-5 {
       position: absolute;
       top: 1500%;
       left: 50%;
@@ -527,13 +404,10 @@
       top: 1600%;
       left: 50%;
       display: flex;
-      text-align: center;
-      align-items: center;
+      align-items: left;
       transform: translate(-50%, -50%);
-      background-color: #2d616a;
       width: 100%;
       height: 100%;
-      padding: 100px;
     }
 
     .intro-4-1 {
@@ -542,7 +416,6 @@
       left: 50%;
       display: flex;
       text-align: center;
-      align-items: center;
       transform: translate(-50%, -50%);
     }
 

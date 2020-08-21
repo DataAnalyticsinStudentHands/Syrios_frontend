@@ -1,29 +1,10 @@
-@font-face {
-  font-family: "cartogothic_stdbook";
-  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "cartogothic_stdbook_bold";
-  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 div[data-aos-duration='4000'] [data-aos],
   [data-aos][data-aos][data-aos-duration='4000'] {
     transition-duration: 4000ms;
   }
 
 .class-eco-story {
-  font-family: cartogothic_stdbook;
+  font-family: CormorantGaramond-Regular;
   font-size: larger;
 }
 
@@ -39,7 +20,7 @@ div[data-aos-duration='4000'] [data-aos],
 
 .class-eco-title p, h1 {
     margin: 0;
-    font-family: cartogothic_stdbook_bold;
+    font-family: "CormorantGaramond-Bold";
 }
 
 .eco-img-head {

@@ -3,25 +3,6 @@
   --div-bg-2: url(../data/images/bg-5.png);
 }
 
-@font-face {
-  font-family: "cartogothic_stdbook";
-  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "cartogothic_stdbook_bold";
-  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 #religious-style-para {
   margin: auto;
   width: 600px;
@@ -63,7 +44,7 @@
 }
 
 .class-religious-story {
-  font-family: cartogothic_stdbook;
+  font-family: "CormorantGaramond-Regular";
   font-size: larger;
 }
 
@@ -81,13 +62,13 @@
 
 .class-religious-title h1 {
   margin: 0;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
   color: #2d616a;
 }
 
 .class-religious-title p {
   margin: 0;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
 }
 
 .religious-size-images {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "aos/dist/aos.css";
 import logo from "../data/intro-images/Logo.png";
-import img_2 from "../data/intro-images/img-1.png";
+import bronzecoin from "../data/intro-images/bronzecoin.png";
 import us_dime from "../data/intro-images/us-dime.png";
 import comp_3_left from "../data/intro-images/comp-3-left.png";
 import comp_3_right from "../data/intro-images/comp-3-right.png";
@@ -20,11 +20,9 @@ import comp_14_right from "../data/intro-images/comp-14-right.png";
 import comp_15 from "../data/intro-images/comp-15.png";
 import comp_16_right from "../data/intro-images/comp-16-right.png";
 import comp_17 from "../data/intro-images/comp-17.png";
-import comp_18_right from "../data/intro-images/comp-18-right.png";
-import comp_19_mix from "../data/intro-images/comp-19-mix.png";
 import comp_20 from "../data/intro-images/comp-20.png";
 import comp_21 from "../data/intro-images/comp-21.png";
-import scroll_down from "../data/intro-images/scroll-down-2.png";
+import scroll_down from "../data/intro-images/scroll-down-1.svg";
 import seleucidTetradrachm from "../data/intro-images/seleucidTetradrachm.png";
 import romanAureus from "../data/intro-images/romanAureus.png";
 import usQuarter from "../data/intro-images/usQuarter.png";
@@ -65,72 +63,82 @@ const Intro = () => {
   });
 
   return (
+
     <div className="intro-page">
-      <div className="class-title">
-        <div className="intro-main-title">
-          <p data-aos="fade-in">The</p>
-          <h1 data-aos="fade-in" className="intro-main-title-h1">
-            SYRIOS
-          </h1>
-          <h2 data-aos="fade-in" className="intro-main-title-h2">
-            PROJECT
-          </h2>
-          <p className="intro-main-subtitle" data-aos="fade-in">
-            Studying{" "}
-            <span style={{ color: "#2d616a" }}>Urban Relationships</span> and
-            Identity over{" "}
-            <span style={{ color: "#2d616a" }}>Ancient Syria</span>
-          </p>
-          <span>
+      <div className="container">
+        <div className="row top-buffer">
+          <div className="col-sm-5">
             <img
-              src={logo}
-              className="title-logo"
-              data-aos="fade-in"
-              alt="logo"
+                src={logo}
+                className="title-logo"
+                data-aos="fade-in"
+                alt="logo"
             />
-          </span>
+          </div>
+          <div className="col-md">
+            <div className="row">
+              <h1 data-aos="fade-in" className="intro-main-title-h1">
+                The Syrios Project
+              </h1>
+            </div>
+            <div className="row mt-md-3">
+                <p className="intro-main-title-h2" data-aos="fade-in">
+                Studying Urban Relationships and <br />
+                Identity over Ancient Syria
+                </p>
+            </div>
+            <div className="row mt-lg-5" >
+              <div className="row-cols-sm-3 mr-5">
+                  <StyledLink
+                      to="/select-story"
+                      className="title-button"
+                  >
+                    Tell Me A Story
+                  </StyledLink>
+                </div>
+              <div className="row-cols-sm-3 ml-5">
+                  <StyledLink
+                      to="/explore"
+                      className="title-button"
+                  >
+                    Let Me Explore
+                  </StyledLink>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div className="row top-buffer">
+          <div className="col-sm-5"></div>
+          <div className="col-md-4">
+            <img
+                src={scroll_down}
+                alt="scroll"
+                className="class-scroll"
+                data-aos="fade-down"
+            />
+          </div>
+          <div className="col-md-4"></div>
+
         </div>
       </div>
-      <div className="flex-intro-buttons">
-        <StyledLink
-          to="/select-story"
-          className="header-explore-left"
-        >
-          TELL ME A STORY
-        </StyledLink>
-        <div>
-        <img
-            src={scroll_down}
-            alt="scroll"
-            className="class-scroll"
-            data-aos="fade-down"
-          />
-          <h4>HOW TO READ A COIN?</h4>
-        </div>
-        <StyledLink
-          to="/explore"
-          className="header-explore-right"
-        >
-          LET ME EXPLORE
-        </StyledLink>
-      </div>
+
 
   {/* SECTION 1 */}
 
     <div className="component-mix">
 
         <div className="intro-1-head">
-          <img
-            src={img_2}
-            alt="Logo"
-            className="size-images"
-            data-aos="fade-right"
-          />
           <p id="intro-style-head" data-aos="fade-left">
             During the time of the Greeks and Romans, many different governments
             minted their own coins within Syria. To learn their stories, we must
             first learn how to read them.
           </p>
+          <img
+            src={bronzecoin}
+            alt="Logo"
+            className="size-images-head"
+            data-aos="fade-right"
+          />
         </div>
 
         <div className="intro-1-1">
@@ -149,7 +157,7 @@ const Intro = () => {
               A royal Seleucid tetradrachm and an imperial Roman aureus.
             </p>
           </div>
-          <p data-aos="fade-in" id="intro-style-para">
+          <p data-aos="fade-in" id="intro-para-center">
             Some of these coins were for kings and emperors. These are like our federal
             U.S. coins or the European Union coins.
           </p>
@@ -171,17 +179,17 @@ const Intro = () => {
         </div>
 
         <div className="threeD-coin">
-          <p id="intro-style-para" data-aos="fade-left">
+          <p id="intro-para-left" data-aos="fade-left">
             A coin minted for a king celebrates his power and strength.
           </p>
-          <div class="sketchfab-embed-wrapper" data-aos="fade-in">
+          <div className="sketchfab-embed-wrapper" data-aos="fade-in">
             <iframe
               title="A 3D model"
               width="640"
               height="480"
               src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed?autostart=1&autospin=0.5&preload=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1"
-              frameborder="0"
-              allow="autoplay; fullscreen; vr"
+              frameBorder="0"
+              allow="autoplay; fullscreen"
               mozallowfullscreen="true"
               webkitallowfullscreen="true"
             ></iframe>
@@ -239,7 +247,7 @@ const Intro = () => {
               A Syrian provincial coin and an Egyptian tetradrachm.
             </p>
           </div>
-          <p data-aos="fade-in" id="intro-style-para">
+          <p data-aos="fade-in" id="intro-para-center">
             Other coins were for provinces or regions. This would be like if the
             states of America minted their own coins.
           </p>
@@ -276,7 +284,7 @@ const Intro = () => {
               Civic coins from Antioch and Zeugma in Syria.
             </p>
           </div>
-          <p data-aos="fade-in" id="intro-style-para">
+          <p data-aos="fade-in" id="intro-para-center">
             Many individual cities and peoples in Syria and the Middle East also
             minted their own coins. This is like if New York or Chicago or Paris
             or London minted their own coins.
@@ -299,7 +307,7 @@ const Intro = () => {
         </div>
 
         <div className="intro-1-4">
-          <p data-aos="fade-right" id="intro-style-para">
+          <p data-aos="fade-right" id="intro-para-center">
             All of this minting continued in Syria, even while the region was ruled
             by the Seleucid kings and Roman empire.</p>
           <img
@@ -312,26 +320,26 @@ const Intro = () => {
     {/* SECTION 2 */}
 
         <div className="intro-2-head">
-          <img
-            src={img_2}
-            alt="Logo"
-            className="size-images-head"
-            data-aos="fade-right"
-          />
           <p id="intro-style-head" data-aos="fade-left">
             A little bronze coin has a lot to say too, just like our own U.S.
             dime.
           </p>
+          <img
+            src={bronzecoin}
+            alt="Logo"
+            className="size-images-head"
+            data-aos="fade-right"
+          />
         </div>
 
         <div className="intro-2-1">
           <img
-            src={img_2}
+            src={bronzecoin}
             alt="Logo"
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para" data-aos="fade-up">
+          <p id="intro-para-center" data-aos="fade-up">
              In fact, this coin has a lot in common with a U.S. dime.
           </p>
           <img
@@ -343,7 +351,7 @@ const Intro = () => {
         </div>
 
         <div className="intro-2-2">
-          <p id="intro-style-para" data-aos="fade-up">
+          <p id="intro-para-center" data-aos="fade-up">
              They are the same size.
           </p>
         </div>
@@ -355,7 +363,7 @@ const Intro = () => {
             className="size-images"
             data-aos="fade-right"
           />
-          <p id="intro-style-para" data-aos="fade-up">
+          <p id="intro-para-center" data-aos="fade-up">
             Like the dime, the little bronze coin has images and writing which form its <span id="term">type</span>.
           </p>
           <img
@@ -379,7 +387,7 @@ const Intro = () => {
               music, and light).
             </p>
           </div>
-          <p id="intro-style-para" data-aos="fade-up">
+          <p id="intro-para-center" data-aos="fade-up">
             On the front or <span id="term">obverse</span>, we see the head of an important person.
           </p>
           <div data-aos="flip-left">
@@ -398,7 +406,7 @@ const Intro = () => {
               symbol for the god Apollo and for the trees that grew in Syria.
             </p>
           </div>
-          <span id="intro-style-para" data-aos="fade-up">
+          <span id="intro-para-center" data-aos="fade-up">
             On the back or <span id="term">reverse</span>, we see important symbols.
           </span>
           <div className="label-image" data-aos="flip-left">
@@ -411,7 +419,7 @@ const Intro = () => {
         </div>
 
         <div className="intro-2-6">
-          <p id="intro-style-para" data-aos="fade-up">
+          <p id="intro-para-center" data-aos="fade-up">
              In addition to symbols, many coins also have <span id="term">legends </span>
              or writing on them
           </p>
@@ -426,7 +434,7 @@ const Intro = () => {
               to the Antiochians'
             </p>
           </div>
-          <span id="intro-style-para" data-aos="fade-up">
+          <span id="intro-para-center" data-aos="fade-up">
             Sometimes the <span id="term">legend</span> tells us about the government
             behind the minting of the coin.
           </span>
@@ -447,7 +455,7 @@ const Intro = () => {
               celebrates PAX AVGVSTI or “Peace of the Emperors.”
             </p>
           </div>
-          <span id="intro-style-para" data-aos="fade-up">
+          <span id="intro-para-center" data-aos="fade-up">
             Sometimes the <span id="term">legend</span> celebrates the government
             or community values.
           </span>
@@ -463,14 +471,14 @@ const Intro = () => {
   {/* SECTION 3 */}
 
         <div className="intro-3-head">
-          <p data-aos="slide-up" id="intro-style-head">
+          <p data-aos="fade-up" id="intro-style-head">
             With these images and legends, coins made clear which governmental
             authority gave the coins value as money.
           </p>
         </div>
 
         <div className="intro-3-1-up">
-          <p data-aos="fade-in" id="intro-style-para" style={{width: "800px"}}>
+          <p data-aos="fade-in" id="intro-para-center" style={{width: "800px"}}>
             Because of the uniqueness of each coin and the issuing authority that
             guaranteed its value (e.g., individual cities, provinces, kingdoms,
             imperial governments), not all coins were accepted everywhere as currency.
@@ -490,7 +498,7 @@ const Intro = () => {
         </div>
 
         <div className="intro-3-2">
-          <p data-aos="fade-in" id="intro-style-para" style={{width: "800px"}}>
+          <p data-aos="fade-in" id="intro-para-center" style={{width: "800px"}}>
             We can use digital technologies to map where, when, and in what quantities
             each Syrian community’s coins appear in the archaeological record. This
             can help us identify regional and empire-wide limits in their movement
@@ -523,7 +531,7 @@ const Intro = () => {
               knew the value based upon a coin’s metal, size, and images.
             </p>
           </div>
-          <p data-aos="fade-in" id="intro-style-para">
+          <p data-aos="fade-in" id="intro-para-center">
             The <span id="term">denomination</span> of a coin means how
             much a coin is worth as money.
           </p>
@@ -553,7 +561,7 @@ const Intro = () => {
               the coin was minted in 55/56 CE, during the reign of emperor Nero.
             </p>
           </div>
-          <span id="intro-style-para" data-aos="fade-up">
+          <span id="intro-para-center" data-aos="fade-up">
             Letters and numbers can tell us when a coin was minted.
           </span>
           <div className="label-image" data-aos="flip-left">
@@ -572,7 +580,7 @@ const Intro = () => {
               be a production mark hinting at who paid for the coins or remain a mystery.
             </p>
           </div>
-          <span id="intro-style-para" data-aos="fade-up">
+          <span id="intro-para-center" data-aos="fade-up">
             <span id="term">Mint marks</span> are letters or symbols which can indicate where a coin was struck.
           </span>
           <div className="label-image" data-aos="flip-left">
@@ -596,7 +604,7 @@ const Intro = () => {
               coin to give it extra value or keep it working as money.
             </p>
           </div>
-          <p id="intro-style-para" data-aos="fade-up">
+          <p id="intro-para-center" data-aos="fade-up">
             And watch out for other marks and modifications to the coins!
           </p>
           <div data-aos="flip-left">
@@ -611,7 +619,7 @@ const Intro = () => {
   {/* SECTION 5 */}
 
         <div className="intro-5">
-          <h2 id="intro-style-para" data-aos="fade-right">
+          <h2 id="intro-para-center" data-aos="fade-right">
             Ancient coins have so much to say, as pieces of art, as objects that
             move, and as representatives of the people who minted and used them.
             Are you ready to learn more?
@@ -630,7 +638,7 @@ const Intro = () => {
         </div>
 
         <div className="intro-resources">
-            <p id="religious-style-rsrc">
+            <div id="religious-style-rsrc">
               Coin Images Courtesy of:
               <br></br>
               <br></br>
@@ -675,7 +683,7 @@ const Intro = () => {
                   <br></br>
                 <li>Neumann, K. Forthcoming. <em>Antioch in Syria: A History from Coins, 300 BCE-450 CE</em> (Cambridge University Press).</li>
               </ul>
-            </p>
+            </div>
         </div>
 
       </div>

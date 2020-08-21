@@ -1,22 +1,3 @@
-@font-face {
-  font-family: "cartogothic_stdbook";
-  src: url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/cartogothicstd-book-webfont.woff")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "cartogothic_stdbook_bold";
-  src: url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff2")
-      format("woff2"),
-    url("../data/fonts/cartogothic/CartoGothicStd-Bold.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .modal-image {
   height: 150px;
   width: 150px;
@@ -56,7 +37,7 @@
   top: 50%;
   left: 10%;
   position: absolute;
-  font-family: 'cartogothic_stdbook';
+  font-family: 'CormorantGaramond-Regular';
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -87,7 +68,7 @@
 }
 
 .class-coins-pile {
-  font-family: cartogothic_stdbook_bold;
+  font-family: "CormorantGaramond-Bold";
   text-decoration: none;
   text-align: center;
   /* background-image: var(--div-bg-2); */
@@ -102,7 +83,7 @@
   position: absolute;
   top: 20%;
   left: 50%;
-  font-family: 'cartogothic_stdbook';
+  font-family: 'CormorantGaramond-Regular';
   transform: translate(-50%, -10%);
   width: 800px;
   text-align: center;
@@ -113,7 +94,7 @@
   bottom: 0;
   font-size: smaller;
   left: 50%;
-  font-family: 'cartogothic_stdbook';
+  font-family: 'CormorantGaramond-Regular';
   transform: translate(-50%, -10%);
   width: 800px;
   text-align: center;

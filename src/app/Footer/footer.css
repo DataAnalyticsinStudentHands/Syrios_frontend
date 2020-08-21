@@ -1,0 +1,10 @@
+.main-footer {
+
+    background-color: #2d616a !important;
+    position: absolute;
+    top: 2200%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
