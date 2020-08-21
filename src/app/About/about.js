@@ -50,7 +50,7 @@ const About = () => {
 
       <div className="team-1-1">
         <p id="about-style-subhead">
-          Directors
+          Project Directors
         </p>
       </div>
 
@@ -58,6 +58,7 @@ const About = () => {
         <img
           src={drNeumann}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Kristina Neumann, Ph.D.</strong>
@@ -83,6 +84,7 @@ const About = () => {
         <img
           src={drNeumann}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Peggy Lindner, Ph.D.</strong>
@@ -117,6 +119,7 @@ const About = () => {
         <img
           src={drRodwell}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Elizabeth Rodwell, Ph.D.</strong>
@@ -149,6 +152,7 @@ const About = () => {
         <img
           src={martin}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Martin Pepper</strong>
@@ -172,6 +176,7 @@ const About = () => {
         <img
           src={rahul}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Rahul Raj Mogili</strong>
@@ -188,6 +193,7 @@ const About = () => {
         <img
           src={jinelly}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Jinelly Swasey</strong>
@@ -208,6 +214,7 @@ const About = () => {
         <img
           src={xandria}
           alt="Logo"
+          className="profile_img"
         />
         <p id="about-style-para2">
           <strong>Xandria Outing</strong>
@@ -247,40 +254,43 @@ const About = () => {
       </div>
 
       <div className="acknowledgments-1-1">
-        <p id="about-style-para1">
-          The SYRIOS Project is made possible through the generosity and support of the University of Houston, in particular:
-          <br></br>
-          <br></br>
-          <a href="https://drc.lib.uh.edu/" target="_blank" rel="noopener noreferrer">Digital Research Commons</a>
+        <div className="acknowledgments-1-left">
+          <p id="about-style-para3">
+            The SYRIOS Project is made possible through the generosity and support of the University of Houston, in particular:
             <br></br>
-          <a href="https://www.uh.edu/research/" target="_blank" rel="noopener noreferrer">Division of Research</a>
             <br></br>
-          <a href="https://libraries.uh.edu/" target="_blank" rel="noopener noreferrer">University of Houston Libraries</a>
+            <a href="https://drc.lib.uh.edu/" target="_blank" rel="noopener noreferrer">Digital Research Commons</a>
+              <br></br>
+            <a href="https://www.uh.edu/research/" target="_blank" rel="noopener noreferrer">Division of Research</a>
+              <br></br>
+            <a href="https://libraries.uh.edu/" target="_blank" rel="noopener noreferrer">University of Houston Libraries</a>
+              <br></br>
+            <a href="https://www.uh.edu/class/history/" target="_blank" rel="noopener noreferrer">Department of History</a>
+              <br></br>
+            <a href="https://uh.edu/class/ctr-public-history/" target="_blank" rel="noopener noreferrer">Center for Public History</a>
+              <br></br>
+            <a href="https://www.uh.edu/technology/" target="_blank" rel="noopener noreferrer">College of Technology</a>
+              <br></br>
+            <a href="https://www.uh.edu/data-science-institute/" target="_blank" rel="noopener noreferrer">Hewlett Packard Enterprise Data Science Institute</a>
+          </p>
+        </div>
+        <div className="acknowledgments-1-right">
+          <p id="about-style-para3">
+            The SYRIOS Project is made possible through the generosity and support of the University of Houston, in particular:
             <br></br>
-          <a href="https://www.uh.edu/class/history/" target="_blank" rel="noopener noreferrer">Department of History</a>
             <br></br>
-          <a href="https://uh.edu/class/ctr-public-history/" target="_blank" rel="noopener noreferrer">Center for Public History</a>
-            <br></br>
-          <a href="https://www.uh.edu/technology/" target="_blank" rel="noopener noreferrer">College of Technology</a>
-            <br></br>
-          <a href="https://www.uh.edu/data-science-institute/" target="_blank" rel="noopener noreferrer">Hewlett Packard Enterprise Data Science Institute</a>
-          <br></br>
-          <br></br>
-          <br></br>
-          The SYRIOS Project is made possible through the generosity and support of the University of Houston, in particular:
-          <br></br>
-          <br></br>
-          <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American Numismatic Society</a>
-            <br></br>
-          <a href="https://library.princeton.edu/special-collections/divisions/numismatic-collection" target="_blank" rel="noopener noreferrer">Princeton University Library Numismatic Collection</a>
-            <br></br>
-          <a href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general" target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</a>
-            <br></br>
-          <a href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank" rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</a>
-            <br></br>
-          <a href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman Provincial Coinage Online</a>
-            <br></br>
-        </p>
+            <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American Numismatic Society</a>
+              <br></br>
+            <a href="https://library.princeton.edu/special-collections/divisions/numismatic-collection" target="_blank" rel="noopener noreferrer">Princeton University Library Numismatic Collection</a>
+              <br></br>
+            <a href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general" target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</a>
+              <br></br>
+            <a href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank" rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</a>
+              <br></br>
+            <a href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman Provincial Coinage Online</a>
+              <br></br>
+          </p>
+        </div>
       </div>
 
     </div>

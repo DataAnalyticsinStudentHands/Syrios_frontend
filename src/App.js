@@ -29,14 +29,14 @@ import {
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    
+
 
     &:focus, &:visited, &:link, &:active {
         text-decoration: none;
         color: #2D616A
     }
     &:hover {
-      color: #E3B287;
+      color: #BE9672;
     }
 `;
 
@@ -46,7 +46,7 @@ const DropDownLink = styled(Link)`
     &:focus, &:visited, &:link, &:active {
         text-decoration: none;
         color: #2D616A;
-        
+
     }
     &:hover {
       color: #E3B287;
