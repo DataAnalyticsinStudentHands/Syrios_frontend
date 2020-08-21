@@ -37,7 +37,7 @@
   top: 50%;
   left: 10%;
   position: absolute;
-  font-family: 'cartogothic_stdbook';
+  font-family: 'CormorantGaramond-Regular';
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -68,7 +68,7 @@
 }
 
 .class-coins-pile {
-  font-family: cartogothic_stdbook_bold;
+  font-family: "CormorantGaramond-Bold";
   text-decoration: none;
   text-align: center;
   /* background-image: var(--div-bg-2); */
@@ -83,7 +83,7 @@
   position: absolute;
   top: 20%;
   left: 50%;
-  font-family: 'cartogothic_stdbook';
+  font-family: 'CormorantGaramond-Regular';
   transform: translate(-50%, -10%);
   width: 800px;
   text-align: center;
@@ -94,7 +94,7 @@
   bottom: 0;
   font-size: smaller;
   left: 50%;
-  font-family: 'cartogothic_stdbook';
+  font-family: 'CormorantGaramond-Regular';
   transform: translate(-50%, -10%);
   width: 800px;
   text-align: center;

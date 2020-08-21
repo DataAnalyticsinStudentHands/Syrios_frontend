@@ -44,7 +44,7 @@
 }
 
 .class-religious-story {
-  font-family: cartogothic_stdbook;
+  font-family: "CormorantGaramond-Regular";
   font-size: larger;
 }
 
@@ -62,13 +62,13 @@
 
 .class-religious-title h1 {
   margin: 0;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
   color: #2d616a;
 }
 
 .class-religious-title p {
   margin: 0;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
 }
 
 .religious-size-images {

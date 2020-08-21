@@ -4,7 +4,7 @@ div[data-aos-duration='4000'] [data-aos],
   }
 
 .class-eco-story {
-  font-family: cartogothic_stdbook;
+  font-family: CormorantGaramond-Regular;
   font-size: larger;
 }
 
@@ -20,7 +20,7 @@ div[data-aos-duration='4000'] [data-aos],
 
 .class-eco-title p, h1 {
     margin: 0;
-    font-family: cartogothic_stdbook_bold;
+    font-family: "CormorantGaramond-Bold";
 }
 
 .eco-img-head {

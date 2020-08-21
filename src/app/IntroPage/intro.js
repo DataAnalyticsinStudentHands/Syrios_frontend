@@ -22,7 +22,7 @@ import comp_16_right from "../data/intro-images/comp-16-right.png";
 import comp_17 from "../data/intro-images/comp-17.png";
 import comp_20 from "../data/intro-images/comp-20.png";
 import comp_21 from "../data/intro-images/comp-21.png";
-import scroll_down from "../data/intro-images/scroll-down-2.png";
+import scroll_down from "../data/intro-images/scroll-down-1.svg";
 import seleucidTetradrachm from "../data/intro-images/seleucidTetradrachm.png";
 import romanAureus from "../data/intro-images/romanAureus.png";
 import usQuarter from "../data/intro-images/usQuarter.png";
@@ -63,55 +63,65 @@ const Intro = () => {
   });
 
   return (
+
     <div className="intro-page">
-      <div className="class-title">
-        <div className="intro-main-title">
-          <p data-aos="fade-in">The</p>
-          <h1 data-aos="fade-in" className="intro-main-title-h1">
-            SYRIOS
-          </h1>
-          <h2 data-aos="fade-in" className="intro-main-title-h2">
-            PROJECT
-          </h2>
-          <p className="intro-main-subtitle" data-aos="fade-in">
-            Studying{" "}
-            <span style={{ color: "#2d616a" }}>Urban Relationships</span> and
-            Identity over{" "}
-            <span style={{ color: "#2d616a" }}>Ancient Syria</span>
-          </p>
-          <span>
+      <div className="container">
+        <div className="row top-buffer">
+          <div className="col-sm-5">
             <img
-              src={logo}
-              className="title-logo"
-              data-aos="fade-in"
-              alt="logo"
+                src={logo}
+                className="title-logo"
+                data-aos="fade-in"
+                alt="logo"
             />
-          </span>
+          </div>
+          <div className="col-md">
+            <div className="row">
+              <h1 data-aos="fade-in" className="intro-main-title-h1">
+                The Syrios Project
+              </h1>
+            </div>
+            <div className="row mt-md-3">
+                <p className="intro-main-title-h2" data-aos="fade-in">
+                Studying Urban Relationships and <br />
+                Identity over Ancient Syria
+                </p>
+            </div>
+            <div className="row mt-lg-5" >
+              <div className="row-cols-sm-3 mr-5">
+                  <StyledLink
+                      to="/select-story"
+                      className="title-button"
+                  >
+                    Tell Me A Story
+                  </StyledLink>
+                </div>
+              <div className="row-cols-sm-3 ml-5">
+                  <StyledLink
+                      to="/explore"
+                      className="title-button"
+                  >
+                    Let Me Explore
+                  </StyledLink>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div className="row top-buffer">
+          <div className="col-sm-5"></div>
+          <div className="col-md-4">
+            <img
+                src={scroll_down}
+                alt="scroll"
+                className="class-scroll"
+                data-aos="fade-down"
+            />
+          </div>
+          <div className="col-md-4"></div>
+
         </div>
       </div>
-      <div className="flex-intro-buttons">
-        <StyledLink
-          to="/select-story"
-          className="header-explore-left"
-        >
-          TELL ME A STORY
-        </StyledLink>
-        <div>
-        <img
-            src={scroll_down}
-            alt="scroll"
-            className="class-scroll"
-            data-aos="fade-down"
-          />
-          <h4>HOW TO READ A COIN?</h4>
-        </div>
-        <StyledLink
-          to="/explore"
-          className="header-explore-right"
-        >
-          LET ME EXPLORE
-        </StyledLink>
-      </div>
+
 
   {/* SECTION 1 */}
 

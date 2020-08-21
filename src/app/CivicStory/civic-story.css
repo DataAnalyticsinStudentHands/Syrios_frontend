@@ -52,7 +52,7 @@
 }
 
 .class-civic-story {
-  font-family: cartogothic_stdbook;
+  font-family: "CormorantGaramond-Regular";
   font-size: larger;
 }
 
@@ -70,13 +70,13 @@
 
 .class-civic-title h1 {
   margin: 0;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
   color: #2d616a;
 }
 
 .class-civic-title p {
   margin: 0;
-  font-family: "cartogothic_stdbook_bold";
+  font-family: "CormorantGaramond-Bold";
 }
 
 .civic-size-images {

@@ -26,6 +26,7 @@
     font-style: normal;
 }
 
+/* not used anymore
 @font-face {
     font-family: 'cartogothic_stdbook';
     src: url('./cartogothic/cartogothicstd-book-webfont.woff2') format('woff2'),
@@ -40,6 +41,6 @@
     url('./cartogothic/CartoGothicStd-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
 
