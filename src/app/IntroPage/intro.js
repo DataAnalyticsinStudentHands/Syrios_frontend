@@ -52,7 +52,7 @@ const StyledLink = styled(Link)`
         color: white;
     }
     &:hover {
-      color: #faebd7;
+      background: #BE9672;
     }
 `;
 
@@ -430,7 +430,7 @@ const Intro = () => {
             <img src={comp_9_right} alt="Logo" className="size-images" />
             <p id="intro-style-sub">
               This bronze coin has a civic <span id="term">ethnic</span> or name
-              of the citizens in Greek. It reads ΑΝΤΙΟΧΕΩΝ, which means 'Belongs
+              of the citizens in Greek. It reads <strong>ANTIOXEΩN</strong>, which means 'Belongs
               to the Antiochians'
             </p>
           </div>
@@ -627,11 +627,11 @@ const Intro = () => {
         </div>
 
         <div className="intro-5-1">
-          <StyledLink to="/select-story" id="intro-style-footer" data-aos="fade-right">
+          <StyledLink to="/select-story" id="intro-buttons" data-aos="fade-right">
             {" "}
             Tell me a Story{" "}
           </StyledLink>
-          <StyledLink to="/coins" id="intro-style-footer" data-aos="fade-left">
+          <StyledLink to="/coins" id="intro-buttons" data-aos="fade-left">
             {" "}
             Explore Coins{" "}
           </StyledLink>
