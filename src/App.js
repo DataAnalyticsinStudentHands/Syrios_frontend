@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import NavBarLogo from "./app/data/intro-images/Logo.png"
 import Intro from "./app/IntroPage/intro";
@@ -20,6 +19,9 @@ import ContactUs from "./app/ContactUs/contact";
 import About from "./app/About/about";
 import GraphQLClient from "./app/GraphQLClient/gqlclient";
 import Footer from "./app/Footer/footer";
+import './app/data/fonts/fonts.css';
+import './index.css';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -27,94 +29,77 @@ import {
   // Redirect,
 } from "react-router-dom";
 
-const StyledLink = styled(Link)`
-    text-decoration: none;
+// styling fro navbar - still need to do active see https://codesandbox.io/s/718p1ovkm1?from-embed
+const Styles = styled.div`
+  
+    font-family: "CormorantGaramond-Regular";
     
-
-    &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
-        color: #2D616A
+    .dropdown-item {
+    color: #17434A; 
+      
+      &:hover {
+        color: #E3B287;
+      }
     }
-    &:hover {
-      color: #E3B287;
+    
+    .navbar-light .navbar-nav .nav-link {
+      font-size: larger;
+      color: #17434A; 
+      
+      &:hover {
+        color: #E3B287;
+      }
+    }
+    .navbar-brand, .navbar-nav .nav-item nav-link {
+      font-size: larger;
+      color: #17434A; 
+      &:focus, &:visited {
+        color: #17434A
+      }
+    
+      &:hover {
+        text-decoration: none;
+        color: #E3B287;
+      }
     }
 `;
 
-const DropDownLink = styled(Link)`
-    text-decoration: none;
 
-    &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
-        color: #2D616A;
-        
-    }
-    &:hover {
-      color: #E3B287;
-    }
-`;
 
 const App = () => {
   return (
     <div>
       <Router>
-
         {/* !!!!!!!!!!! NAVBAR COMPONENT !!!!!!!!!!!! */}
-        <div>
-        <Navbar className="color-nav" collapseOnSelect expand="xl">
-        <Link to="/"><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
-          <Navbar.Brand>
-            <StyledLink to="/" style={{marginLeft:'10px'}}>The Syrios Project</StyledLink>
-          </Navbar.Brand>
+        <Styles>
+        <Navbar collapseOnSelect
+                expand="xl"
+        >
+        <Link to="/" ><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
+          <Navbar.Brand style={{marginLeft:'10px'}} href="/">The Syrios Project</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link>
-                <StyledLink to="/">HOME</StyledLink>
-              </Nav.Link>
-              <NavDropdown title="TELL ME A STORY" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  <DropDownLink to="/civic-story">Civic Story</DropDownLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <DropDownLink to="/economic-story">Economic Story</DropDownLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <DropDownLink to="/religious-story">Religious Story</DropDownLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <DropDownLink to="/visitors-story">Visitor's Story</DropDownLink>
-                </NavDropdown.Item>
+              <Nav.Link href="/">HOME</Nav.Link>
+              <NavDropdown title="TELL ME A STORY">
+                <NavDropdown.Item href="/civic-story">Civic Story</NavDropdown.Item>
+                <NavDropdown.Item href="/economic-story">Economic Story</NavDropdown.Item>
+                <NavDropdown.Item href="/religious-story">Religious Story</NavDropdown.Item>
+                <NavDropdown.Item href="/visitors-story">Visitor's Story</NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="LET ME EXPLORE" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  {" "}
-                  <DropDownLink to="/coins">Sort Coins</DropDownLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  {" "}
-                  <DropDownLink to="/maps">Map Coins</DropDownLink>
-                </NavDropdown.Item>
+              <NavDropdown title="LET ME EXPLORE">
+                <NavDropdown.Item href="/coins">Sort Coins</NavDropdown.Item>
+                <NavDropdown.Item href="/maps">Map Coins</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  {" "}
-                  <DropDownLink to="/omeka-database">View a Catalog</DropDownLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  {" "}
-                  <DropDownLink to="/download">Download Dataset</DropDownLink>
-                </NavDropdown.Item>
+                <NavDropdown.Item href="/omeka-database">View a Catalog</NavDropdown.Item>
+                <NavDropdown.Item href="/download">Download Dataset</NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link exact activeClassName="active" href="/about">ABOUT</Nav.Link>
+              <Nav.Link href="/contact-us">CONTACT US</Nav.Link>
             </Nav>
-
-            <Nav.Link>
-              <StyledLink to="about">ABOUT</StyledLink>
-            </Nav.Link>
-            <Nav.Link>
-              <StyledLink to="contact-us">CONTACT US</StyledLink>
-            </Nav.Link>
           </Navbar.Collapse>
         </Navbar>
-        </div>
+        </Styles>
 
         <Switch>
           <Route exact path="/" component={Intro} />

@@ -55,16 +55,20 @@
 }
 
 .intro-main-title-h1 {
-  color: #2d616a;
-  font-size: calc(11px + 5vmin);
+  color: #17434A;
+  font-size: 64px;
+  line-height: 78px;
   font-family: 'CormorantGaramond-Bold';
+  letter-spacing: 0.03em;
+
 }
 
 .intro-main-title-h2 {
+  color: #17434A;
   font-family: 'CormorantGaramond-Regular';
-  font-size: calc(3px + 3vmin);
-  color: #2d616a;
-  line-height: 110%;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.03em;
 }
 
 .intro-read-coin {
@@ -79,8 +83,13 @@
 }
 
 .class-scroll {
-  height: 50px;
-  width: 50px;
+  /* Vector 1 */
+
+
+  width: 26px;
+  height: 41px;
+
+
 }
 
 #intro-para-center {
