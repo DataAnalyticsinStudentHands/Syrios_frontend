@@ -53,7 +53,7 @@ const Intro = () => {
                 <div className="row top-buffer">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-3" data-aos="fade-in">
-                        <img class={"img-responsive"}
+                        <img className={"img-responsive"}
                              src={logo}
                              alt="logo"
                         />

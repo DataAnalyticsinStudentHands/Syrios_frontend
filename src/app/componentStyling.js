@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 // Style for Button Links
 const StyledLink = styled(Link)`
@@ -95,6 +96,55 @@ const Resources = styled.div`
    color: #2d616a;
 `;
 
+const FormContainer = styled.div`
+  label {
+    color: #2d616a;
+    font-size: 1.2em;
+    font-weight: 400;
+  }
+  .error {
+    border: 2px solid #FF6565;
+  }
+  .error-message {
+    color: #FF6565;
+    padding: .5em .2em;
+    height: 1em;
+    position: absolute;
+    font-size: .8em;
+  }
+  .form-group {
+    margin-bottom: 2.5em;
+  }
+`;
+
+// styling for form
+const FormStyles = styled(Form)`
+    font-family: "CormorantGaramond-Regular";
+    font-size: larger;
+    letter-spacing: 0.03em;
+    color: #17434A;
+`;
+
+// styling for form button
+const FormButton = styled(Button)`
+  cursor: pointer;
+  color: white;
+  font-size: calc(6px + 2vmin);;
+  border-radius: 7px;
+  padding: 10px 15px 10px 15px;
+  background-color: #7EA274;
+  border: none;
+  
+  &:hover, &:disabled {
+      background: #BE9672;
+    }
+    
+  &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+        background-color: #7EA274;
+    }
+`;
+
 export {
     StyledLink,
     PageTitle,
@@ -107,4 +157,8 @@ export {
     ParaTextLeftSmaller,
     SubText,
     SubTextLeft,
-    Resources }
+    Resources,
+    FormContainer,
+    FormStyles,
+    FormButton
+}
