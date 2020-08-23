@@ -33,6 +33,8 @@ import {
 const Styles = styled.div`
   
     font-family: "CormorantGaramond-Regular";
+    letter-spacing: 0.03em;
+
     
     .dropdown-item {
     color: #17434A; 
@@ -94,7 +96,7 @@ const App = () => {
                 <NavDropdown.Item href="/omeka-database">View a Catalog</NavDropdown.Item>
                 <NavDropdown.Item href="/download">Download Dataset</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link exact activeClassName="active" href="/about">ABOUT</Nav.Link>
+              <Nav.Link href="/about">ABOUT</Nav.Link>
               <Nav.Link href="/contact-us">CONTACT US</Nav.Link>
             </Nav>
           </Navbar.Collapse>
