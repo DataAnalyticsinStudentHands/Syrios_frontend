@@ -1,8 +1,7 @@
 import React from "react";
 import AOS from "aos";
-import {Link} from "react-router-dom";
-import styled from "styled-components";
 import "aos/dist/aos.css";
+import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources } from "../componentStyling";
 import logo from "../data/intro-images/Logo.png";
 import bronzecoin from "../data/intro-images/bronzecoin.png";
 import us_dime from "../data/intro-images/us-dime.png";
@@ -41,65 +40,6 @@ import silver_24mm from "../data/intro-images/silver_24mm.png";
 import dime_17mm from "../data/intro-images/dime_17mm.png";
 import quarter_24mm from "../data/intro-images/quarter_24mm.png";
 
-import "../IntroPage/intro.css";
-
-// Style for Button Links
-const StyledLink = styled(Link)`
-  cursor: pointer;
-  color: white;
-  font-size: calc(6px + 2vmin);;
-  border-radius: 7px;
-  padding: 10px 15px 10px 15px;
-  background-color: #7EA274;
-  border: none;
-    text-decoration: none;
-    font-family: CormorantGaramond;
-    letter-spacing: 0.03em;
-
-    &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
-        color: white;
-    }
-    &:hover {
-      background: #BE9672;
-    }
-`;
-
-const Level1Text = styled.p`
-   font-family: CormorantGaramond-Bold;
-   color: #2d616a;
-   font-size: 48px;
-   text-align: left;
-`;
-
-const ParaText = styled.p`
-   font-family: CormorantGaramond-Regular;
-   font-size: 24px;
-   text-align: center;
-`;
-
-const ParaTextLeft = styled.p`
-   font-family: CormorantGaramond-Regular;
-   font-size: 24px;
-   text-align: left;
-`;
-
-const SubText = styled.p`
-   font-family: CormorantGaramond-Regular;
-   background-color: WhiteSmoke;
-   color: #2d616a;
-   border-radius: 10px;
-   padding: 40px;
-   font-size: 18px;
-   text-align: center;
-`;
-
-const Resources = styled.p`
-   font-family: CormorantGaramond-Regular;
-   background-color: WhiteSmoke;
-   color: #2d616a;
-`;
-
 const Intro = () => {
     AOS.init({
         duration: 1000,
@@ -121,15 +61,15 @@ const Intro = () => {
                     <div className="col-sm-1"></div>
                     <div className="col-md">
                         <div className="row">
-                            <h1 data-aos="fade-in" className="intro-main-title-h1">
+                            <PageTitle data-aos="fade-in">
                                 The Syrios Project
-                            </h1>
+                            </PageTitle>
                         </div>
                         <div className="row mt-md-3">
-                            <p className="intro-main-title-h2" data-aos="fade-in">
+                            <PageSubTitle data-aos="fade-in">
                                 Studying Urban Relationships and <br/>
                                 Identity over Ancient Syria
-                            </p>
+                            </PageSubTitle>
                         </div>
                         <div className="row mt-lg-5">
                             <div className="row-cols-sm-3 mr-5">
@@ -142,7 +82,6 @@ const Intro = () => {
                                     Let Me Explore
                                 </StyledLink>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -175,7 +114,7 @@ const Intro = () => {
                         </Level1Text>
                     </div>
                     <div className="col-md-1"></div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 align-self-center">
                         <img
                             src={bronzecoin}
                             alt="Logo"
@@ -234,7 +173,7 @@ const Intro = () => {
 
                 <div className="row top-spacer-6">
                     <div className="col-md-1"></div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 align-self-center">
                         <ParaTextLeft data-aos="fade-left">
                             A coin minted for a king celebrates his power and strength.
                         </ParaTextLeft>
@@ -379,7 +318,7 @@ const Intro = () => {
                         </Level1Text>
                     </div>
                     <div className="col-md-1"></div>
-                    <div className="col-md-3" data-aos="fade-right">
+                    <div className="col-md-3 align-self-center" data-aos="fade-right">
                         <img
                             src={bronzecoin}
                             alt="Logo"
@@ -455,7 +394,7 @@ const Intro = () => {
 
                 {/* SECTION 2.4 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-5">
                     <div className="col-md-1"></div>
                     <div className="col-md-3" data-aos="flip-right">
                         <div style={{textAlign: 'center'}}>
@@ -491,7 +430,7 @@ const Intro = () => {
 
                 {/* SECTION 2.5 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-4">
                     <div className="col-md-1"></div>
                     <div className="col-md-3" data-aos="flip-right">
                         <div style={{textAlign: 'center'}}>
@@ -574,7 +513,7 @@ const Intro = () => {
 
                 {/* SECTION 2.7 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-4">
                     <div className="col-md-1"></div>
                     <div className="col-md-3" data-aos="flip-right">
                         <div style={{textAlign: 'center'}}>
@@ -611,7 +550,7 @@ const Intro = () => {
 
                 {/* SECTION 3.0 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-4">
                     <div className="col-md-8">
                         <Level1Text data-aos="fade-up">
                             With these images and legends, coins made clear which governmental
@@ -640,7 +579,7 @@ const Intro = () => {
                         <img
                             src={circulationMap}
                             alt="Logo"
-                            className="size-images-width"
+                            className="img-responsive"
                         />
                     </div>
                     <div className="col-md-4 align-self-center">
@@ -665,7 +604,7 @@ const Intro = () => {
 
                 {/* SECTION 4.0 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-5">
                     <div className="col-md-6">
                         <Level1Text data-aos="fade-left">
                             The coins have many other features to notice.
@@ -850,7 +789,7 @@ const Intro = () => {
 
             <Resources>
               <div className="row top-spacer-2"></div>
-                <div className="row top-spacer-1">
+              <div className="row top-spacer-1">
                     <div className="col-md-1">
 
                     </div>
@@ -928,6 +867,7 @@ const Intro = () => {
                     </div>
                   <div className="col-md-1"></div>
                 </div>
+              <div className="row top-spacer-1"></div>
             </Resources>
         </div>
     );
