@@ -32,12 +32,20 @@ const PageTitle = styled.p`
   letter-spacing: 0.03em;
 `;
 
-const PageSubTitle = styled.p`
-  color: #17434A;
+const PageTitleCentered = styled(PageTitle)`
+  text-align: center;
+`;
+
+const PageSubTitle = styled(PageTitle)`
   font-family: 'CormorantGaramond-Regular';
   font-size: 30px;
   line-height: 36px;
-  letter-spacing: 0.03em;
+`;
+
+const PageSectionTitle = styled(PageTitle)`
+  color: #E3B287;
+  font-size: 30px;
+  text-align: center;
 `;
 
 const Level1Text = styled.p`
@@ -53,10 +61,12 @@ const ParaText = styled.p`
    text-align: center;
 `;
 
-const ParaTextLeft = styled.p`
-   font-family: CormorantGaramond-Regular;
-   font-size: 24px;
+const ParaTextLeft = styled(ParaText)`
    text-align: left;
+`;
+
+const ParaTextLeftSmaller = styled(ParaTextLeft)`
+   font-size: 20px;
 `;
 
 const SubText = styled.p`
@@ -69,10 +79,32 @@ const SubText = styled.p`
    text-align: center;
 `;
 
+const SubTextLeft = styled.div`
+   font-family: CormorantGaramond-Regular;
+   background-color: WhiteSmoke;
+   padding: 40px;
+   font-size: 18px;
+   text-align: left;
+   border-top-right-radius: 65px;
+   border-bottom-right-radius: 65px;
+`;
+
 const Resources = styled.div`
    font-family: CormorantGaramond-Regular;
    background-color: WhiteSmoke;
    color: #2d616a;
 `;
 
-export { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources }
+export {
+    StyledLink,
+    PageTitle,
+    PageTitleCentered,
+    PageSubTitle,
+    PageSectionTitle,
+    Level1Text,
+    ParaText,
+    ParaTextLeft,
+    ParaTextLeftSmaller,
+    SubText,
+    SubTextLeft,
+    Resources }
