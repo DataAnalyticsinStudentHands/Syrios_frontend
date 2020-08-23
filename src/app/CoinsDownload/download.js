@@ -1,124 +1,131 @@
-import React from "react";
+import React from 'react';
+import {Form} from 'react-bootstrap';
+import {Formik, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import {FormContainer, FormButton, FormStyles, PageTitleCentered, ParaTextLeft} from "../componentStyling";
 import axios from "axios";
-import { saveAs } from 'file-saver';
-import { FormErrors } from './FormErrors';
-
+import {saveAs} from 'file-saver';
 import downloadImage from '../data/images/download.png';
 
-class Download extends React.Component{
+// Schema for yup
+const validationSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(2, "*Names must have at least 2 characters")
+        .max(100, "*Names can't be longer than 100 characters")
+        .required("*Name is required"),
+    email: Yup.string()
+        .email("*Must be a valid email address")
+        .max(100, "*Email must be less than 100 characters")
+        .required("*Email is required"),
+});
 
-    constructor (props) {
-        super(props);
-        this.state = {
-            email: '',
-            name: '',
-            formErrors: {email: ''},
-            emailValid: false,
-            formValid: false
-        }
-    }
+const Download = () => {
+    return (
 
-    onNameChange(event) {
-        this.setState({name: event.target.value})
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        //send data for email
-        axios.post('http://localhost:3002/send', this.state)
-            .then((response) => {
-                console.log(response);
-            }, (error) => {
-                console.log(error);
-            });
-        //download the data (currently in public folder)
-        saveAs(
-            process.env.PUBLIC_URL + "/resources/Antioch_Dataset_08032020.zip",
-            "Antioch_Dataset_08032020.zip");
-    }
-
-    handleUserInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({[name]: value},
-            () => { this.validateField(name, value) });
-    }
-
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-
-        switch(fieldName) {
-            case 'email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-                this.setState({email: value});
-                break;
-            default:
-                break;
-        }
-        this.setState({formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-        }, this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({formValid: this.state.emailValid});
-    }
-
-    errorClass(error) {
-        return(error.length === 0 ? '' : 'has-error');
-    }
-
-    render() {
-        return(
-            <div>
-                <h1 className="class-coins-pile">Download the Dataset</h1>
-                <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            <p>The data made available here has been compiled from the excavation of Antioch, which was conducted by a consortium of institutions led by Princeton University from 1932-1939.
-                                This dataset is not of the full catalog, but the 10,110 coin finds dated between 330 BCE and 450 CE.</p>
-                            <p>
-                                The dataset is in csv format encoded as <a href="https://en.wikipedia.org/wiki/UTF-8#:~:text=UTF%2D8%20(8%2Dbit,Ken%20Thompson%20and%20Rob%20Pike."> UTF-8</a> supplemented with a detailed description.
-                            </p>
-                            <p> Please provide your your name and email address in the form on the left side to start the download.
-                            </p>
-                            <img src={downloadImage} alt="Screenshot dataset" className="w-100"/>
-                        </div>
-                        <div className="col-3">
-                            <form className="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-
-                                <div className={`form-group`}>
-                                    <label htmlFor="name">Name</label>
-                                    <input type="text" className="form-control"
-                                           placeholder="Name"
-                                           value={this.state.name}
-                                           onChange={this.onNameChange.bind(this)} />
-                                </div>
-                                <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                                    <label htmlFor="email">Email address</label>
-                                    <input type="email" required className="form-control" name="email"
-                                           placeholder="Email"
-                                           value={this.state.email}
-                                           onChange={this.handleUserInput}  />
-                                </div>
-                                <div className="panel panel-default">
-                                    <FormErrors formErrors={this.state.formErrors} />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                    disabled={!this.state.formValid}
-                                >Download</button>
-                            </form>
-                        </div>
-                    </div>
+        <div className="container-fluid px-6">
+            {/* Download Section */}
+            <div className="row top-buffer">
+                <div className="col-md-2"></div>
+                <div className="col-md-8">
+                    <PageTitleCentered>
+                        Download the Dataset
+                    </PageTitleCentered>
                 </div>
+                <div className="col-md-2"></div>
             </div>
-        );
-    }
+            <FormContainer>
+            <div className="row top-spacer-1">
+                <div className="col-md-8">
+                    <ParaTextLeft>The data made available here has been compiled from the excavation of Antioch, which
+                        was conducted by a consortium of institutions led by Princeton University from 1932-1939.
+                        This dataset is not of the full catalog, but the 10,110 coin finds dated between 330 BCE and 450
+                        CE.</ParaTextLeft>
+                    <ParaTextLeft>
+                        The dataset is in csv format encoded as <a
+                        href="https://en.wikipedia.org/wiki/UTF-8#:~:text=UTF%2D8%20(8%2Dbit,Ken%20Thompson%20and%20Rob%20Pike."> UTF-8</a> supplemented
+                        with a detailed description.
+                    </ParaTextLeft>
+                    <ParaTextLeft> Please provide your your name and email address in the form on the right side to start
+                        the download.
+                    </ParaTextLeft>
+                    <img src={downloadImage} alt="Screenshot dataset" className="w-100"/>
+                </div>
+
+                    <div className="col-md-4">
+                        <Formik
+                            initialValues={{name: "", email: ""}}
+                            validationSchema={validationSchema}
+                            onSubmit={(values, {setSubmitting, resetForm}) => {
+                                // When button submits form and form is in the process of submitting, submit button is disabled
+                                setSubmitting(true);
+
+                                //send data for email
+                                axios.post('http://localhost:3002/send', values)
+                                    .then((response) => {
+                                        console.log(response);
+                                    }, (error) => {
+                                        console.log(error);
+                                    });
+                                //download the data (currently in public folder)
+                                saveAs(
+                                    process.env.PUBLIC_URL + "/resources/Antioch_Dataset_08032020.zip",
+                                    "Antioch_Dataset_08032020.zip");
+                            }}
+                        >
+                            {({
+                                  values,
+                                  errors,
+                                  touched,
+                                  handleChange,
+                                  handleBlur,
+                                  handleSubmit,
+                                  isSubmitting
+                              }) => (
+                                <FormStyles onSubmit={handleSubmit} className="mx-auto">
+                                    <Form.Group controlId="formName">
+                                        <Form.Label>Name</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="name"
+                                            placeholder="Full Name"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.name}
+                                            className={touched.name && errors.name ? "has-error" : null}
+                                        />
+                                        {touched.name && errors.name ? (
+                                            <div className="error-message">{errors.name}</div>
+                                        ) : null}
+                                    </Form.Group>
+                                    <Form.Group controlId="formEmail">
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="email"
+                                            placeholder="Email"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.email}
+                                            className={touched.email && errors.email ? "has-error" : null}
+                                        />
+                                        {touched.email && errors.email ? (
+                                            <div className="error-message">{errors.email}</div>
+                                        ) : null}
+                                    </Form.Group>
+                                    {/*Submit button that is disabled after button is clicked/form is in the process of submitting*/}
+                                    <FormButton variant="primary" type="submit" disabled={isSubmitting}>
+                                        Submit
+                                    </FormButton>
+                                </FormStyles>
+                            )}
+                        </Formik>
+                    </div>
+            </div>
+            </FormContainer>
+            <div className="row top-buffer"></div>
+        </div>
+    );
 }
+
 
 export default Download;
