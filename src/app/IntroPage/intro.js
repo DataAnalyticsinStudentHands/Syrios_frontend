@@ -1,7 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources } from "../componentStyling";
+import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources, Links } from "../componentStyling";
 import logo from "../data/intro-images/Logo.png";
 import bronzecoin from "../data/intro-images/bronzecoin.png";
 import us_dime from "../data/intro-images/us-dime.png";
@@ -53,7 +53,7 @@ const Intro = () => {
                 <div className="row top-buffer">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-3" data-aos="fade-in">
-                        <img class={"img-responsive"}
+                        <img className={"img-responsive"}
                              src={logo}
                              alt="logo"
                         />
@@ -105,7 +105,7 @@ const Intro = () => {
 
                 {/* SECTION 1.1 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-3">
                     <div className="col-md-8">
                         <Level1Text data-aos="fade-left">
                             During the time of the Greeks and Romans, many different governments
@@ -126,7 +126,7 @@ const Intro = () => {
 
                 {/* SECTION 1.2 */}
 
-                <div className="row top-spacer-4">
+                <div className="row top-spacer-3">
                     <div className="col-md-1"></div>
                     <div className="col-md-3" data-aos="flip-right">
                         <div style={{textAlign: 'center'}}>

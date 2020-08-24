@@ -66,11 +66,12 @@ app.use(bodyParser.json());
 
 // POST route form email sending from download form
 app.post('/send', (req, res) => {
+  console.log(req.body)
   const mailOptions = {
     from: 'Syrios Site Watcher <dashadmin@uh.edu>',
     to: 'kmneuma2@central.uh.edu',
-    subject: 'New entry at Syrios download form',
-    text: `From: ${req.body.email} Name: ${req.body.name}`,
+    subject: 'New entry at Syrios form',
+    text: `From: ${req.body.email} \nName: ${req.body.name} \nPhone: ${req.body.phone} \nMessage: ${req.body.writtenMessage}`,
   };
 
   transporter.sendMail(mailOptions, (err, data) => {
