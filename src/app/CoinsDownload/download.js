@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form} from 'react-bootstrap';
-import {Formik, ErrorMessage} from 'formik';
+import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {FormContainer, FormButton, FormStyles, PageTitleCentered, ParaTextLeft} from "../componentStyling";
 import axios from "axios";
@@ -35,7 +35,7 @@ const Download = () => {
             </div>
             <FormContainer>
             <div className="row top-spacer-1">
-                <div className="col-md-8">
+                <div className="col-md-7">
                     <ParaTextLeft>The data made available here has been compiled from the excavation of Antioch, which
                         was conducted by a consortium of institutions led by Princeton University from 1932-1939.
                         This dataset is not of the full catalog, but the 10,110 coin finds dated between 330 BCE and 450
@@ -50,8 +50,8 @@ const Download = () => {
                     </ParaTextLeft>
                     <img src={downloadImage} alt="Screenshot dataset" className="w-100"/>
                 </div>
-
-                    <div className="col-md-4">
+                <div className="col-md-1"></div>
+                    <div className="col-md-3">
                         <Formik
                             initialValues={{name: "", email: ""}}
                             validationSchema={validationSchema}
@@ -126,6 +126,5 @@ const Download = () => {
         </div>
     );
 }
-
 
 export default Download;
