@@ -68,8 +68,8 @@ const Download = () => {
                                     });
                                 //download the data (currently in public folder)
                                 saveAs(
-                                    process.env.PUBLIC_URL + "/resources/Antioch_Dataset_08032020.zip",
-                                    "Antioch_Dataset_08032020.zip");
+                                    process.env.PUBLIC_URL + "/resources/Antioch_Dataset_08242020.zip",
+                                    "Antioch_Dataset_08242020.zip");
                             }}
                         >
                             {({
