@@ -86,8 +86,8 @@ const SubTextLeft = styled.div`
    padding: 40px;
    font-size: 18px;
    text-align: left;
-   border-top-right-radius: 65px;
-   border-bottom-right-radius: 65px;
+   border-top-right-radius: 30px;
+   border-bottom-right-radius: 30px;
 `;
 
 const Resources = styled.div`
@@ -134,15 +134,28 @@ const FormButton = styled(Button)`
   padding: 10px 15px 10px 15px;
   background-color: #7EA274;
   border: none;
-  
+
   &:hover, &:disabled {
       background: #BE9672;
     }
-    
+
   &:focus, &:visited, &:link, &:active {
         text-decoration: none;
         background-color: #7EA274;
     }
+`;
+
+// styling for Footer
+const FooterHead = styled.div`
+   font-family: CormorantGaramond-Bold;
+   color: white;
+   font-size: 30px;
+`;
+
+const FooterLinks = styled.div`
+   font-family: CormorantGaramond-Regular;
+   color: white;
+   font-size: 18px;
 `;
 
 export {
@@ -160,5 +173,7 @@ export {
     Resources,
     FormContainer,
     FormStyles,
-    FormButton
+    FormButton,
+    FooterHead,
+    FooterLinks
 }
