@@ -37,6 +37,12 @@
     padding-bottom: 20px;
 }
 
+.size-images-md {
+    height: 200px;
+    width: 200px;
+    padding: 20px;
+}
+
 .size-images {
     height: 250px;
     width: 250px;

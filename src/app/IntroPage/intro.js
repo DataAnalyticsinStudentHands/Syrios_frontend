@@ -1,7 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources } from "../componentStyling";
+import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources, Links } from "../componentStyling";
 import logo from "../data/intro-images/Logo.png";
 import bronzecoin from "../data/intro-images/bronzecoin.png";
 import us_dime from "../data/intro-images/us-dime.png";
