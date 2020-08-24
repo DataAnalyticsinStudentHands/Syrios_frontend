@@ -1,8 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {StyledPageLink} from "../componentStyling";
-import backgroundline from "../data/images/background-line.svg";
+import {StyledPageLink} from "./componentStyling";
 
 const Select = () => {
     AOS.init({
