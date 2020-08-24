@@ -55,3 +55,9 @@
     border-bottom-left-radius: 65px;
 }
 
+.show_line_on_side {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    border-right: 10px solid #17434A;
+}
+
