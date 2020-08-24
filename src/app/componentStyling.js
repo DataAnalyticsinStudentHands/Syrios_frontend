@@ -24,6 +24,28 @@ const StyledLink = styled(Link)`
     }
 `;
 
+// Style for non-button Links
+const StyledPageLink = styled(Link)`
+  cursor: pointer;
+  color: #17434A;
+  font-size: 64px;
+  line-height: 78px;
+  font-family: 'CormorantGaramond-Bold';
+  letter-spacing: 0.03em;
+  border: none;
+    text-decoration: none;
+    font-family: CormorantGaramond;
+    letter-spacing: 0.03em;
+
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+
+    }
+    &:hover {
+      background: #BE9672;
+    }
+`;
+
 // Styles for page components
 const PageTitle = styled.p`
   color: #17434A;
@@ -147,6 +169,7 @@ const FormButton = styled(Button)`
 
 export {
     StyledLink,
+    StyledPageLink,
     PageTitle,
     PageTitleCentered,
     PageSubTitle,
