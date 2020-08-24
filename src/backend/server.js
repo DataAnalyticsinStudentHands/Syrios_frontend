@@ -1,29 +1,27 @@
 const express = require('express');
-const cors = require('cors');
+const graphqlHTTP = require('express-graphql');
+const schema = require('./schema/coin-schema')
+const app = express();
+
 const mongoose = require('mongoose');
 
-require('dotenv').config();
 
-const app = express();
-const port = process.env.PORT || 4000;
+mongoose.connect('mongodb+srv://rahulrajmogili:test123@syrios-cluster.5kobt.mongodb.net/testdb?retryWrites=true&w=majority')
 
-app.use(cors());
-app.use(express.json());
-
-const uri = 'mongodb://localhost/syrios';
-
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
-
-const connection = mongoose.connection;
-
-connection.once('open', () => {
-  console.log('MongoDB database connection established successfully');
+mongoose.connection.once('open', () => {
+    console.log('conneted to database');
 });
+   
+//This route will be used as an endpoint to interact with Graphql, 
+//All queries will go through this route. 
+app.use('/graphql', graphqlHTTP({
+    //Directing express-graphql to use this schema to map out the graph 
+    schema,
+    //Directing express-graphql to use graphiql     when goto '/graphql' address in the browser
+    //which provides an interface to make GraphQl queries
+    graphiql:true
+}));
 
-const coinsRouter = require('./routes/coins');
-
-app.use('/coin-pile', coinsRouter);
-
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+app.listen(3000, () => {
+    console.log('Listening on port 3000');
+}); 

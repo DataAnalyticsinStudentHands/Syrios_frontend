@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 // Style for Button Links
 const StyledLink = styled(Link)`
@@ -23,6 +24,28 @@ const StyledLink = styled(Link)`
     }
 `;
 
+// Style for non-button Links
+const StyledPageLink = styled(Link)`
+  cursor: pointer;
+  color: #17434A;
+  font-size: 64px;
+  line-height: 78px;
+  font-family: 'CormorantGaramond-Bold';
+  letter-spacing: 0.03em;
+  border: none;
+    text-decoration: none;
+    font-family: CormorantGaramond;
+    letter-spacing: 0.03em;
+
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+
+    }
+    &:hover {
+      background: #BE9672;
+    }
+`;
+
 // Styles for page components
 const PageTitle = styled.p`
   color: #17434A;
@@ -32,12 +55,20 @@ const PageTitle = styled.p`
   letter-spacing: 0.03em;
 `;
 
-const PageSubTitle = styled.p`
-  color: #17434A;
+const PageTitleCentered = styled(PageTitle)`
+  text-align: center;
+`;
+
+const PageSubTitle = styled(PageTitle)`
   font-family: 'CormorantGaramond-Regular';
   font-size: 30px;
   line-height: 36px;
-  letter-spacing: 0.03em;
+`;
+
+const PageSectionTitle = styled(PageTitle)`
+  color: #E3B287;
+  font-size: 30px;
+  text-align: center;
 `;
 
 const Level1Text = styled.p`
@@ -53,10 +84,12 @@ const ParaText = styled.p`
    text-align: center;
 `;
 
-const ParaTextLeft = styled.p`
-   font-family: CormorantGaramond-Regular;
-   font-size: 24px;
+const ParaTextLeft = styled(ParaText)`
    text-align: left;
+`;
+
+const ParaTextLeftSmaller = styled(ParaTextLeft)`
+   font-size: 20px;
 `;
 
 const SubText = styled.p`
@@ -69,10 +102,103 @@ const SubText = styled.p`
    text-align: center;
 `;
 
+const SubTextLeft = styled.div`
+   font-family: CormorantGaramond-Regular;
+   background-color: WhiteSmoke;
+   padding: 40px;
+   font-size: 18px;
+   text-align: left;
+   border-top-right-radius: 30px;
+   border-bottom-right-radius: 30px;
+`;
+
 const Resources = styled.div`
    font-family: CormorantGaramond-Regular;
    background-color: WhiteSmoke;
    color: #2d616a;
 `;
 
-export { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources }
+const FormContainer = styled.div`
+  label {
+    color: #2d616a;
+    font-size: 1.2em;
+    font-weight: 400;
+  }
+  .error {
+    border: 2px solid #FF6565;
+  }
+  .error-message {
+    color: #FF6565;
+    padding: .5em .2em;
+    height: 1em;
+    position: absolute;
+    font-size: .8em;
+  }
+  .form-group {
+    margin-bottom: 2.5em;
+  }
+`;
+
+// styling for form
+const FormStyles = styled(Form)`
+    font-family: "CormorantGaramond-Regular";
+    font-size: larger;
+    letter-spacing: 0.03em;
+    color: #17434A;
+`;
+
+// styling for form button
+const FormButton = styled(Button)`
+  cursor: pointer;
+  color: white;
+  font-size: calc(6px + 2vmin);;
+  border-radius: 7px;
+  padding: 10px 15px 10px 15px;
+  background-color: #7EA274;
+  border: none;
+
+  &:hover, &:disabled {
+      background: #BE9672;
+    }
+
+  &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+        background-color: #7EA274;
+    }
+`;
+
+// styling for Footer
+const FooterHead = styled.div`
+   font-family: CormorantGaramond-Bold;
+   color: white;
+   font-size: 30px;
+   padding: 50px 0px;
+`;
+
+const FooterLinks = styled.div`
+   font-family: CormorantGaramond-Regular;
+   color: white;
+   font-size: 18px;
+   padding: 50px 0px;
+`;
+
+export {
+    StyledLink,
+    StyledPageLink,
+    PageTitle,
+    PageTitleCentered,
+    PageSubTitle,
+    PageSectionTitle,
+    Level1Text,
+    ParaText,
+    ParaTextLeft,
+    ParaTextLeftSmaller,
+    SubText,
+    SubTextLeft,
+    Resources,
+    FormContainer,
+    FormStyles,
+    FormButton,
+    FooterHead,
+    FooterLinks
+}

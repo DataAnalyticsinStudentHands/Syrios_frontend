@@ -1,15 +1,14 @@
-/*padding used for container-fluid*/
+/* padding used for container-fluid */
 .pr-6,
 .px-6 {
     padding-right: 10rem !important;
 }
-
 .pl-6,
 .px-6 {
     padding-left: 10rem !important;
 }
 
-/*spacers used for rows*/
+/* spacers used for container rows */
 .top-buffer { margin-top:150px; }
 .top-spacer-1 { margin-top:100px; }
 .top-spacer-2 { margin-top:200px; }
@@ -18,22 +17,29 @@
 .top-spacer-5 { margin-top:500px; }
 .top-spacer-6 { margin-top:600px; }
 
-/*highlight terms*/
+/* highlight terms */
 #term {
     font-family: CormorantGaramond-BoldItalic;
     color: #E3B287;
 }
 
+/* image style/sizing */
 .img-responsive {
     height: auto;
     width: 100%;
 }
 
 .size-images-sm {
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
     padding: 10px;
     padding-bottom: 20px;
+}
+
+.size-images-md {
+    height: 200px;
+    width: 200px;
+    padding: 20px;
 }
 
 .size-images {
@@ -47,3 +53,16 @@
     width: 300px;
 }
 
+.profile_img {
+    height: auto;
+    width: 100%;
+    border-top-left-radius: 65px;
+    border-bottom-left-radius: 65px;
+}
+
+/* line on left side in navigation pages */
+.show_line_on_side {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    border-right: 10px solid #17434A;
+}

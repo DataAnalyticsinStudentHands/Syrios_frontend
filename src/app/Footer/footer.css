@@ -5,3 +5,16 @@
     bottom: 0;
     right: 0;
 }
+
+.logo {
+  height: auto;
+  width: 100%;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #BE9672;
+}

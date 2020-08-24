@@ -6,16 +6,16 @@ import NavBarLogo from "./app/data/intro-images/Logo.png"
 import Intro from "./app/IntroPage/intro";
 import Syrios from "./app/FetchAPIdata/syrios"; //* uncomment this import to retrieve objects from "https://sites.lib.uh.edu/kmneuma2/api/items" API
 import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
-import SelectStory from "./app/SelectStory/select";
-import Explore from "./app/LetMeExplore/explore";
+import SelectStory from "./app/select_story";
+import Explore from "./app/explore";
 import Civic from "./app/CivicStory/civic-story";
 import Economic from "./app/EconomicStory/economic-story";
 import Religious from "./app/ReligiousStory/religious-story";
 import Visitors from "./app/VisitorsStory/visitors-story";
 import Maps from "./app/MapCoins/map";
-import Download from "./app/CoinsDownload/download";
+import Download from "./app/download";
 import Gods from "./app/GodsPortal/gods";
-import ContactUs from "./app/ContactUs/contact";
+import ContactUs from "./app/contact-us";
 import About from "./app/About/about";
 import GraphQLClient from "./app/GraphQLClient/gqlclient";
 import Footer from "./app/Footer/footer";
