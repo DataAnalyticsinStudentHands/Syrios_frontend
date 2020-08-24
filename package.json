@@ -47,7 +47,8 @@
     "styled-components": "^5.1.1",
     "tableau-api": "^2.2.3",
     "tableau-react": "^1.2.2",
-    "tableau-react-embed": "^1.1.0"
+    "tableau-react-embed": "^1.1.0",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
