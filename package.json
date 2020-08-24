@@ -26,7 +26,6 @@
     "express": "^4.17.1",
     "express-graphql": "^0.6.11",
     "file-saver": "^2.0.2",
-    "formik": "^2.1.5",
     "framer-motion": "^1.10.3",
     "graphql": "^0.11.7",
     "graphql-compose": "^2.9.2",
@@ -47,12 +46,11 @@
     "styled-components": "^5.1.1",
     "tableau-api": "^2.2.3",
     "tableau-react": "^1.2.2",
-    "tableau-react-embed": "^1.1.0",
-    "yup": "^0.29.3"
+    "tableau-react-embed": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-backend": "babel-node src/server/index.js",
+    "start-backend": "babel-node src/backend/server.js",
     "start:watchbackend": "nodemon ./src/index.js --exec babel-node",
     "dev": "concurrently --kill-others \"npm run start\" \"npm run start-backend\"",
     "build": "react-scripts build",

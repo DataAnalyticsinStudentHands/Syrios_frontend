@@ -172,12 +172,14 @@ const FooterHead = styled.div`
    font-family: CormorantGaramond-Bold;
    color: white;
    font-size: 30px;
+   padding: 50px 0px;
 `;
 
 const FooterLinks = styled.div`
    font-family: CormorantGaramond-Regular;
    color: white;
    font-size: 18px;
+   padding: 50px 0px;
 `;
 
 export {
@@ -193,6 +195,7 @@ export {
     ParaTextLeftSmaller,
     SubText,
     SubTextLeft,
+    Links,
     Resources,
     FormContainer,
     FormStyles,

@@ -8,10 +8,10 @@ import logo from "../data/intro-images/Logo.png"
 
 function Footer() {
     return (
-        <div className="main-footer">
+        <div className="row main-footer">
           <div className="col-md-2">
             <img
-              className={"logo"}
+              className={"size-images-md"}
               src={logo}
               alt="logo"
             />
