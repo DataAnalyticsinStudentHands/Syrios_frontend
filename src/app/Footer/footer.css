@@ -4,48 +4,6 @@
     left: 0;
     bottom: 0;
     right: 0;
-    content: "";
-    display: table;
-    clear: both;
-    padding: 30px;
-}
-
-.column {
-
-}
-
-.first {
-  width: 10%;
-  text-align: center;
-  float: left;
-  padding: 10px;
-}
-
-.second{
-  width: 15%;
-  float: left;
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  line-height: 35px;
-}
-
-.third {
-  width: 45%;
-  float: left;
-  padding: 10px;
-}
-
-.fourth {
-  width: 13%;
-  float: left;
-  padding-top: 40px;
-}
-
-.fifth {
-  width: 13%;
-  float: left;
-  padding-top: 40px;
 }
 
 .logo {

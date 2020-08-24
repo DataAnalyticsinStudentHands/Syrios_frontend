@@ -1,5 +1,5 @@
 import React from "react";
-import "./footer.css"
+import "./footer.css";
 import {
     FooterHead,
     FooterLinks
@@ -9,21 +9,21 @@ import logo from "../data/intro-images/Logo.png"
 function Footer() {
     return (
         <div className="main-footer">
-          <div className="first">
+          <div className="col-md-2">
             <img
               className={"logo"}
               src={logo}
               alt="logo"
             />
           </div>
-          <div className="second">
+          <div className="col-md-2">
             <FooterHead>
               The Syrios Project
             </FooterHead>
           </div>
-          <div className="third">
+          <div className="col-md-4">
           </div>
-          <div className="fourth">
+          <div className="col-md-2">
             <FooterLinks>
               <a href="/" target="_self">Home</a>
                 <br></br>
@@ -32,7 +32,7 @@ function Footer() {
               <a href="/explore" target="_self">Let Me Explore</a>
             </FooterLinks>
           </div>
-          <div className="fifth">
+          <div className="col-md-2">
             <FooterLinks>
               <a href="/about" target="_self">About Us</a>
                 <br></br>
@@ -41,7 +41,6 @@ function Footer() {
               <a href="/contact-us" target="_self">Contact Us</a>
             </FooterLinks>
           </div>
-
         </div>
     );
 }

@@ -105,7 +105,7 @@ const Intro = () => {
 
                 {/* SECTION 1.1 */}
 
-                <div className="row top-spacer-6">
+                <div className="row top-spacer-3">
                     <div className="col-md-8">
                         <Level1Text data-aos="fade-left">
                             During the time of the Greeks and Romans, many different governments
@@ -126,7 +126,7 @@ const Intro = () => {
 
                 {/* SECTION 1.2 */}
 
-                <div className="row top-spacer-4">
+                <div className="row top-spacer-3">
                     <div className="col-md-1"></div>
                     <div className="col-md-3" data-aos="flip-right">
                         <div style={{textAlign: 'center'}}>
