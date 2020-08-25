@@ -1,7 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources, Links } from "../componentStyling";
+import { StyledLink, PageTitle, PageSubTitle, Level1Text, ParaText, ParaTextLeft, SubText, Resources } from "../componentStyling";
 import logo from "../data/intro-images/Logo.png";
 import bronzecoin from "../data/intro-images/bronzecoin.png";
 import us_dime from "../data/intro-images/us-dime.png";
@@ -286,12 +286,12 @@ const Intro = () => {
                 {/* SECTION 1.6 Maps */}
 
                 <div className="row top-spacer-6">
-                    <div className="col-md-4"></div>
-                    <div className="col-md-4" data-aos="fade-right">
+                    <div className="col-md-3"></div>
+                    <div className="col-md-6" data-aos="fade-right">
                         <ParaText>All of this minting continued in Syria, even while the region was ruled
                             by the Seleucid kings and Roman empire.</ParaText>
                     </div>
-                    <div className="col-md-4"></div>
+                    <div className="col-md-3"></div>
                 </div>
                 <div className="row">
                     <div className="col-md-2"></div>
