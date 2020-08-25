@@ -18,6 +18,7 @@ import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/contact-us";
 import About from "./app/About/about";
 import GraphQLClient from "./app/GraphQLClient/gqlclient";
+import CoinPile from "./app/CoinPile/coinpile";
 import Footer from "./app/Footer/footer";
 import './app/data/fonts/fonts.css';
 import './index.css';
@@ -119,6 +120,8 @@ const App = () => {
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
           <Route exact path="/graphql-client" component={GraphQLClient}/>
+          <Route exact path="/coin-pile" component={CoinPile}/>
+
           {/* <Route exact path="/" component={Demo}/> */}
           <Route
             exact
