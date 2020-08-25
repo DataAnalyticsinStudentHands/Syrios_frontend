@@ -85,7 +85,7 @@ const Intro = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-6"></div>
                     <div className="col-md-2">
                         <svg width="30" height="45" xmlns="http://www.w3.org/2000/svg" data-aos="fade-down">

@@ -9,7 +9,9 @@
 }
 
 /* spacers used for container rows */
-.top-buffer { margin-top:150px; }
+.top-buffer-1 { margin-top:150px; }
+.top-buffer-2 { margin-top:250px; }
+.top-spacer-05 { margin-top:50px; }
 .top-spacer-1 { margin-top:100px; }
 .top-spacer-2 { margin-top:200px; }
 .top-spacer-3 { margin-top:300px; }
@@ -21,6 +23,14 @@
 #term {
     font-family: CormorantGaramond-BoldItalic;
     color: #E3B287;
+}
+
+/* text styling */
+
+#para-blue-bg {
+  background-color: #2d616a;
+  padding: 10px;
+  color: white;
 }
 
 /* image style/sizing */
@@ -53,11 +63,26 @@
     width: 300px;
 }
 
+.size-images-600 {
+    height: auto;
+    width: 600px;
+}
+
+.size-images-400 {
+    height: auto;
+    width: 400px;
+}
+
 .profile_img {
     height: auto;
     width: 100%;
     border-top-left-radius: 65px;
     border-bottom-left-radius: 65px;
+}
+
+.bg-img {
+    position: absolute;
+    z-index: -10;
 }
 
 /* line on left side in navigation pages */
