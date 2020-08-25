@@ -86,10 +86,7 @@ const civicStory = () => {
             </div>
             <div className="col-md-2"></div>
           </div>
-
-          {/* SECTION 1.3 */}
-
-          <div className="row top-spacer-1">
+          <div className="row top-spacer-05">
               <div className="col-md-4 align-self-center">
                   <SubText data-aos="fade-left">
                     “Antioch – the metropolis of Syria, and, without dispute,
@@ -119,7 +116,7 @@ const civicStory = () => {
               />
           </div>
 
-          {/* SECTION 1.4 */}
+          {/* SECTION 1.3 */}
 
           <div className="row top-spacer-6">
               <div className="col-md-2"></div>
@@ -131,7 +128,7 @@ const civicStory = () => {
               <div className="col-md-2"></div>
           </div>
 
-          {/* SECTION 1.5 */}
+          {/* SECTION 1.4 */}
 
           <div className="row top-spacer-3">
               <div className="col-md-12 align-self-center">
@@ -383,7 +380,7 @@ const civicStory = () => {
                       assemblies, and addressed the crowd which hurried there."
                       <br></br>
                       <br></br>
-                      -Tacitus, <em>Histories</em> 2.80
+                      - Tacitus, <em>Histories</em> 2.80
                   </SubText>
               </div>
           </div>
@@ -676,15 +673,16 @@ const civicStory = () => {
           {/* Bottom Buttons */}
 
           <div className="row top-spacer-05">
-              <div className="col-md-3 offset-4">
+              <div className="col-md-4 offset-2">
                   <StyledLink to="/tableau-maps" data-aos="fade-right">
                     Where did the civic coins move?
                   </StyledLink>
               </div>
-                <div className="col-md-2">
-                  <StyledLink to="/select-story" data-aos="fade-left">
-                    Tell me another story!
-                  </StyledLink>
+              <div className="col-md-1"></div>
+              <div className="col-md-4">
+                <StyledLink to="/select-story" data-aos="fade-left">
+                  Tell me another story!
+                </StyledLink>
               </div>
           </div>
       </div>
