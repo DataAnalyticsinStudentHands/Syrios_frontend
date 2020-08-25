@@ -71,6 +71,20 @@ const PageSectionTitle = styled(PageTitle)`
   text-align: center;
 `;
 
+const StoryTitle = styled.p`
+  color: #2d616a;
+  font-size: 64px;
+  line-height: 45px;
+  font-family: 'CormorantGaramond-Bold';
+  letter-spacing: 0.03em;
+  text-align: center;
+`;
+
+const StoryTitleSM = styled(StoryTitle)`
+  font-size: 32px;
+  color: black;
+`;
+
 const Level1Text = styled.p`
    font-family: CormorantGaramond-Bold;
    color: #2d616a;
@@ -82,6 +96,11 @@ const ParaText = styled.p`
    font-family: CormorantGaramond-Regular;
    font-size: 24px;
    text-align: center;
+`;
+
+const ParaTextBlueBG = styled(ParaText)`
+   background-color: #2d616a;
+   color: white;
 `;
 
 const ParaTextLeft = styled(ParaText)`
@@ -110,6 +129,14 @@ const SubTextLeft = styled.div`
    text-align: left;
    border-top-right-radius: 30px;
    border-bottom-right-radius: 30px;
+`;
+
+const Captions = styled.p`
+   font-family: CormorantGaramond-Regular;
+   color: #2d616a;
+   padding: 10px 30px;
+   font-size: 14px;
+   text-align: center;
 `;
 
 const Resources = styled.div`
@@ -189,12 +216,16 @@ export {
     PageTitleCentered,
     PageSubTitle,
     PageSectionTitle,
+    StoryTitle,
+    StoryTitleSM,
     Level1Text,
     ParaText,
+    ParaTextBlueBG,
     ParaTextLeft,
     ParaTextLeftSmaller,
     SubText,
     SubTextLeft,
+    Captions,
     Resources,
     FormContainer,
     FormStyles,
