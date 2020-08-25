@@ -50,7 +50,7 @@ const Intro = () => {
         <div>
             <div className="container-fluid px-6">
                 {/* Page Entry */}
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-3" data-aos="fade-in">
                         <img className={"img-responsive"}

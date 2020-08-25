@@ -1,9 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
 import { StyledLink, PageSectionTitle, StoryTitle, StoryTitleSM, PageSubTitle, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
-// import "./civic-story.css";
 import comp_1 from "../data/civic-images/comp-1.png";
 import comp_5_left from "../data/civic-images/comp-5-left.png";
 import comp_5_right from "../data/civic-images/comp-5-right.png";
@@ -41,36 +39,37 @@ const civicStory = () => {
           <div className="row top-buffer-2">
             <div className="col-md-4"></div>
             <div className="col-md-4">
-              <StoryTitleSM data-aos="fade-in">
+              <StoryTitleSM data-aos="slide-right">
                   The
               </StoryTitleSM>
-              <StoryTitle data-aos="fade-in">
+              <StoryTitle data-aos="slide-left">
                   CIVIC
               </StoryTitle>
-              <StoryTitleSM data-aos="fade-in">
+              <StoryTitleSM data-aos="slide-up">
                   Story
               </StoryTitleSM>
             </div>
+            <div className="col-md-4"></div>
           </div>
 
           {/* SECTION 1.1 */}
 
           <div className="row top-spacer-3">
-            <div className="col-md-7">
-              <Level1Text data-aos="fade-left">
-                This is a <strong>bronze coin</strong> minted by the civic
-                government of Antioch for use by the citizens of Antioch.
-              </Level1Text>
-            </div>
-            <div className="col-md-1"></div>
-            <div className="col-md-4 align-self-center">
-              <img
-                src={comp_1}
-                alt="Logo"
-                className="size-images-head"
-                data-aos="fade-up"
-              />
-            </div>
+              <div className="col-md-7">
+                  <Level1Text data-aos="fade-left">
+                    This is a <strong>bronze coin</strong> minted by the civic
+                    government of Antioch for use by the citizens of Antioch.
+                  </Level1Text>
+              </div>
+              <div className="col-md-1"></div>
+              <div className="col-md-4 align-self-center">
+                  <img
+                    src={comp_1}
+                    alt="Logo"
+                    className="size-images-head"
+                    data-aos="fade-up"
+                  />
+              </div>
           </div>
 
           {/* SECTION 1.2 */}
