@@ -2,9 +2,9 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/coin-schema')
 const app = express();
+const cors = require('cors');
 
 const mongoose = require('mongoose');
-
 
 mongoose.connect('mongodb+srv://rahulrajmogili:test123@syrios-cluster.5kobt.mongodb.net/testdb?retryWrites=true&w=majority')
 
@@ -14,6 +14,9 @@ mongoose.connection.once('open', () => {
    
 //This route will be used as an endpoint to interact with Graphql, 
 //All queries will go through this route. 
+
+app.use(cors());
+
 app.use('/graphql', graphqlHTTP({
     //Directing express-graphql to use this schema to map out the graph 
     schema,
@@ -22,6 +25,6 @@ app.use('/graphql', graphqlHTTP({
     graphiql:true
 }));
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
+app.listen(3002, () => {
+    console.log('Listening on port 3002');
 }); 
