@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ApolloClient, { gql } from "apollo-boost";
 import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 import GraphQLClient from './graphql-client';
-import './coinpile.css';
+
 
 const CoinPile = () => {
 
@@ -13,7 +13,7 @@ const CoinPile = () => {
   return (
     <div>
       <ApolloProvider client={client}>
-        <div className="class-coinpile">
+        <div>
           <h2>Syrios Mongo Import 🚀</h2>
           <p>---------------------</p>
           <GraphQLClient />
