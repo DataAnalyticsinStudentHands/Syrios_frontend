@@ -1,7 +1,7 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/coin-schema')
-const app = express();
+const app = express(); 
 const cors = require('cors');
 
 const mongoose = require('mongoose');
@@ -16,7 +16,7 @@ mongoose.connection.once('open', () => {
 //All queries will go through this route. 
 
 app.use(cors());
-
+ 
 app.use('/graphql', graphqlHTTP({
     //Directing express-graphql to use this schema to map out the graph 
     schema,
