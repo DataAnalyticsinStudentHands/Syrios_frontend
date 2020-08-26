@@ -25,6 +25,11 @@
     color: #E3B287;
 }
 
+#yellow {
+    font-family: CormorantGaramond-Bold;
+    color: #E3B287;
+}
+
 /* text styling */
 
 #para-blue-bg {
@@ -63,6 +68,16 @@
     width: 300px;
 }
 
+.size-images-30 {
+    height: auto;
+    width: 30px;
+}
+
+.size-images-50 {
+    height: auto;
+    width: 50px;
+}
+
 .size-images-600 {
     height: auto;
     width: 600px;
@@ -71,6 +86,11 @@
 .size-images-400 {
     height: auto;
     width: 400px;
+}
+
+.size-images-200 {
+    height: auto;
+    width: 200px;
 }
 
 .profile_img {
