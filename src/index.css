@@ -78,6 +78,11 @@
     width: 50px;
 }
 
+.size-images-920 {
+    height: auto;
+    width: 920px;
+}
+
 .size-images-600 {
     height: auto;
     width: 600px;
@@ -103,6 +108,8 @@
 .bg-img {
     position: absolute;
     z-index: -10;
+    height: auto;
+    width: 80%;
 }
 
 /* line on left side in navigation pages */

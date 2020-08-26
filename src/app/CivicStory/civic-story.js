@@ -1,7 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { StyledLink, PageSectionTitle, StoryTitle, StoryTitleSM, PageSubTitle, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
+import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
 import comp_1 from "../data/civic-images/comp-1.png";
 import comp_5_left from "../data/civic-images/comp-5-left.png";
 import comp_5_right from "../data/civic-images/comp-5-right.png";
@@ -27,7 +27,6 @@ import city from "../data/civic-images/city.png";
 const civicStory = () => {
   AOS.init({
     duration: 1000,
-    offset: -25,
   });
 
   return (
@@ -56,7 +55,7 @@ const civicStory = () => {
 
           <div className="row top-spacer-3">
               <div className="col-md-7">
-                  <Level1Text data-aos="fade-left">
+                  <Level1Text data-aos="fade-right">
                     This is a <strong>bronze coin</strong> minted by the civic
                     government of Antioch for use by the citizens of Antioch.
                   </Level1Text>
@@ -67,7 +66,7 @@ const civicStory = () => {
                     src={comp_1}
                     alt="Logo"
                     className="size-images-head"
-                    data-aos="fade-up"
+                    data-aos="fade-in"
                   />
               </div>
           </div>
@@ -77,7 +76,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
             <div className="col-md-2"></div>
             <div className="col-md-8 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-down">
                   Antioch was one of the most important cities of the Roman empire.
                   According to the ancient writers Strabo and Josephus, Antioch was
                   the third largest city.
@@ -87,7 +86,7 @@ const civicStory = () => {
           </div>
           <div className="row top-spacer-05">
               <div className="col-md-4 align-self-center">
-                  <SubText data-aos="fade-left">
+                  <SubText data-aos="fade-right">
                     “Antioch – the metropolis of Syria, and, without dispute,
                     deserves the place of the third city in the habitable earth
                     that was under the Roman Empire.”
@@ -118,28 +117,36 @@ const civicStory = () => {
           {/* SECTION 1.3 */}
 
           <div className="row top-spacer-6">
-              <div className="col-md-2"></div>
-              <div className="col-md-8 align-self-center">
-                  <ParaText data-aos="fade-left">
+              <div className="col-md-3"></div>
+              <div className="col-md-6 align-self-center">
+                  <ParaText data-aos="fade-in">
                     Antioch compared to Rome was like Chicago is to New York City!
                   </ParaText>
               </div>
-              <div className="col-md-2"></div>
+              <div className="col-md-3"></div>
           </div>
 
           {/* SECTION 1.4 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-12 align-self-center">
+              <div className="col-md-1"></div>
+              <div className="col-md-10 align-self-center">
                   <ParaTextBlueBG data-aos="slide-up">
                     But, as big as Antioch grew, it was still a city of citizens.
                     <br></br>
                     And the coins are an important reminder of this.
                   </ParaTextBlueBG>
               </div>
-              <div className="col-md-12 align-self-center">
-                  <img src={citizens} alt="Logo" />
+              <div className="col-md-1"></div>
+              <div className="col-md-1"></div>
+              <div className="col-md-10">
+                  <img
+                      src={citizens}
+                      alt="Logo"
+                      className="size-images-920"
+                  />
               </div>
+              <div className="col-md-1"></div>
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
                   <Captions data-aos="fade-left">
@@ -155,7 +162,7 @@ const civicStory = () => {
 
           <div className="row top-spacer-3">
               <div className="col-md-7">
-                  <Level1Text data-aos="fade-left">
+                  <Level1Text data-aos="fade-right">
                       On the front of the coins, the citizens wrote their name:
                       ΑΝΤΙΟΧΕΩΝ, which means “Belongs to the Antiochians.”
                   </Level1Text>
@@ -166,7 +173,7 @@ const civicStory = () => {
                     src={comp_5_left}
                     alt="Logo"
                     className="size-images-head"
-                    data-aos="fade-up"
+                    data-aos="fade-in"
                   />
               </div>
           </div>
@@ -174,34 +181,34 @@ const civicStory = () => {
           {/* SECTION 2.2 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-1"></div>
-              <div className="col-md-10 align-self-center">
-                  <ParaText data-aos="fade-left">
+              <div className="col-md-3"></div>
+              <div className="col-md-6 align-self-center">
+                  <ParaText data-aos="fade-in">
                       This name was important because it made clear the governmental
                       authority who paid for the coins, minted the coins, and
                       gave the cheap bronze value as money. 
                   </ParaText>
               </div>
-              <div className="col-md-1"></div>
+              <div className="col-md-3"></div>
           </div>
 
           {/* SECTION 2.3 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-1"></div>
-              <div className="col-md-10 align-self-center">
-                  <ParaText data-aos="fade-left">
+              <div className="col-md-3"></div>
+              <div className="col-md-6 align-self-center">
+                  <ParaText data-aos="fade-in">
                       It was the citizens of Antioch, and not any Roman emperor.
                   </ParaText>
               </div>
-              <div className="col-md-1"></div>
+              <div className="col-md-3"></div>
           </div>
 
           {/* SECTION 3.1 */}
 
           <div className="row top-spacer-3">
               <div className="col-md-7">
-                  <Level1Text data-aos="fade-left">
+                  <Level1Text data-aos="fade-right">
                       The government also added another message in Greek (just
                       barely visible on this worn coin): ΜΗΤΡΟΠΟΛΕΩΣ.
                   </Level1Text>
@@ -212,7 +219,7 @@ const civicStory = () => {
                     src={comp_5_right}
                     alt="Logo"
                     className="size-images-head"
-                    data-aos="fade-up"
+                    data-aos="fade-in"
                   />
               </div>
           </div>
@@ -222,7 +229,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-1"></div>
               <div className="col-md-10 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-in">
                       This means <span id="term">metropolis</span>.
                   </ParaText>
               </div>
@@ -234,7 +241,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-in">
                       This was a special civic status, which emphasized the size,
                       culture, and history of the city.
                   </ParaText>
@@ -247,7 +254,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       The Antiochians were so proud of this special title, they
                       included it on their coins for over 300 years!
                   </ParaText>
@@ -308,7 +315,7 @@ const civicStory = () => {
 
           <div className="row top-spacer-3">
               <div className="col-md-7">
-                  <Level1Text data-aos="fade-left">
+                  <Level1Text data-aos="fade-right">
                       The images on the coins celebrate the local government.
                       Here we see a personification of the city’s
                       <span id="term"> boule</span> – or council.
@@ -320,7 +327,7 @@ const civicStory = () => {
                     src={boule_edit}
                     alt="Logo"
                     className="size-images-head"
-                    data-aos="fade-up"
+                    data-aos="fade-in"
                   />
               </div>
           </div>
@@ -330,7 +337,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       The <span id="term">boule</span> was like our own local
                       government and civic councils.
                   </ParaText>
@@ -355,7 +362,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       The boule was like our own local government and civic
                       councils. <span id="term"> demos</span> – the citizen body
                       – together to debate publicly in the city’s theatre.
@@ -389,7 +396,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       This is just like the debates and public forums that happen
                       in our own local governments!
                   </ParaText>
@@ -412,35 +419,37 @@ const civicStory = () => {
           {/* SECTION 4.5 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-1"></div>
+              <div className="col-md-2"></div>
               <div className="col-md-3">
                   <img
                       src={boule}
                       alt="Logo"
-                      data-aos="fade-right"
+                      data-aos="fade-in"
                       className="size-images"
                   />
               </div>
-              <div className="col-md-7 align-self-center">
-                  <ParaText data-aos="fade-left">
+              <div className="col-md-1"></div>
+              <div className="col-md-4 align-self-center">
+                  <ParaTextLeft data-aos="fade-left">
                       Voting was an important job of the boule and demos. The
                       coin even shows this! Notice how the boule votes by
                       dropping a pebble into a bucket!
-                  </ParaText>
+                  </ParaTextLeft>
               </div>
-              <div className="col-md-1"></div>
+              <div className="col-md-2"></div>
           </div>
 
           {/* SECTION 4.6 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-1"></div>
-              <div className="col-md-7 align-self-center">
-                  <ParaText data-aos="fade-left">
+              <div className="col-md-2"></div>
+              <div className="col-md-4 align-self-center">
+                  <ParaTextLeft data-aos="fade-left">
                       Just like today, the citizens had a say in the operations of their
                       city government!
-                  </ParaText>
+                  </ParaTextLeft>
               </div>
+              <div className="col-md-1"></div>
               <div className="col-md-3">
                   <img
                       src={vote}
@@ -449,7 +458,7 @@ const civicStory = () => {
                       className="size-images"
                   />
               </div>
-              <div className="col-md-1"></div>
+              <div className="col-md-2"></div>
           </div>
 
 
@@ -458,7 +467,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       The boule and magistrates also hosted many civic celebrations for
                       their community.
                   </ParaText>
@@ -474,7 +483,7 @@ const civicStory = () => {
                     data-aos="fade-in"
                     className="size-images-400"
                   />
-                  <Captions>
+                  <Captions data-aos="fade-up">
                       This painting is based upon the <em>Mosaic of Bacchic
                       Dancers</em> (2nd cent. CE), which was excavated at Antioch
                       and is now at the Hatay Archaeology Museum (Antakya, Hatay
@@ -498,22 +507,23 @@ const civicStory = () => {
           {/* SECTION 4.8 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-1"></div>
+              <div className="col-md-2"></div>
               <div className="col-md-3">
                   <img
                       src={zeus}
                       alt="Logo"
-                      data-aos="fade-right"
+                      data-aos="fade-in"
                       className="size-images"
                   />
               </div>
-              <div className="col-md-7 align-self-center">
-                  <ParaText data-aos="fade-left">
+              <div className="col-md-1"></div>
+              <div className="col-md-4 align-self-center">
+                  <ParaTextLeft data-aos="fade-left">
                       Many of these civic festivals celebrated the gods. This
                       includes Zeus, who is featured on the front of this coin!
-                  </ParaText>
+                  </ParaTextLeft>
               </div>
-              <div className="col-md-1"></div>
+              <div className="col-md-2"></div>
           </div>
 
           {/* SECTION 5.1 */}
@@ -546,7 +556,7 @@ const civicStory = () => {
           <div className="row top-spacer-05">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-up">
                       Today, peaceful demonstrations remain an important right
                       of our citizens.
                   </ParaText>
@@ -559,7 +569,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       Sometimes, though, the Antiochians could lose the power of
                       their local government.
                   </ParaText>
@@ -597,7 +607,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-in">
                       This is a major difference between then and now! Even though
                       the local government was democratic, the Antiochians lived
                       under the absolute rule of the emperor.
@@ -623,7 +633,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       An inscription from Palmyra does mention the name of one
                       city magistrate.
                   </ParaText>
@@ -660,7 +670,7 @@ const civicStory = () => {
           <div className="row top-spacer-3">
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
-                  <ParaText data-aos="fade-left">
+                  <ParaText data-aos="fade-down">
                       Because so few records have survived, our ancient coin is
                       a very important reminder of the local government who minted
                       it and the local citizens who used it.

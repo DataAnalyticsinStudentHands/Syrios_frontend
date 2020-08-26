@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { StyledLink, PageSectionTitle, StoryTitle, StoryTitleSM, PageSubTitle, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
-import styled from "styled-components";
+import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
 import Tableau from "./tableau";
 import "tableau-api";
 import AOS from "aos";
@@ -22,7 +20,7 @@ import citycoin2 from "../data/economic-images/citycoin2.png";
 const Economic = () => {
   AOS.init({
     duration: 1000,
-    offset: -25,
+    offset: 100,
   });
 
   return (
@@ -68,7 +66,7 @@ const Economic = () => {
                   src={bronze}
                   alt="Logo"
                   className="size-images-head"
-                  data-aos="fade-up"
+                  data-aos="fade-in"
                 />
             </div>
         </div>
@@ -219,7 +217,7 @@ const Economic = () => {
         <div className="row top-spacer-3">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-down">
                     People needed these coins to buy things in Antioch’s markets.
                 </ParaText>
             </div>
@@ -234,7 +232,7 @@ const Economic = () => {
                   data-aos="fade-in"
                   className="size-images-400"
                 />
-                <Captions>
+                <Captions data-aos="fade-in">
                     This painting is based upon the <em>Departure Mosaic</em>
                     from the “House of Menander” (mid 3rd century CE), which was
                     excavated at Daphne (Antioch’s suburb) and is now at the San
@@ -259,7 +257,7 @@ const Economic = () => {
         <div className="row top-spacer-3">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-down">
                     But this coin wasn’t worth very much, as it was made out of cheap
                     bronze and not valuable gold or silver.
                 </ParaText>
@@ -1046,7 +1044,7 @@ const Economic = () => {
                   src={bronze}
                   alt="Logo"
                   className="size-images-head"
-                  data-aos="fade-up"
+                  data-aos="fade-in"
                 />
             </div>
         </div>
@@ -1085,7 +1083,7 @@ const Economic = () => {
                 />
             </div>
             <div className="col-md-6 align-self-center">
-                <ParaText>
+                <ParaText data-aos="fade-in">
                     Four bronze coins could buy a loaf of bread.
                 </ParaText>
             </div>
@@ -1104,7 +1102,7 @@ const Economic = () => {
         <div className="row top-spacer-3" style={{textAlign: 'center'}}>
             <div className="col-md-3"></div>
             <div className="col-md-6">
-                <ParaText>
+                <ParaText data-aos="fade-down">
                     Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s
                     the same as 2 school milk cartoons.
                 </ParaText>
@@ -1211,7 +1209,7 @@ const Economic = () => {
         <div className="row top-spacer-3">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-in">
                     Not all coins stayed in Antioch though.
                 </ParaText>
             </div>
@@ -1223,7 +1221,7 @@ const Economic = () => {
         <div className="row top-spacer-3">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-in">
                     Instead some of the coins moved even hundreds of miles away.
                 </ParaText>
             </div>
@@ -1234,7 +1232,7 @@ const Economic = () => {
 
         <div className="row top-spacer-3">
             <div className="col-md-3 align-self-center">
-                <SubText data-aos="fade-left">
+                <SubText data-aos="fade-right">
                     Click on the map to explore all the places these little
                     bronze civic coins have been found through excavation.
                 </SubText>
@@ -1246,7 +1244,7 @@ const Economic = () => {
         <div className="row top-spacer-05">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-up">
                     This speaks to all the trade routes running in and out of
                     Antioch and all the people coming and going from the city
                     with little bronze coins in their pockets.
@@ -1260,7 +1258,7 @@ const Economic = () => {
         <div className="row top-spacer-3">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-in">
                   We cannot be sure that the Antiochians’ civic coins were worth
                   money at all of these places.
                 </ParaText>
@@ -1309,7 +1307,7 @@ const Economic = () => {
         <div className="row top-spacer-3">
             <div className="col-md-3"></div>
             <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-left">
+                <ParaText data-aos="fade-down">
                     Still, how far away the coins moved speaks to all the trade
                     routes running in and out of Antioch and all the people
                     coming and going from the city with little bronze coins in
@@ -1341,51 +1339,49 @@ const Economic = () => {
     <Resources>
       <div className="row top-spacer-2"></div>
       <div className="row top-spacer-1">
-            <div className="col-md-1">
-
-            </div>
-            <div className="col-md-5">
-                Coin Images Courtesy of:
-                <br></br>
-                <br></br>
-                <ul>
-                    <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
-                      <br></br>
-                    <li><a href="https://rpc.ashmus.ox.ac.uk/coin/73446" target="_blank" rel="noopener noreferrer">Roman Provincial Coinage Project</a></li>
-                      <br></br>
-                    <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.39966</a></li>
-                      <br></br>
-                    <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84967440" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, M 5464</a></li>
-                      <br></br>
-                    <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8508048m" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Louis de Clercq 280</a></li>
-                </ul>
-            </div>
-            <div className="col-md-5 ">
-                To read more, check these out:
-                <br></br>
-                <br></br>
-                <ul>
-                    <li>
-                      Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley
-                      in the Late Hellenistic and Early Roman Periods,” in C. Augé and F.
-                      Duyrat (eds.), Les monnayages syriens: quel apport pour l'histoire du
-                      Proche-Orient hellénistique et romain?: actes de la table ronde de Damas,
-                      10-12 novembre 1999. Beirut: Institut Français d''Archéologie du Proche- Orient.
-                      145-152.
-                    </li>
-                      <br></br>
-                    <li>
-                      Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C.
-                      to A.D. 700. Baltimore: Johns Hopkins University Press.
-                    </li>
-                      <br></br>
-                    <li>
-                      Scheidel, W., Morris, I. and Saller, R. (eds.), 2007, <em>The Cambridge
-                      Economic History of the Greco- Roman World. Cambridge University Press</em>.
-                    </li>
-                </ul>
-            </div>
           <div className="col-md-1"></div>
+          <div className="col-md-5">
+              Coin Images Courtesy of:
+              <br></br>
+              <br></br>
+              <ul>
+                  <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8507493h.r=Hadrian%20Hadrian?rk=515024;0" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Fonds général 430</a></li>
+                    <br></br>
+                  <li><a href="https://rpc.ashmus.ox.ac.uk/coin/73446" target="_blank" rel="noopener noreferrer">Roman Provincial Coinage Project</a></li>
+                    <br></br>
+                  <li><a href="http://numismatics.org/collection/1944.100.39966" target="_blank" rel="noopener noreferrer">American Numismatic Society - 1944.100.39966</a></li>
+                    <br></br>
+                  <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b84967440" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, M 5464</a></li>
+                    <br></br>
+                  <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b8508048m" target="_blank" rel="noopener noreferrer">Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies, médailles et antiques, Louis de Clercq 280</a></li>
+              </ul>
+          </div>
+          <div className="col-md-5 ">
+              To read more, check these out:
+              <br></br>
+              <br></br>
+              <ul>
+                  <li>
+                    Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley
+                    in the Late Hellenistic and Early Roman Periods,” in C. Augé and F.
+                    Duyrat (eds.), Les monnayages syriens: quel apport pour l'histoire du
+                    Proche-Orient hellénistique et romain?: actes de la table ronde de Damas,
+                    10-12 novembre 1999. Beirut: Institut Français d''Archéologie du Proche- Orient.
+                    145-152.
+                  </li>
+                    <br></br>
+                  <li>
+                    Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C.
+                    to A.D. 700. Baltimore: Johns Hopkins University Press.
+                  </li>
+                    <br></br>
+                  <li>
+                    Scheidel, W., Morris, I. and Saller, R. (eds.), 2007, <em>The Cambridge
+                    Economic History of the Greco- Roman World. Cambridge University Press</em>.
+                  </li>
+              </ul>
+          </div>
+        <div className="col-md-1"></div>
         </div>
       <div className="row top-spacer-1"></div>
     </Resources>
