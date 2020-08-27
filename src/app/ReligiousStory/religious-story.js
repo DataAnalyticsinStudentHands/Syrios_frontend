@@ -1,6 +1,5 @@
 import React from "react";
 import AOS from "aos";
-import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
 import zeus_coin from "../data/religious-images/zeus_coin.png";
