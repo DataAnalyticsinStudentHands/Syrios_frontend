@@ -4,22 +4,22 @@ import {
     ParaTextLeftSmaller,
     SubTextLeft,
     PageSectionTitle
-} from "../componentStyling";
-import logo from "../data/intro-images/Logo.png"
-import drNeumann from "../data/about-images/DrNeumann.jpg"
-import drLindner from "../data/about-images/DrLindner.jpg"
-import drRodwell from "../data/about-images/DrRodwell.jpg"
-import martin from "../data/about-images/Martin.jpg"
-import rahul from "../data/about-images/Rahul.jpg"
-import jinelly from "../data/about-images/Jinelly.jpg"
-import xandria from "../data/about-images/Xandria.jpg"
+} from "./componentStyling";
+import logo from "./data/intro-images/Logo.png"
+import drNeumann from "./data/about-images/DrNeumann.jpg"
+import drLindner from "./data/about-images/DrLindner.jpg"
+import drRodwell from "./data/about-images/DrRodwell.jpg"
+import martin from "./data/about-images/Martin.jpg"
+import rahul from "./data/about-images/Rahul.jpg"
+import jinelly from "./data/about-images/Jinelly.jpg"
+import xandria from "./data/about-images/Xandria.jpg"
 
 const About = () => {
     return (
         <div>
-            <div className="container-fluid px-6">
+            <div className="container-fluid p-0 px-6">
                 {/* About Section */}
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>
@@ -29,7 +29,7 @@ const About = () => {
                     <div className="col-md-2"></div>
                 </div>
 
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-3">
                         <img className={"img-responsive"}
@@ -70,7 +70,7 @@ const About = () => {
 
                 {/* Meet the Team */}
 
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>
@@ -97,7 +97,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Kristina Neumann, Ph.D.</strong>
                             <br></br>
@@ -128,7 +128,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Peggy Lindner, Ph.D.</strong>
                             <br></br>
@@ -153,7 +153,7 @@ const About = () => {
                     </div>
                     <div className="col-md-1"></div>
                 </div>
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageSectionTitle>
@@ -171,7 +171,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Elizabeth Rodwell, Ph.D.</strong>
                             <br></br>
@@ -209,7 +209,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Martin Pepper</strong>
                             <br></br>
@@ -238,7 +238,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Rahul Raj Mogili</strong>
                             <br></br>
@@ -260,7 +260,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Jinelly Swasey</strong>
                             <br></br>
@@ -286,7 +286,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Xandria Outing</strong>
                             <br></br>
@@ -304,8 +304,8 @@ const About = () => {
                     <div className="col-md-1"></div>
                 </div>
                 <div className="row top-spacer-1  no-gutters">
-                    <div className="col-md-3"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-1"></div>
+                    <div className="col-md-10">
                         <SubTextLeft>
                             <strong>Past Student Research Assistants</strong>
                             <br></br>
@@ -331,7 +331,7 @@ const About = () => {
 
                 {/* Acknowledgments */}
 
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>

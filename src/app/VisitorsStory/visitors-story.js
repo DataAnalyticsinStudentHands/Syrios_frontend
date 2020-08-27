@@ -1,11 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
-import styled from "styled-components";
 import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
-import Tableau1 from "./tableau1";
-import Tableau2 from "./tableau2";
-import Tableau3 from "./tableau3";
+import { Tableau1,  Tableau2, Tableau3 } from "./tableau";
 import "tableau-api";
 import AOS from "aos";
 import antioch from "../data/visitors-images/antioch.png";

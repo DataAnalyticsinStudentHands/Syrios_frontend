@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const authorSchema = new Schema({
+const coinSchema = new Schema({
     _id: String,
     Title: String,
     Bibliography: String,
@@ -28,4 +28,5 @@ const authorSchema = new Schema({
     reverseFile: String,
 });
 
-module.exports = mongoose.model('Author', authorSchema);
+// singular name of the collection - Mongoose automatically looks for the plural, lowercased version of our model name.
+module.exports = mongoose.model('Antiochcoin', coinSchema);
