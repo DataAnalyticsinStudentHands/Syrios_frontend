@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import NavBarLogo from "./app/data/intro-images/Logo.png"
-import Intro from "./app/IntroPage/intro";
+import Intro from "./app/intro";
 import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
 import SelectStory from "./app/select_story";
 import Explore from "./app/explore";
-import Civic from "./app/CivicStory/civic-story";
+import Civic from "./app/civic-story";
 import Economic from "./app/EconomicStory/economic-story";
-import Religious from "./app/ReligiousStory/religious-story";
+import Religious from "./app/religious-story";
 import Visitors from "./app/VisitorsStory/visitors-story";
 import Maps from "./app/MapCoins/map";
 import Download from "./app/download";
 import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/contact-us";
-import About from "./app/About/about";
+import About from "./app/about";
 import CoinPile from "./app/CoinPile/coinpile";
 import Footer from "./app/footer";
 import './app/data/fonts/fonts.css';

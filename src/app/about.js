@@ -4,15 +4,15 @@ import {
     ParaTextLeftSmaller,
     SubTextLeft,
     PageSectionTitle
-} from "../componentStyling";
-import logo from "../data/intro-images/Logo.png"
-import drNeumann from "../data/about-images/DrNeumann.jpg"
-import drLindner from "../data/about-images/DrLindner.jpg"
-import drRodwell from "../data/about-images/DrRodwell.jpg"
-import martin from "../data/about-images/Martin.jpg"
-import rahul from "../data/about-images/Rahul.jpg"
-import jinelly from "../data/about-images/Jinelly.jpg"
-import xandria from "../data/about-images/Xandria.jpg"
+} from "./componentStyling";
+import logo from "./data/intro-images/Logo.png"
+import drNeumann from "./data/about-images/DrNeumann.jpg"
+import drLindner from "./data/about-images/DrLindner.jpg"
+import drRodwell from "./data/about-images/DrRodwell.jpg"
+import martin from "./data/about-images/Martin.jpg"
+import rahul from "./data/about-images/Rahul.jpg"
+import jinelly from "./data/about-images/Jinelly.jpg"
+import xandria from "./data/about-images/Xandria.jpg"
 
 const About = () => {
     return (

@@ -1,22 +1,22 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
-import zeus_coin from "../data/religious-images/zeus_coin.png";
-import zeus_hl_coin from "../data/religious-images/zeus_hl_coin.png";
-import zeus_hl_coin2 from "../data/religious-images/zeus_hl_coin2.png";
-import eagle from "../data/religious-images/eagle.png";
-import temple_1 from "../data/religious-images/temple_1.png";
-import temple_2 from "../data/religious-images/temple_2.png";
-import zeus_coin2 from "../data/religious-images/zeus_coin2.png";
-import zeus_coin3 from "../data/religious-images/zeus_coin3.png";
-import zeus_coin4 from "../data/religious-images/zeus_coin4.png";
-import zeus_coin5 from "../data/religious-images/zeus_coin5.png";
-import zeus_coin6 from "../data/religious-images/zeus_coin6.png";
-import zeus_coin7 from "../data/religious-images/zeus_coin7.png";
-import zeus_coin8 from "../data/religious-images/zeus_coin8.png";
-import zeus_coin9 from "../data/religious-images/zeus_coin9.png";
-import zeus_coin10 from "../data/religious-images/zeus_coin10.png";
+import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextLeft, SubText, Captions, Resources } from "./componentStyling";
+import zeus_coin from "./data/religious-images/zeus_coin.png";
+import zeus_hl_coin from "./data/religious-images/zeus_hl_coin.png";
+import zeus_hl_coin2 from "./data/religious-images/zeus_hl_coin2.png";
+import eagle from "./data/religious-images/eagle.png";
+import temple_1 from "./data/religious-images/temple_1.png";
+import temple_2 from "./data/religious-images/temple_2.png";
+import zeus_coin2 from "./data/religious-images/zeus_coin2.png";
+import zeus_coin3 from "./data/religious-images/zeus_coin3.png";
+import zeus_coin4 from "./data/religious-images/zeus_coin4.png";
+import zeus_coin5 from "./data/religious-images/zeus_coin5.png";
+import zeus_coin6 from "./data/religious-images/zeus_coin6.png";
+import zeus_coin7 from "./data/religious-images/zeus_coin7.png";
+import zeus_coin8 from "./data/religious-images/zeus_coin8.png";
+import zeus_coin9 from "./data/religious-images/zeus_coin9.png";
+import zeus_coin10 from "./data/religious-images/zeus_coin10.png";
 
 const religiousStory = () => {
   AOS.init({
