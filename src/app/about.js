@@ -97,7 +97,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Kristina Neumann, Ph.D.</strong>
                             <br></br>
@@ -128,7 +128,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Peggy Lindner, Ph.D.</strong>
                             <br></br>
@@ -171,7 +171,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Elizabeth Rodwell, Ph.D.</strong>
                             <br></br>
@@ -209,7 +209,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Martin Pepper</strong>
                             <br></br>
@@ -238,7 +238,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Rahul Raj Mogili</strong>
                             <br></br>
@@ -260,7 +260,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Jinelly Swasey</strong>
                             <br></br>
@@ -286,7 +286,7 @@ const About = () => {
                             className="profile_img"
                         />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Xandria Outing</strong>
                             <br></br>
@@ -304,8 +304,8 @@ const About = () => {
                     <div className="col-md-1"></div>
                 </div>
                 <div className="row top-spacer-1  no-gutters">
-                    <div className="col-md-3"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-1"></div>
+                    <div className="col-md-10">
                         <SubTextLeft>
                             <strong>Past Student Research Assistants</strong>
                             <br></br>

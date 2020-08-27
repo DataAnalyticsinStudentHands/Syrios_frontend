@@ -132,8 +132,7 @@ const SubTextLeft = styled.div`
   padding: 40px;
   font-size: 18px;
   text-align: left;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
 `;
 
 const Captions = styled.p`
@@ -150,6 +149,7 @@ const Resources = styled.div`
   color: #2d616a;
 `;
 
+// styling for form container
 const FormContainer = styled.div`
   label {
     color: #2d616a;

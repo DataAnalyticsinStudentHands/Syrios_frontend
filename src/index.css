@@ -100,11 +100,18 @@
     width: 200px;
 }
 
-.profile_img {
+.profile_img1 {
     height: auto;
     width: 100%;
     border-top-left-radius: 65px;
     border-bottom-left-radius: 65px;
+}
+
+.profile_img {
+    vertical-align: middle;
+    height: auto;
+    width: 100%;
+    border-radius: 50%;
 }
 
 .bg-img {
