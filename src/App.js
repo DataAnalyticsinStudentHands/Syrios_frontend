@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import styled from "styled-components";
 import NavBarLogo from "./app/data/intro-images/Logo.png"
 import Intro from "./app/IntroPage/intro";
 import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
@@ -16,7 +15,6 @@ import Download from "./app/download";
 import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/contact-us";
 import About from "./app/About/about";
-import GraphQLClient from "./app/GraphQLClient/gqlclient";
 import CoinPile from "./app/CoinPile/coinpile";
 import Footer from "./app/Footer/footer";
 import './app/data/fonts/fonts.css';
@@ -28,14 +26,13 @@ import {
   Switch,
   // Redirect,
 } from "react-router-dom";
+import styled from "styled-components";
 
-// styling fro navbar - still need to do active see https://codesandbox.io/s/718p1ovkm1?from-embed
-const Styles = styled.div`
-  
-    font-family: "CormorantGaramond-Regular";
-    letter-spacing: 0.03em;
+// Styles for navbar - still need to do active see https://codesandbox.io/s/718p1ovkm1?from-embed
+const NavbarStyles = styled.div`
+  font-family: "CormorantGaramond-Regular";
+  letter-spacing: 0.03em;
 
-    
     .dropdown-item {
     color: #17434A; 
       
@@ -66,14 +63,12 @@ const Styles = styled.div`
     }
 `;
 
-
-
 const App = () => {
   return (
     <div>
       <Router>
         {/* !!!!!!!!!!! NAVBAR COMPONENT !!!!!!!!!!!! */}
-        <Styles>
+        <NavbarStyles>
         <Navbar collapseOnSelect
                 expand="xl"
         >
@@ -101,7 +96,7 @@ const App = () => {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        </Styles>
+        </NavbarStyles>
 
         <Switch>
           <Route exact path="/" component={Intro} />
@@ -117,7 +112,6 @@ const App = () => {
           <Route exact path="/gods-portal" component={Gods} />
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/graphql-client" component={GraphQLClient}/>
           <Route exact path="/coin-pile" component={CoinPile}/>
 
           {/* <Route exact path="/" component={Demo}/> */}
