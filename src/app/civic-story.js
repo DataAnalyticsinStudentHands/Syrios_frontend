@@ -5,11 +5,11 @@ import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextBlu
 import comp_1 from "./data/civic-images/comp-1.png";
 import comp_5_left from "./data/civic-images/comp-5-left.png";
 import comp_5_right from "./data/civic-images/comp-5-right.png";
-import comp_7_1 from "./data/civic-images/comp-7-1.png";
-import comp_7_2 from "./data/civic-images/comp-7-2.png";
-import comp_7_3 from "./data/civic-images/comp-7-3.png";
-import comp_7_4 from "./data/civic-images/comp-7-4.png";
-import comp_7_5 from "./data/civic-images/comp-7-5.png";
+import metro_92 from "./data/civic-images/metro_92.png";
+import metro_12 from "./data/civic-images/metro_12.png";
+import metro_128 from "./data/civic-images/metro_128.png";
+import metro_180 from "./data/civic-images/metro_180.png";
+import metro_249 from "./data/civic-images/metro_249.png";
 import citizens from "./data/civic-images/citizens.png";
 import boule from "./data/civic-images/boule.png";
 import boule_edit from "./data/civic-images/boule_edit.png";
@@ -42,25 +42,25 @@ const civicStory = () => {
                   The
               </StoryTitleSM>
               <StoryTitle data-aos="slide-left">
-                  CIVIC
+                  POLITICAL
               </StoryTitle>
               <StoryTitleSM data-aos="slide-up">
                   Story
               </StoryTitleSM>
             </div>
+          </div>
+          <div className="row top-spacer-05">
             <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <StoryTitleSM data-aos="slide-right">
+                  a<span id="yellow"> CIVIC </span>coin
+              </StoryTitleSM>
+            </div>
           </div>
 
           {/* SECTION 1.1 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-7">
-                  <Level1Text data-aos="fade-right">
-                    This is a <strong>bronze coin</strong> minted by the civic
-                    government of Antioch for use by the citizens of Antioch.
-                  </Level1Text>
-              </div>
-              <div className="col-md-1"></div>
               <div className="col-md-4 align-self-center">
                   <img
                     src={comp_1}
@@ -68,6 +68,13 @@ const civicStory = () => {
                     className="size-images-head"
                     data-aos="fade-in"
                   />
+              </div>
+              <div className="col-md-1"></div>
+              <div className="col-md-7">
+                  <Level1Text data-aos="fade-right">
+                    This is a <strong>bronze coin</strong> minted by the civic
+                    government of Antioch for use by the citizens of Antioch.
+                  </Level1Text>
               </div>
           </div>
 
@@ -132,7 +139,7 @@ const civicStory = () => {
               <div className="col-md-1"></div>
               <div className="col-md-10 align-self-center">
                   <ParaTextBlueBG data-aos="slide-up">
-                    But, as big as Antioch grew, it was still a city of citizens.
+                    But as big as Antioch grew, it was still a city of citizens.
                     <br></br>
                     And the coins are an important reminder of this.
                   </ParaTextBlueBG>
@@ -152,7 +159,8 @@ const civicStory = () => {
                   <Captions data-aos="fade-left">
                       This painting is based upon the <em>Mosaic of a Funerary Symposium </em>
                       (late 4th century CE), which was excavated at Antioch and is now at the
-                      Worcester Art Museum (Object Number: 1936.26)
+                      <a href="https://worcester.emuseum.com/objects/27632/mosaic-of-a-funerary-symposium" target="_blank"> Worcester Art Museum </a>
+                      (Object Number: 1936.26)
                   </Captions>
               </div>
               <div className="col-md-3"></div>
@@ -161,13 +169,6 @@ const civicStory = () => {
           {/* SECTION 2.1 */}
 
           <div className="row top-spacer-3">
-              <div className="col-md-7">
-                  <Level1Text data-aos="fade-right">
-                      On the front of the coins, the citizens wrote their name:
-                      ΑΝΤΙΟΧΕΩΝ, which means “Belongs to the Antiochians.”
-                  </Level1Text>
-              </div>
-              <div className="col-md-1"></div>
               <div className="col-md-4 align-self-center">
                   <img
                     src={comp_5_left}
@@ -175,6 +176,13 @@ const civicStory = () => {
                     className="size-images-head"
                     data-aos="fade-in"
                   />
+              </div>
+              <div className="col-md-1"></div>
+              <div className="col-md-7">
+                  <Level1Text data-aos="fade-right">
+                      On the front of the coins, the citizens wrote their name:
+                      ΑΝΤΙΟΧΕΩΝ, which means “Belongs to the Antiochians.”
+                  </Level1Text>
               </div>
           </div>
 
@@ -265,7 +273,7 @@ const civicStory = () => {
               <div className="col-md-1"></div>
               <div className="col-md-2 align-self-center">
                   <img
-                    src={comp_7_1}
+                    src={metro_92}
                     alt="Logo"
                     data-aos="fade-right"
                     data-aos-duration="600"
@@ -274,7 +282,7 @@ const civicStory = () => {
               </div>
               <div className="col-md-2 align-self-center">
                   <img
-                    src={comp_7_2}
+                    src={metro_12}
                     alt="Logo"
                     data-aos="fade-right"
                     data-aos-duration="1000"
@@ -283,7 +291,7 @@ const civicStory = () => {
               </div>
               <div className="col-md-2 align-self-center">
                   <img
-                    src={comp_7_3}
+                    src={metro_128}
                     alt="Logo"
                     data-aos="fade-right"
                     data-aos-duration="1400"
@@ -292,7 +300,7 @@ const civicStory = () => {
               </div>
               <div className="col-md-2 align-self-center">
                   <img
-                    src={comp_7_4}
+                    src={metro_180}
                     alt="Logo"
                     data-aos="fade-right"
                     data-aos-duration="1800"
@@ -301,7 +309,7 @@ const civicStory = () => {
               </div>
               <div className="col-md-2 align-self-center">
                   <img
-                    src={comp_7_5}
+                    src={metro_249}
                     alt="Logo"
                     data-aos="fade-right"
                     data-aos-duration="2200"
@@ -363,9 +371,9 @@ const civicStory = () => {
               <div className="col-md-3"></div>
               <div className="col-md-6 align-self-center">
                   <ParaText data-aos="fade-down">
-                      The boule was like our own local government and civic
-                      councils. <span id="term"> demos</span> – the citizen body
-                      – together to debate publicly in the city’s theatre.
+                      For example, ancient historians record that the boule
+                      gathered the <span id="term"> demos</span> – the citizen
+                      body – together to debate publicly in the city’s theatre.
                   </ParaText>
               </div>
               <div className="col-md-3"></div>
@@ -683,7 +691,7 @@ const civicStory = () => {
 
           <div className="row top-spacer-05">
               <div className="col-md-4 offset-2">
-                  <StyledLink to="/tableau-maps" data-aos="fade-right">
+                  <StyledLink to="/maps" data-aos="fade-right">
                     Where did the civic coins move?
                   </StyledLink>
               </div>

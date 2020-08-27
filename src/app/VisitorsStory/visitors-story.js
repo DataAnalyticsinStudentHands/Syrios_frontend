@@ -576,7 +576,7 @@ const Visitors = () => {
 
         <div className="row top-spacer-05">
             <div className="col-md-4 offset-2">
-                <StyledLink to="/tableau-maps" data-aos="fade-right">
+                <StyledLink to="/maps" data-aos="fade-right">
                   Where did the civic coins move?
                 </StyledLink>
             </div>

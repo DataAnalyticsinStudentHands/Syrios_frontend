@@ -51,6 +51,31 @@ const StyledPageLink = styled(Link)`
   }
 `;
 
+const StyledPageLinkCaptions = styled(StyledPageLink)`
+  color: #7ea274;
+  font-size: 14px;
+
+  &:hover {
+    color: #be9672;
+    background: none;
+  }
+`;
+
+const StyledPageLinkPara = styled(StyledPageLink)`
+  color: #7ea274;
+  font-size: 24px;
+  
+  &:hover {
+    color: #be9672;
+    background: none;
+  }
+`;
+
+const StyledPageLinkRsrc = styled(StyledPageLink)`
+  color: #7ea274;
+  font-size: 18px;
+`;
+
 // Styles for page components
 const PageTitle = styled.p`
   color: #17434a;
@@ -147,6 +172,7 @@ const Resources = styled.div`
   font-family: CormorantGaramond-Regular;
   background-color: WhiteSmoke;
   color: #2d616a;
+  font-size: 18px;
 `;
 
 // styling for form container
@@ -221,7 +247,7 @@ const FooterLink = styled.a`
   font-family: CormorantGaramond-Regular;
   color: white;
   font-size: 18px;
-  
+
   &:hover {
    color: #BE9672;
   }
@@ -230,6 +256,9 @@ const FooterLink = styled.a`
 export {
   StyledLink,
   StyledPageLink,
+  StyledPageLinkCaptions,
+  StyledPageLinkPara,
+  StyledPageLinkRsrc,
   PageTitle,
   PageTitleCentered,
   PageSubTitle,

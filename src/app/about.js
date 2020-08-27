@@ -23,7 +23,7 @@ const About = () => {
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>
-                            About the Syrios Project
+                            About the SYRIOS Project
                         </PageTitleCentered>
                     </div>
                     <div className="col-md-2"></div>

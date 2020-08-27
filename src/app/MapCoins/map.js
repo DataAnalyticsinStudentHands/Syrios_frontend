@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, Resources } from "../componentStyling";
+import { StyledLink, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, StyledPageLinkCaptions, StyledPageLinkRsrc, Resources } from "../componentStyling";
 import AOS from "aos";
 import TableauReport from 'tableau-react';
 
@@ -143,8 +143,10 @@ const Roman = () => {
                       This visualization is based upon 10,000+ coins dating between 330 BCE
                       and 450 CE and excavted at Antioch. The coin catalog was published by
                       D. Waagé in <em>Antioch-on-the-Orontes IV.2: Greek, Roman, Byzantine, and
-                      Crusader Coins</em> (Princeton University Press, 1952). Click here to
-                      download this data [make this into a hyperlink to download dataset]
+                      Crusader Coins</em> (Princeton University Press, 1952).
+                      <br></br>
+                      <StyledPageLinkCaptions a href="https://syrios.uh.edu/download" target="_blank">Click here to
+                      download this data.</StyledPageLinkCaptions>
                   </Captions>
               </div>
               <div className="col-md-1"></div>

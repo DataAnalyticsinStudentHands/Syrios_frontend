@@ -553,8 +553,8 @@ const religiousStory = () => {
 
           <div className="row top-spacer-05">
               <div className="col-md-4 offset-2">
-                  <StyledLink to="/tableau-maps" data-aos="fade-right">
-                    Where did the civic coins move?
+                  <StyledLink to="/coins" data-aos="fade-right">
+                    Explore other gods
                   </StyledLink>
               </div>
               <div className="col-md-1"></div>

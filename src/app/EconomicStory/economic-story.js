@@ -246,7 +246,7 @@ const Economic = () => {
                     imported and local goods.”
                     <br></br>
                     <br></br>
-                    - <em>Ammianus Marcellinus, Roman Antiquities</em> 14.8.8
+                    - Ammianus Marcellinus, <em>Roman Antiquities</em> 14.8.8
                 </SubText>
             </div>
             <div className="col-md-1"></div>
@@ -1241,17 +1241,6 @@ const Economic = () => {
                 <Tableau data-aos="fade-in" />
             </div>
         </div>
-        <div className="row top-spacer-05">
-            <div className="col-md-3"></div>
-            <div className="col-md-6 align-self-center">
-                <ParaText data-aos="fade-up">
-                    This speaks to all the trade routes running in and out of
-                    Antioch and all the people coming and going from the city
-                    with little bronze coins in their pockets.
-                </ParaText>
-            </div>
-            <div className="col-md-3"></div>
-        </div>
 
         {/* SECTION 3.5 */}
 
@@ -1321,7 +1310,7 @@ const Economic = () => {
 
         <div className="row top-spacer-05">
             <div className="col-md-4 offset-2">
-                <StyledLink to="/tableau-maps" data-aos="fade-right">
+                <StyledLink to="/maps" data-aos="fade-right">
                   Where did the civic coins move?
                 </StyledLink>
             </div>

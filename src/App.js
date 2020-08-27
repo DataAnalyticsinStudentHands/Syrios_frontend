@@ -6,7 +6,7 @@ import Intro from "./app/intro";
 import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
 import SelectStory from "./app/select_story";
 import Explore from "./app/explore";
-import Civic from "./app/civic-story";
+import Political from "./app/civic-story";
 import Economic from "./app/EconomicStory/economic-story";
 import Religious from "./app/religious-story";
 import Visitors from "./app/VisitorsStory/visitors-story";
@@ -34,28 +34,28 @@ const NavbarStyles = styled.div`
   letter-spacing: 0.03em;
 
     .dropdown-item {
-    color: #17434A; 
-      
+    color: #17434A;
+
       &:hover {
         color: #E3B287;
       }
     }
-    
+
     .navbar-light .navbar-nav .nav-link {
       font-size: larger;
-      color: #17434A; 
-      
+      color: #17434A;
+
       &:hover {
         color: #E3B287;
       }
     }
     .navbar-brand, .navbar-nav .nav-item nav-link {
       font-size: larger;
-      color: #17434A; 
+      color: #17434A;
       &:focus, &:visited {
         color: #17434A
       }
-    
+
       &:hover {
         text-decoration: none;
         color: #E3B287;
@@ -73,13 +73,13 @@ const App = () => {
                 expand="xl"
         >
         <Link to="/" ><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
-          <Navbar.Brand style={{marginLeft:'10px'}} href="/">The Syrios Project</Navbar.Brand>
+          <Navbar.Brand style={{marginLeft:'10px'}} href="/">The SYRIOS Project</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Link href="/">HOME</Nav.Link>
               <NavDropdown title="TELL ME A STORY">
-                <NavDropdown.Item href="/civic-story">Civic Story</NavDropdown.Item>
+                <NavDropdown.Item href="/civic-story">Political Story</NavDropdown.Item>
                 <NavDropdown.Item href="/economic-story">Economic Story</NavDropdown.Item>
                 <NavDropdown.Item href="/religious-story">Religious Story</NavDropdown.Item>
                 <NavDropdown.Item href="/visitors-story">Visitor's Story</NavDropdown.Item>
@@ -103,7 +103,7 @@ const App = () => {
           <Route exact path="/coins" component={Animate} />
           <Route exact path="/select-story" component={SelectStory} />
           <Route exact path="/explore" component={Explore} />
-          <Route exact path="/civic-story" component={Civic} />
+          <Route exact path="/civic-story" component={Political} />
           <Route exact path="/economic-story" component={Economic} />
           <Route exact path="/religious-story" component={Religious} />
           <Route exact path="/visitors-story" component={Visitors} />

@@ -67,7 +67,7 @@ const Intro = () => {
           <div className="col-sm-1"></div>
           <div className="col-md">
             <div className="row">
-              <PageTitle data-aos="fade-in">The Syrios Project</PageTitle>
+              <PageTitle data-aos="fade-in">The SYRIOS Project</PageTitle>
             </div>
             <div className="row mt-md-3">
               <PageSubTitle data-aos="fade-in">
@@ -129,16 +129,16 @@ const Intro = () => {
 
         {/* SECTION 1.1 */}
 
-        <div className="row top-spacer-3">
+        <div className="row top-spacer-2">
+          <div className="col-md-3 align-self-center">
+            <img src={bronzecoin} alt="Logo" className="size-images-head" data-aos="fade-right" />
+          </div>
+          <div className="col-md-1"></div>
           <div className="col-md-8">
             <Level1Text data-aos="fade-left">
               During the time of the Greeks and Romans, many different governments minted their own
               coins within Syria. To learn their stories, we must first learn how to read them.
             </Level1Text>
-          </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-3 align-self-center">
-            <img src={bronzecoin} alt="Logo" className="size-images-head" data-aos="fade-right" />
           </div>
         </div>
 
@@ -171,7 +171,7 @@ const Intro = () => {
 
         {/* SECTION 1.3 3D coin */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center">
             <ParaTextLeft data-aos="fade-left">
@@ -194,7 +194,7 @@ const Intro = () => {
 
         {/* SECTION 1.4 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="flip-right">
             <div style={{ textAlign: 'center' }}>
@@ -221,7 +221,7 @@ const Intro = () => {
 
         {/* SECTION 1.5 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="flip-right">
             <div style={{ textAlign: 'center' }}>
@@ -248,43 +248,43 @@ const Intro = () => {
 
         {/* SECTION 1.6 Maps */}
 
-        <div className="row top-spacer-6">
-          <div className="col-md-3"></div>
-          <div className="col-md-6" data-aos="fade-right">
+        <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
+          <div className="col-md-8" data-aos="fade-right">
             <ParaText>
               All of this minting continued in Syria, even while the region was ruled by the
               Seleucid kings and Roman empire.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
-        </div>
-        <div className="row">
           <div className="col-md-2"></div>
-          <div className="col-md-8">
+        </div>
+        <div className="row top-spacer-05">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
             <div style={{ textAlign: 'center' }}>
               <img src={maps} alt="Logo" data-aos="fade-left" className="img-responsive" />
             </div>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 2.1 */}
 
-        <div className="row top-spacer-6">
-          <div className="col-md-8">
-            <Level1Text data-aos="fade-left">
-              A little bronze coin has a lot to say too, just like our own U.S. dime.
-            </Level1Text>
-          </div>
-          <div className="col-md-1"></div>
+        <div className="row top-spacer-3">
           <div className="col-md-3 align-self-center" data-aos="fade-right">
             <img src={bronzecoin} alt="Logo" className="size-images-head" />
+          </div>
+          <div className="col-md-1"></div>
+          <div className="col-md-8 align-self-center">
+            <Level1Text data-aos="fade-left">
+              Each coin has a lot to say, even the smallest bronze coin.
+            </Level1Text>
           </div>
         </div>
 
         {/* SECTION 2.2 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="fade-up">
             <div style={{ textAlign: 'center' }}>
@@ -424,8 +424,8 @@ const Intro = () => {
             <div style={{ textAlign: 'center' }}>
               <img src={comp_11_right} alt="Logo" className="size-images" />
               <SubText>
-                On the right side caption under the image: This dime identifies itself as belonging
-                to the United States of America.
+                This dime identifies itself as belonging to the United States of
+                America.
               </SubText>
             </div>
             <div className="col-md-1"></div>
@@ -441,8 +441,8 @@ const Intro = () => {
               <img src={comp_15} alt="Logo" className="size-images" />
             </div>
             <SubText>
-              On the left side caption under the image: This silver radiate celebrates PAX AVGVSTI
-              or “Peace of the Emperors.”
+              This silver radiate celebrates PAX AVGVSTI or “Peace of the
+              Emperors.”
             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-up">
@@ -477,7 +477,7 @@ const Intro = () => {
 
         {/* SECTION 3.1 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-2"></div>
           <div className="col-md-8" data-aos="fade-in">
             <ParaText>
@@ -505,7 +505,7 @@ const Intro = () => {
 
         {/* SECTION 3.3 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-2"></div>
           <div className="col-md-8" data-aos="fade-in">
             <ParaText>
@@ -531,7 +531,7 @@ const Intro = () => {
 
         {/* SECTION 4.1 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="flip-right">
             <div style={{ textAlign: 'center' }}>
@@ -564,7 +564,7 @@ const Intro = () => {
 
         {/* SECTION 4.2 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="flip-right">
             <img src={comp_13_right} alt="Logo" className="size-images" />
@@ -585,7 +585,7 @@ const Intro = () => {
 
         {/* SECTION 4.3 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="flip-right">
             <img src={comp_17} alt="Logo" className="size-images" />
@@ -609,7 +609,7 @@ const Intro = () => {
 
         {/* SECTION 4.4 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-1"></div>
           <div className="col-md-3" data-aos="flip-right">
             <img src={comp_20} alt="Logo" className="size-images" data-aos="fade-in" />
@@ -633,7 +633,7 @@ const Intro = () => {
 
         {/* SECTION 5.0 */}
 
-        <div className="row top-spacer-6">
+        <div className="row top-spacer-3">
           <div className="col-md-2"></div>
           <div className="col-md-8" data-aos="fade-right">
             <ParaText>
@@ -646,13 +646,14 @@ const Intro = () => {
 
         {/* Bottom Buttons */}
 
-        <div className="row top-spacer-2">
-          <div className="col-md-3 offset-4">
+        <div className="row top-spacer-05">
+          <div className="col-md-3 offset-3">
             <StyledLink to="/select-story" data-aos="fade-right">
               Tell me a Story
             </StyledLink>
           </div>
-          <div className="col-md-2">
+          <div className="col-md-1"></div>
+          <div className="col-md-3">
             <StyledLink to="/coins" data-aos="fade-left">
               Explore Coins
             </StyledLink>
