@@ -17,9 +17,9 @@ import xandria from "../data/about-images/Xandria.jpg"
 const About = () => {
     return (
         <div>
-            <div className="container-fluid px-6">
+            <div className="container-fluid p-0 px-6">
                 {/* About Section */}
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>
@@ -29,7 +29,7 @@ const About = () => {
                     <div className="col-md-2"></div>
                 </div>
 
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-3">
                         <img className={"img-responsive"}
@@ -70,7 +70,7 @@ const About = () => {
 
                 {/* Meet the Team */}
 
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>
@@ -153,7 +153,7 @@ const About = () => {
                     </div>
                     <div className="col-md-1"></div>
                 </div>
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageSectionTitle>
@@ -331,7 +331,7 @@ const About = () => {
 
                 {/* Acknowledgments */}
 
-                <div className="row top-buffer">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageTitleCentered>

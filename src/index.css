@@ -7,6 +7,9 @@
 .px-6 {
     padding-left: 10rem !important;
 }
+.p-6 {
+    padding: 5rem !important;
+}
 
 /* spacers used for container rows */
 .top-buffer-1 { margin-top:150px; }
@@ -31,7 +34,6 @@
 }
 
 /* text styling */
-
 #para-blue-bg {
   background-color: #2d616a;
   padding: 10px;

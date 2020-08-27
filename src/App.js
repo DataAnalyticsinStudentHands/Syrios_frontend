@@ -16,7 +16,7 @@ import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/contact-us";
 import About from "./app/About/about";
 import CoinPile from "./app/CoinPile/coinpile";
-import Footer from "./app/Footer/footer";
+import Footer from "./app/footer";
 import './app/data/fonts/fonts.css';
 import './index.css';
 
@@ -129,7 +129,6 @@ const App = () => {
         <div>
           <Footer />
         </div>
-
       </Router>
     </div>
   );
