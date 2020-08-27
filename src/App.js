@@ -4,7 +4,6 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import styled from "styled-components";
 import NavBarLogo from "./app/data/intro-images/Logo.png"
 import Intro from "./app/IntroPage/intro";
-import Syrios from "./app/FetchAPIdata/syrios"; //* uncomment this import to retrieve objects from "https://sites.lib.uh.edu/kmneuma2/api/items" API
 import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
 import SelectStory from "./app/select_story";
 import Explore from "./app/explore";
@@ -107,7 +106,6 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Intro} />
           <Route exact path="/coins" component={Animate} />
-          <Route exact path="/data-api" component={Syrios} />
           <Route exact path="/select-story" component={SelectStory} />
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/civic-story" component={Civic} />
