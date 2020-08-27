@@ -14,8 +14,6 @@ const CoinPile = () => {
     <div>
       <ApolloProvider client={client}>
         <div>
-          <h2>Syrios Mongo Import 🚀</h2>
-          <p>---------------------</p>
           <GraphQLClient />
         </div>
       </ApolloProvider>

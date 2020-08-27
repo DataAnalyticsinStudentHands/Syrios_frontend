@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Coin = require("../models/coins.model");
+let Coin = require("./coins.model");
 
 router.route("/").get((req, res) => {
   var cursor = collection.find(query).project(projection);
