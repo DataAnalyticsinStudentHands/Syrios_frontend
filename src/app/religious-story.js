@@ -165,7 +165,7 @@ const religiousStory = () => {
                     src={eagle}
                     alt="Logo"
                     data-aos="fade-right"
-                    className="size-images-400"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-5 align-self-center">
@@ -236,7 +236,7 @@ const religiousStory = () => {
                     src={temple_1}
                     alt="Logo"
                     data-aos="fade-left"
-                    className="size-images-400"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-1"></div>
@@ -261,7 +261,7 @@ const religiousStory = () => {
                     src={temple_2}
                     alt="Logo"
                     data-aos="fade-right"
-                    className="size-images-400"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-5 align-self-center">

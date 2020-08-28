@@ -20,17 +20,16 @@ const About = () => {
             <div className="container-fluid p-0 px-6">
                 {/* About Section */}
                 <div className="row top-buffer-1">
-                    <div className="col-md-2"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-1"></div>
+                    <div className="col-md-10">
                         <PageTitleCentered>
                             About the SYRIOS Project
                         </PageTitleCentered>
                     </div>
-                    <div className="col-md-2"></div>
+                    <div className="col-md-1"></div>
                 </div>
 
                 <div className="row top-buffer-1">
-                    <div className="col-sm-2"></div>
                     <div className="col-sm-3">
                         <img className={"img-responsive"}
                              src={logo}

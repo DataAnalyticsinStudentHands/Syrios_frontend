@@ -230,7 +230,7 @@ const Economic = () => {
                   src={people}
                   alt="Logo"
                   data-aos="fade-in"
-                  className="size-images-400"
+                  className="img-responsive"
                 />
                 <Captions data-aos="fade-in">
                     This painting is based upon the <em>Departure Mosaic</em>
@@ -1092,7 +1092,7 @@ const Economic = () => {
                     src={bread}
                     alt="Logo"
                     data-aos="fade-left"
-                    className="size-images-200"
+                    className="img-responsive"
                 />
             </div>
         </div>
@@ -1168,27 +1168,32 @@ const Economic = () => {
                   data-aos-duration="1900"
                 />
             </div>
-            <div className="col-md-7 align-self-center">
+            <div className="col-md-1"></div>
+            <div className="col-md-2 align-self-center">
                 <img
                   src={jug}
                   alt="Logo"
                   data-aos="fade-left"
                   data-aos-duration="800"
-                  className="size-images-200"
+                  className="img-responsive"
                 />
+            </div>
+            <div className="col-md-2 align-self-center">
                 <img
                   src={milk}
                   alt="Logo"
                   data-aos="fade-left"
                   data-aos-duration="1000"
-                  className="size-images-200"
+                  className="img-responsive"
                 />
+            </div>
+            <div className="col-md-2 align-self-center">
                 <img
                   src={milk}
                   alt="Logo"
                   data-aos="fade-left"
                   data-aos-duration="1200"
-                  className="size-images-200"
+                  className="img-responsive"
                 />
             </div>
         </div>

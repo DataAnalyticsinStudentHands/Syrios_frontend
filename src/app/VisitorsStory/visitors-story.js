@@ -122,7 +122,7 @@ const Visitors = () => {
                   src={newyork}
                   alt="Logo"
                   data-aos="fade-up"
-                  className="size-images-600"
+                  className="img-responsive"
                 />
             </div>
             <div className="col-md-2"></div>
@@ -348,7 +348,7 @@ const Visitors = () => {
                   src={petra}
                   alt="Logo"
                   data-aos="fade-in"
-                  className="size-images-400"
+                  className="img-responsive"
                 />
             </div>
             <div className="col-md-1"></div>
@@ -358,16 +358,16 @@ const Visitors = () => {
 
         <div className="row top-spacer-05">
             <div className="col-md-1"></div>
-            <div className="col-md-4 align-self-center" style={{textAlign: 'center'}}>
+            <div className="col-md-5 align-self-center" style={{textAlign: 'center'}}>
                 <img
                   src={petra2}
                   alt="Logo"
                   data-aos="fade-in"
-                  className="size-images-400"
+                  className="img-responsive"
                 />
             </div>
             <div className="col-md-1"></div>
-            <div className="col-md-5 align-self-center">
+            <div className="col-md-4 align-self-center">
                 <ParaTextLeft data-aos="fade-right">
                     …and for great wealth due to their trade in luxury goods
                     across ancient Arabia.
@@ -511,7 +511,7 @@ const Visitors = () => {
                 <img
                   src={coinchart}
                   alt="Logo"
-                  className="size-images-600"
+                  className="img-responsive"
                   data-aos="flip-right"
                 />
             </div>

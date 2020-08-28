@@ -150,7 +150,7 @@ const civicStory = () => {
                   <img
                       src={citizens}
                       alt="Logo"
-                      className="size-images-920"
+                      className="img-responsive"
                   />
               </div>
               <div className="col-md-1"></div>
@@ -359,7 +359,7 @@ const civicStory = () => {
                     src={council}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-600"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-2"></div>
@@ -384,7 +384,7 @@ const civicStory = () => {
                     src={theatre}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-600"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-4 align-self-center">
@@ -418,7 +418,7 @@ const civicStory = () => {
                     src={forum}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-600"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-2"></div>
@@ -489,7 +489,7 @@ const civicStory = () => {
                     src={festival}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-400"
+                    className="img-responsive"
                   />
                   <Captions data-aos="fade-up">
                       This painting is based upon the <em>Mosaic of Bacchic
@@ -556,7 +556,7 @@ const civicStory = () => {
                     src={protest}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-600"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-2"></div>
@@ -591,7 +591,7 @@ const civicStory = () => {
                     src={protest_2}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-400"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-1"></div>
@@ -655,7 +655,7 @@ const civicStory = () => {
                     src={inscription}
                     alt="Logo"
                     data-aos="fade-in"
-                    className="size-images-400"
+                    className="img-responsive"
                   />
               </div>
               <div className="col-md-1"></div>
