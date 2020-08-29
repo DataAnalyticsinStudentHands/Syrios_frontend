@@ -1,23 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import NavBarLogo from "./app/data/intro-images/Logo.png"
-import Intro from "./app/intro";
-import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
-import SelectStory from "./app/select_story";
-import Explore from "./app/explore";
-import Political from "./app/civic-story";
-import Economic from "./app/economic-story";
-import Religious from "./app/religious-story";
-import Visitors from "./app/visitors-story";
-import Maps from "./app/map";
-import Download from "./app/download";
-import ContactUs from "./app/contact-us";
-import About from "./app/about";
-import CoinPile from "./app/CoinPile/coinpile";
-import Footer from "./app/footer";
-import './app/data/fonts/fonts.css';
-import './index.css';
+import NavBarLogo from "./data/intro-images/Logo.png"
+import Intro from "./intro";
+import Animate from "./CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
+import SelectStory from "./select_story";
+import Explore from "./explore";
+import Political from "./civic-story";
+import Economic from "./economic-story";
+import Religious from "./religious-story";
+import Visitors from "./visitors-story";
+import Maps from "./map";
+import Download from "./download";
+import ContactUs from "./contact-us";
+import About from "./about";
+import CoinPile from "./CoinPile/coinpile";
+import Footer from "./footer";
+import './data/fonts/fonts.css';
 
 import {
   BrowserRouter as Router,

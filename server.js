@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const schema = require('./schema/coin-schema');
+const schema = require('./backend/schema/coin-schema');
 const cors = require('cors');
 const mongoose = require('mongoose');
 

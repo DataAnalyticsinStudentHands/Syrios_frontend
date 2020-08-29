@@ -1,93 +1,38 @@
 {
-  "name": "Syrios",
+  "name": "Syrios-backend",
   "version": "0.1.0",
-  "description": "Web front- and backend for the UH Syrios project",
+  "description": "Backend for the UH Syrios project",
   "private": true,
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "aos": "^2.3.4",
-    "apollo-boost": "^0.4.9",
-    "axios": "^0.19.2",
-    "babel-cli": "^6.26.0",
-    "babel-install": "^2.1.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-runtime": "^6.26.0",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
-    "dataloader": "^1.3.0",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-graphql": "^0.6.11",
-    "file-saver": "^2.0.2",
-    "formik": "^2.1.5",
-    "framer-motion": "^1.10.3",
     "graphql": "^0.11.7",
     "graphql-compose": "^2.9.2",
     "graphql-compose-json": "^1.0.0",
     "mongoose": "^5.9.27",
-    "node-fetch": "^1.7.3",
-    "node-sass": "^4.14.1",
-    "nodemailer": "^6.4.11",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.0.1",
-    "react-dom": "^16.13.1",
-    "react-meta-tags": "^0.7.4",
-    "react-modal": "^3.11.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
-    "react-select": "^3.1.0",
-    "serve": "^11.3.0",
-    "styled-components": "^5.1.1",
-    "tableau-api": "^2.2.3",
-    "tableau-react": "^1.2.2",
-    "tableau-react-embed": "^1.1.0",
-    "yup": "^0.29.3"
+    "nodemailer": "^6.4.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-backend": "babel-node src/backend/server.js",
-    "start:watchbackend": "nodemon ./src/index.js --exec babel-node",
-    "dev": "concurrently --kill-others \"npm run start\" \"npm run start-backend\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "node start-client.js",
+    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
+    "lint": "eslint ."
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {  
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "homepage": "./",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "concurrently": "^5.2.0",
-    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^2.3.1",
-    "flow-bin": "^0.57.3",
-    "nodemon": "^1.12.1",
-    "prettier": "^1.7.4",
-    "rimraf": "^2.6.2"
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "prettier": "^1.7.4"
   }
 }
