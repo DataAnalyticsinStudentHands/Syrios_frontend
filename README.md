@@ -20,12 +20,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Run your code locally
 
+`git clone https://github.com/peggylind/FindingConnectionsAncientSyria`
+
+`cd FindingConnectionsAncientSyria`
+
 #### Install missing packages
+
+`cd FindingConnectionsAncientSyria`
 
 `npm install`
 
+`cd client`
+
+`npm install`
+
+`cd..`
+
 #### Development
- `npm run dev`
+ `npm start`
 
 Runs the two apps concurrently in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view Syrios Project in the browser.
@@ -35,9 +47,10 @@ You will also see any lint errors in the console.
 The backend is running on port 3002.
 
 ### Deployment
+ `cd client`
  `npm run build`
 
-Builds the app for production to the `build` folder.<br>
+Builds the app for production to the `build` folder inside client.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
