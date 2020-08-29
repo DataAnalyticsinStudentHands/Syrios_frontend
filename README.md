@@ -18,6 +18,8 @@ A fully functioning demo and more information about the project can be found at:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The folder structure and setup is inspired by [FullstackReact](https://github.com/fullstackreact/food-lookup-demo)
+
 ### Run your code locally
 
 `git clone https://github.com/peggylind/FindingConnectionsAncientSyria`
@@ -44,10 +46,11 @@ Open [http://localhost:3000](http://localhost:3000) to view Syrios Project in th
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-The backend is running on port 3002.
+The backend is running on port 3002. It is using [mongoose](https://mongoosejs.com/) to connect to a MongoDB. Please make sure you have your connection string set in a `.env` file.
 
 ### Deployment
  `cd client`
+ 
  `npm run build`
 
 Builds the app for production to the `build` folder inside client.<br>
@@ -58,6 +61,17 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### Production
+
+We are using [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to manage deployment on a production server. Run
+
+`pm2 start start-client.js` and
+
+`pm2 start server.js`
+
+to start the separte backend and front-end processes.
+
+#### Other
 `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
