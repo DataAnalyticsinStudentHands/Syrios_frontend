@@ -5,7 +5,9 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./backend/schema/coin-schema');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
+dotenv.config();
 const port = process.env.PORT || 3002;
 const app = express();
 
