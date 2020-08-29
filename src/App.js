@@ -10,7 +10,7 @@ import Political from "./app/civic-story";
 import Economic from "./app/EconomicStory/economic-story";
 import Religious from "./app/religious-story";
 import Visitors from "./app/VisitorsStory/visitors-story";
-import Maps from "./app/MapCoins/map";
+import Maps from "./app/map";
 import Download from "./app/download";
 import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/contact-us";
