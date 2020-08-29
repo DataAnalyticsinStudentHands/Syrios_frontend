@@ -4,9 +4,9 @@ import { Button, Form } from 'react-bootstrap';
 
 // Style for regular links
 const StyledLink = styled.a`
-  color: #E3B287;
+  color: #e3b287;
   &:hover {
-    color: #E3B287;
+    color: #e3b287;
   }
 `;
 
@@ -35,7 +35,7 @@ const StyledLinkButton = styled(Link)`
   }
 `;
 
-// Style for non-button Links
+// Style for Links on select pages
 const StyledPageLink = styled(Link)`
   cursor: pointer;
   color: #17434a;
@@ -49,13 +49,12 @@ const StyledPageLink = styled(Link)`
   letter-spacing: 0.03em;
 
   &:focus,
-  &:visited,
   &:link,
   &:active {
     text-decoration: none;
   }
   &:hover {
-    background: #be9672;
+    color: #be9672;
   }
 `;
 
