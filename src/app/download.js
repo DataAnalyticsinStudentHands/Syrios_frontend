@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import {
+  StyledLink,
   FormContainer,
   FormButton,
   FormStyles,
@@ -47,10 +48,10 @@ const Download = () => {
             </ParaTextLeft>
             <ParaTextLeft>
               The dataset is in csv format encoded as{' '}
-              <a href="https://en.wikipedia.org/wiki/UTF-8#:~:text=UTF%2D8%20(8%2Dbit,Ken%20Thompson%20and%20Rob%20Pike.">
+              <StyledLink href="https://en.wikipedia.org/wiki/UTF-8#:~:text=UTF%2D8%20(8%2Dbit,Ken%20Thompson%20and%20Rob%20Pike.">
                 {' '}
                 UTF-8
-              </a>{' '}
+              </StyledLink>{' '}
               supplemented with a detailed description.
             </ParaTextLeft>
             <ParaTextLeft>
@@ -58,7 +59,7 @@ const Download = () => {
               Please provide your your name and email address in the form on the right side to start
               the download.
             </ParaTextLeft>
-            <img src={downloadImage} alt="Screenshot dataset" className="w-100" />
+            <img src={downloadImage} alt="Screenshot dataset" className="img-responsive" />
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-3">
