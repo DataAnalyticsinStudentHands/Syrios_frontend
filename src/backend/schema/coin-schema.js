@@ -7,6 +7,7 @@ const {
   GraphQLString,
   GraphQLID,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull,
@@ -19,7 +20,29 @@ const {
 const CoinType = new GraphQLObjectType({
   name: "Coin",
   fields: () => ({
-    id: { type: GraphQLID },
+    _id: { type: GraphQLID },
+    Title: { type: GraphQLString },
+    Bibliography: { type: GraphQLString },
+    ReverseType: {type: GraphQLString},
+    Image: {type: GraphQLString},
+    Region: {type: GraphQLString},
+    Mint: {type: GraphQLString},
+    State: {type: GraphQLString},
+    Date: {type: GraphQLString},
+    FromDate: {type: GraphQLInt},
+    ToDate: {type: GraphQLInt},
+    Material: {type: GraphQLString},
+    Denomination: {type: GraphQLString},
+    ObverseLegend: {type: GraphQLString},
+    ReverseLegend: {type: GraphQLString},
+    SourceImage: {type: GraphQLString},
+    RightsHolder: {type: GraphQLString},
+    ObverseType: {type: GraphQLString},
+    TypeCategory: {type: GraphQLString},
+    IssuingAuthority: {type: GraphQLString},
+    Diameter: {type: GraphQLInt},
+    Era: {type: GraphQLString},
+    Diameter: { type: GraphQLFloat },
     obverseFile: { type: GraphQLString },
     reverseFile: { type: GraphQLString },
   }),
@@ -43,5 +66,5 @@ const RootQuery = new GraphQLObjectType({
 //Creating a new GraphQL Schema, with options query which defines query
 //we will allow users to use when they are making request.
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
 });

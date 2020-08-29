@@ -1,0 +1,22 @@
+img {
+    height: 2em;
+    width: 2em;
+}
+
+a:hover img {
+    transform: scale(5);
+}
+
+.class-coinpile {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    align-content: center;
+    width: 100%;
+}
+
+.modal-image {
+    height: 150px;
+    width: 150px;
+  }

@@ -7,9 +7,14 @@
 .px-6 {
     padding-left: 10rem !important;
 }
+.p-6 {
+    padding: 5rem !important;
+}
 
 /* spacers used for container rows */
-.top-buffer { margin-top:150px; }
+.top-buffer-1 { margin-top:150px; }
+.top-buffer-2 { margin-top:250px; }
+.top-spacer-05 { margin-top:50px; }
 .top-spacer-1 { margin-top:100px; }
 .top-spacer-2 { margin-top:200px; }
 .top-spacer-3 { margin-top:300px; }
@@ -21,6 +26,18 @@
 #term {
     font-family: CormorantGaramond-BoldItalic;
     color: #E3B287;
+}
+
+#yellow {
+    font-family: CormorantGaramond-Bold;
+    color: #E3B287;
+}
+
+/* text styling */
+#para-blue-bg {
+  background-color: #2d616a;
+  padding: 10px;
+  color: white;
 }
 
 /* image style/sizing */
@@ -53,11 +70,41 @@
     width: 300px;
 }
 
-.profile_img {
+.size-images-30 {
+    height: auto;
+    width: 30px;
+}
+
+.size-images-50 {
+    height: auto;
+    width: 50px;
+}
+
+.profile_img1 {
     height: auto;
     width: 100%;
     border-top-left-radius: 65px;
     border-bottom-left-radius: 65px;
+}
+
+.profile_img {
+    vertical-align: middle;
+    height: auto;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.bg-img {
+    position: absolute;
+    z-index: 10;
+    height: auto;
+    width: 80%;
+}
+
+.bg-img2 {
+    /* background-size: cover; */
+    height: auto;
+    width: 100%;
 }
 
 /* line on left side in navigation pages */

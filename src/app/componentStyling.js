@@ -1,54 +1,92 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
+
+// Style for regular links
+const StyledLink = styled.a`
+  color: #E3B287;
+  &:hover {
+    color: #E3B287;
+  }
+`;
 
 // Style for Button Links
-const StyledLink = styled(Link)`
+const StyledLinkButton = styled(Link)`
   cursor: pointer;
   color: white;
-  font-size: calc(6px + 2vmin);;
+  font-size: calc(6px + 2vmin);
   border-radius: 7px;
   padding: 10px 15px 10px 15px;
-  background-color: #7EA274;
+  background-color: #7ea274;
   border: none;
-    text-decoration: none;
-    font-family: CormorantGaramond;
-    letter-spacing: 0.03em;
+  text-decoration: none;
+  font-family: CormorantGaramond;
+  letter-spacing: 0.03em;
 
-    &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
-        color: white;
-    }
-    &:hover {
-      background: #BE9672;
-    }
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: white;
+  }
+  &:hover {
+    background: #be9672;
+  }
 `;
 
 // Style for non-button Links
 const StyledPageLink = styled(Link)`
   cursor: pointer;
-  color: #17434A;
+  color: #17434a;
   font-size: 64px;
   line-height: 78px;
   font-family: 'CormorantGaramond-Bold';
   letter-spacing: 0.03em;
   border: none;
+  text-decoration: none;
+  font-family: CormorantGaramond;
+  letter-spacing: 0.03em;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
     text-decoration: none;
-    font-family: CormorantGaramond;
-    letter-spacing: 0.03em;
+  }
+  &:hover {
+    background: #be9672;
+  }
+`;
 
-    &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
+const StyledPageLinkCaptions = styled(StyledPageLink)`
+  color: #7ea274;
+  font-size: 14px;
 
-    }
-    &:hover {
-      background: #BE9672;
-    }
+  &:hover {
+    color: #be9672;
+    background: none;
+  }
+`;
+
+const StyledPageLinkPara = styled(StyledPageLink)`
+  color: #7ea274;
+  font-size: 24px;
+  
+  &:hover {
+    color: #be9672;
+    background: none;
+  }
+`;
+
+const StyledPageLinkRsrc = styled(StyledPageLink)`
+  color: #7ea274;
+  font-size: 18px;
 `;
 
 // Styles for page components
 const PageTitle = styled.p`
-  color: #17434A;
+  color: #17434a;
   font-size: 64px;
   line-height: 78px;
   font-family: 'CormorantGaramond-Bold';
@@ -66,58 +104,86 @@ const PageSubTitle = styled(PageTitle)`
 `;
 
 const PageSectionTitle = styled(PageTitle)`
-  color: #E3B287;
+  color: #e3b287;
   font-size: 30px;
   text-align: center;
 `;
 
+const StoryTitle = styled.p`
+  color: #2d616a;
+  font-size: 64px;
+  line-height: 45px;
+  font-family: 'CormorantGaramond-Bold';
+  letter-spacing: 0.03em;
+  text-align: center;
+`;
+
+const StoryTitleSM = styled(StoryTitle)`
+  font-size: 32px;
+  color: black;
+`;
+
 const Level1Text = styled.p`
-   font-family: CormorantGaramond-Bold;
-   color: #2d616a;
-   font-size: 48px;
-   text-align: left;
+  font-family: CormorantGaramond-Bold;
+  color: #2d616a;
+  font-size: 48px;
+  text-align: left;
 `;
 
 const ParaText = styled.p`
-   font-family: CormorantGaramond-Regular;
-   font-size: 24px;
-   text-align: center;
+  font-family: CormorantGaramond-Regular;
+  font-size: 24px;
+  text-align: center;
+`;
+
+const ParaTextBlueBG = styled(ParaText)`
+  background-color: #2d616a;
+  color: white;
 `;
 
 const ParaTextLeft = styled(ParaText)`
-   text-align: left;
+  text-align: left;
 `;
 
 const ParaTextLeftSmaller = styled(ParaTextLeft)`
-   font-size: 20px;
+  font-size: 20px;
 `;
 
 const SubText = styled.p`
-   font-family: CormorantGaramond-Regular;
-   background-color: WhiteSmoke;
-   color: #2d616a;
-   border-radius: 10px;
-   padding: 40px;
-   font-size: 18px;
-   text-align: center;
+  font-family: CormorantGaramond-Regular;
+  background-color: WhiteSmoke;
+  color: #2d616a;
+  border-radius: 10px;
+  padding: 40px;
+  font-size: 18px;
+  text-align: center;
 `;
 
 const SubTextLeft = styled.div`
-   font-family: CormorantGaramond-Regular;
-   background-color: WhiteSmoke;
-   padding: 40px;
-   font-size: 18px;
-   text-align: left;
-   border-top-right-radius: 30px;
-   border-bottom-right-radius: 30px;
+  font-family: CormorantGaramond-Regular;
+  background-color: WhiteSmoke;
+  padding: 40px;
+  font-size: 18px;
+  text-align: left;
+  border-radius: 30px;
+`;
+
+const Captions = styled.p`
+  font-family: CormorantGaramond-Regular;
+  color: #2d616a;
+  padding: 10px 30px;
+  font-size: 14px;
+  text-align: center;
 `;
 
 const Resources = styled.div`
-   font-family: CormorantGaramond-Regular;
-   background-color: WhiteSmoke;
-   color: #2d616a;
+  font-family: CormorantGaramond-Regular;
+  background-color: WhiteSmoke;
+  color: #2d616a;
+  font-size: 18px;
 `;
 
+// styling for form container
 const FormContainer = styled.div`
   label {
     color: #2d616a;
@@ -125,14 +191,14 @@ const FormContainer = styled.div`
     font-weight: 400;
   }
   .error {
-    border: 2px solid #FF6565;
+    border: 2px solid #ff6565;
   }
   .error-message {
-    color: #FF6565;
-    padding: .5em .2em;
+    color: #ff6565;
+    padding: 0.5em 0.2em;
     height: 1em;
     position: absolute;
-    font-size: .8em;
+    font-size: 0.8em;
   }
   .form-group {
     margin-bottom: 2.5em;
@@ -141,64 +207,86 @@ const FormContainer = styled.div`
 
 // styling for form
 const FormStyles = styled(Form)`
-    font-family: "CormorantGaramond-Regular";
-    font-size: larger;
-    letter-spacing: 0.03em;
-    color: #17434A;
+  font-family: 'CormorantGaramond-Regular';
+  font-size: larger;
+  letter-spacing: 0.03em;
+  color: #17434a;
 `;
 
 // styling for form button
 const FormButton = styled(Button)`
   cursor: pointer;
   color: white;
-  font-size: calc(6px + 2vmin);;
+  font-size: calc(6px + 2vmin);
   border-radius: 7px;
   padding: 10px 15px 10px 15px;
-  background-color: #7EA274;
+  background-color: #7ea274;
   border: none;
 
-  &:hover, &:disabled {
-      background: #BE9672;
-    }
+  &:hover,
+  &:disabled {
+    background: #be9672;
+  }
 
-  &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
-        background-color: #7EA274;
-    }
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    background-color: #7ea274;
+  }
 `;
 
 // styling for Footer
-const FooterHead = styled.div`
-   font-family: CormorantGaramond-Bold;
-   color: white;
-   font-size: 30px;
-   padding: 50px 0px;
+const FooterMain = styled.div`
+  font-family: CormorantGaramond-Bold;
+  color: white;
+  background-color: #2d616a !important;
+  width: 100%;
 `;
 
-const FooterLinks = styled.div`
-   font-family: CormorantGaramond-Regular;
-   color: white;
-   font-size: 18px;
-   padding: 50px 0px;
+const FooterHead = styled.div`
+  font-family: CormorantGaramond-Bold;
+  color: white;
+  font-size: 30px;
+`;
+
+const FooterLink = styled.a`
+  font-family: CormorantGaramond-Regular;
+  color: white;
+  font-size: 18px;
+
+  &:hover {
+   color: #BE9672;
+  }
 `;
 
 export {
-    StyledLink,
-    StyledPageLink,
-    PageTitle,
-    PageTitleCentered,
-    PageSubTitle,
-    PageSectionTitle,
-    Level1Text,
-    ParaText,
-    ParaTextLeft,
-    ParaTextLeftSmaller,
-    SubText,
-    SubTextLeft,
-    Resources,
-    FormContainer,
-    FormStyles,
-    FormButton,
-    FooterHead,
-    FooterLinks
-}
+  StyledLink,
+  StyledLinkButton,
+  StyledPageLink,
+  StyledPageLinkCaptions,
+  StyledPageLinkPara,
+  StyledPageLinkRsrc,
+  PageTitle,
+  PageTitleCentered,
+  PageSubTitle,
+  PageSectionTitle,
+  StoryTitle,
+  StoryTitleSM,
+  Level1Text,
+  ParaText,
+  ParaTextBlueBG,
+  ParaTextLeft,
+  ParaTextLeftSmaller,
+  SubText,
+  SubTextLeft,
+  Captions,
+  Resources,
+  FormContainer,
+  FormStyles,
+  FormButton,
+  FooterMain,
+  FooterHead,
+  FooterLink
+};
