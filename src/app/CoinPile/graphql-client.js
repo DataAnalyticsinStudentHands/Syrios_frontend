@@ -3,7 +3,7 @@ import ApolloClient, { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import "./coinpile.css";
 import { motion } from "framer-motion";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 // import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 
 const GQL_Client = () => {

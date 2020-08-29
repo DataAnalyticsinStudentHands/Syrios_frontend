@@ -2,8 +2,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 
+// Style for regular links
+const StyledLink = styled.a`
+  color: #E3B287;
+  &:hover {
+    color: #E3B287;
+  }
+`;
+
 // Style for Button Links
-const StyledLink = styled(Link)`
+const StyledLinkButton = styled(Link)`
   cursor: pointer;
   color: white;
   font-size: calc(6px + 2vmin);
@@ -255,6 +263,7 @@ const FooterLink = styled.a`
 
 export {
   StyledLink,
+  StyledLinkButton,
   StyledPageLink,
   StyledPageLinkCaptions,
   StyledPageLinkPara,

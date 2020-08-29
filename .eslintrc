@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb-base", "prettier"],
+  "extends": ["airbnb-base", "prettier", "react-app"],
   "parser": "babel-eslint",
   "rules": {
     "no-underscore-dangle": 0,

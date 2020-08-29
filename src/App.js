@@ -7,12 +7,11 @@ import Animate from "./app/CoinAnimate/animate"; //* uncomment this import to re
 import SelectStory from "./app/select_story";
 import Explore from "./app/explore";
 import Political from "./app/civic-story";
-import Economic from "./app/EconomicStory/economic-story";
+import Economic from "./app/economic-story";
 import Religious from "./app/religious-story";
-import Visitors from "./app/VisitorsStory/visitors-story";
+import Visitors from "./app/visitors-story";
 import Maps from "./app/map";
 import Download from "./app/download";
-import Gods from "./app/GodsPortal/gods";
 import ContactUs from "./app/contact-us";
 import About from "./app/about";
 import CoinPile from "./app/CoinPile/coinpile";
@@ -108,11 +107,10 @@ const App = () => {
           <Route exact path="/religious-story" component={Religious} />
           <Route exact path="/visitors-story" component={Visitors} />
           <Route exact path="/maps" component={Maps} />
-          <Route exact path="/download" component={Download}/>
-          <Route exact path="/gods-portal" component={Gods} />
+          <Route exact path="/download" component={Download} />
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/coin-pile" component={CoinPile}/>
+          <Route exact path="/coin-pile" component={CoinPile} />
 
           {/* <Route exact path="/" component={Demo}/> */}
           <Route

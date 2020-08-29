@@ -3,6 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {
   StyledLink,
+  StyledLinkButton,
   PageTitle,
   PageSubTitle,
   Level1Text,
@@ -77,10 +78,10 @@ const Intro = () => {
             </div>
             <div className="row mt-lg-5">
               <div className="row-cols-sm-3 mr-5">
-                <StyledLink to="/select-story">Tell Me A Story</StyledLink>
+                <StyledLinkButton to="/select-story">Tell Me A Story</StyledLinkButton>
               </div>
               <div className="row-cols-sm-3 ml-5">
-                <StyledLink to="/explore">Let Me Explore</StyledLink>
+                <StyledLinkButton to="/explore">Let Me Explore</StyledLinkButton>
               </div>
             </div>
           </div>
@@ -648,15 +649,15 @@ const Intro = () => {
 
         <div className="row top-spacer-05">
           <div className="col-md-3 offset-3">
-            <StyledLink to="/select-story" data-aos="fade-right">
+            <StyledLinkButton to="/select-story" data-aos="fade-right">
               Tell me a Story
-            </StyledLink>
+            </StyledLinkButton>
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-3">
-            <StyledLink to="/coins" data-aos="fade-left">
+            <StyledLinkButton to="/coins" data-aos="fade-left">
               Explore Coins
-            </StyledLink>
+            </StyledLinkButton>
           </div>
         </div>
       </div>
@@ -673,105 +674,105 @@ const Intro = () => {
             <br></br>
             <ul>
               <li>
-                <a
+                <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b8507404h.r=Neron%20Neron?rk=150215;2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Source gallica.bnf.fr / Bibliothèque nationale de France, département Monnaies,
                   médailles et antiques, Fonds général 180{' '}
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1944.100.75243"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society 1944.100.75243
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1944.100.39966"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society 1944.100.39966
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="https://ikmk.smb.museum/object?lang=en&id=18215628"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1937.999.318"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society 1937.999.318
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1944.100.65231"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society 1944.100.65231
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="https://ikmk.smb.museum/object?id=18201044"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Münzkabinett, Staatliche Museen zu Berlin, 18201044; photograph by Reinhard
                   Saczewski
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1996.71.3?lang=en"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society - 1996.71.3
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1999.2.2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society - 1999.2.2
-                </a>
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                <a
+                <StyledLink
                   href="http://numismatics.org/collection/1944.100.65544"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   American Numismatic Society - 1944.100.65544
-                </a>
+                </StyledLink>
               </li>
             </ul>
           </div>

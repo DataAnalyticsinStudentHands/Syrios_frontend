@@ -3,9 +3,6 @@ import {
   FooterMain,
   FooterHead,
   FooterLink,
-  PageTitle,
-  PageSubTitle,
-  StyledLink,
 } from './componentStyling';
 import logo from './data/intro-images/Logo.png';
 
