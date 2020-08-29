@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledLinkButton, StoryTitle, StoryTitleSM, Level1Text, ParaText, ParaTextBlueBG, ParaTextLeft, SubText, Captions, StyledPageLinkCaptions, StyledPageLinkRsrc, Resources } from "./componentStyling";
+import { StoryTitle, StoryTitleSM, ParaText, ParaTextLeft, Captions, StyledPageLinkCaptions, Resources } from "./componentStyling";
 import AOS from "aos";
 import TableauReport from 'tableau-react';
 
