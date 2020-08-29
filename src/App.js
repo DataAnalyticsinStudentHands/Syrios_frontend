@@ -87,7 +87,7 @@ const App = () => {
                 <NavDropdown.Item href="/coins">Sort Coins</NavDropdown.Item>
                 <NavDropdown.Item href="/maps">Map Coins</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/omeka-database">View a Catalog</NavDropdown.Item>
+                <NavDropdown.Item href="https://sites.lib.uh.edu/kmneuma2/items/browse" target="_blank">View a Catalog</NavDropdown.Item>
                 <NavDropdown.Item href="/download">Download Dataset</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/about">ABOUT</Nav.Link>
@@ -111,17 +111,6 @@ const App = () => {
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
           <Route exact path="/coin-pile" component={CoinPile} />
-
-          {/* <Route exact path="/" component={Demo}/> */}
-          <Route
-            exact
-            path="/omeka-database"
-            component={() => {
-              window.location.href =
-                "https://sites.lib.uh.edu/kmneuma2/items/browse";
-              return null;
-            }}
-          />
           {/* <Redirect to="/404" /> */}
         </Switch>
         <div>
