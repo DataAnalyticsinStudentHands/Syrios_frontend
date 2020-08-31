@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const coinSchema = new Schema({
-    _id: String,
+    _id: mongoose.Types.ObjectId,
     Title: String,
     Bibliography: String,
     ReverseType: String,
