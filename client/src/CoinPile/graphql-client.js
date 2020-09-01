@@ -9,6 +9,7 @@ import Dates from "./Filters/date";
 import Authority from "./Filters/authority";
 import GQL_COINS from "./Gql-Schemas/coins-schema";
 import GQL_COIN from "./Gql-Schemas/coin-schema";
+import {PageTitleCentered} from "../componentStyling";
 
 const GQL_Client = () => {
   const [Materialfilter, setMaterialFilter] = useState("");
@@ -89,12 +90,12 @@ const GQL_Client = () => {
 
   function CoinDetails({ id }) {
     // const [getDog, { loading, data }] = useLazyQuery(GET_DOG_PHOTO);
-    const { loading, error, data } = useQuery(GET_COIN, {
+    const { data } = useQuery(GET_COIN, {
       variables: { id },
     });
   
-    if (loading) return null;
-    if (error) return `Error! ${error}`;
+  //  if (loading) return null;
+  //  if (error) return `Error! ${error}`;
   
     return (
       console.log(data.coin.id)
@@ -104,85 +105,77 @@ const GQL_Client = () => {
 
   return (
     <div className="grid-containter">
-      <div className="align-select-boxes">
-        <div>
+      <div className="row top-buffer-1">
+        <div className="col-md-9">
+          <div className="class-coinpile">
+            {filteredResults.map((coin) => (
+                <React.Fragment key={coin._id}>
+                  <motion.input
+                      type="image"
+                      key={coin._id}
+                      alt="Coin"
+                      src={coin.obverseFile}
+                      whileHover={{ scale: 7 }}
+                      style={{
+                        height: coin.Diameter * 2,
+                        width: coin.Diameter * 2,
+                      }}
+                      onClick={() => CoinDetails({ variables: { id: coin._id } })}
+                      whileTap={{ scale: 4 }}
+                      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                      drag
+                      dragConstraints={{
+                        top: -650,
+                        left: -650,
+                        right: 650,
+                        bottom: 650,
+                      }}
+                  />
+                </React.Fragment>
+            ))}
+          </div>
+        </div>
+        <div className="col-md-3">
           <h3>Material</h3>
           <select
-            className="custom-select"
-            value={Materialfilter}
-            onChange={handleMaterialFilterChange}
+              className="custom-select"
+              value={Materialfilter}
+              onChange={handleMaterialFilterChange}
           >
             {uniqMaterial.map(MaterialList)}
           </select>
-        </div>
-        <div>
-          <div>
-            <h3>Authority</h3>
-            <select
+          <h3>Authority</h3>
+          <select
               className="custom-select"
               value={Authorityfilter}
               onChange={handleAuthorityFilterChange}
-            >
-              {uniqAuthority.map(AuthorityList)}
-            </select>
-          </div>
-        </div>
-        <div>
+          >
+            {uniqAuthority.map(AuthorityList)}
+          </select>
           <h3>Date</h3>
           <select
-            className="custom-select"
-            value={Datefilter}
-            onChange={handleDateFilterChange}
+              className="custom-select"
+              value={Datefilter}
+              onChange={handleDateFilterChange}
           >
             {uniqDate.map(DateList)}
           </select>
-        </div>
-        <div>
           <h3>Type</h3>
           <select
-            className="custom-select"
-            value={Typefilter}
-            onChange={handleTypeFilterChange}
+              className="custom-select"
+              value={Typefilter}
+              onChange={handleTypeFilterChange}
           >
             {uniqType.map(TypeList)}
           </select>
-        </div>
-        <div>
           <Button
-            onClick={clearFilters}
-            variant="dark"
-            style={{ width: "130px" }}
+              onClick={clearFilters}
+              variant="dark"
+              style={{ width: "130px" }}
           >
             CLEAR
           </Button>
         </div>
-      </div>
-      <div className="class-coinpile">
-        {filteredResults.map((coin) => (
-          <React.Fragment key={coin._id}>
-            <motion.input
-              type="image"
-              key={coin._id}
-              alt="Coin"
-              src={coin.obverseFile}
-              whileHover={{ scale: 7 }}
-              style={{
-                height: coin.Diameter * 2,
-                width: coin.Diameter * 2,
-              }}
-              onClick={() => CoinDetails({ variables: { id: coin._id } })}
-              whileTap={{ scale: 4 }}
-              transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              drag
-              dragConstraints={{
-                top: -650,
-                left: -650,
-                right: 650,
-                bottom: 650,
-              }}
-            />
-          </React.Fragment>
-        ))}
       </div>
     </div>
   );
