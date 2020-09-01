@@ -4,8 +4,6 @@ import Coins from "../data/items.json";
 import { motion } from "framer-motion";
 import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import ApolloClient, { gql } from "apollo-boost";
-import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 
 
 const Animate = () => {

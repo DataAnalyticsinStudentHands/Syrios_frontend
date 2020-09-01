@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import ApolloClient, { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 import "./coinpile.css";
 import { motion } from "framer-motion";
 import { Modal, Button } from "react-bootstrap";
@@ -8,44 +7,19 @@ import Materials from "./Filters/material";
 import TypeCategory from "./Filters/typeCategory";
 import Dates from "./Filters/date";
 import Authority from "./Filters/authority";
-// import { ApolloProvider, useQuery } from "@apollo/react-hooks";
+import GQL_COINS from "./Gql-Schemas/coins-schema";
+import GQL_COIN from "./Gql-Schemas/coin-schema";
 
 const GQL_Client = () => {
   const [Materialfilter, setMaterialFilter] = useState("");
   const [Authorityfilter, setAuthorityFilter] = useState("");
   const [Datefilter, setDateFilter] = useState("");
   const [Typefilter, setTypeFilter] = useState("");
-  const GET_COINS = gql`
-    {
-      coins {
-        id
-        Title
-        Bibliography
-        ReverseType
-        Image
-        Region
-        Mint
-        State
-        Date
-        FromDate
-        ToDate
-        Material
-        Denomination
-        ObverseLegend
-        ReverseLegend
-        SourceImage
-        RightsHolder
-        ObverseType
-        TypeCategory
-        IssuingAuthority
-        Diameter
-        Era
-        Diameter
-        obverseFile
-        reverseFile
-      }
-    }
-  `;
+
+  const [show, setShow] = useState();
+
+  const GET_COINS = GQL_COINS;    // imported, returns all 850 coins
+  const GET_COIN = GQL_COIN;  // imported, returns detailed info of 1 coin
 
   const { loading, error, data } = useQuery(GET_COINS);
 
@@ -112,6 +86,21 @@ const GQL_Client = () => {
     setDateFilter("");
     setTypeFilter("");
   };
+
+  function CoinDetails({ id }) {
+    // const [getDog, { loading, data }] = useLazyQuery(GET_DOG_PHOTO);
+    const { loading, error, data } = useQuery(GET_COIN, {
+      variables: { id },
+    });
+  
+    if (loading) return null;
+    if (error) return `Error! ${error}`;
+  
+    return (
+      console.log(data.coin.id)
+      // <img src={data.dog.displayImage} style={{ height: 100, width: 100 }} />
+    );
+  } 
 
   return (
     <div className="grid-containter">
@@ -181,7 +170,7 @@ const GQL_Client = () => {
                 height: coin.Diameter * 2,
                 width: coin.Diameter * 2,
               }}
-              onClick={() => ReturnCoinByID(coin._id)}
+              onClick={() => CoinDetails({ variables: { id: coin._id } })}
               whileTap={{ scale: 4 }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               drag

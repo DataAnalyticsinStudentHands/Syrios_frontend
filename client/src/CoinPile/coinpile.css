@@ -35,7 +35,7 @@ a:hover img {
 
 .align-select-boxes {
   top: 50%;
-  right: 5%;
+  right: 1%;
   position: absolute;
   font-family: "CormorantGaramond-Regular";
   transform: translate(-50%, -50%);
