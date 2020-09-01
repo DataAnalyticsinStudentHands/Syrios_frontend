@@ -33,23 +33,7 @@
   border-radius: 5%;
 }
 
-.align-select-boxes {
-  top: 50%;
-  left: 10%;
-  position: absolute;
-  font-family: 'CormorantGaramond-Regular';
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  /* align-items: center; */
-}
 
-.align-select-boxes select {
-  width: 150px;
-  margin-left: 10px;
-  margin-bottom: 20px;
-}
 
 .parent-class-coin {
   position: absolute;

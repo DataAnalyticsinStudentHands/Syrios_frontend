@@ -83,7 +83,7 @@ const App = () => {
                 <NavDropdown.Item href="/visitors-story">Visitor's Story</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="LET ME EXPLORE">
-                <NavDropdown.Item href="/coins">Sort Coins</NavDropdown.Item>
+                <NavDropdown.Item href="/coin-pile">Sort Coins</NavDropdown.Item>
                 <NavDropdown.Item href="/maps">Map Coins</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="https://sites.lib.uh.edu/kmneuma2/items/browse" target="_blank">View a Catalog</NavDropdown.Item>
