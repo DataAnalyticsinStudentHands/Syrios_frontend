@@ -1,0 +1,15 @@
+module.exports = [
+  "-",
+  "animal",
+  "nature",
+  "object",
+  "war/weapon",
+  "god",
+  "building",
+  "letter",
+  "idea",
+  "ruler",
+  "eagle",
+  "horse",
+  "NA",
+];

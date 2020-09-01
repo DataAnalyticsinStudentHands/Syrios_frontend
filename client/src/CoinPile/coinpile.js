@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import ApolloClient, { gql } from "apollo-boost";
-import { ApolloProvider, useQuery } from "@apollo/react-hooks";
+import React from "react";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
 import GraphQLClient from './graphql-client';
 
 

@@ -1,5 +1,5 @@
 const graphql = require("graphql");
-// const Book = require("../models/book");
+const _ = require("lodash"); // can be used to resolve functions for local arrays..
 const Coin = require("../models/coin-model");
 
 const {
@@ -20,7 +20,7 @@ const {
 const CoinType = new GraphQLObjectType({
   name: "Coin",
   fields: () => ({
-    _id: { type: GraphQLID },
+    id: { type: GraphQLString },
     Title: { type: GraphQLString },
     Bibliography: { type: GraphQLString },
     ReverseType: {type: GraphQLString},
@@ -60,6 +60,13 @@ const RootQuery = new GraphQLObjectType({
         return Coin.find({});
       },
     },
+    coin: {
+      type: CoinType,
+      args: { id: { type: GraphQLString }},
+      resolve(parent, args){
+        return Coin.findById(args.id);
+      }
+    }
   },
 });
 
