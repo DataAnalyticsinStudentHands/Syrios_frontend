@@ -208,13 +208,15 @@ const CoinPile = () => {
             >
               {uniqType.map(TypeList)}
             </select>
-            <Button
-              onClick={clearFilters}
-              variant="dark"
-              style={{ width: "130px" }}
-            >
-              CLEAR
-            </Button>
+            <div style={{ padding: "1em" }}>
+              <Button
+                onClick={clearFilters}
+                variant="dark"
+                style={{ width: "8em" }}
+              >
+                CLEAR
+              </Button>
+            </div>
           </div>
           <Modal
             show={show}
@@ -229,7 +231,11 @@ const CoinPile = () => {
             </Modal.Header>
             <Modal.Body>
               {coinLoading ? (
-                <LoadingMask loading={true} text={"loading..."} style={{backgroundColor: "#2d616a"}}>
+                <LoadingMask
+                  loading={true}
+                  text={"loading..."}
+                  style={{ backgroundColor: "#2d616a" }}
+                >
                   <div style={{ width: 500, height: 600 }}>
                     Loading Coin Details
                   </div>
