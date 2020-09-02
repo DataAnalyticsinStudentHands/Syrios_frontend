@@ -12,6 +12,7 @@ import GET_COINS from "./Gql-Schemas/coins-schema";
 import GET_COIN from "./Gql-Schemas/coin-schema";
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 const CoinPile = () => {
   const client = new ApolloClient({
@@ -150,7 +151,7 @@ const CoinPile = () => {
                   <motion.input
                     type="image"
                     key={coin.id}
-                    alt="Coin"
+                    alt=""
                     src={coin.obverseFile}
                     whileHover={{ scale: 7 }}
                     style={{

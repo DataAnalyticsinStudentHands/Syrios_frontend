@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import NavBarLogo from "./data/intro-images/Logo.png"
 import Intro from "./intro";
-import Animate from "./CoinAnimate/animate"; //* uncomment this import to retrieve images from 'data/images.json'
 import SelectStory from "./select_story";
 import Explore from "./explore";
 import Political from "./civic-story";
@@ -16,7 +15,6 @@ import ContactUs from "./contact-us";
 import About from "./about";
 import CoinPile from "./CoinPile/coin-pile";
 import Footer from "./footer";
-// import Test from "./CoinPile/test";
 import './data/fonts/fonts.css';
 
 import {
@@ -99,7 +97,6 @@ const App = () => {
 
         <Switch>
           <Route exact path="/" component={Intro} />
-          <Route exact path="/coins" component={Animate} />
           <Route exact path="/select-story" component={SelectStory} />
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/civic-story" component={Political} />
