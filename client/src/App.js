@@ -14,7 +14,7 @@ import Maps from "./map";
 import Download from "./download";
 import ContactUs from "./contact-us";
 import About from "./about";
-import CoinPile from "./CoinPile/coinpile";
+import CoinPile from "./CoinPile/coin-pile";
 import Footer from "./footer";
 // import Test from "./CoinPile/test";
 import './data/fonts/fonts.css';
