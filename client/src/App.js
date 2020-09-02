@@ -16,6 +16,7 @@ import ContactUs from "./contact-us";
 import About from "./about";
 import CoinPile from "./CoinPile/coinpile";
 import Footer from "./footer";
+// import Test from "./CoinPile/test";
 import './data/fonts/fonts.css';
 
 import {

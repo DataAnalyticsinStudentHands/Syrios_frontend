@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { FormContainer, FormButton, FormStyles, PageTitleCentered } from './componentStyling';
 import axios from 'axios';

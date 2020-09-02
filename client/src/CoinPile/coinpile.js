@@ -15,7 +15,7 @@ const CoinPile = () => {
       <ApolloProvider client={client}>
         <div>
           <GraphQLClient />
-        </div>
+        </div>  
       </ApolloProvider>
     </div>
   );
