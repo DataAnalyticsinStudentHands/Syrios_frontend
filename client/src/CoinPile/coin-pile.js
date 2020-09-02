@@ -229,9 +229,9 @@ const CoinPile = () => {
             </Modal.Header>
             <Modal.Body>
               {coinLoading ? (
-                <LoadingMask loading={true} text={"loading..."}>
-                  <div style={{ width: 500, height: 300 }}>
-                    Compoment You want to display
+                <LoadingMask loading={true} text={"loading..."} style={{backgroundColor: "#2d616a"}}>
+                  <div style={{ width: 500, height: 600 }}>
+                    Loading Coin Details
                   </div>
                 </LoadingMask>
               ) : (

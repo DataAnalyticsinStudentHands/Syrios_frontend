@@ -141,3 +141,8 @@
 .align-center {
   text-align: center;
 }
+
+.modal-image {
+    height: 150px;
+    width: 150px;
+  }
