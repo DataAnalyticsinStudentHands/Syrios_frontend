@@ -15,17 +15,17 @@ a:hover img {
 
 .class-coinpile {
   /* position: relative; */
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   margin-top: 2em;
   margin-bottom: 2em;
   /* align-content: center; */
-  width: 80%;
+  /* width: 80%; */
   /* top: 70%;
   left: 55%; */
   /* transform: translate(-50%, -50%); */
   /* overflow: hidden; */
-  border-radius: 5%;
+  /* border-radius: 5%; */
 }
 
 .modal-image {

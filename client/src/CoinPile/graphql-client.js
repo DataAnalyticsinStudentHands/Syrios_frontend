@@ -99,8 +99,33 @@ const GQL_Client = () => {
   return (
     <div className="grid-containter">
       <div className="row top-buffer-1">
-        <div className="col-md-9">
-          <div className="class-coinpile">
+        <div className="col-md-3">
+          <p>
+            The ancient mint at <strong>Antioch</strong> produced a wealth of
+            distinct coins for kings, emperors, governors, and citizens. Explore
+            the differences in the coins by sorting through the pile or making
+            selections from the drop-down menu about
+            <strong> 1) material</strong>,{" "}
+            <strong>
+              {" "}
+              2) the issuing authority guaranteeing a coin’s value as money
+            </strong>
+            ,<strong> 3) type or design</strong> and/or{" "}
+            <strong> 4) date of minting</strong>. At any point, click on an
+            individual coin to view a full description and learn more!
+          </p>
+          <h4 className="align-center">How to play with Coin pile</h4>
+          <p>
+            <ol>
+              <li>Hover on a coin to scale it</li>
+              <li>Click on a coin to know it's corresponding information</li>
+              <li>Select filters on the right to narrow down your search</li>
+              <li>Click and hold the coin to move it around the page</li>
+            </ol>
+          </p>
+        </div>
+        <div className="col-md-6">
+          <div>
             {filteredResults.map((coin) => (
               <React.Fragment key={coin.id}>
                 <motion.input
@@ -130,7 +155,7 @@ const GQL_Client = () => {
             ))}
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3" style={{textAlign:'center'}}>
           <h3>Material</h3>
           <select
             className="custom-select"
@@ -243,6 +268,27 @@ const GQL_Client = () => {
             )}
           </Modal.Body>
         </Modal>
+        <div>
+          <span>
+            Acknowledgements: Created by Rahul Raj Mogili in React.js, CSS,
+            Bootstrap, Node.js{" "}
+          </span>
+          <br></br>
+          <span>
+            For more information about design, contact Dr. Peggy Lindner
+            (plindner@central.uh.edu)
+          </span>
+          <br></br>
+          <span>
+            For more information about content, contact Dr. Kristina Neumann
+            (kmneuma2@central.uh.edu)
+          </span>
+          <br></br>
+          <span>
+            Part of The SYRIOS Project: Studying Urban Relationships and
+            Identity over Ancient Syria
+          </span>
+        </div>
       </div>
     </div>
   );
