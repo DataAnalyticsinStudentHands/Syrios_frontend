@@ -8,7 +8,6 @@ import Materials from "./Filters/material";
 import TypeCategory from "./Filters/typeCategory";
 import Dates from "./Filters/date";
 import Authority from "./Filters/authority";
-import GET_COINS from "./Gql-Schemas/coins-schema";
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
 import "bootstrap/dist/css/bootstrap.css";
