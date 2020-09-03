@@ -241,11 +241,15 @@ const About = () => {
                         <SubTextLeft>
                             <strong>Rahul Raj Mogili</strong>
                             <br></br>
-                            <em>Graduate Assistant</em>
+                            <em>Web Developer</em>
                             <br></br>
                             <br></br>
                             Mogili is currently a graduate student in the Computer Science Department
-                            at UH with extensive experience in web development and UI/UX design.
+                            at UH with extensive experience in web development and UI/UX design. He has worked on projects using
+                            React.js, GraphQL, MongoDB, Swift, Python. His academic projects include building a Carpooling app using Swift along with 
+                            prototyping in Adobe Xd, Developed a potential prediction model in Ensemble Learning, Facial Recognition using Deep Learning 
+                            with Convolutional Neural Networks. He also served as a Divisional Vice President of Street Cause NGO in India for
+                            a period of 2 years.
                         </SubTextLeft>
                     </div>
                     <div className="col-md-1"></div>
