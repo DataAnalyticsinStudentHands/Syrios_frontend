@@ -9,10 +9,10 @@ import TypeCategory from "./Filters/typeCategory";
 import Dates from "./Filters/date";
 import Authority from "./Filters/authority";
 import GET_COINS from "./Gql-Schemas/coins-schema";
-import GET_COIN from "./Gql-Schemas/coin-schema";
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
 import "bootstrap/dist/css/bootstrap.css";
+const { gql } = require("apollo-boost");
 
 const CoinPile = () => {
   const client = new ApolloClient({
@@ -20,6 +20,38 @@ const CoinPile = () => {
   });
 
   const GqlClient = () => {
+    const GET_COIN = gql`
+      query Coin($id: String!) {
+        coin(id: $id) {
+          id
+          Title
+          Bibliography
+          ReverseType
+          Image
+          Region
+          Mint
+          State
+          Date
+          FromDate
+          ToDate
+          Material
+          Denomination
+          ObverseLegend
+          ReverseLegend
+          SourceImage
+          RightsHolder
+          ObverseType
+          TypeCategory
+          IssuingAuthority
+          Diameter
+          Era
+          Diameter
+          obverseFile
+          reverseFile
+        }
+      }
+    `;
+
     const [show, setShow] = useState(false);
 
     const { loading, error, data } = useQuery(GET_COINS); // Get data from "coins" query
