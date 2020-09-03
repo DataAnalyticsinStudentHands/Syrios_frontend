@@ -71,6 +71,8 @@ We are using [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to manage 
 
 to start the separte backend and front-end processes.
 
+The 'module.exports' function doesn't work in production. Create a GraphQL schema within the native file.
+
 #### Other
 `npm run eject`
 
