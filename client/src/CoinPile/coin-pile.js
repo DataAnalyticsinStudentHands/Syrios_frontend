@@ -52,6 +52,38 @@ const CoinPile = () => {
       }
     `;
 
+    const GET_COINS = gql`
+      {
+        coins {
+          id
+          Title
+          Bibliography
+          ReverseType
+          Image
+          Region
+          Mint
+          State
+          Date
+          FromDate
+          ToDate
+          Material
+          Denomination
+          ObverseLegend
+          ReverseLegend
+          SourceImage
+          RightsHolder
+          ObverseType
+          TypeCategory
+          IssuingAuthority
+          Diameter
+          Era
+          Diameter
+          obverseFile
+          reverseFile
+        }
+      }
+    `;
+
     const [show, setShow] = useState(false);
 
     const { loading, error, data } = useQuery(GET_COINS); // Get data from "coins" query
