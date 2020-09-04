@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createHttpLink } from 'apollo-link-http';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
@@ -15,7 +16,7 @@ const { gql } = require("apollo-boost");
 
 const CoinPile = () => {
   const client = new ApolloClient({
-    uri: "http://localhost:3000/graphql",
+    link: createHttpLink({ uri: '/graphql' }),
   });
 
   const GqlClient = () => {
