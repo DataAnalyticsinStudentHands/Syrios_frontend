@@ -15,7 +15,7 @@ const { gql } = require("apollo-boost");
 
 const CoinPile = () => {
   const client = new ApolloClient({
-    uri: "http://localhost:3002/graphql",
+    uri: "http://localhost:3000/graphql",
   });
 
   const GqlClient = () => {

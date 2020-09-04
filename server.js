@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors());
@@ -58,6 +58,13 @@ app.use(
     graphiql: true,
   })
 );
+
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 mongoose
   .connect(process.env.MongoDB, {

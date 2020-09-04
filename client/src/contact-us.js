@@ -52,7 +52,7 @@ const Contact = () => {
                                 }, 500); */
 
                 // send data for email
-                axios.post('http://localhost:3002/send', values).then(
+                axios.post('http://localhost:3000/send', values).then(
                   response => {
                     console.log(`Email sent with content: ${response}`);
                   },
