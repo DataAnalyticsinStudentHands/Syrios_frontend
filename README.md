@@ -18,7 +18,7 @@ A fully functioning demo and more information about the project can be found at:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The folder structure and setup is inspired by [FullstackReact](https://github.com/fullstackreact/food-lookup-demo)
+The folder structure is inspired by [FullstackReact](https://github.com/fullstackreact/food-lookup-demo)
 
 ### Run your code locally
 
@@ -41,12 +41,16 @@ The folder structure and setup is inspired by [FullstackReact](https://github.co
 #### Development
  `npm start`
 
-Runs the two apps concurrently in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view Syrios Project in the browser.
+Front-end and backend are both served through an Express server.<br>
+Open [http://localhost:3000](http://localhost:3000) to view the Syrios Project in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-The backend is running on port 3002. It is using [mongoose](https://mongoosejs.com/) to connect to a MongoDB. Please make sure you have your connection string set in a `.env` file.
+The backend is using [mongoose](https://mongoosejs.com/) to connect to a MongoDB. Please make sure you have your connection string set in a `.env` file.
+
+If you would like to test the client without the backend running you can use
+
+`npm run client`
 
 ### Deployment
  `cd client`
@@ -61,15 +65,15 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+Currently, the client has hard-coded connection strings to connect to the backend. That needs to be fixed.
+
 ### Production
 
 We are using [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to manage deployment on a production server. Run
 
-`pm2 start start-client.js` and
-
 `pm2 start server.js`
 
-to start the separte backend and front-end processes.
+to start the app (fornt-end and backend). The app is served at port 3000.
 
 The 'module.exports' function doesn't work in production. Create a GraphQL schema within the native file.
 
