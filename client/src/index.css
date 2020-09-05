@@ -125,6 +125,12 @@
   width: 100%;
 }
 
+/* modal image coin pile */
+.modal-image {
+  height: 150px;
+  width: 150px;
+}
+
 /* line on left side in navigation pages */
 .show_line_on_side {
   padding-top: 50px;
@@ -132,17 +138,4 @@
   border-right: 10px solid #17434a;
 }
 
-/* shown on select boxes in coin pile */
 
-.custom-select {
-  width: 80%;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.modal-image {
-    height: 150px;
-    width: 150px;
-  }

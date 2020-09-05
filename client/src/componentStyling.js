@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 
 // Style for regular links
 const StyledLink = styled.a`
@@ -86,8 +86,8 @@ const StyledPageLinkRsrc = styled(StyledPageLink)`
 // Styles for page components
 const PageTitle = styled.p`
   color: #17434a;
-  font-size: 64px;
-  line-height: 78px;
+  font-size: 5.0vmin;
+  line-height: 6.0vmin;
   font-family: 'CormorantGaramond-Bold';
   letter-spacing: 0.03em;
 `;
@@ -98,8 +98,8 @@ const PageTitleCentered = styled(PageTitle)`
 
 const PageSubTitle = styled(PageTitle)`
   font-family: 'CormorantGaramond-Regular';
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 3.0vmin;
+  line-height: 3.0vmin;
 `;
 
 const PageSectionTitle = styled(PageTitle)`
@@ -216,7 +216,7 @@ const FormStyles = styled(Form)`
 const FormButton = styled(Button)`
   cursor: pointer;
   color: white;
-  font-size: calc(6px + 2vmin);
+  font-size: calc(6px + 1.5vmin);
   border-radius: 7px;
   padding: 10px 15px 10px 15px;
   background-color: #7ea274;
@@ -287,5 +287,5 @@ export {
   FormButton,
   FooterMain,
   FooterHead,
-  FooterLink
+  FooterLink,
 };
