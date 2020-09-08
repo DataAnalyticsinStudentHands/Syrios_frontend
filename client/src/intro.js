@@ -56,6 +56,13 @@ const Intro = () => {
     offset: -25,
   });
 
+  function demoScrollDown() {
+    window.scrollTo({
+      top: 400,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <div>
       <div className="container-fluid px-6">
@@ -87,50 +94,17 @@ const Intro = () => {
           </div>
         </div>
         <div className="row top-buffer-1">
-          <div className="col-md-6"></div>
-          <div className="col-md-2">
-            <svg width="30" height="45" xmlns="http://www.w3.org/2000/svg" data-aos="fade-down">
-              <g>
-                <title>Layer 1</title>
-                <line
-                  id="svg_1"
-                  y2="41"
-                  x2="15"
-                  y1="0"
-                  x1="15"
-                  strokeWidth="4"
-                  stroke="#17434A"
-                  fill="none"
-                />
-                <line
-                  id="svg_2"
-                  y2="23.684"
-                  x2="27"
-                  y1="41"
-                  x1="14"
-                  strokeWidth="4"
-                  stroke="#17434A"
-                  fill="none"
-                />
-                <line
-                  id="svg_3"
-                  y2="23.684"
-                  x2="3"
-                  y1="41"
-                  x1="16"
-                  strokeWidth="4"
-                  stroke="#17434A"
-                  fill="none"
-                />
-              </g>
-            </svg>
+          <div className="col-md-12">
+            <span className="hero__scroll" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="800" onClick={demoScrollDown}>
+              Scroll down {'\n'}
+              <i className="arrow bottom"></i>
+            </span>
           </div>
-          <div className="col-md-4"></div>
         </div>
 
         {/* SECTION 1.1 */}
 
-        <div className="row top-spacer-2">
+        <div className="row top-spacer-4">
           <div className="col-md-3 align-self-center">
             <img src={bronzecoin} alt="Logo" className="size-images-head" data-aos="fade-right" />
           </div>
