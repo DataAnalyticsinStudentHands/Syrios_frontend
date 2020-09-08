@@ -41,10 +41,10 @@ function Footer() {
                   About Us
                 </FooterLink>
                 <br></br>
-                <FooterLink href="/resources" target="_self">
+                {/*<FooterLink href="/resources" target="_self">
                   Resources
                 </FooterLink>
-                <br></br>
+                <br></br>*/}
                 <FooterLink href="/contact-us" target="_self">
                   Contact Us
                 </FooterLink>

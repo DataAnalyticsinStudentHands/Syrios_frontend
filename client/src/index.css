@@ -150,6 +150,7 @@
   left: 0;
   right: 0;
   font-family: CormorantGaramond;
+  color: white;
 }
 .hero__scroll .arrow {
   display: block;
