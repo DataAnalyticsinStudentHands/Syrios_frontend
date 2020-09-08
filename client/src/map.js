@@ -1,5 +1,13 @@
 import React from "react";
-import { StoryTitle, StoryTitleSM, ParaText, ParaTextLeft, Captions, StyledPageLinkCaptions, Resources } from "./componentStyling";
+import {
+    StoryTitle,
+    StoryTitleSM,
+    ParaText,
+    ParaTextLeft,
+    Captions,
+    Resources,
+    StyledLink
+} from "./componentStyling";
 import AOS from "aos";
 import TableauReport from 'tableau-react';
 
@@ -143,8 +151,8 @@ const Roman = () => {
                       D. Waagé in <em>Antioch-on-the-Orontes IV.2: Greek, Roman, Byzantine, and
                       Crusader Coins</em> (Princeton University Press, 1952).
                       <br></br>
-                      <StyledPageLinkCaptions a href="https://syrios.uh.edu/download" target="_blank">Click here to
-                      download this data.</StyledPageLinkCaptions>
+                      <StyledLink href="download">Click here to
+                      download this data.</StyledLink>
                   </Captions>
               </div>
               <div className="col-md-1"></div>
@@ -239,9 +247,9 @@ const Roman = () => {
                             </li>
                               <br></br>
                             <li>
-                              <a href="https://coinage.princeton.edu/" target="_blank" rel="noopener noreferrer">
+                              <StyledLink href="https://coinage.princeton.edu/" target="_blank" rel="noopener noreferrer">
                                 FLAME: Framing the Late Antique and Early Medieval Economy.
-                              </a>
+                              </StyledLink>
                             </li>
                           </ul>
                       </div>
@@ -250,10 +258,10 @@ const Roman = () => {
                           <br></br>
                           <ul>
                             <li>
-                              <a href="http://dlib.nyu.edu/awdl/isaw/isaw- papers/7/meadows-gruber/" target="_blank" rel="noopener noreferrer">
+                              <StyledLink href="http://dlib.nyu.edu/awdl/isaw/isaw- papers/7/meadows-gruber/" target="_blank" rel="noopener noreferrer">
                                 Meadows A. and Gruber, E. 2014. “Coinage and Numismatic Methods.
                                 A Case Study of Linking a Discipline,” <em>ISAW Papers</em> 7.15.
-                              </a>
+                              </StyledLink>
                             </li>
                               <br></br>
                             <li>
@@ -262,9 +270,9 @@ const Roman = () => {
                             </li>
                               <br></br>
                             <li>
-                              <a href="https://chre.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">
+                              <StyledLink href="https://chre.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">
                                 Oxford’s Coin Hoards of the Roman Empire.
-                              </a>
+                              </StyledLink>
                             </li>
                           </ul>
                       </div>

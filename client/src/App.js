@@ -108,6 +108,15 @@ const App = () => {
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
           <Route exact path="/coin-pile" component={CoinPile} />
+          <Route
+              exact
+              path="/omeka"
+              component={() => {
+                window.location.href =
+                    "https://sites.lib.uh.edu/kmneuma2/items/browse";
+                return null;
+              }}
+          />
           {/* <Redirect to="/404" /> */}
         </Switch>
         <div>

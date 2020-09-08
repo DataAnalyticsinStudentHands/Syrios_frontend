@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Button, Form, Modal } from 'react-bootstrap';
-
-// Style for regular links
-const StyledLink = styled.a`
-  color: #e3b287;
-  &:hover {
-    color: #e3b287;
-  }
-`;
+import { Button, Form } from 'react-bootstrap';
 
 // Style for Button Links
 const StyledLinkButton = styled(Link)`
@@ -35,18 +27,27 @@ const StyledLinkButton = styled(Link)`
   }
 `;
 
-// Style for Links on select pages
+// Style for regular links
+const StyledLink = styled.a`
+  cursor: pointer;
+  color: #7ea274;
+  border: none;
+  text-decoration: none;
+
+  &:hover {
+    color: #be9672;
+  }
+`;
+
+// Style for Links on select/explore pages
 const StyledPageLink = styled(Link)`
   cursor: pointer;
   color: #17434a;
-  font-size: 64px;
-  line-height: 78px;
-  font-family: 'CormorantGaramond-Bold';
+  font-size: 4vw;
+  font-family: 'CormorantGaramond';
   letter-spacing: 0.03em;
   border: none;
   text-decoration: none;
-  font-family: CormorantGaramond;
-  letter-spacing: 0.03em;
 
   &:focus,
   &:link,
@@ -261,10 +262,9 @@ const FooterLink = styled.a`
 `;
 
 export {
-  StyledLink,
   StyledLinkButton,
+  StyledLink,
   StyledPageLink,
-  StyledPageLinkCaptions,
   StyledPageLinkPara,
   StyledPageLinkRsrc,
   PageTitle,
