@@ -7,6 +7,7 @@ import {
   PageTitle,
   PageSubTitle,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextLeft,
   SubText,
@@ -441,13 +442,14 @@ const Intro = () => {
         {/* SECTION 3.0 */}
 
         <div className="row top-spacer-4">
-          <div className="col-md-8">
-            <Level1Text data-aos="fade-up">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <Level1TextCenter data-aos="fade-up">
               With these images and legends, coins made clear which governmental authority gave the
               coins value as money.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-3"></div>
         </div>
 
         {/* SECTION 3.1 */}
@@ -496,12 +498,13 @@ const Intro = () => {
         {/* SECTION 4.0 */}
 
         <div className="row top-spacer-5">
+          <div className="col-md-3"></div>
           <div className="col-md-6">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               The coins have many other features to notice.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-6"></div>
+          <div className="col-md-3"></div>
         </div>
 
         {/* SECTION 4.1 */}
@@ -629,7 +632,7 @@ const Intro = () => {
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-3">
-            <StyledLinkButton to="/coins" data-aos="fade-left">
+            <StyledLinkButton to="/explore" data-aos="fade-left">
               Explore Coins
             </StyledLinkButton>
           </div>

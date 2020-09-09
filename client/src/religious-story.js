@@ -7,6 +7,7 @@ import {
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextLeft,
   SubText,
@@ -91,13 +92,14 @@ const religiousStory = () => {
         {/* SECTION 2.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               The kings of the Seleucid Empire especially thought of Zeus as their special
               protector.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 2.2 */}
@@ -171,12 +173,13 @@ const religiousStory = () => {
         {/* SECTION 3.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               King Antiochus IV especially revered Zeus.​
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.2 */}
@@ -326,12 +329,13 @@ const religiousStory = () => {
         {/* SECTION 4.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+          <div className="col-md-3"></div>
+          <div className="col-md-6 align-self-center">
+            <Level1TextCenter data-aos="fade-left">
               But Zeus was not only a god for the kings. He was a god for the people too.​
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-3"></div>
         </div>
 
         {/* SECTION 4.2 */}
@@ -371,13 +375,14 @@ const religiousStory = () => {
         {/* SECTION 5.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+          <div className="col-md-3"></div>
+          <div className="col-md-6 align-self-center">
+            <Level1TextCenter data-aos="fade-left">
               The people of Antioch also worshipped Zeus. Our best evidence comes from their civic
               coins.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-3"></div>
         </div>
 
         {/* SECTION 5.2 */}

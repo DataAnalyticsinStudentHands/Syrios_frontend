@@ -7,6 +7,7 @@ import {
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextBlueBG,
   ParaTextLeft,
@@ -125,7 +126,7 @@ const civicStory = () => {
 
         {/* SECTION 1.4 */}
 
-        <div className="row top-spacer-3">
+        <div className="row top-spacer-3 no-gutters">
           <div className="col-md-1"></div>
           <div className="col-md-10 align-self-center">
             <ParaTextBlueBG data-aos="slide-up">
@@ -137,7 +138,7 @@ const civicStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-1"></div>
           <div className="col-md-10">
-            <img src={citizens} alt="Logo" className="img-responsive" />
+            <img src={citizens} alt="Logo" className="img-responsive"/>
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-3"></div>
@@ -469,13 +470,14 @@ const civicStory = () => {
         {/* SECTION 5.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               Finally, the boule could lead the people in protest if they didn’t agree with the
               Roman emperor.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.2 */}
@@ -543,13 +545,14 @@ const civicStory = () => {
         {/* SECTION 6.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               Unfortunately, detailed records for the boule have not survived, so we don’t know a
               lot about the individual officials.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 6.2 */}

@@ -9,6 +9,7 @@ import {
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextLeft,
   SubText,
@@ -205,12 +206,13 @@ const Visitors = () => {
         {/* SECTION 3.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               The rest of the coins come from a scattered mix across the Levant and Mediterranean.​
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.2 */}
@@ -270,12 +272,13 @@ const Visitors = () => {
         {/* SECTION 4.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               Even so, the coin assemblage contains important stories about the people at Antioch.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 4.2 */}
@@ -308,7 +311,7 @@ const Visitors = () => {
           <div className="col-md-1"></div>
           <div className="col-md-4 align-self-center">
             <ParaTextLeft data-aos="fade-right">
-              Of the bronze coins, over 80% were minted within Antioch.
+              The Nabataeans are famous for their city of Petra…
             </ParaTextLeft>
           </div>
           <div className="col-md-1"></div>
@@ -369,12 +372,13 @@ const Visitors = () => {
         {/* SECTION 5.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               Perhaps the most important story lies in the 102 Roman coins found in the city.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.2 */}

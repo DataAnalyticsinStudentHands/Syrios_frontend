@@ -64,6 +64,34 @@ const About = () => {
                                 </ul>
                             </ParaTextLeftSmaller>
                         </div>
+                        <div className="row">
+                            <ParaTextLeftSmaller>
+                              This current exhibit serves as Phase I and “Proof of
+                              Concept” for the overall project. It focuses on the
+                              history of the Syrian capital city of Antioch and the
+                              concept of studying coins as pieces of art and objects
+                              that move. From a technical perspective, this initial
+                              exhibit provided a platform for investigating overall
+                              design, interactivity, and usability.
+                              <br></br>
+                              <br></br>
+                              By September 2021, we plan to launch Phase II of the
+                              exhibit, which will be a full prototype focused on the
+                              city of Antioch. This phase will include additional
+                              animations, themed stories, an interactive timeline,
+                              inscriptions database, downloadable datasets, and user
+                              guides. Technical additions include the implementation
+                              of parallax scrolling and responsive design layout,
+                              adaption of our scheme to follow
+                              <a href="http://nomisma.org/" target="_blank" rel="noopener noreferrer"> Nomisma format </a>
+                              and further accommodations for user accessibility.
+                              <br></br>
+                              <br></br>
+                              By September 2024, we plan to launch Phase III of
+                              the exhibit, which will be the final exhibit
+                              encompassing the cities of ancient Syria.
+                            </ParaTextLeftSmaller>
+                        </div>
                     </div>
                 </div>
 
@@ -78,7 +106,7 @@ const About = () => {
                     </div>
                     <div className="col-md-2"></div>
                 </div>
-                <div className="row">
+                <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8">
                         <PageSectionTitle>
@@ -246,8 +274,8 @@ const About = () => {
                             <br></br>
                             Mogili is currently a graduate student in the Computer Science Department
                             at UH with extensive experience in web development and UI/UX design. He has worked on projects using
-                            React.js, GraphQL, MongoDB, Swift, Python. His academic projects include building a Carpooling app using Swift along with 
-                            prototyping in Adobe Xd, Developed a potential prediction model in Ensemble Learning, Facial Recognition using Deep Learning 
+                            React.js, GraphQL, MongoDB, Swift, Python. His academic projects include building a Carpooling app using Swift along with
+                            prototyping in Adobe Xd, Developed a potential prediction model in Ensemble Learning, Facial Recognition using Deep Learning
                             with Convolutional Neural Networks. He also served as a Divisional Vice President of Street Cause NGO in India for
                             a period of 2 years.
                         </SubTextLeft>
@@ -314,18 +342,29 @@ const About = () => {
                             <br></br>
                             <br></br>
                             <ul>
-                                <li><strong>Alberto Wilson, Ph.D.</strong> Candidate in the Department of History at the
-                                    University of Houston
+                                <li>
+                                  <strong>Alberto Wilson, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br></br> Learned technical design within Omeka and associated APIs
                                 </li>
-                                <li><strong>Tara Sewell, Ph.D.</strong> 2020 from the Department of History at the
-                                    University of Houston
+                                <br></br>
+                                <li>
+                                  <strong>Tara Sewell, Ph.D. 2020 from the Department of History at the University of Houston</strong> <br></br> Creating digital data entries from printed excavation reports 
                                 </li>
-                                <li><strong>Matthew Finnie, Ph.D.</strong> Candidate in the Department of History at the
-                                    University of Houston
+                                <br></br>
+                                <li>
+                                  <strong>Matthew Finnie, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br></br> Created Syrian city profiles within Omeka
                                 </li>
-                                <li><strong>Delfina Denari, B.S.</strong> from the University of Houston</li>
-                                <li><strong>Abigail Chetlain, B.S.</strong> from the University of Houston</li>
-                                <li><strong>Anjana Kummari, M.A.</strong> from the University of Houston</li>
+                                <br></br>
+                                <li>
+                                  <strong>Delfina Denari, B.S. from the University of Houston</strong> <br></br> Creation of 3D, annotated coin scans 
+                                </li>
+                                <br></br>
+                                <li>
+                                  <strong>Abigail Chetlain, B.S. from the University of Houston</strong> <br></br> Worked on graphic design of the digital project
+                                </li>
+                                <br></br>
+                                <li>
+                                  <strong>Anjana Kummari, M.A. from the University of Houston</strong> <br></br> Initial building of the backend of the digital project 
+                                </li>
                             </ul>
                         </SubTextLeft>
                     </div>
@@ -381,8 +420,7 @@ const About = () => {
                     </div>
                     <div className="col-md-5 ">
                         <ParaTextLeftSmaller>
-                            The SYRIOS Project is made possible through the generosity and support of the University of
-                            Houston, in particular:
+                            We are also grateful to the many museums and institutions for their sharing of coin material:
                             <br></br>
                             <br></br>
                             <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American

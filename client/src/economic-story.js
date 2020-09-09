@@ -7,6 +7,7 @@ import {
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextLeft,
   SubText,
@@ -1163,12 +1164,13 @@ const Economic = () => {
         {/* SECTION 3.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-7 align-self-center">
-            <Level1Text data-aos="fade-left">
+          <div className="col-md-2"></div>
+          <div className="col-md-8 align-self-center">
+            <Level1TextCenter data-aos="fade-left">
               Most of the Antioch civic coins were spent locally.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-5"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.2 */}

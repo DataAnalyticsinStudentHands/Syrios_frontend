@@ -72,7 +72,7 @@ const StyledPageLinkCaptions = styled(StyledPageLink)`
 const StyledPageLinkPara = styled(StyledPageLink)`
   color: #7ea274;
   font-size: 24px;
-  
+
   &:hover {
     color: #be9672;
     background: none;
@@ -128,6 +128,10 @@ const Level1Text = styled.p`
   color: #2d616a;
   font-size: 48px;
   text-align: left;
+`;
+
+const Level1TextCenter = styled(Level1Text)`
+  text-align: justify;
 `;
 
 const ParaText = styled.p`
@@ -274,6 +278,7 @@ export {
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextBlueBG,
   ParaTextLeft,
