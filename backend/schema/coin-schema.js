@@ -16,7 +16,7 @@ const {
 //Schema defines data on the Graph like object types(book type), relation between
 //these object types and describes how it can reach into the graph to interact with
 //the data to retrieve or mutate the data
-
+ 
 const CoinType = new GraphQLObjectType({
   name: "Coin",
   fields: () => ({
