@@ -5,6 +5,7 @@ import 'tableau-api';
 import TableauReport from 'tableau-react';
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   StoryTitle,
   StoryTitleSM,
@@ -112,8 +113,8 @@ const Visitors = () => {
               and private individuals from all corners had gathered there for legal matters,
               embassies, commerce, and spectacle, not a single people group or land went unharmed –
               and thus in Antioch, the whole world under Roman control was shaken.”
-              <br></br>
-              <br></br>- Cassius Dio 68.24.1-2
+              <br />
+              <br />- Cassius Dio 68.24.1-2
             </SubText>
           </div>
         </div>
@@ -289,18 +290,42 @@ const Visitors = () => {
             <div style={{ textAlign: 'center' }}>
               <img src={nabataea1} alt="Logo" className="size-images" />
             </div>
-            <SubText>The obverse shows King Rabbel and his wife, Queen Gamilath.</SubText>
+            <SubText>The obverse shows {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/rabbel_ii_nabataea"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                King Rabbel
+              </StyledLinkTerm>
+              {' '} and his wife, Queen Gamilath.</SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-in">
             <ParaText>
-              For example, 20 coins from the Kingdom of Nabataea were excavated within Antioch.
+              For example, 20 coins from the {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/nabataean_kingdom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Kingdom of Nabataea
+                </StyledLinkTerm>
+                {' '} were excavated within Antioch.
             </ParaText>
           </div>
           <div className="col-md-3" data-aos="flip-left">
             <div style={{ textAlign: 'center' }}>
               <img src={nabataea2} alt="Logo" className="size-images" />
             </div>
-            <SubText>The reverse shows two cornucopiae and a legend in the local language.</SubText>
+            <SubText>The reverse shows two cornucopiae and a {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/legend"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                legend
+              </StyledLinkTerm>
+              {' '} in the local language.</SubText>
             <div className="col-md-1"></div>
           </div>
         </div>
@@ -311,7 +336,14 @@ const Visitors = () => {
           <div className="col-md-1"></div>
           <div className="col-md-4 align-self-center">
             <ParaTextLeft data-aos="fade-right">
-              The Nabataeans are famous for their city of Petra…
+              The Nabataeans are famous for their city of {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/petra_arabia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Petra
+                </StyledLinkTerm>…
             </ParaTextLeft>
           </div>
           <div className="col-md-1"></div>
@@ -394,7 +426,15 @@ const Visitors = () => {
           <div className="col-md-4" style={{ textAlign: 'center' }}>
             <img src={silverdenarii1} alt="Logo" data-aos="fade-in" className="size-images-md" />
             <img src={silverdenarii2} alt="Logo" data-aos="fade-in" className="size-images-md" />
-            <SubText>10 silver denarii</SubText>
+            <SubText>10 silver {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/denarius"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                denarii
+              </StyledLinkTerm>
+            </SubText>
           </div>
           <div className="col-md-4" style={{ textAlign: 'center' }}>
             <img src={romanbronze1} alt="Logo" data-aos="fade-in" className="size-images-md" />
@@ -496,8 +536,8 @@ const Visitors = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -509,7 +549,7 @@ const Visitors = () => {
                   médailles et antiques, Vogüé 227
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/2017.32.62"
@@ -519,7 +559,7 @@ const Visitors = () => {
                   American Numismatic Society 2017.32.62
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1935.117.369"
@@ -529,7 +569,7 @@ const Visitors = () => {
                   American Numismatic Society 1935.117.369
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1995.11.491"
@@ -539,7 +579,7 @@ const Visitors = () => {
                   American Numismatic Society 1995.11.491
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b8507176z.r=%22M%205158%22?rk=21459;2"
@@ -550,7 +590,7 @@ const Visitors = () => {
                   5158
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.38396"
@@ -560,7 +600,7 @@ const Visitors = () => {
                   American Numismatic Society 1944.100.38396
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1956.127.1143"
@@ -574,41 +614,71 @@ const Visitors = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
-                Butcher, K. 2002. “Circulation of Bronze Coinage in the Orontes Valley in the Late
-                Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.),{' '}
-                <em>
-                  Les monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique
-                  et romain?: actes de la table ronde de Damas, 10-12 novembre 1999
-                </em>
-                . Beirut: Institut Français d''Archéologie du Proche-Orient. 145-152.
+                <StyledLink
+                  href="https://www.worldcat.org/title/monnayages-syriens-quel-apport-pour-lhistoire-du-proche-orient-hellenistique-et-romain-actes-de-la-table-ronde-de-damas-10-12-novembre-1999/oclc/612194159&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2002. “Circulation of Bronze Coinage in the Orontes Valley in the Late
+                  Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.),{' '}
+                  <em>
+                    Les monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique
+                    et romain?: actes de la table ronde de Damas, 10-12 novembre 1999
+                  </em>
+                  . Beirut: Institut Français d''Archéologie du Proche-Orient. 145-152.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Butcher, K. 2004. <em>Coinage in Roman Syria: Northern Syria, 64 BC-AD 253</em>.
-                London: Royal Numismatic Society.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-in-roman-syria-northern-syria-64-bc-ad-253/oclc/928519613&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2004. <em>Coinage in Roman Syria: Northern Syria, 64 BC-AD 253</em>.
+                  London: Royal Numismatic Society.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Huth, M. and van Alfen, P. G. 2010.{' '}
-                <em>Coinage of the Caravan Kingdoms: Studies in Ancient Arabian Monetization</em>.
-                New York: American Numismatic Society.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-of-the-caravan-kingdoms-studies-in-ancient-arabian-monetization/oclc/918551407&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Huth, M. and van Alfen, P.G. 2010.{' '}
+                  <em>Coinage of the Caravan Kingdoms: Studies in Ancient Arabian Monetization</em>.
+                  New York: American Numismatic Society.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Millar, F. 1993. <em>The Roman Near East, 31 BC-AD 337</em>. Cambridge, MA: Harvard
-                University Press
+                <StyledLink
+                  href="https://www.worldcat.org/title/roman-near-east-31-bc-ad-337/oclc/66628586&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Millar, F. 1993. <em>The Roman Near East, 31 BC-AD 337</em>. Cambridge, MA: Harvard
+                  University Press
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Young, G.K. 2001.{' '}
-                <em>
-                  Rome’s Eastern Trade: International Commerce and Imperial Policy, 31 BC – AD 305
-                </em>
-                . London: Routledge.
+                <StyledLink
+                  href="https://www.worldcat.org/title/romes-eastern-trade-international-commerce-and-imperial-policy-31-bc-ad-305/oclc/819721420&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Young, G.K. 2001.{' '}
+                  <em>
+                    Rome’s Eastern Trade: International Commerce and Imperial Policy, 31 BC – AD 305
+                  </em>
+                  . London: Routledge.
+                </StyledLink>
               </li>
             </ul>
           </div>

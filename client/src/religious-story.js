@@ -184,8 +184,8 @@ const religiousStory = () => {
               {' '} sent his son to follow the bird. Eventually, the eagle
               dropped the sacrificial meat. The king knew that Zeus wanted him
               to build the city in that place."
-              <br></br>
-              <br></br>- Libanius <em>Or.</em> 11.84 (adapted)
+              <br />
+              <br />- Libanius <em>Or.</em> 11.84 (adapted)
             </SubText>
           </div>
           <div className="col-md-1"></div>
@@ -248,8 +248,8 @@ const religiousStory = () => {
               {' '} magnificence towards the gods is evidenced by the temple to
               [Zeus Olympius] at Athens, the only one in the whole world which begins to capture the
               greatness of the god."
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               –Livy 41.20
             </SubText>
           </div>
@@ -280,8 +280,8 @@ const religiousStory = () => {
               “At Antioch he projected a magnificent temple to Jupiter Capitolinus, of which not
               only the ceiling was to be overlaid with gold, but the whole of the walls were to be
               covered with gold leaf.”​
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               -Livy 41.20
             </SubText>
           </div>
@@ -558,8 +558,8 @@ const religiousStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -571,7 +571,7 @@ const religiousStory = () => {
                   2089
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1948.19.2338"
@@ -581,7 +581,7 @@ const religiousStory = () => {
                   American Numismatic Society 1948.19.2338
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1953.171.1677"
@@ -591,7 +591,7 @@ const religiousStory = () => {
                   American Numismatic Society 1953.171.1677
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1948.19.1983"
@@ -601,7 +601,7 @@ const religiousStory = () => {
                   American Numismatic Society 1948.19.1983
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.75011"
@@ -611,7 +611,7 @@ const religiousStory = () => {
                   American Numismatic Society 1944.100.75011{' '}
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1967.152.609?lang=en"
@@ -625,8 +625,8 @@ const religiousStory = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -637,7 +637,7 @@ const religiousStory = () => {
                   Butcher, K. 2007. “Two Syrian Deities.” <em>Syria</em> 84: 277-285.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.jstor.org/stable/284220"
@@ -648,7 +648,7 @@ const religiousStory = () => {
                   <em>Transactions of the American Philological Association</em> 110: 233-254.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.jstor.org/stable/24668172"
@@ -659,7 +659,7 @@ const religiousStory = () => {
                   Crowns: The Numismatic Evidence.” <em>Mediterranean Archaeology</em> 18: 67-82.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.jstor.org/stable/24651941"

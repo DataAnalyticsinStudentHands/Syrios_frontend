@@ -144,7 +144,7 @@ const Economic = () => {
               data-aos-duration="1900"
               className="size-images-50"
             />
-            <br></br>
+            <br />
             <img
               src={bronze}
               alt="Logo"
@@ -243,8 +243,8 @@ const Economic = () => {
           <div className="col-md-4 align-self-center">
             <SubText data-aos="fade-left">
               “Antioch, a city known to all the world… so rich is it in imported and local goods.”
-              <br></br>
-              <br></br>- Ammianus Marcellinus, <em>Roman Antiquities</em> 14.8.8
+              <br />
+              <br />- Ammianus Marcellinus, <em>Roman Antiquities</em> 14.8.8
             </SubText>
           </div>
           <div className="col-md-1"></div>
@@ -289,11 +289,11 @@ const Economic = () => {
                 className="size-images-md"
               />
             </div>
-            <br></br>
+            <br />
             <div>
               <img src={equal_to} alt="Logo" data-aos="fade-in" className="size-images-50" />
             </div>
-            <br></br>
+            <br />
             <div>
               <img
                 src={bronze}
@@ -1294,8 +1294,8 @@ const Economic = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -1307,7 +1307,7 @@ const Economic = () => {
                   médailles et antiques, Fonds général 430
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://rpc.ashmus.ox.ac.uk/coin/73446"
@@ -1317,7 +1317,7 @@ const Economic = () => {
                   Roman Provincial Coinage Project
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.39966"
@@ -1327,7 +1327,7 @@ const Economic = () => {
                   American Numismatic Society - 1944.100.39966
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b84967440"
@@ -1338,7 +1338,7 @@ const Economic = () => {
                   médailles et antiques, M 5464
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b8508048m"
@@ -1353,8 +1353,8 @@ const Economic = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -1369,7 +1369,7 @@ const Economic = () => {
                   Français d''Archéologie du Proche- Orient. 145-152.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/coinage-in-the-roman-economy-300-bc-to-ad-700/oclc/466879823&referer=brief_results"
@@ -1380,7 +1380,7 @@ const Economic = () => {
                   Baltimore: Johns Hopkins University Press.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/cambridge-economic-history-of-the-greco-roman-world/oclc/261200102&referer=brief_results"

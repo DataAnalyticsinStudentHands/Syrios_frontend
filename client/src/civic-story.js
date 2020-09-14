@@ -97,8 +97,8 @@ const civicStory = () => {
             <SubText data-aos="fade-right">
               “Antioch – the metropolis of Syria, and, without dispute, deserves the place of the
               third city in the habitable earth that was under the Roman Empire.”
-              <br></br>
-              <br></br>- Josephus, <em>Wars of the Jews</em> 3.29
+              <br />
+              <br />- Josephus, <em>Wars of the Jews</em> 3.29
             </SubText>
           </div>
           <div className="col-md-4"></div>
@@ -106,8 +106,8 @@ const civicStory = () => {
             <SubText data-aos="fade-left">
               “Antioch is the metropolis of Syria…and it is does not fall much short, either in
               power or in size, of Seleucia on the Tigris or Alexandria in Egypt.”
-              <br></br>
-              <br></br>- Strabo, <em>Geography</em> 16.2
+              <br />
+              <br />- Strabo, <em>Geography</em> 16.2
             </SubText>
           </div>
           <img src={city} alt="Logo" className="bg-img" data-aos="fade-up" />
@@ -132,7 +132,7 @@ const civicStory = () => {
           <div className="col-md-10 align-self-center">
             <ParaTextBlueBG data-aos="slide-up">
               But as big as Antioch grew, it was still a city of citizens.
-              <br></br>
+              <br />
               And the coins are an important reminder of this.
             </ParaTextBlueBG>
           </div>
@@ -366,8 +366,8 @@ const civicStory = () => {
             <SubText data-aos="fade-left">
               "Then the emperor’s lieutenant entered the theatre at Antioch, where the people
               regularly hold their public assemblies, and addressed the crowd which hurried there."
-              <br></br>
-              <br></br>- Tacitus, <em>Histories</em> 2.80
+              <br />
+              <br />- Tacitus, <em>Histories</em> 2.80
             </SubText>
           </div>
         </div>
@@ -451,8 +451,8 @@ const civicStory = () => {
             <SubText data-aos="fade-left">
               “The citizens of Antioch, a large and prosperous city, celebrate festivals virtually
               every day of the year in the city and in the surrounding area.”
-              <br></br>
-              <br></br>- Herodian, <em>History of the Roman Empire</em> 2.7.9
+              <br />
+              <br />- Herodian, <em>History of the Roman Empire</em> 2.7.9
             </SubText>
           </div>
           <div className="col-md-1"></div>
@@ -530,8 +530,8 @@ const civicStory = () => {
               against Marcus in favor of Cassius, a rival to the throne. The emperor had previously
               taken away their shows and public assemblies and every type of meeting, and had issued
               the harshest edict against them.”
-              <br></br>
-              <br></br>- Scriptores Historiae Augustae, <em>Marcus Aurelius</em> 25.8-12
+              <br />
+              <br />- Scriptores Historiae Augustae, <em>Marcus Aurelius</em> 25.8-12
             </SubText>
           </div>
           <div className="col-md-1"></div>
@@ -583,11 +583,11 @@ const civicStory = () => {
           <div className="col-md-4 align-self-center">
             <SubText data-aos="fade-left">
               "Marcus Aemilius Marcianus Asclepiades, the bouleutes of the Antiochians."
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               This man also worked as a tax-collector for the Romans.
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               Notice how this inscription is written in both Greek (top) and Palmyrene, a local
               Syrian language (bottom).
             </SubText>
@@ -633,8 +633,8 @@ const civicStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -646,7 +646,7 @@ const civicStory = () => {
                   médailles et antiques, Fonds général 430
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1948.19.1983"
@@ -656,7 +656,7 @@ const civicStory = () => {
                   American Numismatic Society 1948.19.1983
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b85073668.r=Auguste%20Auguste?rk=193134;0"
@@ -667,7 +667,7 @@ const civicStory = () => {
                   médailles et antiques, Fonds général 122
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.65906"
@@ -677,7 +677,7 @@ const civicStory = () => {
                   American Numismatic Society - 1944.100.65906
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://ikmk.smb.museum/object?lang=en&id=18257614"
@@ -691,8 +691,8 @@ const civicStory = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -704,7 +704,7 @@ const civicStory = () => {
                   Angeles: J. Paul Getty Museum.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/civic-coins-and-civic-politics-in-the-roman-east-ad-180-275/oclc/798792458&referer=brief_results"
@@ -716,7 +716,7 @@ const civicStory = () => {
                   University of California Press.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.academia.edu/31454171/Heritage_and_Homogeneity_in_the_Coinage_of_Early_Roman_Antioch"
@@ -732,7 +732,7 @@ const civicStory = () => {
                   . Los Angeles: Getty Publications. 294-306.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/inscriptions-grecques-et-latines-de-la-syrie-tome-xvii-palmyre-jean-baptiste-yon-fasc-1/oclc/858685213&referer=brief_results"

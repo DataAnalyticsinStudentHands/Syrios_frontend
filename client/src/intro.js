@@ -728,8 +728,8 @@ const Intro = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -741,7 +741,7 @@ const Intro = () => {
                   médailles et antiques, Fonds général 180{' '}
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.75243"
@@ -751,7 +751,7 @@ const Intro = () => {
                   American Numismatic Society 1944.100.75243
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.39966"
@@ -761,7 +761,7 @@ const Intro = () => {
                   American Numismatic Society 1944.100.39966
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://ikmk.smb.museum/object?lang=en&id=18215628"
@@ -771,7 +771,7 @@ const Intro = () => {
                   Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1937.999.318"
@@ -781,7 +781,7 @@ const Intro = () => {
                   American Numismatic Society 1937.999.318
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.65231"
@@ -791,7 +791,7 @@ const Intro = () => {
                   American Numismatic Society 1944.100.65231
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://ikmk.smb.museum/object?id=18201044"
@@ -802,7 +802,7 @@ const Intro = () => {
                   Saczewski
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1996.71.3?lang=en"
@@ -812,7 +812,7 @@ const Intro = () => {
                   American Numismatic Society - 1996.71.3
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1999.2.2"
@@ -822,7 +822,7 @@ const Intro = () => {
                   American Numismatic Society - 1999.2.2
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.65544"
@@ -836,8 +836,8 @@ const Intro = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -848,7 +848,7 @@ const Intro = () => {
                   Burnett, A. 1987. <em>Coinage in the Roman World</em>. London: Seaby.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/small-change-in-ancient-beirut-the-coin-finds-from-bey-006-and-bey-045-persian-hellenistic-roman-and-byzantine-periods/oclc/60764775&referer=brief_results"
@@ -860,7 +860,7 @@ const Intro = () => {
                   45-46.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/understanding-ancient-coins-an-introd-for-archaeologists-and-historians/oclc/246625380&referer=brief_results"
@@ -871,7 +871,7 @@ const Intro = () => {
                   Oklahoma Press.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/ancient-history-from-coins/oclc/933449440&referer=brief_results"
@@ -881,7 +881,7 @@ const Intro = () => {
                   Howgego, C. 1995. <em>Ancient History from Coins</em>. London: Routledge.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/coinage-and-identity-in-the-roman-provinces/oclc/165406567&referer=brief_results"
@@ -892,7 +892,7 @@ const Intro = () => {
                   <em>Coinage and Identity in the Roman Provinces</em>. Oxford University Press.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://www.worldcat.org/title/oxford-handbook-of-greek-and-roman-coinage/oclc/1014889372&referer=brief_results"
@@ -903,7 +903,7 @@ const Intro = () => {
                   Oxford University Press.
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 Neumann, K. Forthcoming.{' '}
                 <em>Antioch in Syria: A History from Coins, 300 BCE-450 CE</em> (Cambridge
