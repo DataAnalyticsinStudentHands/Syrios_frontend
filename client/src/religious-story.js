@@ -3,6 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   StoryTitle,
   StoryTitleSM,
@@ -95,7 +96,15 @@ const religiousStory = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
             <Level1TextCenter data-aos="fade-left">
-              The kings of the Seleucid Empire especially thought of Zeus as their special
+              The kings of the {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/seleucid_coins_online"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Seleucid Empire
+                </StyledLinkTerm>
+              {' '} especially thought of Zeus as their special
               protector.
             </Level1TextCenter>
           </div>
@@ -134,7 +143,15 @@ const religiousStory = () => {
           <div className="col-md-3"></div>
           <div className="col-md-6 align-self-center">
             <ParaText data-aos="fade-down">
-              According to legend, Zeus helped King Seleucus I decide where to build Antioch in 300
+              According to legend, Zeus helped {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/seleucus_i"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  King Seleucus I
+                </StyledLinkTerm>
+              {' '} decide where to build Antioch in 300
               BCE.
             </ParaText>
           </div>
@@ -147,10 +164,26 @@ const religiousStory = () => {
           </div>
           <div className="col-md-5 align-self-center">
             <SubText data-aos="fade-left">
-              "Seleucus offered sacrifice to the gods by burning a slain bull on an altar. And Zeus
-              sent down his eagle, who grabbed one of the bull thighs and flew away. Seleucus sent
-              his son to follow the bird. Eventually, the eagle dropped the sacrificial meat. The
-              king knew that Zeus wanted him to build the city in that place."
+              " {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/seleucus_i"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Seleucus
+                </StyledLinkTerm>
+              {' '} offered sacrifice to the gods by burning a slain bull on an altar. And Zeus
+              sent down his eagle, who grabbed one of the bull thighs and flew away. {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/seleucus_i"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Seleucus
+                </StyledLinkTerm>
+              {' '} sent his son to follow the bird. Eventually, the eagle
+              dropped the sacrificial meat. The king knew that Zeus wanted him
+              to build the city in that place."
               <br></br>
               <br></br>- Libanius <em>Or.</em> 11.84 (adapted)
             </SubText>
@@ -176,7 +209,14 @@ const religiousStory = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
             <Level1TextCenter data-aos="fade-left">
-              King Antiochus IV especially revered Zeus.​
+              <StyledLinkTerm
+              href="http://nomisma.org/id/antiochus_iv"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
+                King Antiochus IV
+              </StyledLinkTerm>
+            {' '} especially revered Zeus.​
             </Level1TextCenter>
           </div>
           <div className="col-md-2"></div>
@@ -197,7 +237,15 @@ const religiousStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5 align-self-center">
             <SubText data-aos="fade-right">
-              “Truly, Antiochus IV’s magnificence towards the gods is evidenced by the temple to
+              “Truly, {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/antiochus_iv"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Antiochus IV's
+                </StyledLinkTerm>
+              {' '} magnificence towards the gods is evidenced by the temple to
               [Zeus Olympius] at Athens, the only one in the whole world which begins to capture the
               greatness of the god."
               <br></br>
@@ -345,7 +393,15 @@ const religiousStory = () => {
           <div className="col-md-4 align-self-center" style={{ textAlign: 'center' }}>
             <img src={zeus_coin5} alt="Logo" data-aos="fade-in" className="size-images" />
             <SubText data-aos="fade-in">
-              A much later silver tridrachm possibly minted at Rome for Syria (c. 98 CE) features
+              A much later silver {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/tridrachm"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  tridrachm
+                </StyledLinkTerm>
+              {' '} possibly minted at Rome for Syria (c. 98 CE) features
               such a Zeus combined with a local god.
             </SubText>
           </div>
@@ -391,7 +447,15 @@ const religiousStory = () => {
           <div className="col-md-3"></div>
           <div className="col-md-6">
             <ParaText data-aos="fade-down">
-              The very first coins minted by the citizens under Seleucus I feature Zeus and a
+              The very first coins minted by the citizens under {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/seleucus_i"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Seleucus I
+                </StyledLinkTerm>
+              {' '} feature Zeus and a
               lightning bolt, plus the name of the Antiochians.
             </ParaText>
           </div>
@@ -414,7 +478,15 @@ const religiousStory = () => {
           <div className="col-md-2"></div>
           <div className="col-md-4 align-self-center">
             <ParaTextLeft data-aos="fade-right">
-              Later on, when Antiochus IV ruled, the Antiochians featured a standing Zeus alongside
+              Later on, when {' '}
+                <StyledLinkTerm
+                href="http://nomisma.org/id/seleucus_i"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Antiochus IV
+                </StyledLinkTerm>
+              {' '} ruled, the Antiochians featured a standing Zeus alongside
               their name.
             </ParaTextLeft>
           </div>
@@ -557,28 +629,45 @@ const religiousStory = () => {
             <br></br>
             <ul>
               <li>
-                Nicholas Wright, “Seleucid Royal Cult, Indigenous Religious Traditions, and Radiate
-                Crowns: The Numismatic Evidence,” <em>Mediterranean Archaeology</em> 18 (2005),
-                67-82.
-              </li>
-              <br></br>
-              <li>
-                Nicholas Wright, “Non-Greek Religious Imagery on the Coinage of Seleucid Syria,”{' '}
-                <em>Mediterranean Archaeology</em> 22/23 (2009/10), 193-206.
-              </li>
-              <br></br>
-              <li>
-                Kent J. Rigsby, “Seleucid Notes,”{' '}
-                <em>Transactions of the American Philological Association</em> 110 (1980), 233-254.
-              </li>
-              <br></br>
-              <li>
                 <StyledLink
                   href="https://journals.openedition.org/syria/344?lang=en"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Kevin Butcher, “Two Syrian Deities,” <em>Syria</em> 84 (2007)
+                  Butcher, K. 2007. “Two Syrian Deities.” <em>Syria</em> 84: 277-285.
+                </StyledLink>
+              </li>
+              <br></br>
+              <li>
+                <StyledLink
+                  href="https://www.jstor.org/stable/284220"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Rigsby, K.J. 1980. “Seleucid Notes.”{' '}
+                  <em>Transactions of the American Philological Association</em> 110: 233-254.
+                </StyledLink>
+              </li>
+              <br></br>
+              <li>
+                <StyledLink
+                  href="https://www.jstor.org/stable/24668172"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Wright, N. 2005. “Seleucid Royal Cult, Indigenous Religious Traditions, and Radiate
+                  Crowns: The Numismatic Evidence.” <em>Mediterranean Archaeology</em> 18: 67-82.
+                </StyledLink>
+              </li>
+              <br></br>
+              <li>
+                <StyledLink
+                  href="https://www.jstor.org/stable/24651941"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Wright, N. 2009/10. “Non-Greek Religious Imagery on the Coinage of Seleucid Syria.”{' '}
+                  <em>Mediterranean Archaeology</em> 22/23: 193-206.
                 </StyledLink>
               </li>
             </ul>

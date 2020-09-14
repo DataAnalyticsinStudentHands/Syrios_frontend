@@ -3,6 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   StoryTitle,
   StoryTitleSM,
@@ -181,8 +182,15 @@ const civicStory = () => {
           <div className="col-md-3"></div>
           <div className="col-md-6 align-self-center">
             <ParaText data-aos="fade-in">
-              This name was important because it made clear the governmental authority who paid for
-              the coins, minted the coins, and gave the cheap bronze value as money. 
+              This name was important because it made clear the governmental {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/authority"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >authority
+                </StyledLinkTerm>
+              {' '} who paid for the coins, minted the coins, and gave the cheap
+              bronze value as money. 
             </ParaText>
           </div>
           <div className="col-md-3"></div>
@@ -687,30 +695,54 @@ const civicStory = () => {
             <br></br>
             <ul>
               <li>
-                Butcher, K. 2003. <em>Roman Syria and the Near East</em>. Los Angeles: J. Paul Getty
-                Museum.
+                <StyledLink
+                  href="https://www.worldcat.org/title/roman-syria-and-the-near-east/oclc/1110123428&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2003. <em>Roman Syria and the Near East</em>. Los
+                  Angeles: J. Paul Getty Museum.
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                Harl, K.W. 1987.{' '}
-                <em>Civic Coins and Civic Politics in the Roman East, A.D. 180-275</em>. Berkeley:
-                University of California Press.
+                <StyledLink
+                  href="https://www.worldcat.org/title/civic-coins-and-civic-politics-in-the-roman-east-ad-180-275/oclc/798792458&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Harl, K.W. 1987.{' '}
+                  <em>Civic Coins and Civic Politics in the Roman East, A.D. 180-275</em>. Berkeley:
+                  University of California Press.
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                Noreña, C.F. 2016. "Heritage and Homogeneity: The Civic Coinage of Roman Antioch,"
-                in S. Alcock, M. Egri, and J. Frakes (eds.),
-                <em>
-                  {' '}
-                  Beyond Boundaries: Connecting Visual Cultures in the Provinces of Ancient Rome
-                </em>
-                . Los Angeles: Getty Publications. 294-306.
+                <StyledLink
+                  href="https://www.academia.edu/31454171/Heritage_and_Homogeneity_in_the_Coinage_of_Early_Roman_Antioch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Noreña, C.F. 2016. "Heritage and Homogeneity: The Civic Coinage of Roman Antioch,"
+                  in S. Alcock, M. Egri, and J. Frakes (eds.),
+                  <em>
+                    {' '}
+                    Beyond Boundaries: Connecting Visual Cultures in the Provinces of Ancient Rome
+                  </em>
+                  . Los Angeles: Getty Publications. 294-306.
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                Yon, J.-B. 2012.{' '}
-                <em>Inscriptions grecques et latines de la Syrie, XVII/1: Palmyre</em>. Beirut:
-                Presses de l’IFPO, 191-192, no. 196
+                <StyledLink
+                  href="https://www.worldcat.org/title/inscriptions-grecques-et-latines-de-la-syrie-tome-xvii-palmyre-jean-baptiste-yon-fasc-1/oclc/858685213&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Yon, J.-B. 2012.{' '}
+                  <em>Inscriptions grecques et latines de la Syrie, XVII/1: Palmyre</em>. Beirut:
+                  Presses de l’IFPO, 191-192, no. 196
+                </StyledLink>
               </li>
             </ul>
           </div>

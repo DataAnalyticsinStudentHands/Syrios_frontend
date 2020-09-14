@@ -3,6 +3,7 @@ import 'tableau-api';
 import TableauReport from "tableau-react";
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   StoryTitle,
   StoryTitleSM,
@@ -1000,7 +1001,14 @@ const Economic = () => {
           <div className="col-md-4 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               In fact, some scholars think that it might have taken over 100 of these bronze coins
-              to equal the value of only 1 silver tetradrachm!
+              to equal the value of only 1 silver {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/tetradrachm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  tetradrachm
+                </StyledLinkTerm>.
             </ParaTextLeft>
           </div>
         </div>
@@ -1349,25 +1357,43 @@ const Economic = () => {
             <br></br>
             <ul>
               <li>
-                Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley in the Late
-                Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.), Les
-                monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique et
-                romain?: actes de la table ronde de Damas, 10-12 novembre 1999. Beirut: Institut
-                Français d''Archéologie du Proche- Orient. 145-152.
+                <StyledLink
+                  href="https://www.worldcat.org/title/monnayages-syriens-quel-apport-pour-lhistoire-du-proche-orient-hellenistique-et-romain-actes-de-la-table-ronde-de-damas-10-12-novembre-1999/oclc/612194159&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley in the Late
+                  Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.), Les
+                  monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique et
+                  romain?: actes de la table ronde de Damas, 10-12 novembre 1999. Beirut: Institut
+                  Français d''Archéologie du Proche- Orient. 145-152.
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C. to A.D. 700.
-                Baltimore: Johns Hopkins University Press.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-in-the-roman-economy-300-bc-to-ad-700/oclc/466879823&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C. to A.D. 700.
+                  Baltimore: Johns Hopkins University Press.
+                </StyledLink>
               </li>
               <br></br>
               <li>
-                Scheidel, W., Morris, I. and Saller, R. (eds.), 2007,{' '}
-                <em>
-                  The Cambridge Economic History of the Greco- Roman World. Cambridge University
-                  Press
-                </em>
-                .
+                <StyledLink
+                  href="https://www.worldcat.org/title/cambridge-economic-history-of-the-greco-roman-world/oclc/261200102&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Scheidel, W., Morris, I. and Saller, R. (eds.), 2007,{' '}
+                  <em>
+                    The Cambridge Economic History of the Greco- Roman World. Cambridge University
+                    Press
+                  </em>
+                  .
+                </StyledLink>
               </li>
             </ul>
           </div>

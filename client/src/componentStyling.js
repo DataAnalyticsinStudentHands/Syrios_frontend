@@ -39,6 +39,12 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledLinkTerm = styled(StyledLink)`
+  font-family: 'CormorantGaramond-BoldItalic';
+
+  }
+`;
+
 // Style for Links on select/explore pages
 const StyledPageLink = styled(Link)`
   cursor: pointer;
@@ -268,6 +274,7 @@ const FooterLink = styled.a`
 export {
   StyledLinkButton,
   StyledLink,
+  StyledLinkTerm,
   StyledPageLink,
   StyledPageLinkPara,
   StyledPageLinkRsrc,
