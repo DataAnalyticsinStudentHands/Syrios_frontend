@@ -209,8 +209,7 @@ const Economic = () => {
               className="size-images-50"
             />
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-5 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               A regular person working on a farm or in a shop would earn around 18 of these bronze
               coins a day.
@@ -221,13 +220,13 @@ const Economic = () => {
         {/* SECTION 1.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               People needed these coins to buy things in Antioch’s markets.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -253,14 +252,14 @@ const Economic = () => {
         {/* SECTION 1.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               But this coin wasn’t worth very much, as it was made out of cheap bronze and not
               valuable gold or silver.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -1016,12 +1015,11 @@ const Economic = () => {
         {/* SECTION 2.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-7 align-self-center">
+          <div className="col-md-8 align-self-center">
             <Level1Text data-aos="fade-left">
               This coin could still buy important items for a person living in Antioch.
             </Level1Text>
           </div>
-          <div className="col-md-1"></div>
           <div className="col-md-4 align-self-center">
             <img src={bronze} alt="Logo" className="size-images-head" data-aos="fade-in" />
           </div>
@@ -1071,14 +1069,14 @@ const Economic = () => {
         {/* SECTION 2.3 */}
 
         <div className="row top-spacer-3" style={{ textAlign: 'center' }}>
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s the same as 2
               school milk cartoons.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-5 align-self-center">
@@ -1184,23 +1182,23 @@ const Economic = () => {
         {/* SECTION 3.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">Not all coins stayed in Antioch though.</ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8 align-self-center">
             <ParaText data-aos="fade-in">
               Instead some of the coins moved even hundreds of miles away.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.4 */}
@@ -1220,14 +1218,14 @@ const Economic = () => {
         {/* SECTION 3.5 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               We cannot be sure that the Antiochians’ civic coins were worth money at all of these
               places.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.6 */}
@@ -1258,15 +1256,15 @@ const Economic = () => {
         {/* SECTION 7.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Still, how far away the coins moved speaks to all the trade routes running in and out
               of Antioch and all the people coming and going from the city with little bronze coins
               in their pockets.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* Bottom Buttons */}

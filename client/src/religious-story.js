@@ -63,8 +63,7 @@ const religiousStory = () => {
           <div className="col-md-4 align-self-center">
             <img src={zeus_coin} alt="Logo" className="size-images-head" data-aos="fade-in" />
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-7 align-self-center">
+          <div className="col-md-8 align-self-center">
             <Level1Text data-aos="fade-left">This is the Greek god Zeus.</Level1Text>
           </div>
         </div>
@@ -114,13 +113,13 @@ const religiousStory = () => {
         {/* SECTION 2.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               This is one of the reasons the kings featured Zeus on their royal coins.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-2"></div>
@@ -140,8 +139,8 @@ const religiousStory = () => {
         {/* SECTION 2.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               According to legend, Zeus helped {' '}
                 <StyledLinkTerm
@@ -155,7 +154,7 @@ const religiousStory = () => {
               BCE.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -194,13 +193,13 @@ const religiousStory = () => {
         {/* SECTION 2.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               After establishing Antioch, the kings continued to celebrate Zeus.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.1 */}
@@ -225,13 +224,13 @@ const religiousStory = () => {
         {/* SECTION 3.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               He contributed to the building of a temple to Zeus in Athens, Greece.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -262,13 +261,13 @@ const religiousStory = () => {
         {/* SECTION 3.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               He also promised to build another temple to Zeus – (a.k.a. Jupiter) – in Antioch.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -291,37 +290,37 @@ const religiousStory = () => {
         {/* SECTION 3.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               We aren’t sure if he ever finished this temple – or even started it – but we DO know
               that he added new images of Zeus to the coins.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.5 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={zeus_coin2} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
           <div className="col-md-1"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               On the <span id="term">obverse</span> of this bronze coin is the head of Zeus.
             </ParaTextLeft>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 3.6 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-1"></div>
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               On the <span id="term">reverse</span> of this coin, we see Zeus’ eagle. In its talons
               is a lightning bolt.
@@ -331,7 +330,7 @@ const religiousStory = () => {
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={zeus_coin3} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 3.7 */}
@@ -359,8 +358,8 @@ const religiousStory = () => {
         {/* SECTION 3.8 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-1"></div>
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               In fact, many coins minted at Antioch feature a lightning bolt to refer to Zeus. This
               symbol is one of Zeus’
@@ -371,19 +370,19 @@ const religiousStory = () => {
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={zeus_coin4} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 4.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <Level1TextCenter data-aos="fade-left">
               But Zeus was not only a god for the kings. He was a god for the people too.​
             </Level1TextCenter>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 4.2 */}
@@ -418,34 +417,34 @@ const religiousStory = () => {
         {/* SECTION 4.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               This is called <span id="term">syncretism</span>, where belief systems are blended
               together.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <Level1TextCenter data-aos="fade-left">
               The people of Antioch also worshipped Zeus. Our best evidence comes from their civic
               coins.
             </Level1TextCenter>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The very first coins minted by the citizens under {' '}
                 <StyledLinkTerm
@@ -459,7 +458,7 @@ const religiousStory = () => {
               lightning bolt, plus the name of the Antiochians.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-3"></div>
@@ -475,8 +474,8 @@ const religiousStory = () => {
         {/* SECTION 5.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-1"></div>
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               Later on, when {' '}
                 <StyledLinkTerm
@@ -494,20 +493,20 @@ const religiousStory = () => {
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={zeus_coin8} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 5.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The citizens continued using Zeus on their coins, even after the Seleucid kings fell
               and the Romans conquered Syria.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-3"></div>
@@ -523,14 +522,14 @@ const religiousStory = () => {
         {/* SECTION 6.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               There are economic reasons for continuing the same coin types as the Seleucid kings,
               but this also reflects the importance of Zeus to the citizens themselves. ​
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* Bottom Buttons */}

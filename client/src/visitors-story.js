@@ -90,7 +90,7 @@ const Visitors = () => {
           <div className="col-md-12">
             <img src={antioch} alt="Logo" className="bg-img2" data-aos="fade-in" />
           </div>
-          <div className="col-md-8 align-self-center">
+          <div className="col-md-8">
             <Level1Text data-aos="fade-left">In 115 CE, an earthquake struck Antioch.</Level1Text>
           </div>
           <div className="col-md-4"></div>
@@ -100,10 +100,10 @@ const Visitors = () => {
 
         <div className="row top-spacer-3">
           <div className="col-md-4 align-self-center">
-            <ParaText data-aos="fade-right">
+            <ParaTextLeft data-aos="fade-right">
               According to the ancient historian Cassius Dio, the disaster hurt visitors from all
               over the Mediterranean and the Middle East.
-            </ParaText>
+            </ParaTextLeft>
           </div>
           <div className="col-md-8">
             <SubText data-aos="fade-up">
@@ -122,13 +122,13 @@ const Visitors = () => {
         {/* SECTION 1.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The damage was like a disaster hitting New York or London during a world summit.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-2"></div>
@@ -141,11 +141,11 @@ const Visitors = () => {
         {/* SECTION 1.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">But who were these people?</ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 2.1 */}
@@ -165,43 +165,43 @@ const Visitors = () => {
         {/* SECTION 2.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={coin1} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
           <div className="col-md-1"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               At Antioch, 960 total identifiable coins were excavated that date to the Roman period.
             </ParaTextLeft>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 2.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">949 are bronze and 11 are silver.</ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 2.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={bronzechart} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
           <div className="col-md-1"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               Of the bronze coins, over 80% were minted within Antioch.
             </ParaTextLeft>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 3.1 */}
@@ -226,28 +226,28 @@ const Visitors = () => {
           <div className="col-md-1"></div>
         </div>
         <div className="row top-spacer-05">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-up">
               Although we cannot be sure that people from these locations were the ones who carried
               the coins into Antioch, their spread still gives us a hint as to who might have been
               affected by the earthquake.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Still, this isn’t quite the diversity we see at other Syrian sites, such as at Dura
               Europos (a border city under Parthian rule for much of the Roman period).
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -260,21 +260,21 @@ const Visitors = () => {
         {/* SECTION 3.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               This may be due to currency regulation at Antioch. In other words, officials within
               the city may have regulated what counted as currency within city limits.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 4.1 */}
 
         <div className="row top-spacer-3">
           <div className="col-md-2"></div>
-          <div className="col-md-8 align-self-center">
+          <div className="col-md-8">
             <Level1TextCenter data-aos="fade-left">
               Even so, the coin assemblage contains important stories about the people at Antioch.
             </Level1TextCenter>
@@ -372,14 +372,14 @@ const Visitors = () => {
         {/* SECTION 4.5 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Their coins show up even further than their kingdom, testifying to the vast trade
               network and the many interactions along it.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -392,13 +392,13 @@ const Visitors = () => {
         {/* SECTION 4.6 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               And the people moving in and out of Antioch were a part of this trade network.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.1 */}
@@ -451,13 +451,13 @@ const Visitors = () => {
         {/* SECTION 5.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The coins range in date, but notice how the quantities increase over time.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-2 align-self-center" style={{ textAlign: 'center' }}>
@@ -477,7 +477,7 @@ const Visitors = () => {
           <div className="col-md-12">
             <img src={soldiers} alt="Logo" className="bg-img2" data-aos="fade-in" />
           </div>
-          <div className="col-md-8 align-self-center">
+          <div className="col-md-8">
             <Level1Text data-aos="fade-left">
               This makes sense! Like the passage from Cassius Dio showed, Antioch became the focus
               of Roman investment as a political and military center during the second century CE.
@@ -489,26 +489,26 @@ const Visitors = () => {
         {/* SECTION 6.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               As more Roman officials and soldiers gathered within Antioch, more Roman coins
               traveled along with them into the city.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 6.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               These coins therefore testify to the merging worlds of Antioch and the Roman empire.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* Bottom Buttons */}

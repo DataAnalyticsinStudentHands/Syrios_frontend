@@ -3,7 +3,8 @@ import {
     PageTitleCentered,
     ParaTextLeftSmaller,
     SubTextLeft,
-    PageSectionTitle
+    PageSectionTitle,
+    StyledLink
 } from "./componentStyling";
 import logo from "./data/intro-images/Logo.png"
 import drNeumann from "./data/about-images/DrNeumann.jpg"
@@ -82,9 +83,9 @@ const About = () => {
                               inscriptions database, downloadable datasets, and user
                               guides. Technical additions include the implementation
                               of parallax scrolling and responsive design layout,
-                              adaption of our scheme to follow
-                              <a href="http://nomisma.org/" target="_blank" rel="noopener noreferrer"> Nomisma format </a>
-                              and further accommodations for user accessibility.
+                              adaption of our scheme to follow {' '}
+                              <StyledLink href="http://nomisma.org/" target="_blank" rel="noopener noreferrer">Nomisma format</StyledLink>
+                              {' '} and further accommodations for user accessibility.
                               <br></br>
                               <br></br>
                               By September 2024, we plan to launch Phase III of

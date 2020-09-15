@@ -137,7 +137,7 @@ const Level1Text = styled.p`
 `;
 
 const Level1TextCenter = styled(Level1Text)`
-  text-align: justify;
+  text-align: center;
 `;
 
 const ParaText = styled.p`

@@ -411,14 +411,14 @@ const Intro = () => {
         </div>
 
         <div className="row top-spacer-4">
-          <div className="col-md-4"></div>
-          <div className="col-md-4" data-aos="fade-up">
+          <div className="col-md-2"></div>
+          <div className="col-md-8" data-aos="fade-up">
             <ParaText>
               In addition to symbols, many coins also have <span id="term">legends </span>
               or writing on them.
             </ParaText>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 2.6 */}
@@ -493,8 +493,8 @@ const Intro = () => {
         {/* SECTION 3.0 */}
 
         <div className="row top-spacer-4">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <Level1TextCenter data-aos="fade-up">
               With these images and legends, coins made clear which governmental {' '}
                 <StyledLinkTerm
@@ -507,7 +507,7 @@ const Intro = () => {
                 {' '} gave the coins value as money.
             </Level1TextCenter>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.1 */}
@@ -571,13 +571,13 @@ const Intro = () => {
         {/* SECTION 4.0 */}
 
         <div className="row top-spacer-5">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <Level1TextCenter data-aos="fade-left">
               The coins have many other features to notice.
             </Level1TextCenter>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 4.1 */}
