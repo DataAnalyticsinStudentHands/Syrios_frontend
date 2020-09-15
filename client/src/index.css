@@ -58,6 +58,12 @@
   color: white;
 }
 
+#subtitle-em {
+  font-family: 'CormorantGaramond-Bold';
+  font-size: 4.0vmin;
+  line-height: 3.0vmin;
+}
+
 /* image style/sizing */
 .img-responsive {
   height: auto;
@@ -196,6 +202,3 @@
   100% {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0); } }
-
-
-

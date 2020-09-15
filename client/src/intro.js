@@ -3,6 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   PageTitle,
   PageSubTitle,
@@ -80,8 +81,12 @@ const Intro = () => {
             </div>
             <div className="row mt-md-3">
               <PageSubTitle data-aos="fade-in">
-                Studying Urban Relationships and <br />
-                Identity over Ancient Syria
+                <span id="subtitle-em"> S</span>tudying
+                <span id="subtitle-em"> U</span>rban
+                <span id="subtitle-em"> R</span>elationships and <br />
+                <span id="subtitle-em"> I</span>dentity
+                <span id="subtitle-em"> O</span>ver Ancient
+                <span id="subtitle-em"> S</span>yria
               </PageSubTitle>
             </div>
             <div className="row mt-lg-5">
@@ -127,7 +132,23 @@ const Intro = () => {
               <img src={seleucidTetradrachm} alt="Logo" className="size-images-sm" />
               <img src={romanAureus} alt="Logo" className="size-images-sm" />
             </div>
-            <SubText>A royal Seleucid tetradrachm and an imperial Roman aureus.</SubText>
+            <SubText>A royal Seleucid {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/tetradrachm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                tetradrachm
+              </StyledLinkTerm>
+              {' '} and an imperial Roman {' '}
+              <StyledLinkTerm
+                 href="http://nomisma.org/id/aureus"
+                 target="_blank"
+                 rel="noopener noreferrer"
+               >
+                 aureus
+               </StyledLinkTerm>.
+             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-in">
             <ParaText>
@@ -177,7 +198,15 @@ const Intro = () => {
               <img src={syrianProvincial} alt="Logo" className="size-images-sm" />
               <img src={egyptianTetradrachm} alt="Logo" className="size-images-sm" />
             </div>
-            <SubText>A Syrian provincial coin and an Egyptian tetradrachm.</SubText>
+            <SubText>A Syrian provincial coin and an Egyptian {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/tetradrachm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                tetradrachm
+              </StyledLinkTerm>.
+            </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-in">
             <ParaText>
@@ -318,7 +347,15 @@ const Intro = () => {
               <img src={comp_4_left} alt="Logo" className="size-images" />
             </div>
             <SubText>
-              On the ancient bronze coin is Apollo (the Greek god of archery, music, and light).
+              On the ancient bronze coin is {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/apollo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Apollo
+                </StyledLinkTerm>
+              {' '} (the Greek god of archery, music, and light).
             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-up">
@@ -345,9 +382,16 @@ const Intro = () => {
               <img src={comp_6_left} alt="Logo" className="size-images" />
             </div>
             <SubText>
-              This coin has a branch from a laurel tree. It was an important symbol for the god
-              Apollo and for the trees that grew in Syria.
-            </SubText>
+              This coin has a branch from a laurel tree. It was an important symbol for the god {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/apollo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Apollo
+                </StyledLinkTerm>
+              {' '} and for the trees that grew in Syria.
+              </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-up">
             <ParaText>
@@ -417,8 +461,15 @@ const Intro = () => {
               <img src={comp_15} alt="Logo" className="size-images" />
             </div>
             <SubText>
-              This silver radiate celebrates PAX AVGVSTI or “Peace of the
-              Emperors.”
+              This silver {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/antoninianus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  radiate
+                </StyledLinkTerm>
+              {' '} celebrates PAX AVGVSTI or “Peace of the Emperors.”
             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-up">
@@ -445,8 +496,15 @@ const Intro = () => {
           <div className="col-md-3"></div>
           <div className="col-md-6">
             <Level1TextCenter data-aos="fade-up">
-              With these images and legends, coins made clear which governmental authority gave the
-              coins value as money.
+              With these images and legends, coins made clear which governmental {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/authority"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  authority
+                </StyledLinkTerm>
+                {' '} gave the coins value as money.
             </Level1TextCenter>
           </div>
           <div className="col-md-3"></div>
@@ -458,9 +516,24 @@ const Intro = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8" data-aos="fade-in">
             <ParaText>
-              Because of the uniqueness of each coin and the issuing authority that guaranteed its
-              value (e.g., individual cities, provinces, kingdoms, imperial governments), not all
-              coins were accepted everywhere as currency.
+              Because of the uniqueness of each coin and the issuing {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/authority"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  authority
+                </StyledLinkTerm>
+              {' '} that guaranteed its value (e.g., individual cities,
+              provinces, kingdoms, imperial governments), not all coins were
+              accepted everywhere as {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/currency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  currency
+                </StyledLinkTerm>.
             </ParaText>
           </div>
           <div className="col-md-2"></div>
@@ -592,8 +665,16 @@ const Intro = () => {
           <div className="col-md-3" data-aos="flip-right">
             <img src={comp_20} alt="Logo" className="size-images" data-aos="fade-in" />
             <SubText data-aos="fade-down">
-              A <span id="term">countermark</span> was stamped on a circulating coin to give it
-              extra value or keep it working as money.
+              A {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/countermark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  countermark
+                </StyledLinkTerm>
+              {' '} was stamped on a circulating coin to give it extra value or
+              keep it working as money.
             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-down">
@@ -647,8 +728,8 @@ const Intro = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -660,7 +741,7 @@ const Intro = () => {
                   médailles et antiques, Fonds général 180{' '}
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.75243"
@@ -670,7 +751,7 @@ const Intro = () => {
                   American Numismatic Society 1944.100.75243
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.39966"
@@ -680,7 +761,7 @@ const Intro = () => {
                   American Numismatic Society 1944.100.39966
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://ikmk.smb.museum/object?lang=en&id=18215628"
@@ -690,7 +771,7 @@ const Intro = () => {
                   Münzkabinet, Staatliche Museen zu Berlin, 18215628; photograph by Dirk Sonnenwald
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1937.999.318"
@@ -700,7 +781,7 @@ const Intro = () => {
                   American Numismatic Society 1937.999.318
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.65231"
@@ -710,7 +791,7 @@ const Intro = () => {
                   American Numismatic Society 1944.100.65231
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://ikmk.smb.museum/object?id=18201044"
@@ -721,7 +802,7 @@ const Intro = () => {
                   Saczewski
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1996.71.3?lang=en"
@@ -731,7 +812,7 @@ const Intro = () => {
                   American Numismatic Society - 1996.71.3
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1999.2.2"
@@ -741,7 +822,7 @@ const Intro = () => {
                   American Numismatic Society - 1999.2.2
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.65544"
@@ -755,38 +836,74 @@ const Intro = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
-                Burnett, A. 1987. <em>Coinage in the Roman World</em>. London: Seaby.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-in-the-roman-world/oclc/569153577&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Burnett, A. 1987. <em>Coinage in the Roman World</em>. London: Seaby.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Butcher, K. 2001-2002. “Small Change in Ancient Beirut: The Coin Finds from BEY 006
-                and BEY 045: Persian, Hellenistic, Roman, and Byzantine Periods,” <em>Berytus</em>{' '}
-                45-46.
+                <StyledLink
+                  href="https://www.worldcat.org/title/small-change-in-ancient-beirut-the-coin-finds-from-bey-006-and-bey-045-persian-hellenistic-roman-and-byzantine-periods/oclc/60764775&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2001-2002. “Small Change in Ancient Beirut: The Coin Finds from BEY 006
+                  and BEY 045: Persian, Hellenistic, Roman, and Byzantine Periods,” <em>Berytus</em>{' '}
+                  45-46.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Casey, P.J. 1986. <em>Understanding Ancient Coins</em>. Norman: University of
-                Oklahoma Press.
+                <StyledLink
+                  href="https://www.worldcat.org/title/understanding-ancient-coins-an-introd-for-archaeologists-and-historians/oclc/246625380&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Casey, P.J. 1986. <em>Understanding Ancient Coins</em>. Norman: University of
+                  Oklahoma Press.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Howgego, C. 1995. <em>Ancient History from Coins</em>. London: Routledge.
+                <StyledLink
+                  href="https://www.worldcat.org/title/ancient-history-from-coins/oclc/933449440&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Howgego, C. 1995. <em>Ancient History from Coins</em>. London: Routledge.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Howgego, C., Heuchert, V., and Burnett, A. (eds.) 2005.{' '}
-                <em>Coinage and Identity in the Roman Provinces</em>. Oxford University Press.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-and-identity-in-the-roman-provinces/oclc/165406567&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Howgego, C., Heuchert, V., and Burnett, A. (eds.) 2005.{' '}
+                  <em>Coinage and Identity in the Roman Provinces</em>. Oxford University Press.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Metcalf, W.E. (ed.). 2012. <em>The Oxford Handbook of Greek and Roman Coinage</em>.
-                Oxford University Press.
+                <StyledLink
+                  href="https://www.worldcat.org/title/oxford-handbook-of-greek-and-roman-coinage/oclc/1014889372&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Metcalf, W.E. (ed.). 2012. <em>The Oxford Handbook of Greek and Roman Coinage</em>.
+                  Oxford University Press.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 Neumann, K. Forthcoming.{' '}
                 <em>Antioch in Syria: A History from Coins, 300 BCE-450 CE</em> (Cambridge
