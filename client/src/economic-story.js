@@ -3,10 +3,12 @@ import 'tableau-api';
 import TableauReport from "tableau-react";
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextLeft,
   SubText,
@@ -142,7 +144,7 @@ const Economic = () => {
               data-aos-duration="1900"
               className="size-images-50"
             />
-            <br></br>
+            <br />
             <img
               src={bronze}
               alt="Logo"
@@ -207,8 +209,7 @@ const Economic = () => {
               className="size-images-50"
             />
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-5 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               A regular person working on a farm or in a shop would earn around 18 of these bronze
               coins a day.
@@ -219,13 +220,13 @@ const Economic = () => {
         {/* SECTION 1.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               People needed these coins to buy things in Antioch’s markets.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -241,8 +242,8 @@ const Economic = () => {
           <div className="col-md-4 align-self-center">
             <SubText data-aos="fade-left">
               “Antioch, a city known to all the world… so rich is it in imported and local goods.”
-              <br></br>
-              <br></br>- Ammianus Marcellinus, <em>Roman Antiquities</em> 14.8.8
+              <br />
+              <br />- Ammianus Marcellinus, <em>Roman Antiquities</em> 14.8.8
             </SubText>
           </div>
           <div className="col-md-1"></div>
@@ -251,14 +252,14 @@ const Economic = () => {
         {/* SECTION 1.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               But this coin wasn’t worth very much, as it was made out of cheap bronze and not
               valuable gold or silver.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -287,11 +288,11 @@ const Economic = () => {
                 className="size-images-md"
               />
             </div>
-            <br></br>
+            <br />
             <div>
               <img src={equal_to} alt="Logo" data-aos="fade-in" className="size-images-50" />
             </div>
-            <br></br>
+            <br />
             <div>
               <img
                 src={bronze}
@@ -999,7 +1000,14 @@ const Economic = () => {
           <div className="col-md-4 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               In fact, some scholars think that it might have taken over 100 of these bronze coins
-              to equal the value of only 1 silver tetradrachm!
+              to equal the value of only 1 silver {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/tetradrachm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  tetradrachm
+                </StyledLinkTerm>.
             </ParaTextLeft>
           </div>
         </div>
@@ -1007,12 +1015,11 @@ const Economic = () => {
         {/* SECTION 2.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-7 align-self-center">
+          <div className="col-md-8 align-self-center">
             <Level1Text data-aos="fade-left">
               This coin could still buy important items for a person living in Antioch.
             </Level1Text>
           </div>
-          <div className="col-md-1"></div>
           <div className="col-md-4 align-self-center">
             <img src={bronze} alt="Logo" className="size-images-head" data-aos="fade-in" />
           </div>
@@ -1062,14 +1069,14 @@ const Economic = () => {
         {/* SECTION 2.3 */}
 
         <div className="row top-spacer-3" style={{ textAlign: 'center' }}>
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Between 2 and 10 bronze coins could buy 1 quart of wine. Today, that’s the same as 2
               school milk cartoons.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-5 align-self-center">
@@ -1163,34 +1170,35 @@ const Economic = () => {
         {/* SECTION 3.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-7 align-self-center">
-            <Level1Text data-aos="fade-left">
+          <div className="col-md-2"></div>
+          <div className="col-md-8 align-self-center">
+            <Level1TextCenter data-aos="fade-left">
               Most of the Antioch civic coins were spent locally.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-5"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">Not all coins stayed in Antioch though.</ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8 align-self-center">
             <ParaText data-aos="fade-in">
               Instead some of the coins moved even hundreds of miles away.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.4 */}
@@ -1210,14 +1218,14 @@ const Economic = () => {
         {/* SECTION 3.5 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               We cannot be sure that the Antiochians’ civic coins were worth money at all of these
               places.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.6 */}
@@ -1248,15 +1256,15 @@ const Economic = () => {
         {/* SECTION 7.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 align-self-center">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Still, how far away the coins moved speaks to all the trade routes running in and out
               of Antioch and all the people coming and going from the city with little bronze coins
               in their pockets.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* Bottom Buttons */}
@@ -1284,8 +1292,8 @@ const Economic = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -1297,7 +1305,7 @@ const Economic = () => {
                   médailles et antiques, Fonds général 430
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://rpc.ashmus.ox.ac.uk/coin/73446"
@@ -1307,7 +1315,7 @@ const Economic = () => {
                   Roman Provincial Coinage Project
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.39966"
@@ -1317,7 +1325,7 @@ const Economic = () => {
                   American Numismatic Society - 1944.100.39966
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b84967440"
@@ -1328,7 +1336,7 @@ const Economic = () => {
                   médailles et antiques, M 5464
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b8508048m"
@@ -1343,29 +1351,47 @@ const Economic = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
-                Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley in the Late
-                Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.), Les
-                monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique et
-                romain?: actes de la table ronde de Damas, 10-12 novembre 1999. Beirut: Institut
-                Français d''Archéologie du Proche- Orient. 145-152.
+                <StyledLink
+                  href="https://www.worldcat.org/title/monnayages-syriens-quel-apport-pour-lhistoire-du-proche-orient-hellenistique-et-romain-actes-de-la-table-ronde-de-damas-10-12-novembre-1999/oclc/612194159&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2002, “Circulation of Bronze Coinage in the Orontes Valley in the Late
+                  Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.), Les
+                  monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique et
+                  romain?: actes de la table ronde de Damas, 10-12 novembre 1999. Beirut: Institut
+                  Français d''Archéologie du Proche- Orient. 145-152.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C. to A.D. 700.
-                Baltimore: Johns Hopkins University Press.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-in-the-roman-economy-300-bc-to-ad-700/oclc/466879823&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Harl, K.W. 1996. <em>Coinage in the Roman Economy</em>, 300 B.C. to A.D. 700.
+                  Baltimore: Johns Hopkins University Press.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Scheidel, W., Morris, I. and Saller, R. (eds.), 2007,{' '}
-                <em>
-                  The Cambridge Economic History of the Greco- Roman World. Cambridge University
-                  Press
-                </em>
-                .
+                <StyledLink
+                  href="https://www.worldcat.org/title/cambridge-economic-history-of-the-greco-roman-world/oclc/261200102&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Scheidel, W., Morris, I. and Saller, R. (eds.), 2007,{' '}
+                  <em>
+                    The Cambridge Economic History of the Greco- Roman World. Cambridge University
+                    Press
+                  </em>
+                  .
+                </StyledLink>
               </li>
             </ul>
           </div>

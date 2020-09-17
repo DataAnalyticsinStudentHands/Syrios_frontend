@@ -39,6 +39,12 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledLinkTerm = styled(StyledLink)`
+  font-family: 'CormorantGaramond-BoldItalic';
+
+  }
+`;
+
 // Style for Links on select/explore pages
 const StyledPageLink = styled(Link)`
   cursor: pointer;
@@ -72,7 +78,7 @@ const StyledPageLinkCaptions = styled(StyledPageLink)`
 const StyledPageLinkPara = styled(StyledPageLink)`
   color: #7ea274;
   font-size: 24px;
-  
+
   &:hover {
     color: #be9672;
     background: none;
@@ -128,6 +134,10 @@ const Level1Text = styled.p`
   color: #2d616a;
   font-size: 48px;
   text-align: left;
+`;
+
+const Level1TextCenter = styled(Level1Text)`
+  text-align: center;
 `;
 
 const ParaText = styled.p`
@@ -264,6 +274,7 @@ const FooterLink = styled.a`
 export {
   StyledLinkButton,
   StyledLink,
+  StyledLinkTerm,
   StyledPageLink,
   StyledPageLinkPara,
   StyledPageLinkRsrc,
@@ -274,6 +285,7 @@ export {
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextBlueBG,
   ParaTextLeft,

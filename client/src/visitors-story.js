@@ -5,10 +5,12 @@ import 'tableau-api';
 import TableauReport from 'tableau-react';
 import {
   StyledLink,
+  StyledLinkTerm,
   StyledLinkButton,
   StoryTitle,
   StoryTitleSM,
   Level1Text,
+  Level1TextCenter,
   ParaText,
   ParaTextLeft,
   SubText,
@@ -88,7 +90,7 @@ const Visitors = () => {
           <div className="col-md-12">
             <img src={antioch} alt="Logo" className="bg-img2" data-aos="fade-in" />
           </div>
-          <div className="col-md-8 align-self-center">
+          <div className="col-md-8">
             <Level1Text data-aos="fade-left">In 115 CE, an earthquake struck Antioch.</Level1Text>
           </div>
           <div className="col-md-4"></div>
@@ -98,10 +100,10 @@ const Visitors = () => {
 
         <div className="row top-spacer-3">
           <div className="col-md-4 align-self-center">
-            <ParaText data-aos="fade-right">
+            <ParaTextLeft data-aos="fade-right">
               According to the ancient historian Cassius Dio, the disaster hurt visitors from all
               over the Mediterranean and the Middle East.
-            </ParaText>
+            </ParaTextLeft>
           </div>
           <div className="col-md-8">
             <SubText data-aos="fade-up">
@@ -111,8 +113,8 @@ const Visitors = () => {
               and private individuals from all corners had gathered there for legal matters,
               embassies, commerce, and spectacle, not a single people group or land went unharmed –
               and thus in Antioch, the whole world under Roman control was shaken.”
-              <br></br>
-              <br></br>- Cassius Dio 68.24.1-2
+              <br />
+              <br />- Cassius Dio 68.24.1-2
             </SubText>
           </div>
         </div>
@@ -120,13 +122,13 @@ const Visitors = () => {
         {/* SECTION 1.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The damage was like a disaster hitting New York or London during a world summit.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-2"></div>
@@ -139,11 +141,11 @@ const Visitors = () => {
         {/* SECTION 1.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">But who were these people?</ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 2.1 */}
@@ -163,54 +165,55 @@ const Visitors = () => {
         {/* SECTION 2.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={coin1} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
           <div className="col-md-1"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               At Antioch, 960 total identifiable coins were excavated that date to the Roman period.
             </ParaTextLeft>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 2.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">949 are bronze and 11 are silver.</ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 2.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center" style={{ textAlign: 'center' }}>
             <img src={bronzechart} alt="Logo" data-aos="fade-in" className="size-images" />
           </div>
           <div className="col-md-1"></div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-right">
               Of the bronze coins, over 80% were minted within Antioch.
             </ParaTextLeft>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
 
         {/* SECTION 3.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               The rest of the coins come from a scattered mix across the Levant and Mediterranean.​
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.2 */}
@@ -223,28 +226,28 @@ const Visitors = () => {
           <div className="col-md-1"></div>
         </div>
         <div className="row top-spacer-05">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-up">
               Although we cannot be sure that people from these locations were the ones who carried
               the coins into Antioch, their spread still gives us a hint as to who might have been
               affected by the earthquake.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 3.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Still, this isn’t quite the diversity we see at other Syrian sites, such as at Dura
               Europos (a border city under Parthian rule for much of the Roman period).
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -257,25 +260,26 @@ const Visitors = () => {
         {/* SECTION 3.4 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               This may be due to currency regulation at Antioch. In other words, officials within
               the city may have regulated what counted as currency within city limits.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 4.1 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
+            <Level1TextCenter data-aos="fade-left">
               Even so, the coin assemblage contains important stories about the people at Antioch.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 4.2 */}
@@ -286,18 +290,42 @@ const Visitors = () => {
             <div style={{ textAlign: 'center' }}>
               <img src={nabataea1} alt="Logo" className="size-images" />
             </div>
-            <SubText>The obverse shows King Rabbel and his wife, Queen Gamilath.</SubText>
+            <SubText>The obverse shows {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/rabbel_ii_nabataea"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                King Rabbel
+              </StyledLinkTerm>
+              {' '} and his wife, Queen Gamilath.</SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-in">
             <ParaText>
-              For example, 20 coins from the Kingdom of Nabataea were excavated within Antioch.
+              For example, 20 coins from the {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/nabataean_kingdom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Kingdom of Nabataea
+                </StyledLinkTerm>
+                {' '} were excavated within Antioch.
             </ParaText>
           </div>
           <div className="col-md-3" data-aos="flip-left">
             <div style={{ textAlign: 'center' }}>
               <img src={nabataea2} alt="Logo" className="size-images" />
             </div>
-            <SubText>The reverse shows two cornucopiae and a legend in the local language.</SubText>
+            <SubText>The reverse shows two cornucopiae and a {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/legend"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                legend
+              </StyledLinkTerm>
+              {' '} in the local language.</SubText>
             <div className="col-md-1"></div>
           </div>
         </div>
@@ -308,7 +336,14 @@ const Visitors = () => {
           <div className="col-md-1"></div>
           <div className="col-md-4 align-self-center">
             <ParaTextLeft data-aos="fade-right">
-              Of the bronze coins, over 80% were minted within Antioch.
+              The Nabataeans are famous for their city of {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/petra_arabia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Petra
+                </StyledLinkTerm>…
             </ParaTextLeft>
           </div>
           <div className="col-md-1"></div>
@@ -337,14 +372,14 @@ const Visitors = () => {
         {/* SECTION 4.5 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               Their coins show up even further than their kingdom, testifying to the vast trade
               network and the many interactions along it.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-1"></div>
@@ -357,24 +392,25 @@ const Visitors = () => {
         {/* SECTION 4.6 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               And the people moving in and out of Antioch were a part of this trade network.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.1 */}
 
         <div className="row top-spacer-3">
+          <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
-            <Level1Text data-aos="fade-left">
+            <Level1TextCenter data-aos="fade-left">
               Perhaps the most important story lies in the 102 Roman coins found in the city.
-            </Level1Text>
+            </Level1TextCenter>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 5.2 */}
@@ -390,7 +426,15 @@ const Visitors = () => {
           <div className="col-md-4" style={{ textAlign: 'center' }}>
             <img src={silverdenarii1} alt="Logo" data-aos="fade-in" className="size-images-md" />
             <img src={silverdenarii2} alt="Logo" data-aos="fade-in" className="size-images-md" />
-            <SubText>10 silver denarii</SubText>
+            <SubText>10 silver {' '}
+              <StyledLinkTerm
+                href="http://nomisma.org/id/denarius"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                denarii
+              </StyledLinkTerm>
+            </SubText>
           </div>
           <div className="col-md-4" style={{ textAlign: 'center' }}>
             <img src={romanbronze1} alt="Logo" data-aos="fade-in" className="size-images-md" />
@@ -407,13 +451,13 @@ const Visitors = () => {
         {/* SECTION 5.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The coins range in date, but notice how the quantities increase over time.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
         <div className="row top-spacer-05">
           <div className="col-md-2 align-self-center" style={{ textAlign: 'center' }}>
@@ -433,7 +477,7 @@ const Visitors = () => {
           <div className="col-md-12">
             <img src={soldiers} alt="Logo" className="bg-img2" data-aos="fade-in" />
           </div>
-          <div className="col-md-8 align-self-center">
+          <div className="col-md-8">
             <Level1Text data-aos="fade-left">
               This makes sense! Like the passage from Cassius Dio showed, Antioch became the focus
               of Roman investment as a political and military center during the second century CE.
@@ -445,26 +489,26 @@ const Visitors = () => {
         {/* SECTION 6.2 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               As more Roman officials and soldiers gathered within Antioch, more Roman coins
               traveled along with them into the city.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* SECTION 6.3 */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <ParaText data-aos="fade-in">
               These coins therefore testify to the merging worlds of Antioch and the Roman empire.
             </ParaText>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-2"></div>
         </div>
 
         {/* Bottom Buttons */}
@@ -492,8 +536,8 @@ const Visitors = () => {
           <div className="col-md-1"></div>
           <div className="col-md-5">
             Coin Images Courtesy of:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
                 <StyledLink
@@ -505,7 +549,7 @@ const Visitors = () => {
                   médailles et antiques, Vogüé 227
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/2017.32.62"
@@ -515,7 +559,7 @@ const Visitors = () => {
                   American Numismatic Society 2017.32.62
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1935.117.369"
@@ -525,7 +569,7 @@ const Visitors = () => {
                   American Numismatic Society 1935.117.369
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1995.11.491"
@@ -535,7 +579,7 @@ const Visitors = () => {
                   American Numismatic Society 1995.11.491
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="https://gallica.bnf.fr/ark:/12148/btv1b8507176z.r=%22M%205158%22?rk=21459;2"
@@ -546,7 +590,7 @@ const Visitors = () => {
                   5158
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1944.100.38396"
@@ -556,7 +600,7 @@ const Visitors = () => {
                   American Numismatic Society 1944.100.38396
                 </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
                 <StyledLink
                   href="http://numismatics.org/collection/1956.127.1143"
@@ -570,41 +614,71 @@ const Visitors = () => {
           </div>
           <div className="col-md-5 ">
             To read more, check these out:
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <ul>
               <li>
-                Butcher, K. 2002. “Circulation of Bronze Coinage in the Orontes Valley in the Late
-                Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.),{' '}
-                <em>
-                  Les monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique
-                  et romain?: actes de la table ronde de Damas, 10-12 novembre 1999
-                </em>
-                . Beirut: Institut Français d''Archéologie du Proche-Orient. 145-152.
+                <StyledLink
+                  href="https://www.worldcat.org/title/monnayages-syriens-quel-apport-pour-lhistoire-du-proche-orient-hellenistique-et-romain-actes-de-la-table-ronde-de-damas-10-12-novembre-1999/oclc/612194159&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2002. “Circulation of Bronze Coinage in the Orontes Valley in the Late
+                  Hellenistic and Early Roman Periods,” in C. Augé and F. Duyrat (eds.),{' '}
+                  <em>
+                    Les monnayages syriens: quel apport pour l'histoire du Proche-Orient hellénistique
+                    et romain?: actes de la table ronde de Damas, 10-12 novembre 1999
+                  </em>
+                  . Beirut: Institut Français d''Archéologie du Proche-Orient. 145-152.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Butcher, K. 2004. <em>Coinage in Roman Syria: Northern Syria, 64 BC-AD 253</em>.
-                London: Royal Numismatic Society.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-in-roman-syria-northern-syria-64-bc-ad-253/oclc/928519613&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Butcher, K. 2004. <em>Coinage in Roman Syria: Northern Syria, 64 BC-AD 253</em>.
+                  London: Royal Numismatic Society.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Huth, M. and van Alfen, P. G. 2010.{' '}
-                <em>Coinage of the Caravan Kingdoms: Studies in Ancient Arabian Monetization</em>.
-                New York: American Numismatic Society.
+                <StyledLink
+                  href="https://www.worldcat.org/title/coinage-of-the-caravan-kingdoms-studies-in-ancient-arabian-monetization/oclc/918551407&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Huth, M. and van Alfen, P.G. 2010.{' '}
+                  <em>Coinage of the Caravan Kingdoms: Studies in Ancient Arabian Monetization</em>.
+                  New York: American Numismatic Society.
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Millar, F. 1993. <em>The Roman Near East, 31 BC-AD 337</em>. Cambridge, MA: Harvard
-                University Press
+                <StyledLink
+                  href="https://www.worldcat.org/title/roman-near-east-31-bc-ad-337/oclc/66628586&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Millar, F. 1993. <em>The Roman Near East, 31 BC-AD 337</em>. Cambridge, MA: Harvard
+                  University Press
+                </StyledLink>
               </li>
-              <br></br>
+              <br />
               <li>
-                Young, G.K. 2001.{' '}
-                <em>
-                  Rome’s Eastern Trade: International Commerce and Imperial Policy, 31 BC – AD 305
-                </em>
-                . London: Routledge.
+                <StyledLink
+                  href="https://www.worldcat.org/title/romes-eastern-trade-international-commerce-and-imperial-policy-31-bc-ad-305/oclc/819721420&referer=brief_results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Young, G.K. 2001.{' '}
+                  <em>
+                    Rome’s Eastern Trade: International Commerce and Imperial Policy, 31 BC – AD 305
+                  </em>
+                  . London: Routledge.
+                </StyledLink>
               </li>
             </ul>
           </div>
