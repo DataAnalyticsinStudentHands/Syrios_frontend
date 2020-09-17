@@ -103,7 +103,7 @@ const CoinPile = () => {
 
     const [Materialfilter, setMaterialFilter] = useState("");
     const [Authorityfilter, setAuthorityFilter] = useState("");
-    const [Datefilter, setDateFilter] = useState("");
+    const [Datefilter, setDateFilter] = useState("-");
     const [Typefilter, setTypeFilter] = useState("");
 
     if (loading)
@@ -157,8 +157,9 @@ const CoinPile = () => {
         item.IssuingAuthority.toLowerCase().includes(
           Authorityfilter.toLowerCase()
         ) &&
-        item.FromDate > Datefilter[0] &&
-        item.ToDate < Datefilter[1] &&
+        (Datefilter !== "-"
+          ? item.FromDate > Datefilter[0] && item.ToDate < Datefilter[1]
+          : true) &&
         item.TypeCategory.toLowerCase().includes(Typefilter.toLowerCase())
     );
 
@@ -187,7 +188,7 @@ const CoinPile = () => {
     const clearFilters = () => {
       setMaterialFilter("");
       setAuthorityFilter("");
-      setDateFilter("");
+      setDateFilter("-");
       setTypeFilter("");
     };
 
@@ -201,10 +202,15 @@ const CoinPile = () => {
       }
     }
     const returnFilteredData = () => {
-      if (filteredResults.length) {
-        return filteredResults;
-      } else {
+      if (
+        !Typefilter &&
+        !Authorityfilter &&
+        Datefilter === "-" &&
+        !Materialfilter
+      ) {
         return data.coins;
+      } else {
+        return filteredResults;
       }
     };
 
