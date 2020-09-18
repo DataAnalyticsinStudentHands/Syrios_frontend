@@ -1,10 +1,13 @@
 import React from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
     PageTitleCentered,
     ParaTextLeftSmaller,
     SubTextLeft,
     PageSectionTitle,
-    StyledLink
+    StyledLink,
+    StyledLinkButton
 } from "./componentStyling";
 import logo from "./data/intro-images/Logo.png"
 import drNeumann from "./data/about-images/DrNeumann.jpg"
@@ -16,13 +19,17 @@ import jinelly from "./data/about-images/Jinelly.jpg"
 import xandria from "./data/about-images/Xandria.jpg"
 
 const About = () => {
+    AOS.init({
+      duration: 1000,
+    });
+
     return (
         <div>
             <div className="container-fluid p-0 px-6">
                 {/* About Section */}
                 <div className="row top-buffer-1">
                     <div className="col-md-1"></div>
-                    <div className="col-md-10">
+                    <div className="col-md-10" data-aos="fade-up">
                         <PageTitleCentered>
                             About the SYRIOS Project
                         </PageTitleCentered>
@@ -74,8 +81,8 @@ const About = () => {
                               that move. From a technical perspective, this initial
                               exhibit provided a platform for investigating overall
                               design, interactivity, and usability.
-                              <br></br>
-                              <br></br>
+                              <br />
+                              <br />
                               By September 2021, we plan to launch Phase II of the
                               exhibit, which will be a full prototype focused on the
                               city of Antioch. This phase will include additional
@@ -86,8 +93,13 @@ const About = () => {
                               adaption of our scheme to follow {' '}
                               <StyledLink href="http://nomisma.org/" target="_blank" rel="noopener noreferrer">Nomisma format</StyledLink>
                               {' '} and further accommodations for user accessibility.
-                              <br></br>
-                              <br></br>
+                              <br />
+                              <br />
+                                  <StyledLinkButton to="/site-map" data-aos="fade-right">
+                                    View the sitemap of The SYRIOS Project
+                                  </StyledLinkButton>
+                              <br />
+                              <br />
                               By September 2024, we plan to launch Phase III of
                               the exhibit, which will be the final exhibit
                               encompassing the cities of ancient Syria.
@@ -100,7 +112,7 @@ const About = () => {
 
                 <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-8" data-aos="fade-up">
                         <PageTitleCentered>
                             Meet the Team
                         </PageTitleCentered>
@@ -109,7 +121,7 @@ const About = () => {
                 </div>
                 <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
                             Project Directors
                         </PageSectionTitle>
@@ -128,11 +140,11 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Kristina Neumann, Ph.D.</strong>
-                            <br></br>
+                            <br />
                             <em>Assistant Professor of Roman and Digital History in the Department
                                 of History at the University of Houston</em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             Her book – <em>Antioch in Syria: A History from Coins, 300 BCE-450 CE </em>
                             (Cambridge University Press) – analyzes the long-term development of
                             one Syrian city through a combination of digital technologies, Exploratory
@@ -159,11 +171,11 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Peggy Lindner, Ph.D.</strong>
-                            <br></br>
+                            <br />
                             <em>Assistant Professor in the Department of Information & Logistics
                                 Technology in the College of Technology at the University of Houston</em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             While Dr. Lindner’s background is in engineering, she has built her career
                             around data science education and digital humanities at UH since 2014
                             and has a keen appreciation of the importance of making data free and
@@ -183,7 +195,7 @@ const About = () => {
                 </div>
                 <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
                             Digital Media and Content Team
                         </PageSectionTitle>
@@ -202,10 +214,10 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Elizabeth Rodwell, Ph.D.</strong>
-                            <br></br>
+                            <br />
                             <em>Usability (UX) Lead</em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             Rodwell’s background combines design production/research, technology
                             studies, and anthropology. Before returning to graduate school to get
                             an M.A. and Ph.D. in anthropology, she was an Assistant Professor of
@@ -240,10 +252,10 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Martin Pepper</strong>
-                            <br></br>
+                            <br />
                             <em>Interaction Designer</em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             Pepper is a Houston, TX, based graphic designer with over 25 years of
                             experience creating immersive interactive experiences. His interaction
                             design has appeared in DVD-based games, educational software, Fortune
@@ -269,10 +281,10 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Rahul Raj Mogili</strong>
-                            <br></br>
+                            <br />
                             <em>Web Developer</em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             Mogili is currently a graduate student in the Computer Science Department
                             at UH with extensive experience in web development and UI/UX design. He has worked on projects using
                             React.js, GraphQL, MongoDB, Swift, Python. His academic projects include building a Carpooling app using Swift along with
@@ -295,10 +307,10 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Jinelly Swasey</strong>
-                            <br></br>
+                            <br />
                             <em>Graduate Usability (UX) Assistant</em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             In May 2020, Swasey graduated from the University of Houston with a B.S. in Digital
                             Media. While studying, she developed skills in UI/UX design, omnichannel
                             marketing, and branding. During the 2019-2020 academic year, she served
@@ -321,10 +333,10 @@ const About = () => {
                     <div className="col-md-8 pl-5 align-self-center">
                         <SubTextLeft>
                             <strong>Xandria Outing</strong>
-                            <br></br>
+                            <br />
                             <em>Graduate Assistant in Data Development and Curation </em>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             Outing is a 2020 graduate from the University of Houston with a M.A. in
                             Public History. For the project, Outing built, maintained, and updated
                             digital spreadsheets with coin data. She oversaw the creation and editing
@@ -340,31 +352,31 @@ const About = () => {
                     <div className="col-md-10">
                         <SubTextLeft>
                             <strong>Past Student Research Assistants</strong>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             <ul>
                                 <li>
-                                  <strong>Alberto Wilson, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br></br> Learned technical design within Omeka and associated APIs
+                                  <strong>Alberto Wilson, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br /> Learned technical design within Omeka and associated APIs
                                 </li>
-                                <br></br>
+                                <br />
                                 <li>
-                                  <strong>Tara Sewell, Ph.D. 2020 from the Department of History at the University of Houston</strong> <br></br> Creating digital data entries from printed excavation reports 
+                                  <strong>Tara Sewell, Ph.D. 2020 from the Department of History at the University of Houston</strong> <br /> Creating digital data entries from printed excavation reports 
                                 </li>
-                                <br></br>
+                                <br />
                                 <li>
-                                  <strong>Matthew Finnie, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br></br> Created Syrian city profiles within Omeka
+                                  <strong>Matthew Finnie, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br /> Created Syrian city profiles within Omeka
                                 </li>
-                                <br></br>
+                                <br />
                                 <li>
-                                  <strong>Delfina Denari, B.S. from the University of Houston</strong> <br></br> Creation of 3D, annotated coin scans 
+                                  <strong>Delfina Denari, B.S. from the University of Houston</strong> <br /> Creation of 3D, annotated coin scans 
                                 </li>
-                                <br></br>
+                                <br />
                                 <li>
-                                  <strong>Abigail Chetlain, B.S. from the University of Houston</strong> <br></br> Worked on graphic design of the digital project
+                                  <strong>Abigail Chetlain, B.S. from the University of Houston</strong> <br /> Worked on graphic design of the digital project
                                 </li>
-                                <br></br>
+                                <br />
                                 <li>
-                                  <strong>Anjana Kummari, M.A. from the University of Houston</strong> <br></br> Initial building of the backend of the digital project 
+                                  <strong>Anjana Kummari, M.A. from the University of Houston</strong> <br /> Initial building of the backend of the digital project 
                                 </li>
                             </ul>
                         </SubTextLeft>
@@ -376,7 +388,7 @@ const About = () => {
 
                 <div className="row top-buffer-1">
                     <div className="col-md-2"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-8" data-aos="fade-up">
                         <PageTitleCentered>
                             Acknowledgments
                         </PageTitleCentered>
@@ -391,56 +403,56 @@ const About = () => {
                         <ParaTextLeftSmaller>
                             The SYRIOS Project is made possible through the generosity and support of the University of
                             Houston, in particular:
-                            <br></br>
-                            <br></br>
-                            <a href="https://drc.lib.uh.edu/" target="_blank" rel="noopener noreferrer">Digital Research
-                                Commons</a>
-                            <br></br>
-                            <a href="https://www.uh.edu/research/" target="_blank" rel="noopener noreferrer">Division of
-                                Research</a>
-                            <br></br>
-                            <a href="https://libraries.uh.edu/" target="_blank" rel="noopener noreferrer">University of
-                                Houston Libraries</a>
-                            <br></br>
-                            <a href="https://www.uh.edu/class/history/" target="_blank" rel="noopener noreferrer">Department
-                                of History</a>
-                            <br></br>
-                            <a href="https://uh.edu/class/ctr-public-history/" target="_blank"
+                            <br />
+                            <br />
+                            <StyledLink href="https://drc.lib.uh.edu/" target="_blank" rel="noopener noreferrer">Digital Research
+                                Commons</StyledLink>
+                            <br />
+                            <StyledLink href="https://www.uh.edu/research/" target="_blank" rel="noopener noreferrer">Division of
+                                Research</StyledLink>
+                            <br />
+                            <StyledLink href="https://libraries.uh.edu/" target="_blank" rel="noopener noreferrer">University of
+                                Houston Libraries</StyledLink>
+                            <br />
+                            <StyledLink href="https://www.uh.edu/class/history/" target="_blank" rel="noopener noreferrer">Department
+                                of History</StyledLink>
+                            <br />
+                            <StyledLink href="https://uh.edu/class/ctr-public-history/" target="_blank"
                                rel="noopener noreferrer">Center
-                                for Public History</a>
-                            <br></br>
-                            <a href="https://www.uh.edu/technology/" target="_blank" rel="noopener noreferrer">College
+                                for Public History</StyledLink>
+                            <br />
+                            <StyledLink href="https://www.uh.edu/technology/" target="_blank" rel="noopener noreferrer">College
                                 of
-                                Technology</a>
-                            <br></br>
-                            <a href="https://www.uh.edu/data-science-institute/" target="_blank"
+                                Technology</StyledLink>
+                            <br />
+                            <StyledLink href="https://www.uh.edu/data-science-institute/" target="_blank"
                                rel="noopener noreferrer">Hewlett
-                                Packard Enterprise Data Science Institute</a>
+                                Packard Enterprise Data Science Institute</StyledLink>
 
                         </ParaTextLeftSmaller>
                     </div>
                     <div className="col-md-5 ">
                         <ParaTextLeftSmaller>
                             We are also grateful to the many museums and institutions for their sharing of coin material:
-                            <br></br>
-                            <br></br>
-                            <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American
+                            <br />
+                            <br />
+                            <StyledLink href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American
                                 Numismatic
-                                Society</a>
-                            <br></br>
-                            <a href="https://library.princeton.edu/special-collections/divisions/numismatic-collection"
+                                Society</StyledLink>
+                            <br />
+                            <StyledLink href="https://library.princeton.edu/special-collections/divisions/numismatic-collection"
                                target="_blank" rel="noopener noreferrer">Princeton University Library Numismatic
-                                Collection</a>
-                            <br></br>
-                            <a href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general"
-                               target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</a>
-                            <br></br>
-                            <a href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank"
-                               rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</a>
-                            <br></br>
-                            <a href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman
-                                Provincial Coinage Online</a>
-                            <br></br>
+                                Collection</StyledLink>
+                            <br />
+                            <StyledLink href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general"
+                               target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</StyledLink>
+                            <br />
+                            <StyledLink href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank"
+                               rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</StyledLink>
+                            <br />
+                            <StyledLink href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman
+                                Provincial Coinage Online</StyledLink>
+                            <br />
                         </ParaTextLeftSmaller>
                     </div>
                     <div className="col-md-1"></div>

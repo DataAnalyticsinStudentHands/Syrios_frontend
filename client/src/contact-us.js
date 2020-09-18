@@ -1,9 +1,12 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Form } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { FormContainer, FormButton, FormStyles, PageTitleCentered } from './componentStyling';
 import axios from 'axios';
+import contact from './data/contact-images/contact-img.png';
 
 // RegEx for phone number validation
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -27,13 +30,25 @@ const validationSchema = Yup.object().shape({
 });
 
 const Contact = () => {
+  AOS.init({
+    duration: 1000,
+  });
+
   return (
     <div className="container-fluid px-6">
       {/* Contact Us Section */}
       <FormContainer>
         <div className="row top-buffer-1">
-          <div className="col-md-4">
+          <div className="col-md-4" data-aos="fade-right">
             <PageTitleCentered>Contact Us</PageTitleCentered>
+            <br />
+            <br />
+            <br />
+            <img
+              src={contact}
+              alt="Logo"
+              className="img-responsive"
+            />
           </div>
 
           <div className="col-md-8">

@@ -421,25 +421,25 @@ const CoinPile = () => {
             <div className="col-md-5">
                 <ParaTextLeftSmaller>
                     Coin Images Courtesy of
-                    <br></br>
-                    <br></br>
+                    <br />
+                    <br />
                     <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American
                         Numismatic
                         Society</a>
-                    <br></br>
+                    <br />
                     <a href="https://library.princeton.edu/special-collections/divisions/numismatic-collection"
                        target="_blank" rel="noopener noreferrer">Princeton University Library Numismatic
                         Collection</a>
-                    <br></br>
+                    <br />
                     <a href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general"
                        target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</a>
-                    <br></br>
+                    <br />
                     <a href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank"
                        rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</a>
-                    <br></br>
+                    <br />
                     <a href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman
                         Provincial Coinage Online</a>
-                    <br></br>
+                    <br />
                 </ParaTextLeftSmaller>
             </div>
             <div className="col-md-5 ">

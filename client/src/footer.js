@@ -27,11 +27,11 @@ function Footer() {
                 <FooterLink href="/" target="_self">
                   Home
                 </FooterLink>
-                <br></br>
+                <br />
                 <FooterLink href="/select-story" target="_self">
                   Tell Me a Story
                 </FooterLink>
-                <br></br>
+                <br />
                 <FooterLink href="/explore" target="_self">
                   Let Me Explore
                 </FooterLink>
@@ -40,11 +40,11 @@ function Footer() {
                 <FooterLink href="/about" target="_self">
                   About Us
                 </FooterLink>
-                <br></br>
+                <br />
                 {/*<FooterLink href="/resources" target="_self">
                   Resources
                 </FooterLink>
-                <br></br>*/}
+                <br />*/}
                 <FooterLink href="/contact-us" target="_self">
                   Contact Us
                 </FooterLink>

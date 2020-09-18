@@ -15,6 +15,7 @@ import ContactUs from "./contact-us";
 import About from "./about";
 import CoinPile from "./CoinPile/coin-pile";
 import Footer from "./footer";
+import SiteMap from "./site-map";
 import './data/fonts/fonts.css';
 
 import {
@@ -108,6 +109,7 @@ const App = () => {
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/about" component={About} />
           <Route exact path="/coin-pile" component={CoinPile} />
+          <Route exact path="/site-map" component={SiteMap} />
           <Route
               exact
               path="/omeka"
