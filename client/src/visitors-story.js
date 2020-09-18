@@ -479,7 +479,7 @@ const Visitors = () => {
           </div>
           <div className="col-md-8">
             <Level1Text data-aos="fade-left">
-              This makes sense! Like the passage from Cassius Dio showed, Antioch became the focus
+              This makes sense. Like the passage from Cassius Dio showed, Antioch became the focus
               of Roman investment as a political and military center during the second century CE.
             </Level1Text>
           </div>
@@ -522,7 +522,7 @@ const Visitors = () => {
           <div className="col-md-1"></div>
           <div className="col-md-4">
             <StyledLinkButton to="/select-story" data-aos="fade-left">
-              Tell me another story!
+              Tell me another story.
             </StyledLinkButton>
           </div>
         </div>

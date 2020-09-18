@@ -17,6 +17,9 @@ import {
   FormButton,
   FormStyles,
   ParaTextLeft,
+  StyledLink,
+  ParaTextLeftSmaller,
+  StyledLinkTerm
 } from "../componentStyling";
 
 const { gql } = require("apollo-boost");
@@ -220,13 +223,21 @@ const CoinPile = () => {
               for kings, emperors, governors, and citizens. Explore the
               differences in the coins by sorting through the pile or making
               selections from the drop-down menu about 1) material, 2) the
-              issuing authority guaranteeing a coin’s value as money, 3) type or
+              issuing {' '}
+                <StyledLinkTerm
+                  href="http://nomisma.org/id/authority"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  authority
+                </StyledLinkTerm>
+                {' '} guaranteeing a coin’s value as money, 3) type or
               design and/or 4) date of minting. At any point, click on an
-              individual coin to view a full description and learn more!
+              individual coin to view a full description and learn more.
             </ParaText>
             <ol>
               <li>Hover on a coin to scale it</li>
-              <li>Click on a coin to know it's corresponding information</li>
+              <li>Click on a coin to know its corresponding information</li>
               <li>Select filters on the right to narrow down your search</li>
               <li>Click and hold the coin to move it around the page</li>
             </ol>
@@ -398,6 +409,90 @@ const CoinPile = () => {
           </Modal>
         </div>
         <div className="row top-buffer-1"></div>
+
+        <div className="row top-spacer-1">
+            <div className="col-md-1"></div>
+            <div className="col-md-5">
+                <ParaTextLeftSmaller>
+                    Coin Images Courtesy of
+                    <br></br>
+                    <br></br>
+                    <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American
+                        Numismatic
+                        Society</a>
+                    <br></br>
+                    <a href="https://library.princeton.edu/special-collections/divisions/numismatic-collection"
+                       target="_blank" rel="noopener noreferrer">Princeton University Library Numismatic
+                        Collection</a>
+                    <br></br>
+                    <a href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general"
+                       target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</a>
+                    <br></br>
+                    <a href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank"
+                       rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</a>
+                    <br></br>
+                    <a href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman
+                        Provincial Coinage Online</a>
+                    <br></br>
+                </ParaTextLeftSmaller>
+            </div>
+            <div className="col-md-5 ">
+                <ParaTextLeftSmaller>
+                    To Read More:
+                    <br />
+                    <br />
+                    <StyledLink
+                      href="https://www.worldcat.org/title/roman-provincial-coinage-vol-1-from-the-death-of-caesar-to-the-death-of-vitellius-44bc-ad69/oclc/864754386&referer=brief_results"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Burnett, A.M., Amandry, M., and Ripollès, P.P., eds. 1992-. <em>Roman Provincial Coinage</em>. London: British Museum Press.
+                    </StyledLink>
+                    <br />
+                    <StyledLink
+                      href="https://www.worldcat.org/title/coinage-in-roman-syria-northern-syria-64-bc-ad-253/oclc/928519613&referer=brief_results"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Butcher, K. 2004. <em>Coinage in Roman Syria: Northern Syria, 64 BC-AD 253</em>. London: Royal Numismatic Society.
+                    </StyledLink>
+                    <br />
+                    <StyledLink
+                      href="https://www.worldcat.org/title/seleucid-coins-pt-1-seleucus-i-through-antiochus-iii-1-introduction-maps-and-catalogue/oclc/314359863&referer=brief_results"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Houghton, A. and Lorber, C. 2002. <em>Seleucid Coins: A Comprehensive Catalogue. Part I: Seleucus I through Antiochus III</em>. Two Volumes. New York: American Numismatic Society.
+                    </StyledLink>
+                    <br />
+                    <StyledLink
+                      href="https://www.worldcat.org/title/seleucid-coins-a-comprehensive-catalogue/oclc/1170238292&referer=brief_results"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Houghton, A., Hoover, O., and Lorber, C. 2008. <em>Seleucid Coins: A Comprehensive Catalogue. Part II: Seleucus IV through Antiochus XIII</em>. Two Volumes. New York: The American Numismatic Society.
+                    </StyledLink>
+                    <br />
+                    <StyledLink
+                      href="https://www.worldcat.org/title/coins-of-roman-antioch/oclc/837721004&referer=brief_results"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      McAlee, R. 2007. <em>The Coins of Roman Antioch</em>. Lancaster, PA: Classical Numismatic Group.
+                    </StyledLink>
+                    <br />
+                    <StyledLink
+                      href="https://www.worldcat.org/title/roman-imperial-coinage-volume-i-from-31-bc-to-ad-69-by-chv-sutherland-with-introductions-to-the-mints-and-32-plates/oclc/1110627289&referer=brief_results"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Sutherland, C.H.V. and Carson, R.A.G., eds. 1984-. <em>The Roman Imperial Coinage</em>. Revised edition. London: Spink.
+                    </StyledLink>
+                </ParaTextLeftSmaller>
+            </div>
+            <div className="col-md-1"></div>
+        </div>
+
       </div>
     );
   };

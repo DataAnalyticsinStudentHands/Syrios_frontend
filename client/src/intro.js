@@ -13,6 +13,7 @@ import {
   ParaTextLeft,
   SubText,
   Resources,
+  Captions
 } from './componentStyling';
 import logo from './data/intro-images/Logo.png';
 import bronzecoin from './data/intro-images/bronzecoin.png';
@@ -152,7 +153,7 @@ const Intro = () => {
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-in">
             <ParaText>
-              Some of these coins were for kings and emperors. These are like our federal U.S. coins
+              Some of these coins were issued by kings and emperors. These are like our federal U.S. coins
               or the European Union coins.
             </ParaText>
           </div>
@@ -186,6 +187,9 @@ const Intro = () => {
               mozallowfullscreen="true"
               webkitallowfullscreen="true"
             ></iframe>
+            <Captions>
+              This coin is a copy of a silver tetradrachm minted at Antioch for King Tigranes II of Armenia.
+            </Captions>
           </div>
         </div>
 
@@ -326,7 +330,7 @@ const Intro = () => {
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-up">
             <ParaText>
-              Like the dime, the little bronze coin has images and writing which form its{' '}
+              Like the dime, the little bronze coin has images which form its{' '}
               <span id="term">type</span>.
             </ParaText>
           </div>
@@ -469,7 +473,7 @@ const Intro = () => {
                 >
                   radiate
                 </StyledLinkTerm>
-              {' '} celebrates PAX AVGVSTI or “Peace of the Emperors.”
+              {' '} celebrates PAX AVGVSTI or “Peace of the Emperor.”
             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-up">
@@ -590,7 +594,7 @@ const Intro = () => {
               <img src={silver_24mm} alt="Logo" className="size-images-sm" />
             </div>
             <SubText>
-              Denomination marks are very rare for ancient Syria. instead, people knew the value
+              Denomination marks are very rare for ancient Syria. Instead, people knew the value
               based upon a coin’s metal, size, and images.
             </SubText>
           </div>
@@ -620,7 +624,7 @@ const Intro = () => {
           <div className="col-md-3" data-aos="flip-right">
             <img src={comp_13_right} alt="Logo" className="size-images" />
             <SubText>
-              Greek letters indicate the date on Syrian coins. The ΔΡ tells us that the coin was
+              Greek letters sometimes indicate the date on Syrian coins. The ΔΡ tells us that the coin was
               minted in 55/56 CE, during the reign of emperor Nero.
             </SubText>
           </div>
@@ -678,7 +682,7 @@ const Intro = () => {
             </SubText>
           </div>
           <div className="col-md-4 align-self-center" data-aos="fade-down">
-            <ParaText>And watch out for other marks and modifications to the coins!</ParaText>
+            <ParaText>And watch out for other marks and modifications to the coins.</ParaText>
           </div>
           <div className="col-md-3" data-aos="flip-left">
             <img src={comp_21} alt="Logo" className="size-images" data-aos="fade-in" />

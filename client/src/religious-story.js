@@ -543,7 +543,7 @@ const religiousStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-4">
             <StyledLinkButton to="/select-story" data-aos="fade-left">
-              Tell me another story!
+              Tell me another story.
             </StyledLinkButton>
           </div>
         </div>

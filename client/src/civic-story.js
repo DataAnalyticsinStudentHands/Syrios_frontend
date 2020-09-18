@@ -118,7 +118,7 @@ const civicStory = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8 align-self-center">
             <ParaText data-aos="fade-in">
-              Antioch compared to Rome was like Chicago is to New York City!
+              Antioch compared to Rome was like Chicago is to New York City.
             </ParaText>
           </div>
           <div className="col-md-2"></div>
@@ -252,7 +252,7 @@ const civicStory = () => {
           <div className="col-md-8">
             <ParaText data-aos="fade-down">
               The Antiochians were so proud of this special title, they included it on their coins
-              for over 300 years!
+              for over 300 years.
             </ParaText>
           </div>
           <div className="col-md-2"></div>
@@ -375,7 +375,7 @@ const civicStory = () => {
           <div className="col-md-8">
             <ParaText data-aos="fade-down">
               This is just like the debates and public forums that happen in our own local
-              governments!
+              governments.
             </ParaText>
           </div>
           <div className="col-md-2"></div>
@@ -398,8 +398,8 @@ const civicStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-left">
-              Voting was an important job of the boule and demos. The coin even shows this! Notice
-              how the boule votes by dropping a pebble into a bucket!
+              Voting was an important job of the boule and demos. The coin even shows this. Notice
+              how the boule votes by dropping a pebble into a bucket.
             </ParaTextLeft>
           </div>
           <div className="col-md-1"></div>
@@ -411,7 +411,7 @@ const civicStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-left">
-              Just like today, the citizens had a say in the operations of their city government!
+              Just like today, the citizens had a say in the operations of their city government.
             </ParaTextLeft>
           </div>
           <div className="col-md-1"></div>
@@ -465,7 +465,7 @@ const civicStory = () => {
           <div className="col-md-6 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               Many of these civic festivals celebrated the gods. This includes Zeus, who is featured
-              on the front of this coin!
+              on the front of this coin.
             </ParaTextLeft>
           </div>
           <div className="col-md-1"></div>
@@ -539,7 +539,7 @@ const civicStory = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <ParaText data-aos="fade-in">
-              This is a major difference between then and now! Even though the local government was
+              This is a major difference between then and now. Even though the local government was
               democratic, the Antiochians lived under the absolute rule of the emperor.
             </ParaText>
           </div>
@@ -615,7 +615,7 @@ const civicStory = () => {
           <div className="col-md-1"></div>
           <div className="col-md-4">
             <StyledLinkButton to="/select-story" data-aos="fade-left">
-              Tell me another story!
+              Tell me another story.
             </StyledLinkButton>
           </div>
         </div>

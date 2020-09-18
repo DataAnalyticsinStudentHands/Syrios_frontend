@@ -161,7 +161,7 @@ const ParaTextLeftSmaller = styled(ParaTextLeft)`
 
 const SubText = styled.p`
   font-family: CormorantGaramond-Regular;
-  background-color: WhiteSmoke;
+  background-color: #F0F6F1;
   color: #2d616a;
   border-radius: 10px;
   padding: 40px;

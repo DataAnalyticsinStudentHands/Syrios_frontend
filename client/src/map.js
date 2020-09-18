@@ -176,7 +176,7 @@ const Roman = () => {
                       location. Silver and gold coins can be rare finds on an
                       archaeological site, because people would look for them if
                       dropped. Hoards, however, are often created when a person
-                      intentionally tries to hides valuable coins either as
+                      intentionally tries to hide valuable coins either as
                       savings or in times of emergency.
                   </SubText>
               </div>
