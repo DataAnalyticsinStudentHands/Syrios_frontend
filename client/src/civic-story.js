@@ -126,21 +126,21 @@ const civicStory = () => {
 
         {/* SECTION 1.4 */}
 
-        <div className="row top-spacer-3 no-gutters">
-          <div className="col-md-1"></div>
-          <div className="col-md-10 align-self-center">
-            <ParaTextBlueBG data-aos="slide-up">
+        <div className="row top-spacer-3 ">
+          <div className="col-md-1 "></div>
+          <div className="col-md-10 align-self-center ">
+            <ParaTextBlueBG data-aos="slide-up" style={{margin: "0"}}>
               But as big as Antioch grew, it was still a city of citizens.
               <br />
               And the coins are an important reminder of this.
             </ParaTextBlueBG>
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-1"></div>
+          <div className="col-md-1 "></div>
+          <div className="col-md-1 "></div>
           <div className="col-md-10">
             <img src={citizens} alt="Logo" className="img-responsive"/>
           </div>
-          <div className="col-md-1"></div>
+          <div className="col-md-1 "></div>
           <div className="col-md-3"></div>
           <div className="col-md-6 align-self-center">
             <Captions data-aos="fade-left">
