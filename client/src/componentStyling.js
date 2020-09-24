@@ -32,7 +32,7 @@ const StyledLink = styled.a`
   cursor: pointer;
   color: #7ea274;
   border: none;
-  text-decoration: none;
+  text-decoration: underline;
 
   &:hover {
     color: #be9672;
@@ -161,7 +161,7 @@ const ParaTextLeftSmaller = styled(ParaTextLeft)`
 
 const SubText = styled.p`
   font-family: CormorantGaramond-Regular;
-  background-color: #F0F6F1;
+  background-color: #FDF7F3;
   color: #2d616a;
   border-radius: 10px;
   padding: 40px;

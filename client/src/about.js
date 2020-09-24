@@ -347,36 +347,44 @@ const About = () => {
                     </div>
                     <div className="col-md-1"></div>
                 </div>
-                <div className="row top-spacer-1  no-gutters">
+
+                <div className="row top-buffer-1">
+                    <div className="col-md-2"></div>
+                    <div className="col-md-8" data-aos="fade-up">
+                        <PageSectionTitle>
+                            Past Student Research Assistants
+                        </PageSectionTitle>
+                    </div>
+                    <div className="col-md-2"></div>
+                </div>
+
+                <div className="row top-spacer-05">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
                         <SubTextLeft>
-                            <strong>Past Student Research Assistants</strong>
-                            <br />
-                            <br />
                             <ul>
                                 <li>
-                                  <strong>Alberto Wilson, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br /> Learned technical design within Omeka and associated APIs
+                                  <strong>Alberto Wilson, <em>Ph.D. Candidate in the Department of History at the University of Houston</em></strong> <br /> Learned technical design within Omeka and associated APIs
                                 </li>
                                 <br />
                                 <li>
-                                  <strong>Tara Sewell, Ph.D. 2020 from the Department of History at the University of Houston</strong> <br /> Creating digital data entries from printed excavation reports 
+                                  <strong>Tara Sewell, <em>Ph.D. 2020 from the Department of History at the University of Houston</em></strong> <br /> Creating digital data entries from printed excavation reports 
                                 </li>
                                 <br />
                                 <li>
-                                  <strong>Matthew Finnie, Ph.D. Candidate in the Department of History at the University of Houston</strong> <br /> Created Syrian city profiles within Omeka
+                                  <strong>Matthew Finnie, <em>Ph.D. Candidate in the Department of History at the University of Houston</em></strong> <br /> Created Syrian city profiles within Omeka
                                 </li>
                                 <br />
                                 <li>
-                                  <strong>Delfina Denari, B.S. from the University of Houston</strong> <br /> Creation of 3D, annotated coin scans 
+                                  <strong>Delfina Denari, <em>B.S. from the University of Houston</em></strong> <br /> Creation of 3D, annotated coin scans 
                                 </li>
                                 <br />
                                 <li>
-                                  <strong>Abigail Chetlain, B.S. from the University of Houston</strong> <br /> Worked on graphic design of the digital project
+                                  <strong>Abigail Chetlain, <em>B.S. from the University of Houston</em></strong> <br /> Worked on graphic design of the digital project
                                 </li>
                                 <br />
                                 <li>
-                                  <strong>Anjana Kummari, M.A. from the University of Houston</strong> <br /> Initial building of the backend of the digital project 
+                                  <strong>Anjana Kummari, <em>M.A. from the University of Houston</em></strong> <br /> Initial building of the backend of the digital project 
                                 </li>
                             </ul>
                         </SubTextLeft>

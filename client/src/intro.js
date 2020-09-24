@@ -170,12 +170,12 @@ const Intro = () => {
         {/* SECTION 1.3 3D coin */}
 
         <div className="row top-spacer-3">
-          <div className="col-md-1"></div>
           <div className="col-md-3 align-self-center">
             <ParaTextLeft data-aos="fade-left">
               A coin minted for a king celebrates his power and strength.
             </ParaTextLeft>
           </div>
+          <div className="col-md-1"></div>
           <div className="col-md-8" data-aos="fade-in">
             <iframe
               title="A 3D model"

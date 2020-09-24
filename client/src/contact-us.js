@@ -44,11 +44,15 @@ const Contact = () => {
             <br />
             <br />
             <br />
-            <img
-              src={contact}
-              alt="Logo"
-              className="img-responsive"
-            />
+            <div className="col-md-1"></div>
+            <div className="col-md-10" data-aos="fade-right">
+              <img
+                src={contact}
+                alt="Logo"
+                className="img-responsive"
+              />
+            </div>
+            <div className="col-md-1"></div>
           </div>
 
           <div className="col-md-8">
