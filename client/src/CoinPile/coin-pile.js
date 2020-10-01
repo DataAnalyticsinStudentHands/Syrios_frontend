@@ -408,30 +408,30 @@ const CoinPile = () => {
                     <br />
                     <ul>
                       <li>
-                        <a href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American
+                        <StyledLink href="http://numismatics.org/" target="_blank" rel="noopener noreferrer">American
                             Numismatic
-                            Society</a>
+                            Society</StyledLink>
                       </li>
                       <br />
                       <li>
-                        <a href="https://library.princeton.edu/special-collections/divisions/numismatic-collection"
+                        <StyledLink href="https://library.princeton.edu/special-collections/divisions/numismatic-collection"
                            target="_blank" rel="noopener noreferrer">Princeton University Library Numismatic
-                            Collection</a>
+                            Collection</StyledLink>
                       </li>
                       <br />
                       <li>
-                        <a href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general"
-                           target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</a>
+                        <StyledLink href="https://www.bnf.fr/en/bibliotheque-nationale-de-france-catalogue-general"
+                           target="_blank" rel="noopener noreferrer">The Bibliothèque nationale de France</StyledLink>
                       </li>
                       <br />
                       <li>
-                        <a href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank"
-                           rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</a>
+                        <StyledLink href="https://www.smb.museum/en/museums-institutions/muenzkabinett/home/" target="_blank"
+                           rel="noopener noreferrer">Münzkabinett at the Staatliche Museen in Berlin</StyledLink>
                       </li>
                       <br />
                       <li>
-                        <a href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman
-                            Provincial Coinage Online</a>
+                        <StyledLink href="https://rpc.ashmus.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Roman
+                            Provincial Coinage Online</StyledLink>
                       </li>
                       <br />
                     </ul>

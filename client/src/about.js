@@ -123,12 +123,14 @@ const About = () => {
                     <div className="col-md-2"></div>
                     <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
-                            Project Directors
+                            <span id="text-white-bg">
+                                Project Directors
+                            </span>
                         </PageSectionTitle>
                     </div>
                     <div className="col-md-2"></div>
                 </div>
-                <div className="row no-gutters">
+                <div className="row top-spacer-1 no-gutters">
                     <div className="col-md-1"></div>
                     <div className="col-md-2 align-self-center">
                         <img
@@ -197,7 +199,9 @@ const About = () => {
                     <div className="col-md-2"></div>
                     <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
-                            Digital Media and Content Team
+                            <span id="text-white-bg">
+                                Digital Media and Content Team
+                            </span>
                         </PageSectionTitle>
                     </div>
                     <div className="col-md-2"></div>
@@ -352,13 +356,15 @@ const About = () => {
                     <div className="col-md-2"></div>
                     <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
-                            Past Student Research Assistants
+                            <span id="text-white-bg">
+                                Past Student Research Assistants
+                            </span>
                         </PageSectionTitle>
                     </div>
                     <div className="col-md-2"></div>
                 </div>
 
-                <div className="row top-spacer-05">
+                <div className="row top-spacer-1">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
                         <SubTextLeft>

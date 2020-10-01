@@ -8,7 +8,7 @@ import {
     PageSectionTitle,
     StyledLink
 } from "./componentStyling";
-import sitemap from "./data/site-map/sitemap.png"
+import sitemap from "./data/site-map/sitemap.svg"
 
 const SiteMap = () => {
     AOS.init({
@@ -31,7 +31,7 @@ const SiteMap = () => {
                     <div className="col-md-1"></div>
                 </div>
 
-                <div className="row top-buffer-3">
+                <div className="row top-spacer-05">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
                         <img className={"img-responsive"}

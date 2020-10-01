@@ -64,6 +64,11 @@
   line-height: 3.0vmin;
 }
 
+#text-white-bg {
+    background:#fff;
+    padding:0 10px;
+}
+
 /* image style/sizing */
 .img-responsive {
   height: auto;

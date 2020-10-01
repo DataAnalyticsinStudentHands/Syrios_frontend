@@ -71,7 +71,7 @@ const Intro = () => {
       <div className="container-fluid px-6">
         {/* Page Entry */}
         <div className="row top-buffer-1">
-          <div className="col-sm-2"></div>
+          <div className="col-sm-1"></div>
           <div className="col-sm-3" data-aos="fade-in">
             <img className={'img-responsive'} src={logo} alt="logo" />
           </div>
@@ -179,7 +179,7 @@ const Intro = () => {
           <div className="col-md-8" data-aos="fade-in">
             <iframe
               title="A 3D model"
-              width="640"
+              width="700"
               height="480"
               src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed?autostart=1&autospin=0.5&preload=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1"
               frameBorder="0"

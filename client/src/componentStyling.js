@@ -110,9 +110,12 @@ const PageSubTitle = styled(PageTitle)`
 `;
 
 const PageSectionTitle = styled(PageTitle)`
-  color: #e3b287;
+  color: #68A0A6;
   font-size: 30px;
   text-align: center;
+  border-bottom: 2px solid #68A0A6;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
 `;
 
 const StoryTitle = styled.p`
@@ -171,7 +174,7 @@ const SubText = styled.p`
 
 const SubTextLeft = styled.div`
   font-family: CormorantGaramond-Regular;
-  background-color: WhiteSmoke;
+  background-color: #EFF5F6;
   padding: 40px;
   font-size: 18px;
   text-align: left;
