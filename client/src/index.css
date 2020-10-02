@@ -62,11 +62,17 @@
   font-family: 'CormorantGaramond-Bold';
   font-size: 3.5vmin;
   line-height: 3.0vmin;
+  color: #68A0A6;
 }
 
 #text-white-bg {
-    background:#fff;
-    padding:0 10px;
+    background: #fff;
+    padding: 0 10px;
+}
+
+#pagetitlehl {
+    color: #68A0A6;
+    font-family: 'CormorantGaramond-Bold';
 }
 
 /* image style/sizing */

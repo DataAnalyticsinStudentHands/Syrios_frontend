@@ -93,20 +93,25 @@ const StyledPageLinkRsrc = styled(StyledPageLink)`
 // Styles for page components
 const PageTitle = styled.p`
   color: #17434a;
-  font-size: 5.0vmin;
-  line-height: 6.0vmin;
-  font-family: 'CormorantGaramond-Bold';
+  font-size: 8.0vmin;
+  line-height: 8vmin;
+  font-family: 'CormorantGaramond-Regular';
   letter-spacing: 0.03em;
+  /* border-bottom: 10px solid #68A0A6; */
 `;
 
 const PageTitleCentered = styled(PageTitle)`
   text-align: center;
+  border: none;
+  font-size: 6.0vmin;
 `;
 
 const PageSubTitle = styled(PageTitle)`
   font-family: 'CormorantGaramond-Regular';
   font-size: 3.0vmin;
   line-height: 3.0vmin;
+  border: none;
+  margin-bottom: 40px;
 `;
 
 const PageSectionTitle = styled(PageTitle)`

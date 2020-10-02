@@ -119,7 +119,7 @@ const About = () => {
                     </div>
                     <div className="col-md-2"></div>
                 </div>
-                <div className="row top-buffer-1">
+                <div className="row top-spacer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
@@ -130,7 +130,7 @@ const About = () => {
                     </div>
                     <div className="col-md-2"></div>
                 </div>
-                <div className="row top-spacer-1 no-gutters">
+                <div className="row top-spacer-1">
                     <div className="col-md-1"></div>
                     <div className="col-md-2 align-self-center">
                         <img
@@ -195,7 +195,7 @@ const About = () => {
                     </div>
                     <div className="col-md-1"></div>
                 </div>
-                <div className="row top-buffer-1">
+                <div className="row top-spacer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>
@@ -352,7 +352,7 @@ const About = () => {
                     <div className="col-md-1"></div>
                 </div>
 
-                <div className="row top-buffer-1">
+                <div className="row top-spacer-1">
                     <div className="col-md-2"></div>
                     <div className="col-md-8" data-aos="fade-up">
                         <PageSectionTitle>

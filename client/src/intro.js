@@ -72,13 +72,15 @@ const Intro = () => {
         {/* Page Entry */}
         <div className="row top-buffer-1">
           <div className="col-sm-1"></div>
-          <div className="col-sm-3" data-aos="fade-in">
+          <div className="col-sm-3 align-self-center" data-aos="fade-in">
             <img className={'img-responsive'} src={logo} alt="logo" />
           </div>
           <div className="col-sm-1"></div>
           <div className="col-md">
             <div className="row">
-              <PageTitle data-aos="fade-in">The SYRIOS Project</PageTitle>
+              <PageTitle data-aos="fade-in">The {' '}
+                  <span id="pagetitlehl">SYRIOS</span>{' '}
+                Project</PageTitle>
             </div>
             <div className="row mt-md-3">
               <PageSubTitle data-aos="fade-in">
