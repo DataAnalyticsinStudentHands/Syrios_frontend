@@ -16,6 +16,7 @@ import About from "./about";
 import CoinPile from "./CoinPile/coin-pile";
 import Footer from "./footer";
 import SiteMap from "./site-map";
+import ScrollIntoView from "./ScrollIntoView";
 import './data/fonts/fonts.css';
 
 import {
@@ -66,6 +67,7 @@ const App = () => {
     <div>
       <Router>
         {/* !!!!!!!!!!! NAVBAR COMPONENT !!!!!!!!!!!! */}
+        <ScrollIntoView>
         <NavbarStyles>
         <Navbar collapseOnSelect
                 expand="xl"
@@ -121,9 +123,11 @@ const App = () => {
           />
           {/* <Redirect to="/404" /> */}
         </Switch>
+
         <div>
           <Footer />
         </div>
+        </ScrollIntoView>
       </Router>
     </div>
   );
