@@ -535,16 +535,18 @@ const religiousStory = () => {
         {/* Bottom Buttons */}
 
         <div className="row top-spacer-05">
-          <div className="col-md-4 offset-2">
+          {/*<div className="col-md-4 offset-2">
             <StyledLinkButton to="/coins" data-aos="fade-right">
               Explore other gods
             </StyledLinkButton>
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-4">
+          <div className="col-md-5"></div>*/}
+          <div className="col-md-12">
+            <div className="d-flex justify-content-center">
             <StyledLinkButton to="/select-story" data-aos="fade-left">
-              Tell me another story.
+              Tell me another story
             </StyledLinkButton>
+            </div>
           </div>
         </div>
       </div>
