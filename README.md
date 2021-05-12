@@ -12,7 +12,7 @@ This github repository contains the code for both the front-end and backen-end.
 A fully functioning demo and more information about the project can be found at: [syrios.uh.edu](https://syrios.uh.edu)
 
 
-### Prerequsites
+## Prerequisites
 
 [https://nodejs.org/en/](Node.js)
 
@@ -20,13 +20,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The folder structure is inspired by [FullstackReact](https://github.com/fullstackreact/food-lookup-demo)
 
-### Run your code locally
+The backend is using [mongoose](https://mongoosejs.com/) to connect to a MongoDB. Please make sure you have your connection string set in a `.env` file.
+Another setting is teh base URL used for Axios: e.g. `SYRIOS_APP_API_ENDPOINT='http://localhost:3000'`
+
+## Run your code locally
 
 `git clone https://github.com/peggylind/FindingConnectionsAncientSyria`
 
 `cd FindingConnectionsAncientSyria`
 
-#### Install missing packages
+### Install missing packages
 
 `cd FindingConnectionsAncientSyria`
 
@@ -38,7 +41,7 @@ The folder structure is inspired by [FullstackReact](https://github.com/fullstac
 
 `cd..`
 
-#### Development
+### Run in development mode
  `npm start`
 
 Front-end and backend are both served through an Express server.<br>
@@ -46,13 +49,11 @@ Open [http://localhost:3000](http://localhost:3000) to view the Syrios Project i
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-The backend is using [mongoose](https://mongoosejs.com/) to connect to a MongoDB. Please make sure you have your connection string set in a `.env` file.
-
 If you would like to test the client without the backend running you can use
 
 `npm run client`
 
-### Deployment
+## Deployment
  `cd client`
  
  `npm run build`
@@ -67,7 +68,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Currently, the client has hard-coded connection strings to connect to the backend. That needs to be fixed.
 
-### Production
+### Run in production
 
 We are using [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to manage deployment on a production server. Run
 
@@ -77,14 +78,6 @@ to start the app (fornt-end and backend). The app is served at port 3000.
 
 The 'module.exports' function doesn't work in production. Create a GraphQL schema within the native file.
 
-#### Other
-`npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
