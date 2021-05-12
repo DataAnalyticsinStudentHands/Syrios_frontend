@@ -4,9 +4,11 @@ import 'aos/dist/aos.css';
 import { Form } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { FormContainer, FormButton, FormStyles, PageTitleCentered } from './componentStyling';
 import axios from 'axios';
+import { FormContainer, FormButton, FormStyles, PageTitleCentered } from './componentStyling';
 import contact from './data/contact-images/contact-img.png';
+
+axios.defaults.baseURL = process.env.SYRIOS_APP_API_ENDPOINT;
 
 // RegEx for phone number validation
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -70,7 +72,7 @@ const Contact = () => {
                                 }, 500); */
 
                 // send data for email
-                axios.post('http://localhost:3000/send', values).then(
+                axios.post('/send', values).then(
                   response => {
                     console.log(`Email sent with content: ${response}`);
                   },

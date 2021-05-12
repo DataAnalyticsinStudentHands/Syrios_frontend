@@ -14,6 +14,8 @@ import {
 } from './componentStyling';
 import downloadImage from './data/images/download.png';
 
+axios.defaults.baseURL = process.env.SYRIOS_APP_API_ENDPOINT;
+
 // Schema for yup
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -71,7 +73,7 @@ const Download = () => {
                 setSubmitting(true);
 
                 // send data for email
-                axios.post('http://localhost:3000/send', values).then(
+                axios.post('/send', values).then(
                   response => {
                     console.log(response);
                   },
