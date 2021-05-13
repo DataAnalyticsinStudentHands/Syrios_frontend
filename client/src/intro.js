@@ -96,9 +96,6 @@ const Intro = () => {
               <div className="row-cols-sm-3 mr-5">
                 <StyledLinkButton to="/select-story">Tell Me A Story</StyledLinkButton>
               </div>
-              <div className="row-cols-sm-3 ml-5">
-                <StyledLinkButton to="/explore">Let Me Explore</StyledLinkButton>
-              </div>
             </div>
           </div>
         </div>
@@ -715,12 +712,6 @@ const Intro = () => {
           <div className="col-md-3 offset-3">
             <StyledLinkButton to="/select-story" data-aos="fade-right">
               Tell me a Story
-            </StyledLinkButton>
-          </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-3">
-            <StyledLinkButton to="/explore" data-aos="fade-left">
-              Explore Coins
             </StyledLinkButton>
           </div>
         </div>

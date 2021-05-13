@@ -33,7 +33,7 @@ function Footer() {
                 </FooterLink>
                 <br />
                 <FooterLink href="/explore" target="_self">
-                  Let Me Explore
+                  Access Data
                 </FooterLink>
               </div>
               <div className="col-6">
