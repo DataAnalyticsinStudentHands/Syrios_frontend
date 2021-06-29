@@ -25,13 +25,13 @@ Another setting is teh base URL used for Axios: e.g. `SYRIOS_APP_API_ENDPOINT='h
 
 ## Run your code locally
 
-`git clone https://github.com/peggylind/FindingConnectionsAncientSyria`
+`git clone ..`
 
-`cd FindingConnectionsAncientSyria`
+`cd Syrios_frontend`
 
 ### Install missing packages
 
-`cd FindingConnectionsAncientSyria`
+`cd Syrios_frontend`
 
 `npm install`
 
