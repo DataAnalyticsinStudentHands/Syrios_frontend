@@ -78,26 +78,37 @@ const Intro = () => {
           <div className="col-sm-1"></div>
           <div className="col-md">
             <div className="row">
-              <PageTitle data-aos="fade-in">The {' '}
-                  <span id="pagetitlehl">SYRIOS</span>{' '}
-                Project</PageTitle>
+		{/*
+								<PageTitle data-aos="fade-in">The {' '}
+										<span id="pagetitlehl">SYRIOS</span>{' '}
+									Project</PageTitle>
+									*/}
+							<PageTitle data-aos="fade-in"><span id="pagetitlehl">SYRIOS</span></PageTitle>
             </div>
             <div className="row mt-md-3">
               <PageSubTitle data-aos="fade-in">
-                <span id="subtitle-em"> S</span>tudying
-                <span id="subtitle-em"> U</span>rban
-                <span id="subtitle-em"> R</span>elationships and <br />
-                <span id="subtitle-em"> I</span>dentity
-                <span id="subtitle-em"> O</span>ver Ancient
-                <span id="subtitle-em"> S</span>yria
+		{/*
+									<span id="subtitle-em"> S</span>tudying
+									<span id="subtitle-em"> U</span>rban
+									<span id="subtitle-em"> R</span>elationships and <br />
+									<span id="subtitle-em"> I</span>dentity
+									<span id="subtitle-em"> O</span>ver Ancient
+									<span id="subtitle-em"> S</span>yria 
+			*/}
+								<strong><h4>Studying Urban Relationships and Identity Over Ancient Syria</h4></strong><br />
+								<br />
+								Over 2,000 years ago, on the crossroads between East and West,<br />
+								stood the cities of ancient Syria. Kings and emperors conquered<br />
+								these places, but the citizens persisted. They celebrated. They<br />
+								voted. They worshipped. They resisted.<br />
+								<br />
+								Come explore the diverse communities of ancient Syria through<br />
+								the peoples' coins, texts, and artifacts.<br />
               </PageSubTitle>
             </div>
             <div className="row mt-lg-5">
               <div className="row-cols-sm-3 mr-5">
                 <StyledLinkButton to="/select-story">Tell Me A Story</StyledLinkButton>
-              </div>
-              <div className="row-cols-sm-3 ml-5">
-                <StyledLinkButton to="/explore">Let Me Explore</StyledLinkButton>
               </div>
             </div>
           </div>
@@ -715,12 +726,6 @@ const Intro = () => {
           <div className="col-md-3 offset-3">
             <StyledLinkButton to="/select-story" data-aos="fade-right">
               Tell me a Story
-            </StyledLinkButton>
-          </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-3">
-            <StyledLinkButton to="/explore" data-aos="fade-left">
-              Explore Coins
             </StyledLinkButton>
           </div>
         </div>
