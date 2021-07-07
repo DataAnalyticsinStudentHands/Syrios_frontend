@@ -11,6 +11,34 @@ const Explore = () => {
   return (
     <div>
       <div className="container-fluid px-6">
+        <div className="row top-spacer-1">
+          <div className="col-md-1 show_line_on_side"></div>
+          <div className="col-md-11"></div>
+        </div>
+        <div className="row">
+          <div className="col-md-1 show_line_on_side"></div>
+          <div className="col-md-811 pl-5">
+            <StyledPageLink
+              to="/coin-pile"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            >
+              Let me Sort Coins
+            </StyledPageLink>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-1 show_line_on_side"></div>
+          <div className="col-md-11 pl-5">
+            <StyledPageLink
+              to="/maps"
+              data-aos="fade-right"
+              data-aos-duration="1600"
+            >
+              Let Me Map Coins
+            </StyledPageLink>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-1 show_line_on_side"></div>
           <div className="col-md-11 pl-5">

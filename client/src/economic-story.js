@@ -1270,8 +1270,13 @@ const Economic = () => {
         {/* Bottom Buttons */}
 
         <div className="row top-spacer-05">
-          <div className="col-md-2"></div>
-          <div className="col-md-4 mx-auto">
+          <div className="col-md-4 offset-2">
+            <StyledLinkButton to="/maps" data-aos="fade-right">
+              Where did the civic coins move?
+            </StyledLinkButton>
+          </div>
+          <div className="col-md-1"></div>
+          <div className="col-md-4">
             <StyledLinkButton to="/select-story" data-aos="fade-left">
               Tell me another story.
             </StyledLinkButton>

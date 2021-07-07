@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import styled from "styled-components";
-import ReactGA from 'react-ga';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { createBrowserHistory } from 'history';
 import NavBarLogo from "./data/intro-images/Logo.png"
 import Intro from "./intro";
 import SelectStory from "./select_story";
@@ -23,22 +19,13 @@ import SiteMap from "./site-map";
 import ScrollIntoView from "./ScrollIntoView";
 import './data/fonts/fonts.css';
 
-// setup for Google Analytics
-const trackingId = 'G-57WWLR6KCZ';
-ReactGA.initialize(trackingId);
-ReactGA.set({
-  // any data that is relevant to the user session
-  // that you would like to track with google analytics
-});
-
-// setup for page view tracking
-const history = createBrowserHistory();
-
-// Initialize google analytics page view tracking
-history.listen(location => {
-  ReactGA.set({ page: location.pathname }); // Update the user's current page
-  ReactGA.pageview(location.pathname); // Record a pageview for the given page
-});
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  // Redirect,
+} from "react-router-dom";
+import styled from "styled-components";
 
 // Styles for navbar - still need to do active see https://codesandbox.io/s/718p1ovkm1?from-embed
 const NavbarStyles = styled.div`
@@ -78,7 +65,7 @@ const NavbarStyles = styled.div`
 const App = () => {
   return (
     <div>
-      <Router history={history}>
+      <Router>
         {/* !!!!!!!!!!! NAVBAR COMPONENT !!!!!!!!!!!! */}
         <ScrollIntoView>
         <NavbarStyles>
@@ -97,7 +84,10 @@ const App = () => {
                 <NavDropdown.Item href="/religious-story">Religious Story</NavDropdown.Item>
                 <NavDropdown.Item href="/visitors-story">Visitor's Story</NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="ACCESS DATA">
+              <NavDropdown title="LET ME EXPLORE">
+                <NavDropdown.Item href="/coin-pile">Sort Coins</NavDropdown.Item>
+                <NavDropdown.Item href="/maps">Map Coins</NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item href="https://sites.lib.uh.edu/kmneuma2/items/browse" target="_blank">View a Catalog</NavDropdown.Item>
                 <NavDropdown.Item href="/download">Download Dataset</NavDropdown.Item>
               </NavDropdown>
