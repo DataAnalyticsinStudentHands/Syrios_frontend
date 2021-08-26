@@ -83,7 +83,7 @@ const About = () => {
                               design, interactivity, and usability.
                               <br />
                               <br />
-                              By September 2021, we plan to launch Phase II of the
+                              By February 2022, we plan to launch Phase II of the
                               exhibit, which will be a full prototype focused on the
                               city of Antioch. This phase will include additional
                               animations, themed stories, an interactive timeline,

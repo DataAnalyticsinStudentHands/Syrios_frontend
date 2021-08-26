@@ -73,7 +73,7 @@ const App = () => {
                 expand="xl"
         >
         <Link to="/" ><input src={NavBarLogo} type="image" style={{height:'40px', width:'35px', margin:'0px'}} alt="LOGO"/></Link>
-          <Navbar.Brand style={{marginLeft:'10px'}} href="/">The SYRIOS Project</Navbar.Brand>
+          <Navbar.Brand style={{position: "relative", top: "-5px", marginLeft:'10px'}} href="/">SYRIOS</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">

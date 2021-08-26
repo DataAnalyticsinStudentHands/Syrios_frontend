@@ -68,7 +68,7 @@ const Intro = () => {
 
   return (
     <div>
-      <div className="container-fluid px-6">
+      <div className="container-fluid px-6" style={{position: "relative", top: "-110px"}}>
         {/* Page Entry */}
         <div className="row top-buffer-1">
           <div className="col-sm-1"></div>
@@ -78,32 +78,22 @@ const Intro = () => {
           <div className="col-sm-1"></div>
           <div className="col-md">
             <div className="row">
-		{/*
-								<PageTitle data-aos="fade-in">The {' '}
-										<span id="pagetitlehl">SYRIOS</span>{' '}
-									Project</PageTitle>
-									*/}
 							<PageTitle data-aos="fade-in"><span id="pagetitlehl">SYRIOS</span></PageTitle>
             </div>
             <div className="row mt-md-3">
-              <PageSubTitle data-aos="fade-in">
-		{/*
-									<span id="subtitle-em"> S</span>tudying
-									<span id="subtitle-em"> U</span>rban
-									<span id="subtitle-em"> R</span>elationships and <br />
-									<span id="subtitle-em"> I</span>dentity
-									<span id="subtitle-em"> O</span>ver Ancient
-									<span id="subtitle-em"> S</span>yria 
-			*/}
-								<strong><h4>Studying Urban Relationships and Identity Over Ancient Syria</h4></strong><br />
-								<br />
-								Over 2,000 years ago, on the crossroads between East and West,<br />
-								stood the cities of ancient Syria. Kings and emperors conquered<br />
-								these places, but the citizens persisted. They celebrated. They<br />
-								voted. They worshipped. They resisted.<br />
-								<br />
-								Come explore the diverse communities of ancient Syria through<br />
-								the peoples' coins, texts, and artifacts.<br />
+              <PageSubTitle style={{fontSize:"3.0vmin"}}><br />Studying Urban Relationships and Identity Over Ancient Syria</PageSubTitle>
+              <PageSubTitle data-aos="fade-in" style={{fontSize: "2.5vmin"}}>
+                <br />
+                Over 2,000 years ago, on the crossroads between East and West, stood the cities of ancient Syria. Kings and emperors conquered these places, but the citizens persisted. They celebrated. They voted. They worshipped. They resisted. They minted coins.
+                <br />
+                <br />
+                Enter <strong>SYRIOS: Studying Urban Relationships and Identity over Ancient Syria</strong>, a project that aims to bring ancient Syria to modern audiences through a study of coins. 
+                <br />
+                <br />
+                This site is under development, but please explore our initial concepts and design for this interactive exhibit. Scroll down or click on one of the buttons to begin.  
+                <br />
+                <br />
+                SYRIOS is a project of the University of Houston. We are supported by the <a href="https://www.neh.gov/news/neh-announces-33-million-213-humanities-projects-nationwide">National Endowment for the Humanities: Digital Projects for the Public</a> and the Loeb Classical Library Foundation.
               </PageSubTitle>
             </div>
             <div className="row mt-lg-5">

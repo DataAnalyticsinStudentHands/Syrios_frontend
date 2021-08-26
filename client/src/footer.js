@@ -16,7 +16,7 @@ function Footer() {
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-3 pt-5">
-            <FooterHead>The SYRIOS Project</FooterHead>
+            <FooterHead>SYRIOS</FooterHead>
           </div>
           <div className="col-md-4">
             <div className="row">
