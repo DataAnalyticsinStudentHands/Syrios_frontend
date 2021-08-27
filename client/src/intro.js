@@ -68,20 +68,16 @@ const Intro = () => {
 
   return (
     <div>
-      <div className="container-fluid px-6" style={{position: "relative", top: "-110px"}}>
+      <div className="container-fluid px-6">
         {/* Page Entry */}
         <div className="row top-buffer-1">
           <div className="col-sm-1"></div>
-          <div className="col-sm-3 align-self-center" data-aos="fade-in">
+          <div className="col-sm-4 align-self-center" data-aos="fade-in">
             <img className={'img-responsive'} src={logo} alt="logo" />
           </div>
           <div className="col-sm-1"></div>
           <div className="col-md">
             <div className="row">
-							<PageTitle data-aos="fade-in"><span id="pagetitlehl">SYRIOS</span></PageTitle>
-            </div>
-            <div className="row mt-md-3">
-              <PageSubTitle style={{fontSize:"3.0vmin"}}><br />Studying Urban Relationships and Identity Over Ancient Syria</PageSubTitle>
               <PageSubTitle data-aos="fade-in" style={{fontSize: "2.5vmin"}}>
                 <br />
                 Over 2,000 years ago, on the crossroads between East and West, stood the cities of ancient Syria. Kings and emperors conquered these places, but the citizens persisted. They celebrated. They voted. They worshipped. They resisted. They minted coins.
