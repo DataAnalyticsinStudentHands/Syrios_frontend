@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import background from './assets/background.jpg';
+import LandingPage from './landingPage.js';
+import Timeline from './explore/timeline.js';
+
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	// Redirect,
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+		<div style={{ backgroundImage: `url(${background})`}}>
+			<Router>
+				<Switch>
+					<Route exact path="/" component={LandingPage} />
+					<Route exact path="/explore/timeline" component={Timeline} />
+					{/* <Redirect to="/404" /> */}
+				</Switch>
+			</Router>
+		</div>
   );
 }
 
