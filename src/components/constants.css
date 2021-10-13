@@ -1,0 +1,10 @@
+/* Need the font ttf files
+@font-face {
+	font-family: 'Garamond Premier Pro';
+}
+*/
+.imgFill {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
