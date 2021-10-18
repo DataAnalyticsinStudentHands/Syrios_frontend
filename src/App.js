@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import LandingPage from 'src/pages/LandingPage.js';
+import Timeline from 'src/pages/Toolbox/Timeline.js';
 import background from 'src/assets/background.jpg';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 			<BrowserRouter>
 				<Switch>
 					<Route exact path='/' component={LandingPage} />
+					<Route exact path='/Toolbox/Timeline/' component={Timeline} />
 				</Switch>
 			</BrowserRouter>
 		</div>

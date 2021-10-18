@@ -6,10 +6,10 @@
 
 .blandStyle {
 	text-decoration: none !important;
-  background: transparent !important;
-  box-shadow: 0px 0px 0px transparent !important;
-  border: solid transparent !important;
-  text-shadow: 0px 0px 0px transparent !important;
+	background: transparent !important;
+	box-shadow: 0px 0px 0px transparent !important;
+	border: solid transparent !important;
+	text-shadow: 0px 0px 0px transparent !important;
 }
 
 .centerDiv {
@@ -20,10 +20,37 @@
 	transform: translateY(-50%);
 }
 
+.OrangeText {
+	font-family: EB Garamond;
+	color: #A85828;
+}
+
+.BlueText {
+	font-family: EB Garamond;
+	color: #486678;
+}
+
+.GrayText {
+	font-family: EB Garamond;
+	color: #737271;
+}
+
+.BoldWhiteText {
+	font-family: EB Garamond;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
 html {
 	position: relative;
 }
 
+/* Globals */
+:root {
+	--footerHeight: 70px;
+}
+
+/* Adobe XD generated CSS */
 :root {
 
 	/* Colors: */

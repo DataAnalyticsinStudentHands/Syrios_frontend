@@ -1,6 +1,8 @@
 /* The blue box at the top of the screen and its dimensions are defined here */
 #Navbar {
-	height: 70px;
+	position: fixed;
+	width: 100%;
+	height: var(--footerHeight);
 	background: #183848 0% 0% no-repeat padding-box;
 	box-shadow: 0px 0px 60px #24201659;
 	opacity: 1;
@@ -46,6 +48,23 @@
 	font: CormorantGaramond-SemiBold !important;
 }
 
+.dropdown .dropdown-menu {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.dropdown.show .dropdown-menu { /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
+    max-height: 300px;
+    opacity: 1;
+}
 .dropdown-item {
 	color: white !important;
 	margin: 15px auto 15px auto;
@@ -62,11 +81,12 @@
 .NavbarText {
 	color: #FFFFFF !important;
 	text-align: center;
-	font: normal normal 100 14px GaramondPremrPro-MedCapt;
+	font: normal normal 100 14px EB Garamond;
 	letter-spacing: 0px;
 	opacity: 1;
 }
 
 .NavbarText:hover {
 	color: #B8CCD8 !important;
+	cursor: pointer;
 }

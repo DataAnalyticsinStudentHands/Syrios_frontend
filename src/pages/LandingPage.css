@@ -1,0 +1,92 @@
+@import src/components/constants;
+
+#LandingPage {
+	position: fixed;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	width: 100%;
+	top: var(--footerHeight);
+	bottom: var(--footerHeight);
+	background: url(src/assets/background.jpg);
+}
+
+#LandingVideo {
+	background: white;
+	padding: .4em 1.1em .4em 1.2em;
+	box-shadow: 0px 0px 20px #24201659;
+}
+
+#LandingVideoSize {
+	width: 780px;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 580px) {
+	#LandingVideoSize {
+		width: 30em !important;
+	}
+}
+
+@media only screen and (max-width: 579px) and (min-width: 372px) {
+	#LandingVideoSize {
+		width: 25em !important;
+	}
+
+	#LandingVideo {
+		padding: .4em 1.1em .4em 5%;
+	}
+}
+
+@media only screen and (max-width: 372px) {
+	#LandingVideoSize {
+		width: 15em !important;
+	}
+
+	#LandingVideo {
+		padding: .4em 1.1em .4em 5%;
+	}
+}
+
+.LandingButtonsPadding {
+	background: white;
+	display: flex;
+	justify-content: center;
+	padding: 10px 0px 10px 0px;
+	width: 190px;
+	text-align: center;
+	margin-bottom: 10px;
+	box-shadow: 0px 0px 20px #24201659;
+}
+
+.LandingButtonsImage {
+	height: 160px;
+	width: 160px;
+	background: #183848;
+}
+
+.LandingButtonsImage:hover {
+	cursor: pointer;
+}
+
+.LandingButtonsImageDarken {
+	background: rgba(0,0,0,0);
+	width: 100%;
+	height: 100%;
+	transition: 0.5s;
+}
+
+.LandingButtonsImageDarken:hover {
+	background: rgba(0,0,0,.2);
+}
+
+.LandingButtonsText {
+	position: relative;
+	top: 25%;
+	bottom: 25%;
+	font-size: 1.2em;
+	text-decoration: none !important;
+	color: white;
+}
+
+a:link {
+	text-decoration: none !important;
+}
