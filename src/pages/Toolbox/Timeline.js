@@ -27,6 +27,7 @@ import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import 'src/components/constants.css';
+import './Timeline.css';
 
 const Timeline = () => {
 	const [loading, set_loading] = useState(true);
