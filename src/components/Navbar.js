@@ -17,7 +17,7 @@ import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
 function BootstrapNavbar() {
 	return (
-		<Navbar id='Navbar' collapseOnSelect expand='xl' className='navbar-dark'>
+		<Navbar id='Navbar' collapseOnSelect expand='md' className='navbar-dark'>
 			<Navbar.Brand href='/'>
 				<img 
 					src={logo} 
@@ -32,7 +32,7 @@ function BootstrapNavbar() {
 			<Navbar.Collapse id='responsive-navbar-nav'>
 				<Nav className='ms-auto NavbarText'>
 					<Nav.Link href='/' className='NavbarText text-white'>STORIES</Nav.Link>
-					<NavDropdown title='EVIDENCE' className='NavbarText text-white'>							
+					<NavDropdown title='EVIDENCE' className='NavbarText text-white'>
 						<NavDropdown.Item href='/'>Coins in a Pile</NavDropdown.Item>
 						<NavDropdown.Item href='/'>Coins on a Map</NavDropdown.Item>
 						<NavDropdown.Item href='/'>Coins in a Catalog</NavDropdown.Item>

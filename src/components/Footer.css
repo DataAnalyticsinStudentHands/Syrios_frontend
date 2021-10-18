@@ -1,0 +1,60 @@
+@import /src/components/constants.css;
+
+#Footer {
+	position: fixed;
+	background: #183848;
+	bottom: 0px;
+	width: 100%;
+	height: 70px;
+	opacity: 1;
+
+	z-index: 998;
+}
+
+#FooterLogo {
+	position: absolute;
+	margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#FooterLinks {
+	right: 10px;
+	position: absolute;
+	margin: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+	width: 26em;
+}
+
+/* sets width of footer links whenever the size gets to a certain size to make it more responsive */
+@media only screen and (max-width: 767px) {
+	#FooterLinks {
+		width: 13em;
+	}
+}
+
+/* All text for footer should be this format */
+.FooterText {
+	color: #FFFFFF !important;
+	text-align: center;
+	font: normal normal 100 14px GaramondPremrPro-MedCapt !important;
+	letter-spacing: 0px;
+	opacity: 1;
+	transition: 0.5s;
+}
+
+.FooterText:hover {
+	color: #B8CCD8 !important;
+	cursor: pointer;
+}
+
+#CreditsAndReferences {
+	width: 100%;
+	position: absolute;
+	bottom: 70px;
+	background: #7899A8;
+}

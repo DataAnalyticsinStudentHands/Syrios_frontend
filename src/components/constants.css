@@ -4,8 +4,23 @@
 	object-fit: contain;
 }
 
+.blandStyle {
+	text-decoration: none !important;
+  background: transparent !important;
+  box-shadow: 0px 0px 0px transparent !important;
+  border: solid transparent !important;
+  text-shadow: 0px 0px 0px transparent !important;
+}
+
+.centerDiv {
+	position: absolute;
+	margin: 0;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
 html {
-	min-width: 550px;
 	position: relative;
 }
 
