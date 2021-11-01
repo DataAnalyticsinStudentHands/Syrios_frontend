@@ -1,4 +1,5 @@
-@import src/components/constants;
+@import url(src/components/constants.css);
+
 
 #LandingPage {
 	position: fixed;
@@ -7,7 +8,7 @@
 	width: 100%;
 	top: var(--footerHeight);
 	bottom: var(--footerHeight);
-	background: url(src/assets/background.jpg);
+	background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg);
 }
 
 #LandingVideo {
@@ -46,42 +47,8 @@
 	}
 }
 
-.LandingButtonsPadding {
-	background: white;
-	display: flex;
-	justify-content: center;
-	padding: 10px 0px 10px 0px;
-	width: 190px;
-	text-align: center;
-	margin-bottom: 10px;
-	box-shadow: 0px 0px 20px #24201659;
-}
-
-.LandingButtonsImage {
-	height: 160px;
-	width: 160px;
-	background: #183848;
-}
-
-.LandingButtonsImage:hover {
-	cursor: pointer;
-}
-
-.LandingButtonsImageDarken {
-	background: rgba(0,0,0,0);
-	width: 100%;
-	height: 100%;
-	transition: 0.5s;
-}
-
-.LandingButtonsImageDarken:hover {
-	background: rgba(0,0,0,.2);
-}
-
 .LandingButtonsText {
-	position: relative;
-	top: 25%;
-	bottom: 25%;
+	text-align: center;
 	font-size: 1.2em;
 	text-decoration: none !important;
 	color: white;
@@ -89,4 +56,36 @@
 
 a:link {
 	text-decoration: none !important;
+}
+
+.LandingButtonSize {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	height: 170px;
+	width: 190px;
+	margin: 10px 0px 10px 0px;
+}
+
+.LandingButtonImg {
+	position: relative;
+	top: 7%;
+	margin: 0px 7% 7% 7%;
+	height: 86%;
+	background-repeat: no-repeat !important;
+	background-size: 100% !important
+}
+
+.OnHoverDim {
+	display: flex;
+	justify-content: center; /* align horizontal */
+	align-items: center; /* align vertical */
+	width: 100%;
+	height: 95%;
+	transition: 0.3s;
+	background: rgba(0,0,0,0);
+}
+
+.OnHoverDim:hover {
+	background: rgba(0,0,0,0.5);
 }

@@ -1,0 +1,78 @@
+@import url(src/components/constants.css);
+
+.SelectStoryDiv {
+	width: 100px;
+	transition: 0.5s;
+}
+
+.SelectStoryDiv:hover {
+	width: 150px;
+}
+
+.SelectStoryText {
+	font-size: 14px;
+}
+
+#StoriesPage {
+	position: fixed;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	height: 100%;
+	background: url(src/assets/background.jpg);
+}
+
+Button {
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #7899A8;
+	border-radius: 15px !important;
+	opacity: 1;
+	width: 220px;
+	transition: 0.5s;
+}
+
+Button:hover {
+	color: #FFFFFF;
+	background: #7899A8 0% 0% no-repeat padding-box;
+}
+
+
+
+/******************** THIS IS FOR THE STORIES ****************/
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+	background: #183848 !important;
+	transition: 0.5s;
+}
+
+/**** Title Frame ****/
+#TitleText {
+	font-size: 76px;
+}
+
+#SubTitleText {
+	font-size: 20px;
+}
+
+#CaptionTitleText {
+	font-size: 30px;
+}
+
+.TitleWidth {
+	width: 1250px;
+}
+
+/**** End Frame ****/
+#AreYouReadyText {
+	font-size: 76px;
+}
+
+#EndFrameText {
+	font-size: 30px !important;
+}
+
+.EndFrameWidth {
+	width: 1000px !important;
+}
+
+.EndFrameButtonWidth {
+	width: 270px !important;
+}

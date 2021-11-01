@@ -11,6 +11,10 @@ import axios from 'axios';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
+import EvidenceBgPic from 'src/assets/pages/LandingPageAssets/Evidence.jpg';
+import HistoriansToolboxBgPic from 'src/assets/pages/LandingPageAssets/HistoriansToolbox.jpg';
+import HowToReadBgPic from 'src/assets/pages/LandingPageAssets/HowToRead.jpg';
+import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
 import 'src/components/constants.css';
 import './LandingPage.css';
 
@@ -22,11 +26,13 @@ function LandingPage() {
 		if (loading) {
 			axios.get(process.env.REACT_APP_strapiURL + '/landing-page')
 				.then((res) => {
-					console.log(res.data);
+					// This is where the landing page is defined via strapi
 					set_page(
 						<div id='LandingPage' className='d-flex align-items-center'>
+							{/* Container is centered due to the above div classes. Container holds ALL of the information */}
 							<Container style={{height: '640px'}}>
 								<Row container='justify-content-md-center'>
+									{/* This is the title text in orage */}
 									<Col>
 										<p className='OrangeText' style={{fontSize: '4em'}}>
 											<ReactMarkdown>
@@ -36,6 +42,7 @@ function LandingPage() {
 									</Col>
 								</Row>
 								<Row container='justify-content-md-center'>
+									{/* This is the video */}
 									<Col>
 										<div id='LandingVideo'>
 											<div id='LandingVideoSize'>
@@ -46,13 +53,15 @@ function LandingPage() {
 										</div>
 									</Col>
 									<Col>
-										<Container>
+										{/* Introduced a new container for the 4 buttons that way I can easily split the 4 buttons and have them spaced from eachother well*/}
+										<Container style={{position: 'relative', left: '-20px', top: '-5px'}}>
 											<Row>
+												{/* How to Read a Coin */}
 												<Col>
-													<div className='LandingButtonsPadding'>
+													<div className='bg-white LandingButtonSize'>
 														<a href='/'>
-															<div className='LandingButtonsImage'>
-																<div className='LandingButtonsImageDarken'>
+															<div className='LandingButtonImg' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
+																<div className='OnHoverDim'>
 																	<p className='blandStyle BoldWhiteText LandingButtonsText'>
 																		How to Read a Coin
 																	</p>
@@ -61,14 +70,15 @@ function LandingPage() {
 														</a>
 													</div>
 												</Col>
+												{/* Discover Stories from Coins */}
 												<Col>
-													<div className='LandingButtonsPadding'>
-														<a href='/'>
-															<div className='LandingButtonsImage'>
-																<div className='LandingButtonsImageDarken'>
-																	<p className='blandStyle BoldWhiteText LandingButtonsText'>
-																		Discover Stories from Coins
-																	</p>
+													<div className='bg-white LandingButtonSize'>
+														<a href='/Stories/Stories'>
+															<div className='LandingButtonImg' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
+																<div className='OnHoverDim'>
+																<p className='blandStyle BoldWhiteText LandingButtonsText'>
+																	Discover Stories from Coins
+																</p>
 																</div>
 															</div>
 														</a>
@@ -76,28 +86,30 @@ function LandingPage() {
 												</Col>
 											</Row>
 											<Row>
+												{/* Explore the Evidence */}
 												<Col>
-													<div className='LandingButtonsPadding'>
+													<div className='bg-white LandingButtonSize'>
 														<a href='/'>
-															<div className='LandingButtonsImage'>
-																<div className='LandingButtonsImageDarken'>
-																	<p className='blandStyle BoldWhiteText LandingButtonsText'>
-																		Explore the Evidence
-																	</p>
-																</div>
+															<div className='LandingButtonImg' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
+																<div className='OnHoverDim'>
+																<p className='blandStyle BoldWhiteText LandingButtonsText'>
+																	Explore the Evidence
+																</p>
+															</div>
 															</div>
 														</a>
 													</div>
 												</Col>
+												{/* Open the Historian's Toolbox */}
 												<Col>
-													<div className='LandingButtonsPadding'>
+													<div className='bg-white LandingButtonSize'>
 														<a href='/'>
-															<div className='LandingButtonsImage'>
-																<div className='LandingButtonsImageDarken'>
-																	<p className='blandStyle BoldWhiteText LandingButtonsText'>
-																		Open the Historian's Toolbox
-																	</p>
-																</div>
+															<div className='LandingButtonImg' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
+																<div className='OnHoverDim'>
+																<p className='blandStyle BoldWhiteText LandingButtonsText'>
+																	Open the Historian's Toolbox
+																</p>
+															</div>
 															</div>
 														</a>
 													</div>
@@ -106,6 +118,7 @@ function LandingPage() {
 										</Container>
 									</Col>
 								</Row>
+								{/* Landing paragraph */}
 								<Row container='justify-content-md-center'>
 									<Col>
 										<p className='BlueText' style={{fontSize:'1.3em'}}>
@@ -124,6 +137,11 @@ function LandingPage() {
 		}
 	});
 
+
+	// Render components here
+	//
+	// if loading is true, then display loading page
+	// else display page with navbar and footer
 	if (loading) {
 		return (
 			<div>
@@ -134,13 +152,13 @@ function LandingPage() {
 		);
 	}
 
-  return (
-    <div>
+	return (
+		<div>
 			{Navbar()}
 			{page}
 			{Footer()}
-    </div>
-  );
+		</div>
+	);
 }
 
 export default LandingPage;

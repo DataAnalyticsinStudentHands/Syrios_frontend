@@ -1,19 +1,13 @@
-import React, {useEffect, useState} from 'react';
 import { 
 	Navbar,
 	Nav,
 	NavDropdown,
 	Form,
-	FormControl,
-	Button,
-	Container
 } from 'react-bootstrap'
 
 import logo from 'src/assets/logoWhiteText.svg';
-import dropdownBackground from 'src/assets/dropdown.png';
 import './Navbar.css'
 import 'src/components/constants.css'
-import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
 function BootstrapNavbar() {
 	return (
@@ -31,7 +25,7 @@ function BootstrapNavbar() {
 			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 			<Navbar.Collapse id='responsive-navbar-nav'>
 				<Nav className='ms-auto NavbarText'>
-					<Nav.Link href='/' className='NavbarText text-white'>STORIES</Nav.Link>
+					<Nav.Link href='/Stories/Stories' className='NavbarText text-white'>STORIES</Nav.Link>
 					<NavDropdown title='EVIDENCE' className='NavbarText text-white'>
 						<NavDropdown.Item href='/'>Coins in a Pile</NavDropdown.Item>
 						<NavDropdown.Item href='/'>Coins on a Map</NavDropdown.Item>

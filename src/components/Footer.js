@@ -3,12 +3,12 @@ import {
 	Container,
 	Row,
 	Col,
-	button
 } from 'react-bootstrap';
 
 import './Footer.css';
 import 'src/components/constants.css';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
+import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
 const Footer = () => {
 	const [cr, set_cr] = useState(undefined);
@@ -17,7 +17,7 @@ const Footer = () => {
 		<div id='Footer'>
 			<a id='FooterLogo' href='https://www.neh.gov/'>
 				<img
-					src='https://www.neh.gov/sites/default/files/inline-files/NEH-Preferred-Seal-Transparent820.png'
+					src={NEH}
 					height='60px'
 					alt='NEH Logo'/>
 			</a>
