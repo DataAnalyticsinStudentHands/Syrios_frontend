@@ -11,9 +11,9 @@ After cloning, run the following inside the project folder.
     
 ## Configuration:
 
-Change the variable found in config/.env.js e.g.:
+To setup strapi, set the strapi url in the .env like so
 
-    `axiosBaseURL: "http://localhost:1337/"`
+`REACT_APP_startURL=http://localhost:1337/`
 
 ## Deployment
 
