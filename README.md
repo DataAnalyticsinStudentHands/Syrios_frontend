@@ -1,6 +1,6 @@
 # SYRIOS Frontend 
 
-This is the client-side interface for the Syrios project. It is built with Create-React-App, React-Router, React-Bootstrap, and Axios. It uses a lightweight [Strapi](https://strapi.io/) based content managment system.
+This is the client-side interface for the Syrios project. It is built with Create-React-App. It uses a lightweight [Strapi](https://strapi.io/) content managment system.
 
 A live demo of the development version can be found at: 
 
