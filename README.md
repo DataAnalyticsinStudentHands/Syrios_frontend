@@ -19,6 +19,14 @@ Change the variable found in config/.env.js e.g.:
 
 We are following standard procedures for a Create-React-App [deployment](https://create-react-app.dev/docs/deployment/) following a [build](https://create-react-app.dev/docs/production-build/). 
 
-The build folder is then transferred into the document folder of a Apache webserver.
+### Staging
+
+We use pm2 and run e.g.:
+
+`pm2 serve build 5000 --spa`
+
+### Production
+
+The build folder is transferred into the document folder of a Apache webserver.
 
 
