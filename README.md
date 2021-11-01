@@ -13,7 +13,7 @@ After cloning, run the following inside the project folder.
 
 To setup strapi, set the strapi url in the .env like so
 
-`REACT_APP_startURL=http://localhost:1337/`
+`REACT_APP_strapiURL=http://localhost:1337/`
 
 ## Deployment
 
