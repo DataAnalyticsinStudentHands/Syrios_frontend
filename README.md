@@ -8,7 +8,7 @@ The SYRIOS Project began in 2016 both as an outgrowth of research into ancient S
 - offer historical professionals an enhanced, digital data source and model applicable to research, teaching, and community outreach
 - invite new perspectives into the research and engagement with this historic place
 
-This github repository contains the code for both the front-end and backen-end.
+This github repository branch contains the code for release v1 (the front-end as well as the backen-end).
 A fully functioning demo and more information about the project can be found at: [syrios.uh.edu](https://syrios.uh.edu)
 
 
@@ -21,37 +21,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The folder structure is inspired by [FullstackReact](https://github.com/fullstackreact/food-lookup-demo)
 
 The backend is using [mongoose](https://mongoosejs.com/) to connect to a MongoDB. Please make sure you have your connection string set in a `.env` file.
-Another setting is teh base URL used for Axios: e.g. `SYRIOS_APP_API_ENDPOINT='http://localhost:3000'`
+Another setting is the base URL used for Axios: e.g. `REACT_APP_SYRIOS_API_ENDPOINT='http://localhost:3000'`
 
 ## Run your code locally
 
 `git clone ..`
 
-`cd Syrios_frontend`
-
 ### Install missing packages
-
-`cd Syrios_frontend`
-
-`npm install`
 
 `cd client`
 
 `npm install`
 
-`cd..`
+and for the backend
+
+`cd backend`
+
+`npm install`
 
 ### Run in development mode
- `npm start`
 
-Front-end and backend are both served through an Express server.<br>
-Open [http://localhost:3000](http://localhost:3000) to view the Syrios Project in the browser.
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Run each part separately with:
 
-If you would like to test the client without the backend running you can use
-
-`npm run client`
+ `npm run start`
 
 ## Deployment
  `cd client`
@@ -64,19 +56,15 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 Currently, the client has hard-coded connection strings to connect to the backend. That needs to be fixed.
 
 ### Run in production
 
-We are using [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to manage deployment on a production server. Run
+The client code from the build folder is served as static from the Apache Document Root.
 
-`pm2 start server.js`
+We are using [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to manage deployment of the backend part on a production server. Run
 
-to start the app (fornt-end and backend). The app is served at port 3000.
-
-The 'module.exports' function doesn't work in production. Create a GraphQL schema within the native file.
+`pm2 start pm2.config.js` to start the backend (served at port 3000). We have a Apache proxy setup.
 
 
 
