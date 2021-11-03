@@ -18,6 +18,7 @@ import Footer from "./footer";
 import SiteMap from "./site-map";
 import ScrollIntoView from "./ScrollIntoView";
 import './data/fonts/fonts.css';
+import {LinkContainer} from 'react-router-bootstrap'
 
 import {
   BrowserRouter as Router,
@@ -77,22 +78,42 @@ const App = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="/">HOME</Nav.Link>
+              <LinkContainer to="/">
+                <Nav.Link>HOME</Nav.Link>
+              </LinkContainer>
               <NavDropdown title="TELL ME A STORY">
-                <NavDropdown.Item href="/civic-story">Political Story</NavDropdown.Item>
-                <NavDropdown.Item href="/economic-story">Economic Story</NavDropdown.Item>
-                <NavDropdown.Item href="/religious-story">Religious Story</NavDropdown.Item>
-                <NavDropdown.Item href="/visitors-story">Visitor's Story</NavDropdown.Item>
+                <LinkContainer to="/civic-story">
+                  <NavDropdown.Item>Political Story</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/economic-story">
+                  <NavDropdown.Item>Economic Story</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/religious-story">
+                  <NavDropdown.Item>Religious Story</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/visitors-story">
+                  <NavDropdown.Item>Visitor's Story</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
               <NavDropdown title="LET ME EXPLORE">
-                <NavDropdown.Item href="/coin-pile">Sort Coins</NavDropdown.Item>
-                <NavDropdown.Item href="/maps">Map Coins</NavDropdown.Item>
+                <LinkContainer to="/coin-pile">
+                  <NavDropdown.Item>Sort Coins</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/maps">
+                  <NavDropdown.Item>Map Coins</NavDropdown.Item>
+                </LinkContainer>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="https://sites.lib.uh.edu/kmneuma2/items/browse" target="_blank">View a Catalog</NavDropdown.Item>
-                <NavDropdown.Item href="/download">Download Dataset</NavDropdown.Item>
+                <LinkContainer to="/download">
+                  <NavDropdown.Item>Download Dataset</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
-              <Nav.Link href="/about">ABOUT</Nav.Link>
-              <Nav.Link href="/contact-us">CONTACT US</Nav.Link>
+              <LinkContainer to="/about">
+                  <Nav.Link>ABOUT</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/contact-us">
+                  <Nav.Link>CONTACT US</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
