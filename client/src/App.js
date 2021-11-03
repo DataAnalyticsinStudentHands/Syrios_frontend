@@ -96,9 +96,6 @@ const App = () => {
                 </LinkContainer>
               </NavDropdown>
               <NavDropdown title="LET ME EXPLORE">
-                <LinkContainer to="/coin-pile">
-                  <NavDropdown.Item>Sort Coins</NavDropdown.Item>
-                </LinkContainer>
                 <LinkContainer to="/maps">
                   <NavDropdown.Item>Map Coins</NavDropdown.Item>
                 </LinkContainer>
