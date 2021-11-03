@@ -8,7 +8,7 @@ import axios from 'axios';
 import { FormContainer, FormButton, FormStyles, PageTitleCentered } from './componentStyling';
 import contact from './data/contact-images/contact-img.png';
 
-axios.defaults.baseURL = process.env.SYRIOS_APP_API_ENDPOINT;
+axios.defaults.baseURL = process.env.REACT_APP_SYRIOS_API_ENDPOINT;
 
 // RegEx for phone number validation
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -77,6 +77,7 @@ const Contact = () => {
                     console.log(`Email sent with content: ${response}`);
                   },
                   error => {
+                    console.log(process.env.REACT_APP_SYRIOS_API_ENDPOINT)
                     console.log(error);
                   }
                 );

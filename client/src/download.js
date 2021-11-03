@@ -14,7 +14,7 @@ import {
 } from './componentStyling';
 import downloadImage from './data/images/download.png';
 
-axios.defaults.baseURL = process.env.SYRIOS_APP_API_ENDPOINT;
+axios.defaults.baseURL = process.env.REACT_APP_SYRIOS_API_ENDPOINT;
 
 // Schema for yup
 const validationSchema = Yup.object().shape({
