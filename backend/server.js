@@ -31,7 +31,7 @@ app.post("/oldbackend/send", (req, res) => {
   console.log(req.body);
   const mailOptions = {
     from: "Syrios Site Watcher <dashadmin@uh.edu>",
-    to: "plindner@central.uh.edu",
+    to: "kmneuma2@Central.UH.EDU",
     subject: "New entry at Syrios form",
     text: `From: ${req.body.email} \nName: ${req.body.name} \nPhone: ${req.body.phone} \nMessage: ${req.body.writtenMessage}`,
   };
