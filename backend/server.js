@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
-const schema = require("./backend/schema/coin-schema");
+const schema = require("../backend/schema/coin-schema");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -22,12 +22,16 @@ const transporter = nodemailer.createTransport({
   path: "/usr/sbin/sendmail",
 });
 
+app.get("/oldbackend/hello", (req, res) => {
+  res.send('Hello World!')
+});
+
 // POST route form email sending from download form
-app.post("/send", (req, res) => {
+app.post("/oldbackend/send", (req, res) => {
   console.log(req.body);
   const mailOptions = {
     from: "Syrios Site Watcher <dashadmin@uh.edu>",
-    to: "kmneuma2@central.uh.edu",
+    to: "plindner@central.uh.edu",
     subject: "New entry at Syrios form",
     text: `From: ${req.body.email} \nName: ${req.body.name} \nPhone: ${req.body.phone} \nMessage: ${req.body.writtenMessage}`,
   };
@@ -49,7 +53,7 @@ app.post("/send", (req, res) => {
 // This route will be used as an endpoint to interact with Graphql,
 // All queries will go through this route.
 app.use(
-  "/graphql",
+  "/oldbackend/graphql",
   graphqlHTTP({
     // Directing express-graphql to use this schema to map out the graph
     schema,
