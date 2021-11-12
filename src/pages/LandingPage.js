@@ -30,7 +30,7 @@ function LandingPage() {
 					set_page(
 						<div id='LandingPage' className='d-flex align-items-center'>
 							{/* Container is centered due to the above div classes. Container holds ALL of the information */}
-							<Container style={{height: '640px'}}>
+              <Container style={{height: '640px', paddingTop: '1em'}}>
 								<Row container='justify-content-md-center'>
 									{/* This is the title text in orage */}
 									<Col>
