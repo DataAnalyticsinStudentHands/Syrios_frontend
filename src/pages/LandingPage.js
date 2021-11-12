@@ -73,7 +73,7 @@ function LandingPage() {
 												{/* Discover Stories from Coins */}
 												<Col>
 													<div className='bg-white LandingButtonSize'>
-														<a href='/Stories/Stories'>
+														<a href='/Stories'>
 															<div className='LandingButtonImg' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
 																<div className='OnHoverDim'>
 																<p className='blandStyle BoldWhiteText LandingButtonsText'>

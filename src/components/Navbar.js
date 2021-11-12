@@ -25,7 +25,7 @@ function BootstrapNavbar() {
 			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 			<Navbar.Collapse id='responsive-navbar-nav'>
 				<Nav className='ms-auto NavbarText'>
-					<Nav.Link href='/Stories/Stories' className='NavbarText text-white'>STORIES</Nav.Link>
+					<Nav.Link href='/Stories' className='NavbarText text-white'>STORIES</Nav.Link>
 					<NavDropdown title='EVIDENCE' className='NavbarText text-white'>
 						<NavDropdown.Item href='/'>Coins in a Pile</NavDropdown.Item>
 						<NavDropdown.Item href='/'>Coins on a Map</NavDropdown.Item>

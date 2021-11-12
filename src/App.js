@@ -23,12 +23,12 @@ function App() {
 				integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 				crossOrigin="anonymous"
 			/>
-			<BrowserRouter>
+			<BrowserRouter basename={'/dev'}>
 				<Switch>
 					<Route exact path='/' component={LandingPage} />
-					<Route exact path='/Toolbox/Timeline/' component={Timeline} />
-					<Route exact path='/Stories/Stories/' component={Stories} />
-					<Route exact path='/Stories/StoryReader/' component={StoryReader} />
+					<Route exact path='/Toolbox/Timeline' component={Timeline} />
+					<Route exact path='/Stories' component={Stories} />
+					<Route exact path='/Stories/StoryReader' component={StoryReader} />
 				</Switch>
 			</BrowserRouter>
 		</div>
