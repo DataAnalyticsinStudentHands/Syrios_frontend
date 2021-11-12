@@ -43,6 +43,28 @@ Button:hover {
 	transition: 0.5s;
 }
 
+/* This is soooo ghetto, but it works. This is how background images scale properly with fullpage.js */
+.section {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+  padding: 0px;
+}
+/**** General classes ****/
+
+.MainText {
+  font-size: 40px;
+}
+
+.SubText {
+  font-size: 16px;
+}
+
+.LightBlueBackground {
+  background: rgba(184,204,216,0.5);
+  border-radius: 10px;
+}
+
 /**** Title Frame ****/
 #TitleText {
 	font-size: 76px;
@@ -56,10 +78,6 @@ Button:hover {
 	font-size: 30px;
 }
 
-.TitleWidth {
-	width: 1250px;
-}
-
 /**** End Frame ****/
 #AreYouReadyText {
 	font-size: 76px;
@@ -69,10 +87,16 @@ Button:hover {
 	font-size: 30px !important;
 }
 
-.EndFrameWidth {
-	width: 1000px !important;
-}
-
 .EndFrameButtonWidth {
 	width: 270px !important;
+}
+
+/**** Frame1 ****/
+
+.Frame1SubText1 {
+  margin: 0px 100px 0px 50px;
+}
+
+.Frame1SubText2 {
+  margin: 0px 50px 0px 100px;
 }
