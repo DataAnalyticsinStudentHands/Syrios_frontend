@@ -23,7 +23,7 @@ function App() {
 				integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 				crossOrigin="anonymous"
 			/>
-			<BrowserRouter basename={'/dev'}>
+			<BrowserRouter>
 				<Switch>
 					<Route exact path='/' component={LandingPage} />
 					<Route exact path='/Toolbox/Timeline' component={Timeline} />
