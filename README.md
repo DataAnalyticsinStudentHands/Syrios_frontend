@@ -6,27 +6,20 @@ A live demo of the development version can be found at:
 
 ## For Developers
 After cloning, run the following inside the project folder.
-    `npm install`
-    `npm start`
-    
-## Configuration:
 
-To setup strapi, set the strapi url in the .env like so
+```
+npm install
+npm run start
+```
+    
+### Configuration
+
+To connect with the Strapi backend, set the strapi url in the .env like so
 
 `REACT_APP_strapiURL=http://localhost:1337`
 
-## Deployment
 
-We are following standard procedures for a Create-React-App [deployment](https://create-react-app.dev/docs/deployment/) following a [build](https://create-react-app.dev/docs/production-build/). 
+For information about deployment, please refer to the [documentation](https://github.com/DataAnalyticsinStudentHands/Syrios_frontend/wiki/Deployment).
 
-### Staging
-
-We use pm2 and run e.g.:
-
-`pm2 serve build 5000 --spa`
-
-### Production
-
-The build folder is transferred into the document folder of a Apache webserver.
 
 
