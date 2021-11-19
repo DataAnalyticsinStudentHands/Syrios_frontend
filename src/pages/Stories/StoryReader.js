@@ -21,6 +21,8 @@ const StoryReader = () => {
 	}
 	const storyId = Get_id();
 
+  console.log('did I atleast eneter?')
+
 	useEffect(() => {
 		if (loading) {
 			axios.get(`${process.env.REACT_APP_strapiURL}/stories/${storyId}`)

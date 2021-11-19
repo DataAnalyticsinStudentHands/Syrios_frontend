@@ -28,7 +28,7 @@ function App() {
 					<Route exact path='/' component={LandingPage} />
 					<Route path='/Toolbox/Timeline' component={Timeline} />
 					<Route path='/Stories' component={Stories} />
-					<Route path='/Stories/StoryReader' component={StoryReader} />
+					<Route path='/StoryReader' component={StoryReader} />
 				</Switch>
 			</BrowserRouter>
 		</div>

@@ -6,6 +6,7 @@ import {
 } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -97,7 +98,7 @@ const Stories = () => {
 					storiesInfo.forEach((e) => {
 						storiesJSX.push(
 							<Col key={`${e.id}`}>
-								<a href={`/Stories/StoryReader?id=${e.story_id}`}>
+								<Link to={`/StoryReader?id=${e.story_id}`}>
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}
@@ -106,7 +107,7 @@ const Stories = () => {
 											{e.story_name}
 										</p>
 									</div>
-								</a>
+								</Link>
 							</Col>
 						)
 					});
