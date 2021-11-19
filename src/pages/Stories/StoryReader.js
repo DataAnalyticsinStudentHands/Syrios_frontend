@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import ReactFullpage from '@fullpage/react-fullpage';
 
 import './Stories.css';
@@ -20,8 +20,6 @@ const StoryReader = () => {
 		return new URLSearchParams(useLocation().search).get('id');
 	}
 	const storyId = Get_id();
-
-  console.log('did I atleast eneter?')
 
 	useEffect(() => {
 		if (loading) {

@@ -60,6 +60,25 @@ Button:hover {
   font-size: 16px;
 }
 
+.CaptionText {
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 767px) {
+  .MainText {
+    width: max(90%);
+    font-size: 25px;
+  }
+
+  .SubText {
+    font-size: 12px;
+  }
+
+  .CaptionText {
+    font-size: 8px;
+  }
+}
+
 .LightBlueBackground {
   background: rgba(184,204,216,0.5);
   border-radius: 10px;
@@ -78,17 +97,55 @@ Button:hover {
 	font-size: 30px;
 }
 
+#TitleImage {
+  width: 300px;
+}
+
+@media only screen and (max-width: 767px) {
+  #TitleText {
+    font-size: 45px !important;
+  }
+
+  #SubTitleText {
+    font-size: 12px !important;
+  }
+
+  #CaptionTitleText {
+    font-size: 15px !important;
+  }
+
+  #TitleImage {
+    width: 150px !important;
+  }
+}
 /**** End Frame ****/
 #AreYouReadyText {
 	font-size: 76px;
 }
 
 #EndFrameText {
-	font-size: 30px !important;
+	font-size: 30px;
 }
 
 .EndFrameButtonWidth {
-	width: 270px !important;
+	width: 270px;
+  margin: 70px;
+}
+
+@media only screen and (max-width: 767px) {
+  .EndFrameButtonWidth  {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+  }
+
+  #AreYouReadyText {
+    font-size: 45px;
+  }
+
+  #EndFrameText {
+    font-size: 18px;
+  }
 }
 
 /**** Frame1 ****/
@@ -99,4 +156,16 @@ Button:hover {
 
 .Frame1SubText2 {
   margin: 0px 50px 0px 100px;
+}
+
+/**** Frame2 ****/
+.Frame2Image {
+  width: 600px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .Frame2Image {
+    width: 80% !important;
+  }
 }
