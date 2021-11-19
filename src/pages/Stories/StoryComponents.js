@@ -9,16 +9,20 @@ import ReactMarkdown from 'react-markdown';
 import 'src/components/constants.css';
 import './Stories.css';
 
+function IsEmptyOrWhiteSpace(str) {
+  return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
+}
+
 // These are more general exports. All functions may use them
-const subcomponent_image = (image) => {
+const subcomponent_image = (image, width) => {
   let caption = undefined; 
   // If light_blue_background is true, light_blue_caption_background should be false.
   // don't want to double the background causing opacity to double.
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
-  if (image.caption !== undefined) {
+  if (!IsEmptyOrWhiteSpace(image.caption)) {
     caption = (
       <>
-        <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`}>
+        <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} style={{ width: width }}>
           <ReactMarkdown className='FrameImage GrayText CaptionText text-center' style={{padding: '0px', paddingTop: '20px'}}>
             {image.caption}
           </ReactMarkdown>
@@ -34,11 +38,80 @@ const subcomponent_image = (image) => {
           <img
             alt={image.image.alternativeText == undefined ? 'img' : image.image.alternativeText}
             className='FrameImage'
+            width={width}
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} />
         </Container>
         {caption}
       </div>
     </Container>
+  );
+}
+
+const subcomponent_image_with_dynamic_sizing = (images) => {
+  let imageSizes = {
+    "very_small": "50px",
+    "small": "130px",
+    "medium": "210px",
+    "big": "290px",
+    "very_big": "370px",
+    "gigantic": "450px"
+  };
+
+  let imagesJSX = []
+  images.forEach((image) => {
+    console.log({i: image.brief_detail, j: IsEmptyOrWhiteSpace(image.link), l: image.link});
+    const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
+    if (!IsEmptyOrWhiteSpace(image.link) && !IsEmptyOrWhiteSpace(image.brief_detail)) {
+      imagesJSX.push(
+        <Col key={image.id}>
+          <Link to={image.link} className='blandStyle'>
+            <img
+              src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              width={imageSizes[image.size]}/>
+            <p className='OrangeText text-center' style={{fontSize: image_brief_detail_font_size}}>
+              {image.brief_detail}
+            </p>
+          </Link>
+        </Col>
+      );
+      return;
+    }
+
+    if (!IsEmptyOrWhiteSpace(image.link)) {
+      imagesJSX.push(
+        <Col key={image.id}>
+          <Link to={image.link} className='blandStyle'>
+            <img
+              src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              width={imageSizes[image.size]}/>
+          </Link>
+        </Col>
+      );
+      return;
+    }
+
+    if (!IsEmptyOrWhiteSpace(image.brief_detail)) {
+      imagesJSX.push(
+        <Col key={image.id}>
+          <img
+            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+            width={imageSizes[image.size]}/>
+          <p className='BlackText text-center' style={{fontSize: image_brief_detail_font_size}}>
+            {image.brief_detail}
+          </p>
+        </Col>
+      );
+      return;
+    }
+  });
+  return (
+    <div>
+      <Container className='d-flex justify-content-center align-items-center'>
+        <Row style={{ marginTop: '80px', marginBottom: '100px'}}>
+          {imagesJSX}
+        </Row>
+      </Container>
+    </div>
   );
 }
 
@@ -117,8 +190,7 @@ const End_Frame = (zone, index) => {
 
 const Frame1 = (zone, index) => {
   let subText = undefined;
-  if ((zone.sub_text_1 !== undefined && zone.sub_text_2 !== undefined) &&
-    (zone.sub_text_1.trim() !== '' && zone.sub_text_2.trim() !== '')) {
+  if (!IsEmptyOrWhiteSpace(zone.sub_text_1) && !IsEmptyOrWhiteSpace(zone.sub_text_2)) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
@@ -137,7 +209,7 @@ const Frame1 = (zone, index) => {
     );
   }
 
-  if (subText === undefined && zone.sub_text_1 !== undefined && zone.sub_text_1.trim() !== '') {
+  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_1)) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='GrayText SubText text-center'>
@@ -147,7 +219,7 @@ const Frame1 = (zone, index) => {
     );
   }
 
-  if (subText === undefined && zone.sub_text_2 !== undefined && zone.sub_text_2.trim() !== '') {
+  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_2)) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='BlueText SubText text-center'>
@@ -187,14 +259,38 @@ const Frame2 = (zone, index) => {
   return (
     <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
-        <p className='OrangeText MainText text-center'>
-          <ReactMarkdown>
-            {zone.main_text}
-          </ReactMarkdown>
-        </p>
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
       </Container>
       {subText}
-      {subcomponent_image(zone.image)}
+      {subcomponent_image(zone.image, '600px')}
+    </div>
+  );
+}
+
+
+const Frame3 = (zone, index) => {
+  let subText = undefined;
+
+  if (zone.sub_text !== undefined) {
+    subText = (
+      <Container className='d-flex justify-content-center align-items-center'>
+        <ReactMarkdown className='GrayText SubText text-center'>
+          {zone.sub_text}
+        </ReactMarkdown>
+      </Container>
+    );
+  }
+  return (
+    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+      {subcomponent_image_with_dynamic_sizing(zone.images)}
+      <Container style={{marginTop: '-110px'}}>
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+      </Container>
+      {subText}
     </div>
   );
 }
@@ -216,6 +312,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
       break;
     case 'frame.frame2':
       jsx = Frame2(zone, index);
+      break;
+    case 'frame.frame3':
+      jsx = Frame3(zone, index);
       break;
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);
