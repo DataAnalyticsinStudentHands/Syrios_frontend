@@ -35,4 +35,4 @@ Next, edit the App.js under src folder and change the `BrowserRouter` `basename`
 ```
 
 After doing those two changes, run these commands in the project root (as syrioswebadmin):
-`npm i && npm audit fix && npm run build && rm -rf /var/www/html/dev/* && cp -r build/* /var/www/html/dev/*`
+`npm i && npm audit fix && npm run build && rm -rf /var/www/html/dev/* && cp -r build/* /var/www/html/dev/`
