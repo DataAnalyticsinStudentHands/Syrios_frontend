@@ -62,9 +62,21 @@ Button:hover {
 
 .CaptionText {
   font-size: 12px;
+  margin: 10px;
+  margin-bottom: -5px !important;
+}
+
+.FrameImage {
+  width: 600px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 767px) {
+  
+  .FrameImage {
+    width: 80% !important;
+  }
+
   .MainText {
     width: max(90%);
     font-size: 25px;
@@ -159,13 +171,3 @@ Button:hover {
 }
 
 /**** Frame2 ****/
-.Frame2Image {
-  width: 600px;
-  margin-bottom: 10px;
-}
-
-@media only screen and (max-width: 767px) {
-  .Frame2Image {
-    width: 80% !important;
-  }
-}

@@ -9,6 +9,39 @@ import ReactMarkdown from 'react-markdown';
 import 'src/components/constants.css';
 import './Stories.css';
 
+// These are more general exports. All functions may use them
+const subcomponent_image = (image) => {
+  let caption = undefined; 
+  // If light_blue_background is true, light_blue_caption_background should be false.
+  // don't want to double the background causing opacity to double.
+  image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
+  if (image.caption !== undefined) {
+    caption = (
+      <>
+        <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`}>
+          <ReactMarkdown className='FrameImage GrayText CaptionText text-center' style={{padding: '0px', paddingTop: '20px'}}>
+            {image.caption}
+          </ReactMarkdown>
+        </Container>
+      </>
+    );
+  }
+
+  return (
+    <Container className='d-flex justify-content-center align-items-center'>
+      <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
+        <Container className='d-flex justify-content-center align-items-center'>
+          <img
+            alt={image.image.alternativeText == undefined ? 'img' : image.image.alternativeText}
+            className='FrameImage'
+            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} />
+        </Container>
+        {caption}
+      </div>
+    </Container>
+  );
+}
+
 
 
 // Title component for all stories
@@ -123,7 +156,7 @@ const Frame1 = (zone, index) => {
       </Container>
     );
   }
-  
+
   return (
     <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container>
@@ -140,23 +173,12 @@ const Frame1 = (zone, index) => {
 const Frame2 = (zone, index) => {
   let subText = undefined;
   let caption = undefined;
-  console.log(zone);
 
   if (zone.sub_text !== undefined) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='GrayText SubText text-center'>
           {zone.sub_text}
-        </ReactMarkdown>
-      </Container>
-    );
-  }
-
-  if (zone.image.caption !== undefined) {
-    caption = (
-      <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='Frame2Image GrayText CaptionText text-center'>
-          {zone.image.caption}
         </ReactMarkdown>
       </Container>
     );
@@ -172,13 +194,7 @@ const Frame2 = (zone, index) => {
         </p>
       </Container>
       {subText}
-      <Container className='d-flex justify-content-center align-items-center'>
-        <img
-          alt={zone.image.image.alternativeText == undefined ? 'img' : zone.image.image.alternativeText}
-          className='Frame2Image'
-          src={`${process.env.REACT_APP_strapiURL}${zone.image.image.url}`} />
-      </Container>
-      {caption}
+      {subcomponent_image(zone.image)}
     </div>
   );
 }
