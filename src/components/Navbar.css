@@ -84,9 +84,11 @@
 	font: normal normal 100 14px EB Garamond;
 	letter-spacing: 0px;
 	opacity: 1;
+  transition: 0.3s;
 }
 
 .NavbarText:hover {
 	color: #B8CCD8 !important;
 	cursor: pointer;
+  transition: 0.3s;
 }

@@ -4,6 +4,7 @@ import {
 	Row,
 	Col,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './Footer.css';
 import 'src/components/constants.css';
@@ -46,18 +47,18 @@ const Footer = () => {
 						</button>
 					</Col>
 					<Col sm={3} xs={0}>
-						<a href='/' className='blandStyle d-none d-md-block'>
+						<Link to='/' className='blandStyle d-none d-md-block'>
 							<p className='FooterText centerDiv'>
 								ABOUT US
 							</p>
-						</a>
+						</Link>
 					</Col>
 					<Col sm={3} xs={0}>
-						<a href='/' className='blandStyle d-none d-md-block'>
+						<Link to='/' className='blandStyle d-none d-md-block'>
 							<p className='FooterText centerDiv'>
 								CONTACT US
 							</p>
-						</a>
+						</Link>
 					</Col>
 				</Row>
 			</Container>

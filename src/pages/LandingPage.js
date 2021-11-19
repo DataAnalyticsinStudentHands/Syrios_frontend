@@ -7,6 +7,7 @@ import {
 	Col
 } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -73,7 +74,7 @@ function LandingPage() {
 												{/* Discover Stories from Coins */}
 												<Col>
 													<div className='bg-white LandingButtonSize'>
-														<a href='/Stories'>
+														<Link to='/Stories'>
 															<div className='LandingButtonImg' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
 																<div className='OnHoverDim'>
 																<p className='blandStyle BoldWhiteText LandingButtonsText'>
@@ -81,7 +82,7 @@ function LandingPage() {
 																</p>
 																</div>
 															</div>
-														</a>
+														</Link>
 													</div>
 												</Col>
 											</Row>
