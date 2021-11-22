@@ -24,15 +24,5 @@ For information about deployment, please refer to the [documentation](https://gi
 
 ### Deployment to syrios.uh.edu/dev/
 
-After cloning, edit the package.json and add a homepage variable like so:
-```"homepage": "/dev"```
-
-Next, edit the App.js under src folder and change the `BrowserRouter` `basename` key variable to `'/dev'` like so:
-```
-<BrowserRouter basename='/dev'>
-{/* some routing */}
-</BrowserRouter>
-```
-
 After doing those two changes, run these commands in the project root (as syrioswebadmin):
 `npm i && npm audit fix && npm run build && rm -rf /var/www/html/dev/* && cp -r build/* /var/www/html/dev/`
