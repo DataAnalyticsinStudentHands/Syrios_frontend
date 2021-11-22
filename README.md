@@ -20,9 +20,3 @@ To connect with the Strapi backend, set the strapi url in the .env like so
 
 
 For information about deployment, please refer to the [documentation](https://github.com/DataAnalyticsinStudentHands/Syrios_frontend/wiki/Deployment).
-
-
-### Deployment to syrios.uh.edu/dev/
-
-After doing those two changes, run these commands in the project root (as syrioswebadmin):
-`npm i && npm audit fix && npm run build && rm -rf /var/www/html/dev/* && cp -r build/* /var/www/html/dev/`
