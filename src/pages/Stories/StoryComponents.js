@@ -244,7 +244,6 @@ const Frame1 = (zone, index) => {
 
 const Frame2 = (zone, index) => {
   let subText = undefined;
-  let caption = undefined;
 
   if (zone.sub_text !== undefined) {
     subText = (
