@@ -59,7 +59,6 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
   let imagesJSX = []
   images.forEach((image) => {
-    console.log({i: image.brief_detail, j: IsEmptyOrWhiteSpace(image.link), l: image.link});
     const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
     if (!IsEmptyOrWhiteSpace(image.link) && !IsEmptyOrWhiteSpace(image.brief_detail)) {
       imagesJSX.push(
@@ -294,6 +293,20 @@ const Frame3 = (zone, index) => {
   );
 }
 
+const Frame4 = (zone, index) =>{
+  console.log(zone)
+  return(
+    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+      <div>
+        {zone.quote1}
+      </div>
+      <div>
+        {zone.quote2}
+      </div>
+
+    </div>
+  )
+}
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
@@ -315,6 +328,10 @@ const SwitchComponent = (zone, index, fullpageApi) => {
     case 'frame.frame3':
       jsx = Frame3(zone, index);
       break;
+    case 'frame.frame4':
+      jsx = Frame4(zone, index);
+      break;
+
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);
   }
