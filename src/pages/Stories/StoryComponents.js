@@ -294,16 +294,37 @@ const Frame3 = (zone, index) => {
 }
 
 const Frame4 = (zone, index) =>{
-  console.log(zone)
+  // console.log(zone)
+  let SQ2 = undefined;
+
+  if (zone.quote2 !== undefined && zone.sub_quote2 !== undefined) {
+    SQ2 = (
+      <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' >
+      <ReactMarkdown className='BlueText text-center'>
+        {zone.quote2}
+      </ReactMarkdown>
+      <ReactMarkdown className='GrayText text-center'>
+        {zone.sub_quote2}
+      </ReactMarkdown>   
+      </Col>
+    );
+  }
+
   return(
     <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-      <div>
-        {zone.quote1}
-      </div>
-      <div>
-        {zone.quote2}
-      </div>
-
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
+          <Row className='justify-content-around'>
+              <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
+                  <ReactMarkdown className='BlueText text-center'>
+                    {zone.quote1}
+                  </ReactMarkdown>
+                  <ReactMarkdown className='GrayText text-center'>
+                    {zone.sub_quote1}
+                  </ReactMarkdown>
+              </Col>
+              {SQ2}
+          </Row>
+        </Container>
     </div>
   )
 }
