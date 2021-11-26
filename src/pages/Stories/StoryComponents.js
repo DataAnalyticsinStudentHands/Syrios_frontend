@@ -329,6 +329,36 @@ const Frame4 = (zone, index) =>{
   )
 }
 
+const Frame5 = (zone, index) =>{
+  console.log(zone)
+
+  return(
+    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'200px'}}>
+          <Row className='justify-content-around'>
+              <Col>
+                  {zone.Picture_1}
+                  <ReactMarkdown>
+                    {zone.caption_1}
+                  </ReactMarkdown>
+              </Col>
+              <Col>
+                  <ReactMarkdown>
+                    {zone.caption}
+                  </ReactMarkdown>
+              </Col>
+              <Col>
+                  <ReactMarkdown>
+                    {zone.caption_2}
+                  </ReactMarkdown>
+              </Col>
+          </Row>
+        </Container>
+    </div>
+  )
+}
+
+
 // This function is for mapping name and functions over.
 // Did this for organization really. 
 const SwitchComponent = (zone, index, fullpageApi) => {
@@ -352,6 +382,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
     case 'frame.frame4':
       jsx = Frame4(zone, index);
       break;
+    case 'frame.frame5':
+        jsx = Frame5(zone, index);
+        break;
 
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);
