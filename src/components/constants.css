@@ -1,3 +1,9 @@
+/* Globals */
+:root {
+	--footerHeight: 70px;
+  --mainFonts: EB Garamond, Georgia, serif, FreeSerif;
+}
+
 .imgFill {
 	width: 100%;
 	height: 100%;
@@ -21,38 +27,33 @@
 }
 
 .OrangeText {
-	font-family: EB Garamond;
+	font-family: var(--mainFonts);
 	color: #A85828;
 }
 
 .BlackText {
-  font-family: EB Garamond;
+	font-family: var(--mainFonts);
   color: #000000;
 }
 
 .BlueText {
-	font-family: EB Garamond;
+	font-family: var(--mainFonts);
 	color: #486678;
 }
 
 .GrayText {
-	font-family: EB Garamond;
+	font-family: var(--mainFonts);
 	color: #737271;
 }
 
 .BoldWhiteText {
-	font-family: EB Garamond;
+	font-family: var(--mainFonts);
 	color: #FFFFFF;
 	font-weight: bold;
 }
 
 html {
 	position: relative;
-}
-
-/* Globals */
-:root {
-	--footerHeight: 70px;
 }
 
 /* Adobe XD generated CSS */

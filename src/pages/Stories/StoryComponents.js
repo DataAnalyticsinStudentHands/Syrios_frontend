@@ -36,7 +36,7 @@ const subcomponent_image = (image, width) => {
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           <img
-            alt={image.image.alternativeText == undefined ? 'img' : image.image.alternativeText}
+            alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
             className='FrameImage'
             width={width}
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} />
@@ -66,6 +66,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              alt='image'
               width={imageSizes[image.size]}/>
             <p className='OrangeText text-center' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
@@ -82,6 +83,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              alt='image'
               width={imageSizes[image.size]}/>
           </Link>
         </Col>

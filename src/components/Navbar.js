@@ -29,8 +29,18 @@ function BootstrapNavbar() {
 			<Navbar.Collapse id='responsive-navbar-nav'>
 				<Nav className='ms-auto NavbarText text-white'>
           { /* I hate this, but I can't figure out why Nav.Link won't work */ }
-          <Nav.Link><Link to='/Stories' className='blandStyle NavbarText text-white'>STORIES</Link></Nav.Link>
-					<NavDropdown title='EVIDENCE'>
+          <Nav.Item><Link 
+            to='/Stories' 
+            className='blandStyle NavbarText text-white'
+            style={{
+              position: 'relative',
+              top: '8px',
+              left: '-20px'
+            }}>
+            STORIES
+          </Link>
+          </Nav.Item>
+          <NavDropdown title='EVIDENCE'>
             { /* Same as above but for NavDropdown.Item to keyword */ }
             <NavDropdown.Item><Link to='/' className='blandStyle NavbarText text-white'>Coins in a Pile</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle NavbarText text-white'>Coins on a Map</Link></NavDropdown.Item>
@@ -40,7 +50,7 @@ function BootstrapNavbar() {
 					<NavDropdown title='TOOL BOX'>							
             <NavDropdown.Item><Link to='/' className='blandStyle NavbarText text-white'>Get to Know Syria</Link></NavDropdown.Item>
               <NavDropdown.Item><Link to='/' className='blandStyle NavbarText text-white'>Get to Know Coins</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link to='/' className='blandStyle NavbarText text-white'>Timeline</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link to='/Toolbox/Timeline' className='blandStyle NavbarText text-white'>Timeline</Link></NavDropdown.Item>
               <NavDropdown.Item><Link to='/' className='blandStyle NavbarText text-white'>Glossary</Link></NavDropdown.Item>
 					</NavDropdown>
 					<NavDropdown title='RESOURCES'>							

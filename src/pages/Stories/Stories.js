@@ -4,7 +4,6 @@ import {
 	Row,
 	Col
 } from 'react-bootstrap';
-import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -23,10 +22,11 @@ const Stories = () => {
 	// When user presses on of the buttons, it will do set_page(whichever_sort);
 	// The sorted pages are presorted that way it's snappy 
 	const [page, set_page] = useState(undefined);
+  /* not yet implemented
 	const [page_sortByCity, set_page_sortByCity] = useState(undefined);
 	const [page_sortByPolitical, set_page_sortByPolitical] = useState(undefined);
 	const [page_sortByEconomic, set_page_sortByEconomic] = useState(undefined);
-	const [page_sortBySocioCultural, set_page_sortBySocioCultural] = useState(undefined);
+  const [page_sortBySocioCultural, set_page_sortBySocioCultural] = useState(undefined); */
 
 	const Page = (stories) => {
 		return (
@@ -102,6 +102,7 @@ const Stories = () => {
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}
+                      alt='Story Image'
 											width='100%'/>
 										<p className='OrangeText SelectStoryText text-center'>
 											{e.story_name}
