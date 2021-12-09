@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Svg, {
   Path,
+  Text,
+  Line,
+  Polygon,
 } from 'react-native-svg';
+import { View, StyleSheet } from 'react-native';
 import axios from 'axios';
 
 import Footer from 'src/components/Footer.js';
@@ -13,6 +17,8 @@ import './Timeline.css';
 const Timeline = () => {
   const [loading, set_loading] = useState(true);
   const [page, set_page] = useState(undefined);
+
+  const colors = ['#7FA87F', '#F2D16B', '#B85828', '#486678', '#323029']
 
   useEffect(() => {
     if (loading) {
@@ -63,33 +69,137 @@ const Timeline = () => {
                * d="M25 10 L98 65 L70 25 L16 77 L11 30 L0 4 L90 50 L50 10 L11 22 L77 95 L20 25"
                * M means move to 25, 10 (x,y). Then L98 65 means line to (98,65), etc...
                * I'm just building that string up.
+               *
+               *
+               * Curve styles:
+               *
+               * M = moveto
+               * L = lineto
+               * H = horizontal lineto
+               * V = vertical lineto
+               * C = curveto
+               * S = smooth curveto
+               * Q = quadratic Bézier curve
+               * T = smooth quadratic Bézier curveto
+               * A = elliptical Arc
+               * Z = closepath
                */
+              let curveStyle = 'C';
+              let yOffset = 5; // This is to offset some values to make stuff easier to see
+
 
               let minHeight = res.data[0].y_date; // We can assume index 0 is the smallest because it is ordered by ascending
               let maxHeight = res.data[res.data.length-1].y_date; // We can assume index last is the biggest because it is ordered by ascending
               let startEndKeyPairSVGValues = JSON.parse(JSON.stringify(startEndKeyPairs));
               for (let i = 0; i < startEndKeyPairSVGValues.length; i++) {
-                startEndKeyPairSVGValues[i][0] = '';
-                startEndKeyPairSVGValues[i][1] = '';
+                startEndKeyPairSVGValues[i][0] = [];
+                startEndKeyPairSVGValues[i][1] = [];
               }
 
               res.data.forEach((e, index) => {
                 for (let i = 0; i < startEndKeyPairs.length; i++) {
-                  if (isNaN(e[startEndKeyPairSVGValues[i][0]]) || isNaN(e[startEndKeyPairSVGValues[i][1]])) {
+                  if (e[startEndKeyPairs[i][0]] === null || e[startEndKeyPairs[i][1]] === null || isNaN(e[startEndKeyPairs[i][0]]) || isNaN(e[startEndKeyPairs[i][1]])) {
                     continue;
                   }
-                  startEndKeyPairSVGValues[i][0] = `C${e[startEndKeyPairs[i][0]]} ${e.y_date} `;
-                  startEndKeyPairSVGValues[i][1] = `C${e[startEndKeyPairs[i][1]]} ${e.y_date} `;
+
+                  if (startEndKeyPairSVGValues[i][0] === undefined || startEndKeyPairSVGValues[i][0].length === 0) { // if empty, null, or false set it up
+                    startEndKeyPairSVGValues[i][0].push(`M${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+                    startEndKeyPairSVGValues[i][1].push(`${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+                  } else if (startEndKeyPairSVGValues[i][0].length === 1) {
+                    startEndKeyPairSVGValues[i][0].push(`${curveStyle}${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+                    startEndKeyPairSVGValues[i][1].push(`${curveStyle}${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+                  } else {
+                    startEndKeyPairSVGValues[i][0].push(`${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+                    startEndKeyPairSVGValues[i][1].push(`${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+                  }
                 }
               });
+
+              let jsxArr = [];
+              let dVal = [];
+              for (let i = 0; i < startEndKeyPairs.length; i++) {
+                jsxArr.push(
+                  <>
+                    <Path
+                      d={startEndKeyPairSVGValues[i][0].join("") + startEndKeyPairSVGValues[i][1].reverse().join("")}
+                      stroke={colors[i]}
+                      fill={colors[i]}
+                      strokeWidth="0.01"
+                      style={{
+                        opacity: '0.6'
+                      }}/>
+                  </>
+                );
+                dVal.push();
+              } // End of Timeline big background color filler mapper
+
+
+              // Need to setup lines at every 50 years with text. Need each 50 year point
+              let y_datesMod50 = [];
+              res.data.forEach((e) => {
+                if (e.y_date % 50 === 0) {
+                  y_datesMod50.push(e.y_date);
+                }
+              });
+
+              y_datesMod50.forEach((e) => { // build jsxArr for y_date lines at every 50 years
+                jsxArr.push(
+                  <>
+                    {(() => {
+                      let jsxLineArr = [];
+                      for (let i = 0.5; i < 93; i++) {
+                        for (let j = 0; j < 1; j += 0.5) {
+                          jsxLineArr.push(
+                            <Line
+                              stroke='#282828'
+                              strokeWidth='0.1'
+                              x1={`${i+j}`}
+                              x2={`${i+j+0.1}`}
+                              y1={`${e+Math.abs(minHeight)+yOffset}`}
+                              y2={`${e+Math.abs(minHeight)+yOffset}`}
+                            />
+                          );
+                        }
+                      }
+
+                      return jsxLineArr;
+                    })()}
+                    <Text
+                      x='98%'
+                      textAnchor='end'
+                      fontWeight='thin'
+                      y={`${e+Math.abs(minHeight)+yOffset+0.4}`}
+                      className='GrayText'
+                      style={{fontSize: '1px'}}>
+                      {(() => {
+                        if (e < 0) {
+                          return `${Math.abs(e)} BCE`;
+                        } else {
+                          return `${Math.abs(e)} CE`;
+                        }
+                      })()}
+                    </Text>
+                    <Line
+                      stroke='#282828'
+                      strokeWidth='0.1'
+                      x1='100%'
+                      x2='98.5%'
+                      y1={`${e+Math.abs(minHeight)+yOffset}`}
+                      y2={`${e+Math.abs(minHeight)+yOffset}`}
+                    />
+                  </>
+                );
+              });
+
+
               let viewBoxHeight = Math.abs(maxHeight-minHeight);
               set_page(
-                <Svg height='100%' width='100%' viewBox={`0 0 100 ${viewBoxHeight}`}>
-                  <Path
-                    d={startEndKeyPairs[0][0]}
-                    fill='red'
-                    stroke='red'
-                  />
+                <Svg 
+                  height='100%' 
+                  width='100%' 
+                  viewBox={`0 0 100 ${viewBoxHeight+yOffset+7}`}
+                  style={{position: 'relative', top: '5em'}}>
+                  {jsxArr}
                 </Svg>
               );
 
@@ -117,6 +227,16 @@ const Timeline = () => {
       return (
         <div id='Timeline'>
           {Navbar()}
+          <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '8em'}}>
+            <p className='BlueText text-center' style={{fontSize:'3em'}}>
+              TIMELINE
+            </p>
+          </div>
+          <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '6em'}}>
+            <p className='GrayText text-center' style={{fontStyle:'italic'}}>
+              Scroll down to explore the history of Antioch, as told by its coins.
+            </p>
+          </div>
           {page}
           {Footer()}
         </div>
