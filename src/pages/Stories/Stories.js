@@ -102,7 +102,7 @@ const Stories = () => {
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}
-                      alt='Story Image'
+                      alt='Story_Image'
 											width='100%'/>
 										<p className='OrangeText SelectStoryText text-center'>
 											{e.story_name}
@@ -115,9 +115,9 @@ const Stories = () => {
 
 					// set_page no sort
 					let pageJSX = [];
-					storiesJSX.forEach((e) => {
+					storiesJSX.forEach((e, index) => {
 						pageJSX.push(
-							<Col>
+							<Col key={`story_${index}`}>
 								{e}
 							</Col>
 						);

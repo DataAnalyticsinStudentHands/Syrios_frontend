@@ -3,9 +3,7 @@ import Svg, {
   Path,
   Text,
   Line,
-  Polygon,
 } from 'react-native-svg';
-import { View, StyleSheet } from 'react-native';
 import axios from 'axios';
 
 import Footer from 'src/components/Footer.js';
@@ -28,7 +26,7 @@ const Timeline = () => {
             set_page(
               <div className='d-flex align-items-center justify-content-center' style={{paddingTop: '10%'}}>
                 <p className='OrangeText text-center' style={{fontSize: '76px'}}>
-                  Page failed to load. :(. Try refreshing.
+                  Page failed to load. Try refreshing.
                 </p>
               </div>
                   );
@@ -84,12 +82,14 @@ const Timeline = () => {
                * A = elliptical Arc
                * Z = closepath
                */
-              let curveStyle = 'C';
+              let curveStyle = 'S';
               let yOffset = 5; // This is to offset some values to make stuff easier to see
 
 
               let minHeight = res.data[0].y_date; // We can assume index 0 is the smallest because it is ordered by ascending
               let maxHeight = res.data[res.data.length-1].y_date; // We can assume index last is the biggest because it is ordered by ascending
+
+              // Setup X and Y containers for render
               let startEndKeyPairSVGValues = JSON.parse(JSON.stringify(startEndKeyPairs));
               for (let i = 0; i < startEndKeyPairSVGValues.length; i++) {
                 startEndKeyPairSVGValues[i][0] = [];
@@ -98,23 +98,37 @@ const Timeline = () => {
 
               res.data.forEach((e, index) => {
                 for (let i = 0; i < startEndKeyPairs.length; i++) {
-                  if (e[startEndKeyPairs[i][0]] === null || e[startEndKeyPairs[i][1]] === null || isNaN(e[startEndKeyPairs[i][0]]) || isNaN(e[startEndKeyPairs[i][1]])) {
+                  if (e[startEndKeyPairs[i][0]] === null || e[startEndKeyPairs[i][1]] === null || isNaN(e[startEndKeyPairs[i][0]]) || isNaN(e[startEndKeyPairs[i][1]])) { // Avoid null points. These get ugly if we aren't careful
                     continue;
                   }
 
-                  if (startEndKeyPairSVGValues[i][0] === undefined || startEndKeyPairSVGValues[i][0].length === 0) { // if empty, null, or false set it up
+                  if (startEndKeyPairSVGValues[i][0] === undefined || startEndKeyPairSVGValues[i][0].length === 0) { // If this is a "new" timeline object (meaning everything else for it was undefined up until this point), move to.
                     startEndKeyPairSVGValues[i][0].push(`M${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
                     startEndKeyPairSVGValues[i][1].push(`${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
-                  } else if (startEndKeyPairSVGValues[i][0].length === 1) {
+                  } else if (startEndKeyPairSVGValues[i][0].length === 1) { // If this timeline object was "recently" made (the above statement), make it have the proper curve style
                     startEndKeyPairSVGValues[i][0].push(`${curveStyle}${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
                     startEndKeyPairSVGValues[i][1].push(`${curveStyle}${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
-                  } else {
+                  } else { // If this timeline object is done being made and just needs to continue output dates, do that
                     startEndKeyPairSVGValues[i][0].push(`${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
                     startEndKeyPairSVGValues[i][1].push(`${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
                   }
                 }
               });
 
+              // This fix is to FORCE svg-react-native to draw lines at the very top of the timeline for those timeline objects that start at the top of the timeline
+              // Without this, there is a slanted line at the top of the timeline for timeline objects. Other objects face this problem, but it isn't as bad of a problem unless it is at the top
+              for (let i = 0; i < startEndKeyPairSVGValues.length; i++) {                 
+                if (parseInt(startEndKeyPairSVGValues[i][0][0].substring(startEndKeyPairSVGValues[i][0][0].indexOf(' ')))+minHeight-6 > minHeight) {
+                  continue;
+                }
+                startEndKeyPairSVGValues[i][0][1] = startEndKeyPairSVGValues[i][0][1].replace(curveStyle, 'L');
+                startEndKeyPairSVGValues[i][0][2] = startEndKeyPairSVGValues[i][0][2].replace(curveStyle, 'L');
+                startEndKeyPairSVGValues[i][0][3] = 'C'+startEndKeyPairSVGValues[i][0][3];
+                
+                startEndKeyPairSVGValues[i][1][3] = 'L'+startEndKeyPairSVGValues[i][1][3];
+              }
+
+              // Push Pathing react-native-svg elements onto render array for react to load
               let jsxArr = [];
               let dVal = [];
               for (let i = 0; i < startEndKeyPairs.length; i++) {
@@ -146,6 +160,7 @@ const Timeline = () => {
                 jsxArr.push(
                   <>
                     {(() => {
+                      // This is how we biuld the dotted line
                       let jsxLineArr = [];
                       for (let i = 0.5; i < 93; i++) {
                         for (let j = 0; j < 1; j += 0.5) {
@@ -172,6 +187,7 @@ const Timeline = () => {
                       className='GrayText'
                       style={{fontSize: '1px'}}>
                       {(() => {
+                        // BCE vs CE or BC vs AD. Whatever you like.
                         if (e < 0) {
                           return `${Math.abs(e)} BCE`;
                         } else {
@@ -197,7 +213,7 @@ const Timeline = () => {
                 <Svg 
                   height='100%' 
                   width='100%' 
-                  viewBox={`0 0 100 ${viewBoxHeight+yOffset+7}`}
+                  viewBox={`0 0 100 ${viewBoxHeight}`}
                   style={{position: 'relative', top: '5em'}}>
                   {jsxArr}
                 </Svg>
