@@ -123,7 +123,7 @@ const Timeline = () => {
                 }
                 startEndKeyPairSVGValues[i][0][1] = startEndKeyPairSVGValues[i][0][1].replace(curveStyle, 'L');
                 startEndKeyPairSVGValues[i][0][2] = startEndKeyPairSVGValues[i][0][2].replace(curveStyle, 'L');
-                startEndKeyPairSVGValues[i][0][3] = 'C'+startEndKeyPairSVGValues[i][0][3];
+                startEndKeyPairSVGValues[i][0][3] = curveStyle+startEndKeyPairSVGValues[i][0][3];
                 
                 startEndKeyPairSVGValues[i][1][3] = 'L'+startEndKeyPairSVGValues[i][1][3];
               }
