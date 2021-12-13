@@ -81,6 +81,8 @@ const Timeline = () => {
                * T = smooth quadratic Bézier curveto
                * A = elliptical Arc
                * Z = closepath
+               *
+               * Noticed that S works the best. Some of the other options tend to have "problems"
                */
               let curveStyle = 'S';
               let yOffset = 5; // This is to offset some values to make stuff easier to see
@@ -122,8 +124,7 @@ const Timeline = () => {
                   continue;
                 }
                 startEndKeyPairSVGValues[i][0][1] = startEndKeyPairSVGValues[i][0][1].replace(curveStyle, 'L');
-                startEndKeyPairSVGValues[i][0][2] = startEndKeyPairSVGValues[i][0][2].replace(curveStyle, 'L');
-                startEndKeyPairSVGValues[i][0][3] = curveStyle+startEndKeyPairSVGValues[i][0][3];
+                startEndKeyPairSVGValues[i][0][4] = curveStyle + startEndKeyPairSVGValues[i][0][4];
                 
                 startEndKeyPairSVGValues[i][1][3] = 'L'+startEndKeyPairSVGValues[i][1][3];
               }
