@@ -2,7 +2,7 @@ import React from 'react';
 import {
 	BrowserRouter,
 	Route,
-	Switch,
+	Routes,
 	// Redirect,
 } from 'react-router-dom';
 
@@ -25,12 +25,12 @@ function App() {
 			/>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter basename='/dev'>
-				<Switch>
-					<Route exact path='/' component={LandingPage} />
-					<Route path='/Toolbox/Timeline' component={Timeline} />
-					<Route path='/Stories' component={Stories} />
-					<Route path='/StoryReader' component={StoryReader} />
-				</Switch>
+				<Routes>
+          <Route exact path='/' element={<LandingPage />} />
+          <Route path='/Toolbox/Timeline' element={<Timeline />} />
+          <Route path='/Stories' element={<Stories />} />
+          <Route path='/StoryReader' element={<StoryReader />} />
+				</Routes>
 			</BrowserRouter>
 		</div>
 	);
