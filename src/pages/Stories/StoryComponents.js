@@ -122,7 +122,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 // Title component for all stories
 const Title = (zone, index) => {
   return (
-    <div className='section'>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <img
           id='TitleImage'
@@ -154,7 +154,7 @@ const Title = (zone, index) => {
 
 const End_Frame = (zone, index) => {
   return (
-    <div className='section'>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <div id='EndFrameText'>
           <ReactMarkdown className='GrayText text-center'>
@@ -232,7 +232,7 @@ const Frame1 = (zone, index) => {
   }
 
   return (
-    <div className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container>
         <ReactMarkdown className='OrangeText MainText text-center'>
           {zone.main_text}
@@ -258,7 +258,7 @@ const Frame2 = (zone, index) => {
   }
 
   return (
-    <div className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='OrangeText MainText text-center'>
           {zone.main_text}
@@ -284,7 +284,7 @@ const Frame3 = (zone, index) => {
     );
   }
   return (
-    <div className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       {subcomponent_image_with_dynamic_sizing(zone.images)}
       <Container style={{marginTop: '-110px'}}>
         <ReactMarkdown className='OrangeText MainText text-center'>
@@ -314,7 +314,7 @@ const Frame4 = (zone, index) =>{
   }
 
   return(
-    <div className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
           <Row className='justify-content-around'>
               <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
@@ -336,7 +336,7 @@ const Frame5 = (zone, index) =>{
   console.log(zone)
 
   return(
-    <div className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='justify-content-center align-items-center' style={{marginTop:'200px'}}>
           <Row className='justify-content-around'>
               <Col>
@@ -393,12 +393,7 @@ const SwitchComponent = (zone, index, fullpageApi) => {
       console.error(`Error: Unrecognized component '${zone.__component}'`);
   }
 
-  return (
-    <div key={`story_comp_${index}`}>
-      {jsx}
-    </div>
-
-  );
+  return jsx;
 }
 
 export default SwitchComponent
