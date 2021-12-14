@@ -51,7 +51,6 @@ const HowToReadACoin = () => {
               />
             );
             set_isLoading(false);
-
           }
         });
     }

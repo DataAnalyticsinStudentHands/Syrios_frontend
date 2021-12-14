@@ -1,7 +1,7 @@
 /* Globals */
 :root {
 	--footerHeight: 70px;
-  --mainFonts: EB Garamond, Georgia, serif, FreeSerif;
+  --mainFonts: 'syrios-entypo-subset', EB Garamond, Georgia, serif, FreeSerif;
 }
 
 .imgFill {

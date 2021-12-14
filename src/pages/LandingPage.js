@@ -127,6 +127,7 @@ function LandingPage() {
                         {res.data.LandingParagraph}
                       </ReactMarkdown>
                     </p>
+
                   </Col>
                 </Row>
               </Container>
