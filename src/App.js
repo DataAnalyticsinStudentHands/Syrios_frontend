@@ -10,6 +10,7 @@ import LandingPage from 'src/pages/LandingPage.js';
 import Timeline from 'src/pages/Toolbox/Timeline.js';
 import Stories from 'src/pages/Stories/Stories.js';
 import StoryReader from 'src/pages/Stories/StoryReader.js';
+import HowToReadACoin from 'src/pages/HowToReadACoin.js';
 import background from 'src/assets/background.jpg';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/Toolbox/Timeline' element={<Timeline />} />
           <Route path='/Stories' element={<Stories />} />
           <Route path='/StoryReader' element={<StoryReader />} />
+          <Route path='/HowToReadACoin' element={<HowToReadACoin />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

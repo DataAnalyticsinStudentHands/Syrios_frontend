@@ -84,21 +84,14 @@ const Stories = () => {
 
 	useEffect(() => {
 		if (loading) {
-			axios.get(process.env.REACT_APP_strapiURL + '/stories')
+			axios.get(process.env.REACT_APP_strapiURL + '/stories') // Call stories objects to get story info so we can sort our informatoin around
 				.then((res) => {
-					let storiesInfo = [];
-					res.data.forEach((e) => {
-						storiesInfo.push({
-							...e.story_info,
-							story_id: e._id
-						});
-					});
-
 					let storiesJSX = [];
-					storiesInfo.forEach((e) => {
+					res.data.forEach((e) => {
+            console.log(e);
 						storiesJSX.push(
 							<Col key={`${e.id}`}>
-								<Link to={`/StoryReader?id=${e.story_id}`}>
+								<Link to={`/StoryReader?id=${e._id}`}>
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}

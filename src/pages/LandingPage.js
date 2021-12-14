@@ -60,7 +60,7 @@ function LandingPage() {
                         {/* How to Read a Coin */}
                         <Col>
                           <div className='bg-white LandingButtonSize'>
-                            <a href='/'>
+                            <Link to='/HowToReadACoin'>
                               <div className='LandingButtonImg' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
                                 <div className='OnHoverDim'>
                                   <p className='blandStyle BoldWhiteText LandingButtonsText'>
@@ -68,7 +68,7 @@ function LandingPage() {
                                   </p>
                                 </div>
                               </div>
-                            </a>
+                            </Link>
                           </div>
                         </Col>
                         {/* Discover Stories from Coins */}
