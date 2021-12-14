@@ -1,7 +1,8 @@
 import {
   Container,
   Row,
-  Col
+  Col,
+  Image
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -295,35 +296,49 @@ const Frame3 = (zone, index) => {
 
 const Frame4 = (zone, index) =>{
   // console.log(zone)
-  let SQ2 = undefined;
+  let subQuote = undefined;
 
-  if (zone.quote2 !== undefined && zone.sub_quote2 !== undefined) {
-    SQ2 = (
-      <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' >
-      <ReactMarkdown className='BlueText text-center'>
-        {zone.quote2}
-      </ReactMarkdown>
-      <ReactMarkdown className='GrayText text-center'>
-        {zone.sub_quote2}
-      </ReactMarkdown>   
-      </Col>
+  if (!IsEmptyOrWhiteSpace(zone.quote1) && !IsEmptyOrWhiteSpace(zone.quote2)) {
+    subQuote = (
+      <Row className='justify-content-around'>
+          <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
+              <ReactMarkdown className='BlueText text-center'>
+                {zone.quote1}
+              </ReactMarkdown>
+              <ReactMarkdown className='GrayText text-center'>
+                {zone.sub_quote1}
+              </ReactMarkdown>
+          </Col>
+          <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' >
+              <ReactMarkdown className='BlueText text-center'>
+                {zone.quote2}
+              </ReactMarkdown>
+              <ReactMarkdown className='GrayText text-center'>
+                {zone.sub_quote2}
+              </ReactMarkdown>   
+          </Col>
+      </Row>
     );
+  }
+  if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.quote1)){
+    subQuote = (
+      <Row className='justify-content-around'>
+        <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
+            <ReactMarkdown className='BlueText text-center'>
+              {zone.quote1}
+            </ReactMarkdown>
+            <ReactMarkdown className='GrayText text-center'>
+              {zone.sub_quote1}
+            </ReactMarkdown>
+        </Col>
+    </Row>
+    )
   }
 
   return(
     <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
-          <Row className='justify-content-around'>
-              <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
-                  <ReactMarkdown className='BlueText text-center'>
-                    {zone.quote1}
-                  </ReactMarkdown>
-                  <ReactMarkdown className='GrayText text-center'>
-                    {zone.sub_quote1}
-                  </ReactMarkdown>
-              </Col>
-              {SQ2}
-          </Row>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-20%'}}>
+            {subQuote}
         </Container>
     </div>
   )
@@ -334,26 +349,17 @@ const Frame5 = (zone, index) =>{
 
   return(
     <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'200px'}}>
-          <Row className='justify-content-around'>
-              <Col>
-                  {zone.Picture_1}
-                  <ReactMarkdown>
-                    {zone.caption_1}
-                  </ReactMarkdown>
-              </Col>
-              <Col>
-                  <ReactMarkdown>
-                    {zone.caption}
-                  </ReactMarkdown>
-              </Col>
-              <Col>
-                  <ReactMarkdown>
-                    {zone.caption_2}
-                  </ReactMarkdown>
-              </Col>
-          </Row>
+        <Container>
+            <Col>
+                {subcomponent_image(zone.image_left)}
+
+            </Col>
+            <Col>
+            {subcomponent_image(zone.image_right)}
+            </Col>
+
         </Container>
+
     </div>
   )
 }
