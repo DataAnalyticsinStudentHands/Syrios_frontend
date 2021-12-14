@@ -37,7 +37,7 @@ const subcomponent_image = (image, width) => {
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           <img
-            alt={image.image.alternativeText == undefined ? 'img' : image.image.alternativeText}
+            alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
             className='FrameImage'
             width={width}
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} />
@@ -67,6 +67,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              alt='dynamic_image'
               width={imageSizes[image.size]}/>
             <p className='OrangeText text-center' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
@@ -83,6 +84,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              alt='dynamic_image'
               width={imageSizes[image.size]}/>
           </Link>
         </Col>
@@ -95,6 +97,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
         <Col key={image.id}>
           <img
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+            alt='dynamic_image'
             width={imageSizes[image.size]}/>
           <p className='BlackText text-center' style={{fontSize: image_brief_detail_font_size}}>
             {image.brief_detail}
@@ -120,7 +123,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 // Title component for all stories
 const Title = (zone, index) => {
   return (
-    <div className='section' key={index}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <img
           id='TitleImage'
@@ -152,7 +155,7 @@ const Title = (zone, index) => {
 
 const End_Frame = (zone, index) => {
   return (
-    <div className='section' key={index}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <div id='EndFrameText'>
           <ReactMarkdown className='GrayText text-center'>
@@ -230,7 +233,7 @@ const Frame1 = (zone, index) => {
   }
 
   return (
-    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container>
         <ReactMarkdown className='OrangeText MainText text-center'>
           {zone.main_text}
@@ -256,7 +259,7 @@ const Frame2 = (zone, index) => {
   }
 
   return (
-    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='OrangeText MainText text-center'>
           {zone.main_text}
@@ -282,7 +285,7 @@ const Frame3 = (zone, index) => {
     );
   }
   return (
-    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       {subcomponent_image_with_dynamic_sizing(zone.images)}
       <Container style={{marginTop: '-110px'}}>
         <ReactMarkdown className='OrangeText MainText text-center'>
@@ -336,9 +339,9 @@ const Frame4 = (zone, index) =>{
   }
 
   return(
-    <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'-20%'}}>
-            {subQuote}
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
+              {subQuote}
         </Container>
     </div>
   )
@@ -396,12 +399,7 @@ const SwitchComponent = (zone, index, fullpageApi) => {
       console.error(`Error: Unrecognized component '${zone.__component}'`);
   }
 
-  return (
-    <>
-      {jsx}
-    </>
-
-  );
+  return jsx;
 }
 
 export default SwitchComponent

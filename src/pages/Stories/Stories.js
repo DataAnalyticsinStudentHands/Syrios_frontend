@@ -4,7 +4,6 @@ import {
 	Row,
 	Col
 } from 'react-bootstrap';
-import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -23,10 +22,11 @@ const Stories = () => {
 	// When user presses on of the buttons, it will do set_page(whichever_sort);
 	// The sorted pages are presorted that way it's snappy 
 	const [page, set_page] = useState(undefined);
+  /* not yet implemented
 	const [page_sortByCity, set_page_sortByCity] = useState(undefined);
 	const [page_sortByPolitical, set_page_sortByPolitical] = useState(undefined);
 	const [page_sortByEconomic, set_page_sortByEconomic] = useState(undefined);
-	const [page_sortBySocioCultural, set_page_sortBySocioCultural] = useState(undefined);
+  const [page_sortBySocioCultural, set_page_sortBySocioCultural] = useState(undefined); */
 
 	const Page = (stories) => {
 		return (
@@ -84,24 +84,18 @@ const Stories = () => {
 
 	useEffect(() => {
 		if (loading) {
-			axios.get(process.env.REACT_APP_strapiURL + '/stories')
+			axios.get(process.env.REACT_APP_strapiURL + '/stories') // Call stories objects to get story info so we can sort our informatoin around
 				.then((res) => {
-					let storiesInfo = [];
-					res.data.forEach((e) => {
-						storiesInfo.push({
-							...e.story_info,
-							story_id: e._id
-						});
-					});
-
 					let storiesJSX = [];
-					storiesInfo.forEach((e) => {
+					res.data.forEach((e) => {
+            console.log(e);
 						storiesJSX.push(
 							<Col key={`${e.id}`}>
-								<Link to={`/StoryReader?id=${e.story_id}`}>
+								<Link to={`/StoryReader?id=${e._id}`}>
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}
+                      alt='Story_Image'
 											width='100%'/>
 										<p className='OrangeText SelectStoryText text-center'>
 											{e.story_name}
@@ -114,9 +108,9 @@ const Stories = () => {
 
 					// set_page no sort
 					let pageJSX = [];
-					storiesJSX.forEach((e) => {
+					storiesJSX.forEach((e, index) => {
 						pageJSX.push(
-							<Col>
+							<Col key={`story_${index}`}>
 								{e}
 							</Col>
 						);

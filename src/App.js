@@ -2,7 +2,7 @@ import React from 'react';
 import {
 	BrowserRouter,
 	Route,
-	Switch,
+	Routes,
 	// Redirect,
 } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import LandingPage from 'src/pages/LandingPage.js';
 import Timeline from 'src/pages/Toolbox/Timeline.js';
 import Stories from 'src/pages/Stories/Stories.js';
 import StoryReader from 'src/pages/Stories/StoryReader.js';
+import HowToReadACoin from 'src/pages/HowToReadACoin.js';
 import background from 'src/assets/background.jpg';
 
 function App() {
@@ -23,14 +24,18 @@ function App() {
 				integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 				crossOrigin="anonymous"
 			/>
+      <link 
+        rel="stylesheet"
+        href="assets/SyriosFontAndIcons/css"/>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter basename='/dev'>
-				<Switch>
-					<Route exact path='/' component={LandingPage} />
-					<Route path='/Toolbox/Timeline' component={Timeline} />
-					<Route path='/Stories' component={Stories} />
-					<Route path='/StoryReader' component={StoryReader} />
-				</Switch>
+				<Routes>
+          <Route exact path='/' element={<LandingPage />} />
+          <Route path='/Toolbox/Timeline' element={<Timeline />} />
+          <Route path='/Stories' element={<Stories />} />
+          <Route path='/StoryReader' element={<StoryReader />} />
+          <Route path='/HowToReadACoin' element={<HowToReadACoin />} />
+				</Routes>
 			</BrowserRouter>
 		</div>
 	);
