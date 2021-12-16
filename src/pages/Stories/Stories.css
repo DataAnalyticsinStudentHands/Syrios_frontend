@@ -193,29 +193,97 @@ Button:hover {
 }
 
 .InteractiveFrame1ImageFrontLeft {
-  position: relative;
-  top: 0;
-  left: 0;
   display: block;
+	opacity: 1.0;
+  transition: 0.3s;
 }
 
 .InteractiveFrame1ImageBackLeft {
-  position: absolute;
-  top: -30px;
-  left: 0;
   display: none;
+	opacity: 0.0;
+  transition: 0.3s;
 }
 
 .InteractiveFrame1ImageFrontRight {
-  position: relative;
-  top: 0;
-  left: 0;
   display: block;
+	opacity: 1.0;
+  transition: 0.3s;
 }
 
 .InteractiveFrame1ImageBackRight {
-  position: absolute;
-  top: -30px;
-  left: 0;
   display: none;
+	opacity: 0.0;
+  transition: 0.3s;
+}
+
+.InteractiveFrame1TextFront {
+  position: relative;
+  top: 50px;
+  display: block;
+	opacity: 1.0;
+  transition: 0.3s;
+}
+
+.InteractiveFrame1TextBack {
+  position: relative;
+  top: 30px;
+  display: none;
+	opacity: 0.0;
+  transition: 0.3s;
+}
+
+.InteractiveFrame1ScaleIcon {
+  margin-top: 10px;
+  font-size: 80px;
+  color: #7899A8;
+  cursor: pointer;
+}
+
+.InteractiveFrame1CompareScale {
+  display: block;
+	opacity: 1.0;
+  margin-top: -10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.InteractiveFrame1ResetScale {
+  display: none;
+	opacity: 0.0;
+  margin-top: -10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.InteractiveFrame1LightBlueSizing {
+  width: auto;
+}
+
+@media only screen and (max-width: 767px) {
+
+  .InteractiveFrame1LightBlueSizing {
+    position: relative;
+    left: 5% !important;
+    width: 95%;
+  }
+
+  .InteractiveFrame1ScaleIcon {
+    font-size: 40px;
+  }
+
+  .InteractiveFrame1CompareScale {
+    margin-top: -5px;
+  }
+
+  .InteractiveFrame1ResetScale {
+    margin-top: -5px;
+  }
+
+  .InteractiveFrame1ImageBackLeft {
+    left: -70px !important;
+  }
+  
+  .InteractiveFrame1ImageBackRight {
+    left: -70px !important;
+  }
 }
