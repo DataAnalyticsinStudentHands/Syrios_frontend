@@ -70,7 +70,22 @@ Button:hover {
   margin-bottom: 10px;
 }
 
+.HalfImageSize {
+  -webkit-transform: scale(0.5); /* Saf3.1+, Chrome */
+  -moz-transform: scale(0.5); /* FF3.5+ */
+  -ms-transform: scale(0.5); /* IE9 */
+  -o-transform: scale(0.5); /* Opera 10.5+ */
+  transform: scale(0.5);
+}
+
 @media only screen and (max-width: 767px) {
+  .HalfImageSize {
+    -webkit-transform: scale(0.25); /* Saf3.1+, Chrome */ 
+    -moz-transform: scale(0.25); /* FF3.5+ */
+    -ms-transform: scale(0.25); /* IE9 */
+    -o-transform: scale(0.25); /* Opera 10.25+ */
+    transform: scale(0.25);
+  }
   
   .FrameImage {
     width: 80% !important;
@@ -170,3 +185,37 @@ Button:hover {
 }
 
 /**** Frame2 ****/
+/**** Interactive_Frame1 ****/
+.InteractiveFrame1ImageOuterDiv {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.InteractiveFrame1ImageFrontLeft {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.InteractiveFrame1ImageBackLeft {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  display: none;
+}
+
+.InteractiveFrame1ImageFrontRight {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.InteractiveFrame1ImageBackRight {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  display: none;
+}

@@ -16,7 +16,7 @@ const HowToReadACoin = () => {
 
   useEffect(() => {
     if (isLoading) {
-      axios.get(`${process.env.REACT_APP_strapiURL}/HowToReadACoin`)
+      axios.get(`${process.env.REACT_APP_strapiURL}/how-to-read-a-coin`)
         .then((res, error) => {
           if (error) {
             set_page(

@@ -26,7 +26,7 @@ const Footer = () => {
 				<Row className='justify-content-md-center'>
 					<Col sm={6}>
 						<button 
-							className='blandStyle FooterText centerDiv'
+							className='blandStyle WhiteText FooterText centerDiv'
 							onClick={() => {
 								if (cr === null || cr === undefined) {
 									set_cr(
@@ -48,14 +48,14 @@ const Footer = () => {
 					</Col>
 					<Col sm={3} xs={0}>
 						<Link to='/' className='blandStyle d-none d-md-block'>
-							<p className='FooterText centerDiv'>
+							<p className='WhiteText FooterText centerDiv'>
 								ABOUT US
 							</p>
 						</Link>
 					</Col>
 					<Col sm={3} xs={0}>
 						<Link to='/' className='blandStyle d-none d-md-block'>
-							<p className='FooterText centerDiv'>
+							<p className='WhiteText FooterText centerDiv'>
 								CONTACT US
 							</p>
 						</Link>

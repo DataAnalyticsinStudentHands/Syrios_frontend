@@ -35,11 +35,11 @@ function LandingPage() {
                 <Row container='justify-content-md-center'>
                   {/* This is the title text in orage */}
                   <Col>
-                    <p className='OrangeText' style={{fontSize: '4em'}}>
+                    <div className='OrangeText' style={{fontSize: '4em'}}>
                       <ReactMarkdown>
                         {res.data.shortDescription}
                       </ReactMarkdown>
-                    </p>
+                    </div>
                   </Col>
                 </Row>
                 <Row container='justify-content-md-center'>
@@ -122,11 +122,11 @@ function LandingPage() {
                 {/* Landing paragraph */}
                 <Row container='justify-content-md-center'>
                   <Col>
-                    <p className='BlueText' style={{fontSize:'1.3em'}}>
+                    <div className='BlueText' style={{fontSize:'1.3em'}}>
                       <ReactMarkdown>
                         {res.data.LandingParagraph}
                       </ReactMarkdown>
-                    </p>
+                    </div>
 
                   </Col>
                 </Row>

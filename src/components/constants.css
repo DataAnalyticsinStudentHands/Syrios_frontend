@@ -10,6 +10,12 @@
 	object-fit: contain;
 }
 
+.imgCover {
+	width: 100%;
+	height: 100%;
+  object-fit: cover;
+}
+
 .blandStyle {
 	text-decoration: none !important;
 	background: transparent !important;
@@ -44,6 +50,11 @@
 .GrayText {
 	font-family: var(--mainFonts);
 	color: #737271;
+}
+
+.WhiteText {
+  font-family: var(--mainFonts);
+  color: #FFFFFF;
 }
 
 .BoldWhiteText {

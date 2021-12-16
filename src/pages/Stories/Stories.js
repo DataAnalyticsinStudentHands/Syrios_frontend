@@ -88,7 +88,6 @@ const Stories = () => {
 				.then((res) => {
 					let storiesJSX = [];
 					res.data.forEach((e) => {
-            console.log(e);
 						storiesJSX.push(
 							<Col key={`${e.id}`}>
 								<Link to={`/StoryReader?id=${e._id}`}>
