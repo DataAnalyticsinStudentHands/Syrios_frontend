@@ -393,6 +393,14 @@ const Frame6 = (zone, index) =>{
   )
 }
 
+const Frame7 = (zone, index) =>{
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+
+    </div>
+  )
+}
+
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
@@ -422,6 +430,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
         break;
     case 'frame.frame6':
         jsx = Frame6(zone, index);
+        break;
+    case 'frame.frame7':
+        jsx = Frame7(zone, index);
         break;
 
     default:
