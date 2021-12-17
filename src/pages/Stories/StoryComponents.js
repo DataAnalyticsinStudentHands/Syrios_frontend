@@ -2,7 +2,6 @@ import {
   Container,
   Row,
   Col,
-  Image
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -14,7 +13,6 @@ function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
 }
 
-// THIS NEEDS WORK
 // These are more general exports. All functions may use them
 const subcomponent_image = (image, width) => {
   let caption = undefined; 
@@ -38,7 +36,7 @@ const subcomponent_image = (image, width) => {
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           <img
-            alt={IsEmptyOrWhiteSpace(image.image.alternativeText) ? 'dynamic_image' : image.image.alternativeText}
+            alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
             className='FrameImage'
             width={width}
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} />
@@ -49,9 +47,7 @@ const subcomponent_image = (image, width) => {
   );
 }
 
-// THIS NEEDS WORKS
 const subcomponent_image_with_dynamic_sizing = (images) => {
-  /* This is what we want at 1920 x 1080, but we need a better option for multiple screen sizes. */
   let imageSizes = {
     "very_small": "50px",
     "small": "130px",
@@ -59,7 +55,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
     "big": "290px",
     "very_big": "370px",
     "gigantic": "450px"
-  }; 
+  };
 
   let imagesJSX = []
   images.forEach((image) => {
@@ -70,7 +66,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
-              alt={IsEmptyOrWhiteSpace(image.image.alternativeText) ? 'dynamic_image' : image.image.alternativeText}
+              alt='dynamic_image'
               width={imageSizes[image.size]}/>
             <p className='OrangeText text-center' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
@@ -87,7 +83,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
-              alt={IsEmptyOrWhiteSpace(image.image.alternativeText) ? 'dynamic_image' : image.image.alternativeText}
+              alt='dynamic_image'
               width={imageSizes[image.size]}/>
           </Link>
         </Col>
@@ -100,7 +96,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
         <Col key={image.id}>
           <img
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
-            alt={IsEmptyOrWhiteSpace(image.image.alternativeText) ? 'dynamic_image' : image.image.alternativeText}
+            alt='dynamic_image'
             width={imageSizes[image.size]}/>
           <p className='BlackText text-center' style={{fontSize: image_brief_detail_font_size}}>
             {image.brief_detail}
@@ -131,7 +127,7 @@ const Title = (zone, index) => {
         <img
           id='TitleImage'
           src={`${process.env.REACT_APP_strapiURL}${zone.image.url}`}
-          alt={IsEmptyOrWhiteSpace(zone.image.alternativeText) ? zone.image.alternativeText : 'title image'} />
+          alt={zone.image.alternativeText !== undefined ? zone.image.alternativeText : 'title image'} />
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
         <p id='TitleText' className='BlueText text-center'>
@@ -307,64 +303,93 @@ const Frame4 = (zone, index) =>{
   if (!IsEmptyOrWhiteSpace(zone.quote1) && !IsEmptyOrWhiteSpace(zone.quote2)) {
     subQuote = (
       <Row className='justify-content-around'>
-        <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
-          <ReactMarkdown className='BlueText text-center'>
-            {zone.quote1}
-          </ReactMarkdown>
-          <ReactMarkdown className='GrayText text-center'>
-            {zone.sub_quote1}
-          </ReactMarkdown>
-        </Col>
-        <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' >
-          <ReactMarkdown className='BlueText text-center'>
-            {zone.quote2}
-          </ReactMarkdown>
-          <ReactMarkdown className='GrayText text-center'>
-            {zone.sub_quote2}
-          </ReactMarkdown>   
-        </Col>
+          <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center'style={{padding: '20px', paddingTop: '20px' }} >
+              <ReactMarkdown className='BlueText text-center' >
+                {zone.quote1}
+              </ReactMarkdown>
+              <ReactMarkdown className='GrayText text-center'>
+                {zone.sub_quote1}
+              </ReactMarkdown>
+          </Col>
+          <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+              <ReactMarkdown className='BlueText text-center'>
+                {zone.quote2}
+              </ReactMarkdown>
+              <ReactMarkdown className='GrayText text-center'>
+                {zone.sub_quote2}
+              </ReactMarkdown>   
+          </Col>
       </Row>
     );
   }
   if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.quote1)){
     subQuote = (
-      <Row className='justify-content-around'>
-        <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' >
-          <ReactMarkdown className='BlueText text-center'>
-            {zone.quote1}
-          </ReactMarkdown>
-          <ReactMarkdown className='GrayText text-center'>
-            {zone.sub_quote1}
-          </ReactMarkdown>
+      <Row className='justify-content-around' >
+        <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+            <ReactMarkdown className='BlueText text-center' >
+              {zone.quote1}
+            </ReactMarkdown>
+            <ReactMarkdown className='GrayText text-center'>
+              {zone.sub_quote1}
+            </ReactMarkdown>
         </Col>
-      </Row>
+    </Row>
     )
   }
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-      <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
-        {subQuote}
-      </Container>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
+              {subQuote}
+        </Container>
     </div>
   )
 }
 
 const Frame5 = (zone, index) =>{
-  console.log(zone)
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container className='d-flex justify-content-around align-self-center'>
+          <Row>
+                <Col>
+                    {subcomponent_image(zone.image_left, '300px')}
+                </Col>
+                <Col className='align-self-end text-center' xs={2}>
+                    {zone.caption}
+                </Col>
+                <Col style={{mariginLeft:'100px'}}>
+                    {subcomponent_image(zone.image_right, '300px')}
+                </Col>
+          </Row>
+        </Container>
+    </div>
+  )
+}
 
-  return( <div className='section' key={index} style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-    <Container>
-      <Col>
-        {subcomponent_image(zone.image_left)}
-
-      </Col>
-      <Col>
-        {subcomponent_image(zone.image_right)}
-      </Col>
-
-    </Container>
-  </div>
+const Frame6 = (zone, index) =>{
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container className='d-flex justify-content-around align-self-center'>
+            <ReactMarkdown className='OrangeText MainText text-center'>
+              {zone.title}
+            </ReactMarkdown>
+        </Container>
+        <Container>
+            <Row className='justify-content-center'>
+                  <Col>
+                      {subcomponent_image(zone.image,'600px')}
+                  </Col>
+                  <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+                      <ReactMarkdown className='BlueText text-center' >
+                        {zone.sub_text}
+                      </ReactMarkdown>
+                      <ReactMarkdown className='GrayText text-center'>
+                        {zone.sub_author}
+                      </ReactMarkdown>
+                  </Col>
+                </Row>
+        </Container>
+    </div>
   )
 }
 
@@ -576,7 +601,7 @@ const InteractiveFrame1 = (zone, index) => {
         <Row className='LightBlueBackground InteractiveFrame1LightBlueSizing'>
 
           {/* Images left */}
-          <Col xs={4}> 
+          <Col xs={3}> 
             <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '100%'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
@@ -592,7 +617,7 @@ const InteractiveFrame1 = (zone, index) => {
           </Col>
 
           {/* Text_center */}
-          <Col className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}} xs={4}>
+          <Col className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}} xs={6}>
             <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextFront'>
               {zone.text_front}
             </ReactMarkdown>
@@ -602,7 +627,7 @@ const InteractiveFrame1 = (zone, index) => {
           </Col>
 
           {/* Images Right */}
-          <Col xs={4}> 
+          <Col xs={3}> 
             <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '100%'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
@@ -639,20 +664,18 @@ const InteractiveFrame1 = (zone, index) => {
           <Col 
             className='d-flex align-items-center justify-content-center'
             onClick={(e) => {FadeThenSwitchCompAndReset(e.target)}}>
-            <p className='OrangeText CaptionText InteractiveFrame1CompareScale'>
+            <p className='OrangeText InteractiveFrame1CompareScale'>
               Compare Scale
             </p>
-            <p className='OrangeText CaptionText InteractiveFrame1ResetScale'>
+            <p className='OrangeText InteractiveFrame1ResetScale'>
               Reset Scale
             </p>
           </Col>
         </Row>
       </Container>
     </div>
-  );
+  )
 }
-
-
 // This function is for mapping name and functions over.
 // Did this for organization really. 
 const SwitchComponent = (zone, index, fullpageApi) => {
@@ -678,6 +701,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
       break;
     case 'frame.frame5':
       jsx = Frame5(zone, index);
+      break;
+    case 'frame.frame6':
+      jsx = Frame6(zone, index);
       break;
     case 'frame.interactive-frame1':
       jsx = InteractiveFrame1(zone, index);
