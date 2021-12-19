@@ -303,7 +303,7 @@ const Frame4 = (zone, index) =>{
   if (!IsEmptyOrWhiteSpace(zone.quote1) && !IsEmptyOrWhiteSpace(zone.quote2)) {
     subQuote = (
       <Row className='justify-content-around'>
-          <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center'style={{padding: '20px', paddingTop: '20px' }} >
+          <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center my-2'style={{padding: '20px', paddingTop: '20px' }} >
               <ReactMarkdown className='BlueText text-center' >
                 {zone.quote1}
               </ReactMarkdown>
@@ -311,7 +311,7 @@ const Frame4 = (zone, index) =>{
                 {zone.sub_quote1}
               </ReactMarkdown>
           </Col>
-          <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+          <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center my-5' style={{padding: '20px', paddingTop: '20px'}}>
               <ReactMarkdown className='BlueText text-center'>
                 {zone.quote2}
               </ReactMarkdown>
@@ -396,7 +396,9 @@ const Frame6 = (zone, index) =>{
 const Frame7 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container>
 
+        </Container>
     </div>
   )
 }
