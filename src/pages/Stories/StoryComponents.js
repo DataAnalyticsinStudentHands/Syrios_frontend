@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 
 import 'src/components/constants.css';
 import './Stories.css';
+import reactMarkdown from 'react-markdown';
 
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -396,8 +397,27 @@ const Frame6 = (zone, index) =>{
 const Frame7 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container>
-
+        <Container className='d-flex justify-content-around align-self-center'>
+          <Row>
+            <Col>
+                {subcomponent_image(zone.image,'800px')}
+            </Col>
+            <Col className='justify-content-between d-flex flex-column'>
+              <Row className='my-5 GrayText'>
+                <ReactMarkdown>
+                  {zone.main_text}
+                </ReactMarkdown>
+              </Row>
+              <Row className='LightYellowBackground my-2 p-3'>
+                  {zone.sub_text1}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+        <Container className='align-self-center'>
+          <Row className='my-5 text-center GrayText'>
+              {zone.sub_text2}
+          </Row>
         </Container>
     </div>
   )

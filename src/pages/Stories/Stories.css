@@ -1,51 +1,51 @@
 @import url(src/components/constants.css);
 
 .SelectStoryDiv {
-	width: 100px;
-	transition: 0.5s;
+  width: 100px;
+  transition: 0.5s;
 }
 
 .SelectStoryDiv:hover {
-	width: 150px;
+  width: 150px;
 }
 
 .SelectStoryText {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 #StoriesPage {
-	position: fixed;
-	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
-	height: 100%;
-	background: url(src/assets/background.jpg);
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  background: url(src/assets/background.jpg);
 }
 
 Button {
-	background: #FFFFFF 0% 0% no-repeat padding-box;
-	border: 1px solid #7899A8;
-	border-radius: 15px !important;
-	opacity: 1;
-	width: 220px;
-	transition: 0.5s;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #7899a8;
+  border-radius: 15px !important;
+  opacity: 1;
+  width: 220px;
+  transition: 0.5s;
 }
 
 Button:hover {
-	color: #FFFFFF;
-	background: #7899A8 0% 0% no-repeat padding-box;
+  color: #ffffff;
+  background: #7899a8 0% 0% no-repeat padding-box;
 }
 
-
-
 /******************** THIS IS FOR THE STORIES ****************/
-#fp-nav ul li a span, .fp-slidesNav ul li a span {
-	background: #183848 !important;
-	transition: 0.5s;
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: #183848 !important;
+  transition: 0.5s;
 }
 
 @media only screen and (max-width: 767px) {
-  #fp-nav ul li a span, .fp-slidesNav ul li a span {
-    background: rgba(0,0,0,0) !important;
+  #fp-nav ul li a span,
+  .fp-slidesNav ul li a span {
+    background: rgba(0, 0, 0, 0) !important;
     transition: 0.5s;
   }
 }
@@ -87,13 +87,13 @@ Button:hover {
 
 @media only screen and (max-width: 767px) {
   .HalfImageSize {
-    -webkit-transform: scale(0.25); /* Saf3.1+, Chrome */ 
+    -webkit-transform: scale(0.25); /* Saf3.1+, Chrome */
     -moz-transform: scale(0.25); /* FF3.5+ */
     -ms-transform: scale(0.25); /* IE9 */
     -o-transform: scale(0.25); /* Opera 10.25+ */
     transform: scale(0.25);
   }
-  
+
   .FrameImage {
     width: 80% !important;
   }
@@ -113,21 +113,25 @@ Button:hover {
 }
 
 .LightBlueBackground {
-  background: rgba(184,204,216,0.5);
+  background: rgba(184, 204, 216, 0.5);
+  border-radius: 10px;
+}
+.LightYellowBackground {
+  background: rgba(246, 235, 216, 0.5);
   border-radius: 10px;
 }
 
 /**** Title Frame ****/
 #TitleText {
-	font-size: 76px;
+  font-size: 76px;
 }
 
 #SubTitleText {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 #CaptionTitleText {
-	font-size: 30px;
+  font-size: 30px;
 }
 
 #TitleImage {
@@ -153,20 +157,20 @@ Button:hover {
 }
 /**** End Frame ****/
 #AreYouReadyText {
-	font-size: 76px;
+  font-size: 76px;
 }
 
 #EndFrameText {
-	font-size: 30px;
+  font-size: 30px;
 }
 
 .EndFrameButtonWidth {
-	width: 270px;
+  width: 270px;
   margin: 70px;
 }
 
 @media only screen and (max-width: 767px) {
-  .EndFrameButtonWidth  {
+  .EndFrameButtonWidth {
     width: 100px;
     height: auto;
     margin: 10px;
@@ -202,26 +206,26 @@ Button:hover {
 .InteractiveFrame1ImageFrontLeft {
   max-height: 180px;
   display: block;
-	opacity: 1.0;
+  opacity: 1;
   transition: 0.3s;
 }
 
 .InteractiveFrame1ImageBackLeft {
   display: none;
-	opacity: 0.0;
+  opacity: 0;
   transition: 0.3s;
 }
 
 .InteractiveFrame1ImageFrontRight {
   max-height: 180px;
   display: block;
-	opacity: 1.0;
+  opacity: 1;
   transition: 0.3s;
 }
 
 .InteractiveFrame1ImageBackRight {
   display: none;
-	opacity: 0.0;
+  opacity: 0;
   transition: 0.3s;
 }
 
@@ -229,7 +233,7 @@ Button:hover {
   position: relative;
   top: 10px;
   display: block;
-	opacity: 1.0;
+  opacity: 1;
   transition: 0.3s;
 }
 
@@ -237,20 +241,20 @@ Button:hover {
   position: relative;
   top: 30px;
   display: none;
-	opacity: 0.0;
+  opacity: 0;
   transition: 0.3s;
 }
 
 .InteractiveFrame1ScaleIcon {
   margin-top: 10px;
   font-size: 80px;
-  color: #7899A8;
+  color: #7899a8;
   cursor: pointer;
 }
 
 .InteractiveFrame1CompareScale {
   display: block;
-	opacity: 1.0;
+  opacity: 1;
   margin-top: -10px;
   cursor: pointer;
   transition: 0.3s;
@@ -259,7 +263,7 @@ Button:hover {
 
 .InteractiveFrame1ResetScale {
   display: none;
-	opacity: 0.0;
+  opacity: 0;
   margin-top: -10px;
   cursor: pointer;
   font-size: 12px;
@@ -271,7 +275,6 @@ Button:hover {
 }
 
 @media only screen and (max-width: 767px) {
-
   .InteractiveFrame1LightBlueSizing {
     position: relative;
     left: 5% !important;
@@ -289,7 +292,7 @@ Button:hover {
   .InteractiveFrame1ImageBackLeft {
     left: -70px !important;
   }
-  
+
   .InteractiveFrame1ImageBackRight {
     left: -70px !important;
   }
