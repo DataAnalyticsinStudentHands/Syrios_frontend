@@ -8,7 +8,6 @@ import ReactMarkdown from 'react-markdown';
 
 import 'src/components/constants.css';
 import './Stories.css';
-import reactMarkdown from 'react-markdown';
 
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -422,6 +421,39 @@ const Frame7 = (zone, index) =>{
     </div>
   )
 }
+const Frame8 = (zone, index) =>{
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container >
+          <Row fluid>
+            {subcomponent_image(zone.image_title,'1200px')}
+          </Row>
+          <Row className='justify-content-between'>
+            <Col>
+              {subcomponent_image(zone.image,'400px')}
+            </Col>
+            <Col className='justify-content-between d-flex flex-column align-self-center'>
+              <Row className='OrangeText MainText text-center my-5'>
+                {zone.title}
+              </Row>
+              <Row className='justify-content-around' >
+                <Col className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+                    <ReactMarkdown className='BlueText text-center MainText' >
+                      {zone.quote}
+                    </ReactMarkdown>
+                    <ReactMarkdown className='GrayText text-center SubText'>
+                      {zone.sub_quote}
+                    </ReactMarkdown>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+        
+
+    </div>
+  )
+}
 
 
 // Interactive frames
@@ -737,6 +769,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
       break;
     case 'frame.frame7':
       jsx = Frame7(zone, index);
+      break;
+    case 'frame.frame8':
+      jsx = Frame8(zone, index);
       break;
     case 'frame.interactive-frame1':
       jsx = InteractiveFrame1(zone, index);
