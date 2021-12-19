@@ -350,14 +350,14 @@ const Frame5 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-around align-self-center'>
-          <Row>
-                <Col>
+          <Row className='d-flex justify-content-around align-self-center'>
+                <Col xs={6} md={3}>
                     {subcomponent_image(zone.image_left, '300px')}
                 </Col>
-                <Col className='align-self-end text-center' xs={2}>
+                <Col xs={6} md={3} className='align-self-end text-center'>
                     {zone.caption}
                 </Col>
-                <Col style={{mariginLeft:'100px'}}>
+                <Col xs={6} md={3} style={{mariginLeft:'100px'}}>
                     {subcomponent_image(zone.image_right, '300px')}
                 </Col>
           </Row>
@@ -380,7 +380,7 @@ const Frame6 = (zone, index) =>{
                       {subcomponent_image(zone.image,'600px')}
                   </Col>
                   <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                      <ReactMarkdown className='BlueText text-center' >
+                      <ReactMarkdown className='BlueText text-center ' >
                         {zone.sub_text}
                       </ReactMarkdown>
                       <ReactMarkdown className='GrayText text-center'>
@@ -438,10 +438,10 @@ const Frame8 = (zone, index) =>{
               </Row>
               <Row className='justify-content-around' >
                 <Col className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                    <ReactMarkdown className='BlueText text-center MainText' >
+                    <ReactMarkdown className='BlueText text-center' >
                       {zone.quote}
                     </ReactMarkdown>
-                    <ReactMarkdown className='GrayText text-center SubText'>
+                    <ReactMarkdown className='GrayText text-center'>
                       {zone.sub_quote}
                     </ReactMarkdown>
                 </Col>
@@ -451,6 +451,30 @@ const Frame8 = (zone, index) =>{
         </Container>
         
 
+    </div>
+  )
+}
+
+const Frame9 = (zone, index) =>{
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container >
+          <Row className='OrangeText MainText text-center'>
+            {zone.title}
+          </Row>
+          <Row className='d-flex justify-content-around align-self-center'>
+            <Col xs={6} md={3}>
+              {subcomponent_image(zone.image_left,'400px')}
+            </Col>
+            <Col xs={6} md={3} className='align-self-center'>
+              {subcomponent_image(zone.image_mid,'200px')}
+            </Col>
+            <Col xs={6} md={3}>
+              {subcomponent_image(zone.image_right,'400px')}
+            </Col>
+          </Row>
+
+        </Container>
     </div>
   )
 }
@@ -773,6 +797,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
     case 'frame.frame8':
       jsx = Frame8(zone, index);
       break;
+    case 'frame.frame9':
+      jsx = Frame9(zone, index);
+      break;    
     case 'frame.interactive-frame1':
       jsx = InteractiveFrame1(zone, index);
       break;
