@@ -375,7 +375,7 @@ const Frame6 = (zone, index) =>{
             </ReactMarkdown>
         </Container>
         <Container>
-            <Row className='justify-content-center'>
+            <Row className='justify-content-around'>
                   <Col>
                       {subcomponent_image(zone.image,'600px')}
                   </Col>
@@ -397,7 +397,7 @@ const Frame7 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-around align-self-center'>
-          <Row>
+          <Row className='d-flex justify-content-around align-self-center'>
             <Col>
                 {subcomponent_image(zone.image,'800px')}
             </Col>
@@ -425,7 +425,7 @@ const Frame8 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container >
-          <Row fluid>
+          <Row>
             {subcomponent_image(zone.image_title,'1200px')}
           </Row>
           <Row className='justify-content-between'>
