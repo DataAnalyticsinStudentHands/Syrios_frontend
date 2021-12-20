@@ -429,8 +429,8 @@ const Frame8 = (zone, index) =>{
             {subcomponent_image(zone.image_title,'1200px')}
           </Row>
           <Row className='justify-content-between'>
-            <Col>
-              {subcomponent_image(zone.image,'125%')}
+            <Col md={4}>
+              {subcomponent_image(zone.image,'100%')}
             </Col>
             <Col md={8} className='justify-content-between d-flex flex-column align-self-center'>
               <Row className='OrangeText MainText text-center my-5'>
@@ -462,15 +462,15 @@ const Frame9 = (zone, index) =>{
           <Row className='OrangeText MainText text-center'>
             {zone.title}
           </Row>
-          <Row className='d-flex justify-content-around'>
-            <Col md={4}>
-              {subcomponent_image(zone.image_left,'150%')}
+          <Row className='d-flex justify-content-center'>
+            <Col>
+              {subcomponent_image(zone.image_left,'125%')}
             </Col>
-            <Col md={3} className='align-self-center'>
-              {subcomponent_image(zone.image_mid,'180%')}
+            <Col className='align-self-center'>
+              {subcomponent_image(zone.image_mid,'100%')}
             </Col>
-            <Col md={4}>
-              {subcomponent_image(zone.image_right,'150%')}
+            <Col>
+              {subcomponent_image(zone.image_right,'125%')}
             </Col>
           </Row>
 
