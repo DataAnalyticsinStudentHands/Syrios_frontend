@@ -398,10 +398,10 @@ const Frame7 = (zone, index) =>{
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-center align-self-center'>
           <Row className='d-flex justify-content-center align-self-center'>
-            <Col>
-                {subcomponent_image(zone.image,'600px')}
+            <Col md={{span:6}}>
+                {subcomponent_image(zone.image,'125%')}
             </Col>
-            <Col className='justify-content-around d-flex flex-column'>
+            <Col md={{span:6}} className='justify-content-around d-flex flex-column'>
               <Row className='GrayText align-items-start'>
                 <ReactMarkdown>
                   {zone.main_text}
@@ -413,8 +413,8 @@ const Frame7 = (zone, index) =>{
             </Col>
           </Row>
         </Container>
-        <Container className='align-self-center'>
-          <Row className='my-5 text-center GrayText'>
+        <Container className='d-flex justify-content-center align-self-center'>
+          <Row className='my-3 text-center GrayText'>
               {zone.sub_text2}
           </Row>
         </Container>
@@ -430,9 +430,9 @@ const Frame8 = (zone, index) =>{
           </Row>
           <Row className='justify-content-between'>
             <Col>
-              {subcomponent_image(zone.image,'400px')}
+              {subcomponent_image(zone.image,'125%')}
             </Col>
-            <Col className='justify-content-between d-flex flex-column align-self-center'>
+            <Col md={8} className='justify-content-between d-flex flex-column align-self-center'>
               <Row className='OrangeText MainText text-center my-5'>
                 {zone.title}
               </Row>
@@ -462,15 +462,15 @@ const Frame9 = (zone, index) =>{
           <Row className='OrangeText MainText text-center'>
             {zone.title}
           </Row>
-          <Row className='justify-content-center'>
+          <Row className='d-flex justify-content-around'>
             <Col md={4}>
-              {subcomponent_image(zone.image_left,'400px')}
+              {subcomponent_image(zone.image_left,'150%')}
             </Col>
             <Col md={3} className='align-self-center'>
-              {subcomponent_image(zone.image_mid,'200px')}
+              {subcomponent_image(zone.image_mid,'180%')}
             </Col>
             <Col md={4}>
-              {subcomponent_image(zone.image_right,'400px')}
+              {subcomponent_image(zone.image_right,'150%')}
             </Col>
           </Row>
 
