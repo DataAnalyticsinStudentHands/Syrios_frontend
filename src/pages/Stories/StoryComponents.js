@@ -339,7 +339,7 @@ const Frame4 = (zone, index) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-25%'}}>
               {subQuote}
         </Container>
     </div>
@@ -377,7 +377,7 @@ const Frame6 = (zone, index) =>{
         <Container>
             <Row className='justify-content-around'>
                   <Col>
-                      {subcomponent_image(zone.image,'600px')}
+                      {subcomponent_image(zone.image,'400px')}
                   </Col>
                   <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
                       <ReactMarkdown className='BlueText text-center ' >
@@ -396,18 +396,18 @@ const Frame6 = (zone, index) =>{
 const Frame7 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='d-flex justify-content-around align-self-center'>
-          <Row className='d-flex justify-content-around align-self-center'>
+        <Container className='d-flex justify-content-center align-self-center'>
+          <Row className='d-flex justify-content-center align-self-center'>
             <Col>
-                {subcomponent_image(zone.image,'800px')}
+                {subcomponent_image(zone.image,'600px')}
             </Col>
-            <Col className='justify-content-between d-flex flex-column'>
-              <Row className='my-5 GrayText'>
+            <Col className='justify-content-around d-flex flex-column'>
+              <Row className='GrayText align-items-start'>
                 <ReactMarkdown>
                   {zone.main_text}
                 </ReactMarkdown>
               </Row>
-              <Row className='LightYellowBackground my-2 p-3'>
+              <Row className='LightYellowBackground p-3 align-items-end GrayText'>
                   {zone.sub_text1}
               </Row>
             </Col>
@@ -462,14 +462,14 @@ const Frame9 = (zone, index) =>{
           <Row className='OrangeText MainText text-center'>
             {zone.title}
           </Row>
-          <Row className='d-flex justify-content-around align-self-center'>
-            <Col xs={6} md={3}>
+          <Row className='justify-content-center'>
+            <Col md={4}>
               {subcomponent_image(zone.image_left,'400px')}
             </Col>
-            <Col xs={6} md={3} className='align-self-center'>
+            <Col md={3} className='align-self-center'>
               {subcomponent_image(zone.image_mid,'200px')}
             </Col>
-            <Col xs={6} md={3}>
+            <Col md={4}>
               {subcomponent_image(zone.image_right,'400px')}
             </Col>
           </Row>
