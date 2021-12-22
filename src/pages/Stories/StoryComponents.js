@@ -403,9 +403,13 @@ const Frame7 = (zone, index) =>{
             </Col>
             <Col md={{span:6}} className='justify-content-around d-flex flex-column'>
               <Row className='GrayText align-items-start'>
-                <ReactMarkdown>
-                  {zone.main_text}
-                </ReactMarkdown>
+                  <p>
+                    {zone.main_text_before}
+                    <span style={{color:'blue',fontWeight:'bold'}}>{zone.main_text_b1}</span>
+                    {zone.main_text_between}
+                    <span style={{color:'blue',fontWeight:'bold'}}>{zone.main_text_b2}</span>
+                    {zone.main_text_after}
+                  </p>
               </Row>
               <Row className='LightYellowBackground p-3 align-items-end GrayText'>
                   {zone.sub_text1}
