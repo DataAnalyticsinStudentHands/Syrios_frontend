@@ -90,7 +90,7 @@ function LandingPage() {
                         {/* Explore the Evidence */}
                         <Col>
                           <div className='bg-white LandingButtonSize'>
-                            <a href='/'>
+                            <Link to='/'>
                               <div className='LandingButtonImg' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
                                 <div className='OnHoverDim'>
                                   <p className='blandStyle BoldWhiteText LandingButtonsText'>
@@ -98,13 +98,13 @@ function LandingPage() {
                                   </p>
                                 </div>
                               </div>
-                            </a>
+                            </Link>
                           </div>
                         </Col>
                         {/* Open the Historian's Toolbox */}
                         <Col>
                           <div className='bg-white LandingButtonSize'>
-                            <a href='/'>
+                            <Link to='/'>
                               <div className='LandingButtonImg' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
                                 <div className='OnHoverDim'>
                                   <p className='blandStyle BoldWhiteText LandingButtonsText'>
@@ -112,7 +112,7 @@ function LandingPage() {
                                   </p>
                                 </div>
                               </div>
-                            </a>
+                            </Link>
                           </div>
                         </Col>
                       </Row>
