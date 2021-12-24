@@ -47,6 +47,11 @@
 	color: #486678;
 }
 
+.DarkBlueText {
+  font-family: var(--mainFonts);
+  color: #173847;
+}
+
 .GrayText {
 	font-family: var(--mainFonts);
 	color: #737271;

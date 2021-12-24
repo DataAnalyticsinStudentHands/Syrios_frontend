@@ -344,18 +344,18 @@ const Timeline = () => {
                           document.getElementById('CoinImageBack').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_back.url;
 
                           // Coin main info
-                          document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='BlueText'>${coinMetaData.name}</span>`;
-                          document.getElementById('CoinMainInfoRegion').childNodes[0].innerHTML = `REGION: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.region}</span>`;
-                          document.getElementById('CoinMainInfoState').childNodes[0].innerHTML = `STATE: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.state}</span>`;
-                          document.getElementById('CoinMainInfoMint').childNodes[0].innerHTML = `MINT: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.mint}</span>`;
-                          document.getElementById('CoinMainInfoAuthority').childNodes[0].innerHTML = `AUTHORITY: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.authority}</span>`;
-                          document.getElementById('CoinMainInfoEra').childNodes[0].innerHTML = `ERA: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.era}</span>`;
-                          document.getElementById('CoinMainInfoDate').childNodes[0].innerHTML = `DATE(S): <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.date}</span>`;
-                          document.getElementById('CoinMainInfoCatalogueDate').childNodes[0].innerHTML = `CATALOGE DATE: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.cataloge_date}</span>`;
-                          document.getElementById('CoinMainInfoMaterial').childNodes[0].innerHTML = `MATERIAL: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.material}</span>`;
-                          document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.denomination}</span>`;
-                          document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.diameter}</span>`;
-                          document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='BlackText CoinMainInfoDynamicText'>${coinMetaData.cultural_connections}</span>`;
+                          document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='DarkBlueText'>${coinMetaData.name}</span>`;
+                          document.getElementById('CoinMainInfoRegion').childNodes[0].innerHTML = `REGION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.region}</span>`;
+                          document.getElementById('CoinMainInfoState').childNodes[0].innerHTML = `STATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.state}</span>`;
+                          document.getElementById('CoinMainInfoMint').childNodes[0].innerHTML = `MINT: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.mint}</span>`;
+                          document.getElementById('CoinMainInfoAuthority').childNodes[0].innerHTML = `AUTHORITY: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.authority}</span>`;
+                          document.getElementById('CoinMainInfoEra').childNodes[0].innerHTML = `ERA: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.era}</span>`;
+                          document.getElementById('CoinMainInfoDate').childNodes[0].innerHTML = `DATE(S): <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.date}</span>`;
+                          document.getElementById('CoinMainInfoCatalogueDate').childNodes[0].innerHTML = `CATALOGE DATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cataloge_date}</span>`;
+                          document.getElementById('CoinMainInfoMaterial').childNodes[0].innerHTML = `MATERIAL: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.material}</span>`;
+                          document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.denomination}</span>`;
+                          document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.diameter}</span>`;
+                          document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cultural_connections}</span>`;
 
                           // Coin Image Type
                           document.getElementById('CoinImageTypeObverse').childNodes[1].innerHTML = coinMetaData.obverse_type;
@@ -485,62 +485,62 @@ const Timeline = () => {
           </div>
           <div id='CoinMainInfo'>
             <div id='CoinMainInfoTitle'>
-              <ReactMarkdown className='BlueText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 Syrios project Logo
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoRegion'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 REGION: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoState'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 STATE: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoMint'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 MINT: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoAuthority'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 AUTHORITY: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoEra'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 ERA: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoDate'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 DATE(S): 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoCatalogueDate'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 CATALOGE DATE: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoMaterial'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 MATERIAL: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoDenomination'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 DENOMINATION: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoDiameter'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 DIAMETER: 
               </ReactMarkdown>
             </div>
             <div id='CoinMainInfoCulturalConnections'>
-              <ReactMarkdown className='GrayText text-start'>
+              <ReactMarkdown className='DarkBlueText text-start'>
                 CULTURAL CONNECTIONS: 
               </ReactMarkdown>
             </div>
@@ -550,7 +550,7 @@ const Timeline = () => {
               <p className='GrayText text-center'>
                 OBVERSE TYPE:
               </p>
-              <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
                 front
               </ReactMarkdown>
             </div>
@@ -558,7 +558,7 @@ const Timeline = () => {
               <p className='GrayText text-center'>
                 OBVERSE LEGEND:
               </p>
-              <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
                 none
               </ReactMarkdown>
             </div>
@@ -566,7 +566,7 @@ const Timeline = () => {
               <p className='GrayText text-center'>
                 REVERSE TYPE:
               </p>
-              <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
                 back
               </ReactMarkdown>
             </div>
@@ -574,7 +574,7 @@ const Timeline = () => {
               <p className='GrayText text-center'>
                 REVERSE LEGEND:
               </p>
-              <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
                 none
               </ReactMarkdown>
             </div>
@@ -585,7 +585,7 @@ const Timeline = () => {
                 <p className='GrayText text-start'>
                   SOURCE IMAGE:
                 </p>
-                <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
                   N/A
                 </ReactMarkdown>
               </div>
@@ -593,7 +593,7 @@ const Timeline = () => {
                 <p className='GrayText text-start'>
                   RIGHTS HOLDER:
                 </p>
-                <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
                   N/A
                 </ReactMarkdown>
               </div>
@@ -601,7 +601,7 @@ const Timeline = () => {
                 <p className='GrayText text-start'>
                   BIBLIOGRAPHY:
                 </p>
-                <ReactMarkdown className='BlackText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
                   N/A
                 </ReactMarkdown>
               </div>
