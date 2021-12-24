@@ -303,7 +303,7 @@ const Frame4 = (zone, index) =>{
   if (!IsEmptyOrWhiteSpace(zone.quote1) && !IsEmptyOrWhiteSpace(zone.quote2)) {
     subQuote = (
       <Row className='justify-content-around'>
-          <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center'style={{padding: '20px', paddingTop: '20px' }} >
+          <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center my-2'style={{padding: '20px', paddingTop: '20px' }} >
               <ReactMarkdown className='BlueText text-center' >
                 {zone.quote1}
               </ReactMarkdown>
@@ -311,7 +311,7 @@ const Frame4 = (zone, index) =>{
                 {zone.sub_quote1}
               </ReactMarkdown>
           </Col>
-          <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+          <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center my-5' style={{padding: '20px', paddingTop: '20px'}}>
               <ReactMarkdown className='BlueText text-center'>
                 {zone.quote2}
               </ReactMarkdown>
@@ -339,7 +339,7 @@ const Frame4 = (zone, index) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'-300px'}}>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-25%'}}>
               {subQuote}
         </Container>
     </div>
@@ -350,21 +350,22 @@ const Frame5 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-around align-self-center'>
-          <Row>
-                <Col>
-                    {subcomponent_image(zone.image_left, '300px')}
+          <Row className='d-flex justify-content-around align-self-center'>
+                <Col sm={5}>
+                    {subcomponent_image(zone.image_left, '80%')}
                 </Col>
-                <Col className='align-self-end text-center' xs={2}>
+                <Col sm={2} className='align-self-end text-center'>
                     {zone.caption}
                 </Col>
-                <Col style={{mariginLeft:'100px'}}>
-                    {subcomponent_image(zone.image_right, '300px')}
+                <Col sm={5}>
+                    {subcomponent_image(zone.image_right, '80%')}
                 </Col>
           </Row>
         </Container>
     </div>
   )
 }
+
 
 const Frame6 = (zone, index) =>{
   return(
@@ -375,12 +376,12 @@ const Frame6 = (zone, index) =>{
             </ReactMarkdown>
         </Container>
         <Container>
-            <Row className='justify-content-center'>
+            <Row className='justify-content-around'>
                   <Col>
-                      {subcomponent_image(zone.image,'600px')}
+                      {subcomponent_image(zone.image,'100%')}
                   </Col>
                   <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                      <ReactMarkdown className='BlueText text-center' >
+                      <ReactMarkdown className='BlueText text-center h3' >
                         {zone.sub_text}
                       </ReactMarkdown>
                       <ReactMarkdown className='GrayText text-center'>
@@ -396,11 +397,92 @@ const Frame6 = (zone, index) =>{
 const Frame7 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container className='d-flex justify-content-center align-self-center'>
+          <Row className='d-flex justify-content-center align-self-center'>
+            <Col md={{span:6}}>
+                {subcomponent_image(zone.image,'125%')}
+            </Col>
+            <Col md={{span:6}} className='justify-content-around d-flex flex-column'>
+              <Row className='GrayText align-items-start'>
+                  <h3>
+                    {zone.main_text_before}
+                    <span style={{color:'blue',fontWeight:'bold'}}>{zone.main_text_b1}</span>
+                    {zone.main_text_between}
+                     <span style={{color:'blue',fontWeight:'bold'}}>{zone.main_text_b2}</span>
+                    {zone.main_text_after}
+                  </h3>
+              </Row>
+              <Row className='LightYellowBackground p-3 align-items-end GrayText'>
+                  {zone.sub_text1}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+        <Container className='d-flex justify-content-center align-self-center'>
+          <Row className='my-3 text-center GrayText'>
+              {zone.sub_text2}
+          </Row>
+        </Container>
+    </div>
+  )
+}
+const Frame8 = (zone, index) =>{
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container className='justify-content-center'>
+          <Row className='justify-content-center'>
+            {subcomponent_image(zone.image_title,'1200px')}
+          </Row>
+          <Row className='justify-content-between'>
+            <Col md={4}>
+              {subcomponent_image(zone.image,'100%')}
+            </Col>
+            <Col md={8} className='justify-content-between d-flex flex-column align-self-center'>
+              <Row className='OrangeText MainText text-center my-5'>
+                {zone.title}
+              </Row>
+              <Row className='justify-content-around' >
+                <Col className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+                    <ReactMarkdown className='BlueText text-center h3' >
+                      {zone.quote}
+                    </ReactMarkdown>
+                    <ReactMarkdown className='GrayText text-center'>
+                      {zone.sub_quote}
+                    </ReactMarkdown>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+        
 
     </div>
   )
 }
 
+const Frame9 = (zone, index) =>{
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container >
+          <Row className='OrangeText MainText text-center'>
+            {zone.title}
+          </Row>
+          <Row className='d-flex justify-content-center'>
+            <Col>
+              {subcomponent_image(zone.image_left,'125%')}
+            </Col>
+            <Col className='align-self-center'>
+              {subcomponent_image(zone.image_mid,'100%')}
+            </Col>
+            <Col>
+              {subcomponent_image(zone.image_right,'125%')}
+            </Col>
+          </Row>
+
+        </Container>
+    </div>
+  )
+}
 
 // Interactive frames
 const InteractiveFrame1 = (zone, index) => {
@@ -716,6 +798,12 @@ const SwitchComponent = (zone, index, fullpageApi) => {
     case 'frame.frame7':
       jsx = Frame7(zone, index);
       break;
+    case 'frame.frame8':
+      jsx = Frame8(zone, index);
+      break;
+    case 'frame.frame9':
+      jsx = Frame9(zone, index);
+      break; 
     case 'frame.interactive-frame1':
       jsx = InteractiveFrame1(zone, index);
       break;
