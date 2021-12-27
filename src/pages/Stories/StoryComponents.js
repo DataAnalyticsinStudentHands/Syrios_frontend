@@ -339,7 +339,7 @@ const Frame4 = (zone, index) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'-25%'}}>
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-10%'}}>
               {subQuote}
         </Container>
     </div>
@@ -406,9 +406,9 @@ const Frame7 = (zone, index) =>{
               <Row className='GrayText align-items-start'>
                   <h3>
                     {zone.main_text_before}
-                    <span style={{color:'blue',fontWeight:'bold'}}>{zone.main_text_b1}</span>
+                    <span style={{color:'#183848',fontWeight:'bold'}}>{zone.main_text_b1}</span>
                     {zone.main_text_between}
-                     <span style={{color:'blue',fontWeight:'bold'}}>{zone.main_text_b2}</span>
+                     <span style={{color:'#183848',fontWeight:'bold'}}>{zone.main_text_b2}</span>
                     {zone.main_text_after}
                   </h3>
               </Row>
