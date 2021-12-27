@@ -13,6 +13,12 @@ import ReactMarkdown from 'react-markdown';
 import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
+import {
+  ObjectInArray
+} from 'src/utils/smallHelperFunctions.js';
+import OutsideClickHandler from "src/utils/OutsideClickHandler";
+
+
 import OldLogo from 'src/assets/OldLogo.png';
 import OldLogoColorless from 'src/assets/OldLogoColorless.png';
 import 'src/components/constants.css';
@@ -25,6 +31,7 @@ const Timeline = () => {
   const [timelineBG, set_timelineBG] = useState(undefined);
   const [timelineInfo, set_timelineInfo] = useState(undefined);
   const [coinLocations, set_coinLocations] = useState(undefined);
+  const [coinTreeConnections, set_coinTreeConnections] = useState(undefined);
   const [timelineDescription, set_timelineDescription] = useState(undefined);
 
   const coinSize = 8; // Size of coins on timeline
@@ -33,31 +40,61 @@ const Timeline = () => {
   const colors = ['#7FA87F', '#F2D16B', '#B85828', '#486678', '#323029']
 
   useEffect(() => {
-    if (isLoadingInfo || isLoadingBG) {
-      // Asynchronous logic is good, but complicated.
-      axios.get(process.env.REACT_APP_strapiURL + '/timeline-info')
+    if (isLoadingInfo) {
+      /*
+       * We need data on what timeline objects to be outputted.
+       * Also, we need data on timeline trees
+       *
+       */
+      axios.get(process.env.REACT_APP_strapiURL + '/timeline-info') // Fetch data from timeline-info
         .then((res, error) => {
           if (error) {
             set_timelineDescription('Error loading timeline-info');
             set_timelineInfo('Error');
+            set_coinLocations('error');
             set_isLoadingInfo(false);
           } else {
             set_timelineDescription(res.data.timeline_description);
             let timelineObjectIds = [];
             let tmpCoinLocationArr = [];
+            let tmpCoinTreeConnections = [];
 
             res.data.zone.forEach((e) => {
-              if (e.coin_reference !== undefined) {
-                // setup coin locations and timeline object meta data
-                timelineObjectIds.push(e.coin_reference._id);
-                tmpCoinLocationArr.push({x: e.coin_reference.x_pos, y: e.coin_reference.y_date});
+              switch(e.__component) {
+                case 'timeline-objects.coin-reference-singular':
+                  // setup coin locations and timeline object meta data
+                  timelineObjectIds.push(e.coin_reference._id);
+                  tmpCoinLocationArr.push({x: e.coin_reference.x_pos, y: e.coin_reference.y_date});
+                  break;
+                case 'timeline-objects.coin-reference':
+                  timelineObjectIds.push(e.child._id);
+                  tmpCoinLocationArr.push({x: e.child.x_pos, y: e.child.y_date});
+                  timelineObjectIds.push(e.parent._id);
+                  tmpCoinLocationArr.push({x: e.parent.x_pos, y: e.parent.y_date});
+                  tmpCoinTreeConnections.push(
+                    {
+                      x1: e.parent.x_pos,
+                      x2: e.child.x_pos,
+                      y1: e.parent.y_date,
+                      y2: e.child.y_date,
+                      key: `tmpCoinTreeConnections_${tmpCoinTreeConnections.length}`
+                    }
+                  );
+
+                  break;
+                default:
+                  console.error(`Unknown timeline-info component: ${e.__component}`);
+                  break;
               }
             });
 
             timelineObjectIds = [...new Set(timelineObjectIds)]; // Remove duplicates
             tmpCoinLocationArr = [...new Set(tmpCoinLocationArr)];
+            tmpCoinLocationArr = [... new Set(tmpCoinLocationArr)];
+            set_coinTreeConnections(tmpCoinTreeConnections);
             set_coinLocations(tmpCoinLocationArr);
             timelineObjectIds = timelineObjectIds.map(i => '_id=' + i).join('&');
+
 
             axios.get(process.env.REACT_APP_strapiURL + `/timeline-objects?${timelineObjectIds}`)
               .then((res, error) => {
@@ -89,6 +126,9 @@ const Timeline = () => {
               });
           }
         });
+    }
+
+    if (isLoadingInfo || isLoadingBG) {
 
       // Asynchronous logic is good, but complicated.
       axios.get(process.env.REACT_APP_strapiURL + '/timelines?_limit=-1&_sort=y_date:ASC') // ordered query by ascending
@@ -210,10 +250,6 @@ const Timeline = () => {
                   d={startEndKeyPairSVGValues[i][0].join("") + startEndKeyPairSVGValues[i][1].reverse().join("")}
                   stroke='none'
                   fill={colors[i]}
-                  onClick={() => {
-                    // Just proof of concept. We can use this to force an overlay with timeline object information on the object
-                    console.log('display timelineobject information');
-                  }}
                   key={`timeline_${jsxArr.length}`}
                   style={{
                     opacity: '0.6'
@@ -307,79 +343,91 @@ const Timeline = () => {
               if (isLoadingInfo && coinLocations !== undefined && timelineInfo !== undefined) {
                 clearInterval(interval);
 
-                coinLocations.forEach((e) => {
-                  jsxArr.push(<Circle key={'Coin_background'+jsxArr.length} cx={e.x} cy={e.y + Math.abs(minHeight)+yOffset} r={0.6 * coinSize / 2} fill='white' stroke='#173847' strokeWidth={coinStrokeWidth}/>);
-                });
+                if (Array.isArray(coinLocations)) {
+                  coinTreeConnections.forEach((e) => {
+                    jsxArr.push(
+                      <Path
+                        d={`M${e.x1} ${e.y1+Math.abs(minHeight)+yOffset} S${e.x1} ${e.y2+Math.abs(minHeight)+yOffset} ${e.x2} ${e.y2+Math.abs(minHeight)+yOffset}`}
+                        key={e.key}
+                        stroke='#173847'
+                        fill='none'
+                        strokeWidth={coinStrokeWidth*2}
+                      />);
+                  });
 
-                timelineInfo.forEach((e) => {
-                  switch(e.__component) {
-                    case 'timeline-objects.coin':
-                      // Get the front facing image up and out.
-                      jsxArr.push(<Image
-                        id={e._id}
-                        key={`coin_image${jsxArr.length}`}
-                        className='CoinImage'
-                        x={e.x - coinSize / 2}
-                        y={e.y + Math.abs(minHeight) + yOffset - coinSize / 2}
-                        width={coinSize}
-                        height={coinSize}
-                        href={`${process.env.REACT_APP_strapiURL}${e.coin_image_front.url}`}
-                        onClick={(e) => {
-                          // This magic here is how CoinInfo gets defined and displayed
-                          let dom = e.target;
-                          var coinMetaData = timelineInfo.filter(obj => {
-                            return obj._id === dom.id;
-                          })[0];
-                          console.log(coinMetaData);
+                  coinLocations.forEach((e) => {
+                    jsxArr.push(<Circle key={'Coin_background'+jsxArr.length} cx={e.x} cy={e.y + Math.abs(minHeight)+yOffset} r={0.6 * coinSize / 2} fill='white' stroke='#173847' strokeWidth={coinStrokeWidth}/>);
+                  });
 
-                          let CoinInfo = document.getElementById('CoinInfo');
-                          let CoinInfoGrid = document.getElementById('CoinInfoGrid');
-                          let CoinImageDiv = document.getElementById('CoinImageDiv')
-                          let CoinMainInfo = document.getElementById('CoinMainInfo')
-                          let CoinImageType = document.getElementById('CoinImageType')
-                          let CoinSourceMaterial = document.getElementById('CoinSourceMaterial');
+                  timelineInfo.forEach((e) => {
+                    switch(e.__component) {
+                      case 'timeline-objects.coin':
+                        // Get the front facing image up and out.
+                        jsxArr.push(<Image
+                          id={e._id}
+                          key={`coin_image${jsxArr.length}`}
+                          className='CoinImage'
+                          x={e.x - coinSize / 2}
+                          y={e.y + Math.abs(minHeight) + yOffset - coinSize / 2}
+                          width={coinSize}
+                          height={coinSize}
+                          href={`${process.env.REACT_APP_strapiURL}${e.coin_image_front.url}`}
+                          onClick={(e) => {
+                            // This magic here is how CoinInfo gets defined and displayed
+                            let dom = e.target;
+                            var coinMetaData = timelineInfo.filter(obj => {
+                              return obj._id === dom.id;
+                            })[0];
 
-                          // Coin Image
-                          document.getElementById('CoinImageFront').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_front.url;
-                          document.getElementById('CoinImageBack').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_back.url;
+                            let CoinInfo = document.getElementById('CoinInfo');
+                            let CoinInfoGrid = document.getElementById('CoinInfoGrid');
+                            let CoinImageDiv = document.getElementById('CoinImageDiv')
+                            let CoinMainInfo = document.getElementById('CoinMainInfo')
+                            let CoinImageType = document.getElementById('CoinImageType')
+                            let CoinSourceMaterial = document.getElementById('CoinSourceMaterial');
 
-                          // Coin main info
-                          document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='DarkBlueText'>${coinMetaData.name}</span>`;
-                          document.getElementById('CoinMainInfoRegion').childNodes[0].innerHTML = `REGION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.region}</span>`;
-                          document.getElementById('CoinMainInfoState').childNodes[0].innerHTML = `STATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.state}</span>`;
-                          document.getElementById('CoinMainInfoMint').childNodes[0].innerHTML = `MINT: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.mint}</span>`;
-                          document.getElementById('CoinMainInfoAuthority').childNodes[0].innerHTML = `AUTHORITY: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.authority}</span>`;
-                          document.getElementById('CoinMainInfoEra').childNodes[0].innerHTML = `ERA: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.era}</span>`;
-                          document.getElementById('CoinMainInfoDate').childNodes[0].innerHTML = `DATE(S): <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.date}</span>`;
-                          document.getElementById('CoinMainInfoCatalogueDate').childNodes[0].innerHTML = `CATALOGE DATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cataloge_date}</span>`;
-                          document.getElementById('CoinMainInfoMaterial').childNodes[0].innerHTML = `MATERIAL: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.material}</span>`;
-                          document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.denomination}</span>`;
-                          document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.diameter}</span>`;
-                          document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cultural_connections}</span>`;
+                            // Coin Image
+                            document.getElementById('CoinImageFront').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_front.url;
+                            document.getElementById('CoinImageBack').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_back.url;
 
-                          // Coin Image Type
-                          document.getElementById('CoinImageTypeObverse').childNodes[1].innerHTML = coinMetaData.obverse_type;
-                          document.getElementById('CoinImageTypeObverseLegend').childNodes[1].innerHTML = coinMetaData.obverse_legend;
-                          document.getElementById('CoinImageTypeReverse').childNodes[1].innerHTML = coinMetaData.reverse_type;
-                          document.getElementById('CoinImageTypeReverseLegend').childNodes[1].innerHTML = coinMetaData.reverse_legend;
+                            // Coin main info
+                            document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='DarkBlueText'>${coinMetaData.name}</span>`;
+                            document.getElementById('CoinMainInfoRegion').childNodes[0].innerHTML = `REGION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.region}</span>`;
+                            document.getElementById('CoinMainInfoState').childNodes[0].innerHTML = `STATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.state}</span>`;
+                            document.getElementById('CoinMainInfoMint').childNodes[0].innerHTML = `MINT: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.mint}</span>`;
+                            document.getElementById('CoinMainInfoAuthority').childNodes[0].innerHTML = `AUTHORITY: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.authority}</span>`;
+                            document.getElementById('CoinMainInfoEra').childNodes[0].innerHTML = `ERA: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.era}</span>`;
+                            document.getElementById('CoinMainInfoDate').childNodes[0].innerHTML = `DATE(S): <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.date}</span>`;
+                            document.getElementById('CoinMainInfoCatalogueDate').childNodes[0].innerHTML = `CATALOGE DATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cataloge_date}</span>`;
+                            document.getElementById('CoinMainInfoMaterial').childNodes[0].innerHTML = `MATERIAL: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.material}</span>`;
+                            document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.denomination}</span>`;
+                            document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.diameter}</span>`;
+                            document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cultural_connections}</span>`;
 
-                          // Coin Source Material
-                          document.getElementById('CoinSourceMaterialSourceImage').childNodes[1].innerHTML = coinMetaData.source_image;
-                          console.log(document.getElementById('CoinSourceMaterialRightsHolder').childNodes[1]);
-                          document.getElementById('CoinSourceMaterialRightsHolder').childNodes[1].innerHTML = coinMetaData.rights_holder;
-                          document.getElementById('CoinSourceMaterialBibliography').childNodes[1].innerHTML = coinMetaData.bibliography;
+                            // Coin Image Type
+                            document.getElementById('CoinImageTypeObverse').childNodes[1].innerHTML = coinMetaData.obverse_type;
+                            document.getElementById('CoinImageTypeObverseLegend').childNodes[1].innerHTML = coinMetaData.obverse_legend;
+                            document.getElementById('CoinImageTypeReverse').childNodes[1].innerHTML = coinMetaData.reverse_type;
+                            document.getElementById('CoinImageTypeReverseLegend').childNodes[1].innerHTML = coinMetaData.reverse_legend;
 
-                          CoinInfo.style.zIndex = '100';
-                          setTimeout(() => {CoinInfo.style.opacity = 1}, 200);
-                        }}
-                      />
-                      );
-                      break;
-                    default:
-                      console.error(`Error: Unrecognized timeline component '${e.zone[0].__component}'`);
-                      break;
-                  }
-                });
+                            // Coin Source Material
+                            document.getElementById('CoinSourceMaterialSourceImage').childNodes[1].innerHTML = coinMetaData.source_image;
+                            document.getElementById('CoinSourceMaterialRightsHolder').childNodes[1].innerHTML = coinMetaData.rights_holder;
+                            document.getElementById('CoinSourceMaterialBibliography').childNodes[1].innerHTML = coinMetaData.bibliography;
+
+                            CoinInfo.style.zIndex = '100';
+                            setTimeout(() => {CoinInfo.style.opacity = 1}, 100);
+                          }}
+                        />
+                        );
+                        break;
+                      default:
+                        console.error(`Error: Unrecognized timeline component '${e.zone[0].__component}'`);
+                        break;
+                    }
+                  });
+
+                }
 
                 set_timelineBG(
                   <Svg 
@@ -429,186 +477,196 @@ const Timeline = () => {
       {timelineBG}
 
       {/*** Coin info that shows up when you click on a coin ***/}
-      <div id='CoinInfo'>
-        <i 
-          id='CoinInfo-x-icon' 
-          className='demo-icon icon-x-medium'
-          onClick={(e) => {
-            let dom = e.target.parentElement;
+      <OutsideClickHandler
+        onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
+          let dom = document.getElementById('CoinInfo');
+         
+          if (window.getComputedStyle(dom).opacity == 1) {
             dom.style.opacity = 0;
-            setTimeout(() => {dom.style.zIndex = -100}, 1000);
-          }}>
-        &#xe838;</i>
-        <div id='CoinInfoGrid'>
-          <div id='CoinImageDiv'>
-            <i 
-              id='CoinInfoRotateButton' 
-              className='demo-icon icon-coin-rotate'
-              onClick={(e)=> {
-                let dom = e.target;
+            setTimeout(() => {dom.style.zIndex = -100}, 600);
+          }
+        }}>
+        <div id='CoinInfo'>
+          <i 
+            id='CoinInfo-x-icon' 
+            className='demo-icon icon-x-medium'
+            onClick={(e) => {
+              let dom = e.target.parentElement;
+              dom.style.opacity = 0;
+              setTimeout(() => {dom.style.zIndex = -100}, 600);
+            }}>
+            &#xe838;</i>
+          <div id='CoinInfoGrid'>
+            <div id='CoinImageDiv'>
+              <i 
+                id='CoinInfoRotateButton' 
+                className='demo-icon icon-coin-rotate'
+                onClick={(e)=> {
+                  let dom = e.target;
 
-                while (dom.className !== 'flip-box') {
-                  dom = dom.nextSibling;
-                }
+                  while (dom.className !== 'flip-box') {
+                    dom = dom.nextSibling;
+                  }
 
-                dom = dom.childNodes[0];
+                  dom = dom.childNodes[0];
 
-                while (dom.className !== 'flip-box-inner') {
-                  dom = dom.nextSibling;
-                }
+                  while (dom.className !== 'flip-box-inner') {
+                    dom = dom.nextSibling;
+                  }
 
-                if (dom.style.transform === 'rotateY(180deg)') {
-                  dom.style.transform = 'rotateY(0deg)'
-                } else {
-                  dom.style.transform = 'rotateY(180deg)';
-                }
-              }}>
-              &#xe833;</i> 
-            <div className='flip-box'>
-              <div className='flip-box-inner'>
-                <div className='flip-box-front'>
-                  <img
-                    id='CoinImageFront'
-                    src={OldLogo}
-                    alt='Logo'
-                  />
+                  if (dom.style.transform === 'rotateY(180deg)') {
+                    dom.style.transform = 'rotateY(0deg)'
+                  } else {
+                    dom.style.transform = 'rotateY(180deg)';
+                  }
+                }}>
+                &#xe833;</i> 
+              <div className='flip-box'>
+                <div className='flip-box-inner'>
+                  <div className='flip-box-front'>
+                    <img
+                      id='CoinImageFront'
+                      src={OldLogo}
+                      alt='Logo'
+                    />
+                  </div>
+                  <div className='flip-box-back'>
+                    <img
+                      id='CoinImageBack'
+                      src={OldLogoColorless}
+                      alt='Colorless logo'
+                    />
+                  </div>
                 </div>
-                <div className='flip-box-back'>
-                  <img
-                    id='CoinImageBack'
-                    src={OldLogoColorless}
-                    alt='Colorless logo'
-                  />
+              </div>
+            </div>
+            <div id='CoinMainInfo'>
+              <div id='CoinMainInfoTitle'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  Syrios project Logo
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoRegion'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  REGION: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoState'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  STATE: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoMint'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  MINT: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoAuthority'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  AUTHORITY: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoEra'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  ERA: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoDate'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  DATE(S): 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoCatalogueDate'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  CATALOGE DATE: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoMaterial'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  MATERIAL: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoDenomination'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  DENOMINATION: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoDiameter'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  DIAMETER: 
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoCulturalConnections'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  CULTURAL CONNECTIONS: 
+                </ReactMarkdown>
+              </div>
+            </div>
+            <div id='CoinImageType'>
+              <div id='CoinImageTypeObverse'>
+                <p className='GrayText text-center'>
+                  OBVERSE TYPE:
+                </p>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+                  front
+                </ReactMarkdown>
+              </div>
+              <div id='CoinImageTypeObverseLegend'>
+                <p className='GrayText text-center'>
+                  OBVERSE LEGEND:
+                </p>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+                  none
+                </ReactMarkdown>
+              </div>
+              <div id='CoinImageTypeReverse'>
+                <p className='GrayText text-center'>
+                  REVERSE TYPE:
+                </p>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+                  back
+                </ReactMarkdown>
+              </div>
+              <div id='CoinImageTypeReverseLegend'>
+                <p className='GrayText text-center'>
+                  REVERSE LEGEND:
+                </p>
+                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
+                  none
+                </ReactMarkdown>
+              </div>
+            </div>
+            <div id='CoinSourceMaterial'>
+              <div id='CoinSourceMaterialGrid'>
+                <div id='CoinSourceMaterialSourceImage'>
+                  <p className='GrayText text-start'>
+                    SOURCE IMAGE:
+                  </p>
+                  <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
+                    N/A
+                  </ReactMarkdown>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div id='CoinMainInfo'>
-            <div id='CoinMainInfoTitle'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                Syrios project Logo
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoRegion'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                REGION: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoState'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                STATE: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoMint'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                MINT: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoAuthority'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                AUTHORITY: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoEra'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                ERA: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                DATE(S): 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoCatalogueDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                CATALOGE DATE: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoMaterial'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                MATERIAL: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDenomination'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                DENOMINATION: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDiameter'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                DIAMETER: 
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoCulturalConnections'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                CULTURAL CONNECTIONS: 
-              </ReactMarkdown>
-            </div>
-          </div>
-          <div id='CoinImageType'>
-            <div id='CoinImageTypeObverse'>
-              <p className='GrayText text-center'>
-                OBVERSE TYPE:
-              </p>
-              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
-                front
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeObverseLegend'>
-              <p className='GrayText text-center'>
-                OBVERSE LEGEND:
-              </p>
-              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
-                none
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeReverse'>
-              <p className='GrayText text-center'>
-                REVERSE TYPE:
-              </p>
-              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
-                back
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeReverseLegend'>
-              <p className='GrayText text-center'>
-                REVERSE LEGEND:
-              </p>
-              <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinImageTypeDynamicText text-center'>
-                none
-              </ReactMarkdown>
-            </div>
-          </div>
-          <div id='CoinSourceMaterial'>
-            <div id='CoinSourceMaterialGrid'>
-              <div id='CoinSourceMaterialSourceImage'>
-                <p className='GrayText text-start'>
-                  SOURCE IMAGE:
-                </p>
-                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
-                  N/A
-                </ReactMarkdown>
-              </div>
-              <div id='CoinSourceMaterialRightsHolder'>
-                <p className='GrayText text-start'>
-                  RIGHTS HOLDER:
-                </p>
-                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
-                  N/A
-                </ReactMarkdown>
-              </div>
-              <div id='CoinSourceMaterialBibliography'>
-                <p className='GrayText text-start'>
-                  BIBLIOGRAPHY:
-                </p>
-                <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
-                  N/A
-                </ReactMarkdown>
+                <div id='CoinSourceMaterialRightsHolder'>
+                  <p className='GrayText text-start'>
+                    RIGHTS HOLDER:
+                  </p>
+                  <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
+                    N/A
+                  </ReactMarkdown>
+                </div>
+                <div id='CoinSourceMaterialBibliography'>
+                  <p className='GrayText text-start'>
+                    BIBLIOGRAPHY:
+                  </p>
+                  <ReactMarkdown className='DarkBlueText TimelineInfoDynamicText CoinSourceMaterialDynamicText text-start'>
+                    N/A
+                  </ReactMarkdown>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </OutsideClickHandler>
       {Footer()}
     </div>
   );
