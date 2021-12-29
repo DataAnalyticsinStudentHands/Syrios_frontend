@@ -13,9 +13,6 @@ import ReactMarkdown from 'react-markdown';
 import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
-import {
-  ObjectInArray
-} from 'src/utils/smallHelperFunctions.js';
 import OutsideClickHandler from "src/utils/OutsideClickHandler";
 
 
@@ -48,7 +45,7 @@ const Timeline = () => {
        */
       axios.get(process.env.REACT_APP_strapiURL + '/timeline-info') // Fetch data from timeline-info
         .then((res, error) => {
-          if (error) {
+          if (error) { // If error, skip and set variables so background can load atleast
             set_timelineDescription('Error loading timeline-info');
             set_timelineInfo('Error');
             set_coinLocations('error');
@@ -60,13 +57,15 @@ const Timeline = () => {
             let tmpCoinTreeConnections = [];
 
             res.data.zone.forEach((e) => {
+              // Different timeline components require different rendering methods
               switch(e.__component) {
                 case 'timeline-objects.coin-reference-singular':
-                  // setup coin locations and timeline object meta data
+                  // setup coin locations and coin object meta data
                   timelineObjectIds.push(e.coin_reference._id);
                   tmpCoinLocationArr.push({x: e.coin_reference.x_pos, y: e.coin_reference.y_date});
                   break;
                 case 'timeline-objects.coin-reference':
+                  // Setup coin locations, coin object meta deta, and Connecting nodes line between coins
                   timelineObjectIds.push(e.child._id);
                   tmpCoinLocationArr.push({x: e.child.x_pos, y: e.child.y_date});
                   timelineObjectIds.push(e.parent._id);
@@ -83,7 +82,7 @@ const Timeline = () => {
 
                   break;
                 default:
-                  console.error(`Unknown timeline-info component: ${e.__component}`);
+                  console.error(`Unknown timeline-info component: ${e.__component}`); // Nice to have errors so you know where things fail if they do
                   break;
               }
             });
@@ -98,7 +97,7 @@ const Timeline = () => {
 
             axios.get(process.env.REACT_APP_strapiURL + `/timeline-objects?${timelineObjectIds}`)
               .then((res, error) => {
-                if (error) {
+                if (error) { // If error, skip and set variables so background can load atleast
                   set_timelineInfo('error');
                   set_isLoadingInfo(false);
                 } else {
@@ -107,6 +106,7 @@ const Timeline = () => {
                   res.data.forEach((e) => {
                     switch(e.zone[0].__component) {
                       case 'timeline-objects.coin':
+                        // Coin object meta data
                         tmpTimelineInfo.push({
                           __component: e.__component,
                           x: e.x_pos,
@@ -115,7 +115,7 @@ const Timeline = () => {
                         });
                         break;
                       default:
-                        console.error(`Error: Unrecognized timeline component '${e.zone[0].__component}'`);
+                        console.error(`Error: Unrecognized timeline component '${e.zone[0].__component}'`); // Nice to have errors so you know where things fail if they do
                         break;
                     }
                   });
@@ -129,11 +129,10 @@ const Timeline = () => {
     }
 
     if (isLoadingInfo || isLoadingBG) {
-
-      // Asynchronous logic is good, but complicated.
+      // This is probably the most confusing code I have ever written
       axios.get(process.env.REACT_APP_strapiURL + '/timelines?_limit=-1&_sort=y_date:ASC') // ordered query by ascending
         .then((res,error) => {
-          if (error) {
+          if (error) { // An error telling users that hey, somethings wrong. lol
             set_timelineBG(
               <div className='d-flex align-items-center justify-content-center' style={{paddingTop: '10%'}}>
                 <p className='OrangeText text-center' style={{fontSize: '76px'}}>
@@ -147,6 +146,8 @@ const Timeline = () => {
             // The XXX part of start_XXX_x and end_XXX_x must match case insensitive
             let keys = Object.keys(res.data[0]);
             let startEndKeyPairs = [];
+
+            // We need to get our keys and put then in a start end key pairs so we can process the data
             keys.forEach((e) => {
               if (e.toLowerCase().includes('end') || e.toLowerCase().includes('start')) {
                 let identifier = e.substring(e.indexOf('_')+1, e.lastIndexOf('_')).toLowerCase();
@@ -199,6 +200,8 @@ const Timeline = () => {
             let yOffset = 5; // This is to offset some values to make stuff easier to see
 
 
+            // Min and Maxheight are useful to let us offset negative dates and move it downwards because react-native-svg doesn't like using negative numbers, nor do I. 
+            // This makes it easy for react-native-svg to start at 0 for y value
             let minHeight = res.data[0].y_date; // We can assume index 0 is the smallest because it is ordered by ascending
             let maxHeight = res.data[res.data.length-1].y_date; // We can assume index last is the biggest because it is ordered by ascending
             let viewBoxHeight = Math.abs(maxHeight-minHeight); // The size of the viewbox
@@ -210,6 +213,7 @@ const Timeline = () => {
               startEndKeyPairSVGValues[i][1] = [];
             }
 
+            // This is where the magic happens for setting up the background curves
             res.data.forEach((e, index) => {
               for (let i = 0; i < startEndKeyPairs.length; i++) {
                 if (e[startEndKeyPairs[i][0]] === null || e[startEndKeyPairs[i][1]] === null || isNaN(e[startEndKeyPairs[i][0]]) || isNaN(e[startEndKeyPairs[i][1]])) { // Avoid null points. These get ugly if we aren't careful
@@ -241,7 +245,7 @@ const Timeline = () => {
               startEndKeyPairSVGValues[i][1][3] = 'L'+startEndKeyPairSVGValues[i][1][3];
             }
 
-            // Push Pathing react-native-svg elements onto render array for react to load
+            // Push background backdrop react-native-svg elements onto render array for react to load
             let jsxArr = [];
             let dVal = [];
             for (let i = 0; i < startEndKeyPairs.length; i++) {
@@ -256,7 +260,9 @@ const Timeline = () => {
                   }}/>
               );
               dVal.push();
-            } 
+            }
+
+            // This is that slightly white background you see in the middle of the screen
             jsxArr.push(                
               <Rect
                 key='timeline_white'
@@ -267,7 +273,7 @@ const Timeline = () => {
                 stroke='none'
                 fill='rgba(255,255,255,0.3)'/>
             );
-
+            // This is how I get the bottom half of that slightly white background to be more opaque, by putting another one on top of it at the appropriate y level
             jsxArr.push(
               <Rect
                 key='timeline_double_white'
@@ -293,6 +299,7 @@ const Timeline = () => {
 
               for (let i = 0.5; i < 93; i++) {
                 for (let j = 0; j < 1; j += 0.5) {
+                  // Thos dotted lines you see every 50 years
                   jsxArr.push(
                     <Line
                       stroke='#282828'
@@ -307,6 +314,7 @@ const Timeline = () => {
                 }
               }
 
+              // The text you see every 50 years and the one hyphen at the end of the screen
               jsxArr.push(
                 <Text
                   x='98%'
@@ -339,9 +347,12 @@ const Timeline = () => {
               );
             });
 
+            // This interval was placed to FORCE javascript to wait for the previous axios call for timeline information to finish.
+            // To be honest, I could put the interval outside of this axios call and wait for both backdrop and timeline-object information to be retrived.
+            // I'm just too lazy to move the code around and hope that this is understandable.
             var interval = setInterval(function() {
               if (isLoadingInfo && coinLocations !== undefined && timelineInfo !== undefined) {
-                clearInterval(interval);
+                clearInterval(interval); // Stop setInterval once the above is defined 
 
                 if (Array.isArray(coinLocations)) {
                   coinTreeConnections.forEach((e) => {
@@ -359,10 +370,13 @@ const Timeline = () => {
                     jsxArr.push(<Circle key={'Coin_background'+jsxArr.length} cx={e.x} cy={e.y + Math.abs(minHeight)+yOffset} r={0.6 * coinSize / 2} fill='white' stroke='#173847' strokeWidth={coinStrokeWidth}/>);
                   });
 
+                  // Last part is to take the previous axios call to timeline-objects and put that information on TOP of the backdrop. 
+                  // This in react-native-svg are rendered in order of where they are pushed into the array jsxArr.
+                  // All this information NEEDS to be on TOP.
                   timelineInfo.forEach((e) => {
                     switch(e.__component) {
                       case 'timeline-objects.coin':
-                        // Get the front facing image up and out.
+                        // push the front coin image onto the jsxArr with onClick event that changes CoinInfo data and brings it visible
                         jsxArr.push(<Image
                           id={e._id}
                           key={`coin_image${jsxArr.length}`}
@@ -380,11 +394,6 @@ const Timeline = () => {
                             })[0];
 
                             let CoinInfo = document.getElementById('CoinInfo');
-                            let CoinInfoGrid = document.getElementById('CoinInfoGrid');
-                            let CoinImageDiv = document.getElementById('CoinImageDiv')
-                            let CoinMainInfo = document.getElementById('CoinMainInfo')
-                            let CoinImageType = document.getElementById('CoinImageType')
-                            let CoinSourceMaterial = document.getElementById('CoinSourceMaterial');
 
                             // Coin Image
                             document.getElementById('CoinImageFront').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_front.url;
@@ -429,6 +438,7 @@ const Timeline = () => {
 
                 }
 
+                // Set the viewBox and put all elements in jsxArr into the render box. Order matters
                 set_timelineBG(
                   <Svg 
                     height='100%' 
@@ -440,7 +450,7 @@ const Timeline = () => {
                 );
                 set_isLoadingBG(false);
               }
-            }, 200);
+            }, 200); 
           }
         });
     }
@@ -476,14 +486,18 @@ const Timeline = () => {
       </div>
       {timelineBG}
 
-      {/*** Coin info that shows up when you click on a coin ***/}
+      {/*** Coin info that shows up when you click on a coin.
+      The premise behind it is to have interactable code anywhere with getDocumentById to change the innerHTML portion of the code.
+      Once the content has been changed to whatever is desired, change the z-index and opacity to lift it from the shadows
+
+      Lastly, this uses CSS grid to position elements in a formative way ***/}
       <OutsideClickHandler
         onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
           let dom = document.getElementById('CoinInfo');
-         
-          if (window.getComputedStyle(dom).opacity == 1) {
+
+          if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
             dom.style.opacity = 0;
-            setTimeout(() => {dom.style.zIndex = -100}, 600);
+            setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
           }
         }}>
         <div id='CoinInfo'>
@@ -493,10 +507,11 @@ const Timeline = () => {
             onClick={(e) => {
               let dom = e.target.parentElement;
               dom.style.opacity = 0;
-              setTimeout(() => {dom.style.zIndex = -100}, 600);
+              setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
             }}>
             &#xe838;</i>
           <div id='CoinInfoGrid'>
+            {/* Our coin images */}
             <div id='CoinImageDiv'>
               <i 
                 id='CoinInfoRotateButton' 
@@ -540,6 +555,7 @@ const Timeline = () => {
                 </div>
               </div>
             </div>
+            {/* this main info with era, date, min, authority, title, etc... */}
             <div id='CoinMainInfo'>
               <div id='CoinMainInfoTitle'>
                 <ReactMarkdown className='DarkBlueText text-start'>
@@ -602,6 +618,7 @@ const Timeline = () => {
                 </ReactMarkdown>
               </div>
             </div>
+            {/* Reverse, reverse legend, obverse, obverse legend */}
             <div id='CoinImageType'>
               <div id='CoinImageTypeObverse'>
                 <p className='GrayText text-center'>
@@ -636,6 +653,7 @@ const Timeline = () => {
                 </ReactMarkdown>
               </div>
             </div>
+            {/* Bibliography, source url, etc */}
             <div id='CoinSourceMaterial'>
               <div id='CoinSourceMaterialGrid'>
                 <div id='CoinSourceMaterialSourceImage'>
