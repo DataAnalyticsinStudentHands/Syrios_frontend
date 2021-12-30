@@ -351,13 +351,13 @@ const Frame5 = (zone, index) =>{
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-around align-self-center'>
           <Row className='d-flex justify-content-around align-self-center'>
-                <Col sm={5}>
+                <Col sm={4}>
                     {subcomponent_image(zone.image_left, '80%')}
                 </Col>
-                <Col sm={2} className='align-self-end text-center'>
+                <Col sm={4} className='align-self-end text-center SubText my-3'>
                     {zone.caption}
                 </Col>
-                <Col sm={5}>
+                <Col sm={4}>
                     {subcomponent_image(zone.image_right, '80%')}
                 </Col>
           </Row>
@@ -377,14 +377,14 @@ const Frame6 = (zone, index) =>{
         </Container>
         <Container>
             <Row className='justify-content-around'>
-                  <Col>
+                  <Col sm={6}>
                       {subcomponent_image(zone.image,'100%')}
                   </Col>
-                  <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                      <ReactMarkdown className='BlueText text-center h3' >
+                  <Col sm={6} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
+                      <ReactMarkdown className='BlueText text-center SubText' >
                         {zone.sub_text}
                       </ReactMarkdown>
-                      <ReactMarkdown className='GrayText text-center'>
+                      <ReactMarkdown className='GrayText text-center CaptionText'>
                         {zone.sub_author}
                       </ReactMarkdown>
                   </Col>
@@ -403,23 +403,23 @@ const Frame7 = (zone, index) =>{
                 {subcomponent_image(zone.image,'125%')}
             </Col>
             <Col md={{span:6}} className='justify-content-around d-flex flex-column'>
-              <Row className='GrayText align-items-start'>
-                  <h3>
+              <Row className='GrayText align-items-start SubText'>
+                  <p>
                     {zone.main_text_before}
                     <span style={{color:'#183848',fontWeight:'bold'}}>{zone.main_text_b1}</span>
                     {zone.main_text_between}
                      <span style={{color:'#183848',fontWeight:'bold'}}>{zone.main_text_b2}</span>
                     {zone.main_text_after}
-                  </h3>
+                  </p>
               </Row>
-              <Row className='LightYellowBackground p-3 align-items-end GrayText'>
+              <Row className='LightYellowBackground p-3 align-items-end GrayText CaptionText'>
                   {zone.sub_text1}
               </Row>
             </Col>
           </Row>
         </Container>
         <Container className='d-flex justify-content-center align-self-center'>
-          <Row className='my-3 text-center GrayText'>
+          <Row className='my-3 text-center GrayText CaptionText'>
               {zone.sub_text2}
           </Row>
         </Container>
@@ -431,22 +431,22 @@ const Frame8 = (zone, index) =>{
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='justify-content-center'>
           <Row className='justify-content-center'>
-            {subcomponent_image(zone.image_title,'1200px')}
+            {subcomponent_image(zone.image_title,'100%')}
           </Row>
           <Row className='justify-content-between'>
             <Col md={4}>
               {subcomponent_image(zone.image,'100%')}
             </Col>
             <Col md={8} className='justify-content-between d-flex flex-column align-self-center'>
-              <Row className='OrangeText MainText text-center my-5'>
+              <Row className='OrangeText MainText text-center align-self-center my-3'>
                 {zone.title}
               </Row>
               <Row className='justify-content-around' >
                 <Col className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                    <ReactMarkdown className='BlueText text-center h3' >
+                    <ReactMarkdown className='BlueText text-center SubText' >
                       {zone.quote}
                     </ReactMarkdown>
-                    <ReactMarkdown className='GrayText text-center'>
+                    <ReactMarkdown className='GrayText text-center CaptionText'>
                       {zone.sub_quote}
                     </ReactMarkdown>
                 </Col>
@@ -463,19 +463,21 @@ const Frame8 = (zone, index) =>{
 const Frame9 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container >
+        <Container className='justify-content-center '>
           <Row className='OrangeText MainText text-center'>
-            {zone.title}
-          </Row>
-          <Row className='d-flex justify-content-center'>
-            <Col>
-              {subcomponent_image(zone.image_left,'125%')}
+            <Col className='justify-content-center'>
+              {zone.title}
             </Col>
-            <Col className='align-self-center'>
+          </Row>
+          <Row className='d-flex justify-content-around '>
+            <Col xs={9} sm={4} >
+              {subcomponent_image(zone.image_left,'100%')}
+            </Col>
+            <Col xs={9} sm={4}>
               {subcomponent_image(zone.image_mid,'100%')}
             </Col>
-            <Col>
-              {subcomponent_image(zone.image_right,'125%')}
+            <Col xs={9} sm={4}>
+              {subcomponent_image(zone.image_right,'100%')}
             </Col>
           </Row>
 
