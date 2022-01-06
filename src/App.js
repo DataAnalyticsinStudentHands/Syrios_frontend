@@ -12,6 +12,7 @@ import Stories from 'src/pages/Stories/Stories.js';
 import StoryReader from 'src/pages/Stories/StoryReader.js';
 import HowToReadACoin from 'src/pages/HowToReadACoin.js';
 import About from 'src/pages/bottomNavigation/About.js';
+import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 
 import background from 'src/assets/background.jpg';
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/StoryReader' element={<StoryReader />} />
           <Route path='/HowToReadACoin' element={<HowToReadACoin />} />
           <Route path='/About' element={<About />} />
+          <Route path='/Evidence/ExploreTheEvidence' element={<ExploreTheEvidence />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

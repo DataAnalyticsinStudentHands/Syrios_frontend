@@ -1,0 +1,39 @@
+@import url(src/components/constants.css);
+
+#ExploreTheEvidence {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.ExploreTheEvidenceTitleText {
+  margin-top: 20px;
+}
+
+.ExploreTheEvidenceCaptionText {
+  margin-top: -20px;
+}
+
+.ExploreTheEvidenceTextWidthFix {
+  width: 300px;
+}
+
+.ExploreTheEvidenceDownloadDatasetTextWidthFix {
+  width: 500px;
+}
+
+#ExploreTheEvidenceIconDownload {
+  font-size: 15em;
+  color: #486678;
+}
+
+#DownloadDatasetImg {
+  filter: invert(66%) sepia(8%) saturate(1053%) hue-rotate(154deg) brightness(88%) contrast(89%);
+}
+
+#ExploreTheEvidenceTextDiv {
+  margin-left: -400px;
+}
+ 
+#ExploreTheEvidenceIconDownloadDiv {
+  margin-left: 100px;
+}

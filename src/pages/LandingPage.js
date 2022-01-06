@@ -90,7 +90,7 @@ function LandingPage() {
                         {/* Explore the Evidence */}
                         <Col>
                           <div className='bg-white LandingButtonSize'>
-                            <Link to='/'>
+                            <Link to='/Evidence/ExploreTheEvidence'>
                               <div className='LandingButtonImg' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
                                 <div className='OnHoverDim'>
                                   <p className='blandStyle BoldWhiteText LandingButtonsText'>
