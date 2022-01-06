@@ -14,8 +14,6 @@ import Footer from 'src/components/Footer.js';
 import './About.css'
 import 'src/components/constants.css'
 
-import OldLogo from 'src/assets/OldLogo.png';
-
 
 
 const About = () => {
@@ -110,7 +108,7 @@ const About = () => {
                       <img
                         alt='logo'
                         width='90%'
-                        src={OldLogo}/>
+                        src={process.env.REACT_APP_strapiURL+res.data.logo.url}/>
                     </Col>
                     <Col>
                       <ReactMarkdown className='GrayText'>
