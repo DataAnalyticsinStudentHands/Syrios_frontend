@@ -249,11 +249,19 @@ const Timeline = () => {
             let jsxArr = [];
             let dVal = [];
             for (let i = 0; i < startEndKeyPairs.length; i++) {
+              console.log(startEndKeyPairs[i]);
+              let color = colors[i];
+              if (startEndKeyPairs[i][0].includes('roman'))
+                color = colors[2];
+              else if (startEndKeyPairs[i][0].includes('greek'))
+                color = colors[1];
+              else if (startEndKeyPairs[i][0].includes('eastern'))
+                color = colors[0];
               jsxArr.push(
                 <Path
                   d={startEndKeyPairSVGValues[i][0].join("") + startEndKeyPairSVGValues[i][1].reverse().join("")}
                   stroke='none'
-                  fill={colors[i]}
+                  fill={color}
                   key={`timeline_${jsxArr.length}`}
                   style={{
                     opacity: '0.6'
@@ -281,7 +289,8 @@ const Timeline = () => {
                 y={`${yOffset+200}`}
                 width='33'
                 height={viewBoxHeight}
-                stroke='none'
+                stroke='black'
+                strokeWidth='0.06'
                 fill='rgba(255,255,255,0.3)'/>
             );
             // End of Timeline big background color filler mapper
