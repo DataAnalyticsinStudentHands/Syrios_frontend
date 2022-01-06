@@ -5,7 +5,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 
 import './Stories.css';
 import Navbar from 'src/components/Navbar.js';
-import Footer from 'src/components/Footer.js';
+import Footer, { ChangeCreditsAndReferences } from 'src/components/Footer.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import SwitchComponent from './StoryComponents.js';
 
@@ -47,6 +47,8 @@ const StoryReader = () => {
 							}}
 						/>
 					);
+
+          ChangeCreditsAndReferences(res.data.credits_and_references);
 					set_loading(false);
 				});
 		}
@@ -67,7 +69,7 @@ const StoryReader = () => {
 		<>
 			{Navbar()}
 			{page}
-			{Footer()}
+			{Footer(true)}
 		</>
 	);
 }

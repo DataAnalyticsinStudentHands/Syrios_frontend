@@ -72,6 +72,10 @@ html {
 	position: relative;
 }
 
+li p {
+  white-space: nowrap;
+}
+
 /* Adobe XD generated CSS */
 :root {
 
