@@ -28,6 +28,7 @@ const About = () => {
             console.error(error);
           } else {
             const TeamJsx = (e, index) => { // This function is used to display profile picture, and detail of what the person contributed to the project
+              // The detail for the person's information needs some "special" love for it to work. New lines don't work well, so each new line will be a new row
               let detailJsxArr = [];
               e.detail.split("\n").forEach((e) => {
                 detailJsxArr.push(
@@ -42,6 +43,7 @@ const About = () => {
                 );
               });
 
+              // Return profile information
               return (
                 <Row key={`ProjectDirectors_${index}`}>
                   {/* profile picture */}

@@ -9,6 +9,7 @@ import Svg, {
 } from 'react-native-svg';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
+import ReactDomServer from 'react-dom/server';
 
 import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
@@ -249,7 +250,6 @@ const Timeline = () => {
             let jsxArr = [];
             let dVal = [];
             for (let i = 0; i < startEndKeyPairs.length; i++) {
-              console.log(startEndKeyPairs[i]);
               let color = colors[i];
               if (startEndKeyPairs[i][0].includes('roman'))
                 color = colors[2];
@@ -421,6 +421,15 @@ const Timeline = () => {
                             document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.denomination}</span>`;
                             document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.diameter}</span>`;
                             document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cultural_connections}</span>`;
+
+                            let cultural_connectionsStr = (ReactDomServer.renderToString(
+                                <ReactMarkdown className='DarkBlueText CoinMainInfoDynamicText'>
+                                  {coinMetaData.cultural_connections}
+                                </ReactMarkdown>
+                              ));
+                             cultural_connectionsStr = cultural_connectionsStr.slice(cultural_connectionsStr.indexOf('<p>') + 3, cultural_connectionsStr.lastIndexOf('</p>'));
+                            console.log(cultural_connectionsStr);
+                            document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: ${cultural_connectionsStr}`;
 
                             // Coin Image Type
                             document.getElementById('CoinImageTypeObverse').childNodes[1].innerHTML = coinMetaData.obverse_type;
