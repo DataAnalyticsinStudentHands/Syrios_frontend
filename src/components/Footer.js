@@ -3,17 +3,14 @@ import {
   Container,
   Row,
   Col,
-  DropdownButton
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ReactDomServer from 'react-dom/server';
-import ReactMarkdown from 'react-markdown';
 
 import './Footer.css';
 import 'src/components/constants.css';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
-import CreditsAndReferencesBackground from 'src/assets/credits&references.jpg';
 
 export const ChangeCreditsAndReferences = (obj) => {
   // Check every 200ms if footer has been rendered. If true, delete the interval and update credits and references
@@ -99,7 +96,7 @@ const Footer = (loadCreditsAndReferences = false) => {
           </Col>
           {/* ABOUT US */}
           <Col sm={3} xs={0}>
-            <Link to='/' className='blandStyle d-none d-md-block'>
+            <Link to='/About' className='blandStyle d-none d-md-block'>
               <p className='WhiteText FooterText centerDiv'>
                 ABOUT US
               </p>

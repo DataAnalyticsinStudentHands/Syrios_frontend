@@ -68,6 +68,16 @@
 	font-weight: bold;
 }
 
+.LightBlueBackground {
+  background: rgba(184, 204, 216, 0.5);
+  border-radius: 10px;
+}
+.LightYellowBackground {
+  background: rgba(246, 235, 216, 0.5);
+  border-radius: 10px;
+}
+
+
 html {
 	position: relative;
 }
