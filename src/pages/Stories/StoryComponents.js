@@ -1114,18 +1114,96 @@ const InteractiveFrame2 = (zone, index) =>{
 const InteractiveFrame3 = (zone, index) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
-        <Container className='justify-content-center '>
-          <Row>
-            <Col>
-              <ReactMarkdown className='OrangeText MainText text-center'>
-                {zone.title}
-              </ReactMarkdown>
-            </Col>
-          </Row>
+      <Container>
+        <Row>
+          <Col>
+            <ReactMarkdown className='OrangeText MainText text-center'>
+              {zone.title}
+            </ReactMarkdown>
+          </Col>
+        </Row>
+        <Row className='d-flex justify-content-between'>
+          {/* image_lieft */}
+          <Col className='LightBlueBackground' xs={3}>
+              <Row>
+                <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+                  <img
+                    src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
+                    alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
+                    className='imgFill InteractiveFrame1ImageFrontLeft'
+                  />
+                  <img
+                    src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
+                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
+                    className='HalfImageSize InteractiveFrame1ImageBackLeft'
+                  />
+                </div>
+              </Row>
+              <Row>
+                <div className='text-center CaptionText GrayText InteractiveFrame1ImageOuterDiv'>
+                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+                    {zone.text_left_front}
+                  </ReactMarkdown>
+                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                    {zone.text_left_back}
+                  </ReactMarkdown>
+                </div>
 
+              </Row>
+          </Col>
+          {/* text in the middle */}
+          <Col xs={4} className='justify-content-between d-flex flex-column'>
 
+              <Row></Row>
 
-        </Container>
+              <Row className='d-flex justify-content-center' >
+                <Col xs={{span:9}} className='text-center GrayText SubText'>
+                  {zone.text_mid}
+                </Col>
+              </Row>
+
+              <Row className='d-flex justify-content-between'>
+                <Col xs={6}>
+                    <button	className='BlueText text-center' style={{width: '150px'}}>
+                      Government
+                    </button>
+                </Col>
+                <Col xs={6}>
+                    <button	className='BlueText text-center' style={{width: '150px'}}>
+                      Values
+                    </button>
+                </Col>
+              </Row>
+          </Col>
+          {/* image right */}
+          <Col className='LightBlueBackground' xs={3}>
+              <Row>
+                <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+                  <img
+                    src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
+                    alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
+                    className='imgFill InteractiveFrame1ImageFrontRight'
+                  />
+                  <img
+                    src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
+                    alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
+                    className='HalfImageSize InteractiveFrame1ImageBackRight'
+                  />
+                </div>
+              </Row>
+              <Row>
+                <div className='text-center CaptionText GrayText InteractiveFrame1ImageOuterDiv'>
+                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+                    {zone.text_right_front}
+                  </ReactMarkdown>
+                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                    {zone.text_right_back}
+                  </ReactMarkdown>
+                </div>
+              </Row>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
