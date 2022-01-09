@@ -524,8 +524,6 @@ const InteractiveFrame1 = (zone, index) => {
       let textCenterDiv = rowLightBlueBackground.childNodes[1];
       let imgRightDiv = rowLightBlueBackground.childNodes[2].childNodes[0];
       
-      console.log(imgLeftDiv)
-      console.log(imgRightDiv)
 
       // If compare scale is active then switch to reset scale else switch to compare scale
       if (compareScaleActive) {
@@ -1047,7 +1045,7 @@ const InteractiveFrame2 = (zone, index) =>{
                         onClick={(e)=> {
                           // Find dom parent element for compare scale and reset scale
                           let dom = e.target.parentElement.parentElement.nextSibling.childNodes[0].childNodes;
-                          
+                          console.log(dom)
                           if (window.getComputedStyle(dom[0]).display.includes('block')) { // if compare scale is block
                             FadeThenSwitchCompAndReset(dom[0]); // then return compare scale
                           } else {
@@ -1112,6 +1110,103 @@ const InteractiveFrame2 = (zone, index) =>{
 }
 
 const InteractiveFrame3 = (zone, index) =>{
+
+  const switchForGov = (dom) =>{
+    
+    let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
+    let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
+    let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
+    let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
+    let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
+
+    imgLeftDiv.childNodes[1].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        imgLeftDiv.childNodes[1].style.display = 'none';
+        imgLeftDiv.childNodes[2].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          imgLeftDiv.childNodes[2].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    textLeftDiv.childNodes[0].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        textLeftDiv.childNodes[0].style.display = 'none';
+        textLeftDiv.childNodes[1].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          textLeftDiv.childNodes[1].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    textmidDiv.childNodes[0].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        textmidDiv.childNodes[0].style.display = 'none';
+        textmidDiv.childNodes[1].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          textmidDiv.childNodes[1].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    imgRightDiv.childNodes[1].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        imgRightDiv.childNodes[1].style.display = 'none';
+        imgRightDiv.childNodes[2].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          imgRightDiv.childNodes[2].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    texRightDiv.childNodes[0].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        texRightDiv.childNodes[0].style.display = 'none';
+        texRightDiv.childNodes[1].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          texRightDiv.childNodes[1].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+
+  }
+
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container>
@@ -1130,12 +1225,12 @@ const InteractiveFrame3 = (zone, index) =>{
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                    className='imgFill InteractiveFrame1ImageFrontLeft'
+                    style={{display:'block', 'max-height':'180px', opacity:1, transition:'0.3s'}}
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
-                    className='HalfImageSize InteractiveFrame1ImageBackLeft'
+                    style={{display:'none', 'max-height':'180px', opacity:0, transition:'0.3s'}}
                   />
                 </div>
               </Row>
@@ -1158,17 +1253,29 @@ const InteractiveFrame3 = (zone, index) =>{
 
               <Row className='d-flex justify-content-center' >
                 <Col xs={{span:9}} className='text-center GrayText SubText'>
-                  {zone.text_mid}
+                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+                    {zone.text_mid_front}
+                  </ReactMarkdown>
+                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                    {zone.text_mid_back}
+                  </ReactMarkdown>
                 </Col>
               </Row>
 
-              <Row className='d-flex justify-content-between'>
-                <Col xs={6}>
-                    <button	className='BlueText text-center' style={{width: '150px'}}>
+              <Row className='d-flex justify-content-center'>
+                <Col className='d-flex justify-content-center'>
+                    <button	
+                      className='BlueText text-center' 
+                      style={{width: '150px'}}
+                      onClick={(e)=>{
+                        let dom = e.target.parentElement.parentElement.parentElement.parentElement
+                        // console.log(dom)
+                        switchForGov(dom)
+                      }}>
                       Government
                     </button>
                 </Col>
-                <Col xs={6}>
+                <Col className='d-flex justify-content-center'>
                     <button	className='BlueText text-center' style={{width: '150px'}}>
                       Values
                     </button>
