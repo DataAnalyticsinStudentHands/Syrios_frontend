@@ -1111,7 +1111,103 @@ const InteractiveFrame2 = (zone, index) =>{
 
 const InteractiveFrame3 = (zone, index) =>{
 
-  const switchForGov = (dom) =>{
+  const switchForFront = (dom) =>{
+    
+    let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
+    let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
+    let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
+    let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
+    let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
+
+    imgLeftDiv.childNodes[2].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        imgLeftDiv.childNodes[2].style.display = 'none';
+        imgLeftDiv.childNodes[1].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          imgLeftDiv.childNodes[1].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    textLeftDiv.childNodes[1].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        textLeftDiv.childNodes[1].style.display = 'none';
+        textLeftDiv.childNodes[0].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          textLeftDiv.childNodes[0].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    textmidDiv.childNodes[1].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        textmidDiv.childNodes[1].style.display = 'none';
+        textmidDiv.childNodes[0].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          textmidDiv.childNodes[0].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    imgRightDiv.childNodes[2].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        imgRightDiv.childNodes[2].style.display = 'none';
+        imgRightDiv.childNodes[1].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          imgRightDiv.childNodes[1].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+    texRightDiv.childNodes[1].style.opacity = '0.0';
+    setTimeout(() => {
+      try {
+        texRightDiv.childNodes[1].style.display = 'none';
+        texRightDiv.childNodes[0].style.display = 'block';
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        try {
+          texRightDiv.childNodes[0].style.opacity = '1.0';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }, 400);
+
+
+  }
+
+  const switchForBack = (dom) =>{
     
     let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
     let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
@@ -1265,18 +1361,27 @@ const InteractiveFrame3 = (zone, index) =>{
               <Row className='d-flex justify-content-center'>
                 <Col className='d-flex justify-content-center'>
                     <button	
-                      className='BlueText text-center' 
+                      className='BlueText text-center my-2' 
                       style={{width: '150px'}}
                       onClick={(e)=>{
                         let dom = e.target.parentElement.parentElement.parentElement.parentElement
                         // console.log(dom)
-                        switchForGov(dom)
-                      }}>
+                        switchForFront(dom)
+                      }}
+                    >
                       Government
                     </button>
                 </Col>
                 <Col className='d-flex justify-content-center'>
-                    <button	className='BlueText text-center' style={{width: '150px'}}>
+                    <button	
+                      className='BlueText text-center my-2' 
+                      style={{width: '150px'}}
+                      onClick={(e)=>{
+                        let dom = e.target.parentElement.parentElement.parentElement.parentElement
+                        // console.log(dom)
+                        switchForBack(dom)
+                      }}
+                    >
                       Values
                     </button>
                 </Col>
@@ -1303,7 +1408,7 @@ const InteractiveFrame3 = (zone, index) =>{
                   <ReactMarkdown className='InteractiveFrame1TextFront'>
                     {zone.text_right_front}
                   </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                  <ReactMarkdown className='InteractiveFrame1TextBack' >
                     {zone.text_right_back}
                   </ReactMarkdown>
                 </div>
