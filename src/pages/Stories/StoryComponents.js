@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 
 import 'src/components/constants.css';
 import './Stories.css';
+import 'src/components/coinFlip.css';
 
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -768,264 +769,49 @@ const InteractiveFrame1 = (zone, index) => {
 
 const InteractiveFrame2 = (zone, index) =>{
 
-  const FadeThenSwitchCompAndReset = (dom) => { // This function REQUIRES e.target to be compare scale or reset scale
-    // There are more try catches here than the amount of classes you have to take to get a degree.
-    let InteractiveFrame1CompareScale = undefined;
-    let InteractiveFrame1ResetScale = undefined;
-    // Avoid fast clickers from breaking website
-    try {
-      let compareScaleActive = true;
-
-      // Are we rendering compare or reset scale?
-      if (dom.className.includes('InteractiveFrame1CompareScale')) {
-        InteractiveFrame1CompareScale = dom;
-        InteractiveFrame1ResetScale = dom.nextSibling;
-        compareScaleActive = true;
-      } else {
-        InteractiveFrame1CompareScale = dom.previousSibling;
-        InteractiveFrame1ResetScale = dom;
-        compareScaleActive = false;
-      }
-
-      // Leave IF the compare scale to reset scale animation has yet to finish
-      let computedOpacityCompareScale = window.getComputedStyle(InteractiveFrame1CompareScale).opacity;
-      let computedOpacityResetScale = window.getComputedStyle(InteractiveFrame1ResetScale).opacity;
-      if (computedOpacityCompareScale === 0 || computedOpacityCompareScale === 1 || computedOpacityResetScale === 0 || computedOpacityResetScale === 1) {
-        return 0;
-      }
-
-      // Get the row with light blue background because we need to do some display switch and opacity flipping on the sub elements
-      let rowLightBlueBackground = dom;
-
-      rowLightBlueBackground = rowLightBlueBackground.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
-
-      let imgLeftDiv = rowLightBlueBackground.childNodes[0].childNodes[0].childNodes[0];
-      let textLeftDiv = rowLightBlueBackground.childNodes[0].childNodes[1].childNodes[0];
-      let imgRigDiv = rowLightBlueBackground.childNodes[2].childNodes[0].childNodes[0];
-      let textRigDiv = rowLightBlueBackground.childNodes[2].childNodes[1].childNodes[0];
-
-      // If compare scale is active then switch to reset scale else switch to compare scale
-      if (compareScaleActive) {
-        // Compare scale to Reset scale
-        InteractiveFrame1CompareScale.style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            InteractiveFrame1CompareScale.style.display = 'none';
-            InteractiveFrame1ResetScale.style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              InteractiveFrame1ResetScale.style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // image left front to image left back
-        imgLeftDiv.childNodes[1].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            imgLeftDiv.childNodes[1].style.display = 'none';
-            imgLeftDiv.childNodes[2].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              imgLeftDiv.childNodes[2].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-        console.log("image left front to image left back is finished")
-
-
-        // text left front to text left back
-        textLeftDiv.childNodes[0].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            textLeftDiv.childNodes[0].style.display = 'none';
-            textLeftDiv.childNodes[1].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              textLeftDiv.childNodes[1].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // image right front to image right back
-        imgRigDiv.childNodes[1].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            imgRigDiv.childNodes[1].style.display = 'none';
-            imgRigDiv.childNodes[2].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              imgRigDiv.childNodes[2].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // text left front to text left back
-        textRigDiv.childNodes[0].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            textRigDiv.childNodes[0].style.display = 'none';
-            textRigDiv.childNodes[1].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              textRigDiv.childNodes[1].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-      } else {
-        // Reset scale to Compare scale
-        InteractiveFrame1ResetScale.style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            InteractiveFrame1CompareScale.style.display = 'block';
-            InteractiveFrame1ResetScale.style.display = 'none';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              InteractiveFrame1CompareScale.style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // image left back to image left front
-        imgLeftDiv.childNodes[1].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            imgLeftDiv.childNodes[2].style.display = 'none';
-            imgLeftDiv.childNodes[1].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              imgLeftDiv.childNodes[1].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // text left back to text left front
-        textLeftDiv.childNodes[0].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            textLeftDiv.childNodes[1].style.display = 'none';
-            textLeftDiv.childNodes[0].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              textLeftDiv.childNodes[0].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // image right back to image right front
-        imgRigDiv.childNodes[1].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            imgRigDiv.childNodes[2].style.display = 'none';
-            imgRigDiv.childNodes[1].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              imgRigDiv.childNodes[1].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-
-        // text right back to text right front
-        textRigDiv.childNodes[0].style.opacity = '0.0';
-        setTimeout(() => {
-          try {
-            textRigDiv.childNodes[1].style.display = 'none';
-            textRigDiv.childNodes[0].style.display = 'block';
-          } catch (error) {
-            console.error(error);
-          }
-          setTimeout(() => {
-            try {
-              textRigDiv.childNodes[0].style.opacity = '1.0';
-            } catch (error) {
-              console.error(error);
-            }
-          });
-        }, 400);
-      }
-    } catch (error) {
-      console.error(error);
+  const FlipCoin = (dom) =>{
+    while (dom.className !== 'flip-box-inner') {
+      dom = dom.nextSibling;
     }
 
-  };
+    if (dom.style.transform === 'rotateY(180deg)') {
+      dom.style.transform = 'rotateY(0deg)'
+    } else {
+      dom.style.transform = 'rotateY(180deg)';
+    }
+  }
+
   
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container>
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
-          <Col className='LightBlueBackground' xs={3}>
-              <Row>
-                <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+          <Col className='LightBlueBackground d-flex align-items-center' xs={3}>
+            <div className='flip-box'>
+              <div className='flip-box-inner'>
+                <div className='flip-box-front'>  
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                    className='imgFill InteractiveFrame1ImageFrontLeft'
+                    id='CoinImageFront'
                   />
+                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
+                    {zone.text_left_front}
+                  </ReactMarkdown>
+                </div>
+                <div className='flip-box-back'>
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
-                    className='HalfImageSize InteractiveFrame1ImageBackLeft'
+                    id='CoinImageBack'
                   />
-                </div>
-              </Row>
-              <Row>
-                <div className='text-center SubText GrayText InteractiveFrame1ImageOuterDiv'>
-                  <ReactMarkdown className='InteractiveFrame1TextFront'>
-                    {zone.text_left_front}
-                  </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
                     {zone.text_left_back}
                   </ReactMarkdown>
                 </div>
-
-              </Row>
+              </div>
+            </div>
           </Col>
           {/* text in the middle */}
           <Col xs={3} className='justify-content-around d-flex flex-column'>
@@ -1043,33 +829,19 @@ const InteractiveFrame2 = (zone, index) =>{
                       <i 
                         className='demo-icon icon-coin-scale InteractiveFrame1ScaleIcon'
                         onClick={(e)=> {
-                          // Find dom parent element for compare scale and reset scale
-                          let dom = e.target.parentElement.parentElement.nextSibling.childNodes[0].childNodes;
-                          console.log(dom)
-                          if (window.getComputedStyle(dom[0]).display.includes('block')) { // if compare scale is block
-                            FadeThenSwitchCompAndReset(dom[0]); // then return compare scale
-                          } else {
-                            FadeThenSwitchCompAndReset(dom[1]); // else return reset scale
-                          }
+                          let dom = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                          
+                          let coin_left = dom.childNodes[0].childNodes[0].childNodes[0]
+                          let coin_right = dom.childNodes[2].childNodes[0].childNodes[0]
+                          
+                          FlipCoin(coin_left)
+                          FlipCoin(coin_right)
                         }}>
-                        &#xe834;</i>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col 
-                      className='d-flex align-items-center justify-content-center'
-                      onClick={(e) => {FadeThenSwitchCompAndReset(e.target)}}>
-                      <p className='OrangeText InteractiveFrame1CompareScale'>
-                        Compare Scale
-                      </p>
-                      <p className='OrangeText InteractiveFrame1ResetScale'>
-                        Reset Scale
-                      </p>
+                        &#xe833;</i>
                     </Col>
                   </Row>
                 </Col>
               </Row>
-
               <Row className='GrayText SubText text-center align-items-end'>
                 <Col>
                   {zone.text_mid_bot}
@@ -1077,31 +849,31 @@ const InteractiveFrame2 = (zone, index) =>{
               </Row>
           </Col>
           {/* image right */}
-          <Col className='LightBlueBackground' xs={3}>
-              <Row>
-                <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+          <Col className='LightBlueBackground d-flex align-items-center' xs={3}>
+            <div className='flip-box'>
+              <div className='flip-box-inner'>
+                <div className='flip-box-front'>
                   <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                    className='imgFill InteractiveFrame1ImageFrontRight'
+                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
+                  id='CoinImageFront'
                   />
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                    className='HalfImageSize InteractiveFrame1ImageBackRight'
-                  />
-                </div>
-              </Row>
-              <Row>
-                <div className='text-center SubText GrayText InteractiveFrame1ImageOuterDiv'>
-                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
                     {zone.text_right_front}
                   </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                </div>
+                <div className='flip-box-back'>
+                  <img
+                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
+                  id='CoinImageBack'
+                  />
+                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
                     {zone.text_right_back}
                   </ReactMarkdown>
                 </div>
-              </Row>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

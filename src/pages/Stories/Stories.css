@@ -293,3 +293,13 @@ Button:hover {
     left: -70px !important;
   }
 }
+
+#CoinInfoRotateButton {
+  position: absolute;
+  bottom: 7px;
+  right: 13%;
+  cursor: pointer;
+  font-size: 30px;
+  color: #7899a8;
+  z-index: 1000;
+}
