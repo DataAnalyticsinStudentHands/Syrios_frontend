@@ -1192,6 +1192,167 @@ const InteractiveFrame3 = (zone, index) =>{
   )
 }
 
+const InteractiveFrame4 = (zone, index) => {
+
+  const frameWithTwoImage = (zone) =>{
+    return(
+      <Row className='d-flex justify-content-between'>
+      <Col xs={3}>
+        <Row className='d-flex align-items-stretch justify-content-center' >
+          <Col xs={6} className='align-self-end'>
+            <img
+                src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
+                alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+                // style={{'max-height':'180px','max-width':'180px'}}
+                width={'80px'}
+              />
+          </Col>
+          <Col xs={6}>
+            <img
+                src={`${process.env.REACT_APP_strapiURL}${zone.image_left[1].url}`}
+                alt={IsEmptyOrWhiteSpace(zone.image_left[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[1].alternativeText}
+                // style={{'max-height':'180px','max-width':'180px'}}
+                width={'180px'}
+              />
+          </Col>
+        </Row>
+        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground '>
+          <ReactMarkdown className='mt-3'>
+            {zone.text_left}
+          </ReactMarkdown>
+        </Row>
+      </Col>
+
+      <Col xs={3} className='d-flex justify-content-center align-items-end'>
+        <ReactMarkdown className='SubText text-center GrayText'>
+          {zone.text_mid}
+        </ReactMarkdown>
+      </Col>
+
+      <Col xs={3}>
+        <Row className='d-flex align-items-stretch justify-content-center' >
+          <Col xs={6} className='align-self-end'>
+            <img
+                src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
+                alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+                width={'80px'}
+              />
+          </Col>
+          <Col xs={6}>
+            <img
+                src={`${process.env.REACT_APP_strapiURL}${zone.image_right[1].url}`}
+                alt={IsEmptyOrWhiteSpace(zone.image_right[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[1].alternativeText}
+                width={'180px'}
+              />
+          </Col>
+        </Row>
+        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
+          <ReactMarkdown className='mt-3'>
+            {zone.text_right}
+          </ReactMarkdown>
+        </Row>
+      </Col>
+    </Row>
+    )
+  }
+  const frameWithOneImage = (zone)=>{
+    return(
+      <Row className='d-flex justify-content-between'>
+      <Col xs={3}>
+        <Row className='d-flex align-items-stretch justify-content-center' >
+          <img
+              src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
+              alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+              width={'50px'}
+          />
+        </Row>
+        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
+          <ReactMarkdown className='mt-3'>
+            {zone.text_left}
+          </ReactMarkdown>
+        </Row>
+      </Col>
+
+      <Col xs={3} className='d-flex justify-content-center align-items-end'>
+        <ReactMarkdown className='SubText text-center GrayText'>
+          {zone.text_mid}
+        </ReactMarkdown>
+      </Col>
+
+      <Col xs={3}>
+        <Row className='d-flex align-items-stretch justify-content-center' >
+          <img
+              src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
+              alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+              width={'50px'}
+            />
+        </Row>
+        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
+          <ReactMarkdown className='mt-3'>
+            {zone.text_right}
+          </ReactMarkdown>
+        </Row>
+      </Col>
+    </Row>
+    )
+  }
+
+  return (
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+      <Container className='my-3'>
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.title}
+        </ReactMarkdown>
+      </Container>
+      <Container className='my-5'>
+        <Row className='d-flex justify-content-between'>
+          <Col className='d-flex justify-content-center'>
+            <button	
+              className='BlueText text-center my-2' 
+              onClick={()=>{
+              }}
+            >
+              Denomination
+            </button>
+          </Col>
+          <Col className='d-flex justify-content-center'>
+            <button	
+              className='BlueText text-center my-2' 
+              onClick={()=>{
+              }}
+            >
+              Mint Date
+            </button>
+          </Col>
+          <Col className='d-flex justify-content-center'>
+            <button	
+              className='BlueText text-center my-2' 
+              onClick={()=>{
+              }}
+            >
+              Mint Marks
+            </button>
+          </Col>
+          <Col className='d-flex justify-content-center'>
+            <button	
+              className='BlueText text-center my-2' 
+              onClick={()=>{
+              }}
+            >
+              Other Marks
+            </button>
+          </Col>
+        </Row>
+      </Container>
+      <Container className='my-5'>
+        {frameWithTwoImage(zone.component[0])}
+      </Container>
+      <Container>
+        {frameWithOneImage(zone.component[1])}
+      </Container>
+    </div>
+  );
+}
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
@@ -1239,6 +1400,9 @@ const SwitchComponent = (zone, index, fullpageApi) => {
       break;
     case 'frame.interactive-frame3':
       jsx = InteractiveFrame3(zone, index);
+      break;
+    case 'frame.interactive-frame4':
+      jsx = InteractiveFrame4(zone, index);
       break;
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);
