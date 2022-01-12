@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import 'src/components/constants.css';
 import './Stories.css';
 import 'src/components/coinFlip.css';
+import React from 'react';
 
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -1204,7 +1205,7 @@ const InteractiveFrame4 = (zone, index) => {
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
                 // style={{'max-height':'180px','max-width':'180px'}}
-                width={'80px'}
+                height={'120px'}
               />
           </Col>
           <Col xs={6}>
@@ -1212,7 +1213,7 @@ const InteractiveFrame4 = (zone, index) => {
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[1].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[1].alternativeText}
                 // style={{'max-height':'180px','max-width':'180px'}}
-                width={'180px'}
+                height={'180px'}
               />
           </Col>
         </Row>
@@ -1235,14 +1236,14 @@ const InteractiveFrame4 = (zone, index) => {
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
-                width={'80px'}
+                height={'120px'}
               />
           </Col>
           <Col xs={6}>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[1].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[1].alternativeText}
-                width={'180px'}
+                height={'180px'}
               />
           </Col>
         </Row>
@@ -1260,11 +1261,13 @@ const InteractiveFrame4 = (zone, index) => {
       <Row className='d-flex justify-content-between'>
       <Col xs={3}>
         <Row className='d-flex align-items-stretch justify-content-center' >
-          <img
-              src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
-              alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
-              width={'50px'}
-          />
+          <Col className='d-flex justify-content-center'>
+            <img
+                src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
+                alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+                height={'180px'}
+            />
+          </Col>
         </Row>
         <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
           <ReactMarkdown className='mt-3'>
@@ -1280,12 +1283,15 @@ const InteractiveFrame4 = (zone, index) => {
       </Col>
 
       <Col xs={3}>
-        <Row className='d-flex align-items-stretch justify-content-center' >
-          <img
-              src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
-              alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
-              width={'50px'}
-            />
+        <Row className='d-flex justify-content-center' >
+          <Col className='d-flex justify-content-center'>
+            <img
+                src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
+                alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+                height={'180px'}
+                width={'auto'}
+              />
+          </Col>
         </Row>
         <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
           <ReactMarkdown className='mt-3'>
@@ -1295,6 +1301,115 @@ const InteractiveFrame4 = (zone, index) => {
       </Col>
     </Row>
     )
+  }
+
+  const switchFrame = (dom,i) =>{
+
+    let option1 = dom.childNodes[0]
+    let option2 = dom.childNodes[1]
+    let option3 = dom.childNodes[2]
+    let option4 = dom.childNodes[3]
+
+    switch(i){
+      case 'option1':
+        option2.style.opacity = '0.0';
+        option3.style.opacity = '0.0';
+        option4.style.opacity = '0.0';
+        setTimeout(() => {
+          try {
+            option1.style.display = 'block';
+            option2.style.display = 'none';
+            option3.style.display = 'none';
+            option4.style.display = 'none';
+          } catch (error) {
+            console.error(error);
+          }
+          setTimeout(() => {
+            try {
+              option1.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        }, 400);
+        console.log(option1)
+        console.log('finish option 1')
+        break;
+      case 'option2':
+        option1.style.opacity = '0.0';
+        option3.style.opacity = '0.0';
+        option4.style.opacity = '0.0';
+        setTimeout(() => {
+          try {
+            option1.style.display = 'none';
+            option2.style.display = 'block';
+            option3.style.display = 'none';
+            option4.style.display = 'none';
+          } catch (error) {
+            console.error(error);
+          }
+          setTimeout(() => {
+            try {
+              option2.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        }, 400);
+          console.log('finish option 2')
+          break;
+      case 'option3':
+        option1.style.opacity = '0.0';
+        option2.style.opacity = '0.0';
+        option4.style.opacity = '0.0';
+        setTimeout(() => {
+          try {
+            option1.style.display = 'none';
+            option2.style.display = 'none';
+            option3.style.display = 'block';
+            option4.style.display = 'none';
+          } catch (error) {
+            console.error(error);
+          }
+          setTimeout(() => {
+            try {
+              option3.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        }, 400);
+        console.log('finish option 3')
+
+        break;
+      case 'option4':
+        option2.style.opacity = '0.0';
+        option1.style.opacity = '0.0';
+        option3.style.opacity = '0.0';
+        setTimeout(() => {
+          try {
+            option1.style.display = 'none';
+            option2.style.display = 'none';
+            option3.style.display = 'none';
+            option4.style.display = 'block';
+          } catch (error) {
+            console.error(error);
+          }
+          setTimeout(() => {
+            try {
+              option4.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        }, 400);
+        console.log('finish option 4')
+        break;
+      default:
+        console.log();
+    }
+
+
   }
 
   return (
@@ -1309,7 +1424,10 @@ const InteractiveFrame4 = (zone, index) => {
           <Col className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
-              onClick={()=>{
+              onClick={(e)=>{
+                let i = 'option1'
+                let dom = e.target.parentElement.parentElement.nextSibling
+                switchFrame(dom,i)
               }}
             >
               Denomination
@@ -1318,7 +1436,10 @@ const InteractiveFrame4 = (zone, index) => {
           <Col className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
-              onClick={()=>{
+              onClick={(e)=>{
+                let i = 'option2'
+                let dom = e.target.parentElement.parentElement.nextSibling
+                switchFrame(dom,i)
               }}
             >
               Mint Date
@@ -1327,7 +1448,10 @@ const InteractiveFrame4 = (zone, index) => {
           <Col className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
-              onClick={()=>{
+              onClick={(e)=>{
+                let i = 'option3'
+                let dom = e.target.parentElement.parentElement.nextSibling
+                switchFrame(dom,i)
               }}
             >
               Mint Marks
@@ -1336,19 +1460,30 @@ const InteractiveFrame4 = (zone, index) => {
           <Col className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
-              onClick={()=>{
+              onClick={(e)=>{
+                let i = 'option4'
+                let dom = e.target.parentElement.parentElement.nextSibling
+                switchFrame(dom,i)
               }}
             >
               Other Marks
             </button>
           </Col>
         </Row>
-      </Container>
-      <Container className='my-5'>
-        {frameWithTwoImage(zone.component[0])}
-      </Container>
-      <Container>
-        {frameWithOneImage(zone.component[1])}
+        <Row className='mt-5 d-flex justify-content-between' style={{height: '200px'}} >
+            <div style={{display:'block', opacity:'1.0', transition:'0.3s'}}>
+              {frameWithTwoImage(zone.component[0])}
+            </div>
+            <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
+              {frameWithOneImage(zone.component[1])}
+            </div>
+            <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
+              {frameWithOneImage(zone.component[2])}
+            </div>
+            <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
+              {frameWithOneImage(zone.component[3])}
+            </div>
+        </Row>
       </Container>
     </div>
   );

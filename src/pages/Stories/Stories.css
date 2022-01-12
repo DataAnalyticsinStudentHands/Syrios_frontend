@@ -270,6 +270,17 @@ Button:hover {
   width: auto;
 }
 
+.InteractiveFrame {
+  display: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+.InteractiveFrameActive {
+  display: block;
+  opacity: 1;
+  transition: 0.3s;
+}
+
 @media only screen and (max-width: 767px) {
   .InteractiveFrame1LightBlueSizing {
     position: relative;
