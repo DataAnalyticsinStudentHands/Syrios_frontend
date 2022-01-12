@@ -1,0 +1,158 @@
+@import url(src/components/constants.css);
+
+#CoinInfo-x-icon {
+  font-size: 50px;
+  color: #7899A8;
+  cursor: pointer;
+
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  z-index: 1000;
+}
+
+#CoinInfo {
+  position: fixed;
+  max-width: 1280px;
+  max-height: 80%;
+  width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -100;
+
+  background-color: #FFFFFF;
+
+  transition: .6s;
+  opacity: 0;
+}
+
+#CoinInfoGrid {
+  margin: 20px;
+  display: grid;
+  grid-auto-rows: .9fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+/* COIN IMAGE AND ROTATE DIV */
+#CoinImageDiv { 
+  position: relative;
+  grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#CoinImageFlip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#CoinImageFront {
+  max-height: 70%;
+  height: 400px;
+}
+
+#CoinImageBack {
+  max-height: 70%;
+  height: 400px;
+}
+
+#CoinInfoRotateButton {
+  position: absolute;
+  bottom: 7px;
+  right: 13%;
+  cursor: pointer;
+  font-size: 30px;
+  color: #7899A8;
+  z-index: 1000;
+}
+
+/* Coin primary information div */
+#CoinMainInfo {
+  grid-area: 1 / 2 / 2 / 3; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2fr repeat(7, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 0px; 
+  font-size: 12px;
+}
+
+.CoinMainInfoDynamicText {
+  font-size: 16px;
+}
+
+
+
+#CoinMainInfoTitle { grid-area: 1 / 1 / 2 / 3; font-size: 24px; font-weight: bold;}
+#CoinMainInfoRegion { grid-area: 2 / 1 / 3 / 2; }
+#CoinMainInfoState { grid-area: 3 / 1 / 4 / 2; }
+#CoinMainInfoMint { grid-area: 4 / 1 / 5 / 2; }
+#CoinMainInfoAuthority { grid-area: 5 / 1 / 6 / 2; }
+#CoinMainInfoEra { grid-area: 6 / 1 / 7 / 2; }
+#CoinMainInfoDate { grid-area: 7 / 1 / 8 / 2; }
+#CoinMainInfoCatalogueDate { grid-area: 8 / 1 / 9 / 2; }
+#CoinMainInfoMaterial { grid-area: 2 / 2 / 3 / 3; }
+#CoinMainInfoDenomination { grid-area: 3 / 2 / 4 / 3; }
+#CoinMainInfoDiameter { grid-area: 4 / 2 / 5 / 3; }
+#CoinMainInfoCulturalConnections { grid-area: 5 / 2 / 9 / 3; } 
+#CoinMainInfoCulturalConnections div a {
+  color: #173847;
+  text-decoration: underline !important;
+  transition: 0.2s;
+}
+#CoinMainInfoCulturalConnections div a:hover {
+  color: #7899A8;
+}
+
+
+/* Coin image obverse, legen, and reverse type */
+#CoinImageType {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr) 1.4fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  font-size: 12px;
+}
+
+.CoinImageTypeDynamicText {
+  margin-top: -14px;
+  font-style: italic;
+}
+
+#CoinImageTypeObverse { grid-area: 1 / 1 / 2 / 2; }
+#CoinImageTypeObverseLegend { grid-area: 2 / 1 / 3 / 2; }
+#CoinImageTypeReverse { grid-area: 3 / 1 / 4 / 2; }
+#CoinImageTypeReverseLegend { grid-area: 4 / 1 / 5 / 2; } 
+
+#CoinSourceMaterial {
+  grid-area: 2 / 2 / 3 / 3;
+  border-radius: 2px;
+  background-color: rgba(240, 224, 192, 0.5);
+}
+
+#CoinSourceMaterialGrid {
+  height: 100%;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  font-size: 12px;
+}
+
+.CoinSourceMaterialDynamicText {
+  margin-top: -14px;
+  font-size: 16px;
+}
+
+#CoinSourceMaterialSourceImage { grid-area: 1 / 1 / 2 / 2; }
+#CoinSourceMaterialRightsHolder { grid-area: 2 / 1 / 3 / 2; }
+#CoinSourceMaterialBibliography { grid-area: 3 / 1 / 4 / 2; }

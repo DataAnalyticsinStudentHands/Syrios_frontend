@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 
 import 'src/components/constants.css';
 import './Stories.css';
-import 'src/components/coinFlip.css';
+import 'src/components/coin/coinFlip.css';
 import React from 'react';
 
 function IsEmptyOrWhiteSpace(str) {
