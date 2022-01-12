@@ -788,7 +788,7 @@ const InteractiveFrame2 = (zone, index) =>{
       <Container>
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
-          <Col className='LightBlueBackground d-flex align-items-center' xs={3}>
+          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3} style={{height: '300px'}}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>  
@@ -797,7 +797,7 @@ const InteractiveFrame2 = (zone, index) =>{
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
                     id='CoinImageFront'
                   />
-                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
+                  <ReactMarkdown className='text-center SubText GrayText mt-5'>
                     {zone.text_left_front}
                   </ReactMarkdown>
                 </div>
@@ -807,7 +807,7 @@ const InteractiveFrame2 = (zone, index) =>{
                     alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
                     id='CoinImageBack'
                   />
-                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
+                  <ReactMarkdown className='text-center SubText GrayText mt-5'>
                     {zone.text_left_back}
                   </ReactMarkdown>
                 </div>
@@ -850,7 +850,7 @@ const InteractiveFrame2 = (zone, index) =>{
               </Row>
           </Col>
           {/* image right */}
-          <Col className='LightBlueBackground d-flex align-items-center' xs={3}>
+          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
@@ -859,7 +859,7 @@ const InteractiveFrame2 = (zone, index) =>{
                   alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
                   id='CoinImageFront'
                   />
-                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
+                  <ReactMarkdown className='text-center SubText GrayText mt-5'>
                     {zone.text_right_front}
                   </ReactMarkdown>
                 </div>
@@ -869,7 +869,7 @@ const InteractiveFrame2 = (zone, index) =>{
                   alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
                   id='CoinImageBack'
                   />
-                  <ReactMarkdown className='text-center SubText GrayText mt-3'>
+                  <ReactMarkdown className='text-center SubText GrayText mt-5'>
                     {zone.text_right_back}
                   </ReactMarkdown>
                 </div>
@@ -887,6 +887,8 @@ const InteractiveFrame3 = (zone, index) =>{
   const switchForFront = (dom) =>{
     
     let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
+    console.log(imgLeftDiv)
+
     let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
     let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
@@ -983,6 +985,9 @@ const InteractiveFrame3 = (zone, index) =>{
   const switchForBack = (dom) =>{
     
     let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
+    console.log(imgLeftDiv)
+    console.log(imgLeftDiv.childNodes)
+
     let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
     let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
@@ -1089,8 +1094,8 @@ const InteractiveFrame3 = (zone, index) =>{
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
           <Col className='LightBlueBackground' xs={3}>
-              <Row>
-                <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+              <Row className=''>
+                <div className='d-flex align-items-center justify-content-center' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
@@ -1098,17 +1103,17 @@ const InteractiveFrame3 = (zone, index) =>{
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
+                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_back.alternativeText}
                     style={{display:'none', 'max-height':'180px', opacity:0, transition:'0.3s'}}
                   />
                 </div>
               </Row>
-              <Row>
-                <div className='text-center CaptionText GrayText InteractiveFrame1ImageOuterDiv'>
-                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+              <Row className='p-3'>
+                <div className='text-center CaptionText GrayText'>
+                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
                     {zone.text_left_front}
                   </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                  <ReactMarkdown style={{display:'none', opacity:0, transition:'0.3s'}}>
                     {zone.text_left_back}
                   </ReactMarkdown>
                 </div>
@@ -1118,7 +1123,9 @@ const InteractiveFrame3 = (zone, index) =>{
           {/* text in the middle */}
           <Col xs={4} className='justify-content-between d-flex flex-column'>
 
-              <Row></Row>
+              <Row className='d-flex justify-content-center'>
+
+              </Row>
 
               <Row className='d-flex justify-content-center' >
                 <Col xs={{span:9}} className='text-center GrayText SubText'>
@@ -1163,25 +1170,25 @@ const InteractiveFrame3 = (zone, index) =>{
           {/* image right */}
           <Col className='LightBlueBackground' xs={3}>
               <Row>
-                <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+                <div className='d-flex align-items-center justify-content-center ' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                    className='imgFill InteractiveFrame1ImageFrontRight'
+                    style={{display:'block', 'max-height':'180px', opacity:1, transition:'0.3s'}}
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                    className='HalfImageSize InteractiveFrame1ImageBackRight'
+                    style={{display:'none', 'max-height':'180px', opacity:0, transition:'0.3s'}}
                   />
                 </div>
               </Row>
-              <Row>
-                <div className='text-center CaptionText GrayText InteractiveFrame1ImageOuterDiv'>
-                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+              <Row className='p-3'>
+                <div className='text-center CaptionText GrayText'>
+                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
                     {zone.text_right_front}
                   </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack' >
+                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
                     {zone.text_right_back}
                   </ReactMarkdown>
                 </div>
