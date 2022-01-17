@@ -8,135 +8,46 @@ import Svg, {
   Image
 } from 'react-native-svg';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
 
 import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import CoinInfo, { UpdateAndShowCoinInfo } from 'src/components/coin/CoinInfo.js';
+import EventInfo, { UpdateAndShowEventInfo } from 'src/components/event/Event.js';
+import { colors } from 'src/components/constants.js';
 
 import 'src/components/constants.css';
 import './Timeline.css';
 
-const Timeline = () => {
-  const [isLoadingInfo, set_isLoadingInfo] = useState(true);
-  const [isLoadingBG, set_isLoadingBG] = useState(true);
-  const [timelineBG, set_timelineBG] = useState(undefined);
-  const [timelineInfo, set_timelineInfo] = useState(undefined);
-  const [coinLocations, set_coinLocations] = useState(undefined);
-  const [coinTreeConnections, set_coinTreeConnections] = useState(undefined);
-  const [timelineDescription, set_timelineDescription] = useState(undefined);
 
+
+const Timeline = () => {
+  const [isLoading, set_isLoading] = useState(true);
+  const [timeline, set_timeline] = useState(undefined); // This is the entire timeline svg object
+  const [timelineBackground, set_timelineBackground] = useState(undefined); // This is just the background colors, with the dotted lines and numbering on the right hand side
+  const [timelineBackgroundIsLoading, set_timelineBackgroundIsLoading] = useState(true); // Set false when timeline background is done loading.
+  const [timelineDescription, set_timelineDescription] = useState(undefined); // This is the description at the top of the page
+  const [timelineInfo, set_timelineInfo] = useState(undefined); // This is the coin and event data
+  const [timelineEventsAndCoins, set_timelineEventsAndCoins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
+  const [timelineEventsAndCoinsIsLoading , set_timelineEventsAndCoinsIsLoading] = useState(true); // Set false once timelineEventsAndCoins is done loading
+  let coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
+  let events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
+  // These are the view box dimensions
+  const [viewBoxMinHeight, set_viewBoxMinHeight] = useState(0);
+  const [viewBoxMaxHeight, set_viewBoxMaxHeight] = useState(0);
+  const [viewBoxTotalHeight, set_viewBoxTotalHeight] = useState(0);
+  const [viewBoxDimensionsisLoading, set_viewBoxDimensionsisLoading] = useState(true); // set false once done loading
   const coinSize = 8; // Size of coins on timeline
   const coinStrokeWidth = .5; // Stroke width of coins on timeline
-
-  const colors = ['#7FA87F', '#F2D16B', '#B85828', '#486678', '#323029']
+  const yOffset = 5;
 
   useEffect(() => {
-    if (isLoadingInfo) {
-      /*
-       * We need data on what timeline objects to be outputted.
-       * Also, we need data on timeline trees
-       *
-       */
-      axios.get(process.env.REACT_APP_strapiURL + '/timeline-info') // Fetch data from timeline-info
-        .then((res, error) => {
-          if (error) { // If error, skip and set variables so background can load atleast
-            set_timelineDescription('Error loading timeline-info');
-            set_timelineInfo('Error');
-            set_coinLocations('error');
-            set_isLoadingInfo(false);
-          } else {
-            set_timelineDescription(res.data.timeline_description);
-            let timelineObjectIds = [];
-            let tmpCoinLocationArr = [];
-            let tmpCoinTreeConnections = [];
-
-            res.data.zone.forEach((e) => {
-              // Different timeline components require different rendering methods
-              switch(e.__component) {
-                case 'timeline-objects.coin-reference-singular':
-                  // setup coin locations and coin object meta data
-                  timelineObjectIds.push(e.coin_reference._id);
-                  tmpCoinLocationArr.push({x: e.coin_reference.x_pos, y: e.coin_reference.y_date});
-                  break;
-                case 'timeline-objects.coin-reference':
-                  // Setup coin locations, coin object meta deta, and Connecting nodes line between coins
-                  timelineObjectIds.push(e.child._id);
-                  tmpCoinLocationArr.push({x: e.child.x_pos, y: e.child.y_date});
-                  timelineObjectIds.push(e.parent._id);
-                  tmpCoinLocationArr.push({x: e.parent.x_pos, y: e.parent.y_date});
-                  tmpCoinTreeConnections.push(
-                    {
-                      x1: e.parent.x_pos,
-                      x2: e.child.x_pos,
-                      y1: e.parent.y_date,
-                      y2: e.child.y_date,
-                      key: `tmpCoinTreeConnections_${tmpCoinTreeConnections.length}`
-                    }
-                  );
-
-                  break;
-                default:
-                  console.error(`Unknown timeline-info component: ${e.__component}`); // Nice to have errors so you know where things fail if they do
-                  break;
-              }
-            });
-
-            timelineObjectIds = [...new Set(timelineObjectIds)]; // Remove duplicates
-            tmpCoinLocationArr = [...new Set(tmpCoinLocationArr)];
-            tmpCoinLocationArr = [... new Set(tmpCoinLocationArr)];
-            set_coinTreeConnections(tmpCoinTreeConnections);
-            set_coinLocations(tmpCoinLocationArr);
-            timelineObjectIds = timelineObjectIds.map(i => '_id=' + i).join('&');
-
-
-            axios.get(process.env.REACT_APP_strapiURL + `/timeline-objects?${timelineObjectIds}`)
-              .then((res, error) => {
-                if (error) { // If error, skip and set variables so background can load atleast
-                  set_timelineInfo('error');
-                  set_isLoadingInfo(false);
-                } else {
-                  let tmpTimelineInfo = [];
-                  // get timeline object meta data in a 'workable' state
-                  res.data.forEach((e) => {
-                    switch(e.zone[0].__component) {
-                      case 'timeline-objects.coin':
-                        // Coin object meta data
-                        tmpTimelineInfo.push({
-                          __component: e.__component,
-                          x: e.x_pos,
-                          y: e.y_date,
-                          ...e.zone[0]
-                        });
-                        break;
-                      default:
-                        console.error(`Error: Unrecognized timeline component '${e.zone[0].__component}'`); // Nice to have errors so you know where things fail if they do
-                        break;
-                    }
-                  });
-
-                  set_timelineInfo(tmpTimelineInfo);
-                  set_isLoadingInfo(false);
-                }
-              });
-          }
-        });
-    }
-
-    if (isLoadingInfo || isLoadingBG) {
-      // This is probably the most confusing code I have ever written
-      axios.get(process.env.REACT_APP_strapiURL + '/timelines?_limit=-1&_sort=y_date:ASC') // ordered query by ascending
-        .then((res,error) => {
-          if (error) { // An error telling users that hey, somethings wrong. lol
-            set_timelineBG(
-              <div className='d-flex align-items-center justify-content-center' style={{paddingTop: '10%'}}>
-                <p className='OrangeText text-center' style={{fontSize: '76px'}}>
-                  Page failed to load. Try refreshing.
-                </p>
-              </div>
-            );
-            set_isLoadingBG(false);
+    if (isLoading) {
+      // This is the background
+      axios.get(process.env.REACT_APP_strapiURL + '/timelines?_limit=-1&_sort=y_date:ASC')
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
           } else {
             // We are parsing object keys to get start and end dates to match
             // The XXX part of start_XXX_x and end_XXX_x must match case insensitive
@@ -190,18 +101,20 @@ const Timeline = () => {
              * A = elliptical Arc
              * Z = closepath
              *
-             * Noticed that S works the best. Some of the other options tend to have "problems"
+             * Noticed that Q works the best. Some of the other options tend to have "problems"
              */
             let curveStyle = 'Q';
-            let yOffset = 5; // This is to offset some values to make stuff easier to see
 
 
-            // Min and Maxheight are useful to let us offset negative dates and move it downwards because react-native-svg doesn't like using negative numbers, nor do I. 
+            // Min and Maxheight are useful to let us offset negative dates and move it downwards because react-native-svg doesn't like using negative numbers
             // This makes it easy for react-native-svg to start at 0 for y value
-            let minHeight = res.data[0].y_date; // We can assume index 0 is the smallest because it is ordered by ascending
-            let maxHeight = res.data[res.data.length-1].y_date; // We can assume index last is the biggest because it is ordered by ascending
-            let viewBoxHeight = Math.abs(maxHeight-minHeight); // The size of the viewbox
-
+            let minHeight = (res.data[0].y_date); // We can assume index 0 is the smallest because it is ordered by ascending
+            let maxHeight = (res.data[res.data.length-1].y_date); // We can assume index last is the biggest because it is ordered by ascending
+            let viewBoxHeight = (Math.abs(res.data[0].y_date-res.data[res.data.length-1].y_date)); // The size of the viewbox
+            set_viewBoxMaxHeight(maxHeight);
+            set_viewBoxMinHeight(minHeight);
+            set_viewBoxTotalHeight(viewBoxHeight);
+            set_viewBoxDimensionsisLoading(false);
             // Setup X and Y containers for render
             let startEndKeyPairSVGValues = JSON.parse(JSON.stringify(startEndKeyPairs));
             for (let i = 0; i < startEndKeyPairSVGValues.length; i++) {
@@ -243,27 +156,25 @@ const Timeline = () => {
 
             // Push background backdrop react-native-svg elements onto render array for react to load
             let jsxArr = [];
-            let dVal = [];
             for (let i = 0; i < startEndKeyPairs.length; i++) {
-              let color = colors[i];
-              if (startEndKeyPairs[i][0].includes('roman'))
-                color = colors[2];
-              else if (startEndKeyPairs[i][0].includes('greek'))
-                color = colors[1];
-              else if (startEndKeyPairs[i][0].includes('eastern'))
-                color = colors[0];
               jsxArr.push(
                 <Path
                   d={startEndKeyPairSVGValues[i][0].join("") + startEndKeyPairSVGValues[i][1].reverse().join("")}
                   stroke='none'
-                  fill={color}
+                  fill={colors.findColor(startEndKeyPairs[i][0])}
                   key={`timeline_${jsxArr.length}`}
                   style={{
                     opacity: '0.6'
                   }}/>
               );
-              dVal.push();
             }
+
+
+
+            /* ********************************************************************************************** *
+             * The next part is just prettyfier code                                                          *
+             * This isn't 100% necessary, but good to have                                                    *
+             * ********************************************************************************************** */
 
             // This is that slightly white background you see in the middle of the screen
             jsxArr.push(                
@@ -350,99 +261,157 @@ const Timeline = () => {
                 />
               );
             });
+            set_timelineBackground(jsxArr);
+            set_timelineBackgroundIsLoading(false);
+          }
+        });
 
-            // This interval was placed to FORCE javascript to wait for the previous axios call for timeline information to finish.
-            // To be honest, I could put the interval outside of this axios call and wait for both backdrop and timeline-object information to be retrived.
-            // I'm just too lazy to move the code around and hope that this is understandable.
-            var interval = setInterval(function() {
-              if (isLoadingInfo && coinLocations !== undefined && timelineInfo !== undefined) {
-                clearInterval(interval); // Stop setInterval once the above is defined 
 
-                if (Array.isArray(coinLocations)) {
-                  coinTreeConnections.forEach((e) => {
-                    jsxArr.push(
+
+      // This is the coins and events and connecting stuff **********************
+      axios.get(process.env.REACT_APP_strapiURL + '/timeline-info')
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+          } else {
+            set_timelineDescription(res.data.timeline_description);
+            
+            let jsxArr = [];
+            let coinInfoArr = [];
+            let eventInfoArr = [];
+            var timelineInfoInterval = setInterval(function() {
+              if (!viewBoxDimensionsisLoading) {
+                clearInterval(timelineInfoInterval);
+
+                const SetupCoin = (e) => { 
+                  coinInfoArr.push(e);
+                  return (
+                    <Image
+                      id={e._id}
+                      key={`coin_image${e._id}`}
+                      className='CoinImage'
+                      x={e.x - coinSize / 2}
+                      y={e.y + Math.abs(viewBoxMinHeight) + yOffset - coinSize / 2}
+                      width={coinSize}
+                      height={coinSize}
+                      href={`${process.env.REACT_APP_strapiURL}${e.coin.obverseFile.url}`}
+                      onClick={(imgDomObj) => {
+                        let dom = imgDomObj.target;
+
+                        let coinMetaData = coins.filter(e => {
+                          return e._id === dom.id;
+                        })[0].coin;
+
+                        UpdateAndShowCoinInfo(coinMetaData);
+                      }}/>
+                  );
+                };
+
+                res.data.zone.forEach((e) => {
+                  switch (e.__component) {
+                    case 'timeline-objects.coin-reference-singular':
+                      jsxArr.push(SetupCoin(e));
+                      break;
+                    case 'timeline-objects.coin-reference':
+                      jsxArr.push(
                       <Path
-                        d={`M${e.x1} ${e.y1+Math.abs(minHeight)+yOffset} S${e.x1} ${e.y2+Math.abs(minHeight)+yOffset} ${e.x2} ${e.y2+Math.abs(minHeight)+yOffset}`}
-                        key={e.key}
+                        d={`M${e.parent_x} ${e.parent_y+Math.abs(viewBoxMinHeight)+yOffset} S${e.parent_x} ${e.child_y+Math.abs(viewBoxMinHeight)+yOffset} ${e.child_x} ${e.child_y+Math.abs(viewBoxMinHeight)+yOffset}`}
+                        key={`path${e._id}`}
                         stroke='#173847'
                         fill='none'
                         strokeWidth={coinStrokeWidth*2}
-                      />);
-                  });
+                      />
+                      );
 
-                  coinLocations.forEach((e) => {
-                    jsxArr.push(<Circle key={'Coin_background'+jsxArr.length} cx={e.x} cy={e.y + Math.abs(minHeight)+yOffset} r={0.6 * coinSize / 2} fill='white' stroke='#173847' strokeWidth={coinStrokeWidth}/>);
-                  });
-
-                  // Last part is to take the previous axios call to timeline-objects and put that information on TOP of the backdrop. 
-                  // This in react-native-svg are rendered in order of where they are pushed into the array jsxArr.
-                  // All this information NEEDS to be on TOP.
-                  timelineInfo.forEach((e) => {
-                    switch(e.__component) {
-                      case 'timeline-objects.coin':
-                        // push the front coin image onto the jsxArr with onClick event that changes CoinInfo data and brings it visible
-                        jsxArr.push(<Image
-                          id={e._id}
-                          key={`coin_image${jsxArr.length}`}
-                          className='CoinImage'
-                          x={e.x - coinSize / 2}
-                          y={e.y + Math.abs(minHeight) + yOffset - coinSize / 2}
-                          width={coinSize}
-                          height={coinSize}
-                          href={`${process.env.REACT_APP_strapiURL}${e.coin_image_front.url}`}
-                          onClick={(e) => {
-                            // This magic here is how CoinInfo gets defined and displayed
-                            let dom = e.target;
-                            var coinMetaData = timelineInfo.filter(obj => {
-                              return obj._id === dom.id;
+                      jsxArr.push(SetupCoin({
+                        ...e,
+                        x: e.child_x,
+                        y: e.child_y,
+                        _id: e.child._id,
+                        coin: e.child
+                      }));
+                      jsxArr.push(SetupCoin({
+                        ...e,
+                        x: e.parent_x,
+                        y: e.parent_y,
+                        _id: e.parent._id,
+                        coin: e.parent
+                      }));
+                      break;
+                    case 'timeline-objects.event-ref':
+                      eventInfoArr.push(e.event);
+                      let sizeOfEvent = 2.3;
+                      
+                      jsxArr.push(
+                        <Rect
+                          id={e.event._id}
+                          key={`event${e.event._id}`}
+                          className='Event'
+                          x={e.x - sizeOfEvent / 2}
+                          y={e.y + Math.abs(viewBoxMinHeight) + yOffset - sizeOfEvent / 2}
+                          width={sizeOfEvent}
+                          height={sizeOfEvent}
+                          fill={e.event.color}
+                          stroke='black'
+                          strokeWidth='0.1'
+                          onClick={(eventDomObj)=> {
+                            let dom = eventDomObj.target;
+                            
+                            let eventMetaData = events.filter(e => {
+                              return e._id === dom.id;
                             })[0];
 
-                            UpdateAndShowCoinInfo(coinMetaData);
-                          }}
-                        />
-                        );
-                        break;
-                      default:
-                        console.error(`Error: Unrecognized timeline component '${e.zone[0].__component}'`);
-                        break;
-                    }
-                  });
+                            UpdateAndShowEventInfo(eventMetaData);
+                          }}/>
+                      );
+                      break;
+                    default:
+                      console.error(`Error: Unrecognized component '${e.__component}'`);
+                  }
+                });
 
-                }
-
-                // Set the viewBox and put all elements in jsxArr into the render box. Order matters
-                set_timelineBG(
-                  <Svg 
-                    height='100%' 
-                    width='100%' 
-                    viewBox={`0 0 100 ${viewBoxHeight}`}
-                    style={{position: 'relative', top: '5em'}}>
-                    {jsxArr}
-                  </Svg>
-                );
-                set_isLoadingBG(false);
+                set_timelineEventsAndCoins(jsxArr);
+                coins = coinInfoArr;
+                events = eventInfoArr;
+                set_timelineEventsAndCoinsIsLoading(false);
               }
-            }, 200); 
+            }, 200);
           }
         });
+
+
+
+      // This is where all the information gets connected
+      var timelineInterval = setInterval(function() {
+        if (timelineBackground !== undefined && timelineEventsAndCoins !== undefined) {
+          clearInterval(timelineInterval);
+
+          set_timeline(
+            <Svg
+              height='100%'
+              width='100%'
+              viewBox={`0 0 100 ${viewBoxTotalHeight}`}
+              style={{position: 'relative', top: '5em'}}>
+              {timelineBackground}
+              {timelineEventsAndCoins}
+            </Svg>
+          );
+          set_isLoading(false); 
+        }
+      }, 400);
     }
   });
 
-
-  // Render page here
-  //
-  // if isLoading is true, render isLoading page
-  // else render timeline
-  if (isLoadingInfo || isLoadingBG) {
+  if (isLoading) {
     return (
-      <div id='Timeline'>
+      <>
         {Navbar()}
         {LoadingPage()}
         {Footer()}
-      </div>
+      </>
     );
   }
-
+  
   return (
     <div id='Timeline'>
       {Navbar()}
@@ -456,8 +425,9 @@ const Timeline = () => {
           {timelineDescription}
         </p>
       </div>
-      {timelineBG}
+      {timeline}
       {CoinInfo()}
+      {EventInfo()}
       {Footer()}
     </div>
   );

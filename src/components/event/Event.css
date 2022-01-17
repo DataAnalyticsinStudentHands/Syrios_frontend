@@ -1,0 +1,94 @@
+@import url(src/components/constants.css);
+
+
+
+#EventInfo-x-icon {
+  font-size: 50px;
+  color: #7899A8;
+  cursor: pointer;
+
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  z-index: 1000;
+}
+
+#EventInfo {
+  background-color: white;
+  position: fixed;
+  max-width: 90%;
+  max-height: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -100;
+
+  transition: 0.6s;
+  opacity: 0;
+}
+
+#EventInfoInnerDiv {
+  margin: 30px;
+}
+
+#EventTagsTitle {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+#EventTags {
+  display: flex;
+  gap: 15px;
+
+  margin-bottom: 30px;
+}
+
+.Tag {
+  margin-bottom: 10px;
+  border-radius: 4000000px;
+  width: fit-content;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.TagText {
+  margin: 0px 20px 0px 20px !important;
+  margin: 5px;
+  font-size: 20px;
+}
+
+#EventTitle {
+  font-size: 30px;
+}
+
+#EventDescription {
+  font-size: 14px;
+}
+
+#EventConnectionsBackground {
+  margin-top: 30px;
+  background-color: rgba(155, 155, 160, 0.3);
+}
+
+#EventConnections {
+  padding: 20px;
+}
+
+#EventCulturalConnectionText {
+  margin-bottom: 0px;
+  font-size:14px;
+}
+
+#EventCulturalConnectionList {
+  font-size:14px;
+}
+
+.TypeCategory p a {
+  color: #173847;
+  text-decoration: underline !important;
+  transition: 0.2s;
+}
+.TypeCategory p a:hover {
+  color: #7899A8;
+}

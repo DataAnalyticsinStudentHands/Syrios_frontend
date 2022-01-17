@@ -4,6 +4,14 @@
   --mainFonts: 'syrios-entypo-subset', EB Garamond, Georgia, serif, FreeSerif;
 }
 
+.quote blockquote p::before {
+  content: '"';
+}
+
+.quote blockquote p::after {
+  content: '"';
+}
+
 .imgFill {
 	width: 100%;
 	height: 100%;

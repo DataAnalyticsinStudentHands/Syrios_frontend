@@ -12,52 +12,57 @@ import OldLogoColorless from 'src/assets/OldLogoColorless.png';
 
 
 
+var lastTimeCoinShowOccured = new Date();
 export const ShowCoinInfo = () => {
+  lastTimeCoinShowOccured = new Date();
   let CoinInfo = document.getElementById('CoinInfo');
-  CoinInfo.style.zIndex = '100';
-  setTimeout(() => {CoinInfo.style.opacity = 1}, 100);
+
+  if (window.getComputedStyle(CoinInfo).opacity != 1) {
+    CoinInfo.style.zIndex = '100';
+    setTimeout(() => {CoinInfo.style.opacity = 1}, 100);
+  }
 }
 
 export const UpdateCoinInfo = (coinMetaData) => {
   let CoinInfo = document.getElementById('CoinInfo');
 
   // Coin Image
-  document.getElementById('CoinImageFront').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_front.url;
-  document.getElementById('CoinImageBack').src = process.env.REACT_APP_strapiURL + coinMetaData.coin_image_back.url;
+  document.getElementById('CoinImageFront').src = process.env.REACT_APP_strapiURL + coinMetaData.obverseFile.url;
+  document.getElementById('CoinImageBack').src = process.env.REACT_APP_strapiURL + coinMetaData.reverseFile.url;
 
   // Coin main info
-  document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='DarkBlueText'>${coinMetaData.name}</span>`;
-  document.getElementById('CoinMainInfoRegion').childNodes[0].innerHTML = `REGION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.region}</span>`;
-  document.getElementById('CoinMainInfoState').childNodes[0].innerHTML = `STATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.state}</span>`;
-  document.getElementById('CoinMainInfoMint').childNodes[0].innerHTML = `MINT: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.mint}</span>`;
-  document.getElementById('CoinMainInfoAuthority').childNodes[0].innerHTML = `AUTHORITY: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.authority}</span>`;
-  document.getElementById('CoinMainInfoEra').childNodes[0].innerHTML = `ERA: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.era}</span>`;
-  document.getElementById('CoinMainInfoDate').childNodes[0].innerHTML = `DATE(S): <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.date}</span>`;
-  document.getElementById('CoinMainInfoCatalogueDate').childNodes[0].innerHTML = `CATALOGE DATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cataloge_date}</span>`;
-  document.getElementById('CoinMainInfoMaterial').childNodes[0].innerHTML = `MATERIAL: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.material}</span>`;
-  document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.denomination}</span>`;
-  document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.diameter}</span>`;
-  document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.cultural_connections}</span>`;
+  document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='DarkBlueText'>${coinMetaData.Title}</span>`;
+  document.getElementById('CoinMainInfoRegion').childNodes[0].innerHTML = `REGION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Region}</span>`;
+  document.getElementById('CoinMainInfoState').childNodes[0].innerHTML = `STATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.State}</span>`;
+  document.getElementById('CoinMainInfoMint').childNodes[0].innerHTML = `MINT: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Mint}</span>`;
+  document.getElementById('CoinMainInfoAuthority').childNodes[0].innerHTML = `AUTHORITY: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.IssuingAuthority}</span>`;
+  document.getElementById('CoinMainInfoEra').childNodes[0].innerHTML = `ERA: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Era}</span>`;
+  document.getElementById('CoinMainInfoDate').childNodes[0].innerHTML = `DATE(S): <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Date}</span>`;
+  document.getElementById('CoinMainInfoCatalogueDate').childNodes[0].innerHTML = `CATALOGE DATE: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.CatalogueDate}</span>`;
+  document.getElementById('CoinMainInfoMaterial').childNodes[0].innerHTML = `MATERIAL: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Material}</span>`;
+  document.getElementById('CoinMainInfoDenomination').childNodes[0].innerHTML = `DENOMINATION: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Denomination}</span>`;
+  document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML = `DIAMETER: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.Diameter}mm</span>`;
+  document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: <span class='DarkBlueText CoinMainInfoDynamicText'>${coinMetaData.TypeCategory}</span>`;
 
-  let cultural_connectionsStr = (ReactDomServer.renderToString(
+  let typeCategoryStr = (ReactDomServer.renderToString(
     <ReactMarkdown className='DarkBlueText CoinMainInfoDynamicText'>
-      {coinMetaData.cultural_connections}
+      {coinMetaData.TypeCategory}
     </ReactMarkdown>
   ));
-  cultural_connectionsStr = cultural_connectionsStr.slice(cultural_connectionsStr.indexOf('<p>') + 3, cultural_connectionsStr.lastIndexOf('</p>'));
-  console.log(cultural_connectionsStr);
-  document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: ${cultural_connectionsStr}`;
+
+  typeCategoryStr = typeCategoryStr.slice(typeCategoryStr.indexOf('<p>') + 3, typeCategoryStr.lastIndexOf('</p>'));
+  document.getElementById('CoinMainInfoCulturalConnections').childNodes[0].innerHTML = `CULTURAL CONNECTIONS: ${typeCategoryStr}`;
 
   // Coin Image Type
-  document.getElementById('CoinImageTypeObverse').childNodes[1].innerHTML = coinMetaData.obverse_type;
-  document.getElementById('CoinImageTypeObverseLegend').childNodes[1].innerHTML = coinMetaData.obverse_legend;
-  document.getElementById('CoinImageTypeReverse').childNodes[1].innerHTML = coinMetaData.reverse_type;
-  document.getElementById('CoinImageTypeReverseLegend').childNodes[1].innerHTML = coinMetaData.reverse_legend;
+  document.getElementById('CoinImageTypeObverse').childNodes[1].innerHTML = coinMetaData.ObverseType;
+  document.getElementById('CoinImageTypeObverseLegend').childNodes[1].innerHTML = coinMetaData.ObverseLegend;
+  document.getElementById('CoinImageTypeReverse').childNodes[1].innerHTML = coinMetaData.ReverseType;
+  document.getElementById('CoinImageTypeReverseLegend').childNodes[1].innerHTML = coinMetaData.ReverseLegend;
 
   // Coin Source Material
-  document.getElementById('CoinSourceMaterialSourceImage').childNodes[1].innerHTML = coinMetaData.source_image;
-  document.getElementById('CoinSourceMaterialRightsHolder').childNodes[1].innerHTML = coinMetaData.rights_holder;
-  document.getElementById('CoinSourceMaterialBibliography').childNodes[1].innerHTML = coinMetaData.bibliography;
+  document.getElementById('CoinSourceMaterialSourceImage').childNodes[1].innerHTML = coinMetaData.SourceImage ;
+  document.getElementById('CoinSourceMaterialRightsHolder').childNodes[1].innerHTML = coinMetaData.RightsHolder;
+  document.getElementById('CoinSourceMaterialBibliography').childNodes[1].innerHTML = coinMetaData.Bibliography;
 }
 
 export const UpdateAndShowCoinInfo = (coinMetaData) => {
@@ -77,10 +82,15 @@ const CoinInfo = () => {
       onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
         let dom = document.getElementById('CoinInfo');
 
-        if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
-          dom.style.opacity = 0;
-          setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
-        }
+        setTimeout(() => {
+          let currentTime = new Date();
+          if (currentTime - lastTimeCoinShowOccured < 700) return;
+
+          if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
+            dom.style.opacity = 0;
+            setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
+          }
+        }, 50);
       }}>
       <div id='CoinInfo'>
         <i
