@@ -22,11 +22,15 @@ const Tag = (text, color) => {
 let lastTimeEventShowOccured = new Date();
 export const ShowEventInfo = () => {
   lastTimeEventShowOccured = new Date();
-  let EventInfo = document.getElementById('EventInfo');
-  if (window.getComputedStyle(EventInfo).opacity != 1) {
-    EventInfo.style.zIndex=100;
-    setTimeout(() => {EventInfo.style.opacity=1;}, 100);
-    }
+  let dom = document.getElementById('EventInfo');
+  if (window.getComputedStyle(dom).opacity != 1) {
+    dom.style.zIndex=100;
+    setTimeout(() => {dom.style.opacity=1;}, 100);
+
+    let domWhiteBackground = dom.parentElement.previousSibling;
+    domWhiteBackground.style.zIndex=100;
+    setTimeout(() => {domWhiteBackground.style.opacity=0.5;}, 100);
+  }
 };
 
 export const UpdateEventInfo = (e) => {
@@ -65,67 +69,78 @@ export const UpdateAndShowEventInfo = (e) => {
 
 const EventInfo = () => {
   return (
-    <OutsideClickHandler
-      onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
-        let dom = document.getElementById('EventInfo');
+    <>
+      <div id="EventWhiteBackground"/>
+      <OutsideClickHandler
+        onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
+          let dom = document.getElementById('EventInfo');
 
-        setTimeout(() => {
-          let currentTime = new Date();
-          if (currentTime - lastTimeEventShowOccured < 700) return;
+          setTimeout(() => {
+            let currentTime = new Date();
+            if (currentTime - lastTimeEventShowOccured < 700) return;
 
-          if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
-            dom.style.opacity = 0;
-            setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
-          }
-        }, 50);
-      }}>
-      <div id='EventInfo'>
-        <i
-          id='EventInfo-x-icon'
-          className='demo-icon icon-x-medium'
-          onClick={(e) => {
-            let dom = e.target.parentElement;
-            dom.style.opacity = 0;
-            setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
-          }}>
-          &#xe838;</i>
-        <div id='EventInfoInnerDiv'>
-          {/* tags */}
-          <p id='EventTagsTitle' className='GrayText'>
-            INFLUENCES ON ANTIOCH:
-          </p>
-          <div id='EventTags'>
-            {Tag('tag1', 'red')} {Tag('tag2', 'green')} {Tag('tag3', 'blue')}
-          </div>
+            if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
+              dom.style.opacity = 0;
+              setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
 
-          {/* title */}
-          <div id='EventTitle'>
-            <p className='DarkBlueText'>
-              Title
+              let domWhiteBackground = dom.parentElement.previousSibling;
+              domWhiteBackground.style.opacity=0;
+              setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
+            }
+          }, 50);
+        }}>
+        <div id='EventInfo'>
+          <i
+            id='EventInfo-x-icon'
+            className='demo-icon icon-x-medium'
+            onClick={(e) => {
+              let dom = e.target.parentElement;
+              dom.style.opacity = 0;
+              setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
+
+              let domWhiteBackground = dom.parentElement.previousSibling;
+              domWhiteBackground.style.opacity=0;
+              setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
+            }}>
+            &#xe838;</i>
+          <div id='EventInfoInnerDiv'>
+            {/* tags */}
+            <p id='EventTagsTitle' className='GrayText'>
+              INFLUENCES ON ANTIOCH:
             </p>
-          </div>
+            <div id='EventTags'>
+              {Tag('tag1', 'red')} {Tag('tag2', 'green')} {Tag('tag3', 'blue')}
+            </div>
 
-          {/* description */}
-          <div id='EventDescription'>
-            <p className='DarkBlueText'>
-              Some information
-            </p>
-          </div>
+            {/* title */}
+            <div id='EventTitle'>
+              <p className='DarkBlueText'>
+                Title
+              </p>
+            </div>
 
-          {/* Cultural connections */}
-          <div id='EventConnectionsBackground'>
-            <div id='EventConnections'>
-              <p id='EventCulturalConnectionText' className='GrayText'>
-                CULTURAL CONNECTIONS:
+            {/* description */}
+            <div id='EventDescription'>
+              <p className='DarkBlueText'>
+                Some information
               </p>
-              <p id='EventCulturalConnectionList' className='BlueText TypeCategory'>
-                Some, list, of connections
-              </p>
+            </div>
+
+            {/* Cultural connections */}
+            <div id='EventConnectionsBackground'>
+              <div id='EventConnections'>
+                <p id='EventCulturalConnectionText' className='GrayText'>
+                  CULTURAL CONNECTIONS:
+                </p>
+                <p id='EventCulturalConnectionList' className='BlueText TypeCategory'>
+                  Some, list, of connections
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </OutsideClickHandler>
+      </OutsideClickHandler>
+    </>
   );
 };
 

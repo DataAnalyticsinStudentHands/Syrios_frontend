@@ -15,11 +15,15 @@ import OldLogoColorless from 'src/assets/OldLogoColorless.png';
 var lastTimeCoinShowOccured = new Date();
 export const ShowCoinInfo = () => {
   lastTimeCoinShowOccured = new Date();
-  let CoinInfo = document.getElementById('CoinInfo');
+  let dom = document.getElementById('CoinInfo');
 
-  if (window.getComputedStyle(CoinInfo).opacity != 1) {
-    CoinInfo.style.zIndex = '100';
-    setTimeout(() => {CoinInfo.style.opacity = 1}, 100);
+  if (window.getComputedStyle(dom).opacity != 1) {
+    dom.style.zIndex = '100';
+    setTimeout(() => {dom.style.opacity = 1}, 100);
+
+    let domWhiteBackground = dom.parentElement.previousSibling;
+    domWhiteBackground.style.zIndex=100;
+    setTimeout(() => {domWhiteBackground.style.opacity=0.5;}, 100);
   }
 }
 
@@ -78,6 +82,8 @@ const CoinInfo = () => {
 
       Lastly, this uses CSS grid to position elements in a formative way ***/
   return (
+    <>
+      <div id="CoinWhiteBackground"/>
     <OutsideClickHandler
       onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
         let dom = document.getElementById('CoinInfo');
@@ -89,6 +95,10 @@ const CoinInfo = () => {
           if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
             dom.style.opacity = 0;
             setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
+
+            let domWhiteBackground = dom.parentElement.previousSibling;
+            domWhiteBackground.style.opacity=0;
+            setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
           }
         }, 50);
       }}>
@@ -100,6 +110,10 @@ const CoinInfo = () => {
             let dom = e.target.parentElement;
             dom.style.opacity = 0;
             setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
+
+            let domWhiteBackground = dom.parentElement.previousSibling;
+            domWhiteBackground.style.opacity=0;
+            setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
           }}>
           &#xe838;</i>
         <div id='CoinInfoGrid'>
@@ -277,6 +291,7 @@ const CoinInfo = () => {
         </div>
       </div>
     </OutsideClickHandler>
+      </>
   );
 }
 
