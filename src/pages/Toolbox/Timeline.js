@@ -212,22 +212,19 @@ const Timeline = () => {
 
             y_datesMod50.forEach((e) => { // build jsxArr for y_date lines at every 50 years
 
-              for (let i = 0.5; i < 93; i++) {
-                for (let j = 0; j < 1; j += 0.5) {
-                  // Thos dotted lines you see every 50 years
-                  jsxArr.push(
-                    <Line
-                      stroke='#282828'
-                      strokeWidth='0.1'
-                      key={`dot_${jsxArr.length}_${i}_${j}`}
-                      x1={`${i+j}`}
-                      x2={`${i+j+0.1}`}
-                      y1={`${e+Math.abs(minHeight)+yOffset}`}
-                      y2={`${e+Math.abs(minHeight)+yOffset}`}
-                    />
-                  );
-                }
-              }
+              // Dotted lines
+              jsxArr.push(
+                <Line
+                  key={`dottedLine_${jsxArr.length}`}
+                  stroke='black'
+                  strokeDasharray='0.1, 0.2'
+                  strokeWidth='0.1'
+                  x1={0}
+                  x2={93}
+                  y1={e+Math.abs(minHeight)+yOffset}
+                  y2={e+Math.abs(minHeight)+yOffset}
+                />
+              );
 
               // The text you see every 50 years and the one hyphen at the end of the screen
               jsxArr.push(

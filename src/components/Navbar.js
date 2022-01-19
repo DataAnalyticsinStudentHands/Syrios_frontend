@@ -42,7 +42,7 @@ function BootstrapNavbar() {
           </Nav.Item>
           <NavDropdown title='EVIDENCE'>
             { /* Same as above but for NavDropdown.Item to keyword */ }
-            <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins in a Pile</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to='/Evidence/CoinSort' className='blandStyle WhiteText NavbarText text-white'>Coins in a Pile</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins on a Map</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins in a Catalog</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins as Data</Link></NavDropdown.Item>

@@ -27,7 +27,6 @@ const ExploreTheEvidence = () => {
           if (error) {
             console.error(error);
           } else {
-            console.log(res.data);
             set_page(
               <div id='ExploreTheEvidence'>
                 <Container>
@@ -41,7 +40,7 @@ const ExploreTheEvidence = () => {
                   <Row>
                     {/* SORT COINS */}
                     <Col>
-                      <Link to='/'>
+                      <Link to='/Evidence/CoinSort'>
                         <img
                           alt={res.data.sort_coins_image.alternativeText !== undefined ? res.data.sort_coins_image.alternativeText : 'missing alt'}
                           src={process.env.REACT_APP_strapiURL+res.data.sort_coins_image.url}/>
@@ -91,7 +90,7 @@ const ExploreTheEvidence = () => {
                   <Row>
                     <Col id='ExploreTheEvidenceIconDownloadDiv'>
                       <Link to='/'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
-                        <i id='ExploreTheEvidenceIconDownload' class='demo-icon icon-donwload'>&#xe810;</i>
+                        <i id='ExploreTheEvidenceIconDownload' className='demo-icon icon-donwload'>&#xe810;</i>
                       </Link>
                     </Col>
                     <Col id='ExploreTheEvidenceTextDiv' className='d-flex align-items-center justify-content-start'>

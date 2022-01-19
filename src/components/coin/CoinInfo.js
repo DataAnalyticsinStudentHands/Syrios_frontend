@@ -33,6 +33,17 @@ export const UpdateCoinInfo = (coinMetaData) => {
   // Coin Image
   document.getElementById('CoinImageFront').src = process.env.REACT_APP_strapiURL + coinMetaData.obverseFile.url;
   document.getElementById('CoinImageBack').src = process.env.REACT_APP_strapiURL + coinMetaData.reverseFile.url;
+  document.getElementById('CoinScaleDiameterText').innerHTML = `<span className='DarkBlueText'>Diameter:</span> <span style='font-style:italic;'>${coinMetaData.Diameter}mm</span>`;
+
+  // Reset coin image scale if it is up, and flip it to the front image
+  document.getElementById('CoinScaleDottedCircle').style.height = '0%';
+  let newHeight = parseInt(window.getComputedStyle(document.getElementById('CoinImageFront').parentElement.parentElement.parentElement).height) * .7;
+  document.getElementById('CoinImageFront').height = newHeight;
+  document.getElementById('CoinImageBack').height = newHeight;
+  document.getElementById('CoinScaleDiameterText').style.fontSize = 0;
+
+  if(document.getElementById('CoinImageFront').parentElement.parentElement.style.transform === 'rotateY(180deg)') document.getElementById('CoinImageFront').parentElement.parentElement.style.transform = 'rotateY(0deg)';
+
 
   // Coin main info
   document.getElementById('CoinMainInfoTitle').childNodes[0].innerHTML = `<span class='DarkBlueText'>${coinMetaData.Title}</span>`;
@@ -84,214 +95,257 @@ const CoinInfo = () => {
   return (
     <>
       <div id="CoinWhiteBackground"/>
-    <OutsideClickHandler
-      onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
-        let dom = document.getElementById('CoinInfo');
+      <OutsideClickHandler
+        onOutsideClick={() => { // If click occurs outside of CoinInfo, remove coin info
+          let dom = document.getElementById('CoinInfo');
 
-        setTimeout(() => {
-          let currentTime = new Date();
-          if (currentTime - lastTimeCoinShowOccured < 700) return;
+          setTimeout(() => {
+            let currentTime = new Date();
+            if (currentTime - lastTimeCoinShowOccured < 700) return;
 
-          if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
-            dom.style.opacity = 0;
-            setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
+            if (window.getComputedStyle(dom).opacity == 1) { // Idc what react says, but == is the right operator
+              dom.style.opacity = 0;
+              setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
 
-            let domWhiteBackground = dom.parentElement.previousSibling;
-            domWhiteBackground.style.opacity=0;
-            setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
-          }
-        }, 50);
-      }}>
-      <div id='CoinInfo'>
-        <i
-          id='CoinInfo-x-icon'
-          className='demo-icon icon-x-medium'
-          onClick={(e) => {
-            let dom = e.target.parentElement;
-            dom.style.opacity = 0;
-            setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
+              let domWhiteBackground = dom.parentElement.previousSibling;
+              domWhiteBackground.style.opacity=0;
+              setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
+            }
+          }, 50);
+        }}>
+        <div id='CoinInfo'>
+          <i
+            id='CoinInfo-x-icon'
+            className='demo-icon icon-x-medium'
+            onClick={(e) => {
+              let dom = e.target.parentElement;
+              dom.style.opacity = 0;
+              setTimeout(() => {dom.style.zIndex = -100}, 600); // Very important there is a timeout for it
 
-            let domWhiteBackground = dom.parentElement.previousSibling;
-            domWhiteBackground.style.opacity=0;
-            setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
-          }}>
-          &#xe838;</i>
-        <div id='CoinInfoGrid'>
-          {/* Our coin images */}
-          <div id='CoinImageDiv'>
-            <i
-              id='CoinInfoRotateButton'
-              className='demo-icon icon-coin-rotate'
-              onClick={(e)=> {
-                let dom = e.target;
+              let domWhiteBackground = dom.parentElement.previousSibling;
+              domWhiteBackground.style.opacity=0;
+              setTimeout(() => {domWhiteBackground.style.zIndex=-100;}, 600);
+            }}>
+            &#xe838;</i>
+          <div id='CoinInfoGrid'>
+            {/* Our coin images */}
+            <div id='CoinImageDiv'>
+              <i
+                id='CoinInfoRotateButton'
+                className='demo-icon icon-coin-rotate'
+                onClick={(e)=> {
+                  let dom = e.target;
 
-                while (dom.className !== 'flip-box') {
-                  dom = dom.nextSibling;
-                }
+                  while (dom.className !== 'flip-box') {
+                    dom = dom.nextSibling;
+                  }
 
-                dom = dom.childNodes[0];
+                  dom = dom.childNodes[0];
 
-                while (dom.className !== 'flip-box-inner') {
-                  dom = dom.nextSibling;
-                }
+                  while (dom.className !== 'flip-box-inner') {
+                    dom = dom.nextSibling;
+                  }
 
-                if (dom.style.transform === 'rotateY(180deg)') {
-                  dom.style.transform = 'rotateY(0deg)'
-                } else {
-                  dom.style.transform = 'rotateY(180deg)';
-                }
-              }}>
-              &#xe833;</i>
-            <div className='flip-box'>
-              <div className='flip-box-inner'>
-                <div className='flip-box-front'>
-                  <img
-                    id='CoinImageFront'
-                    src={OldLogo}
-                    alt='Logo'
-                  />
+                  if (dom.style.transform === 'rotateY(180deg)') {
+                    dom.style.transform = 'rotateY(0deg)';
+                  } else {
+                    dom.style.transform = 'rotateY(180deg)';
+                  }
+                }}>
+                &#xe833;</i>
+              <i
+                id='CoinInfoScaleButton'
+                className='demo-icon icon-coin-scale'
+                onClick={(e) => {
+                  let dom = document.getElementById('CoinScaleDottedCircle');
+                  let newHeight = parseInt(window.getComputedStyle(document.getElementById('CoinImageFront').parentElement.parentElement.parentElement).height)*0.1;
+                  document.getElementById('CoinImageFront').height = newHeight;
+                  document.getElementById('CoinImageBack').height = newHeight;
+                  document.getElementById('CoinScaleDiameterText').style.fontSize = 0;
+
+                  if (dom.style.height.includes('100%')) {
+                    dom.style.height = '0%';
+                    let newHeight = parseInt(window.getComputedStyle(document.getElementById('CoinImageFront').parentElement.parentElement.parentElement).height) * .7;
+                    document.getElementById('CoinImageFront').height = newHeight;
+                    document.getElementById('CoinImageBack').height = newHeight;
+                  } else {
+                    dom.style.height = '100%';
+
+                    let previousComputedHeight = '0px';
+                    var CoinInfoScaleCircleInterval = setInterval(() => {
+                      if (previousComputedHeight === window.getComputedStyle(dom).height) {
+                        clearInterval(CoinInfoScaleCircleInterval);
+                        previousComputedHeight = parseInt(previousComputedHeight.substring('0',previousComputedHeight.indexOf('px')));
+
+                        let diameter = document.getElementById('CoinMainInfoDiameter').childNodes[0].innerHTML;
+                        diameter = parseInt(diameter.substring(diameter.indexOf('>')+1, diameter.indexOf('mm')));
+
+                        newHeight = previousComputedHeight * (diameter * 2 / 100);
+                        document.getElementById('CoinImageFront').height = newHeight;
+                        document.getElementById('CoinImageBack').height = newHeight;
+                        
+                        document.getElementById('CoinScaleDiameterText').style.fontSize = '12px';
+                      }
+                      previousComputedHeight = window.getComputedStyle(dom).height;
+                    }, 50);
+                  }
+                }}>&#xe834;</i>
+              <div id='CoinScaleDottedCircle' />
+              <div id='CoinScaleDiameterDiv'>
+                <p id='CoinScaleDiameterText' className='BlueText'>
+                  Diameter: N/A
+                </p>
+              </div>
+              <div className='flip-box' style={{ position: 'relative', left: '2%' }}>
+                  <div className='flip-box-inner'>
+                    <div className='flip-box-front'>
+                      <img
+                        id='CoinImageFront'
+                        src={OldLogo}
+                        alt='Logo'
+                      />
+                    </div>
+                    <div className='flip-box-back'>
+                      <img
+                        id='CoinImageBack'
+                        src={OldLogoColorless}
+                        alt='Colorless logo'
+                      />
+                    </div>
+                  </div>
+              </div>
+            </div>
+            {/* this main info with era, date, min, authority, title, etc... */}
+            <div id='CoinMainInfo'>
+              <div id='CoinMainInfoTitle'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  Syrios project Logo
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoRegion'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  REGION:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoState'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  STATE:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoMint'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  MINT:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoAuthority'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  AUTHORITY:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoEra'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  ERA:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoDate'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  DATE(S):
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoCatalogueDate'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  CATALOGE DATE:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoMaterial'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  MATERIAL:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoDenomination'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  DENOMINATION:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoDiameter'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  DIAMETER:
+                </ReactMarkdown>
+              </div>
+              <div id='CoinMainInfoCulturalConnections'>
+                <ReactMarkdown className='DarkBlueText text-start'>
+                  CULTURAL CONNECTIONS:
+                </ReactMarkdown>
+              </div>
+            </div>
+            {/* Reverse, reverse legend, obverse, obverse legend */}
+            <div id='CoinImageType'>
+              <div id='CoinImageTypeObverse'>
+                <p className='GrayText text-center'>
+                  OBVERSE TYPE:
+                </p>
+                <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
+                  front
+                </ReactMarkdown>
+              </div>
+              <div id='CoinImageTypeObverseLegend'>
+                <p className='GrayText text-center'>
+                  OBVERSE LEGEND:
+                </p>
+                <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
+                  none
+                </ReactMarkdown>
+              </div>
+              <div id='CoinImageTypeReverse'>
+                <p className='GrayText text-center'>
+                  REVERSE TYPE:
+                </p>
+                <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
+                  back
+                </ReactMarkdown>
+              </div>
+              <div id='CoinImageTypeReverseLegend'>
+                <p className='GrayText text-center'>
+                  REVERSE LEGEND:
+                </p>
+                <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
+                  none
+                </ReactMarkdown>
+              </div>
+            </div>
+            {/* Bibliography, source url, etc */}
+            <div id='CoinSourceMaterial'>
+              <div id='CoinSourceMaterialGrid'>
+                <div id='CoinSourceMaterialSourceImage'>
+                  <p className='GrayText text-start'>
+                    SOURCE IMAGE:
+                  </p>
+                  <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
+                    N/A
+                  </ReactMarkdown>
                 </div>
-                <div className='flip-box-back'>
-                  <img
-                    id='CoinImageBack'
-                    src={OldLogoColorless}
-                    alt='Colorless logo'
-                  />
+                <div id='CoinSourceMaterialRightsHolder'>
+                  <p className='GrayText text-start'>
+                    RIGHTS HOLDER:
+                  </p>
+                  <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
+                    N/A
+                  </ReactMarkdown>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/* this main info with era, date, min, authority, title, etc... */}
-          <div id='CoinMainInfo'>
-            <div id='CoinMainInfoTitle'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                Syrios project Logo
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoRegion'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                REGION:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoState'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                STATE:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoMint'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                MINT:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoAuthority'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                AUTHORITY:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoEra'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                ERA:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                DATE(S):
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoCatalogueDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                CATALOGE DATE:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoMaterial'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                MATERIAL:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDenomination'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                DENOMINATION:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDiameter'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                DIAMETER:
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoCulturalConnections'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                CULTURAL CONNECTIONS:
-              </ReactMarkdown>
-            </div>
-          </div>
-          {/* Reverse, reverse legend, obverse, obverse legend */}
-          <div id='CoinImageType'>
-            <div id='CoinImageTypeObverse'>
-              <p className='GrayText text-center'>
-                OBVERSE TYPE:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                front
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeObverseLegend'>
-              <p className='GrayText text-center'>
-                OBVERSE LEGEND:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                none
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeReverse'>
-              <p className='GrayText text-center'>
-                REVERSE TYPE:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                back
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeReverseLegend'>
-              <p className='GrayText text-center'>
-                REVERSE LEGEND:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                none
-              </ReactMarkdown>
-            </div>
-          </div>
-          {/* Bibliography, source url, etc */}
-          <div id='CoinSourceMaterial'>
-            <div id='CoinSourceMaterialGrid'>
-              <div id='CoinSourceMaterialSourceImage'>
-                <p className='GrayText text-start'>
-                  SOURCE IMAGE:
-                </p>
-                <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
-                  N/A
-                </ReactMarkdown>
-              </div>
-              <div id='CoinSourceMaterialRightsHolder'>
-                <p className='GrayText text-start'>
-                  RIGHTS HOLDER:
-                </p>
-                <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
-                  N/A
-                </ReactMarkdown>
-              </div>
-              <div id='CoinSourceMaterialBibliography'>
-                <p className='GrayText text-start'>
-                  BIBLIOGRAPHY:
-                </p>
-                <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
-                  N/A
-                </ReactMarkdown>
+                <div id='CoinSourceMaterialBibliography'>
+                  <p className='GrayText text-start'>
+                    BIBLIOGRAPHY:
+                  </p>
+                  <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
+                    N/A
+                  </ReactMarkdown>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </OutsideClickHandler>
-      </>
+      </OutsideClickHandler>
+    </>
   );
 }
 

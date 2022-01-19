@@ -111,4 +111,9 @@
 
 .CreditsAndReferencesListItemHref {
   text-decoration: none;
+  transition:0.2s;
+}
+
+.CreditsAndReferencesListItemHref:hover {
+  color: #173847;
 }

@@ -55,31 +55,88 @@
 #CoinImageDiv { 
   position: relative;
   grid-area: 1 / 1 / 2 / 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
 }
 
 #CoinImageFlip {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #CoinImageFront {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
   max-height: 70%;
-  height: 400px;
+  transition: 0.5s;
 }
 
 #CoinImageBack {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
   max-height: 70%;
-  height: 400px;
+  transition: 0.5s;
 }
 
 #CoinInfoRotateButton {
   position: absolute;
   bottom: 7px;
-  right: 13%;
+  right: -10px;
+  cursor: pointer;
+  font-size: 30px;
+  color: #7899A8;
+  z-index: 1000;
+}
+
+#CoinScaleDiameterDiv {
+  margin: 0;
+  position: absolute;
+  bottom: 7px;
+  left: 48%;
+  transform: translateX(-50%);
+}
+
+#CoinScaleDiameterText {
+  font-size: 0px;
+  transition: 0.2s;
+}
+
+#CoinScaleDottedCircle {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 0%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+#CoinScaleDottedCircle:before {
+  position: absolute;
+  content: '';
+  height: calc(100% + 10px); 
+  width: calc(100% + 10px); 
+  border: 1px dashed black;
+  top: -13px;
+  left: -13px;
+  border-radius: inherit;
+}
+
+#CoinInfoScaleButton {
+  position: absolute;
+  bottom: 7px;
+  left: 7%;
   cursor: pointer;
   font-size: 30px;
   color: #7899A8;
