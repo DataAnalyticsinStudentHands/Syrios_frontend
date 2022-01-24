@@ -57,7 +57,7 @@ export const UpdateEventInfo = (e) => {
 
   document.getElementById('EventCulturalConnectionList').innerHTML = ReactDomServer.renderToString(
     <ReactMarkdown className='TypeCategory'>
-      {e.cultural_connections}
+      {e.TypeCategory}
     </ReactMarkdown>
   );
 };

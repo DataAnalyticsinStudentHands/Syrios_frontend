@@ -154,6 +154,8 @@ const Timeline = () => {
               startEndKeyPairSVGValues[i][1][3] = 'L'+startEndKeyPairSVGValues[i][1][3];
             }
 
+            console.log(startEndKeyPairSVGValues);
+
             // Push background backdrop react-native-svg elements onto render array for react to load
             let jsxArr = [];
             for (let i = 0; i < startEndKeyPairs.length; i++) {
