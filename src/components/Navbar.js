@@ -40,20 +40,20 @@ function BootstrapNavbar() {
             STORIES
           </Link>
           </Nav.Item>
-          <NavDropdown title='EVIDENCE'>
+          <NavDropdown title='EVIDENCE' className='NavDropdown'>
             { /* Same as above but for NavDropdown.Item to keyword */ }
             <NavDropdown.Item><Link to='/Evidence/CoinSort' className='blandStyle WhiteText NavbarText text-white'>Coins in a Pile</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins on a Map</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins in a Catalog</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins as Data</Link></NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title='TOOL BOX'>							
+          <NavDropdown title='TOOL BOX' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Get to Know Syria</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Get to Know Coins</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/Toolbox/Timeline' className='blandStyle WhiteText NavbarText text-white'>Timeline</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Glossary</Link></NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title='RESOURCES'>							
+          <NavDropdown title='RESOURCES' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Teaching Resources</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Research</Link></NavDropdown.Item>
           </NavDropdown>
