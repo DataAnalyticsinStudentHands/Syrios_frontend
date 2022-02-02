@@ -9,7 +9,6 @@ import ReactMarkdown from 'react-markdown';
 import 'src/components/constants.css';
 import './Stories.css';
 import 'src/components/coin/coinFlip.css';
-import React from 'react';
 
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -122,7 +121,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
 
 // Title component for all stories
-const Title = (zone, index) => {
+const Title = (zone, index, image) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
@@ -154,7 +153,7 @@ const Title = (zone, index) => {
   );
 }
 
-const End_Frame = (zone, index) => {
+const End_Frame = (zone, index, image) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
       <Container className='d-flex justify-content-center align-items-center'>
@@ -192,7 +191,7 @@ const End_Frame = (zone, index) => {
 }
 
 
-const Frame1 = (zone, index) => {
+const Frame1 = (zone, index, image) => {
   let subText = undefined;
   if (!IsEmptyOrWhiteSpace(zone.sub_text_1) && !IsEmptyOrWhiteSpace(zone.sub_text_2)) {
     subText = (
@@ -246,7 +245,7 @@ const Frame1 = (zone, index) => {
 }
 
 
-const Frame2 = (zone, index) => {
+const Frame2 = (zone, index, image) => {
   let subText = undefined;
 
   if (zone.sub_text !== undefined) {
@@ -273,7 +272,7 @@ const Frame2 = (zone, index) => {
 }
 
 
-const Frame3 = (zone, index) => {
+const Frame3 = (zone, index, image) => {
   let subText = undefined;
 
   if (zone.sub_text !== undefined) {
@@ -298,7 +297,7 @@ const Frame3 = (zone, index) => {
   );
 }
 
-const Frame4 = (zone, index) =>{
+const Frame4 = (zone, index, image) =>{
   // console.log(zone)
   let subQuote = undefined;
 
@@ -348,7 +347,7 @@ const Frame4 = (zone, index) =>{
   )
 }
 
-const Frame5 = (zone, index) =>{
+const Frame5 = (zone, index, image) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-around align-self-center'>
@@ -369,7 +368,7 @@ const Frame5 = (zone, index) =>{
 }
 
 
-const Frame6 = (zone, index) =>{
+const Frame6 = (zone, index, image) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-around align-self-center'>
@@ -396,7 +395,7 @@ const Frame6 = (zone, index) =>{
   )
 }
 
-const Frame7 = (zone, index) =>{
+const Frame7 = (zone, index, image) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='d-flex justify-content-center align-self-center'>
@@ -424,7 +423,7 @@ const Frame7 = (zone, index) =>{
     </div>
   )
 }
-const Frame8 = (zone, index) =>{
+const Frame8 = (zone, index, image) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='justify-content-center'>
@@ -458,7 +457,7 @@ const Frame8 = (zone, index) =>{
   )
 }
 
-const Frame9 = (zone, index) =>{
+const Frame9 = (zone, index, image) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container className='justify-content-center '>
@@ -485,7 +484,7 @@ const Frame9 = (zone, index) =>{
 }
 
 // Interactive frames
-const InteractiveFrame1 = (zone, index) => {
+const InteractiveFrame1 = (zone, index, image) => {
   let blueBackgroundMaxHeight = '200px';
 
   const FadeThenSwitchCompAndReset = (dom) => { // This function REQUIRES e.target to be compare scale or reset scale
@@ -768,7 +767,7 @@ const InteractiveFrame1 = (zone, index) => {
   )
 }
 
-const InteractiveFrame2 = (zone, index) =>{
+const InteractiveFrame2 = (zone, index, image) =>{
 
   const FlipCoin = (dom) =>{
     while (dom.className !== 'flip-box-inner') {
@@ -882,7 +881,7 @@ const InteractiveFrame2 = (zone, index) =>{
   )
 }
 
-const InteractiveFrame3 = (zone, index) =>{
+const InteractiveFrame3 = (zone, index, image) =>{
 
   const switchForFront = (dom) =>{
     
@@ -1200,7 +1199,7 @@ const InteractiveFrame3 = (zone, index) =>{
   )
 }
 
-const InteractiveFrame4 = (zone, index) => {
+const InteractiveFrame4 = (zone, index, image) => {
 
   const frameWithTwoImage = (zone) =>{
     return(
@@ -1496,55 +1495,84 @@ const InteractiveFrame4 = (zone, index) => {
   );
 }
 
+const Testframe =(zone, index, image) =>{
+
+  //console.log(image, 'Yee! I get the image link');
+
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container>
+          <Row>
+            <img
+              src={zone.image_link}
+              alt= {'test img link'}
+              style={{'max-height':'180px','max-width':'180px'}}
+            />
+          </Row>
+          <Row>
+            <img
+              src={image.results.bindings[0].image.value} 
+              alt= {'test img link 2'}
+              style={{'max-height':'180px','max-width':'180px'}}
+            />
+          </Row>
+        </Container>
+    </div>
+  )
+}
+
 // This function is for mapping name and functions over.
 // Did this for organization really. 
-const SwitchComponent = (zone, index, fullpageApi) => {
+const SwitchComponent = (zone, index, image, fullpageApi,) => {
   let jsx = undefined;
   switch (zone.__component) {
     case 'frame.title':
-      jsx = Title(zone, index);
+      jsx = Title(zone, index, image);
       break;
     case 'frame.endframe':
-      jsx = End_Frame(zone, index);
+      jsx = End_Frame(zone, index,image);
       break;
     case 'frame.frame1':
-      jsx = Frame1(zone, index);
+      jsx = Frame1(zone, index,image);
       break;
     case 'frame.frame2':
-      jsx = Frame2(zone, index);
+      jsx = Frame2(zone, index,image);
       break;
     case 'frame.frame3':
-      jsx = Frame3(zone, index);
+      jsx = Frame3(zone, index,image);
       break;
     case 'frame.frame4':
-      jsx = Frame4(zone, index);
+      jsx = Frame4(zone, index,image);
       break;
     case 'frame.frame5':
-      jsx = Frame5(zone, index);
+      jsx = Frame5(zone, index, image);
       break;
     case 'frame.frame6':
-      jsx = Frame6(zone, index);
+      jsx = Frame6(zone, index, image);
       break;
     case 'frame.frame7':
-      jsx = Frame7(zone, index);
+      jsx = Frame7(zone, index, image);
       break;
     case 'frame.frame8':
-      jsx = Frame8(zone, index);
+      jsx = Frame8(zone, index, image);
       break;
     case 'frame.frame9':
-      jsx = Frame9(zone, index);
+      jsx = Frame9(zone, index, image);
       break; 
     case 'frame.interactive-frame1':
-      jsx = InteractiveFrame1(zone, index);
+      jsx = InteractiveFrame1(zone, index, image);
       break;
     case 'frame.interactive-frame2':
-      jsx = InteractiveFrame2(zone, index);
+      jsx = InteractiveFrame2(zone, index, image);
       break;
     case 'frame.interactive-frame3':
-      jsx = InteractiveFrame3(zone, index);
+      jsx = InteractiveFrame3(zone, index, image);
       break;
     case 'frame.interactive-frame4':
-      jsx = InteractiveFrame4(zone, index);
+      jsx = InteractiveFrame4(zone, index, image);
+      break;
+    case 'frame.testframe':
+      jsx = Testframe(zone, index, image);
       break;
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);
