@@ -1495,9 +1495,9 @@ const InteractiveFrame4 = (zone, index, image) => {
   );
 }
 
-const Testframe =(zone, index, image) =>{
+const Testframe =(zone, index, jsonObject) =>{
 
-  //console.log(image, 'Yee! I get the image link');
+  //console.log(jsonObject, 'Yee! I get the image link');
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
@@ -1511,7 +1511,7 @@ const Testframe =(zone, index, image) =>{
           </Row>
           <Row>
             <img
-              src={image.results.bindings[0].image.value} 
+              src={jsonObject.results.bindings[0].image.value} 
               alt= {'test img link 2'}
               style={{'max-height':'180px','max-width':'180px'}}
             />
@@ -1520,59 +1520,75 @@ const Testframe =(zone, index, image) =>{
     </div>
   )
 }
+const Testframe2 =(zone, index, jsonObject) =>{
+
+  //console.log(jsonObject, 'Yee! I get the text link');
+
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
+        <Container>
+          {jsonObject.results.bindings[0].instanceLabel.value}
+          {}
+        </Container>
+    </div>
+  )
+}
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
-const SwitchComponent = (zone, index, image, fullpageApi,) => {
+const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
   let jsx = undefined;
   switch (zone.__component) {
     case 'frame.title':
-      jsx = Title(zone, index, image);
+      jsx = Title(zone, index, jsonObject);
       break;
     case 'frame.endframe':
-      jsx = End_Frame(zone, index,image);
+      jsx = End_Frame(zone, index,jsonObject);
       break;
     case 'frame.frame1':
-      jsx = Frame1(zone, index,image);
+      jsx = Frame1(zone, index,jsonObject);
       break;
     case 'frame.frame2':
-      jsx = Frame2(zone, index,image);
+      jsx = Frame2(zone, index,jsonObject);
       break;
     case 'frame.frame3':
-      jsx = Frame3(zone, index,image);
+      jsx = Frame3(zone, index,jsonObject);
       break;
     case 'frame.frame4':
-      jsx = Frame4(zone, index,image);
+      jsx = Frame4(zone, index,jsonObject);
       break;
     case 'frame.frame5':
-      jsx = Frame5(zone, index, image);
+      jsx = Frame5(zone, index, jsonObject);
       break;
     case 'frame.frame6':
-      jsx = Frame6(zone, index, image);
+      jsx = Frame6(zone, index, jsonObject);
       break;
     case 'frame.frame7':
-      jsx = Frame7(zone, index, image);
+      jsx = Frame7(zone, index, jsonObject);
       break;
     case 'frame.frame8':
-      jsx = Frame8(zone, index, image);
+      jsx = Frame8(zone, index, jsonObject);
       break;
     case 'frame.frame9':
-      jsx = Frame9(zone, index, image);
+      jsx = Frame9(zone, index, jsonObject);
       break; 
     case 'frame.interactive-frame1':
-      jsx = InteractiveFrame1(zone, index, image);
+      jsx = InteractiveFrame1(zone, index, jsonObject);
       break;
     case 'frame.interactive-frame2':
-      jsx = InteractiveFrame2(zone, index, image);
+      jsx = InteractiveFrame2(zone, index, jsonObject);
       break;
     case 'frame.interactive-frame3':
-      jsx = InteractiveFrame3(zone, index, image);
+      jsx = InteractiveFrame3(zone, index, jsonObject);
       break;
     case 'frame.interactive-frame4':
-      jsx = InteractiveFrame4(zone, index, image);
+      jsx = InteractiveFrame4(zone, index, jsonObject);
       break;
     case 'frame.testframe':
-      jsx = Testframe(zone, index, image);
+      jsx = Testframe(zone, index, jsonObject);
+      break;
+    case 'frame.testframe2':
+      jsx = Testframe2(zone, index, jsonObject);
       break;
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);

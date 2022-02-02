@@ -13,7 +13,7 @@ import SwitchComponent from './StoryComponents.js';
 const StoryReader = () => {
 	const [loading, set_loading] = useState(true);
 	const [page, set_page] = useState(undefined);
-	const [images, setImages] = useState([])
+	const [jsonObject, setJsonObject] = useState([])
 	// Fetches story_id via url link.
 	const Get_id = () => {
 		return new URLSearchParams(useLocation().search).get('id');
@@ -26,11 +26,19 @@ const StoryReader = () => {
 				.then((res) => {
 					let story = res.data.zone
 					ChangeCreditsAndReferences(res.data.credits_and_references);
-					axios.get(story[16].image_json_link)
+
+					let endPoints = [
+						story[16].image_json_link,
+						story[17].text_json_link
+					]
+					
+					axios.all(endPoints.map((endPoint)=>axios.get(endPoint)))
 						.then((res)=>{
 
-							setImages( images[16] = res.data );
-							// console.log(images);
+							setJsonObject(
+								jsonObject[16] = res[0].data,
+								jsonObject[17] = res[1].data);
+							
 							set_page(
 								<ReactFullpage
 									//fullpage options
@@ -41,7 +49,7 @@ const StoryReader = () => {
 										let storyJSX = [];
 								
 										for (let i = 0; i < story.length; i++) {
-											storyJSX.push(SwitchComponent(story[i], i, images[i], fullpageApi));
+											storyJSX.push(SwitchComponent(story[i], i, jsonObject[i], fullpageApi));
 										}
 										return (
 											<ReactFullpage.Wrapper>
@@ -51,11 +59,11 @@ const StoryReader = () => {
 									}}
 								/>
 							);
-						set_loading(false);
+							set_loading(false);
+						});
 					});
-				});
-			}
-		});
+				}
+			});
 
 	// Render
 	if (loading) {
