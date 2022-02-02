@@ -1498,6 +1498,11 @@ const InteractiveFrame4 = (zone, index, image) => {
 const Testframe =(zone, index, jsonObject) =>{
 
   //console.log(jsonObject, 'Yee! I get the image link');
+  let instance = []
+  for (var i = 0; i < jsonObject.results.bindings.length; i++){
+    instance.push(jsonObject.results.bindings[i].image.value)
+  }
+  console.log(instance);
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
@@ -1516,19 +1521,36 @@ const Testframe =(zone, index, jsonObject) =>{
               style={{'max-height':'180px','max-width':'180px'}}
             />
           </Row>
+          <Row>
+          <img
+              src={instance[1]}
+              alt= {'test img link 2'}
+              style={{'max-height':'180px','max-width':'180px'}}
+            />
+
+          </Row>
         </Container>
     </div>
   )
 }
 const Testframe2 =(zone, index, jsonObject) =>{
 
-  //console.log(jsonObject, 'Yee! I get the text link');
+  //console.log(jsonObject.results.bindings);
+  let instance = []
+  for (var i = 0; i < jsonObject.results.bindings.length; i++){
+    instance.push(jsonObject.results.bindings[i].instanceLabel.value)
+  }
+  console.log(instance);
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background !== undefined ? `url(${process.env.REACT_APP_strapiURL}${zone.background.url})` : undefined}}>
         <Container>
-          {jsonObject.results.bindings[0].instanceLabel.value}
-          {}
+          <Row>
+            {jsonObject.results.bindings[0].instanceLabel.value}
+          </Row>
+          <Row>
+            {instance[0]}
+          </Row>
         </Container>
     </div>
   )
