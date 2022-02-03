@@ -64,17 +64,37 @@ Button:hover {
 }
 
 .SubText {
-  font-size: 16px;
+  font-size: 28px;
 }
 
 .CaptionText {
-  font-size: 12px;
+  font-size: 18px;
   margin: 11px;
   margin-bottom: -5px !important;
 }
 
 .FrameImage {
   margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .MainText {
+    font-size: 28px;
+  }
+
+  .SubText {
+    font-size: 24px;
+  }
+
+  .CaptionText {
+    font-size: 16px;
+    margin: 11px;
+    margin-bottom: -5px !important;
+  }
+
+  .FrameImage {
+    margin-bottom: 10px;
+  }
 }
 
 .HalfImageSize {
@@ -181,15 +201,82 @@ Button:hover {
 
 /**** Frame1 ****/
 
-.Frame1SubText1 {
+/* .Frame1SubText1 {
   margin: 0px 100px 0px 50px;
 }
 
 .Frame1SubText2 {
   margin: 0px 50px 0px 100px;
-}
+} */
 
 /**** Frame2 ****/
+
+#Frame2Image {
+  width: 800px;
+}
+
+@media only screen and (max-width: 767px) {
+  #Frame2Image {
+    width: 350px !important;
+  }
+}
+
+/**** Frame5 ****/
+
+#Frame5Image {
+  width: 300px;
+}
+
+@media only screen and (max-width: 767px) {
+  #Frame5Image {
+    width: 150px !important;
+  }
+}
+
+/**** Frame6 ****/
+
+#Frame6Image {
+  width: 400px;
+}
+
+@media only screen and (max-width: 767px) {
+  #Frame6Image {
+    width: 200px !important;
+  }
+}
+
+/**** Frame7 ****/
+
+#Frame7Image {
+  width: 600px;
+}
+#Frame7textBotten {
+  width: 1200px;
+}
+
+@media only screen and (max-width: 767px) {
+  #Frame7Image {
+    width: 300px !important;
+  }
+  #Frame7textBotten {
+    width: 300px;
+  }
+}
+
+/**** End Frame ****/
+#AreYouReadyText {
+  font-size: 76px;
+}
+
+#EndFrameText {
+  font-size: 30px;
+}
+
+.EndFrameButtonWidth {
+  width: 270px;
+  margin: 70px;
+}
+
 /**** Interactive_Frame1 ****/
 .InteractiveFrame1ImageOuterDiv {
   position: relative;
