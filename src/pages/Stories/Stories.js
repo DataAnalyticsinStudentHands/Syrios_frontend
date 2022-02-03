@@ -94,8 +94,9 @@ const Stories = () => {
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}
-                      alt='Story_Image'
-											width='100%'/>
+                      						alt='Story_Image'
+											width='100%'
+										/>
 										<p className='OrangeText SelectStoryText text-center'>
 											{e.story_name}
 										</p>

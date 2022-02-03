@@ -102,7 +102,9 @@ Button:hover {
     width: max(90%);
     font-size: 25px;
   }
-
+  .BigSubText {
+    font-size: 18px;
+  }
   .SubText {
     font-size: 12px;
   }
@@ -146,6 +148,7 @@ Button:hover {
     width: 150px !important;
   }
 }
+
 /**** End Frame ****/
 #AreYouReadyText {
   font-size: 76px;

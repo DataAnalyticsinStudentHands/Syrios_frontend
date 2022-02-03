@@ -26,19 +26,21 @@ const StoryReader = () => {
 				.then((res) => {
 					let story = res.data.zone
 					ChangeCreditsAndReferences(res.data.credits_and_references);
-
-					let endPoints = [
-						story[16].image_json_link,
-						story[17].text_json_link
-					]
 					
-					axios.all(endPoints.map((endPoint)=>axios.get(endPoint)))
+					let wikidatas = []
+					let wikidataIndex = []
+					for (let i = 0; i < story.length;i++){
+						if(story[i].wiki_data != undefined){
+							 wikidatas.push(story[i].wiki_data)
+							 wikidataIndex.push(i)
+						}
+					}
+					if(wikidatas.length != 0){
+						axios.all(wikidatas.map((wikidata)=>axios.get(wikidata)))
 						.then((res)=>{
-
-							setJsonObject(
-								jsonObject[16] = res[0].data,
-								jsonObject[17] = res[1].data);
-							
+							for(let i = 0; i<wikidataIndex.length; i++){
+								jsonObject[wikidataIndex[i]] = res[i].data
+							}
 							set_page(
 								<ReactFullpage
 									//fullpage options
@@ -61,6 +63,30 @@ const StoryReader = () => {
 							);
 							set_loading(false);
 						});
+					}
+					else{
+						set_page(
+							<ReactFullpage
+								//fullpage options
+								licenseKey = {'YOUR_KEY_HERE'}
+								navigation = {true}
+								autoScrolling = {true}
+								render={({ state, fullpageApi }) => {
+									let storyJSX = [];
+							
+									for (let i = 0; i < story.length; i++) {
+										storyJSX.push(SwitchComponent(story[i], i, jsonObject[i], fullpageApi));
+									}
+									return (
+										<ReactFullpage.Wrapper>
+											{storyJSX}
+										</ReactFullpage.Wrapper>
+									);
+								}}
+							/>
+						);
+						set_loading(false);
+					}
 					});
 				}
 			});
