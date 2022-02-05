@@ -170,13 +170,6 @@ Button:hover {
 }
 
 /**** End Frame ****/
-#AreYouReadyText {
-  font-size: 76px;
-}
-
-#EndFrameText {
-  font-size: 30px;
-}
 
 .EndFrameButtonWidth {
   width: 270px;
@@ -188,14 +181,6 @@ Button:hover {
     width: 100px;
     height: auto;
     margin: 10px;
-  }
-
-  #AreYouReadyText {
-    font-size: 45px;
-  }
-
-  #EndFrameText {
-    font-size: 18px;
   }
 }
 
@@ -260,6 +245,80 @@ Button:hover {
   }
   #Frame7textBotten {
     width: 300px;
+  }
+}
+
+/**** Frame8 ****/
+#Frame8ImageTitle {
+  width: 1200px;
+}
+#Frame8Image {
+  width: 300px;
+}
+
+@media only screen and (max-width: 767px) {
+  #Frame8ImageTitle {
+    width: 600px;
+  }
+  #Frame8Image {
+    width: 200px !important;
+  }
+}
+
+/**** Frame9 ****/
+
+#Frame9Image {
+  width: 300px;
+}
+#Frame9ImageMiddle {
+  width: 250px;
+}
+@media only screen and (max-width: 767px) {
+  #Frame9Image {
+    width: 150px;
+  }
+  #Frame9ImageMiddle {
+    width: 125px;
+  }
+}
+/**** InteractiveFrame2 ****/
+#InteractiveFrame2 {
+  width: 200px;
+}
+@media only screen and (max-width: 767px) {
+  #InteractiveFrame2 {
+    width: 100px;
+  }
+}
+/**** InteractiveFrame3 ****/
+#InteractiveFrame3 {
+  width: 200px;
+}
+@media only screen and (max-width: 767px) {
+  #InteractiveFrame3 {
+    width: 100px;
+  }
+}
+
+/**** InteractiveFrame4 ****/
+#InteractiveFrame4ImageS {
+  width: 120px;
+}
+#InteractiveFrame4ImageM {
+  width: 150px;
+}
+#InteractiveFrame4ImageL {
+  width: 200px;
+}
+@media only screen and (max-width: 767px) {
+  #InteractiveFrame4ImageS {
+    width: 40px;
+  }
+  #InteractiveFrame4ImageM {
+    width: 60px;
+  }
+  #InteractiveFrame4ImageL {
+    width: 100px;
   }
 }
 
@@ -370,8 +429,13 @@ Button:hover {
   opacity: 1;
   transition: 0.3s;
 }
-
+#InteractiveFrame1 {
+  width: 180px;
+}
 @media only screen and (max-width: 767px) {
+  #InteractiveFrame1 {
+    width: 90px;
+  }
   .InteractiveFrame1LightBlueSizing {
     position: relative;
     left: 5% !important;

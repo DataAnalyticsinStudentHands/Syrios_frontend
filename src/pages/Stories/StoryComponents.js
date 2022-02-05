@@ -159,28 +159,28 @@ const End_Frame = (zone, index, jsonObject) => {
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <div id='EndFrameText'>
-          <ReactMarkdown className='GrayText text-center'>
+          <ReactMarkdown className='GrayText text-center SubText'>
             {zone.text}
           </ReactMarkdown>
         </div>
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        <p id='AreYouReadyText' className='OrangeText text-center'>
+        <p className='OrangeText text-center MainText'>
           Are you ready to learn more?
         </p>
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        <Row container='justify-content-md-center' className='d-flex justify-content-center'>
+        <Row className='d-flex justify-content-around'>
           <Col >
             <Link to='/Stories'>
-              <button	className='BlueText EndFrameButtonWidth text-center' style={{marginRight: '100px'}}>
+              <button	className='BlueText EndFrameButtonWidth text-center'>
                 Tell Me a Story
               </button>
             </Link>
           </Col>
           <Col>
             <Link to='/'>
-              <button	className='BlueText EndFrameButtonWidth text-center' style={{marginLeft: '100px'}}>
+              <button	className='BlueText EndFrameButtonWidth text-center'>
                 Explore Coins
               </button>
             </Link>
@@ -372,16 +372,20 @@ const Frame5 = (zone, index, jsonObject) =>{
   let text_middle = undefined
   if(zone.text_middle.light_blue_caption_background){
     text_middle = (
-      <ReactMarkdown className='LightBlueBackground SubText'>
-        {zone.text_middle.text}
-      </ReactMarkdown>
+      <Col sm={6} className='align-self-center text-center SubText'>
+        <ReactMarkdown className='LightBlueBackground SubText mt-3 GrayText'>
+          {zone.text_middle.text}
+        </ReactMarkdown>
+      </Col>
     );
   }
   else{
     text_middle = (
-      <ReactMarkdown className='SubText mt-3 GrayText'>
-        {zone.text_middle.text}
-      </ReactMarkdown>
+      <Col sm={3} className='align-self-end text-center SubText'>
+        <ReactMarkdown className=' SubText mt-3 GrayText'>
+          {zone.text_middle.text}
+        </ReactMarkdown>
+      </Col>
     );
   }
 
@@ -392,9 +396,7 @@ const Frame5 = (zone, index, jsonObject) =>{
                 <Col sm={3}>
                     {subcomponent_image(zone.image_left, 'Frame5Image')}
                 </Col>
-                <Col sm={3} className='align-self-end text-center SubText'>
-                    {text_middle}
-                </Col>
+                {text_middle}
                 <Col sm={3}>
                     {subcomponent_image(zone.image_right, 'Frame5Image')}
                 </Col>
@@ -467,11 +469,11 @@ const Frame8 = (zone, index, jsonObject) =>{
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center'>
           <Row className='justify-content-center'>
-            {subcomponent_image(zone.image_title,'100%')}
+            {subcomponent_image(zone.image_title,'Frame8ImageTitle')}
           </Row>
           <Row className='justify-content-between'>
             <Col md={4}>
-              {subcomponent_image(zone.image,'100%')}
+              {subcomponent_image(zone.image,'Frame8Image')}
             </Col>
             <Col md={8} className='justify-content-between d-flex flex-column align-self-center'>
               <Row className='OrangeText MainText text-center align-self-center my-3'>
@@ -500,20 +502,20 @@ const Frame9 = (zone, index, jsonObject) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center '>
-          <Row className='OrangeText MainText text-center'>
-            <Col className='justify-content-center'>
+          <Row className='OrangeText MainText text-center d-flex justify-content-center'>
+            <Col className=''>
               {zone.title}
             </Col>
           </Row>
-          <Row className='d-flex justify-content-around '>
+          <Row className=' justify-content-around '>
             <Col xs={9} sm={4} >
-              {subcomponent_image(zone.image_left,'100%')}
+              {subcomponent_image(zone.image_left,'Frame9Image')}
+            </Col>
+            <Col xs={9} sm={4} className='d-flex align-items-center'>
+              {subcomponent_image(zone.image_mid,'Frame9ImageMiddle')}
             </Col>
             <Col xs={9} sm={4}>
-              {subcomponent_image(zone.image_mid,'100%')}
-            </Col>
-            <Col xs={9} sm={4}>
-              {subcomponent_image(zone.image_right,'100%')}
+              {subcomponent_image(zone.image_right,'Frame9Image')}
             </Col>
           </Row>
 
@@ -728,7 +730,7 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           </Col>
         </Row>
         {/* Blue background css grid goodie */}
-        <Row className='LightBlueBackground InteractiveFrame1LightBlueSizing'>
+        <Row className='LightBlueBackground InteractiveFrame1LightBlueSizing d-flex justify-content-around'>
 
           {/* Images left */}
           <Col xs={3}> 
@@ -736,18 +738,20 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                className='imgFill InteractiveFrame1ImageFrontLeft'
+                className=' InteractiveFrame1ImageFrontLeft'
+                id='InteractiveFrame1'
               />
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
-                className='HalfImageSize InteractiveFrame1ImageBackLeft'
+                className=' InteractiveFrame1ImageBackLeft'
+                id='InteractiveFrame1'
               />
             </div>
           </Col>
 
           {/* Text_center */}
-          <Col className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}} xs={6}>
+          <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}}>
             <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextFront'>
               {zone.text_front}
             </ReactMarkdown>
@@ -762,12 +766,15 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                className='imgFill InteractiveFrame1ImageFrontRight'
+                className=' InteractiveFrame1ImageFrontRight'
+                id='InteractiveFrame1'
               />
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                className='HalfImageSize InteractiveFrame1ImageBackRight'
+                className=' InteractiveFrame1ImageBackRight'
+                id='InteractiveFrame1'
+
               />
             </div>
           </Col>
@@ -826,7 +833,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
       <Container>
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
-          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3} style={{height: '250px'}}>
+          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={4}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
@@ -888,7 +895,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
               </Row>
           </Col>
           {/* image right */}
-          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
+          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={4}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
@@ -1129,20 +1136,22 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
             </ReactMarkdown>
           </Col>
         </Row>
-        <Row className='d-flex justify-content-between'>
+        <Row className='d-flex justify-content-around'>
           {/* image_lieft */}
           <Col className='LightBlueBackground' xs={3}>
-              <Row className=''>
+              <Row className='mt-3'>
                 <div className='d-flex align-items-center justify-content-center' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                    style={{display:'block', 'max-height':'180px', opacity:1, transition:'0.3s'}}
+                    style={{display:'block', opacity:1, transition:'0.3s'}}
+                    id='InteractiveFrame3'
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_back.alternativeText}
-                    style={{display:'none', 'max-height':'180px', opacity:0, transition:'0.3s'}}
+                    style={{display:'none', opacity:0, transition:'0.3s'}}
+                    id='InteractiveFrame3'
                   />
                 </div>
               </Row>
@@ -1155,11 +1164,10 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                     {zone.text_left_back}
                   </ReactMarkdown>
                 </div>
-
               </Row>
           </Col>
           {/* text in the middle */}
-          <Col xs={4} className='justify-content-between d-flex flex-column'>
+          <Col xs={5} className='justify-content-between d-flex flex-column'>
 
               <Row className='d-flex justify-content-center'>
 
@@ -1207,17 +1215,20 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
           </Col>
           {/* image right */}
           <Col className='LightBlueBackground' xs={3}>
-              <Row>
+              <Row className='mt-3'>
                 <div className='d-flex align-items-center justify-content-center ' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                    style={{display:'block', 'max-height':'180px', opacity:1, transition:'0.3s'}}
+                    style={{display:'block', opacity:1, transition:'0.3s'}}
+                    id='InteractiveFrame3'
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                    style={{display:'none', 'max-height':'180px', opacity:0, transition:'0.3s'}}
+                    style={{display:'none', opacity:0, transition:'0.3s'}}
+                    id='InteractiveFrame3'
+
                   />
                 </div>
               </Row>
@@ -1242,27 +1253,25 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
 
   const frameWithTwoImage = (zone) =>{
     return(
-      <Row className='d-flex justify-content-between'>
+      <Row className='d-flex justify-content-around'>
       <Col xs={3}>
-        <Row className='d-flex align-items-stretch justify-content-center' >
+        <Row className='d-flex align-items-stretch justify-content-between' >
           <Col xs={6} className='align-self-end'>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
-                // style={{'max-height':'180px','max-width':'180px'}}
-                height={'120px'}
-              />
+                id='InteractiveFrame4ImageS'
+            />
           </Col>
           <Col xs={6}>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[1].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[1].alternativeText}
-                // style={{'max-height':'180px','max-width':'180px'}}
-                height={'180px'}
+                id='InteractiveFrame4ImageM'
               />
           </Col>
         </Row>
-        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground '>
+        <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground '>
           <ReactMarkdown className='mt-3'>
             {zone.text_left}
           </ReactMarkdown>
@@ -1276,23 +1285,23 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
       </Col>
 
       <Col xs={3}>
-        <Row className='d-flex align-items-stretch justify-content-center' >
+        <Row className='d-flex align-items-stretch justify-content-between' >
           <Col xs={6} className='align-self-end'>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
-                height={'120px'}
+                id='InteractiveFrame4ImageS'
               />
           </Col>
           <Col xs={6}>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[1].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[1].alternativeText}
-                height={'180px'}
+                id='InteractiveFrame4ImageM'
               />
           </Col>
         </Row>
-        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
+        <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
           <ReactMarkdown className='mt-3'>
             {zone.text_right}
           </ReactMarkdown>
@@ -1310,11 +1319,11 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
-                height={'180px'}
+                id='InteractiveFrame4ImageL'
             />
           </Col>
         </Row>
-        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
+        <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
           <ReactMarkdown className='mt-3'>
             {zone.text_left}
           </ReactMarkdown>
@@ -1333,12 +1342,11 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
                 alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
-                height={'180px'}
-                width={'auto'}
+                id='InteractiveFrame4ImageL'
               />
           </Col>
         </Row>
-        <Row className='text-center CaptionText GrayText mt-5 LightBlueBackground'>
+        <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
           <ReactMarkdown className='mt-3'>
             {zone.text_right}
           </ReactMarkdown>
@@ -1466,7 +1474,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
       </Container>
       <Container className='my-5'>
         <Row className='d-flex justify-content-between'>
-          <Col className='d-flex justify-content-center'>
+          <Col xs={6} sm={3} className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
               onClick={(e)=>{
@@ -1478,7 +1486,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
               Denomination
             </button>
           </Col>
-          <Col className='d-flex justify-content-center'>
+          <Col xs={6} sm={3} className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
               onClick={(e)=>{
@@ -1490,7 +1498,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
               Mint Date
             </button>
           </Col>
-          <Col className='d-flex justify-content-center'>
+          <Col xs={6} sm={3} className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
               onClick={(e)=>{
@@ -1502,7 +1510,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
               Mint Marks
             </button>
           </Col>
-          <Col className='d-flex justify-content-center'>
+          <Col xs={6} sm={3} className='d-flex justify-content-center'>
             <button	
               className='BlueText text-center my-2' 
               onClick={(e)=>{
@@ -1515,7 +1523,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             </button>
           </Col>
         </Row>
-        <Row className='mt-5 d-flex justify-content-between' style={{height: '200px'}} >
+        <Row className='mt-5 d-flex justify-content-around' style={{height: '200px'}} >
             <div style={{display:'block', opacity:'1.0', transition:'0.3s'}}>
               {frameWithTwoImage(zone.component[0])}
             </div>
