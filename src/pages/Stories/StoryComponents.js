@@ -69,7 +69,8 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
               alt='dynamic_image'
-              width={imageSizes[image.size]}/>
+              width={imageSizes[image.size]}
+            />
             <p className='OrangeText text-center' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
             </p>
@@ -199,11 +200,11 @@ const Frame1 = (zone, index, jsonObject) => {
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
           <Col xs={6}>
-            <ReactMarkdown className='BlueText SubText text-center'>
+            <ReactMarkdown className='BlueText BigSubText text-center'>
               {zone.sub_text_left}
             </ReactMarkdown>
           </Col>
-          <Col xs={6} className='LightBlueBackground'>
+          <Col xs={6} className='LightBlueBackground p-3'>
             <Row>
               <ReactMarkdown className='BlueText SubText text-center'>
                 {zone.sub_text_right}
@@ -262,7 +263,6 @@ const Frame1 = (zone, index, jsonObject) => {
 
 const Frame2 = (zone, index, jsonObject) => {
   let subText = undefined;
-  console.log(zone);
 
   if (zone.sub_text !== undefined) {
     subText = (
@@ -381,7 +381,7 @@ const Frame5 = (zone, index, jsonObject) =>{
   }
   else{
     text_middle = (
-      <Col sm={3} className='align-self-end text-center SubText'>
+      <Col sm={3} className='align-self-center text-center SubText'>
         <ReactMarkdown className=' SubText mt-3 GrayText'>
           {zone.text_middle.text}
         </ReactMarkdown>
@@ -833,7 +833,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
       <Container>
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
-          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={4}>
+          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
@@ -841,6 +841,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                       src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                       alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
                       id='CoinImageFront'
+                      className='mt-3'
                     />
                     <ReactMarkdown className='text-center SubText GrayText'>
                       {zone.text_left_front}
@@ -851,6 +852,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
                     id='CoinImageBack'
+                    className='mt-3'
                   />
                   <ReactMarkdown className='text-center SubText GrayText'>
                     {zone.text_left_back}
@@ -860,7 +862,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
             </div>
           </Col>
           {/* text in the middle */}
-          <Col xs={3} className='justify-content-around d-flex flex-column'>
+          <Col xs={4} className='justify-content-around d-flex flex-column'>
             
               <Row className='GrayText SubText text-center align-items-start'>
                 <Col>
@@ -895,7 +897,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
               </Row>
           </Col>
           {/* image right */}
-          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={4}>
+          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
@@ -903,6 +905,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
                   alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
                   id='CoinImageFront'
+                  className='mt-3'
                   />
                   <ReactMarkdown className='text-center SubText GrayText'>
                     {zone.text_right_front}
@@ -913,6 +916,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
                   alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
                   id='CoinImageBack'
+                  className='mt-3'
                   />
                   <ReactMarkdown className='text-center SubText GrayText'>
                     {zone.text_right_back}
@@ -932,24 +936,22 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
   const switchForFront = (dom) =>{
     
     let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
-    console.log(imgLeftDiv)
-
     let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
     let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
     let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
 
-    imgLeftDiv.childNodes[2].style.opacity = '0.0';
+    imgLeftDiv.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgLeftDiv.childNodes[2].style.display = 'none';
-        imgLeftDiv.childNodes[1].style.display = 'block';
+        imgLeftDiv.childNodes[1].style.display = 'none';
+        imgLeftDiv.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgLeftDiv.childNodes[1].style.opacity = '1.0';
+          imgLeftDiv.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -990,17 +992,17 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       });
     }, 400);
 
-    imgRightDiv.childNodes[2].style.opacity = '0.0';
+    imgRightDiv.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgRightDiv.childNodes[2].style.display = 'none';
-        imgRightDiv.childNodes[1].style.display = 'block';
+        imgRightDiv.childNodes[1].style.display = 'none';
+        imgRightDiv.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgRightDiv.childNodes[1].style.opacity = '1.0';
+          imgRightDiv.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1030,25 +1032,22 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
   const switchForBack = (dom) =>{
     
     let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
-    console.log(imgLeftDiv)
-    console.log(imgLeftDiv.childNodes)
-
     let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
     let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
     let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
 
-    imgLeftDiv.childNodes[1].style.opacity = '0.0';
+    imgLeftDiv.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgLeftDiv.childNodes[1].style.display = 'none';
-        imgLeftDiv.childNodes[2].style.display = 'block';
+        imgLeftDiv.childNodes[0].style.display = 'none';
+        imgLeftDiv.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgLeftDiv.childNodes[2].style.opacity = '1.0';
+          imgLeftDiv.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1089,17 +1088,17 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       });
     }, 400);
 
-    imgRightDiv.childNodes[1].style.opacity = '0.0';
+    imgRightDiv.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgRightDiv.childNodes[1].style.display = 'none';
-        imgRightDiv.childNodes[2].style.display = 'block';
+        imgRightDiv.childNodes[0].style.display = 'none';
+        imgRightDiv.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgRightDiv.childNodes[2].style.opacity = '1.0';
+          imgRightDiv.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1140,7 +1139,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
           {/* image_lieft */}
           <Col className='LightBlueBackground' xs={3}>
               <Row className='mt-3'>
-                <div className='d-flex align-items-center justify-content-center' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+                <div className='d-flex align-items-center justify-content-center'> 
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
@@ -1216,7 +1215,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
           {/* image right */}
           <Col className='LightBlueBackground' xs={3}>
               <Row className='mt-3'>
-                <div className='d-flex align-items-center justify-content-center ' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+                <div className='d-flex align-items-center justify-content-center '> 
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
@@ -1385,8 +1384,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             }
           });
         }, 400);
-        console.log(option1)
-        console.log('finish option 1')
         break;
       case 'option2':
         option1.style.opacity = '0.0';
@@ -1409,7 +1406,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             }
           });
         }, 400);
-          console.log('finish option 2')
           break;
       case 'option3':
         option1.style.opacity = '0.0';
@@ -1432,7 +1428,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             }
           });
         }, 400);
-        console.log('finish option 3')
 
         break;
       case 'option4':
@@ -1456,7 +1451,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             }
           });
         }, 400);
-        console.log('finish option 4')
         break;
       default:
         console.log();

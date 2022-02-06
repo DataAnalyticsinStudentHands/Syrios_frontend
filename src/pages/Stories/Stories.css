@@ -1,5 +1,14 @@
 @import url(src/components/constants.css);
 
+#StoryMainTitle {
+  font-size: 7em;
+}
+@media only screen and (max-width: 767px) {
+  #StoryMainTitle {
+    font-size: 2em;
+  }
+}
+
 .SelectStoryDiv {
   width: 100px;
   transition: 0.5s;
@@ -26,7 +35,7 @@ Button {
   border: 1px solid #7899a8;
   border-radius: 15px !important;
   opacity: 1;
-  width: 220px;
+  width: 250px;
   transition: 0.5s;
 }
 
@@ -62,13 +71,16 @@ Button:hover {
 .MainText {
   font-size: 40px;
 }
+.BigSubText {
+  font-size: 32px;
+}
 
 .SubText {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .CaptionText {
-  font-size: 18px;
+  font-size: 16px;
   margin: 11px;
   margin-bottom: -5px !important;
 }
@@ -81,9 +93,11 @@ Button:hover {
   .MainText {
     font-size: 28px;
   }
-
-  .SubText {
+  .BigSubText {
     font-size: 24px;
+  }
+  .SubText {
+    font-size: 20px;
   }
 
   .CaptionText {
@@ -173,31 +187,23 @@ Button:hover {
 
 .EndFrameButtonWidth {
   width: 270px;
-  margin: 70px;
+  /* margin: 70px; */
 }
 
 @media only screen and (max-width: 767px) {
   .EndFrameButtonWidth {
     width: 100px;
     height: auto;
-    margin: 10px;
+    /* margin: 10px; */
   }
 }
 
-/**** Frame1 ****/
-
-/* .Frame1SubText1 {
-  margin: 0px 100px 0px 50px;
-}
-
-.Frame1SubText2 {
-  margin: 0px 50px 0px 100px;
-} */
+/* *** Frame1 ****/
 
 /**** Frame2 ****/
 
 #Frame2Image {
-  width: 800px;
+  width: 700px;
 }
 
 @media only screen and (max-width: 767px) {

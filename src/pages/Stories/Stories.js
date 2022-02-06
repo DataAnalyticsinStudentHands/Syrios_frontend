@@ -35,13 +35,16 @@ const Stories = () => {
 					<Row container='justify-content-md-center'>
 						{/* This is the title text in orage */}
 						<Col>
-							<p className='BlueText text-center' style={{fontSize: '7em'}}>
+							{/* <p className='BlueText text-center' style={{fontSize: '7em'}}>
+								Discover Coin Stories
+							</p> */}
+							<p className='BlueText text-center' id='StoryMainTitle'>
 								Discover Coin Stories
 							</p>
 						</Col>
 					</Row>
 					<Row container='justify-content-md-center' className='d-flex justify-content-center'>
-						<Col>
+						<Col xs={6} sm={3}>
 							<button
 								className='BlueText'
 								onClick={() => {
@@ -49,7 +52,7 @@ const Stories = () => {
 								By City Name
 							</button>
 						</Col>
-						<Col>
+						<Col xs={6} sm={3}>
 							<button
 								className='BlueText'
 								onClick={() => {
@@ -57,7 +60,7 @@ const Stories = () => {
 								By Political Standing
 							</button>
 						</Col>
-						<Col>
+						<Col xs={6} sm={3}>
 							<button
 								className='BlueText'
 								onClick={() => {
@@ -65,7 +68,7 @@ const Stories = () => {
 								By Economic System
 							</button>
 						</Col>
-						<Col>
+						<Col xs={6} sm={3}>
 							<button
 								className='BlueText'
 								onClick={() => {
