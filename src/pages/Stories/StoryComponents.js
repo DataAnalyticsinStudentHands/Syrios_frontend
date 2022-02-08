@@ -367,7 +367,7 @@ const Frame4 = (zone, index, jsonObject) =>{
               {zone.quote1}
             </ReactMarkdown>
             <ReactMarkdown className='GrayText text-center CaptionText'>
-              {zone.sub_quote1}
+              {zone.author1}
             </ReactMarkdown>
         </Col>
     </Row>
@@ -375,7 +375,7 @@ const Frame4 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center align-items-center' style={{marginTop:'-10%'}}>
               {subQuote}
         </Container>
