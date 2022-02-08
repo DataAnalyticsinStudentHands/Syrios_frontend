@@ -16,6 +16,7 @@ function IsEmptyOrWhiteSpace(str) {
 
 // These are more general exports. All functions may use them
 const subcomponent_image = (image, imgId) => {
+  console.log(imgId);
   let caption = undefined; 
   // If light_blue_background is true, light_blue_caption_background should be false.
   // don't want to double the background causing opacity to double.
@@ -31,7 +32,7 @@ const subcomponent_image = (image, imgId) => {
       </>
     );
   }
-
+  
   return (
     <Container className='d-flex justify-content-center align-items-center'>
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
@@ -124,8 +125,9 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
 // Title component for all stories
 const Title = (zone, index, jsonObject) => {
+  //console.log(zone.background);
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <img
           id='TitleImage'
@@ -194,8 +196,9 @@ const End_Frame = (zone, index, jsonObject) => {
 
 
 const Frame1 = (zone, index, jsonObject) => {
+  //console.log(zone);
   let subText = undefined;
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_1) && !IsEmptyOrWhiteSpace(zone.sub_text_2)) {
+  if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right) && !IsEmptyOrWhiteSpace(zone.caption_text_right)) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
@@ -212,7 +215,7 @@ const Frame1 = (zone, index, jsonObject) => {
             </Row>
             <Row>
               <ReactMarkdown className='GrayText CaptionText text-center'>
-                {zone.sub_text_right_author}
+                {zone.caption_text_right}
               </ReactMarkdown>
             </Row>
           </Col>
@@ -221,7 +224,7 @@ const Frame1 = (zone, index, jsonObject) => {
     );
   }
 
-  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_1)) {
+  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_left)) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='GrayText BigSubText text-center'>
@@ -231,7 +234,7 @@ const Frame1 = (zone, index, jsonObject) => {
     );
   }
 
-  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_2)) {
+  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_right)) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
@@ -241,7 +244,19 @@ const Frame1 = (zone, index, jsonObject) => {
         </Row>
         <Row>
           <ReactMarkdown className='GrayText CaptionText text-center'>
-            {zone.sub_text_right_author}
+            {zone.caption_text_right}
+          </ReactMarkdown>
+        </Row>
+      </Container>
+    );
+  }
+
+  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.caption_text_right)) {
+    subText = (
+      <Container className='d-flex justify-content-center align-items-center'>
+        <Row>
+          <ReactMarkdown className='GrayText CaptionText text-center'>
+            {zone.caption_text_right}
           </ReactMarkdown>
         </Row>
       </Container>
@@ -249,7 +264,7 @@ const Frame1 = (zone, index, jsonObject) => {
   }
 
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container>
         <ReactMarkdown className='OrangeText MainText text-center'>
           {zone.main_text}
@@ -278,7 +293,7 @@ const Frame2 = (zone, index, jsonObject) => {
     <div 
       key={`story_comp_${index}`} 
       className='section' 
-      style={{ backgroundImage: zone.background === (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}
+      style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}
     >
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='OrangeText MainText text-center'>

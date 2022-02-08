@@ -33,7 +33,7 @@ export const ChangeCreditsAndReferences = (obj) => {
 
         let jsx = undefined;
         if (regex.test(text)) {
-          console.log(text);
+          //console.log(text);
           let textNoUrl = text.slice(text.indexOf('[')+1,text.indexOf(']('));
           let url = text.slice(text.indexOf('](')+2, text.lastIndexOf(')'));
           jsx = (
