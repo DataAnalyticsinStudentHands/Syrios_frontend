@@ -16,7 +16,6 @@ function IsEmptyOrWhiteSpace(str) {
 
 // These are more general exports. All functions may use them
 const subcomponent_image = (image, imgId) => {
-  console.log(imgId);
   let caption = undefined; 
   // If light_blue_background is true, light_blue_caption_background should be false.
   // don't want to double the background causing opacity to double.
@@ -32,7 +31,7 @@ const subcomponent_image = (image, imgId) => {
       </>
     );
   }
-  
+
   return (
     <Container className='d-flex justify-content-center align-items-center'>
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
@@ -65,14 +64,14 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
     const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
     if (!IsEmptyOrWhiteSpace(image.link) && !IsEmptyOrWhiteSpace(image.brief_detail)) {
       imagesJSX.push(
-        <Col key={image.id}>
+        <Col key={image.id} className='text-center'>
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
               alt='dynamic_image'
               width={imageSizes[image.size]}
             />
-            <p className='OrangeText text-center' style={{fontSize: image_brief_detail_font_size}}>
+            <p className='OrangeText' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
             </p>
           </Link>
@@ -83,7 +82,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
     if (!IsEmptyOrWhiteSpace(image.link)) {
       imagesJSX.push(
-        <Col key={image.id}>
+        <Col key={image.id} className='text-center'>
           <Link to={image.link} className='blandStyle'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
@@ -97,23 +96,26 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
     if (!IsEmptyOrWhiteSpace(image.brief_detail)) {
       imagesJSX.push(
-        <Col key={image.id}>
-          <img
-            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
-            alt='dynamic_image'
-            width={imageSizes[image.size]}/>
-          <p className='BlackText text-center' style={{fontSize: image_brief_detail_font_size}}>
-            {image.brief_detail}
-          </p>
+        <Col key={image.id} className='text-center'>
+            <img
+              src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+              alt='dynamic_image'
+              width={imageSizes[image.size]}
+              className='justify-content-center'
+            />
+            <p className='BlackText' style={{fontSize: image_brief_detail_font_size}}>
+              {image.brief_detail}
+            </p>
         </Col>
       );
       return;
     }
   });
+  console.log(imagesJSX);
   return (
     <div>
-      <Container className='d-flex justify-content-center align-items-center'>
-        <Row style={{ marginTop: '80px', marginBottom: '100px'}}>
+      <Container>
+        <Row style={{ marginTop: '80px', marginBottom: '150px'}} className='d-flex justify-content-center align-items-end'>
           {imagesJSX}
         </Row>
       </Container>
@@ -308,7 +310,7 @@ const Frame2 = (zone, index, jsonObject) => {
 
 const Frame3 = (zone, index, jsonObject) => {
   let subText = undefined;
-
+  console.log(index);
   if (zone.sub_text !== undefined) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
@@ -319,7 +321,7 @@ const Frame3 = (zone, index, jsonObject) => {
     );
   }
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       {subcomponent_image_with_dynamic_sizing(zone.images)}
       <Container style={{marginTop: '-110px'}}>
         <ReactMarkdown className='OrangeText MainText text-center'>
