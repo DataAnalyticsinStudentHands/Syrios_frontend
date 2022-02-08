@@ -390,7 +390,7 @@ const Frame5 = (zone, index, jsonObject) =>{
   if(zone.text_middle.light_blue_caption_background){
     text_middle = (
       <Col sm={6} className='align-self-center text-center SubText'>
-        <ReactMarkdown className='LightBlueBackground SubText mt-3 GrayText'>
+        <ReactMarkdown className='LightBlueBackground SubText GrayText px-5'>
           {zone.text_middle.text}
         </ReactMarkdown>
       </Col>
@@ -407,9 +407,9 @@ const Frame5 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background === (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='d-flex justify-content-around align-self-center'>
-          <Row className='d-flex justify-content-between align-self-center'>
+          <Row className='d-flex justify-content-center align-self-center'>
                 <Col sm={3}>
                     {subcomponent_image(zone.image_left, 'Frame5Image')}
                 </Col>
