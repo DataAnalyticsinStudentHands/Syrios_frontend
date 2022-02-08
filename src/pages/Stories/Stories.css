@@ -239,7 +239,7 @@ Button:hover {
 /**** Frame7 ****/
 
 #Frame7Image {
-  width: 600px;
+  width: 800px;
 }
 #Frame7textBotten {
   width: 1200px;
@@ -247,10 +247,10 @@ Button:hover {
 
 @media only screen and (max-width: 767px) {
   #Frame7Image {
-    width: 300px !important;
+    width: 400px !important;
   }
   #Frame7textBotten {
-    width: 300px;
+    width: 400px;
   }
 }
 
