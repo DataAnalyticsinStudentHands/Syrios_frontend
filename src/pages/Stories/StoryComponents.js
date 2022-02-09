@@ -436,6 +436,23 @@ const Frame5 = (zone, index, jsonObject) =>{
 
 const Frame6 = (zone, index, jsonObject) =>{
 
+  let sub_text=undefined
+  if(!IsEmptyOrWhiteSpace(sub_text)){
+    sub_text = (
+      <ReactMarkdown className='BlueText text-center SubText' >
+        {zone.sub_text}
+      </ReactMarkdown>
+    )
+  }
+  let sub_author=undefined
+  if(!IsEmptyOrWhiteSpace(sub_author)){
+    sub_author = (
+      <ReactMarkdown className='BlueText text-center SubText' >
+        {zone.sub_author}
+      </ReactMarkdown>
+    )
+  }
+
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined: `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='d-flex justify-content-around align-self-center'>
@@ -449,12 +466,8 @@ const Frame6 = (zone, index, jsonObject) =>{
                       {subcomponent_image(zone.image,'Frame6Image')}
                   </Col>
                   <Col sm={6} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                      <ReactMarkdown className='BlueText text-center SubText' >
-                        {zone.sub_text}
-                      </ReactMarkdown>
-                      <ReactMarkdown className='GrayText text-center CaptionText'>
-                        {zone.sub_author}
-                      </ReactMarkdown>
+                      {sub_text}
+                      {sub_author}
                   </Col>
                 </Row>
         </Container>
@@ -1527,6 +1540,14 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
 
 
   }
+  // console.log(zone.component[0].image_left.length);
+  // const frameImage = (component)=>{
+  //   if (component.image_left.length == 2 && component.image_right.length == 2){
+
+  //     component.
+
+  //   }
+  // }
 
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>

@@ -45,7 +45,7 @@ function BootstrapNavbar() {
             <NavDropdown.Item><Link to='/Evidence/CoinSort' className='blandStyle WhiteText NavbarText text-white'>Coins in a Pile</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins on a Map</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins in a Catalog</Link></NavDropdown.Item>
-            <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Coins as Data</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to='/Download' className='blandStyle WhiteText NavbarText text-white'>Coins as Data</Link></NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title='TOOL BOX' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Get to Know Syria</Link></NavDropdown.Item>
@@ -56,7 +56,6 @@ function BootstrapNavbar() {
           <NavDropdown title='RESOURCES' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Teaching Resources</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Research</Link></NavDropdown.Item>
-            <NavDropdown.Item><Link to='/Download' className='blandStyle WhiteText NavbarText text-white'>Download</Link></NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Form style={{width: '145px', marginRight: '10px'}}>

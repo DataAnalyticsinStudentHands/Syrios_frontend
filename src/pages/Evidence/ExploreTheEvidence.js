@@ -89,12 +89,12 @@ const ExploreTheEvidence = () => {
                   {/* Download Dataset */}
                   <Row>
                     <Col id='ExploreTheEvidenceIconDownloadDiv'>
-                      <Link to='/'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
+                      <Link to='/Download'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
                         <i id='ExploreTheEvidenceIconDownload' className='demo-icon icon-donwload'>&#xe810;</i>
                       </Link>
                     </Col>
                     <Col id='ExploreTheEvidenceTextDiv' className='d-flex align-items-center justify-content-start'>
-                      <Link to='/'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
+                      <Link to='/Download'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
                         <p className='OrangeText ExploreTheEvidenceTitleText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
                           {res.data.download_dataset_title}
                         </p>
