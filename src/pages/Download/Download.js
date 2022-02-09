@@ -64,20 +64,29 @@ function Download(){
                                         </Row>
                                     </Col>
                                     {/* Right */}
-                                    <Col xs={3}>
-                                        <Row>
+                                    <Col xs={3} className='d-flex flex-column align-items-center'>
+                                        <Row className='text-center'>
                                             {data.email_text}
                                         </Row>
-                                        <Row className='LightBlueBackground'>
-                                            <form>
-                                                <label>Full Name:</label>
-                                                <br/>
-                                                <input type={'text'} value={''}/>
-                                                <br/>
-                                                <label>Email:</label>
-                                                <br/>
-                                                <input type={'email'} value={''}/>
+                                        <Row className='LightBlueBackground mt-5 d-flex justify-content-center'>
+                                            <form className='mx-5 my-3'>
+                                                <div className='form-group mt-4'>
+                                                    <label className='GrayText' for='userEmail'>Full Name:</label>
+                                                    <br/>
+                                                    <input type={'text'} value={''} id={'userName'} className='form-control'/>
+                                                </div>
+                                                <div className='form-group mt-4'>
+                                                    <label className='GrayText' for='userEmail'>Email:</label>
+                                                    <br/>
+                                                    <input type={'email'} value={''} id={'userEmail'} className='form-control'/>
 
+                                                </div>
+                                                
+                                                <div className='text-center mt-5'>
+                                                    <button type='submit' className=''>
+                                                        Submit
+                                                    </button>
+                                                </div>
 
                                             </form>
                                         </Row>
