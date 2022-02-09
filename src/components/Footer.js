@@ -13,6 +13,8 @@ import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
 export const ChangeCreditsAndReferences = (obj) => {
+  if (obj === undefined || obj === null) return;
+
   // Check every 200ms if footer has been rendered. If true, delete the interval and update credits and references
   var interval = setInterval(function() {
     let dom = document.getElementById('CreditsAndReferences');
