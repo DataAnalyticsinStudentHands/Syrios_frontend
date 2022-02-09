@@ -17,6 +17,24 @@ import './CoinSort.css';
 
 
 
+
+const CoinSortDropDownTextToStrapiVariableKeys = [ // This is an array of objects that relate coin sort dropdown labels to their object keys that come from strapi.
+  // Example (also a live example)
+  // dropdownText is the name that resembles it in the drop down on the coin sort. In this case, the dropdownText is 'Size'
+  // strapiKey is the object key received by strapi. We don't rename it or whatnot. In this case, it is Diameter
+  // What this object is stating is that it will look for Sort By or Then By to be Size and then sort it based on Diameter
+  // { type: 'sort', dropdownText: 'Size', strapiKey: 'Diameter' }
+
+  // Sort options
+  { type: 'sort', dropdownText: 'Size', strapiKey: 'Diameter' }, 
+  { type: 'sort', dropdownText: 'Minting Date',  strapiKey: 'Date' },
+  { type: 'sort', dropdownText: 'Issuing Authority', strapiKey: 'IssuingAuthority' },
+  { type: 'sort', dropdownText: 'Governing Power', strapiKey: 'State' },
+  { type: 'sort', dropdownText: 'Material', strapiKey: 'Material' },
+
+  // Filter options 
+];
+
 // This is a class so I can more easily do stuff with the dropdowns
 // Plus, it's a great way of compartmentalizing the dropdowns. Lmao I butchered that spelling.
 class CoinSortDropDown extends React.Component {
@@ -144,23 +162,20 @@ class CoinSortDropDown extends React.Component {
   }
 }
 
+
+
 // The actual function
 const CoinSort = () => {
   const [isLoading, set_isLoading] = useState(true);
   const [coins, set_coins] = useState(undefined);
-  // This is all the after render loading stuff. Store things as variables makes it easier to access in onClick events / etc...
-  const [ArrangeToolTipBox, set_ArrangeToolTipBox] = useState(
-    <WhitePopUp>
-      <div id='ArrangeToolTipBox' className='ToolTipBox'>
-        <p className='OrangeText ToolTipTitle'>
-          TOOL TIP: ARRANGEMENT OPTIONS
-        </p>
-        <p className='BlueText ToolTipText'>
-          <span style={{fontWeight: 'bold'}}>1 x 1 Grid:</span> focus on a single coin, at a time, in the center
-        </p>
-      </div>
-    </WhitePopUp>
-  );
+
+  // This is for the tool tips
+  const [ArrangeToolTipBox1x1GridDescription, set_ArrangeToolTipBox1x1GridDescription] = useState(undefined);
+  const [ArrangeToolTipBox2x1GridDescription, set_ArrangeToolTipBox2x1GridDescription] = useState(undefined);
+  const [ArrangeToolTipBox3x1GridDescription, set_ArrangeToolTipBox3x1GridDescription] = useState(undefined);
+  const [ArrangeToolTipBox2x2GridDescription, set_ArrangeToolTipBox2x2GridDescription] = useState(undefined);
+  const [ArrangeToolTipBox3x2GridDescription, set_ArrangeToolTipBox3x2GridDescription] = useState(undefined);
+  const [ArrangeToolTipBox6x3GridDescription, set_ArrangeToolTipBox6x3GridDescription] = useState(undefined);
 
   useEffect(() => {
     if (isLoading) {
@@ -171,6 +186,22 @@ const CoinSort = () => {
           } else {
             set_coins(res.data);
             set_isLoading(false);
+          }
+        });
+
+      axios.get(process.env.REACT_APP_strapiURL + '/coin-sort')
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+          } else {
+            // console.log(res.data);
+
+            set_ArrangeToolTipBox1x1GridDescription(res.data.ArrangeToolTipBox1x1GridDescription);
+            set_ArrangeToolTipBox2x1GridDescription(res.data.ArrangeToolTipBox2x1GridDescription);
+            set_ArrangeToolTipBox3x1GridDescription(res.data.ArrangeToolTipBox3x1GridDescription);
+            set_ArrangeToolTipBox2x2GridDescription(res.data.ArrangeToolTipBox2x2GridDescription);
+            set_ArrangeToolTipBox3x2GridDescription(res.data.ArrangeToolTipBox3x2GridDescription);
+            set_ArrangeToolTipBox6x3GridDescription(res.data.ArrangeToolTipBox6x3GridDescription);
           }
         });
     }
@@ -201,11 +232,41 @@ const CoinSort = () => {
                 Arrange: <i 
                   className="demo-icon icon-info BlueText InfoIcon"
                   onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
-                    let dom = e.target;
-                    ArrangeToolTipBox.showPopUp();
+                    let popUp = undefined;
+                    WhitePopUp.ArrayOfWhitePopUps.forEach((e) => {
+                      if (e.props.id.includes('ArrangeToolTipBox')) {
+                        popUp = e;
+                      }
+                    });
+
+                    popUp.show();
                   }}>&#xe817;</i>
               </p> 
-              {ArrangeToolTipBox}
+              <WhitePopUp id='ArrangeToolTipBox'>
+                <div className='ToolTipBox'>
+                  <p className='OrangeText ToolTipTitle'>
+                    TOOL TIP: ARRANGEMENT OPTIONS
+                  </p>
+                  <p className='BlueText ToolTipText'>
+                    <span style={{fontWeight: 'bold'}}>1 x 1 Grid:</span> {ArrangeToolTipBox1x1GridDescription}
+                  </p>
+                  <p className='BlueText ToolTipText'>
+                    <span style={{fontWeight: 'bold'}}>2 x 1 Grid:</span> {ArrangeToolTipBox2x1GridDescription}
+                  </p>
+                  <p className='BlueText ToolTipText'>
+                    <span style={{fontWeight: 'bold'}}>3 x 1 Grid:</span> {ArrangeToolTipBox3x1GridDescription}
+                  </p>
+                  <p className='BlueText ToolTipText'>
+                    <span style={{fontWeight: 'bold'}}>2 x 2 Grid:</span> {ArrangeToolTipBox2x2GridDescription}
+                  </p>
+                  <p className='BlueText ToolTipText'>
+                    <span style={{fontWeight: 'bold'}}>3 x 2 Grid:</span> {ArrangeToolTipBox3x2GridDescription}
+                  </p>
+                  <p className='BlueText ToolTipText'>
+                    <span style={{fontWeight: 'bold'}}>6 x 3 Grid:</span> {ArrangeToolTipBox6x3GridDescription}
+                  </p>
+                </div>
+              </WhitePopUp>
             </div>
             {/* Tool tip */}
             <CoinSortDropDown id='GridDropDown' items={['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid']} defaultSelection='None' />

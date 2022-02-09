@@ -9,9 +9,17 @@ import './WhitePopUp.css';
 class WhitePopUp extends React.Component {
   wrapperRef = createRef();
 
-  static defaultProps = {
-    onOutsideClick: () => {}
-  };
+  static ArrayOfWhitePopUps = [];
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      opacity: 0,
+      zIndex: -1000
+    };
+
+    WhitePopUp.ArrayOfWhitePopUps.push(this);
+  }
 
   componentDidMount() {
     document.addEventListener("mouseup", this.handleClickOutside);
@@ -21,12 +29,18 @@ class WhitePopUp extends React.Component {
     document.removeEventListener("mouseup", this.handleClickOutside);
   }
 
-  hidePopUp() {
-
+  hide() {
+    this.setState({
+      opacity: 0,
+      zIndex: -1000
+    });
   }
 
-  showPopUp() {
-
+  show() {
+    this.setState({
+      opacity: 1,
+      zIndex: 1000
+    });
   }
 
   // On outside click, close everything.
@@ -35,7 +49,7 @@ class WhitePopUp extends React.Component {
       this.wrapperRef.current &&
       !this.wrapperRef.current.contains(event.target)
     ) {
-      this.hidePopUp();
+      this.hide();
     }
   };
 
@@ -44,17 +58,18 @@ class WhitePopUp extends React.Component {
 
     return (
       <div>
-        <div className='TranslucentWhiteBackground'/>
+        <div className='TranslucentWhiteBackground' style={{ opacity: this.state.opacity, zIndex: this.state.zIndex }}/>
         <div ref={this.wrapperRef}>
-          <div className='SnowWhiteBackground'> 
+          <div className='SnowWhiteBackground' style={{ opacity: this.state.opacity, zIndex: this.state.zIndex }}> 
           <i
-            id='x-icon'
-            className='demo-icon icon-x-medium'
+            className='demo-icon icon-x-medium x-icon'
             onClick={(e) => {
-              this.hidePopUp();
+              this.hide();
             }}>
             &#xe838;</i>
-          {children}
+            <div className='WhitePopUpInnerPadding'>
+              {children}
+            </div>
           </div>
         </div>
       </div>
