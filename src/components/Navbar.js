@@ -56,6 +56,7 @@ function BootstrapNavbar() {
           <NavDropdown title='RESOURCES' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Teaching Resources</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='blandStyle WhiteText NavbarText text-white'>Research</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to='/Download' className='blandStyle WhiteText NavbarText text-white'>Download</Link></NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Form style={{width: '145px', marginRight: '10px'}}>

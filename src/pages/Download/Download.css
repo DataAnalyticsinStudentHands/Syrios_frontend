@@ -1,0 +1,26 @@
+@import url(src/components/constants.css);
+
+#downloadPage {
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  top: var(--footerHeight);
+  bottom: var(--footerHeight);
+  /* background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg); */
+}
+
+#DownloadTitle {
+  font-size: 7em;
+}
+
+.downLoadIcon {
+  font-size: 120px;
+  color: #7899a8;
+}
+#downLoad_Sub_Title {
+  font-size: x-large;
+}
+#downLoad_Sub_Text {
+  font-size: large;
+}

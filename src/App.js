@@ -14,6 +14,7 @@ import HowToReadACoin from 'src/pages/HowToReadACoin.js';
 import About from 'src/pages/bottomNavigation/About.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort.js';
+import Download from 'src/pages/Download/Download.js';
 
 import background from 'src/assets/background.jpg';
 
@@ -31,14 +32,15 @@ function App() {
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter basename='/dev'>
 				<Routes>
-          <Route exact path='/' element={<LandingPage />} />
-          <Route path='/Toolbox/Timeline' element={<Timeline />} />
-          <Route path='/Stories' element={<Stories />} />
-          <Route path='/StoryReader' element={<StoryReader />} />
-          <Route path='/HowToReadACoin' element={<HowToReadACoin />} />
-          <Route path='/About' element={<About />} />
-          <Route path='/Evidence/ExploreTheEvidence' element={<ExploreTheEvidence />} />
-          <Route path='/Evidence/CoinSort' element={<CoinSort />} />
+					<Route exact path='/' element={<LandingPage />} />
+					<Route path='/Toolbox/Timeline' element={<Timeline />} />
+					<Route path='/Stories' element={<Stories />} />
+					<Route path='/StoryReader' element={<StoryReader />} />
+					<Route path='/HowToReadACoin' element={<HowToReadACoin />} />
+					<Route path='/About' element={<About />} />
+					<Route path='/Evidence/ExploreTheEvidence' element={<ExploreTheEvidence />} />
+					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
+					<Route path='/Download' element={<Download />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
