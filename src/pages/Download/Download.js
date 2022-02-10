@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import ReactMarkdown from 'react-markdown';
 import {
 	Container,
 	Row,
@@ -25,82 +24,83 @@ function Download(){
             axios.get(process.env.REACT_APP_strapiURL + '/download')
                 .then((res)=>{
                     let data = res.data
-                    console.log(data);
+                    //console.log(data);
                     set_page(
-                        <div id='downloadPage' className='d-flex align-items-center'>
-                            <Container>
-                                <Row container='justify-content-sm-center my-5'>
-                                    <Col>
-                                        <p className='BlueText text-center' id='DownloadTitle'>
-                                            {data.title}
-                                        </p>
+                            <div>
+                            {/* left */}
+                                <Row className='d-flex justify-content-between align-items-center'>
+                                    <Col xs={2} className='text-center'>
+                                        <i
+                                            className='demo-icon icon-coin-scale downLoadIcon'
+                                        >
+                                        &#xe810;</i>
+                                    </Col>
+                                    <Col xs={9}>
+                                        <Row className='OrangeText' id='downLoad_Sub_Title'>
+                                            {data.sub_title}
+                                        </Row>
+                                        <Row className='GrayText' id='downLoad_Sub_Text'>
+                                            {data.sub_text}
+                                        </Row>
                                     </Col>
                                 </Row>
-                                <Row className='d-flex justify-content-between'>
-                                    {/* left */}
-                                    <Col xs={8}>
-                                        <Row className='d-flex justify-content-between align-items-center'>
-                                            <Col xs={2} className='text-center'>
-                                                <i
-                                                    className='demo-icon icon-coin-scale downLoadIcon'
-                                                >
-                                                &#xe832;</i>
-                                            </Col>
-                                            <Col xs={9}>
-                                                <Row className='OrangeText' id='downLoad_Sub_Title'>
-                                                    {data.sub_title}
-                                                </Row>
-                                                <Row className='GrayText' id='downLoad_Sub_Text'>
-                                                    {data.sub_text}
-                                                </Row>
-                                            </Col>
-                                        </Row>
-                                        <Row className='my-5'>
-                                            <img
-                                                alt={data.image.alternativeText === undefined ? 'img' : data.image.alternativeText}
-                                                className='FrameImage'
-                                                src={`${process.env.REACT_APP_strapiURL}${data.image.url}`} 
-                                            />
-                                        </Row>
-                                    </Col>
-                                    {/* Right */}
-                                    <Col xs={3} className='d-flex flex-column align-items-center'>
-                                        <Row className='text-center'>
-                                            {data.email_text}
-                                        </Row>
-                                        <Row className='LightBlueBackground mt-5 d-flex justify-content-center'>
-                                            <form className='mx-5 my-3'>
-                                                <div className='form-group mt-4'>
-                                                    <label className='GrayText' for='userEmail'>Full Name:</label>
-                                                    <br/>
-                                                    <input type={'text'} value={''} id={'userName'} className='form-control'/>
-                                                </div>
-                                                <div className='form-group mt-4'>
-                                                    <label className='GrayText' for='userEmail'>Email:</label>
-                                                    <br/>
-                                                    <input type={'email'} value={''} id={'userEmail'} className='form-control'/>
-
-                                                </div>
-                                                
-                                                <div className='text-center mt-5'>
-                                                    <button type='submit' className=''>
-                                                        Submit
-                                                    </button>
-                                                </div>
-
-                                            </form>
-                                        </Row>
-
-                                    </Col>
+                                <Row className='my-5'>
+                                    <img
+                                        alt={data.image.alternativeText === undefined ? 'img' : data.image.alternativeText}
+                                        className='FrameImage'
+                                        src={`${process.env.REACT_APP_strapiURL}${data.image.url}`} 
+                                    />
                                 </Row>
-                            </Container>
-                        </div>
+                            </div>
                     );
 
                     set_isLoading(false);
                 });
         }
     });
+    const [fullName, setFullName] = useState('')
+    const [userEmail, setEmail] = useState('')
+
+    //console.log(fullName, userEmail)
+    let formSub = undefined
+    formSub = (
+        <Container className='d-flex flex-column align-items-center'>
+            <Row className='text-center'>
+                <p>
+                    Please provide your your name and email address in the form below to start the download.
+                </p>
+            </Row>
+            <Row className='LightBlueBackground my-5 d-flex justify-content-center'>
+                <form className='mx-5 my-3 px-5'>
+                    <div className='form-group mt-4'>
+                        <label className='GrayText' htmlFor='fullName'>Full Name:</label>
+                        <br/>
+                        <input 
+                            id = "fullName"
+                            type='text'
+                            onChange={(e)=>setFullName(e.target.value)}
+                            className='form-control'/>
+                    </div>
+                    <div className='form-group mt-4'>
+                        <label className='GrayText' htmlFor='userEmail'>Email:</label>
+                        <br/>
+                        <input 
+                            type='email'
+                            id='userEmail'
+                            onChange={(e)=>setEmail(e.target.value)}
+                            className='form-control'/>
+                    </div>
+                    
+                    <div className='text-center mt-5'>
+                        <button type='submit' className=''>
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+            </Row>
+        </Container>
+    )
     
     if (isLoading) {
         return(
@@ -115,7 +115,26 @@ function Download(){
     return(
         <>
             {Navbar()}
-            {page}
+            <div id='downloadPage' className='d-flex align-items-center'>
+                <Container className='justify-content-sm-center my-5'>
+                    <Row>
+                        <p className='BlueText text-center' id='DownloadTitle'>
+                            Download the Data 
+                        </p>
+                    </Row>
+                    <Row className='d-flex justify-content-between d-flex align-items-center'>
+                        <Col xs={8}>
+                            {page}
+                        </Col>
+                        <Col xs={3}>
+                            {formSub}
+                        </Col>
+                    </Row>
+
+                </Container>
+
+            </div>
+
 			{Footer()}
         </>
     );
