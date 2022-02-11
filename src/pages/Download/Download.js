@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { useFormik } from "formik"
+import * as Yup from "yup"
 import {
 	Container,
 	Row,
@@ -58,10 +60,29 @@ function Download(){
                 });
         }
     });
-    const [fullName, setFullName] = useState('')
-    const [userEmail, setEmail] = useState('')
 
-    //console.log(fullName, userEmail)
+    const formik = useFormik({
+        initialValues:{
+            fullName:"",
+            userEmail:""
+        },
+        validationSchema:Yup.object({
+            fullName: Yup.string()
+                .min(7, '* Names must have at least 7 characters')
+                .max(30, "* Names can't be longer than 100 characters")
+                .required('* Full name is required'),
+            userEmail:Yup.string()
+                .email('* Must be a valid email address')
+                .max(100, '* Email must be less than 100 characters')
+                .required('* Email is required'),
+        }),
+        onSubmit:(values)=>{
+            console.log(values)
+        }
+    })
+
+    //console.log(formik.touched)
+
     let formSub = undefined
     formSub = (
         <Container className='d-flex flex-column align-items-center'>
@@ -71,15 +92,19 @@ function Download(){
                 </p>
             </Row>
             <Row className='LightBlueBackground my-5 d-flex justify-content-center'>
-                <form className='mx-5 my-3 px-5'>
+                <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit} >
                     <div className='form-group mt-4'>
                         <label className='GrayText' htmlFor='fullName'>Full Name:</label>
                         <br/>
                         <input 
                             id = "fullName"
                             type='text'
-                            onChange={(e)=>setFullName(e.target.value)}
-                            className='form-control'/>
+                            onChange={formik.handleChange}
+                            onBlur = {formik.handleBlur}
+                            value = {formik.values.fullName}
+                            className='form-control'
+                        />
+                        {formik.touched.fullName && formik.errors.fullName ? <p>{formik.errors.fullName}</p>: null}
                     </div>
                     <div className='form-group mt-4'>
                         <label className='GrayText' htmlFor='userEmail'>Email:</label>
@@ -87,8 +112,12 @@ function Download(){
                         <input 
                             type='email'
                             id='userEmail'
-                            onChange={(e)=>setEmail(e.target.value)}
-                            className='form-control'/>
+                            onChange={formik.handleChange}
+                            onBlur = {formik.handleBlur}
+                            value = {formik.values.userEmail}
+                            className='form-control'
+                        />
+                        {formik.touched.userEmail && formik.errors.userEmail ? <p>{formik.errors.userEmail}</p>: null}
                     </div>
                     
                     <div className='text-center mt-5'>
@@ -134,7 +163,6 @@ function Download(){
                 </Container>
 
             </div>
-
 			{Footer()}
         </>
     );
