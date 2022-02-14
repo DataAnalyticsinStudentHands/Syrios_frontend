@@ -64,24 +64,28 @@ function Download(){
     const formik = useFormik({
         initialValues:{
             fullName:"",
-            userEmail:""
+            email:""
         },
         validationSchema:Yup.object({
             fullName: Yup.string()
                 .min(7, '* Names must have at least 7 characters')
                 .max(30, "* Names can't be longer than 100 characters")
                 .required('* Full name is required'),
-            userEmail:Yup.string()
+            email:Yup.string()
                 .email('* Must be a valid email address')
                 .max(100, '* Email must be less than 100 characters')
                 .required('* Email is required'),
         }),
-        onSubmit:(values)=>{
+        onSubmit:(values,{resetForm})=>{
             console.log(values)
+            let apiURL = `http://localhost:1337/download/send_email`
+            axios.post(apiURL, values).then( 
+                resetForm()
+            ).catch(err =>{
+                console.log(err)
+            })
         }
     })
-
-    //console.log(formik.touched)
 
     let formSub = undefined
     formSub = (
@@ -107,17 +111,17 @@ function Download(){
                         {formik.touched.fullName && formik.errors.fullName ? <p>{formik.errors.fullName}</p>: null}
                     </div>
                     <div className='form-group mt-4'>
-                        <label className='GrayText' htmlFor='userEmail'>Email:</label>
+                        <label className='GrayText' htmlFor='email'>Email:</label>
                         <br/>
                         <input 
                             type='email'
-                            id='userEmail'
+                            id='email'
                             onChange={formik.handleChange}
                             onBlur = {formik.handleBlur}
-                            value = {formik.values.userEmail}
+                            value = {formik.values.email}
                             className='form-control'
                         />
-                        {formik.touched.userEmail && formik.errors.userEmail ? <p>{formik.errors.userEmail}</p>: null}
+                        {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>: null}
                     </div>
                     
                     <div className='text-center mt-5'>
