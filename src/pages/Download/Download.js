@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { useFormik } from "formik"
+import {CSVLink} from "react-csv"
 import * as Yup from "yup"
 import {
 	Container,
@@ -15,12 +16,12 @@ import Footer from 'src/components/Footer';
 import './Download.css';
 
 
-
-
 function Download(){
     const [page, set_page] = useState(undefined);
     const [isLoading, set_isLoading] = useState(true);
-
+    const [coinData, setCoinData] = useState([])
+    const csvLink = useRef()
+    
     useEffect(()=>{
         if(isLoading){
             axios.get(process.env.REACT_APP_strapiURL + '/download')
@@ -76,16 +77,24 @@ function Download(){
                 .max(100, '* Email must be less than 100 characters')
                 .required('* Email is required'),
         }),
-        onSubmit:(values,{resetForm})=>{
+        onSubmit: (values,{resetForm})=>{
             console.log(values)
             let apiURL = `http://localhost:1337/download/send_email`
-            axios.post(apiURL, values).then( 
-                resetForm()
-            ).catch(err =>{
-                console.log(err)
-            })
+            axios.post(apiURL, values)
+                .then( 
+                    resetForm()
+                ).catch(err =>{
+                    console.log(err)
+                })
         }
     })
+
+    const getCoinData = async() =>{
+        await axios.get(process.env.REACT_APP_strapiURL + '/coins')
+            .then((res)=>setCoinData(res.data))
+            .catch((err)=> console.log(err))
+        csvLink.current.link.click() 
+    }
 
     let formSub = undefined
     formSub = (
@@ -125,9 +134,16 @@ function Download(){
                     </div>
                     
                     <div className='text-center mt-5'>
-                        <button type='submit' className=''>
+                        <button type='submit' onClick={getCoinData}>
                             Submit
                         </button>
+                        <CSVLink
+                            data={coinData}
+                            filename='coins.csv'
+                            className='hidden'
+                            ref={csvLink}
+                            target='_blank'
+                        />
                     </div>
 
                 </form>

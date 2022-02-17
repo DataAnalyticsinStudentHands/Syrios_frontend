@@ -437,7 +437,7 @@ const Frame5 = (zone, index, jsonObject) =>{
 const Frame6 = (zone, index, jsonObject) =>{
 
   let sub_text=undefined
-  if(!IsEmptyOrWhiteSpace(sub_text)){
+  if(!IsEmptyOrWhiteSpace(zone.sub_text)){
     sub_text = (
       <ReactMarkdown className='BlueText text-center SubText' >
         {zone.sub_text}
@@ -445,7 +445,7 @@ const Frame6 = (zone, index, jsonObject) =>{
     )
   }
   let sub_author=undefined
-  if(!IsEmptyOrWhiteSpace(sub_author)){
+  if(!IsEmptyOrWhiteSpace(zone.sub_author)){
     sub_author = (
       <ReactMarkdown className='BlueText text-center SubText' >
         {zone.sub_author}
