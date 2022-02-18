@@ -128,6 +128,14 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 // Title component for all stories
 const Title = (zone, index, jsonObject) => {
   //console.log(zone.background);
+  let subtitle = undefined
+  if (!IsEmptyOrWhiteSpace(zone.subtitle)){
+    subtitle = (
+      <ReactMarkdown>
+        {zone.subtitle}
+      </ReactMarkdown>
+    )
+  }
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='d-flex justify-content-center align-items-center'>
@@ -143,9 +151,7 @@ const Title = (zone, index, jsonObject) => {
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
         <p id='SubTitleText' className='OrangeText text-center'>
-          <ReactMarkdown>
-            {zone.subtitle}
-          </ReactMarkdown>
+            {subtitle}
         </p>
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>

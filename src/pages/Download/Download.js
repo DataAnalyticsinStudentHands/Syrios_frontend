@@ -86,15 +86,13 @@ function Download(){
                 ).catch(err =>{
                     console.log(err)
                 })
+
+            axios.get(process.env.REACT_APP_strapiURL + '/coins')
+                .then((res)=>setCoinData(res.data))
+                .catch((err)=> console.log(err))
+            csvLink.current.link.click()
         }
     })
-
-    const getCoinData = async() =>{
-        await axios.get(process.env.REACT_APP_strapiURL + '/coins')
-            .then((res)=>setCoinData(res.data))
-            .catch((err)=> console.log(err))
-        csvLink.current.link.click() 
-    }
 
     let formSub = undefined
     formSub = (
@@ -105,7 +103,7 @@ function Download(){
                 </p>
             </Row>
             <Row className='LightBlueBackground my-5 d-flex justify-content-center'>
-                <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit} >
+                <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                     <div className='form-group mt-4'>
                         <label className='GrayText' htmlFor='fullName'>Full Name:</label>
                         <br/>
@@ -134,7 +132,7 @@ function Download(){
                     </div>
                     
                     <div className='text-center mt-5'>
-                        <button type='submit' onClick={getCoinData}>
+                        <button type='submit' disabled={!formik.isValid}>
                             Submit
                         </button>
                         <CSVLink
@@ -145,7 +143,6 @@ function Download(){
                             target='_blank'
                         />
                     </div>
-
                 </form>
             </Row>
         </Container>
