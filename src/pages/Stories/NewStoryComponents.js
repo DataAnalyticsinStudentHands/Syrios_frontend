@@ -15,16 +15,32 @@ function IsEmptyOrWhiteSpace(str) {
 }
 
 // These are more general exports. All functions may use them
-const subcomponent_image = (image, imgId) => {
-  let caption = undefined; 
+const subcomponent_image = (image) => {
+
+
   // If light_blue_background is true, light_blue_caption_background should be false.
   // don't want to double the background causing opacity to double.
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
+  
+  let imageSizes = {
+    "very_small": "50px",
+    "small": "130px",
+    "medium": "210px",
+    "big": "290px",
+    "very_big": "370px",
+    "gigantic": "450px"
+  };
+  const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
+
+  let caption = undefined; 
   if (!IsEmptyOrWhiteSpace(image.caption)) {
     caption = (
       <>
         <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`}>
-          <ReactMarkdown id = {imgId} className='FrameImage GrayText CaptionText text-center' style={{padding: '0px', paddingTop: '20px'}}>
+          <ReactMarkdown 
+            className='FrameImage GrayText CaptionText text-center' 
+            style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
+          >
             {image.caption}
           </ReactMarkdown>
         </Container>
@@ -37,10 +53,10 @@ const subcomponent_image = (image, imgId) => {
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           <img
+            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}            
             alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
             className='FrameImage'
-            id = {imgId}
-            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} 
+            width={imageSizes[image.size]} 
           />
         </Container>
         {caption}
@@ -127,12 +143,29 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
 // Title component for all stories
 const Title = (zone, index, jsonObject) => {
-  //console.log(zone.background);
-  let subtitle = undefined
-  if (!IsEmptyOrWhiteSpace(zone.subtitle)){
-    subtitle = (
-      <ReactMarkdown>
-        {zone.subtitle}
+
+  let mainText = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    mainText = (
+      <ReactMarkdown id='TitleText' className='BlueText text-center'>
+        {zone.main_text}
+      </ReactMarkdown>
+    )
+  }
+
+  let subText = undefined
+  if (!IsEmptyOrWhiteSpace(zone.sub_text)){
+    subText = (
+      <ReactMarkdown id='SubTitleText' className='OrangeText text-center'>
+        {zone.sub_text}
+      </ReactMarkdown>
+    )
+  }
+  let capText = undefined
+  if (!IsEmptyOrWhiteSpace(zone.cap_text)){
+    capText = (
+      <ReactMarkdown id='CaptionTitleText' className='GrayText text-center'>
+        {zone.cap_text}
       </ReactMarkdown>
     )
   }
@@ -142,22 +175,17 @@ const Title = (zone, index, jsonObject) => {
         <img
           id='TitleImage'
           src={`${process.env.REACT_APP_strapiURL}${zone.image.url}`}
-          alt={zone.image.alternativeText !== undefined ? zone.image.alternativeText : 'title image'} />
+          alt={zone.image.alternativeText !== undefined ? zone.image.alternativeText : 'title image'} 
+        />
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        <p id='TitleText' className='BlueText text-center'>
-          {zone.title}
-        </p>
+        {mainText}
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        <p id='SubTitleText' className='OrangeText text-center'>
-            {subtitle}
-        </p>
+        {subText}
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-          <ReactMarkdown id='CaptionTitleText' className='GrayText text-center'>
-            {zone.caption}
-          </ReactMarkdown>
+        {capText}
       </Container>
     </div>
   );
@@ -169,7 +197,7 @@ const End_Frame = (zone, index, jsonObject) => {
       <Container className='d-flex justify-content-center align-items-center'>
         <div id='EndFrameText'>
           <ReactMarkdown className='GrayText text-center SubText'>
-            {zone.text}
+            {zone.sub_text}
           </ReactMarkdown>
         </div>
       </Container>
@@ -283,16 +311,16 @@ const Frame1 = (zone, index, jsonObject) => {
 
 
 const Frame2 = (zone, index, jsonObject) => {
-  let subText = undefined;
 
-  if (zone.sub_text !== undefined) {
-    subText = (
+  let sub_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.sub_text)){
+    sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='GrayText SubText text-center'>
           {zone.sub_text}
         </ReactMarkdown>
       </Container>
-    );
+    )
   }
 
   return (
@@ -306,15 +334,25 @@ const Frame2 = (zone, index, jsonObject) => {
           {zone.main_text}
         </ReactMarkdown>
       </Container>
-      {subText}
-      {subcomponent_image(zone.image, 'Frame2Image')}
+      {sub_text}
+      {subcomponent_image(zone.image)}
     </div>
   );
 }
 
 const Frame3 = (zone, index, jsonObject) => {
+  
+  let main_text = undefined;
+  if (zone.main_text !== undefined){
+    main_text=(
+      <Container style={{marginTop: '-110px'}}>
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+      </Container>
+    )
+  }
   let subText = undefined;
-  //console.log(index);
   if (zone.sub_text !== undefined) {
     subText = (
       <Container className='d-flex justify-content-center align-items-center'>
@@ -327,11 +365,7 @@ const Frame3 = (zone, index, jsonObject) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       {subcomponent_image_with_dynamic_sizing(zone.images)}
-      <Container style={{marginTop: '-110px'}}>
-        <ReactMarkdown className='OrangeText MainText text-center'>
-          {zone.main_text}
-        </ReactMarkdown>
-      </Container>
+      {main_text}
       {subText}
     </div>
   );
@@ -339,12 +373,12 @@ const Frame3 = (zone, index, jsonObject) => {
 
 const Frame4 = (zone, index, jsonObject) =>{
   // console.log(zone)
-  let title= undefined;
-  if(!IsEmptyOrWhiteSpace(zone.title)){
-    title = (
+  let main_text= undefined;
+  if(!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text = (
       <Row className='d-flex justify-content-center align-items-center'>
         <ReactMarkdown className='OrangeText MainText text-center'>
-          {zone.title}
+          {zone.main_text}
         </ReactMarkdown>
       </Row>
     )
@@ -352,37 +386,37 @@ const Frame4 = (zone, index, jsonObject) =>{
 
   let subQuote = undefined;
 
-  if (!IsEmptyOrWhiteSpace(zone.quote1) && !IsEmptyOrWhiteSpace(zone.quote2)) {
+  if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right)) {
     subQuote = (
       <Row className='justify-content-around'>
           <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center my-2'style={{padding: '20px', paddingTop: '20px' }} >
               <ReactMarkdown className='BlueText text-center SubText' >
-                {zone.quote1}
+                {zone.sub_text_left}
               </ReactMarkdown>
               <ReactMarkdown className='GrayText text-center CaptionText'>
-                {zone.author1}
+                {zone.cap_text_left}
               </ReactMarkdown>
           </Col>
           <Col md={{span:5, offset:2}} className='LightBlueBackground justify-content-center align-self-center my-5' style={{padding: '20px', paddingTop: '20px'}}>
               <ReactMarkdown className='BlueText text-center SubText'>
-                {zone.quote2}
+                {zone.sub_text_right}
               </ReactMarkdown>
               <ReactMarkdown className='GrayText text-center CaptionText'>
-                {zone.author2}
+                {zone.cap_text_right}
               </ReactMarkdown>   
           </Col>
       </Row>
     );
   }
-  if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.quote1)){
+  if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_left)){
     subQuote = (
       <Row className='justify-content-around' >
         <Col md={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
             <ReactMarkdown className='BlueText text-center SubText' >
-              {zone.quote1}
+              {zone.sub_text_left}
             </ReactMarkdown>
             <ReactMarkdown className='GrayText text-center CaptionText'>
-              {zone.author1}
+              {zone.cap_text_left}
             </ReactMarkdown>
         </Col>
     </Row>
@@ -392,7 +426,7 @@ const Frame4 = (zone, index, jsonObject) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center align-items-center' style={{marginTop:'-20%'}}>
-            {title}
+            {main_text}
             {subQuote}
         </Container>
     </div>
@@ -401,30 +435,33 @@ const Frame4 = (zone, index, jsonObject) =>{
 
 const Frame5 = (zone, index, jsonObject) =>{
   //console.log(zone,'frame 5');
-  let title = undefined
-  if (!IsEmptyOrWhiteSpace(zone.title)){
-    title = (
-      <ReactMarkdown className='OrangeText MainText text-center'>
-        {zone.title}
-      </ReactMarkdown>
+  let main_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text = (
+      <Container>
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+      </Container>
+
     )
   }
   //console.log(zone.text_middle);
-  let text_middle = undefined
-  if(zone.text_middle.light_blue_caption_background){
-    text_middle = (
-      <Col sm={6} className='align-self-center text-center SubText'>
-        <ReactMarkdown className='LightBlueBackground SubText GrayText px-5'>
-          {zone.text_middle.text}
+  let sub_text_middle = undefined
+  if(zone.sub_text_middle.light_blue_caption_background){
+    sub_text_middle = (
+      <Col sm={6} className='align-self-center text-center SubText px-0 py-3'>
+        <ReactMarkdown className='LightBlueBackground SubText GrayText'>
+          {zone.sub_text_middle.sub_text}
         </ReactMarkdown>
       </Col>
     );
   }
   else{
-    text_middle = (
+    sub_text_middle = (
       <Col sm={3} className='align-self-center text-center SubText'>
         <ReactMarkdown className=' SubText mt-3 GrayText'>
-          {zone.text_middle.text}
+          {zone.sub_text_middle.sub_text}
         </ReactMarkdown>
       </Col>
     );
@@ -432,17 +469,15 @@ const Frame5 = (zone, index, jsonObject) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        <Container>
-          {title}
-        </Container>
+          {main_text}
         <Container className='d-flex justify-content-around align-self-center'>
           <Row className='d-flex justify-content-between align-self-center'>
-                <Col sm={3}>
-                    {subcomponent_image(zone.image_left, 'Frame5Image')}
+                <Col sm={3} style={{padding: '20px', paddingRight: '0px'}}>
+                    {subcomponent_image(zone.image_left)}
                 </Col>
-                {text_middle}
-                <Col sm={3}>
-                    {subcomponent_image(zone.image_right, 'Frame5Image')}
+                {sub_text_middle}
+                <Col sm={3} style={{padding: '20px', paddingLeft: '0px'}}>
+                    {subcomponent_image(zone.image_right)}
                 </Col>
           </Row>
         </Container>
@@ -452,38 +487,45 @@ const Frame5 = (zone, index, jsonObject) =>{
 
 const Frame6 = (zone, index, jsonObject) =>{
 
-  let sub_text=undefined
-  if(!IsEmptyOrWhiteSpace(zone.sub_text)){
-    sub_text = (
+  let main_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text = (
+      <Container className='d-flex justify-content-around align-self-center'>
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+      </Container>
+
+    )
+  }
+  let sub_text_right=undefined
+  if(!IsEmptyOrWhiteSpace(zone.sub_text_right)){
+    sub_text_right = (
       <ReactMarkdown className='BlueText text-center SubText' >
-        {zone.sub_text}
+        {zone.sub_text_right}
       </ReactMarkdown>
     )
   }
-  let sub_author=undefined
-  if(!IsEmptyOrWhiteSpace(zone.sub_author)){
-    sub_author = (
-      <ReactMarkdown className='BlueText text-center SubText' >
-        {zone.sub_author}
+  let cap_text_right=undefined
+  if(!IsEmptyOrWhiteSpace(zone.cap_text_right)){
+    cap_text_right = (
+      <ReactMarkdown className='BlueText text-center CaptionText' >
+        {zone.cap_text_right}
       </ReactMarkdown>
     )
   }
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined: `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        <Container className='d-flex justify-content-around align-self-center'>
-            <ReactMarkdown className='OrangeText MainText text-center'>
-              {zone.title}
-            </ReactMarkdown>
-        </Container>
+        {main_text}
         <Container>
             <Row className='justify-content-around'>
                   <Col sm={6}>
-                      {subcomponent_image(zone.image,'Frame6Image')}
+                      {subcomponent_image(zone.image_left)}
                   </Col>
                   <Col sm={6} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                      {sub_text}
-                      {sub_author}
+                      {sub_text_right}
+                      {cap_text_right}
                   </Col>
                 </Row>
         </Container>
@@ -494,52 +536,52 @@ const Frame6 = (zone, index, jsonObject) =>{
 const Frame7 = (zone, index, jsonObject) =>{
   //console.log(zone, 'frame7');
 
-  let title = undefined
-  if (!IsEmptyOrWhiteSpace(zone.title)){
-    title =(
+  let main_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text =(
       <Container className='d-flex justify-content-center align-self-center'>
           <ReactMarkdown className='OrangeText MainText text-center'>
-            {zone.title}
+            {zone.main_text}
           </ReactMarkdown>
     </Container>
     )
   }
-  let title_caption = undefined
-  if (!IsEmptyOrWhiteSpace(zone.title_caption)){
-    title_caption =(
+  let main_caption_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_caption_text)){
+    main_caption_text =(
       <Container className='d-flex justify-content-center align-self-center'>
           <ReactMarkdown className='GrayText CaptionText text-center'>
-            {zone.title_caption}
+            {zone.main_caption_text}
           </ReactMarkdown>
     </Container>
     )
   }
-  let sub_text_bottom = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_bottom)){
-    sub_text_bottom =(
+  let cap_text_bottom = undefined
+  if (!IsEmptyOrWhiteSpace(zone.cap_text_bottom)){
+    cap_text_bottom =(
       <Container className='d-flex justify-content-center align-self-center'>
       <Row className='my-3 text-center GrayText CaptionText' id={'Frame7textBotten'}>
-          {zone.sub_text_bottom}
+          {zone.cap_text_bottom}
       </Row>
     </Container>
     )
   }
-  let sub_text_right_top = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_bottom)){
-    sub_text_right_top =(
+  let sub_text_right = undefined
+  if (!IsEmptyOrWhiteSpace(zone.sub_text_right)){
+    sub_text_right =(
       <Row className='GrayText align-items-start SubText'>
         <ReactMarkdown>
-          {zone.sub_text_right_top}
+          {zone.sub_text_right}
         </ReactMarkdown>
       </Row>
     )
   }
-  let sub_text_right_bottom = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_bottom)){
-    sub_text_right_bottom =(
+  let cap_text_right = undefined
+  if (!IsEmptyOrWhiteSpace(zone.cap_text_right)){
+    cap_text_right =(
       <Row className='LightYellowBackground p-3 align-items-end GrayText CaptionText'>
         <ReactMarkdown>
-          {zone.sub_text_right_bottom}
+          {zone.cap_text_right}
         </ReactMarkdown>
       </Row>
     )
@@ -547,73 +589,100 @@ const Frame7 = (zone, index, jsonObject) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        {title}
-        {title_caption}
+        {main_text}
+        {main_caption_text}
         <Container className='d-flex justify-content-center align-self-center py-5'>
             <Col xs={8}>
-              {subcomponent_image(zone.image,'Frame7Image')}
+              {subcomponent_image(zone.image)}
             </Col>
             <Col xs={4} className='justify-content-around d-flex flex-column' id={''}>
-              {sub_text_right_top}
-              {sub_text_right_bottom}
+              {sub_text_right}
+              {cap_text_right}
             </Col>
         </Container>
-        {sub_text_bottom}
+        {cap_text_bottom}
     </div>
   )
 }
 const Frame8 = (zone, index, jsonObject) =>{
+  
+  let main_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text = (
+        <ReactMarkdown>
+          {zone.main_text}
+        </ReactMarkdown>
+    )
+  }
+  let sub_text_right=undefined
+  if(!IsEmptyOrWhiteSpace(zone.sub_text_right)){
+    sub_text_right = (
+      <ReactMarkdown className='BlueText text-center SubText' >
+        {zone.sub_text_right}
+      </ReactMarkdown>
+    )
+  }
+  let cap_text_right=undefined
+  if(!IsEmptyOrWhiteSpace(zone.cap_text_right)){
+    cap_text_right = (
+      <ReactMarkdown className='BlueText text-center CaptionText' >
+        {zone.cap_text_right}
+      </ReactMarkdown>
+    )
+  }
+
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center'>
           <Row className='text-center'>
-            {subcomponent_image(zone.image_title,'Frame8ImageTitle')}
+            {subcomponent_image(zone.image_top)}
           </Row>
           <Row className='justify-content-between'>
             <Col md={4}>
-              {subcomponent_image(zone.image,'Frame8Image')}
+              {subcomponent_image(zone.image_left)}
             </Col>
             <Col md={8} className='justify-content-around d-flex flex-column'>
               <Row className='OrangeText MainText text-center align-self-center my-3'>
-                {zone.title}
+                {main_text}
               </Row>
               <Row>
                 <Col className='LightBlueBackground justify-content-around align-self-end' style={{padding: '20px', paddingTop: '20px'}}>
-                    <ReactMarkdown className='BlueText text-center SubText' >
-                      {zone.quote}
-                    </ReactMarkdown>
-                    <ReactMarkdown className='GrayText text-center CaptionText'>
-                      {zone.sub_quote}
-                    </ReactMarkdown>
+                  {sub_text_right}
+                  {cap_text_right}
                 </Col>
               </Row>
             </Col>
           </Row>
         </Container>
-        
-
     </div>
   )
 }
 
 const Frame9 = (zone, index, jsonObject) =>{
+  
+  let main_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text = (
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+    )
+  }
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center '>
-          <Row className='OrangeText MainText text-center d-flex justify-content-center'>
-            <Col className='py-3'>
-              {zone.title}
-            </Col>
+          <Row className='d-flex justify-content-center py-3'>
+            {main_text}
           </Row>
           <Row className=' justify-content-around '>
             <Col xs={9} sm={4} >
-              {subcomponent_image(zone.image_left,'Frame9Image')}
+              {subcomponent_image(zone.image_left)}
             </Col>
             <Col xs={9} sm={4} className='d-flex align-items-center'>
-              {subcomponent_image(zone.image_mid,'Frame9ImageMiddle')}
+              {subcomponent_image(zone.image_middle)}
             </Col>
             <Col xs={9} sm={4}>
-              {subcomponent_image(zone.image_right,'Frame9Image')}
+              {subcomponent_image(zone.image_right)}
             </Col>
           </Row>
 
@@ -851,10 +920,10 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           {/* Text_center */}
           <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}}>
             <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextFront'>
-              {zone.text_front}
+              {zone.sub_text_middle_front}
             </ReactMarkdown>
             <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextBack'>
-              {zone.text_back}
+              {zone.sub_text_middle_back}
             </ReactMarkdown>
           </Col>
 
@@ -872,7 +941,6 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
                 alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
                 className=' InteractiveFrame1ImageBackRight'
                 id='InteractiveFrame1'
-
               />
             </div>
           </Col>
@@ -913,6 +981,27 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
 
 const InteractiveFrame2 = (zone, index, jsonObject) =>{
 
+  let sub_text_middle_top = undefined
+  if (!IsEmptyOrWhiteSpace(zone.sub_text_middle_top)){
+    sub_text_middle_top = (
+      <Row>
+        <ReactMarkdown className='GrayText SubText text-center align-items-start'>
+          {zone.sub_text_middle_top}
+        </ReactMarkdown>
+      </Row>
+    )
+  }
+  let sub_text_middle_bottom = undefined
+  if (!IsEmptyOrWhiteSpace(zone.sub_text_middle_bottom)){
+    sub_text_middle_bottom = (
+      <Row>
+        <ReactMarkdown className='GrayText SubText text-center align-items-start'>
+          {zone.sub_text_middle_bottom}
+        </ReactMarkdown>
+      </Row>
+    )
+  }
+
   const FlipCoin = (dom) =>{
     while (dom.className !== 'flip-box-inner') {
       dom = dom.nextSibling;
@@ -925,7 +1014,6 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
     }
   }
 
-  
   return(
     <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container>
@@ -935,39 +1023,17 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
-                    <img
-                      src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                      alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                      id='CoinImageFront'
-                      className='mt-3'
-                    />
-                    <ReactMarkdown className='text-center SubText GrayText'>
-                      {zone.text_left_front}
-                    </ReactMarkdown>
+                  {subcomponent_image(zone.image_left_front)}
                 </div>
                 <div className='flip-box-back'>
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
-                    id='CoinImageBack'
-                    className='mt-3'
-                  />
-                  <ReactMarkdown className='text-center SubText GrayText'>
-                    {zone.text_left_back}
-                  </ReactMarkdown>
+                  {subcomponent_image(zone.image_left_back)}
                 </div>
               </div>
             </div>
           </Col>
           {/* text in the middle */}
           <Col xs={4} className='justify-content-around d-flex flex-column'>
-            
-              <Row className='GrayText SubText text-center align-items-start'>
-                <Col>
-                {zone.text_mid_top}
-                </Col>
-              </Row>
-
+              {sub_text_middle_top}
               <Row className='text-center align-items-center' >
                 <Col>
                   <Row>
@@ -988,37 +1054,17 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   </Row>
                 </Col>
               </Row>
-              <Row className='GrayText SubText text-center align-items-end'>
-                <Col>
-                  {zone.text_mid_bot}
-                </Col>
-              </Row>
+              {sub_text_middle_bottom}
           </Col>
           {/* image right */}
           <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
                 <div className='flip-box-front'>
-                  <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                  id='CoinImageFront'
-                  className='mt-3'
-                  />
-                  <ReactMarkdown className='text-center SubText GrayText'>
-                    {zone.text_right_front}
-                  </ReactMarkdown>
+                  {subcomponent_image(zone.image_right_front)}
                 </div>
                 <div className='flip-box-back'>
-                  <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                  id='CoinImageBack'
-                  className='mt-3'
-                  />
-                  <ReactMarkdown className='text-center SubText GrayText'>
-                    {zone.text_right_back}
-                  </ReactMarkdown>
+                  {subcomponent_image(zone.image_right_back)}
                 </div>
               </div>
             </div>
@@ -1223,15 +1269,20 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
 
   }
 
+  let main_text = undefined
+  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+    main_text = (
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+    )
+  }
+
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container>
         <Row>
-          <Col>
-            <ReactMarkdown className='OrangeText MainText text-center'>
-              {zone.title}
-            </ReactMarkdown>
-          </Col>
+          {main_text}
         </Row>
         <Row className='d-flex justify-content-around'>
           {/* image_lieft */}
@@ -1241,46 +1292,39 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                    style={{display:'block', opacity:1, transition:'0.3s'}}
-                    id='InteractiveFrame3'
+                    style={{display:'block', opacity:1, transition:'0.3s',width:'200px'}}
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_back.alternativeText}
-                    style={{display:'none', opacity:0, transition:'0.3s'}}
-                    id='InteractiveFrame3'
+                    style={{display:'none', opacity:0, transition:'0.3s', width:'200px'}}
                   />
                 </div>
               </Row>
               <Row className='p-3'>
                 <div className='text-center CaptionText GrayText'>
                   <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
-                    {zone.text_left_front}
+                    {zone.cap_text_left_front}
                   </ReactMarkdown>
                   <ReactMarkdown style={{display:'none', opacity:0, transition:'0.3s'}}>
-                    {zone.text_left_back}
+                    {zone.cap_text_left_back}
                   </ReactMarkdown>
                 </div>
               </Row>
           </Col>
           {/* text in the middle */}
           <Col xs={5} className='justify-content-between d-flex flex-column'>
-
-              <Row className='d-flex justify-content-center'>
-
-              </Row>
-
+              <Row className='d-flex justify-content-center'></Row>
               <Row className='d-flex justify-content-center' >
                 <Col xs={{span:9}} className='text-center GrayText SubText'>
-                  <ReactMarkdown className='InteractiveFrame1TextFront'>
-                    {zone.text_mid_front}
+                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
+                    {zone.cap_text_mid_front}
                   </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack'>
-                    {zone.text_mid_back}
+                  <ReactMarkdown style={{display:'none', opacity:0, transition:'0.3s'}}>
+                    {zone.cap_text_mid_back}
                   </ReactMarkdown>
                 </Col>
               </Row>
-
               <Row className='d-flex justify-content-center'>
                 <Col className='d-flex justify-content-center'>
                     <button	
@@ -1317,25 +1361,22 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                    style={{display:'block', opacity:1, transition:'0.3s'}}
-                    id='InteractiveFrame3'
+                    style={{display:'block', opacity:1, transition:'0.3s',width:'200px'}}
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
                     alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                    style={{display:'none', opacity:0, transition:'0.3s'}}
-                    id='InteractiveFrame3'
-
+                    style={{display:'none', opacity:0, transition:'0.3s',width:'200px'}}
                   />
                 </div>
               </Row>
               <Row className='p-3'>
                 <div className='text-center CaptionText GrayText'>
                   <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
-                    {zone.text_right_front}
+                    {zone.cap_text_right_front}
                   </ReactMarkdown>
-                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
-                    {zone.text_right_back}
+                  <ReactMarkdown style={{display:'none', opacity:0, transition:'0.3s'}}>
+                    {zone.cap_text_right_back}
                   </ReactMarkdown>
                 </div>
               </Row>
@@ -1452,7 +1493,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
     </Row>
     )
   }
-
   const switchFrame = (dom,i) =>{
 
     let option1 = dom.childNodes[0]
@@ -1556,14 +1596,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
 
 
   }
-  // console.log(zone.component[0].image_left.length);
-  // const frameImage = (component)=>{
-  //   if (component.image_left.length == 2 && component.image_right.length == 2){
-
-  //     component.
-
-  //   }
-  // }
 
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
@@ -1625,16 +1657,16 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
         </Row>
         <Row className='mt-5 d-flex justify-content-around' style={{height: '200px'}} >
             <div style={{display:'block', opacity:'1.0', transition:'0.3s'}}>
-              {frameWithTwoImage(zone.component[0])}
+              {frameWithTwoImage(zone.image_component[0])}
             </div>
             <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-              {frameWithOneImage(zone.component[1])}
+              {frameWithOneImage(zone.image_component[1])}
             </div>
             <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-              {frameWithOneImage(zone.component[2])}
+              {frameWithOneImage(zone.image_component[2])}
             </div>
             <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-              {frameWithOneImage(zone.component[3])}
+              {frameWithOneImage(zone.image_component[3])}
             </div>
         </Row>
       </Container>

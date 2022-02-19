@@ -60,12 +60,14 @@ Button:hover {
 }
 
 /* This is soooo ghetto, but it works. This is how background images scale properly with fullpage.js */
+
 .section {
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: 50% 50% !important;
   padding: 0px;
 }
+
 /**** General classes ****/
 
 .MainText {
@@ -293,15 +295,6 @@ Button:hover {
 }
 @media only screen and (max-width: 767px) {
   #InteractiveFrame2 {
-    width: 100px;
-  }
-}
-/**** InteractiveFrame3 ****/
-#InteractiveFrame3 {
-  width: 200px;
-}
-@media only screen and (max-width: 767px) {
-  #InteractiveFrame3 {
     width: 100px;
   }
 }
