@@ -16,8 +16,6 @@ function IsEmptyOrWhiteSpace(str) {
 
 // These are more general exports. All functions may use them
 const subcomponent_image = (image) => {
-
-
   // If light_blue_background is true, light_blue_caption_background should be false.
   // don't want to double the background causing opacity to double.
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
@@ -604,6 +602,7 @@ const Frame7 = (zone, index, jsonObject) =>{
     </div>
   )
 }
+
 const Frame8 = (zone, index, jsonObject) =>{
   
   let main_text = undefined
@@ -690,7 +689,6 @@ const Frame9 = (zone, index, jsonObject) =>{
     </div>
   )
 }
-
 // Interactive frames
 const InteractiveFrame1 = (zone, index, jsonObject) => {
   let blueBackgroundMaxHeight = '200px';

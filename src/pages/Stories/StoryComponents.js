@@ -15,16 +15,30 @@ function IsEmptyOrWhiteSpace(str) {
 }
 
 // These are more general exports. All functions may use them
-const subcomponent_image = (image, imgId) => {
-  let caption = undefined; 
+const subcomponent_image = (image) => {
   // If light_blue_background is true, light_blue_caption_background should be false.
   // don't want to double the background causing opacity to double.
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
+  
+  let imageSizes = {
+    "very_small": "50px",
+    "small": "130px",
+    "medium": "210px",
+    "big": "350px",
+    "very_big": "800px",
+    "gigantic": "1200px"
+  };
+  const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
+
+  let caption = undefined; 
   if (!IsEmptyOrWhiteSpace(image.caption)) {
     caption = (
       <>
         <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`}>
-          <ReactMarkdown id = {imgId} className='FrameImage GrayText CaptionText text-center' style={{padding: '0px', paddingTop: '20px'}}>
+          <ReactMarkdown 
+            className='FrameImage GrayText CaptionText text-center' 
+            style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
+          >
             {image.caption}
           </ReactMarkdown>
         </Container>
@@ -37,10 +51,10 @@ const subcomponent_image = (image, imgId) => {
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           <img
+            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}            
             alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
             className='FrameImage'
-            id = {imgId}
-            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`} 
+            width={imageSizes[image.size]} 
           />
         </Container>
         {caption}
@@ -562,6 +576,7 @@ const Frame7 = (zone, index, jsonObject) =>{
     </div>
   )
 }
+
 const Frame8 = (zone, index, jsonObject) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
@@ -931,44 +946,28 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
       <Container>
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
-          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
+          <Col className='d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
-                <div className='flip-box-front'>
-                    <img
-                      src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                      alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                      id='CoinImageFront'
-                      className='mt-3'
-                    />
-                    <ReactMarkdown className='text-center SubText GrayText'>
-                      {zone.text_left_front}
-                    </ReactMarkdown>
+              <div className='flip-box-front'>
+                  {subcomponent_image(zone.image_left_front)}
                 </div>
                 <div className='flip-box-back'>
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
-                    id='CoinImageBack'
-                    className='mt-3'
-                  />
-                  <ReactMarkdown className='text-center SubText GrayText'>
-                    {zone.text_left_back}
-                  </ReactMarkdown>
+                  {subcomponent_image(zone.image_left_back)}
                 </div>
               </div>
             </div>
           </Col>
           {/* text in the middle */}
-          <Col xs={4} className='justify-content-around d-flex flex-column'>
+          <Col xs={4} className='justify-content-between d-flex flex-column mt-5'>
             
-              <Row className='GrayText SubText text-center align-items-start'>
+              <Row className='GrayText SubText text-center align-items-start mt-5'>
                 <Col>
-                {zone.text_mid_top}
+                  {zone.sub_text_middle_top}
                 </Col>
               </Row>
 
-              <Row className='text-center align-items-center' >
+              <Row className='text-center align-items-center my-3' >
                 <Col>
                   <Row>
                     <Col className='d-flex align-items-center justify-content-center'>
@@ -988,37 +987,21 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   </Row>
                 </Col>
               </Row>
-              <Row className='GrayText SubText text-center align-items-end'>
+              <Row className='GrayText SubText text-center align-items-end mb-5'>
                 <Col>
-                  {zone.text_mid_bot}
+                  {zone.sub_text_middle_bottom}
                 </Col>
               </Row>
           </Col>
           {/* image right */}
-          <Col className='LightBlueBackground d-flex align-items-center justify-content-center' xs={3}>
+          <Col className='d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
-                <div className='flip-box-front'>
-                  <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                  id='CoinImageFront'
-                  className='mt-3'
-                  />
-                  <ReactMarkdown className='text-center SubText GrayText'>
-                    {zone.text_right_front}
-                  </ReactMarkdown>
+              <div className='flip-box-front'>
+                  {subcomponent_image(zone.image_right_front)}
                 </div>
                 <div className='flip-box-back'>
-                  <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                  id='CoinImageBack'
-                  className='mt-3'
-                  />
-                  <ReactMarkdown className='text-center SubText GrayText'>
-                    {zone.text_right_back}
-                  </ReactMarkdown>
+                  {subcomponent_image(zone.image_right_back)}
                 </div>
               </div>
             </div>
@@ -1033,11 +1016,9 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
 
   const switchForFront = (dom) =>{
     
-    let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
-    let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
+    let imgLeftDiv = dom.childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
-    let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
-    let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
+    let imgRightDiv = dom.childNodes[2]
 
     imgLeftDiv.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
@@ -1050,23 +1031,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       setTimeout(() => {
         try {
           imgLeftDiv.childNodes[0].style.opacity = '1.0';
-        } catch (error) {
-          console.error(error);
-        }
-      });
-    }, 400);
-
-    textLeftDiv.childNodes[1].style.opacity = '0.0';
-    setTimeout(() => {
-      try {
-        textLeftDiv.childNodes[1].style.display = 'none';
-        textLeftDiv.childNodes[0].style.display = 'block';
-      } catch (error) {
-        console.error(error);
-      }
-      setTimeout(() => {
-        try {
-          textLeftDiv.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1107,33 +1071,16 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       });
     }, 400);
 
-    texRightDiv.childNodes[1].style.opacity = '0.0';
-    setTimeout(() => {
-      try {
-        texRightDiv.childNodes[1].style.display = 'none';
-        texRightDiv.childNodes[0].style.display = 'block';
-      } catch (error) {
-        console.error(error);
-      }
-      setTimeout(() => {
-        try {
-          texRightDiv.childNodes[0].style.opacity = '1.0';
-        } catch (error) {
-          console.error(error);
-        }
-      });
-    }, 400);
-
 
   }
 
   const switchForBack = (dom) =>{
-    
-    let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
-    let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
+
+    //console.log(dom.childNodes[1].childNodes[1])
+
+    let imgLeftDiv = dom.childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
-    let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
-    let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
+    let imgRightDiv = dom.childNodes[2]
 
     imgLeftDiv.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
@@ -1146,23 +1093,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       setTimeout(() => {
         try {
           imgLeftDiv.childNodes[1].style.opacity = '1.0';
-        } catch (error) {
-          console.error(error);
-        }
-      });
-    }, 400);
-
-    textLeftDiv.childNodes[0].style.opacity = '0.0';
-    setTimeout(() => {
-      try {
-        textLeftDiv.childNodes[0].style.display = 'none';
-        textLeftDiv.childNodes[1].style.display = 'block';
-      } catch (error) {
-        console.error(error);
-      }
-      setTimeout(() => {
-        try {
-          textLeftDiv.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1202,25 +1132,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
         }
       });
     }, 400);
-
-    texRightDiv.childNodes[0].style.opacity = '0.0';
-    setTimeout(() => {
-      try {
-        texRightDiv.childNodes[0].style.display = 'none';
-        texRightDiv.childNodes[1].style.display = 'block';
-      } catch (error) {
-        console.error(error);
-      }
-      setTimeout(() => {
-        try {
-          texRightDiv.childNodes[1].style.opacity = '1.0';
-        } catch (error) {
-          console.error(error);
-        }
-      });
-    }, 400);
-
-
   }
 
   return(
@@ -1235,33 +1146,13 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
         </Row>
         <Row className='d-flex justify-content-around'>
           {/* image_lieft */}
-          <Col className='LightBlueBackground' xs={3}>
-              <Row className='mt-3'>
-                <div className='d-flex align-items-center justify-content-center'> 
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                    style={{display:'block', opacity:1, transition:'0.3s'}}
-                    id='InteractiveFrame3'
-                  />
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_back.alternativeText}
-                    style={{display:'none', opacity:0, transition:'0.3s'}}
-                    id='InteractiveFrame3'
-                  />
-                </div>
-              </Row>
-              <Row className='p-3'>
-                <div className='text-center CaptionText GrayText'>
-                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
-                    {zone.text_left_front}
-                  </ReactMarkdown>
-                  <ReactMarkdown style={{display:'none', opacity:0, transition:'0.3s'}}>
-                    {zone.text_left_back}
-                  </ReactMarkdown>
-                </div>
-              </Row>
+          <Col xs={3}>
+            <div style={{display:'black', opacity:1, transition:'0.3s'}}>
+              {subcomponent_image(zone.image_left_front)}
+            </div>
+            <div style={{display:'none', opacity:0, transition:'0.3s'}}>
+              {subcomponent_image(zone.image_left_back)}
+            </div>
           </Col>
           {/* text in the middle */}
           <Col xs={5} className='justify-content-between d-flex flex-column'>
@@ -1272,12 +1163,12 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
 
               <Row className='d-flex justify-content-center' >
                 <Col xs={{span:9}} className='text-center GrayText SubText'>
-                  <ReactMarkdown className='InteractiveFrame1TextFront'>
+                  <p style={{display:'black', opacity:1, transition:'0.3s'}}>
                     {zone.text_mid_front}
-                  </ReactMarkdown>
-                  <ReactMarkdown className='InteractiveFrame1TextBack'>
+                  </p>
+                  <p style={{display:'none', opacity:0, transition:'0.3s'}}>
                     {zone.text_mid_back}
-                  </ReactMarkdown>
+                  </p>
                 </Col>
               </Row>
 
@@ -1311,34 +1202,13 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
               </Row>
           </Col>
           {/* image right */}
-          <Col className='LightBlueBackground' xs={3}>
-              <Row className='mt-3'>
-                <div className='d-flex align-items-center justify-content-center '> 
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                    style={{display:'block', opacity:1, transition:'0.3s'}}
-                    id='InteractiveFrame3'
-                  />
-                  <img
-                    src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                    style={{display:'none', opacity:0, transition:'0.3s'}}
-                    id='InteractiveFrame3'
-
-                  />
-                </div>
-              </Row>
-              <Row className='p-3'>
-                <div className='text-center CaptionText GrayText'>
-                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
-                    {zone.text_right_front}
-                  </ReactMarkdown>
-                  <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
-                    {zone.text_right_back}
-                  </ReactMarkdown>
-                </div>
-              </Row>
+          <Col xs={3}>
+            <div style={{display:'black', opacity:1, transition:'0.3s'}}>
+              {subcomponent_image(zone.image_right_front)}
+            </div>
+            <div style={{display:'none', opacity:0, transition:'0.3s'}}>
+              {subcomponent_image(zone.image_right_back)}
+            </div>
           </Col>
         </Row>
       </Container>

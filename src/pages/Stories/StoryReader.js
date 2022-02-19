@@ -30,12 +30,12 @@ const StoryReader = () => {
 					let wikidatas = []
 					let wikidataIndex = []
 					for (let i = 0; i < story.length;i++){
-						if(story[i].wiki_data != undefined){
+						if(story[i].wiki_data !== undefined){
 							 wikidatas.push(story[i].wiki_data)
 							 wikidataIndex.push(i)
 						}
 					}
-					if(wikidatas.length != 0){
+					if(wikidatas.length !== 0){
 						axios.all(wikidatas.map((wikidata)=>axios.get(wikidata)))
 						.then((res)=>{
 							for(let i = 0; i<wikidataIndex.length; i++){
