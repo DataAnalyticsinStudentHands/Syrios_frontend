@@ -56,7 +56,7 @@ function Download(){
                                 </Row>
                             </div>
                     );
-
+                    
                     set_isLoading(false);
                 });
         }
@@ -65,7 +65,7 @@ function Download(){
     const formik = useFormik({
         initialValues:{
             fullName:"",
-            email:""
+            email:"",
         },
         validationSchema:Yup.object({
             fullName: Yup.string()
@@ -78,7 +78,7 @@ function Download(){
                 .required('* Email is required'),
         }),
         onSubmit: (values,{resetForm})=>{
-            console.log(values)
+            //console.log(values)
             let apiURL = `http://localhost:1337/download/send_email`
             axios.post(apiURL, values)
                 .then( 
