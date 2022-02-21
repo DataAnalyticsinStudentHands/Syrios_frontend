@@ -70,6 +70,17 @@ Button:hover {
 
 /**** General classes ****/
 
+.TitleText {
+  font-size: 76px;
+}
+.SubTitleText {
+  font-size: 20px;
+}
+
+.CaptionTitleText {
+  font-size: 30px;
+}
+
 .MainText {
   font-size: 40px;
 }
@@ -151,35 +162,12 @@ Button:hover {
 }
 
 /**** Title Frame ****/
-#TitleText {
-  font-size: 76px;
-}
-
-#SubTitleText {
-  font-size: 20px;
-}
-
-#CaptionTitleText {
-  font-size: 30px;
-}
 
 #TitleImage {
   width: 300px;
 }
 
 @media only screen and (max-width: 767px) {
-  #TitleText {
-    font-size: 45px !important;
-  }
-
-  #SubTitleText {
-    font-size: 12px !important;
-  }
-
-  #CaptionTitleText {
-    font-size: 15px !important;
-  }
-
   #TitleImage {
     width: 150px !important;
   }

@@ -21,10 +21,10 @@ const subcomponent_image = (image) => {
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
   
   let imageSizes = {
-    "very_small": "100px",
-    "small": "200px",
-    "medium": "300px",
-    "big": "400px",
+    "very_small": "200px",
+    "small": "300px",
+    "medium": "400px",
+    "big": "500px",
     "very_big": "800px",
     "gigantic": "1200px"
   };
@@ -142,14 +142,40 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 // Title component for all stories
 const Title = (zone, index, jsonObject) => {
   //console.log(zone.background);
+
+  let title = undefined
+  if (!IsEmptyOrWhiteSpace(zone.title)){
+    title = (
+      <Container className='d-flex justify-content-center align-items-center'>
+        <ReactMarkdown className='BlueText text-center TitleText'>
+          {zone.title}
+        </ReactMarkdown>
+      </Container>
+    )
+  }
+
   let subtitle = undefined
   if (!IsEmptyOrWhiteSpace(zone.subtitle)){
     subtitle = (
-      <ReactMarkdown id='SubTitleText' className='OrangeText text-center'>
-        {zone.subtitle}
-      </ReactMarkdown>
+      <Container className='d-flex justify-content-center align-items-center'>
+        <ReactMarkdown className='OrangeText text-center SubTitleText'>
+          {zone.subtitle}
+        </ReactMarkdown>
+      </Container>
     )
   }
+
+  let caption = undefined
+  if (!IsEmptyOrWhiteSpace(zone.caption)){
+    caption = (
+      <Container className='d-flex justify-content-center align-items-center'>
+        <ReactMarkdown className='GrayText text-center CaptionTitleText'>
+          {zone.caption}
+        </ReactMarkdown>
+      </Container>
+    )
+  }
+
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='d-flex justify-content-center align-items-center'>
@@ -158,19 +184,10 @@ const Title = (zone, index, jsonObject) => {
           src={`${process.env.REACT_APP_strapiURL}${zone.image.url}`}
           alt={zone.image.alternativeText !== undefined ? zone.image.alternativeText : 'title image'} />
       </Container>
-      <Container className='d-flex justify-content-center align-items-center'>
-        <p id='TitleText' className='BlueText text-center'>
-          {zone.title}
-        </p>
-      </Container>
-      <Container className='d-flex justify-content-center align-items-center'>
+        {title}
         {subtitle}
-      </Container>
-      <Container className='d-flex justify-content-center align-items-center'>
-          <ReactMarkdown id='CaptionTitleText' className='GrayText text-center'>
-            {zone.caption}
-          </ReactMarkdown>
-      </Container>
+        {caption}
+
     </div>
   );
 }
