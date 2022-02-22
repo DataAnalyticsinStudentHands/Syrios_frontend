@@ -21,11 +21,11 @@ const subcomponent_image = (image) => {
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
   
   let imageSizes = {
-    "very_small": "200px",
-    "small": "300px",
-    "medium": "400px",
+    "very_small": "150px",
+    "small": "250px",
+    "medium": "350px",
     "big": "500px",
-    "very_big": "800px",
+    "very_big": "750px",
     "gigantic": "1200px"
   };
   const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
@@ -45,7 +45,6 @@ const subcomponent_image = (image) => {
       </>
     );
   }
-
   return (
     <Container className='d-flex justify-content-center align-items-center'>
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
@@ -120,6 +119,19 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
             <p className='BlackText' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
             </p>
+        </Col>
+      );
+      return;
+    }
+    else {
+      imagesJSX.push(
+        <Col key={image.id} className='text-center'>
+          <img
+            src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
+            alt='dynamic_image'
+            width={imageSizes[image.size]}
+            className='justify-content-center'
+          />
         </Col>
       );
       return;
@@ -417,7 +429,6 @@ const Frame4 = (zone, index, jsonObject) =>{
     </Row>
     )
   }
-
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center align-items-center' style={{marginTop:'-20%'}}>
@@ -429,7 +440,6 @@ const Frame4 = (zone, index, jsonObject) =>{
 }
 
 const Frame5 = (zone, index, jsonObject) =>{
-  //console.log(zone,'frame 5');
   let title = undefined
   if (!IsEmptyOrWhiteSpace(zone.title)){
     title = (
@@ -438,12 +448,11 @@ const Frame5 = (zone, index, jsonObject) =>{
       </ReactMarkdown>
     )
   }
-  //console.log(zone.text_middle);
   let text_middle = undefined
   if(zone.text_middle.light_blue_caption_background){
     text_middle = (
-      <Col sm={6} className='align-self-center text-center SubText'>
-        <ReactMarkdown className='LightBlueBackground SubText GrayText px-5'>
+      <Col xs={6} className='LightBlueBackground align-self-center text-center SubText'>
+        <ReactMarkdown className='SubText GrayText px-5 my-5'>
           {zone.text_middle.text}
         </ReactMarkdown>
       </Col>
@@ -451,7 +460,7 @@ const Frame5 = (zone, index, jsonObject) =>{
   }
   else{
     text_middle = (
-      <Col sm={3} className='align-self-center text-center SubText'>
+      <Col xs={3} className='align-self-center text-center SubText'>
         <ReactMarkdown className=' SubText mt-3 GrayText'>
           {zone.text_middle.text}
         </ReactMarkdown>
@@ -464,14 +473,14 @@ const Frame5 = (zone, index, jsonObject) =>{
         <Container>
           {title}
         </Container>
-        <Container className='d-flex justify-content-around align-self-center'>
-          <Row className='d-flex justify-content-between align-self-center'>
-                <Col sm={3}>
-                    {subcomponent_image(zone.image_left, 'Frame5Image')}
+        <Container>
+          <Row className='d-flex justify-content-center align-self-center' >
+                <Col xs={3}>
+                    {subcomponent_image(zone.image_left)}
                 </Col>
                 {text_middle}
-                <Col sm={3}>
-                    {subcomponent_image(zone.image_right, 'Frame5Image')}
+                <Col xs={3}>
+                    {subcomponent_image(zone.image_right)}
                 </Col>
           </Row>
         </Container>
@@ -492,7 +501,7 @@ const Frame6 = (zone, index, jsonObject) =>{
   let sub_author=undefined
   if(!IsEmptyOrWhiteSpace(zone.sub_author)){
     sub_author = (
-      <ReactMarkdown className='BlueText text-center CaptionText' >
+      <ReactMarkdown className='GrayText text-center CaptionText' >
         {zone.sub_author}
       </ReactMarkdown>
     )

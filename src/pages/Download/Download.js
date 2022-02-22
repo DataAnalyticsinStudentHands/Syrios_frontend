@@ -27,7 +27,6 @@ function Download(){
             axios.get(process.env.REACT_APP_strapiURL + '/download')
                 .then((res)=>{
                     let data = res.data
-                    //console.log(data);
                     set_page(
                             <div>
                             {/* left */}
@@ -78,7 +77,7 @@ function Download(){
                 .required('* Email is required'),
         }),
         onSubmit: (values,{resetForm})=>{
-            //console.log(values)
+                            
             let apiURL = `http://localhost:1337/download/send_email`
             axios.post(apiURL, values)
                 .then( 
@@ -176,14 +175,11 @@ function Download(){
                             {formSub}
                         </Col>
                     </Row>
-
                 </Container>
-
             </div>
 			{Footer()}
         </>
     );
-	
 }
 
 export default Download;
