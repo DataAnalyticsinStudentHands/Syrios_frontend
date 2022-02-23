@@ -517,7 +517,7 @@ const Frame6 = (zone, index, jsonObject) =>{
         <Container>
             <Row className='justify-content-around'>
                   <Col sm={6}>
-                      {subcomponent_image(zone.image,'Frame6Image')}
+                      {subcomponent_image(zone.image)}
                   </Col>
                   <Col sm={6} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
                       {sub_text}
@@ -1025,7 +1025,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
           <Col className='d-flex align-items-center justify-content-center' xs={3}>
             <div className='flip-box'>
               <div className='flip-box-inner'>
-              <div className='flip-box-front'>
+                <div className='flip-box-front'>
                   {subcomponent_image(zone.image_left_front)}
                 </div>
                 <div className='flip-box-back'>
@@ -1095,6 +1095,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
     let imgLeftDiv = dom.childNodes[0]
     let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
     let imgRightDiv = dom.childNodes[2]
+
 
     imgLeftDiv.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
@@ -1655,6 +1656,163 @@ const Testframe2 =(zone, index, jsonObject) =>{
   )
 }
 
+const InteractiveFrame5 = (zone, index, jsonObject) =>{
+  let switchDir = true
+  const FlipCoin = (dom) =>{
+    while (dom.className !== 'flip-box-inner') {
+      dom = dom.nextSibling;
+    }
+
+    if (dom.style.transform === 'rotateY(180deg)') {
+      dom.style.transform = 'rotateY(0deg)'
+    } else {
+      dom.style.transform = 'rotateY(180deg)';
+    }
+  }
+  const switchWord = (dom) =>{
+
+    let main_text = dom.childNodes[0]
+    let sub_text = dom.childNodes[1].childNodes[1]
+
+    if (switchDir){
+      main_text.childNodes[0].style.opacity = '0.0';
+      setTimeout(() => {
+        try {
+          main_text.childNodes[0].style.display = 'none';
+          main_text.childNodes[1].style.display = 'block';
+        } catch (error) {
+          console.error(error);
+        }
+        setTimeout(() => {
+          try {
+            main_text.childNodes[1].style.opacity = '1.0';
+          } catch (error) {
+            console.error(error);
+          }
+        });
+      }, 400);
+  
+      sub_text.childNodes[0].style.opacity = '0.0';
+      setTimeout(() => {
+        try {
+          sub_text.childNodes[0].style.display = 'none';
+          sub_text.childNodes[1].style.display = 'block';
+        } catch (error) {
+          console.error(error);
+        }
+        setTimeout(() => {
+          try {
+            sub_text.childNodes[1].style.opacity = '1.0';
+          } catch (error) {
+            console.error(error);
+          }
+        });
+      }, 400);
+      switchDir = false
+    }
+    else{
+      main_text.childNodes[1].style.opacity = '0.0';
+      setTimeout(() => {
+        try {
+          main_text.childNodes[1].style.display = 'none';
+          main_text.childNodes[0].style.display = 'block';
+        } catch (error) {
+          console.error(error);
+        }
+        setTimeout(() => {
+          try {
+            main_text.childNodes[0].style.opacity = '1.0';
+          } catch (error) {
+            console.error(error);
+          }
+        });
+      }, 400);
+
+      sub_text.childNodes[1].style.opacity = '0.0';
+      setTimeout(() => {
+        try {
+          sub_text.childNodes[1].style.display = 'none';
+          sub_text.childNodes[0].style.display = 'block';
+        } catch (error) {
+          console.error(error);
+        }
+        setTimeout(() => {
+          try {
+            sub_text.childNodes[0].style.opacity = '1.0';
+          } catch (error) {
+            console.error(error);
+          }
+        });
+      }, 400);
+
+      switchDir = true
+    }
+
+  }
+
+  return(
+    <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+      <Container>
+        <Row className='mb-5'>
+          <p className='OrangeText MainText text-center' style={{display:'black', opacity:1, transition:'0.3s'}}>
+            {zone.main_text_front}
+          </p>
+          <p className='OrangeText MainText text-center' style={{display:'none', opacity:0, transition:'0.3s'}}>
+            {zone.main_text_back}
+          </p>
+        </Row>
+
+        <Row className='d-flex justify-content-between'>
+          <Col xs={6} className="d-flex justify-content-between">
+            <Col xs={9}>
+              <div className='flip-box'>
+                <div className='flip-box-inner'>
+                  <div className='flip-box-front'>
+                    <img
+                      src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
+                      alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left_front.alternativeText}
+                      style={{width:"400px", marginLeft:"100px"}}
+                    />
+                  </div>
+                  <div className='flip-box-back'>
+                  <img
+                      src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
+                      alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left_back.alternativeText}
+                      style={{width:"400px",marginLeft:"100px"}}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col xs={3}>
+              <i 
+                className='demo-icon icon-coin-scale InteractiveFrame5ScaleIcon'
+                onClick={(e)=> {
+                  let dom = e.target.parentElement.parentElement.parentElement.parentElement;
+                  let image_left = dom.childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
+
+                  FlipCoin(image_left)
+                  switchWord(dom)
+                  // FlipCoin(coin_right)
+                }}>
+                &#xe833;</i>
+            </Col>
+          </Col>
+
+          <Col xs={6} className='LightBlueBackground d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'150px'}}>
+            <p className='BlueText text-center SubText' style={{display:'black', opacity:1, transition:'0.3s'}}>
+              {zone.sub_text_right_front}
+            </p>
+            <p className='BlueText text-center SubText' style={{display:'none', opacity:0, transition:'0.3s'}}>
+              {zone.sub_text_right_back}
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  )
+}
+
 // This function is for mapping name and functions over.
 // Did this for organization really. 
 const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
@@ -1707,6 +1865,9 @@ const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
       break;
     case 'frame.interactive-frame4':
       jsx = InteractiveFrame4(zone, index, jsonObject);
+      break;
+    case 'frame.interactive-frame5':
+      jsx = InteractiveFrame5(zone, index, jsonObject);
       break;
     case 'frame.testframe':
       jsx = Testframe(zone, index, jsonObject);
