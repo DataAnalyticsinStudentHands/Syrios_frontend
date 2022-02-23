@@ -9,6 +9,10 @@
   }
 }
 
+strong {
+  color: #183848;
+}
+
 .SelectStoryDiv {
   width: 100px;
   transition: 0.5s;

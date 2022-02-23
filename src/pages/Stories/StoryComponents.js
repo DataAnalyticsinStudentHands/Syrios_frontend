@@ -474,7 +474,7 @@ const Frame5 = (zone, index, jsonObject) =>{
           {title}
         </Container>
         <Container>
-          <Row className='d-flex justify-content-center align-self-center' >
+          <Row className='d-flex justify-content-around align-self-center' >
                 <Col xs={3}>
                     {subcomponent_image(zone.image_left)}
                 </Col>
@@ -667,6 +667,47 @@ const Frame9 = (zone, index, jsonObject) =>{
             </Col>
           </Row>
 
+        </Container>
+    </div>
+  )
+}
+
+const Frame10 = (zone, index, jsonObject) =>{
+
+  let page = undefined
+  if(zone.leftOrRight){
+    page = (
+      <Row className='d-flex justify-content-between align-self-center'>
+        <Col xs={9} className="d-flex align-self-center">
+          <ReactMarkdown className='OrangeText MainText text-center'>
+            {zone.main_text}
+          </ReactMarkdown>
+        </Col>
+        <Col xs={2}>
+          {subcomponent_image(zone.image)}
+        </Col>
+      </Row>
+    )
+  }
+  else{
+    page = (
+      <Row className='d-flex justify-content-between align-self-center'>
+      <Col xs={2}>
+        {subcomponent_image(zone.image)}
+      </Col>
+      <Col xs={9} className="d-flex align-self-center">
+        <ReactMarkdown className='OrangeText MainText text-center'>
+          {zone.main_text}
+        </ReactMarkdown>
+      </Col>
+    </Row>
+    )
+  }
+
+  return(
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+        <Container>
+          {page}
         </Container>
     </div>
   )
@@ -1651,6 +1692,9 @@ const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
       break;
     case 'frame.frame9':
       jsx = Frame9(zone, index, jsonObject);
+      break; 
+    case 'frame.frame10':
+      jsx = Frame10(zone, index, jsonObject);
       break; 
     case 'frame.interactive-frame1':
       jsx = InteractiveFrame1(zone, index, jsonObject);
