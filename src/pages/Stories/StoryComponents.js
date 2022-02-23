@@ -1764,21 +1764,21 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
 
         <Row className='d-flex justify-content-between'>
           <Col xs={6} className="d-flex justify-content-between">
-            <Col xs={9}>
+            <Col xs={9} className="d-flex justify-content-end">
               <div className='flip-box'>
                 <div className='flip-box-inner'>
                   <div className='flip-box-front'>
                     <img
                       src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
                       alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left_front.alternativeText}
-                      style={{width:"400px", marginLeft:"100px"}}
+                      style={{width:"400px"}}
                     />
                   </div>
                   <div className='flip-box-back'>
                   <img
                       src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
                       alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left_back.alternativeText}
-                      style={{width:"400px",marginLeft:"100px"}}
+                      style={{width:"400px"}}
                     />
                   </div>
                 </div>
@@ -1799,7 +1799,7 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
             </Col>
           </Col>
 
-          <Col xs={6} className='LightBlueBackground d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'150px'}}>
+          <Col xs={6} className='LightBlueBackground d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'125px'}}>
             <p className='BlueText text-center SubText' style={{display:'black', opacity:1, transition:'0.3s'}}>
               {zone.sub_text_right_front}
             </p>
