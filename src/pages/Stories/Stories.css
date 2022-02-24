@@ -10,8 +10,16 @@
 }
 
 strong {
+  color: #487848;
+}
+
+a:link {
   color: #183848;
 }
+/* a:link{color:#000000;}
+a:visited {color:#00FF00;}  
+a:hover {color:#FF00FF;}  
+a:active {color:#0000FF;}  */
 
 .SelectStoryDiv {
   width: 100px;
@@ -80,7 +88,6 @@ Button:hover {
 .SubTitleText {
   font-size: 20px;
 }
-
 .CaptionTitleText {
   font-size: 30px;
 }
@@ -91,11 +98,9 @@ Button:hover {
 .BigSubText {
   font-size: 32px;
 }
-
 .SubText {
   font-size: 24px;
 }
-
 .CaptionText {
   font-size: 16px;
   margin: 11px;
