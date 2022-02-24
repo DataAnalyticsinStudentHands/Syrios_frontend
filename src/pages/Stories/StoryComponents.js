@@ -13,7 +13,6 @@ import 'src/components/coin/coinFlip.css';
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
 }
-
 const mainText = (main_text) =>{
   let MainText = undefined
   if(!IsEmptyOrWhiteSpace(main_text)){
@@ -101,6 +100,57 @@ const sub_cap_blue_bg = (sub_text, cap_text)=>{
   return(
     Sub_Cap_Blue_Bg
   )
+}
+
+const FlipCoin = (dom) =>{
+  while (dom.className !== 'flip-box-inner') {
+    dom = dom.nextSibling;
+  }
+
+  if (dom.style.transform === 'rotateY(180deg)') {
+    dom.style.transform = 'rotateY(0deg)'
+  } else {
+    dom.style.transform = 'rotateY(180deg)';
+  }
+}
+
+const FlipCoinImg = (img_fornt, img_back) =>{
+  let Coin = undefined
+  Coin = (
+    <div className='flip-box'>
+      <div className='flip-box-inner'>
+        <div className='flip-box-front'>
+          {subcomponent_image_only(img_fornt)}
+        </div>
+        <div className='flip-box-back'>
+          {subcomponent_image_only(img_back)}
+        </div>
+      </div>
+    </div>
+  )
+  return(
+    Coin
+  )
+}
+
+
+const subcomponent_image_only = (image) => {
+  let imageSizes = {
+    "XXS": "50px",
+    "XS": "150px",
+    "S": "250px",
+    "M": "350px",
+    "L": "450px",
+    "XL": "550px",
+    "XXL": "650px"
+  };
+  return (
+      <img
+        src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}            
+        alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
+        width={imageSizes[image.size]} 
+      />
+  );
 }
 
 // These are more general exports. All functions may use them
@@ -237,11 +287,8 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
   );
 }
 
-
-
 // Title component for all stories
 const Title = (zone, index, jsonObject) => {
-  //console.log(zone.background);
 
   let title = undefined
   if (!IsEmptyOrWhiteSpace(zone.title)){
@@ -268,7 +315,7 @@ const Title = (zone, index, jsonObject) => {
   let caption = undefined
   if (!IsEmptyOrWhiteSpace(zone.caption)){
     caption = (
-      <Container className='d-flex justify-content-center align-items-center'>
+      <Container className='d-flex justify-content-center align-items-center mt-5'>
         <ReactMarkdown className='GrayText text-center CaptionTitleText'>
           {zone.caption}
         </ReactMarkdown>
@@ -278,16 +325,12 @@ const Title = (zone, index, jsonObject) => {
 
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-      <Container className='d-flex justify-content-center align-items-center'>
-        <img
-          id='TitleImage'
-          src={`${process.env.REACT_APP_strapiURL}${zone.image.url}`}
-          alt={zone.image.alternativeText !== undefined ? zone.image.alternativeText : 'title image'} />
-      </Container>
+        <Container className='d-flex justify-content-center align-items-center'>
+          {subcomponent_image_only(zone.image)}
+        </Container>
         {title}
         {subtitle}
         {caption}
-
     </div>
   );
 }
@@ -386,7 +429,9 @@ const Frame1 = (zone, index, jsonObject) => {
 
   return (
     <div key={`story_comp_${index}`} className='section testSection' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-      {mainText(zone.main_text)}
+      <Container className='mb-5'>
+        {mainText(zone.main_text)}
+      </Container>
       {subtext}
     </div>
   );
@@ -395,7 +440,9 @@ const Frame1 = (zone, index, jsonObject) => {
 const Frame2 = (zone, index, jsonObject) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-      {mainText(zone.main_text)}
+      <Container className='mb-5'>
+        {mainText(zone.main_text)}
+      </Container>
       {subText(zone.sub_text)}
       {subcomponent_image(zone.image)}
     </div>
@@ -453,16 +500,7 @@ const Frame4 = (zone, index, jsonObject) =>{
 }
 
 const Frame5 = (zone, index, jsonObject) =>{
-  // let main_text = undefined
-  // if (!IsEmptyOrWhiteSpace(zone.main_text)){
-  //   main_text = (
-  //     <Container>
-  //       <ReactMarkdown className='OrangeText MainText text-center'>
-  //         {zone.main_text}
-  //       </ReactMarkdown>
-  //     </Container>
-  //   )
-  // }
+
   let text_middle = undefined
   if(zone.text_middle.light_blue_caption_background){
     text_middle = (
@@ -485,7 +523,9 @@ const Frame5 = (zone, index, jsonObject) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        {mainText(zone.main_text)}
+        <Container className='mb-5'>
+          {mainText(zone.main_text)}
+        </Container>
         <Container>
           <Row className='d-flex justify-content-around align-self-center' >
                 <Col xs={3}>
@@ -502,16 +542,17 @@ const Frame5 = (zone, index, jsonObject) =>{
 }
 
 const Frame6 = (zone, index, jsonObject) =>{
-
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined: `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        {mainText(zone.main_text)}
+        <Container className='mb-5'>
+          {mainText(zone.main_text)}
+        </Container>
         <Container>
           <Row>
-            <Col>
+            <Col xs={5}>
               {subcomponent_image(zone.image)}
             </Col>
-            <Col className='align-self-center'>
+            <Col xs={7} className='align-self-center'>
               {sub_cap_blue_bg(zone.sub_text_right, zone.cap_text_right)}
             </Col>
           </Row>
@@ -545,7 +586,9 @@ const Frame7 = (zone, index, jsonObject) =>{
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        {mainText(zone.main_text)}
+        <Container className='mb-5'>
+          {mainText(zone.main_text)}
+        </Container>
         {capText(zone.cap_text_top)}
         <Container className='d-flex justify-content-between align-self-center my-5'>
             <Col xs={8} className='d-flex justify-content-between align-self-center'>
@@ -586,7 +629,9 @@ const Frame8 = (zone, index, jsonObject) =>{
 const Frame9 = (zone, index, jsonObject) =>{
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        {mainText(zone.main_text)}
+        <Container className='mb-5'>
+          {mainText(zone.main_text)}
+        </Container>
         <Container>
           <Row className='d-flex justify-content-between mt-5'>
             <Col xs={9} sm={3} >
@@ -610,14 +655,11 @@ const Frame10 = (zone, index, jsonObject) =>{
   if(zone.leftOrRight){
     page = (
       <Row className='d-flex justify-content-between align-self-center'>
-        <Col xs={9} className="d-flex align-self-center justify-content-end">
-          {/* <ReactMarkdown className='OrangeText MainText text-center'>
-            {zone.main_text}
-          </ReactMarkdown> */}
+        <Col xs={9} className="d-flex align-self-center">
           {mainText(zone.main_text)}
         </Col>
         <Col xs={3}>
-          {subcomponent_image(zone.image)}
+          {subcomponent_image_only(zone.image)}
         </Col>
       </Row>
     )
@@ -626,9 +668,9 @@ const Frame10 = (zone, index, jsonObject) =>{
     page = (
       <Row className='d-flex justify-content-between align-self-center'>
         <Col xs={3}>
-          {subcomponent_image(zone.image)}
+          {subcomponent_image_only(zone.image)}
         </Col>
-        <Col xs={9} className="d-flex align-self-center justify-content-start">
+        <Col xs={9} className="d-flex align-self-center">
           {mainText(zone.main_text)}
         </Col>
     </Row>
@@ -1589,17 +1631,7 @@ const Testframe2 =(zone, index, jsonObject) =>{
 
 const InteractiveFrame5 = (zone, index, jsonObject) =>{
   let switchDir = true
-  const FlipCoin = (dom) =>{
-    while (dom.className !== 'flip-box-inner') {
-      dom = dom.nextSibling;
-    }
 
-    if (dom.style.transform === 'rotateY(180deg)') {
-      dom.style.transform = 'rotateY(0deg)'
-    } else {
-      dom.style.transform = 'rotateY(180deg)';
-    }
-  }
   const switchWord = (dom) =>{
 
     let main_text = dom.childNodes[0]
@@ -1695,27 +1727,10 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
 
         <Row className='d-flex justify-content-between'>
           <Col xs={6} className="d-flex justify-content-between">
-            <Col xs={9} className="d-flex justify-content-end">
-              <div className='flip-box'>
-                <div className='flip-box-inner'>
-                  <div className='flip-box-front'>
-                    <img
-                      src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                      alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left_front.alternativeText}
-                      style={{width:"400px"}}
-                    />
-                  </div>
-                  <div className='flip-box-back'>
-                  <img
-                      src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                      alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left_back.alternativeText}
-                      style={{width:"400px"}}
-                    />
-                  </div>
-                </div>
-              </div>
+            <Col xs={6} className="d-flex justify-content-end">
+              {FlipCoinImg(zone.image_left_front,zone.image_left_back)}
             </Col>
-            <Col xs={3}>
+            <Col xs={6}>
               <i 
                 className='demo-icon icon-coin-scale InteractiveFrame5ScaleIcon'
                 onClick={(e)=> {

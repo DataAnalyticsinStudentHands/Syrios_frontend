@@ -467,8 +467,9 @@ Button:hover {
 
 .InteractiveFrame5ScaleIcon {
   /* margin-top: 30px; */
-  margin-right: 300px;
   font-size: 50px;
   color: #7899a8;
   cursor: pointer;
+  position: absolute;
+  z-index: 1;
 }
