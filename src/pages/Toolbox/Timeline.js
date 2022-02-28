@@ -4,7 +4,6 @@ import Svg, {
   Text,
   Line,
   Rect,
-  Circle,
   Image
 } from 'react-native-svg';
 import axios from 'axios';
@@ -25,16 +24,12 @@ const Timeline = () => {
   const [isLoading, set_isLoading] = useState(true);
   const [timeline, set_timeline] = useState(undefined); // This is the entire timeline svg object
   const [timelineBackground, set_timelineBackground] = useState(undefined); // This is just the background colors, with the dotted lines and numbering on the right hand side
-  const [timelineBackgroundIsLoading, set_timelineBackgroundIsLoading] = useState(true); // Set false when timeline background is done loading.
   const [timelineDescription, set_timelineDescription] = useState(undefined); // This is the description at the top of the page
-  const [timelineInfo, set_timelineInfo] = useState(undefined); // This is the coin and event data
   const [timelineEventsAndCoins, set_timelineEventsAndCoins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
-  const [timelineEventsAndCoinsIsLoading , set_timelineEventsAndCoinsIsLoading] = useState(true); // Set false once timelineEventsAndCoins is done loading
   let coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
   let events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
   // These are the view box dimensions
   const [viewBoxMinHeight, set_viewBoxMinHeight] = useState(0);
-  const [viewBoxMaxHeight, set_viewBoxMaxHeight] = useState(0);
   const [viewBoxTotalHeight, set_viewBoxTotalHeight] = useState(0);
   const [viewBoxDimensionsisLoading, set_viewBoxDimensionsisLoading] = useState(true); // set false once done loading
   const coinSize = 8; // Size of coins on timeline
@@ -110,8 +105,7 @@ const Timeline = () => {
             // This makes it easy for react-native-svg to start at 0 for y value
             let minHeight = (res.data[0].y_date); // We can assume index 0 is the smallest because it is ordered by ascending
             let maxHeight = (res.data[res.data.length-1].y_date); // We can assume index last is the biggest because it is ordered by ascending
-            let viewBoxHeight = (Math.abs(res.data[0].y_date-res.data[res.data.length-1].y_date)); // The size of the viewbox
-            set_viewBoxMaxHeight(maxHeight);
+            let viewBoxHeight = (Math.abs(minHeight-maxHeight)); // The size of the viewbox
             set_viewBoxMinHeight(minHeight);
             set_viewBoxTotalHeight(viewBoxHeight);
             set_viewBoxDimensionsisLoading(false);
@@ -261,7 +255,6 @@ const Timeline = () => {
               );
             });
             set_timelineBackground(jsxArr);
-            set_timelineBackgroundIsLoading(false);
           }
         });
 
@@ -372,7 +365,6 @@ const Timeline = () => {
                 set_timelineEventsAndCoins(jsxArr);
                 coins = coinInfoArr;
                 events = eventInfoArr;
-                set_timelineEventsAndCoinsIsLoading(false);
               }
             }, 200);
           }

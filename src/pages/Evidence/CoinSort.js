@@ -22,17 +22,13 @@ const CoinSortDropDownTextToStrapiVariableKeys = [ // This is an array of object
   // Example (also a live example)
   // dropdownText is the name that resembles it in the drop down on the coin sort. In this case, the dropdownText is 'Size'
   // strapiKey is the object key received by strapi. We don't rename it or whatnot. In this case, it is Diameter
-  // What this object is stating is that it will look for Sort By or Then By to be Size and then sort it based on Diameter
-  // { type: 'sort', dropdownText: 'Size', strapiKey: 'Diameter' }
-
-  // Sort options
-  { type: 'sort', dropdownText: 'Size', strapiKey: 'Diameter' }, 
-  { type: 'sort', dropdownText: 'Minting Date',  strapiKey: 'Date' },
-  { type: 'sort', dropdownText: 'Issuing Authority', strapiKey: 'IssuingAuthority' },
-  { type: 'sort', dropdownText: 'Governing Power', strapiKey: 'State' },
-  { type: 'sort', dropdownText: 'Material', strapiKey: 'Material' },
-
-  // Filter options 
+  // What this object is stating is for dropdownText 'Size' (case sensitive), the associative strapiKey will be 'Diameter' (case sensitive)
+  // dropdownText: 'Size', strapiKey: 'Diameter' }
+  { dropdownText: 'Size', strapiKey: 'Diameter' }, 
+  { dropdownText: 'Minting Date',  strapiKey: 'Date' },
+  { dropdownText: 'Issuing Authority', strapiKey: 'IssuingAuthority' },
+  { dropdownText: 'Governing Power', strapiKey: 'State' },
+  { dropdownText: 'Material', strapiKey: 'Material' },
 ];
 
 // This is a class so I can more easily do stuff with the dropdowns
@@ -168,6 +164,7 @@ class CoinSortDropDown extends React.Component {
 const CoinSort = () => {
   const [isLoading, set_isLoading] = useState(true);
   const [coins, set_coins] = useState(undefined);
+  const [coinsPagination, set_coinsPagination] = useState(undefined);
 
   // This is for the tool tips
   const [ArrangeToolTipBox1x1GridDescription, set_ArrangeToolTipBox1x1GridDescription] = useState(undefined);
@@ -176,6 +173,14 @@ const CoinSort = () => {
   const [ArrangeToolTipBox2x2GridDescription, set_ArrangeToolTipBox2x2GridDescription] = useState(undefined);
   const [ArrangeToolTipBox3x2GridDescription, set_ArrangeToolTipBox3x2GridDescription] = useState(undefined);
   const [ArrangeToolTipBox6x3GridDescription, set_ArrangeToolTipBox6x3GridDescription] = useState(undefined);
+
+  // This is the different OfKind dropdowns available. 
+  // I realized that this needs to be Dynamic as Hell!
+  // My way of doing this is to set OfKindDropDowns as an array of OfKindDropDown.
+  // I will have an interval somewhere checking to see which filter set I am supposed to used (defined in the withDropdown).
+  // The Of Kind will list will be updated by that interval with a list of all the different names in there.
+  const [OfKindDropDowns, set_OfKindDropDowns] = useState(undefined);
+  const [OfKindDropDown, set_OfKindDropDown] = useState(<CoinSortDropDown id='OfKindDropDown' items={['None']} defaultSelection='None' />); // Just a default OfKindDropDown.
 
   useEffect(() => {
     if (isLoading) {
@@ -194,8 +199,6 @@ const CoinSort = () => {
           if (err) {
             console.error(err);
           } else {
-            // console.log(res.data);
-
             set_ArrangeToolTipBox1x1GridDescription(res.data.ArrangeToolTipBox1x1GridDescription);
             set_ArrangeToolTipBox2x1GridDescription(res.data.ArrangeToolTipBox2x1GridDescription);
             set_ArrangeToolTipBox3x1GridDescription(res.data.ArrangeToolTipBox3x1GridDescription);
@@ -373,7 +376,7 @@ const CoinSort = () => {
             <p className='GrayText CoinSortText'>
               Of kind:
             </p>
-            <CoinSortDropDown id='OfKindDropDown' items={['None', 'God', 'Ruler', 'Female', 'Idea', 'Animal', 'Object', 'Nature', 'War/Weapon', 'Letter', 'Building', 'Other']} defaultSelection='None' />
+            {OfKindDropDown}
           </div>
           <div className='CoinSortVerticalLine CoinSortCell' />
         </div>
