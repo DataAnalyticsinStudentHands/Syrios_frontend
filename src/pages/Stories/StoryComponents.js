@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import 'src/components/constants.css';
 import './Stories.css';
 import 'src/components/coin/coinFlip.css';
+import backGround from 'src/assets/background.jpg';
 
 function IsEmptyOrWhiteSpace(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -187,11 +188,16 @@ const subcomponent_image = (image) => {
   return (
     <Container className='d-flex justify-content-center align-items-center'>
       <div className={`${image.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
-        <Container className='d-flex justify-content-center align-items-center'>
+        <Container className='d-flex justify-content-center align-items-center Blande_Image'>
+          <img
+            src={backGround}
+            alt={'bgimg'}
+            width={imageSizes[image.size]}
+          />
           <img
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}            
             alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
-            width={imageSizes[image.size]} 
+            width={imageSizes[image.size]}
           />
         </Container>
         {caption}
@@ -324,7 +330,8 @@ const Title = (zone, index, jsonObject) => {
   }
 
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           {subcomponent_image_only(zone.image)}
         </Container>
@@ -337,7 +344,8 @@ const Title = (zone, index, jsonObject) => {
 
 const End_Frame = (zone, index, jsonObject) => {
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <div id='EndFrameText'>
           <ReactMarkdown className='GrayText text-center SubText'>
@@ -428,7 +436,8 @@ const Frame1 = (zone, index, jsonObject) => {
   }
 
   return (
-    <div key={`story_comp_${index}`} className='section testSection' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section testSection' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+    backgroundBlendMode:'multiply' }}>
       <Container className='mb-5'>
         {mainText(zone.main_text)}
       </Container>
@@ -439,7 +448,8 @@ const Frame1 = (zone, index, jsonObject) => {
 
 const Frame2 = (zone, index, jsonObject) => {
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+    backgroundBlendMode:'multiply'}}>
       <Container className='mb-5'>
         {mainText(zone.main_text)}
       </Container>
@@ -452,7 +462,8 @@ const Frame2 = (zone, index, jsonObject) => {
 const Frame3 = (zone, index, jsonObject) => {
 
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
       {subcomponent_image_with_dynamic_sizing(zone.images)}
       <div style={{marginTop: '-60px'}}>
         {mainText(zone.main_text)}
@@ -491,8 +502,14 @@ const Frame4 = (zone, index, jsonObject) =>{
     )
   }
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
-        <Container className='justify-content-center align-items-center' style={{marginTop:'-20%'}}>
+    <div key={`story_comp_${index}`} 
+    className='section' 
+    style={{ 
+      backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply' 
+    }}
+    >
+        <Container className='justify-content-center align-items-center' style={{marginTop:'-10%'}}>
             {subQuote}
         </Container>
     </div>
@@ -522,7 +539,8 @@ const Frame5 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container className='mb-5'>
           {mainText(zone.main_text)}
         </Container>
@@ -543,7 +561,8 @@ const Frame5 = (zone, index, jsonObject) =>{
 
 const Frame6 = (zone, index, jsonObject) =>{
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined: `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined: `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container className='mb-5'>
           {mainText(zone.main_text)}
         </Container>
@@ -585,7 +604,8 @@ const Frame7 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container className='mb-5'>
           {mainText(zone.main_text)}
         </Container>
@@ -606,7 +626,8 @@ const Frame7 = (zone, index, jsonObject) =>{
 
 const Frame8 = (zone, index, jsonObject) =>{
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container className='justify-content-center'>
           <Row className='text-center'>
             {subcomponent_image(zone.image_title)}
@@ -628,7 +649,8 @@ const Frame8 = (zone, index, jsonObject) =>{
 
 const Frame9 = (zone, index, jsonObject) =>{
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container className='mb-5'>
           {mainText(zone.main_text)}
         </Container>
@@ -678,7 +700,8 @@ const Frame10 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container>
           {page}
         </Container>
@@ -881,7 +904,8 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
 
   };
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
       <Container className='justify-content-center align-items-center'>
         {/* Main text */}
         <Row>
@@ -991,7 +1015,8 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
 
   
   return(
-    <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-between'>
           {/* image_lieft */}
@@ -1185,7 +1210,8 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
       <Container>
         <Row>
           <Col>
@@ -1497,7 +1523,8 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
   }
 
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
           {title}
       <Container className='my-5'>
         <Row className='d-flex justify-content-between'>
@@ -1579,7 +1606,8 @@ const Testframe =(zone, index, jsonObject) =>{
   //console.log(instance);
 
   return(
-    <div key={`story_comp_${index}`} className='section'  style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section'  style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container>
           <Row>
             <img
@@ -1616,7 +1644,8 @@ const Testframe2 =(zone, index, jsonObject) =>{
   //console.log(instance);
 
   return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
         <Container>
           <Row>
             {jsonObject.results.bindings[0].instanceLabel.value}
@@ -1714,7 +1743,8 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
   }
 
   return(
-    <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='mb-5'>
           <p className='OrangeText MainText text-center' style={{display:'black', opacity:1, transition:'0.3s'}}>
@@ -1743,7 +1773,6 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
                 &#xe833;</i>
             </Col>
           </Col>
-
           <Col xs={6} className='LightBlueBackground d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'125px'}}>
             <p className='BlueText text-center SubText' style={{display:'black', opacity:1, transition:'0.3s'}}>
               {zone.sub_text_right_front}
