@@ -569,7 +569,7 @@ const Frame6 = (zone, index, jsonObject) =>{
         <Container>
           <Row>
             <Col xs={5}>
-              {subcomponent_image(zone.image_left)}
+              {subcomponent_image(zone.image)}
             </Col>
             <Col xs={7} className='align-self-center'>
               {sub_cap_blue_bg(zone.sub_text_right, zone.cap_text_right)}
@@ -1502,14 +1502,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
 
 
   }
-  // console.log(zone.component[0].image_left.length);
-  // const frameImage = (component)=>{
-  //   if (component.image_left.length == 2 && component.image_right.length == 2){
-
-  //     component.
-
-  //   }
-  // }
 
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
