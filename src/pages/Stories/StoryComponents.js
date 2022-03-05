@@ -1316,7 +1316,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
         </Row>
         <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground '>
           <ReactMarkdown className='mt-3'>
-            {zone.cap_text_left}
+            {zone.text_left}
           </ReactMarkdown>
         </Row>
       </Col>
@@ -1398,6 +1398,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
     </Row>
     )
   }
+
 
   const switchFrame = (dom,i) =>{
 
@@ -1639,90 +1640,58 @@ const Testframe2 =(zone, index, jsonObject) =>{
   )
 }
 
+function SwitchFront(Switchitem){
+  Switchitem.childNodes[0].style.opacity = '0.0';
+  setTimeout(() => {
+    try {
+      Switchitem.childNodes[0].style.display = 'none';
+      Switchitem.childNodes[1].style.display = 'block';
+    } catch (error) {
+      console.error(error);
+    }
+    setTimeout(() => {
+      try {
+        Switchitem.childNodes[1].style.opacity = '1.0';
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }, 400);
+}
+function SwitchBack(Switchitem){
+  Switchitem.childNodes[1].style.opacity = '0.0';
+  setTimeout(() => {
+    try {
+      Switchitem.childNodes[1].style.display = 'none';
+      Switchitem.childNodes[0].style.display = 'block';
+    } catch (error) {
+      console.error(error);
+    }
+    setTimeout(() => {
+      try {
+        Switchitem.childNodes[0].style.opacity = '1.0';
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }, 400);
+}
 const InteractiveFrame5 = (zone, index, jsonObject) =>{
   let switchDir = true
-
   const switchWord = (dom) =>{
-
     let main_text = dom.childNodes[0]
     let sub_text = dom.childNodes[1].childNodes[1]
-
     if (switchDir){
-      main_text.childNodes[0].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          main_text.childNodes[0].style.display = 'none';
-          main_text.childNodes[1].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            main_text.childNodes[1].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-  
-      sub_text.childNodes[0].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          sub_text.childNodes[0].style.display = 'none';
-          sub_text.childNodes[1].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            sub_text.childNodes[1].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
+      SwitchFront(main_text)
+      SwitchFront(sub_text)
       switchDir = false
     }
     else{
-      main_text.childNodes[1].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          main_text.childNodes[1].style.display = 'none';
-          main_text.childNodes[0].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            main_text.childNodes[0].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-
-      sub_text.childNodes[1].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          sub_text.childNodes[1].style.display = 'none';
-          sub_text.childNodes[0].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            sub_text.childNodes[0].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-
+      SwitchBack(main_text)
+      SwitchBack(sub_text)
       switchDir = true
     }
-
   }
-
   return(
     <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
       backgroundBlendMode:'multiply'}}>
@@ -1737,11 +1706,11 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
         </Row>
 
         <Row className='d-flex justify-content-between'>
-          <Col xs={6} className="d-flex justify-content-between">
+          <Col xs={6} className="d-flex justify-content-center">
             <Col xs={6} className="d-flex justify-content-end">
               {FlipCoinImg(zone.image_left_front,zone.image_left_back)}
             </Col>
-            <Col xs={6}>
+            <Col xs={6} className="d-flex justify-content-start">
               <i 
                 className='demo-icon icon-coin-scale InteractiveFrame5ScaleIcon'
                 onClick={(e)=> {

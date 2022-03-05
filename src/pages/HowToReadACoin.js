@@ -4,26 +4,27 @@ import axios from 'axios';
 import 'src/pages/Stories/Stories.css';
 import Navbar from 'src/components/Navbar.js';
 import Footer, { ChangeCreditsAndReferences } from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
 import fullPageComponent from 'src/components/FullPageComponent';
+import LoadingPage from 'src/components/LoadingPage.js';
+
 
 
 const HowToReadACoin = () => {
-  const [isLoading, set_isLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [storyZone, setStoryZone] = useState(undefined)
 
   useEffect(() => {
-    if (isLoading) {
+    if (loading) {
       axios.get(`${process.env.REACT_APP_strapiURL}/how-to-read-a-coin`)
         .then((res, error) => {
             setStoryZone(res.data.zone)
             ChangeCreditsAndReferences(res.data.credits_and_references);
-            set_isLoading(false);
+            setLoading(false);
         });
     }
   });
 
-  if (isLoading) {
+  if (loading) {
     return (
       <>
         {Navbar()}

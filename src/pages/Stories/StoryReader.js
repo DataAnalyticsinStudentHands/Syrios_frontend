@@ -5,13 +5,12 @@ import { useLocation } from 'react-router-dom';
 import './Stories.css';
 import Navbar from 'src/components/Navbar.js';
 import Footer, { ChangeCreditsAndReferences } from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
 import fullPageComponent from 'src/components/FullPageComponent';
+import LoadingPage from 'src/components/LoadingPage.js';
 
 
 const StoryReader = () => {
 	const [loading, setLoading] = useState(true);
-	// const [jsonObject, setJsonObject] = useState([])
 	const [storyZone, setStoryZone] = useState(undefined)
 	// Fetches story_id via url link.
 	const Get_id = () => {
