@@ -27,7 +27,9 @@ function Download(){
     
     useEffect(()=>{
         if(isLoading){
-            axios.get(process.env.REACT_APP_strapiURL + '/download')
+            let apiURL = 'http://localhost:1337/download'
+            // axios.get(process.env.REACT_APP_strapiURL + '/download')
+            axios.get(apiURL)
                 .then((res)=>{
                     setSubTitle(res.data.sub_title);
                     setSubText(res.data.sub_text);
@@ -36,6 +38,10 @@ function Download(){
                 });
         }
     });
+    
+    function createMarkup(textTran){
+        return {__html: textTran};
+    }
 
     const formik = useFormik({
         initialValues:{
@@ -105,7 +111,8 @@ function Download(){
                                             {subTitle}
                                         </Row>
                                         <Row className='GrayText' id='downLoad_Sub_Text'>
-                                            {subText}
+                                            {/* {subText} */}
+                                            <div dangerouslySetInnerHTML={createMarkup(subText)} />
                                         </Row>
                                     </Col>
                                 </Row>

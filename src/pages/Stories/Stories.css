@@ -375,18 +375,15 @@ Button:hover {
 
 .InteractiveFrame1TextFront {
   position: relative;
-  top: 10px;
+  /* top: 10px; */
   display: block;
   opacity: 1;
   transition: 0.3s;
 }
 
 .InteractiveFrame1TextBack {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  /* top: 10px; */
   display: none;
   opacity: 0;
   transition: 0.3s;

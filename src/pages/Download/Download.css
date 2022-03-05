@@ -24,3 +24,16 @@
 #downLoad_Sub_Text {
   font-size: large;
 }
+
+a.NOMISMALink {
+  color: red;
+}
+a.GlosseryLink {
+  color: orange;
+}
+a.externalLink {
+  color: yellow;
+}
+a.internalLink {
+  color: aqua;
+}

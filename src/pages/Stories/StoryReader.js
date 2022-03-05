@@ -24,9 +24,9 @@ const StoryReader = () => {
 		if (loading) {
 			axios.get(`${process.env.REACT_APP_strapiURL}/stories/${storyId}`)
 				.then((res) => {
-					let story = res.data.zone
 					ChangeCreditsAndReferences(res.data.credits_and_references);
 					
+					let story = res.data.zone
 					let wikidatas = []
 					let wikidataIndex = []
 					for (let i = 0; i < story.length;i++){

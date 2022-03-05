@@ -19,13 +19,7 @@ const HowToReadACoin = () => {
       axios.get(`${process.env.REACT_APP_strapiURL}/how-to-read-a-coin`)
         .then((res, error) => {
           if (error) {
-            set_page(
-              <div className='d-flex align-items-center justify-content-center' style={{paddingTop: '10%'}}>
-                <p className='OrangeText text-center' style={{fontSize: '76px'}}>
-                  Page failed to load. Try refreshing.
-                </p>
-              </div>
-            );
+            console.log(error)
             set_isLoading(false);
           } else {
             set_page(
