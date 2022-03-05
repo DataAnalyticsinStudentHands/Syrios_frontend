@@ -133,7 +133,7 @@ const Footer = (loadCreditsAndReferences = false) => {
             onClick={(e) => {
               document.getElementById('CreditsAndReferences').style.height = '0vh';
             }}>&#xe838;</i>
-          <ol className='CreditsAndReferencesList' title='Source Material Courtesy of:'>
+          <ol className='CreditsAndReferencesList' title='Source material courtesy of:'>
           </ol>
           <ol className='CreditsAndReferencesList' title='To read more, check these out:'>
           </ol>

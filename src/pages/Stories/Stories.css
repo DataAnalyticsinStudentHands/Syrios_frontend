@@ -10,7 +10,8 @@
 }
 
 strong {
-  color: #487848;
+  /* color: #487848; */
+  color: #78a878;
 }
 
 a:link {
@@ -40,6 +41,7 @@ a:active {color:#0000FF;}  */
   -webkit-overflow-scrolling: touch;
   height: 100%;
   background: url(src/assets/background.jpg);
+  /* background-blend-mode: multiply; */
 }
 
 Button {
@@ -74,12 +76,16 @@ Button:hover {
 /* This is soooo ghetto, but it works. This is how background images scale properly with fullpage.js */
 
 .section {
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-position: 50% 50% !important;
+  background-size: cover, auto !important;
+  background-repeat: no-repeat, repeat !important;
+  background-position: 50% 50%, 50% 50% !important;
   padding: 0px;
+  /* background-blend-mode: multiply; */
 }
-
+.Blande_Image img:first-child {
+  position: absolute;
+  mix-blend-mode: multiply;
+}
 /**** General classes ****/
 
 .TitleText {
