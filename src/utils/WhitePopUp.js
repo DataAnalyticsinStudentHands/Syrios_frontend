@@ -1,80 +1,48 @@
-import React, { createRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
 import './WhitePopUp.css';
 
 
-
 // WhitePopUp is a class that wraps information with a white popup and a translucent white background that covers everything but the navbar and footer.
 // Has an X-icon prebuilt and closes on out side click.
-class WhitePopUp extends React.Component {
-  wrapperRef = createRef();
 
-  static ArrayOfWhitePopUps = [];
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      opacity: 0,
-      zIndex: -1000
-    };
+const WhitePopUp = (props) => {
+  const wrapperRef = useRef(null);
+  const [show, set_show] = useState(false);
 
-    WhitePopUp.ArrayOfWhitePopUps.push(this);
-  }
-
-  componentDidMount() {
-    document.addEventListener("mouseup", this.handleClickOutside);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("mouseup", this.handleClickOutside);
-  }
-
-  hide() {
-    this.setState({
-      opacity: 0,
-      zIndex: -1000
-    });
-  }
-
-  show() {
-    this.setState({
-      opacity: 1,
-      zIndex: 1000
-    });
-  }
-
-  // On outside click, close everything.
-  handleClickOutside = (event) => {
-    if (
-      this.wrapperRef.current &&
-      !this.wrapperRef.current.contains(event.target)
-    ) {
-      this.hide();
-    }
+  const closeHandler = (e) => { 
+    set_show(false);
+    props.onClose(false);
   };
 
-  render() {
-    const { children } = this.props;
+  useEffect(() => {
+    set_show(props.show);
+  }, [props.show]);
 
-    return (
-      <div>
-        <div className='TranslucentWhiteBackground' style={{ opacity: this.state.opacity, zIndex: this.state.zIndex }}/>
-        <div ref={this.wrapperRef}>
-          <div className='SnowWhiteBackground' style={{ opacity: this.state.opacity, zIndex: this.state.zIndex }}> 
+  let displayStyle = {
+    opacity: show ? 1 : 0,
+    zIndex: show ? 1000 : -1000
+  };
+
+  return (
+    <div>
+      <div className='TranslucentWhiteBackground' style={displayStyle}/>
+      <OutsideClickHandler 
+        onOutsideClick={closeHandler}>
+        <div className='SnowWhiteBackground' style={displayStyle}> 
           <i
             className='demo-icon icon-x-medium x-icon'
-            onClick={(e) => {
-              this.hide();
-            }}>
+            onClick={closeHandler}>
             &#xe838;</i>
-            <div className='WhitePopUpInnerPadding'>
-              {children}
-            </div>
+          <div className='WhitePopUpInnerPadding'>
+            {props.children}
           </div>
         </div>
-      </div>
-    );
-  }
+      </OutsideClickHandler>
+    </div>
+  );
 }
 
 export default WhitePopUp;

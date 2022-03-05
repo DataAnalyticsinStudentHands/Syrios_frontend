@@ -27,18 +27,8 @@
 }
 
 #EventInfo {
-  box-shadow: 0px 0px 50px black;
-  background-color: white;
-  position: fixed;
-  max-width: 90%;
-  max-height: 80%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -100;
-
-  transition: 0.6s;
-  opacity: 0;
+  width: 80vw;
+  max-width: 800px;
 }
 
 #EventInfoInnerDiv {

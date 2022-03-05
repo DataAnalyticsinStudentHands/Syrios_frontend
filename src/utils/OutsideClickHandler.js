@@ -1,34 +1,26 @@
-import React, { createRef } from "react";
+import { useEffect, useRef } from 'react';
 
-class OutsideClickHandler extends React.Component {
-  wrapperRef = createRef();
+const OutsideClickHandler = (props) => {
+  const ref = useRef(null);
+  const { onOutsideClick } = props;
 
-  static defaultProps = {
-    onOutsideClick: () => {}
-  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        onOutsideClick && onOutsideClick();
+      }
+    };
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [ onOutsideClick ]);
 
-  componentDidMount() {
-    document.addEventListener("mouseup", this.handleClickOutside);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("mouseup", this.handleClickOutside);
-  }
-
-  handleClickOutside = (event) => {
-    if (
-      this.wrapperRef.current &&
-      !this.wrapperRef.current.contains(event.target)
-    ) {
-      this.props.onOutsideClick();
-    }
-  };
-
-  render() {
-    const { children } = this.props;
-
-    return <div ref={this.wrapperRef}>{children}</div>;
-  }
+  return (
+    <div ref={ref} style={{ opacity: 1 }}>
+      {props.children}
+    </div> 
+  );
 }
 
 export default OutsideClickHandler;
