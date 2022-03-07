@@ -1,9 +1,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import mainText from '../ComponentFunction/mainText';
-import subcomponent_image_only from '../ComponentFunction/subcomponent_image_only';
-import subcomponent_image from '../ComponentFunction/subcomponent_image';
-import sub_cap_blue_bg from '../ComponentFunction/sub_cap_blue_bg';
+import {mainText, subcomponent_image_only, subcomponent_image, sub_cap_blue_bg } from "../ComponentFunction/index";
+
 const Frame8 = (zone, index, jsonObject) =>{
     return(
       <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,

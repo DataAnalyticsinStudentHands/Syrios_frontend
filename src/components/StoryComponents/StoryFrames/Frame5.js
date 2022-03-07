@@ -1,8 +1,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
 import ReactMarkdown from 'react-markdown';
-import mainText from '../ComponentFunction/mainText';
-import subcomponent_image from '../ComponentFunction/subcomponent_image';
+import {mainText, subcomponent_image  } from "../ComponentFunction/index";
 
 const Frame5 = (zone, index, jsonObject) =>{
 

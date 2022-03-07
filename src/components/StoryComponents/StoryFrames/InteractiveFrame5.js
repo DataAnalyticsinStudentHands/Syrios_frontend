@@ -1,9 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import SwitchFront from '../ComponentFunction/SwitchFront';
-import SwitchBack from '../ComponentFunction/SwitchBack';
-import FlipCoinImg from '../ComponentFunction/FlipCoinImg';
-import FlipCoin from '../ComponentFunction/FlipCoin';
+import {SwitchFront,SwitchBack,FlipCoinImg,FlipCoin } from "../ComponentFunction/index";
 
 
 const InteractiveFrame5 = (zone, index, jsonObject) =>{

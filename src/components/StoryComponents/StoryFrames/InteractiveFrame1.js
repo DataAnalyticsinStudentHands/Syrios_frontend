@@ -1,8 +1,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import IsEmptyOrWhiteSpace from '../ComponentFunction/IsEmptyOrWhiteSpace';
 import ReactMarkdown from 'react-markdown';
-
+import {IsEmptyOrWhiteSpace,} from "../ComponentFunction/index";
 
 const InteractiveFrame1 = (zone, index, jsonObject) => {
     let blueBackgroundMaxHeight = '200px';

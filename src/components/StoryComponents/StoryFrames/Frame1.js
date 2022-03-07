@@ -1,11 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
-
-import IsEmptyOrWhiteSpace from "../ComponentFunction/IsEmptyOrWhiteSpace";
-import mainText from "../ComponentFunction/mainText";
-import bigSubText from "../ComponentFunction/bigSubText";
-import subText from "../ComponentFunction/subText";
-import capText from "../ComponentFunction/capText";
+import { mainText, bigSubText, subText, capText, IsEmptyOrWhiteSpace } from "../ComponentFunction/index";
 
 const Frame1 = (zone, index, jsonObject) => {
     let subtext = undefined;

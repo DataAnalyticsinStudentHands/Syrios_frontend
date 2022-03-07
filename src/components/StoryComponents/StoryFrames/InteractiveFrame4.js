@@ -1,8 +1,7 @@
 import backGround from 'src/assets/background.jpg';
-import IsEmptyOrWhiteSpace from '../ComponentFunction/IsEmptyOrWhiteSpace';
 import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
-import mainText from '../ComponentFunction/mainText';
+import {IsEmptyOrWhiteSpace, mainText} from "../ComponentFunction/index";
 
 const InteractiveFrame4 = (zone, index, jsonObject) => {
 

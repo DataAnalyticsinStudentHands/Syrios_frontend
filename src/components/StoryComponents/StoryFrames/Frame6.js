@@ -1,8 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import mainText from '../ComponentFunction/mainText';
-import subcomponent_image from '../ComponentFunction/subcomponent_image';
-import sub_cap_blue_bg from '../ComponentFunction/sub_cap_blue_bg';
+import {mainText, subcomponent_image, sub_cap_blue_bg } from "../ComponentFunction/index";
 
 const Frame6 = (zone, index, jsonObject) =>{
     return(

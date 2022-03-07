@@ -1,8 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-
-import subcomponent_image from '../ComponentFunction/subcomponent_image';
-import FlipCoin from '../ComponentFunction/FlipCoin';
+import {subcomponent_image,FlipCoin} from "../ComponentFunction/index";
 
 const InteractiveFrame2 = (zone, index, jsonObject) =>{
     

@@ -8,23 +8,23 @@ import './Stories.css';
 import 'src/components/coin/coinFlip.css';
 import backGround from 'src/assets/background.jpg';
 
-import Title from 'src/components/StoryComonents/StoryFrames/Title';
-import End_Frame from 'src/components/StoryComonents/StoryFrames/End_Frame';
-import Frame1 from 'src/components/StoryComonents/StoryFrames/Frame1';
-import Frame2 from 'src/components/StoryComonents/StoryFrames/Frame2';
-import Frame3 from 'src/components/StoryComonents/StoryFrames/Frame3';
-import Frame4 from 'src/components/StoryComonents/StoryFrames/Frame4';
-import Frame5 from 'src/components/StoryComonents/StoryFrames/Frame5';
-import Frame6 from 'src/components/StoryComonents/StoryFrames/Frame6';
-import Frame7 from 'src/components/StoryComonents/StoryFrames/Frame7';
-import Frame8 from 'src/components/StoryComonents/StoryFrames/Frame8';
-import Frame9 from 'src/components/StoryComonents/StoryFrames/Frame9';
-import Frame10 from 'src/components/StoryComonents/StoryFrames/Frame10';
-import InteractiveFrame1 from 'src/components/StoryComonents/StoryFrames/InteractiveFrame1';
-import InteractiveFrame2 from 'src/components/StoryComonents/StoryFrames/InteractiveFrame2';
-import InteractiveFrame3 from 'src/components/StoryComonents/StoryFrames/InteractiveFrame3';
-import InteractiveFrame4 from 'src/components/StoryComonents/StoryFrames/InteractiveFrame4';
-import InteractiveFrame5 from 'src/components/StoryComonents/StoryFrames/InteractiveFrame5';
+import Title from 'src/components/StoryComponents/StoryFrames/Title';
+import End_Frame from 'src/components/StoryComponents/StoryFrames/End_Frame';
+import Frame1 from 'src/components/StoryComponents/StoryFrames/Frame1';
+import Frame2 from 'src/components/StoryComponents/StoryFrames/Frame2';
+import Frame3 from 'src/components/StoryComponents/StoryFrames/Frame3';
+import Frame4 from 'src/components/StoryComponents/StoryFrames/Frame4';
+import Frame5 from 'src/components/StoryComponents/StoryFrames/Frame5';
+import Frame6 from 'src/components/StoryComponents/StoryFrames/Frame6';
+import Frame7 from 'src/components/StoryComponents/StoryFrames/Frame7';
+import Frame8 from 'src/components/StoryComponents/StoryFrames/Frame8';
+import Frame9 from 'src/components/StoryComponents/StoryFrames/Frame9';
+import Frame10 from 'src/components/StoryComponents/StoryFrames/Frame10';
+import InteractiveFrame1 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame1';
+import InteractiveFrame2 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame2';
+import InteractiveFrame3 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame3';
+import InteractiveFrame4 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame4';
+import InteractiveFrame5 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame5';
 
 const Testframe =(zone, index, jsonObject) =>{
 

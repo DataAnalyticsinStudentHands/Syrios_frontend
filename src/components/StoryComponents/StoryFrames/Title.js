@@ -1,8 +1,7 @@
-import IsEmptyOrWhiteSpace from "../ComponentFunction/IsEmptyOrWhiteSpace";
 import { Container } from "react-bootstrap"
 import ReactMarkdown from 'react-markdown';
-import subcomponent_image_only from "../ComponentFunction/subcomponent_image_only";
 import backGround from 'src/assets/background.jpg';
+import {IsEmptyOrWhiteSpace,subcomponent_image_only } from "../ComponentFunction/index";
 
 const Title = (zone, index, jsonObject) => {
 

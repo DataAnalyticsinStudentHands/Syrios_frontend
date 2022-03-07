@@ -1,8 +1,7 @@
 import { Container} from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
-import mainText from "../ComponentFunction/mainText";
-import subText from "../ComponentFunction/subText";
-import subcomponent_image from "../ComponentFunction/subcomponent_image";
+
+import { mainText, subText, subcomponent_image } from "../ComponentFunction/index";
 
 const Frame2 = (zone, index, jsonObject) => {
     return (

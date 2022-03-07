@@ -1,7 +1,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import mainText from '../ComponentFunction/mainText';
-import subcomponent_image_only from '../ComponentFunction/subcomponent_image_only';
+
+import {mainText, subcomponent_image_only,} from "../ComponentFunction/index";
 
 const Frame10 = (zone, index, jsonObject) =>{
   let page = undefined

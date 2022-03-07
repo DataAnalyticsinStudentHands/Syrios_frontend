@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import backGround from 'src/assets/background.jpg';
@@ -24,16 +24,16 @@ const End_Frame = (zone, index, jsonObject) => {
           <Row className='d-flex justify-content-around'>
             <Col >
               <Link to='/Stories'>
-                <button	className='BlueText EndFrameButtonWidth text-center'>
+                <Button	className='BlueText EndFrameButtonWidth text-center'>
                   Tell Me a Story
-                </button>
+                </Button>
               </Link>
             </Col>
             <Col>
               <Link to='/'>
-                <button	className='BlueText EndFrameButtonWidth text-center'>
+                <Button	className='BlueText EndFrameButtonWidth text-center'>
                   Explore Coins
-                </button>
+                </Button>
               </Link>
             </Col>
           </Row>

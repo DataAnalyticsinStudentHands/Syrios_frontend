@@ -1,7 +1,6 @@
 import backGround from 'src/assets/background.jpg';
-import mainText from "../ComponentFunction/mainText";
-import subText from "../ComponentFunction/subText";
-import subcomponent_image_with_dynamic_sizing from '../ComponentFunction/subcomponent_image_with_dynamic_sizing';
+import { mainText, subText, subcomponent_image_with_dynamic_sizing } from "../ComponentFunction/index";
+
 
 const Frame3 = (zone, index, jsonObject) => {
     return (
