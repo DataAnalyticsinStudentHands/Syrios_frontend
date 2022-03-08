@@ -22,9 +22,9 @@ function Download(){
     
     useEffect(()=>{
         if(isLoading){
-            let apiURL = 'http://localhost:1337/download'
-            // axios.get(process.env.REACT_APP_strapiURL + '/download')
-            axios.get(apiURL)
+            // let apiURL = 'http://localhost:1337/download'
+            // axios.get(apiURL)
+            axios.get(process.env.REACT_APP_strapiURL + '/download')
                 .then((res)=>{
                     setSubTitle(res.data.sub_title);
                     setSubText(res.data.sub_text);
