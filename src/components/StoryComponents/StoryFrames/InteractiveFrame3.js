@@ -1,7 +1,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
-import {subcomponent_image} from "../ComponentFunction/index";
+import {subcomponent_image, SwitchBack, SwitchFront} from "../ComponentFunction/index";
 
 const InteractiveFrame3 = (zone, index, jsonObject) =>{
 
@@ -10,120 +10,118 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       let imgLeftDiv = dom.childNodes[0]
       let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
       let imgRightDiv = dom.childNodes[2]
+      SwitchBack(imgLeftDiv)
+      SwitchBack(textmidDiv)
+      SwitchBack(imgRightDiv)
+      // imgLeftDiv.childNodes[1].style.opacity = '0.0';
+      // setTimeout(() => {
+      //   try {
+      //     imgLeftDiv.childNodes[1].style.display = 'none';
+      //     imgLeftDiv.childNodes[0].style.display = 'block';
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      //   setTimeout(() => {
+      //     try {
+      //       imgLeftDiv.childNodes[0].style.opacity = '1.0';
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   });
+      // }, 400);
   
+      // textmidDiv.childNodes[1].style.opacity = '0.0';
+      // setTimeout(() => {
+      //   try {
+      //     textmidDiv.childNodes[1].style.display = 'none';
+      //     textmidDiv.childNodes[0].style.display = 'block';
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      //   setTimeout(() => {
+      //     try {
+      //       textmidDiv.childNodes[0].style.opacity = '1.0';
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   });
+      // }, 400);
   
-      imgLeftDiv.childNodes[1].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          imgLeftDiv.childNodes[1].style.display = 'none';
-          imgLeftDiv.childNodes[0].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            imgLeftDiv.childNodes[0].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-  
-      textmidDiv.childNodes[1].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          textmidDiv.childNodes[1].style.display = 'none';
-          textmidDiv.childNodes[0].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            textmidDiv.childNodes[0].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-  
-      imgRightDiv.childNodes[1].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          imgRightDiv.childNodes[1].style.display = 'none';
-          imgRightDiv.childNodes[0].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            imgRightDiv.childNodes[0].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-  
-  
+      // imgRightDiv.childNodes[1].style.opacity = '0.0';
+      // setTimeout(() => {
+      //   try {
+      //     imgRightDiv.childNodes[1].style.display = 'none';
+      //     imgRightDiv.childNodes[0].style.display = 'block';
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      //   setTimeout(() => {
+      //     try {
+      //       imgRightDiv.childNodes[0].style.opacity = '1.0';
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   });
+      // }, 400);
     }
   
-    const switchForBack = (dom) =>{
-  
-      //console.log(dom.childNodes[1].childNodes[1])
-  
+    const switchForBack = (dom) =>{  
       let imgLeftDiv = dom.childNodes[0]
       let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
       let imgRightDiv = dom.childNodes[2]
+      SwitchFront(imgLeftDiv)
+      SwitchFront(textmidDiv)
+      SwitchFront(imgRightDiv)
+      // imgLeftDiv.childNodes[0].style.opacity = '0.0';
+      // setTimeout(() => {
+      //   try {
+      //     imgLeftDiv.childNodes[0].style.display = 'none';
+      //     imgLeftDiv.childNodes[1].style.display = 'block';
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      //   setTimeout(() => {
+      //     try {
+      //       imgLeftDiv.childNodes[1].style.opacity = '1.0';
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   });
+      // }, 400);
   
-      imgLeftDiv.childNodes[0].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          imgLeftDiv.childNodes[0].style.display = 'none';
-          imgLeftDiv.childNodes[1].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            imgLeftDiv.childNodes[1].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
+      // textmidDiv.childNodes[0].style.opacity = '0.0';
+      // setTimeout(() => {
+      //   try {
+      //     textmidDiv.childNodes[0].style.display = 'none';
+      //     textmidDiv.childNodes[1].style.display = 'block';
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      //   setTimeout(() => {
+      //     try {
+      //       textmidDiv.childNodes[1].style.opacity = '1.0';
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   });
+      // }, 400);
   
-      textmidDiv.childNodes[0].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          textmidDiv.childNodes[0].style.display = 'none';
-          textmidDiv.childNodes[1].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            textmidDiv.childNodes[1].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
-  
-      imgRightDiv.childNodes[0].style.opacity = '0.0';
-      setTimeout(() => {
-        try {
-          imgRightDiv.childNodes[0].style.display = 'none';
-          imgRightDiv.childNodes[1].style.display = 'block';
-        } catch (error) {
-          console.error(error);
-        }
-        setTimeout(() => {
-          try {
-            imgRightDiv.childNodes[1].style.opacity = '1.0';
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      }, 400);
+      // imgRightDiv.childNodes[0].style.opacity = '0.0';
+      // setTimeout(() => {
+      //   try {
+      //     imgRightDiv.childNodes[0].style.display = 'none';
+      //     imgRightDiv.childNodes[1].style.display = 'block';
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      //   setTimeout(() => {
+      //     try {
+      //       imgRightDiv.childNodes[1].style.opacity = '1.0';
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   });
+      // }, 400);
     }
   
     return(
@@ -149,11 +147,8 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
             </Col>
             {/* text in the middle */}
             <Col xs={5} className='justify-content-between d-flex flex-column'>
-  
                 <Row className='d-flex justify-content-center'>
-  
                 </Row>
-  
                 <Row className='d-flex justify-content-center' >
                   <Col xs={{span:9}} className='text-center GrayText SubText'>
                     <p style={{display:'black', opacity:1, transition:'0.3s'}}>

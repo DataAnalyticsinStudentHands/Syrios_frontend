@@ -289,6 +289,7 @@ export const FlipCoinImg = (img_fornt, img_back) =>{
     )
   }
 
+
 export function SwitchFront(Switchitem){
     Switchitem.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {

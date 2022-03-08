@@ -1,7 +1,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
-import {IsEmptyOrWhiteSpace,} from "../ComponentFunction/index";
+import {IsEmptyOrWhiteSpace, SwitchFront,SwitchBack} from "../ComponentFunction/index";
 
 const InteractiveFrame1 = (zone, index, jsonObject) => {
     let blueBackgroundMaxHeight = '200px';
@@ -40,10 +40,12 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }
         rowLightBlueBackground = rowLightBlueBackground.previousSibling.previousSibling;
   
+        // let imgLeftDiv = rowLightBlueBackground.childNodes[0].childNodes[0];
+        // let textCenterDiv = rowLightBlueBackground.childNodes[1];
+        // let imgRightDiv = rowLightBlueBackground.childNodes[2].childNodes[0];
         let imgLeftDiv = rowLightBlueBackground.childNodes[0].childNodes[0];
         let textCenterDiv = rowLightBlueBackground.childNodes[1];
         let imgRightDiv = rowLightBlueBackground.childNodes[2].childNodes[0];
-        
   
         // If compare scale is active then switch to reset scale else switch to compare scale
         if (compareScaleActive) {
@@ -66,58 +68,61 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           }, 400);
   
           // text center front to text center back
-          textCenterDiv.childNodes[0].style.opacity = '0.0';
-          setTimeout(() => {
-            try {
-              textCenterDiv.childNodes[0].style.display = 'none';
-              textCenterDiv.childNodes[1].style.display = 'block';
-            } catch (error) {
-              console.error(error);
-            }
-            setTimeout(() => {
-              try {
-                textCenterDiv.childNodes[1].style.opacity = '1.0';
-              } catch (error) {
-                console.error(error);
-              }
-            });
-          }, 400);
+          SwitchFront(textCenterDiv)
+          // textCenterDiv.childNodes[0].style.opacity = '0.0';
+          // setTimeout(() => {
+          //   try {
+          //     textCenterDiv.childNodes[0].style.display = 'none';
+          //     textCenterDiv.childNodes[1].style.display = 'block';
+          //   } catch (error) {
+          //     console.error(error);
+          //   }
+          //   setTimeout(() => {
+          //     try {
+          //       textCenterDiv.childNodes[1].style.opacity = '1.0';
+          //     } catch (error) {
+          //       console.error(error);
+          //     }
+          //   });
+          // }, 400);
   
           // image left front to image left back
-          imgLeftDiv.childNodes[1].style.opacity = '0.0';
-          setTimeout(() => {
-            try {
-              imgLeftDiv.childNodes[1].style.display = 'none';
-              imgLeftDiv.childNodes[2].style.display = 'block';
-            } catch (error) {
-              console.error(error);
-            }
-            setTimeout(() => {
-              try {
-                imgLeftDiv.childNodes[2].style.opacity = '1.0';
-              } catch (error) {
-                console.error(error);
-              }
-            });
-          }, 400);
+          SwitchBack(imgLeftDiv)
+          // imgLeftDiv.childNodes[1].style.opacity = '0.0';
+          // setTimeout(() => {
+          //   try {
+          //     imgLeftDiv.childNodes[1].style.display = 'none';
+          //     imgLeftDiv.childNodes[2].style.display = 'block';
+          //   } catch (error) {
+          //     console.error(error);
+          //   }
+          //   setTimeout(() => {
+          //     try {
+          //       imgLeftDiv.childNodes[2].style.opacity = '1.0';
+          //     } catch (error) {
+          //       console.error(error);
+          //     }
+          //   });
+          // }, 400);
   
           // image right front to image right back
-          imgRightDiv.childNodes[1].style.opacity = '0.0';
-          setTimeout(() => {
-            try {
-              imgRightDiv.childNodes[1].style.display = 'none';
-              imgRightDiv.childNodes[2].style.display = 'block';
-            } catch (error) {
-              console.error(error);
-            }
-            setTimeout(() => {
-              try {
-                imgRightDiv.childNodes[2].style.opacity = '1.0';
-              } catch (error) {
-                console.error(error);
-              }
-            });
-          }, 400);
+          SwitchBack(imgRightDiv)
+          // imgRightDiv.childNodes[1].style.opacity = '0.0';
+          // setTimeout(() => {
+          //   try {
+          //     imgRightDiv.childNodes[1].style.display = 'none';
+          //     imgRightDiv.childNodes[2].style.display = 'block';
+          //   } catch (error) {
+          //     console.error(error);
+          //   }
+          //   setTimeout(() => {
+          //     try {
+          //       imgRightDiv.childNodes[2].style.opacity = '1.0';
+          //     } catch (error) {
+          //       console.error(error);
+          //     }
+          //   });
+          // }, 400);
         } else {
           // Reset scale to Compare scale
           InteractiveFrame1ResetScale.style.opacity = '0.0';
@@ -138,22 +143,23 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           }, 400);
   
           // text center back to text center front
-          textCenterDiv.childNodes[1].style.opacity = '0.0';
-          setTimeout(() => {
-            try {
-              textCenterDiv.childNodes[1].style.display = 'none';
-              textCenterDiv.childNodes[0].style.display = 'block';
-            } catch (error) {
-              console.error(error);
-            }
-            setTimeout(() => {
-              try {
-                textCenterDiv.childNodes[0].style.opacity = '1.0';
-              } catch (error) {
-                console.error(error);
-              }
-            });
-          }, 400);
+          SwitchBack(textCenterDiv)
+          // textCenterDiv.childNodes[1].style.opacity = '0.0';
+          // setTimeout(() => {
+          //   try {
+          //     textCenterDiv.childNodes[1].style.display = 'none';
+          //     textCenterDiv.childNodes[0].style.display = 'block';
+          //   } catch (error) {
+          //     console.error(error);
+          //   }
+          //   setTimeout(() => {
+          //     try {
+          //       textCenterDiv.childNodes[0].style.opacity = '1.0';
+          //     } catch (error) {
+          //       console.error(error);
+          //     }
+          //   });
+          // }, 400);
   
           // image left back to image left front
           imgLeftDiv.childNodes[2].style.opacity = '0.0';
@@ -253,7 +259,6 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
                   alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
                   className=' InteractiveFrame1ImageBackRight'
                   id='InteractiveFrame1'
-  
                 />
               </div>
             </Col>

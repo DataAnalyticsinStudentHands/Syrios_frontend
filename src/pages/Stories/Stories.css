@@ -23,7 +23,7 @@ a:hover {color:#FF00FF;}
 a:active {color:#0000FF;}  */
 
 .SelectStoryDiv {
-  width: 100px;
+  width: 120px;
   transition: 0.5s;
 }
 
@@ -32,7 +32,9 @@ a:active {color:#0000FF;}  */
 }
 
 .SelectStoryText {
-  font-size: 14px;
+  font-size: 16px;
+  margin: 11px;
+  margin-bottom: -5px !important;
 }
 
 #StoriesPage {

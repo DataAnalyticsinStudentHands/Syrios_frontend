@@ -1,6 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import { subText, capText, IsEmptyOrWhiteSpace } from "../ComponentFunction/index";
+import { IsEmptyOrWhiteSpace, sub_cap_blue_bg } from "../ComponentFunction/index";
 
 
 const Frame4 = (zone, index, jsonObject) =>{
@@ -10,13 +10,15 @@ const Frame4 = (zone, index, jsonObject) =>{
     if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right)) {
       subQuote = (
         <Row className='justify-content-between'>
-            <Col xs={{span:5}} className='LightBlueBackground justify-content-center align-self-center'style={{padding: '20px', paddingTop: '20px' }} >
-                {subText(zone.sub_text_left)}
-                {capText(zone.cap_text_left)}
+            <Col xs={{span:5}} className='justify-content-center align-self-center'>
+                {/* {subText(zone.sub_text_left)}
+                {capText(zone.cap_text_left)} */}
+                {sub_cap_blue_bg(zone.sub_text_left, zone.cap_text_left)}
             </Col>
-            <Col xs={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-                {subText(zone.sub_text_right)}
-                {capText(zone.cap_text_right)}
+            <Col xs={{span:5}} className='justify-content-center align-self-center'>
+                {/* {subText(zone.sub_text_right)}
+                {capText(zone.cap_text_right)} */}
+                {sub_cap_blue_bg(zone.sub_text_right, zone.cap_text_right)}
             </Col>
         </Row>
       );
@@ -24,24 +26,22 @@ const Frame4 = (zone, index, jsonObject) =>{
     if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_left)){
       subQuote = (
         <Row className='justify-content-between' >
-          <Col xs={{span:5}} className='LightBlueBackground justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-            {subText(zone.sub_text_left)}
-            {capText(zone.cap_text_left)}
+          <Col xs={{span:5}} className='justify-content-center align-self-center'>
+            {/* {subText(zone.sub_text_left)}
+            {capText(zone.cap_text_left)} */}
+            {sub_cap_blue_bg(zone.sub_text_left, zone.cap_text_left)}
           </Col>
         </Row>
       )
     }
     return(
-      <div key={`story_comp_${index}`} 
-      className='section' 
+      <div key={`story_comp_${index}`} className='section' 
       style={{ 
         backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
-        backgroundBlendMode:'multiply' 
-      }}
-      >
-          <Container className='justify-content-center align-items-center' style={{marginBottom:'30%'}}>
-              {subQuote}
-          </Container>
+        backgroundBlendMode:'multiply'}}>
+        <Container className='justify-content-center align-items-center' style={{marginBottom:'30%'}}>
+            {subQuote}
+        </Container>
       </div>
     )
   }

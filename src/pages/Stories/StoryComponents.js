@@ -1,8 +1,4 @@
-import {
-  Container,
-  Row,
-} from 'react-bootstrap';
-
+import {Container,Row} from 'react-bootstrap';
 import 'src/components/constants.css';
 import './Stories.css';
 import 'src/components/coin/coinFlip.css';

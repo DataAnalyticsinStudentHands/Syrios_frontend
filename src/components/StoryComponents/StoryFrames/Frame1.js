@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
-import { mainText, bigSubText, subText, capText, IsEmptyOrWhiteSpace } from "../ComponentFunction/index";
+import { mainText, bigSubText, subText, capText, IsEmptyOrWhiteSpace, sub_cap_blue_bg } from "../ComponentFunction/index";
 
 const Frame1 = (zone, index, jsonObject) => {
     let subtext = undefined;
@@ -11,13 +11,14 @@ const Frame1 = (zone, index, jsonObject) => {
             <Col xs={6}>
               {bigSubText(zone.sub_text_left)}
             </Col>
-            <Col xs={6} className='LightBlueBackground p-3'>
-              <Row>
+            <Col xs={6} className='p-3'>
+              {/* <Row>
                 {subText(zone.sub_text_right)}
               </Row>
               <Row>
                 {capText(zone.caption_text_right)}
-              </Row>
+              </Row> */}
+              {sub_cap_blue_bg(zone.sub_text_right,zone.caption_text_right)}
             </Col>
           </Row>
         </Container>

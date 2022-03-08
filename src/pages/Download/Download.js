@@ -2,11 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import { useFormik } from "formik"
 import {CSVLink} from "react-csv"
 import * as Yup from "yup"
-import {
-	Container,
-	Row,
-	Col
-} from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 
 import Navbar from 'src/components/Navbar';
@@ -14,7 +10,6 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 
 import './Download.css';
-
 
 function Download(){
     const [isLoading, set_isLoading] = useState(true);

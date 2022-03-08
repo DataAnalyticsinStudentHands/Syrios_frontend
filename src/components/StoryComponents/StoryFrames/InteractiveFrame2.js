@@ -1,6 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import {subcomponent_image,FlipCoin} from "../ComponentFunction/index";
+import {FlipCoin,FlipCoinImg} from "../ComponentFunction/index";
 
 const InteractiveFrame2 = (zone, index, jsonObject) =>{
     
@@ -11,7 +11,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
           <Row className='d-flex justify-content-between'>
             {/* image_lieft */}
             <Col className='d-flex align-items-center justify-content-center' xs={3}>
-              <div className='flip-box'>
+              {/* <div className='flip-box'>
                 <div className='flip-box-inner'>
                   <div className='flip-box-front'>
                     {subcomponent_image(zone.image_left_front)}
@@ -20,17 +20,16 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                     {subcomponent_image(zone.image_left_back)}
                   </div>
                 </div>
-              </div>
+              </div> */}
+              {FlipCoinImg(zone.image_left_front, zone.image_left_back)}
             </Col>
             {/* text in the middle */}
             <Col xs={4} className='justify-content-between d-flex flex-column mt-5'>
-              
                 <Row className='GrayText SubText text-center align-items-start mt-5'>
                   <Col>
                     {zone.sub_text_middle_top}
                   </Col>
                 </Row>
-  
                 <Row className='text-center align-items-center my-5' >
                   <Col>
                     <Row>
@@ -59,7 +58,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
             </Col>
             {/* image right */}
             <Col className='d-flex align-items-center justify-content-center' xs={3}>
-              <div className='flip-box'>
+              {/* <div className='flip-box'>
                 <div className='flip-box-inner'>
                 <div className='flip-box-front'>
                     {subcomponent_image(zone.image_right_front)}
@@ -68,7 +67,8 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                     {subcomponent_image(zone.image_right_back)}
                   </div>
                 </div>
-              </div>
+              </div> */}
+              {FlipCoinImg(zone.image_right_front, zone.image_right_back)}
             </Col>
           </Row>
         </Container>

@@ -109,8 +109,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
       </Row>
       )
     }
-  
-  
     const switchFrame = (dom,i) =>{
   
       let option1 = dom.childNodes[0]
