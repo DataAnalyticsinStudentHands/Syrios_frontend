@@ -27,7 +27,7 @@ function LandingPage() {
 
   useEffect(() => {
     if (loading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/landing-page')
+      axios.get(process.env.REACT_APP_strapiURL + '/api/landing-page')
         .then((res, err) => {
           if (err) {
             console.error(err);

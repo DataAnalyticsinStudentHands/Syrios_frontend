@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { Container } from "react-bootstrap"
 import ReactMarkdown from 'react-markdown';
 import backGround from 'src/assets/background.jpg';

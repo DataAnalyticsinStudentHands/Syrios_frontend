@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import {Container,Row} from 'react-bootstrap';
 import 'src/components/constants.css';
 import './Stories.css';

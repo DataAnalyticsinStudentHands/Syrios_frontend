@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
 import { mainText, bigSubText, subText, capText, IsEmptyOrWhiteSpace, sub_cap_blue_bg } from "../ComponentFunction/index";

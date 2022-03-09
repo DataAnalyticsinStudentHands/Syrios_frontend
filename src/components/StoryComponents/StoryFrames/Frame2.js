@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { Container} from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
 

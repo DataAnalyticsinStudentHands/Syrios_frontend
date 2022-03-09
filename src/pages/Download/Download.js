@@ -11,6 +11,8 @@ import Footer from 'src/components/Footer';
 
 import './Download.css';
 
+import { subcomponent_image_only } from 'src/components/StoryComponents/ComponentFunction';
+
 function Download(){
     const [isLoading, set_isLoading] = useState(true);
     const [coinData, setCoinData] = useState([])
@@ -24,11 +26,12 @@ function Download(){
         if(isLoading){
             // let apiURL = 'http://localhost:1337/download'
             // axios.get(apiURL)
-            axios.get(process.env.REACT_APP_strapiURL + '/download')
+            axios.get(process.env.REACT_APP_strapiURL + '/api/download?populate=image.image')
                 .then((res)=>{
-                    setSubTitle(res.data.sub_title);
-                    setSubText(res.data.sub_text);
-                    setImage(res.data.image);                  
+                    // console.log(res)
+                    setSubTitle(res.data.data.attributes.sub_title);
+                    setSubText(res.data.data.attributes.sub_text);
+                    setImage(res.data.data.attributes.image);
                     set_isLoading(false);
                 });
         }
@@ -79,6 +82,15 @@ function Download(){
             </>
         );
     }
+    let imageSizes = {
+        "XXS": "50px",
+        "XS": "150px",
+        "S": "250px",
+        "M": "350px",
+        "L": "450px",
+        "XL": "550px",
+        "XXL": "650px"
+    };
 
     return(
         <>
@@ -112,11 +124,18 @@ function Download(){
                                     </Col>
                                 </Row>
                                 <Row className='my-5'>
-                                    <img
+                                    {/* <img
                                         alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
                                         className='FrameImage'
-                                        src={`${process.env.REACT_APP_strapiURL}${image.url}`} 
-                                    />
+                                        src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
+                                    /> */}
+                                        <img
+                                            // width={imageSizes[image.size]}
+                                            src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
+                                            alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
+                                            style={{width:imageSizes[image.size]}}
+                                        />
+                                    {/* {subcomponent_image_only(image.data.attributes)} */}
                                 </Row>
                             </div>
                         </Col>

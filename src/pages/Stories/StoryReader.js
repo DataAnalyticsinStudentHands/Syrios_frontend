@@ -17,13 +17,15 @@ const StoryReader = () => {
 		return new URLSearchParams(useLocation().search).get('id');
 	}
 	const storyId = Get_id();
+	//console.log(storyId)
+
 
 	useEffect(() => {
 		if (loading) {
-			axios.get(`${process.env.REACT_APP_strapiURL}/stories/${storyId}`)
+			axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/?id=${storyId}&populate=*`)
 				.then((res) => {
-					setStoryZone(res.data.zone);
-					ChangeCreditsAndReferences(res.data.credits_and_references);
+					setStoryZone(res.data.data[0]);
+					ChangeCreditsAndReferences(res.data.data.credits_and_references);
 					setLoading(false);
 
 					// let wikidatas = []

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import {SwitchFront,SwitchBack,FlipCoinImg,FlipCoin } from "../ComponentFunction/index";

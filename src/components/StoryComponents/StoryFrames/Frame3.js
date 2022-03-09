@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { mainText, subText, subcomponent_image_with_dynamic_sizing } from "../ComponentFunction/index";
 

@@ -1,4 +1,4 @@
-// import IsEmptyOrWhiteSpace from "./IsEmptyOrWhiteSpace"
+/* eslint-disable eqeqeq */
 import { Container, Row, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -113,9 +113,9 @@ let imageSizes = {
 };
 return (
     <img
-        src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}            
-        alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
-        width={imageSizes[image.size]} 
+        src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
+        alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
+        width={imageSizes[image.image.size]} 
     />
 );
 }
