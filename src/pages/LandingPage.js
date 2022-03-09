@@ -28,11 +28,17 @@ function LandingPage() {
   useEffect(() => {
     if (loading) {
       axios.get(process.env.REACT_APP_strapiURL + '/landing-page')
-        .then((res) => {
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+
           // This is where the landing page is defined via strapi
-          set_videoLink(res.data.videoLink);
-          set_shortDescription(res.data.shortDescription);
-          set_landingParagraph(res.data.LandingParagraph);
+          let data = res.data.data.attributes;
+          set_videoLink(data.videoLink);
+          set_shortDescription(data.shortDescription);
+          set_landingParagraph(data.LandingParagraph);
           set_loading(false);
         });
     }

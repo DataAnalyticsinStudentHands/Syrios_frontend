@@ -85,6 +85,7 @@ const defaultEventData = {
 //
 function setupTimelineBackground(obj) {
   let res = obj.res;
+  console.log(res);
   let yOffset = obj.yOffset;
   // Push background backdrop react-native-svg elements onto render array for react to load
   let jsxArr = [];
@@ -439,14 +440,14 @@ const Timeline = () => {
         .then((res, err) => {
           if (err) {
             console.error(err);
-          } else {
-            let resultFromSetupTimelineBackground = setupTimelineBackground({res,err, yOffset, });
-
-            set_viewBoxTotalHeight(resultFromSetupTimelineBackground.viewBoxTotalHeight);
-            set_viewBoxMinHeight(resultFromSetupTimelineBackground.viewBoxMinHeight);
-            set_timelineBackground(resultFromSetupTimelineBackground.jsxArr);
-            set_timelineBackgroundIsLoading(false);
+            return;
           }
+          let resultFromSetupTimelineBackground = setupTimelineBackground({res,err, yOffset, });
+
+          set_viewBoxTotalHeight(resultFromSetupTimelineBackground.viewBoxTotalHeight);
+          set_viewBoxMinHeight(resultFromSetupTimelineBackground.viewBoxMinHeight);
+          set_timelineBackground(resultFromSetupTimelineBackground.jsxArr);
+          set_timelineBackgroundIsLoading(false);
         });
     }
 
