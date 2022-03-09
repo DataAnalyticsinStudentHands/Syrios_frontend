@@ -44,7 +44,6 @@ const Stories = () => {
 						pageJSX.push(
 							// <Col key={`story_${index}`}>
 							<Col key={`${e.key}`}>
-
 								{e}
 							</Col>
 						);
