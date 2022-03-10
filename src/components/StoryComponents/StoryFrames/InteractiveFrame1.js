@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import {IsEmptyOrWhiteSpace, SwitchFront,SwitchBack} from "../ComponentFunction/index";
 
 const InteractiveFrame1 = (zone, index, jsonObject) => {
+  console.log(zone)
     let blueBackgroundMaxHeight = '200px';
   
     const FadeThenSwitchCompAndReset = (dom) => { // This function REQUIRES e.target to be compare scale or reset scale
@@ -222,14 +223,14 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
             <Col xs={3}> 
               <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.image_left_front.data.attributes.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageFrontLeft'
                   id='InteractiveFrame1'
                 />
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.image_left_back.data.attributes.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageBackLeft'
                   id='InteractiveFrame1'
                 />
@@ -250,14 +251,14 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
             <Col xs={3}> 
               <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.image_right_front.data.attributes.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageFrontRight'
                   id='InteractiveFrame1'
                 />
                 <img
                   src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
+                  alt={IsEmptyOrWhiteSpace(zone.image_right_back.data.attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageBackRight'
                   id='InteractiveFrame1'
                 />

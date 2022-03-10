@@ -15,11 +15,13 @@ const HowToReadACoin = () => {
 
   useEffect(() => {
     if (loading) {
-      axios.get(`${process.env.REACT_APP_strapiURL}/how-to-read-a-coin`)
+      axios.get(`${process.env.REACT_APP_strapiURL}/api/how-to-read-a-coin?populate=zone.image_left_front,zone.image_left_back,zone.image_right_front,zone.image_right_back`)
         .then((res, error) => {
-            setStoryZone(res.data.zone)
-            ChangeCreditsAndReferences(res.data.credits_and_references);
-            setLoading(false);
+          // console.log(res)
+          let data =res.data.data.attributes
+          setStoryZone(data.zone)
+          ChangeCreditsAndReferences(data.credits_and_references);
+          setLoading(false);
         });
     }
   });

@@ -23,26 +23,28 @@ const About = () => {
   useEffect(() => {
     if(isLoading) {
       axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
+      // axios.get(`${process.env.REACT_APP_strapiURL}/api/about-us?populate=project_directors.picture,digital_media_and_content_team.picture`)
         .then((res) => {
-          // console.log(res.data.data.attributes)
-            setDescription(res.data.description)
-            setLogo(res.data.logo)
-            setPastStudentResearchAssigstants(res.data.past_student_research_assistants)
+            console.log(res.data)
+            let data = res.data
+            setDescription(data.description)
+            setLogo(data.logo)
+            setPastStudentResearchAssigstants(data.past_student_research_assistants)
 
             let projectDirectorsJsxArr = [];
-            res.data.project_directors.forEach((e, index) => {
+            data.project_directors.forEach((e, index) => {
               projectDirectorsJsxArr.push(TeamJsx(e, index));
             });
             setProjectDirectors(projectDirectorsJsxArr)
 
             let digitalMediaAndContentTeamJsxArr = [];
-            res.data.digital_media_and_content_team.forEach((e, index) => {
+            data.digital_media_and_content_team.forEach((e, index) => {
               digitalMediaAndContentTeamJsxArr.push(TeamJsx(e, index));
             });
             setDigitalMediaAndContentTeam(digitalMediaAndContentTeamJsxArr)
 
             let acknowledgementsJsxArr = []
-            res.data.acknowledgements.forEach((e, index) => {
+            data.acknowledgements.forEach((e, index) => {
               acknowledgementsJsxArr.push(
                 <Row className='RowDecreaseToParagraphSize' key={`acknowledgements_${index}`}>
                   <Col>
@@ -54,6 +56,8 @@ const About = () => {
               );
             })
             setAcknowledgements(acknowledgementsJsxArr)
+
+
 
             set_isLoading(false);
 
