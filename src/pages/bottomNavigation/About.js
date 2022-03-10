@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {
-  Container,
-  Row, 
-  Col
-} from 'react-bootstrap';
+import {Container,Row, Col} from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 
 import Navbar from 'src/components/Navbar.js';
@@ -14,8 +10,6 @@ import './About.css'
 import 'src/components/constants.css'
 
 import TeamJsx from './TeamJsx';
-
-
 
 const About = () => {
   const [isLoading, set_isLoading] = useState(true);
@@ -30,15 +24,14 @@ const About = () => {
     if(isLoading) {
       axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
         .then((res) => {
+          // console.log(res.data.data.attributes)
             setDescription(res.data.description)
             setLogo(res.data.logo)
             setPastStudentResearchAssigstants(res.data.past_student_research_assistants)
 
             let projectDirectorsJsxArr = [];
             res.data.project_directors.forEach((e, index) => {
-              projectDirectorsJsxArr.push(
-                TeamJsx(e, index)
-              );
+              projectDirectorsJsxArr.push(TeamJsx(e, index));
             });
             setProjectDirectors(projectDirectorsJsxArr)
 
@@ -60,15 +53,13 @@ const About = () => {
                 </Row>
               );
             })
-
             setAcknowledgements(acknowledgementsJsxArr)
+
             set_isLoading(false);
 
     })
   }
 });
-
-
 
   if (isLoading) { // isLoading is true, show loading page, else show real page
     return (
@@ -79,7 +70,6 @@ const About = () => {
       </>
     );
   }
-
   return (
     <>
       {Navbar()}
