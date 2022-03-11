@@ -24,7 +24,8 @@ const StoryReader = () => {
 		if (loading) {
 			axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/?id=${storyId}&populate=*`)
 				.then((res) => {
-					setStoryZone(res.data.data[0]);
+					//console.log(res)
+					setStoryZone(res.data.data);
 					ChangeCreditsAndReferences(res.data.data.credits_and_references);
 					setLoading(false);
 

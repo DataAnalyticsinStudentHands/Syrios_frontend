@@ -2,7 +2,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
 function fullPageComponent(storyZone){
-  // console.log(storyZone)
+  console.log(storyZone)
     return(
         <ReactFullpage
         //fullpage options
