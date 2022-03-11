@@ -22,14 +22,12 @@ const About = () => {
 
   useEffect(() => {
     if(isLoading) {
-      axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
-      // axios.get(`${process.env.REACT_APP_strapiURL}/api/about-us?populate=project_directors.picture,digital_media_and_content_team.picture`)
+      // axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
+      axios.get(`${process.env.REACT_APP_strapiURL}/api/about-us?populate=project_directors.picture,digital_media_and_content_team.picture,logo,acknowledgements`)
         .then((res) => {
-            console.log(res.data)
-            let data = res.data
-            setDescription(data.description)
-            setLogo(data.logo)
-            setPastStudentResearchAssigstants(data.past_student_research_assistants)
+            // console.log(res)
+            let data = res.data.data.attributes
+            // console.log(data)
 
             let projectDirectorsJsxArr = [];
             data.project_directors.forEach((e, index) => {
@@ -56,9 +54,9 @@ const About = () => {
               );
             })
             setAcknowledgements(acknowledgementsJsxArr)
-
-
-
+            setDescription(data.description)
+            setLogo(data.logo)
+            setPastStudentResearchAssigstants(data.past_student_research_assistants)
             set_isLoading(false);
 
     })
@@ -93,7 +91,7 @@ const About = () => {
                 <img
                   alt='logo'
                   width='90%'
-                  src={process.env.REACT_APP_strapiURL+logo.url}/>
+                  src={process.env.REACT_APP_strapiURL+logo.data[0].attributes.url}/>
               </Col>
               <Col>
                 <ReactMarkdown className='GrayText'>

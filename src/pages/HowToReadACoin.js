@@ -15,7 +15,7 @@ const HowToReadACoin = () => {
 
   useEffect(() => {
     if (loading) {
-      axios.get(`${process.env.REACT_APP_strapiURL}/api/how-to-read-a-coin?populate=zone.image_left_front,zone.image_left_back,zone.image_right_front,zone.image_right_back`)
+      axios.get(`${process.env.REACT_APP_strapiURL}/api/how-to-read-a-coin?populate=zone.image_left_front,zone.image_left_back,zone.image_right_front,zone.image_right_back,credits_and_references.source_material_references,credits_and_references.read_more_references`)
         .then((res, error) => {
           // console.log(res)
           let data =res.data.data.attributes

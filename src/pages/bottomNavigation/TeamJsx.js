@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 const TeamJsx = (e, index) => { // This function is used to display profile picture, and detail of what the person contributed to the project
     // The detail for the person's information needs some "special" love for it to work. New lines don't work well, so each new line will be a new row
+    // console.log(e)
     let detailJsxArr = [];
     e.detail.split("\n").forEach((e) => {
       detailJsxArr.push(
@@ -18,6 +19,7 @@ const TeamJsx = (e, index) => { // This function is used to display profile pict
     });
 
     // Return profile information
+    // console.log(`${process.env.REACT_APP_strapiURL}${e.picture.data.attributes.url}`)
     return (
       <Row key={`ProjectDirectors_${index}`}>
         {/* profile picture */}
@@ -25,7 +27,7 @@ const TeamJsx = (e, index) => { // This function is used to display profile pict
           <div className='AboutMemberPicturesOutline'>
             <div className='AboutMemberPictures'>
               <img
-                src={`${process.env.REACT_APP_strapiURL}${e.picture.url}`}
+                src={`${process.env.REACT_APP_strapiURL}${e.picture.data.attributes.url}`}
                 alt={e.name}/>
             </div>
           </div>
