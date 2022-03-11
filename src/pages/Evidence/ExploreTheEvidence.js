@@ -16,7 +16,6 @@ import './ExploreTheEvidence.css';
 
 const ExploreTheEvidence = () => {
   const [isLoading, set_isLoading] = useState(true);
-  const [page, set_page] = useState(undefined);
 
   const [title, setTitle] = useState(undefined)
 
@@ -37,25 +36,24 @@ const ExploreTheEvidence = () => {
 
   useEffect(() => {
     if (isLoading) {
-      axios.get(process.env.REACT_APP_strapiURL+'/explore-the-evidence')
+      axios.get(process.env.REACT_APP_strapiURL+'/api/explore-the-evidence?populate=*')
         .then((res, error) => {
           if (error) {
             console.error(error);
           } else {
-            let data = res.data
-            // console.log(data)
+            let data = res.data.data.attributes
 
             setTitle(data.title)
 
-            setSortCoinsImage(data.sort_coins_image)
+            setSortCoinsImage(data.sort_coins_image.data.attributes)
             setSortCoinsTitle(data.sort_coins_title)
             setSortCoinsCaption(data.sort_coins_caption)
 
-            setMapCoinsImage(data.map_coins_image)
+            setMapCoinsImage(data.map_coins_image.data.attributes)
             setMapCoinsTitle(data.map_coins_title)
             setMapCoinsCaption(data.map_coins_caption)
 
-            setCoinTimelineImage(data.coin_timeline_image)
+            setCoinTimelineImage(data.coin_timeline_image.data.attributes)
             setCoinTimelineTitle(data.coin_timeline_title)
             setCoinTimelineCaption(data.coin_timeline_caption)
 
@@ -93,11 +91,13 @@ const ExploreTheEvidence = () => {
                   </Row>
                   <Row>
                     {/* SORT COINS */}
-                    <Col>
+                    <Col xs={4}>
                       <Link to='/Evidence/CoinSort'>
                         <img
                           alt={sortCoinsImage.alternativeText !== undefined ? sortCoinsImage.alternativeText : 'missing alt'}
-                          src={process.env.REACT_APP_strapiURL+sortCoinsImage.url}/>
+                          src={process.env.REACT_APP_strapiURL+sortCoinsImage.url}
+                          style={{width:'300px'}}
+                          />
                         <p className='OrangeText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
                           {sortCoinsTitle}
                         </p>
@@ -107,11 +107,13 @@ const ExploreTheEvidence = () => {
                       </Link>
                     </Col>
                     {/* MAP COINS */}
-                    <Col>
+                    <Col xs={4}>
                       <Link to='/'>
                         <img
                           alt={mapCoinsImage.alternativeText !== undefined ? mapCoinsImage.alternativeText : 'missing alt'}
-                          src={process.env.REACT_APP_strapiURL+mapCoinsImage.url}/>
+                          src={process.env.REACT_APP_strapiURL+mapCoinsImage.url}
+                          style={{width:'300px'}}
+                        />
                         <p className='OrangeText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
                           {mapCoinsTitle}
                         </p>
@@ -121,11 +123,13 @@ const ExploreTheEvidence = () => {
                       </Link>
                     </Col>
                     {/* COIN TIMELINE */}
-                    <Col>
+                    <Col xs={4}>
                       <Link to='/Toolbox/Timeline'>
                         <img
                           alt={coinTimelineImage.alternativeText !== undefined ? coinTimelineImage.alternativeText : 'missing alt'}
-                          src={process.env.REACT_APP_strapiURL+coinTimelineImage.url}/>
+                          src={process.env.REACT_APP_strapiURL+coinTimelineImage.url}
+                          style={{width:'300px'}}
+                          />
                         <p className='OrangeText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
                           {coinTimelineTitle}
                         </p>

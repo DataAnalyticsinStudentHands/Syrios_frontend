@@ -11,7 +11,7 @@ import Footer from 'src/components/Footer';
 
 import './Download.css';
 
-import { subcomponent_image_only } from 'src/components/StoryComponents/ComponentFunction';
+//import { subcomponent_image_only } from 'src/components/StoryComponents/ComponentFunction';
 
 function Download(){
     const [isLoading, set_isLoading] = useState(true);
