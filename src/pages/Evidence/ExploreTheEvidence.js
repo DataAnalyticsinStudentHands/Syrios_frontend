@@ -79,7 +79,6 @@ const ExploreTheEvidence = () => {
   return (
     <>
       {Navbar()}
-      {/* {page} */}
       <div id='ExploreTheEvidence'>
                 <Container>
                   <Row>

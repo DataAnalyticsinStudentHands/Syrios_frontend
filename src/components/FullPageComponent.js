@@ -1,21 +1,24 @@
 import ReactFullpage from '@fullpage/react-fullpage';
 import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
-function fullPageComponent(storyZone){
-  console.log(storyZone)
+function fullPageComponent(storyZone, storyId){
+  //console.log(storyZone)
     return(
         <ReactFullpage
         //fullpage options
         licenseKey = {'YOUR_KEY_HERE'}
         navigation = {true}
         autoScrolling = {true}
-        render={({ state, fullpageApi }) => {
-          // let story = res.data.zone;
+        render={() => {
+
+          console.log(storyZone, storyId)
+
           let storyJSX = [];
 
-          for (let i = 0; i < storyZone.length; i++) {
-            storyJSX.push(SwitchComponent(storyZone[i], i, fullpageApi));
-          }
+          // for (let i = 0; i < storyZone.length; i++) {
+          //   storyJSX.push(SwitchComponent(storyZone[i].attributes, i));
+          // }
+          storyJSX.push(SwitchComponent(storyZone[storyId-1].attributes, storyId));
 
           return (
             <ReactFullpage.Wrapper>

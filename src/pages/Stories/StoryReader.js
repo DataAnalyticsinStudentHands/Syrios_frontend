@@ -24,8 +24,9 @@ const StoryReader = () => {
 		if (loading) {
 			axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/?id=${storyId}&populate=*`)
 				.then((res) => {
-					//console.log(res)
+					// console.log(res.data.data)
 					setStoryZone(res.data.data);
+					console.log(storyZone)
 					ChangeCreditsAndReferences(res.data.data.credits_and_references);
 					setLoading(false);
 
@@ -63,7 +64,7 @@ const StoryReader = () => {
 	return (
 		<>
 			{Navbar()}
-			{fullPageComponent(storyZone)}
+			{fullPageComponent(storyZone,storyId)}
 			{Footer(true)}
 		</>
 	);

@@ -4,47 +4,48 @@ import ReactMarkdown from 'react-markdown';
 import backGround from 'src/assets/background.jpg';
 import {IsEmptyOrWhiteSpace,subcomponent_image_only } from "../ComponentFunction/index";
 
-const Title = (zone, index, jsonObject) => {
-
+const Title = (zone, index) => {
+    console.log(zone)
     let title = undefined
-    if (!IsEmptyOrWhiteSpace(zone.title)){
+    if (!IsEmptyOrWhiteSpace(zone.main_text)){
       title = (
         <Container className='d-flex justify-content-center align-items-center'>
           <ReactMarkdown className='BlueText text-center TitleText'>
-            {zone.title}
+            {zone.main_text}
           </ReactMarkdown>
         </Container>
       )
     }
   
     let subtitle = undefined
-    if (!IsEmptyOrWhiteSpace(zone.subtitle)){
+    if (!IsEmptyOrWhiteSpace(zone.sub_title)){
       subtitle = (
         <Container className='d-flex justify-content-center align-items-center'>
           <ReactMarkdown className='OrangeText text-center SubTitleText'>
-            {zone.subtitle}
+            {zone.sub_title}
           </ReactMarkdown>
         </Container>
       )
     }
   
     let caption = undefined
-    if (!IsEmptyOrWhiteSpace(zone.caption)){
+    if (!IsEmptyOrWhiteSpace(zone.cap_text)){
       caption = (
         <Container className='d-flex justify-content-center align-items-center mt-5'>
           <ReactMarkdown className='GrayText text-center CaptionTitleText'>
-            {zone.caption}
+            {zone.cap_text}
           </ReactMarkdown>
         </Container>
       )
     }
   
     return (
-      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
-        backgroundBlendMode:'multiply'}}>
-          <Container className='d-flex justify-content-center align-items-center'>
+      // <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      //   backgroundBlendMode:'multiply'}}>
+      <div key={`story_comp_${index}`} className='section'>
+          {/* <Container className='d-flex justify-content-center align-items-center'>
             {subcomponent_image_only(zone.image)}
-          </Container>
+          </Container> */}
           {title}
           {subtitle}
           {caption}

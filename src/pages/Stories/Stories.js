@@ -21,10 +21,10 @@ const Stories = () => {
 					// console.log(data)
 
 					let storiesJSX = [];
-					data.forEach((e) => {
-						console.log(e)
+					data.forEach((e, index) => {
+						//console.log(e)
 						storiesJSX.push(
-							<Col key={`${e.id}`}>
+							<Col key={`${index}`}>
 								<Link to={`/StoryReader?id=${e.id}`}>
 									<div className='SelectStoryDiv'>
 										<img
@@ -42,11 +42,11 @@ const Stories = () => {
 					});
 					let pageJSX = [];
 					storiesJSX.forEach((e, index) => {
-						//console.log(e)
+						// console.log(e)
 						// console.log(index)
 						pageJSX.push(
-							// <Col key={`story_${index}`}>
-							<Col key={`${e.key}`}>
+							<Col key={`story_${index}`}>
+							{/* <Col key={`${e.key}`}>  */}
 								{e}
 							</Col>
 						);

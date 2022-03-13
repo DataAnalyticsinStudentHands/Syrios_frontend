@@ -1,9 +1,9 @@
 /* eslint-disable eqeqeq */
-import {Container,Row} from 'react-bootstrap';
+// import {Container,Row} from 'react-bootstrap';
+// import backGround from 'src/assets/background.jpg';
 import 'src/components/constants.css';
 import './Stories.css';
 import 'src/components/coin/coinFlip.css';
-import backGround from 'src/assets/background.jpg';
 
 import Title from 'src/components/StoryComponents/StoryFrames/Title';
 import End_Frame from 'src/components/StoryComponents/StoryFrames/End_Frame';
@@ -23,135 +23,143 @@ import InteractiveFrame3 from 'src/components/StoryComponents/StoryFrames/Intera
 import InteractiveFrame4 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame4';
 import InteractiveFrame5 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame5';
 
-const Testframe =(zone, index, jsonObject) =>{
+// const Testframe =(zone, index) =>{
 
-  //console.log(jsonObject, 'Yee! I get the image link');
-  let instance = []
-  for (var i = 0; i < jsonObject.results.bindings.length; i++){
-    instance.push(jsonObject.results.bindings[i].image.value)
-  }
-  //console.log(instance);
+//   //console.log(jsonObject, 'Yee! I get the image link');
+//   let instance = []
+//   for (var i = 0; i < jsonObject.results.bindings.length; i++){
+//     instance.push(jsonObject.results.bindings[i].image.value)
+//   }
+//   //console.log(instance);
 
-  return(
-    <div key={`story_comp_${index}`} className='section'  style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
-      backgroundBlendMode:'multiply'}}>
-        <Container>
-          <Row>
-            <img
-              src={zone.image_link}
-              alt= {'test img link'}
-              style={{'max-height':'180px','max-width':'180px'}}
-            />
-          </Row>
-          <Row>
-            <img
-              src={jsonObject.results.bindings[0].image.value} 
-              alt= {'test img link 2'}
-              style={{'max-height':'180px','max-width':'180px'}}
-            />
-          </Row>
-          <Row>
-          <img
-              src={instance[1]}
-              alt= {'test img link 2'}
-              style={{'max-height':'180px','max-width':'180px'}}
-            />
-          </Row>
-        </Container>
-    </div>
-  )
-}
-const Testframe2 =(zone, index, jsonObject) =>{
+//   return(
+//     <div key={`story_comp_${index}`} className='section'  style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+//       backgroundBlendMode:'multiply'}}>
+//         <Container>
+//           <Row>
+//             <img
+//               src={zone.image_link}
+//               alt= {'test img link'}
+//               style={{'max-height':'180px','max-width':'180px'}}
+//             />
+//           </Row>
+//           <Row>
+//             <img
+//               src={jsonObject.results.bindings[0].image.value} 
+//               alt= {'test img link 2'}
+//               style={{'max-height':'180px','max-width':'180px'}}
+//             />
+//           </Row>
+//           <Row>
+//           <img
+//               src={instance[1]}
+//               alt= {'test img link 2'}
+//               style={{'max-height':'180px','max-width':'180px'}}
+//             />
+//           </Row>
+//         </Container>
+//     </div>
+//   )
+// }
+// const Testframe2 =(zone, index) =>{
 
-  //console.log(jsonObject.results.bindings);
-  let instance = []
-  for (var i = 0; i < jsonObject.results.bindings.length; i++){
-    instance.push(jsonObject.results.bindings[i].instanceLabel.value)
-  }
-  //console.log(instance);
+//   //console.log(jsonObject.results.bindings);
+//   let instance = []
+//   for (var i = 0; i < jsonObject.results.bindings.length; i++){
+//     instance.push(jsonObject.results.bindings[i].instanceLabel.value)
+//   }
+//   //console.log(instance);
 
-  return(
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
-      backgroundBlendMode:'multiply'}}>
-        <Container>
-          <Row>
-            {jsonObject.results.bindings[0].instanceLabel.value}
-          </Row>
-          <Row>
-            {instance[0]}
-          </Row>
-        </Container>
-    </div>
-  )
-}
+//   return(
+//     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+//       backgroundBlendMode:'multiply'}}>
+//         <Container>
+//           <Row>
+//             {jsonObject.results.bindings[0].instanceLabel.value}
+//           </Row>
+//           <Row>
+//             {instance[0]}
+//           </Row>
+//         </Container>
+//     </div>
+//   )
+// }
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
-const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
+const SwitchComponent = (zone, index) => {
+  console.log(zone, index)
   let jsx = undefined;
-  switch (zone.__component) {
-    case 'frame.title':
-      jsx = Title(zone, index, jsonObject);
-      break;
-    case 'frame.endframe':
-      jsx = End_Frame(zone, index,jsonObject);
-      break;
-    case 'frame.frame1':
-      jsx = Frame1(zone, index,jsonObject);
-      break;
-    case 'frame.frame2':
-      jsx = Frame2(zone, index,jsonObject);
-      break;
-    case 'frame.frame3':
-      jsx = Frame3(zone, index,jsonObject);
-      break;
-    case 'frame.frame4':
-      jsx = Frame4(zone, index,jsonObject);
-      break;
-    case 'frame.frame5':
-      jsx = Frame5(zone, index, jsonObject);
-      break;
-    case 'frame.frame6':
-      jsx = Frame6(zone, index, jsonObject);
-      break;
-    case 'frame.frame7':
-      jsx = Frame7(zone, index, jsonObject);
-      break;
-    case 'frame.frame8':
-      jsx = Frame8(zone, index, jsonObject);
-      break;
-    case 'frame.frame9':
-      jsx = Frame9(zone, index, jsonObject);
-      break; 
-    case 'frame.frame10':
-      jsx = Frame10(zone, index, jsonObject);
-      break; 
-    case 'frame.interactive-frame1':
-      jsx = InteractiveFrame1(zone, index, jsonObject);
-      break;
-    case 'frame.interactive-frame2':
-      jsx = InteractiveFrame2(zone, index, jsonObject);
-      break;
-    case 'frame.interactive-frame3':
-      jsx = InteractiveFrame3(zone, index, jsonObject);
-      break;
-    case 'frame.interactive-frame4':
-      jsx = InteractiveFrame4(zone, index, jsonObject);
-      break;
-    case 'frame.interactive-frame5':
-      jsx = InteractiveFrame5(zone, index, jsonObject);
-      break;
-    case 'frame.testframe':
-      jsx = Testframe(zone, index, jsonObject);
-      break;
-    case 'frame.testframe2':
-      jsx = Testframe2(zone, index, jsonObject);
-      break;
-    default:
-      console.error(`Error: Unrecognized component '${zone.__component}'`);
+
+  for (let i=0; i<zone.zone.length;i++){
+    switch (zone.zone[i].__component) {
+      case 'frame.title':
+        console.log('Titie frame switched')
+        jsx = Title(zone.zone[i], i);
+        break;
+      case 'frame.endframe':
+        console.log('End frame switched')
+        jsx = End_Frame(zone.zone[i], i);
+        break;
+      case 'frame.frame1':
+        jsx = Frame1(zone, index);
+        break;
+      case 'frame.frame2':
+        jsx = Frame2(zone, index);
+        break;
+      case 'frame.frame3':
+        jsx = Frame3(zone, index);
+        break;
+      case 'frame.frame4':
+        jsx = Frame4(zone, index);
+        break;
+      case 'frame.frame5':
+        jsx = Frame5(zone, index);
+        break;
+      case 'frame.frame6':
+        jsx = Frame6(zone, index);
+        break;
+      case 'frame.frame7':
+        jsx = Frame7(zone, index);
+        break;
+      case 'frame.frame8':
+        jsx = Frame8(zone, index);
+        break;
+      case 'frame.frame9':
+        jsx = Frame9(zone, index);
+        break; 
+      case 'frame.frame10':
+        jsx = Frame10(zone, index);
+        break; 
+      case 'frame.interactive-frame1':
+        jsx = InteractiveFrame1(zone, index);
+        break;
+      case 'frame.interactive-frame2':
+        jsx = InteractiveFrame2(zone, index);
+        break;
+      case 'frame.interactive-frame3':
+        jsx = InteractiveFrame3(zone, index);
+        break;
+      case 'frame.interactive-frame4':
+        jsx = InteractiveFrame4(zone, index);
+        break;
+      case 'frame.interactive-frame5':
+        jsx = InteractiveFrame5(zone, index);
+        break;
+      // case 'frame.testframe':
+      //   jsx = Testframe(zone, index);
+      //   break;
+      // case 'frame.testframe2':
+      //   jsx = Testframe2(zone, index);
+      //   break;
+      default:
+        console.error(`Error: Unrecognized component '${zone.__component}'`);
+    }
+  
+    return jsx;
+  }
   }
 
-  return jsx;
-}
+  
 
 export default SwitchComponent
