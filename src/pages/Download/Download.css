@@ -2,12 +2,11 @@
 
 #downloadPage {
   position: fixed;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   -webkit-overflow-scrolling: touch;
   width: 100%;
   top: var(--footerHeight);
   bottom: var(--footerHeight);
-  /* background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg); */
 }
 
 #DownloadTitle {
@@ -26,14 +25,32 @@
 }
 
 a.NOMISMALink {
-  color: red;
+  color: #183848;
+  font-style: italic;
+  font-weight: bold;
 }
+.NOMISMAIcon {
+  color: #7899a8;
+  font-size: 18px;
+}
+
 a.GlosseryLink {
-  color: orange;
+  color: #183848;
+  font-style: italic;
+  font-weight: bolder;
+}
+.GlosseryIcon {
+  color: #7899a8;
+  font-size: 20px;
 }
 a.externalLink {
   color: yellow;
 }
 a.internalLink {
-  color: aqua;
+  color: #183848;
+  /* font-weight: bolder; */
+  text-decoration: underline !important;
+}
+sup {
+  color: #7899a8;
 }

@@ -22,15 +22,16 @@ function Download(){
     
     useEffect(()=>{
         if(isLoading){
-            // let apiURL = 'http://localhost:1337/download'
-            // axios.get(apiURL)
             axios.get(process.env.REACT_APP_strapiURL + '/download')
                 .then((res)=>{
-                    setSubTitle(res.data.sub_title);
-                    setSubText(res.data.sub_text);
-                    setImage(res.data.image);                  
+                    let data= res.data
+                    setSubTitle(data.sub_title);
+                    setSubText(data.sub_text);
+                    setImage(data.image);
                     set_isLoading(false);
-                });
+                    console.log(subText)
+                }
+            );
         }
     });
     
@@ -87,7 +88,7 @@ function Download(){
                 <Container className='justify-content-sm-center my-5'>
                     <Row>
                         <p className='BlueText text-center' id='DownloadTitle'>
-                            Download the Data 
+                            Download the Data
                         </p>
                     </Row>
                     <Row className='d-flex justify-content-between d-flex align-items-center'>
@@ -96,9 +97,7 @@ function Download(){
                             {/* left */}
                                 <Row className='d-flex justify-content-between align-items-center'>
                                     <Col xs={2} className='text-center'>
-                                        <i
-                                            className='demo-icon icon-coin-scale downLoadIcon'
-                                        >
+                                        <i className='demo-icon icon-coin-scale downLoadIcon'>
                                         &#xe810;</i>
                                     </Col>
                                     <Col xs={9}>
@@ -107,7 +106,9 @@ function Download(){
                                         </Row>
                                         <Row className='GrayText' id='downLoad_Sub_Text'>
                                             {/* {subText} */}
+
                                             <div dangerouslySetInnerHTML={createMarkup(subText)} />
+                              
                                         </Row>
                                     </Col>
                                 </Row>
@@ -127,7 +128,7 @@ function Download(){
                                         Please provide your your name and email address in the form below to start the download.
                                     </p>
                                 </Row>
-                                <Row className='LightBlueBackground my-5 d-flex justify-content-center'>
+                                <Row className='LightBlueBackground d-flex justify-content-center'>
                                     <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                                         <div className='form-group mt-4'>
                                             <label className='GrayText' htmlFor='fullName'>Full Name:</label>
@@ -156,7 +157,7 @@ function Download(){
                                             {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>: null}
                                         </div>
                                         
-                                        <div className='text-center mt-5'>
+                                        <div className='text-center my-5'>
                                             <button type='submit' disabled={!formik.isValid}>
                                                 Submit
                                             </button>
