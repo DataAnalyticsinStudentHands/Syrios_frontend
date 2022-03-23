@@ -1,9 +1,9 @@
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import backGround from 'src/assets/background.jpg';
 import { createMarkup } from "../ComponentFunction/index";
 
-const End_Frame = (zone, index, jsonObject) => {
+const End_Frame = (zone, index) => {
     return (
       // eslint-disable-next-line eqeqeq
       <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
@@ -22,16 +22,16 @@ const End_Frame = (zone, index, jsonObject) => {
           <Row className='d-flex justify-content-around'>
             <Col >
               <Link to='/Stories'>
-                <Button	className='BlueText EndFrameButtonWidth text-center'>
+                <button	className='BlueText EndFrameButtonWidth text-center'>
                   Tell Me a Story
-                </Button>
+                </button>
               </Link>
             </Col>
             <Col>
               <Link to='/'>
-                <Button	className='BlueText EndFrameButtonWidth text-center'>
+                <button	className='BlueText EndFrameButtonWidth text-center'>
                   Explore Coins
-                </Button>
+                </button>
               </Link>
             </Col>
           </Row>
