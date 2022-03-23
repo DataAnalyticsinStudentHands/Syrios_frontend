@@ -1,6 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import {IsEmptyOrWhiteSpace, SwitchFront,SwitchBack, createMarkup} from "../ComponentFunction/index";
+import {IsEmptyOrWhiteSpace, createMarkup} from "../ComponentFunction/index";
 
 const InteractiveFrame1 = (zone, index, jsonObject) => {
     let blueBackgroundMaxHeight = '200px';
@@ -67,61 +67,58 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           }, 400);
   
           // text center front to text center back
-          SwitchFront(textCenterDiv)
-          // textCenterDiv.childNodes[0].style.opacity = '0.0';
-          // setTimeout(() => {
-          //   try {
-          //     textCenterDiv.childNodes[0].style.display = 'none';
-          //     textCenterDiv.childNodes[1].style.display = 'block';
-          //   } catch (error) {
-          //     console.error(error);
-          //   }
-          //   setTimeout(() => {
-          //     try {
-          //       textCenterDiv.childNodes[1].style.opacity = '1.0';
-          //     } catch (error) {
-          //       console.error(error);
-          //     }
-          //   });
-          // }, 400);
+          textCenterDiv.childNodes[0].style.opacity = '0.0';
+          setTimeout(() => {
+            try {
+              textCenterDiv.childNodes[0].style.display = 'none';
+              textCenterDiv.childNodes[1].style.display = 'block';
+            } catch (error) {
+              console.error(error);
+            }
+            setTimeout(() => {
+              try {
+                textCenterDiv.childNodes[1].style.opacity = '1.0';
+              } catch (error) {
+                console.error(error);
+              }
+            });
+          }, 400);
   
           // image left front to image left back
-          SwitchBack(imgLeftDiv)
-          // imgLeftDiv.childNodes[1].style.opacity = '0.0';
-          // setTimeout(() => {
-          //   try {
-          //     imgLeftDiv.childNodes[1].style.display = 'none';
-          //     imgLeftDiv.childNodes[2].style.display = 'block';
-          //   } catch (error) {
-          //     console.error(error);
-          //   }
-          //   setTimeout(() => {
-          //     try {
-          //       imgLeftDiv.childNodes[2].style.opacity = '1.0';
-          //     } catch (error) {
-          //       console.error(error);
-          //     }
-          //   });
-          // }, 400);
+          imgLeftDiv.childNodes[1].style.opacity = '0.0';
+          setTimeout(() => {
+            try {
+              imgLeftDiv.childNodes[1].style.display = 'none';
+              imgLeftDiv.childNodes[2].style.display = 'block';
+            } catch (error) {
+              console.error(error);
+            }
+            setTimeout(() => {
+              try {
+                imgLeftDiv.childNodes[2].style.opacity = '1.0';
+              } catch (error) {
+                console.error(error);
+              }
+            });
+          }, 400);
   
           // image right front to image right back
-          SwitchBack(imgRightDiv)
-          // imgRightDiv.childNodes[1].style.opacity = '0.0';
-          // setTimeout(() => {
-          //   try {
-          //     imgRightDiv.childNodes[1].style.display = 'none';
-          //     imgRightDiv.childNodes[2].style.display = 'block';
-          //   } catch (error) {
-          //     console.error(error);
-          //   }
-          //   setTimeout(() => {
-          //     try {
-          //       imgRightDiv.childNodes[2].style.opacity = '1.0';
-          //     } catch (error) {
-          //       console.error(error);
-          //     }
-          //   });
-          // }, 400);
+          imgRightDiv.childNodes[1].style.opacity = '0.0';
+          setTimeout(() => {
+            try {
+              imgRightDiv.childNodes[1].style.display = 'none';
+              imgRightDiv.childNodes[2].style.display = 'block';
+            } catch (error) {
+              console.error(error);
+            }
+            setTimeout(() => {
+              try {
+                imgRightDiv.childNodes[2].style.opacity = '1.0';
+              } catch (error) {
+                console.error(error);
+              }
+            });
+          }, 400);
         } else {
           // Reset scale to Compare scale
           InteractiveFrame1ResetScale.style.opacity = '0.0';
@@ -142,23 +139,22 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           }, 400);
   
           // text center back to text center front
-          SwitchBack(textCenterDiv)
-          // textCenterDiv.childNodes[1].style.opacity = '0.0';
-          // setTimeout(() => {
-          //   try {
-          //     textCenterDiv.childNodes[1].style.display = 'none';
-          //     textCenterDiv.childNodes[0].style.display = 'block';
-          //   } catch (error) {
-          //     console.error(error);
-          //   }
-          //   setTimeout(() => {
-          //     try {
-          //       textCenterDiv.childNodes[0].style.opacity = '1.0';
-          //     } catch (error) {
-          //       console.error(error);
-          //     }
-          //   });
-          // }, 400);
+          textCenterDiv.childNodes[1].style.opacity = '0.0';
+          setTimeout(() => {
+            try {
+              textCenterDiv.childNodes[1].style.display = 'none';
+              textCenterDiv.childNodes[0].style.display = 'block';
+            } catch (error) {
+              console.error(error);
+            }
+            setTimeout(() => {
+              try {
+                textCenterDiv.childNodes[0].style.opacity = '1.0';
+              } catch (error) {
+                console.error(error);
+              }
+            });
+          }, 400);
   
           // image left back to image left front
           imgLeftDiv.childNodes[2].style.opacity = '0.0';
@@ -207,11 +203,7 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         <Container className='justify-content-center align-items-center'>
           {/* Main text */}
           <Row>
-            <Col>
-
-              <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='OrangeText MainText text-center'/>
-
-            </Col>
+              <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='OrangeText MainText text-center my-5'/>
           </Row>
           {/* Blue background css grid goodie */}
           <Row className='LightBlueBackground InteractiveFrame1LightBlueSizing d-flex justify-content-around'>

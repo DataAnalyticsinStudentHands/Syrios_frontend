@@ -6,7 +6,6 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
