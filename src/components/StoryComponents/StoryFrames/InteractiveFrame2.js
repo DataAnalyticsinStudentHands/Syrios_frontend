@@ -5,22 +5,14 @@ import {FlipCoin,FlipCoinImg} from "../ComponentFunction/index";
 const InteractiveFrame2 = (zone, index, jsonObject) =>{
     
     return(
+      // eslint-disable-next-line eqeqeq
       <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-between'>
             {/* image_lieft */}
             <Col className='d-flex align-items-center justify-content-center' xs={3}>
-              {/* <div className='flip-box'>
-                <div className='flip-box-inner'>
-                  <div className='flip-box-front'>
-                    {subcomponent_image(zone.image_left_front)}
-                  </div>
-                  <div className='flip-box-back'>
-                    {subcomponent_image(zone.image_left_back)}
-                  </div>
-                </div>
-              </div> */}
+
               {FlipCoinImg(zone.image_left_front, zone.image_left_back)}
             </Col>
             {/* text in the middle */}
@@ -58,16 +50,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
             </Col>
             {/* image right */}
             <Col className='d-flex align-items-center justify-content-center' xs={3}>
-              {/* <div className='flip-box'>
-                <div className='flip-box-inner'>
-                <div className='flip-box-front'>
-                    {subcomponent_image(zone.image_right_front)}
-                  </div>
-                  <div className='flip-box-back'>
-                    {subcomponent_image(zone.image_right_back)}
-                  </div>
-                </div>
-              </div> */}
+
               {FlipCoinImg(zone.image_right_front, zone.image_right_back)}
             </Col>
           </Row>

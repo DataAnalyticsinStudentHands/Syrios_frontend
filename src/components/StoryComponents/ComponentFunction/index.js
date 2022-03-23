@@ -118,7 +118,6 @@ export const subcomponent_image = (image) => {
     "very_big": "750px",
     "gigantic": "1200px"
     };
-    const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
 
     let caption = undefined; 
     if (!IsEmptyOrWhiteSpace(image.caption)) {
@@ -127,8 +126,9 @@ export const subcomponent_image = (image) => {
         <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} style={{width:imageSizes[image.size]}}>
             <div 
               className='GrayText CaptionText text-center' 
-              style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
-              dangerouslySetInnerHTML={createMarkup(image.caption)} />
+              style={{padding: '0px', paddingTop: '20px'}}
+              dangerouslySetInnerHTML={createMarkup(image.caption)} 
+            />
         </Container>
         </>
     );

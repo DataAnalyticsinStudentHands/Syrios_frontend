@@ -12,56 +12,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       SwitchBack(imgLeftDiv)
       SwitchBack(textmidDiv)
       SwitchBack(imgRightDiv)
-      // imgLeftDiv.childNodes[1].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgLeftDiv.childNodes[1].style.display = 'none';
-      //     imgLeftDiv.childNodes[0].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgLeftDiv.childNodes[0].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // textmidDiv.childNodes[1].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     textmidDiv.childNodes[1].style.display = 'none';
-      //     textmidDiv.childNodes[0].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       textmidDiv.childNodes[0].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // imgRightDiv.childNodes[1].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgRightDiv.childNodes[1].style.display = 'none';
-      //     imgRightDiv.childNodes[0].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgRightDiv.childNodes[0].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
+
     }
   
     const switchForBack = (dom) =>{  
@@ -71,59 +22,10 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       SwitchFront(imgLeftDiv)
       SwitchFront(textmidDiv)
       SwitchFront(imgRightDiv)
-      // imgLeftDiv.childNodes[0].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgLeftDiv.childNodes[0].style.display = 'none';
-      //     imgLeftDiv.childNodes[1].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgLeftDiv.childNodes[1].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // textmidDiv.childNodes[0].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     textmidDiv.childNodes[0].style.display = 'none';
-      //     textmidDiv.childNodes[1].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       textmidDiv.childNodes[1].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // imgRightDiv.childNodes[0].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgRightDiv.childNodes[0].style.display = 'none';
-      //     imgRightDiv.childNodes[1].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgRightDiv.childNodes[1].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
     }
   
     return(
+      // eslint-disable-next-line eqeqeq
       <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
         <Container>

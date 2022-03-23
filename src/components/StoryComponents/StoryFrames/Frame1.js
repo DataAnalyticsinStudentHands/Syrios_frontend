@@ -57,6 +57,7 @@ const Frame1 = (zone, index, jsonObject) => {
     }
   
     return (
+      // eslint-disable-next-line eqeqeq
       <div key={`story_comp_${index}`} className='section testSection' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
       backgroundBlendMode:'multiply' }}>
         <Container className='mb-5'>
