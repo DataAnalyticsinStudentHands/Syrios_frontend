@@ -42,22 +42,21 @@ function Download(){
     const formik = useFormik({
         initialValues:{
             fullName:"",
-            email:"",
+            from:"",
         },
         validationSchema:Yup.object({
             fullName: Yup.string()
                 .min(7, '* Names must have at least 7 characters')
                 .max(30, "* Names can't be longer than 100 characters")
                 .required('* Full name is required'),
-            email:Yup.string()
+            from:Yup.string()
                 .email('* Must be a valid email address')
                 .max(100, '* Email must be less than 100 characters')
                 .required('* Email is required'),
         }),
         onSubmit: (values,{resetForm})=>{
                             
-            let apiURL = `http://localhost:1337/download/send_email`
-            axios.post(apiURL, values)
+            axios.post(process.env.REACT_APP_strapiURL + '/download', values)
                 .then( 
                     resetForm()
                 ).catch(err =>{
@@ -106,16 +105,13 @@ function Download(){
                                         </Row>
                                         <Row className='GrayText' id='downLoad_Sub_Text'>
                                             {/* {subText} */}
-
                                             <div dangerouslySetInnerHTML={createMarkup(subText)} />
-                              
                                         </Row>
                                     </Col>
                                 </Row>
                                 <Row className='my-5'>
                                     <img
                                         alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
-                                        className='FrameImage'
                                         src={`${process.env.REACT_APP_strapiURL}${image.url}`} 
                                     />
                                 </Row>
@@ -144,17 +140,17 @@ function Download(){
                                             {formik.touched.fullName && formik.errors.fullName ? <p>{formik.errors.fullName}</p>: null}
                                         </div>
                                         <div className='form-group mt-4'>
-                                            <label className='GrayText' htmlFor='email'>Email:</label>
+                                            <label className='GrayText' htmlFor='from'>Email:</label>
                                             <br/>
                                             <input 
                                                 type='email'
-                                                id='email'
+                                                id='from'
                                                 onChange={formik.handleChange}
                                                 onBlur = {formik.handleBlur}
-                                                value = {formik.values.email}
+                                                value = {formik.values.from}
                                                 className='form-control'
                                             />
-                                            {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>: null}
+                                            {formik.touched.from && formik.errors.from ? <p>{formik.errors.from}</p>: null}
                                         </div>
                                         
                                         <div className='text-center my-5'>
