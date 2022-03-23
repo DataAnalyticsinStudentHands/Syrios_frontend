@@ -1,7 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import ReactMarkdown from 'react-markdown';
-import {IsEmptyOrWhiteSpace, mainText} from "../ComponentFunction/index";
+import {IsEmptyOrWhiteSpace, mainText, createMarkup} from "../ComponentFunction/index";
 
 const InteractiveFrame4 = (zone, index, jsonObject) => {
 
@@ -26,16 +25,12 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground '>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_left}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.text_left)} className='mt-3'/>
           </Row>
         </Col>
   
         <Col xs={3} className='d-flex justify-content-center align-items-end'>
-          <ReactMarkdown className='SubText text-center GrayText'>
-            {zone.text_mid}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.text_mid)} className='SubText text-center GrayText'/>
         </Col>
   
         <Col xs={3}>
@@ -56,9 +51,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_right}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.text_right)} className='mt-3'/>
           </Row>
         </Col>
       </Row>
@@ -78,16 +71,12 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_left}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.text_left)} className='mt-3'/>
           </Row>
         </Col>
   
         <Col xs={3} className='d-flex justify-content-center align-items-end'>
-          <ReactMarkdown className='SubText text-center GrayText'>
-            {zone.text_mid}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.text_mid)} className='SubText text-center GrayText'/>
         </Col>
   
         <Col xs={3}>
@@ -101,9 +90,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_right}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.text_right)} className='mt-3'/>
           </Row>
         </Col>
       </Row>

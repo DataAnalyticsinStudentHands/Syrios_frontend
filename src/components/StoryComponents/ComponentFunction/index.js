@@ -1,7 +1,6 @@
 // import IsEmptyOrWhiteSpace from "./IsEmptyOrWhiteSpace"
 import { Container, Row, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import backGround from 'src/assets/background.jpg';
 
 
@@ -10,9 +9,7 @@ export const mainText = (main_text) =>{
     if(!IsEmptyOrWhiteSpace(main_text)){
       MainText=(
         <Container className='d-flex justify-content-center align-self-center'>
-          <ReactMarkdown className='OrangeText MainText text-center'>
-            {main_text}
-          </ReactMarkdown>
+          <div className='OrangeText MainText text-center' dangerouslySetInnerHTML={createMarkup(main_text)} />
         </Container>
       )
     }
@@ -26,9 +23,7 @@ let BigsubText = undefined
 if(!IsEmptyOrWhiteSpace(sub_text)){
     BigsubText=(
     <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='BlueText BigSubText text-center'>
-        {sub_text}
-        </ReactMarkdown>
+        <div className='BlueText BigSubText text-center' dangerouslySetInnerHTML={createMarkup(sub_text)} />
     </Container>
     )
 }
@@ -42,9 +37,7 @@ let SubText = undefined
 if(!IsEmptyOrWhiteSpace(sub_text)){
     SubText=(
     <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='BlueText SubText text-center'>
-        {sub_text}
-        </ReactMarkdown>
+        <div dangerouslySetInnerHTML={createMarkup(sub_text)} className='BlueText SubText text-center'/>
     </Container>
     )
 }
@@ -58,15 +51,13 @@ let CubText = undefined
 if(!IsEmptyOrWhiteSpace(cap_text)){
     CubText=(
     <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='GrayText CaptionText text-center'>
-        {cap_text}
-        </ReactMarkdown>
+        <div dangerouslySetInnerHTML={createMarkup(cap_text)} className='GrayText CaptionText text-center'/>
     </Container>
     )
 }
 return(
     CubText
-)
+  )
 }
 
 export const sub_cap_blue_bg = (sub_text, cap_text)=>{
@@ -74,21 +65,15 @@ export const sub_cap_blue_bg = (sub_text, cap_text)=>{
     if(!IsEmptyOrWhiteSpace(cap_text)){
       Sub_Cap_Blue_Bg = (
         <Container className='LightBlueBackground' style={{padding: '20px', paddingTop: '20px'}}>
-          <ReactMarkdown className='BlueText text-center SubText' >
-            {sub_text}
-          </ReactMarkdown>
-          <ReactMarkdown className='GrayText text-center CaptionText' >
-            {cap_text}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(sub_text)} className='BlueText text-center SubText'/>
+          <div dangerouslySetInnerHTML={createMarkup(cap_text)} className='GrayText text-center CaptionText'/>
         </Container>
       )
     }
     else{
       Sub_Cap_Blue_Bg = (
         <Container>
-          <ReactMarkdown className='GrayText text-center BigSubText' >
-            {sub_text}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(sub_text)} className='GrayText text-center BigSubText'/>
         </Container>
       )
     }
@@ -140,12 +125,10 @@ export const subcomponent_image = (image) => {
     caption = (
         <>
         <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} style={{width:imageSizes[image.size]}}>
-            <ReactMarkdown 
-            className='GrayText CaptionText text-center' 
-            style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
-            >
-            {image.caption}
-            </ReactMarkdown>
+            <div 
+              className='GrayText CaptionText text-center' 
+              style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
+              dangerouslySetInnerHTML={createMarkup(image.caption)} />
         </Container>
         </>
     );
@@ -327,3 +310,7 @@ export function SwitchBack(Switchitem){
       });
     }, 400);
   }
+
+  export function createMarkup(textTran){
+    return {__html: textTran};
+}

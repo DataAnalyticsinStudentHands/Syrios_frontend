@@ -1,8 +1,8 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import ReactMarkdown from 'react-markdown';
 
-import {IsEmptyOrWhiteSpace, mainText, capText, subcomponent_image } from "../ComponentFunction/index";
+
+import {IsEmptyOrWhiteSpace, mainText, capText, subcomponent_image, createMarkup } from "../ComponentFunction/index";
 
 const Frame7 = (zone, index, jsonObject) =>{
 
@@ -10,9 +10,7 @@ const Frame7 = (zone, index, jsonObject) =>{
     if (!IsEmptyOrWhiteSpace(zone.sub_text_right_top)){
       sub_text_right_top =(
         <Row className='GrayText align-items-start SubText'>
-          <ReactMarkdown>
-            {zone.sub_text_right_top}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.sub_text_right_top)} />
         </Row>
       )
     }
@@ -20,9 +18,7 @@ const Frame7 = (zone, index, jsonObject) =>{
     if (!IsEmptyOrWhiteSpace(zone.cap_text_bottom)){
       cap_text_right_bottom =(
         <Row className='LightYellowBackground align-items-end GrayText CaptionText' style={{padding: '20px', paddingTop: '20px'}}>
-          <ReactMarkdown>
-            {zone.cap_text_bottom}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.cap_text_bottom)} />
         </Row>
       )
     }

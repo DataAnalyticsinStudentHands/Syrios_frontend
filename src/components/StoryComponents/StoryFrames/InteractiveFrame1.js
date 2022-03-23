@@ -1,7 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import ReactMarkdown from 'react-markdown';
-import {IsEmptyOrWhiteSpace, SwitchFront,SwitchBack} from "../ComponentFunction/index";
+import {IsEmptyOrWhiteSpace, SwitchFront,SwitchBack, createMarkup} from "../ComponentFunction/index";
 
 const InteractiveFrame1 = (zone, index, jsonObject) => {
     let blueBackgroundMaxHeight = '200px';
@@ -209,9 +208,9 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           {/* Main text */}
           <Row>
             <Col>
-              <ReactMarkdown className='OrangeText MainText text-center'>
-                {zone.main_text}
-              </ReactMarkdown>
+
+              <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='OrangeText MainText text-center'/>
+
             </Col>
           </Row>
           {/* Blue background css grid goodie */}
@@ -237,12 +236,8 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
   
             {/* Text_center */}
             <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}}>
-              <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextFront'>
-                {zone.sub_text_middle_front}
-              </ReactMarkdown>
-              <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextBack'>
-                {zone.sub_text_middle_back}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup(zone.sub_text_middle_front)} className='GrayText SubText text-center InteractiveFrame1TextFront'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.sub_text_middle_back)} className='GrayText SubText text-center InteractiveFrame1TextBack'/>
             </Col>
   
             {/* Images Right */}

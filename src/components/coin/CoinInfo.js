@@ -28,6 +28,9 @@ const CoinInfo = (props) => {
     set_coinRotation('rotateY(0deg)');
     props.onClose(false);
   };
+  function createMarkup(textTran){
+    return {__html: textTran};
+  }
 
   return (
     <WhitePopUp show={props.show} onClose={closeHandler}>
@@ -109,64 +112,40 @@ const CoinInfo = (props) => {
           {/* this main info with era, date, min, authority, title, etc... */}
           <div id='CoinMainInfo'>
             <div id='CoinMainInfoTitle'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {props.CoinMetaData.Title}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup(props.CoinMetaData.Title)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoRegion'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'REGION: ' + props.CoinMetaData.Region}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('REGION: ' + props.CoinMetaData.Region)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoState'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'STATE: ' + props.CoinMetaData.State}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('STATE: ' + props.CoinMetaData.State)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoMint'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'MINT: ' + props.CoinMetaData.Mint}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('MINT: ' + props.CoinMetaData.Mint)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoAuthority'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'AUTHORITY: ' + props.CoinMetaData.IssuingAuthority}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('AUTHORITY: ' + props.CoinMetaData.IssuingAuthority)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoEra'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'ERA: ' + props.CoinMetaData.Era}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('ERA: ' + props.CoinMetaData.Era)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'DATE(S): ' + props.CoinMetaData.Date}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('DATE(S): ' + props.CoinMetaData.Date)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoCatalogueDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'CATALOGE DATE: ' + props.CoinMetaData.CatalogueDate}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('CATALOGE DATE: ' + props.CoinMetaData.CatalogueDate)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoMaterial'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'MATERIAL: ' + props.CoinMetaData.Material}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('MATERIAL: ' + props.CoinMetaData.Material)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoDenomination'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'DENOMINATION: ' + props.CoinMetaData.Denomination}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('DENOMINATION: ' + props.CoinMetaData.Denomination)} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoDiameter'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'DIAMETER: ' + props.CoinMetaData.Diameter + 'mm'}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('DIAMETER: ' + props.CoinMetaData.Diameter + 'mm')} className='DarkBlueText text-start'/>
             </div>
             <div id='CoinMainInfoCulturalConnections'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'CULTURAL CONNECTIONS: ' + props.CoinMetaData.TypeCategory}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup('CULTURAL CONNECTIONS: ' + props.CoinMetaData.TypeCategory)} className='DarkBlueText text-start'/>
             </div>
           </div>
           {/* Reverse, reverse legend, obverse, obverse legend */}

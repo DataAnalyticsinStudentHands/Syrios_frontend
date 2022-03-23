@@ -1,31 +1,34 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 /* Load syrios-entypo-subset font */
 @font-face {
-  font-family: 'syrios-entypo-subset';
-  src: url('src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot?47545076');
-  src: url('src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot?47545076#iefix') format('embedded-opentype'),
-  url('src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.woff?47545076') format('woff'),
-  url('src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.ttf?47545076') format('truetype'),
-  url('src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.svg?47545076#syrios-entypo-subset') format('svg');
+  font-family: "syrios-entypo-subset";
+  src: url("src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot?47545076");
+  src: url("src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot?47545076#iefix")
+      format("embedded-opentype"),
+    url("src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.woff?47545076")
+      format("woff"),
+    url("src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.ttf?47545076")
+      format("truetype"),
+    url("src/assets/SyriosFontAndIcons/font/syrios-entypo-subset.svg?47545076#syrios-entypo-subset")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-.demo-icon
-{
+.demo-icon {
   font-family: "syrios-entypo-subset";
   font-style: normal;
   font-weight: normal;
@@ -34,7 +37,7 @@ code {
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
+  margin-right: 0.2em;
   text-align: center;
   /* opacity: .8; */
 
@@ -47,7 +50,7 @@ code {
 
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
+  margin-left: 0.2em;
 
   /* You can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -60,6 +63,37 @@ code {
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-html { 
-  background: url(src/assets/background.jpg); 
+html {
+  background: url(src/assets/background.jpg);
+}
+
+a.NOMISMALink {
+  color: #183848;
+  font-style: italic;
+  font-weight: bold;
+}
+.NOMISMAIcon {
+  color: #7899a8;
+  font-size: 18px;
+}
+
+a.GlosseryLink {
+  color: #183848;
+  font-style: italic;
+  font-weight: bolder;
+}
+.GlosseryIcon {
+  color: #7899a8;
+  font-size: 20px;
+}
+a.externalLink {
+  color: yellow;
+}
+a.internalLink {
+  color: #183848;
+  /* font-weight: bolder; */
+  text-decoration: underline !important;
+}
+sup {
+  color: #7899a8;
 }

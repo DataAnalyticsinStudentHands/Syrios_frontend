@@ -1,7 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import ReactMarkdown from 'react-markdown';
-import {mainText, subcomponent_image  } from "../ComponentFunction/index";
+import {mainText, subcomponent_image,createMarkup  } from "../ComponentFunction/index";
 
 const Frame5 = (zone, index, jsonObject) =>{
 
@@ -9,18 +8,14 @@ const Frame5 = (zone, index, jsonObject) =>{
     if(zone.text_middle.light_blue_caption_background){
       text_middle = (
         <Col xs={6} className='LightBlueBackground align-self-center text-center SubText' style={{zIndex:'-1'}}>
-          <ReactMarkdown className='BigSubText GrayText px-5 my-5'>
-            {zone.sub_text_middle.text}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.sub_text_middle.text)} className='BigSubText GrayText px-5 my-5'/>
         </Col>
       );
     }
     else{
       text_middle = (
         <Col xs={3} className='align-self-center text-center SubText'>
-          <ReactMarkdown className=' BigSubText mt-3 GrayText'>
-            {zone.sub_text_middle.text}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.sub_text_middle.text)} className=' BigSubText mt-3 GrayText'/>
         </Col>
       );
     }

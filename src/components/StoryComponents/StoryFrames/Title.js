@@ -1,7 +1,6 @@
-import { Container } from "react-bootstrap"
-import ReactMarkdown from 'react-markdown';
+import { Container,Row } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
-import {IsEmptyOrWhiteSpace,subcomponent_image_only } from "../ComponentFunction/index";
+import {IsEmptyOrWhiteSpace,subcomponent_image_only, createMarkup } from "../ComponentFunction/index";
 
 const Title = (zone, index, jsonObject) => {
 
@@ -9,9 +8,7 @@ const Title = (zone, index, jsonObject) => {
     if (!IsEmptyOrWhiteSpace(zone.title)){
       title = (
         <Container className='d-flex justify-content-center align-items-center'>
-          <ReactMarkdown className='BlueText text-center TitleText'>
-            {zone.title}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.title)} className='BlueText text-center TitleText'/>
         </Container>
       )
     }
@@ -20,9 +17,7 @@ const Title = (zone, index, jsonObject) => {
     if (!IsEmptyOrWhiteSpace(zone.subtitle)){
       subtitle = (
         <Container className='d-flex justify-content-center align-items-center'>
-          <ReactMarkdown className='OrangeText text-center SubTitleText'>
-            {zone.subtitle}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.subtitle)} className='OrangeText text-center SubTitleText'/>
         </Container>
       )
     }
@@ -31,9 +26,9 @@ const Title = (zone, index, jsonObject) => {
     if (!IsEmptyOrWhiteSpace(zone.caption)){
       caption = (
         <Container className='d-flex justify-content-center align-items-center mt-5'>
-          <ReactMarkdown className='GrayText text-center CaptionTitleText'>
-            {zone.caption}
-          </ReactMarkdown>
+          <Row className='GrayText text-center CaptionTitleText'>
+            <div dangerouslySetInnerHTML={createMarkup(zone.caption)} />
+          </Row>
         </Container>
       )
     }

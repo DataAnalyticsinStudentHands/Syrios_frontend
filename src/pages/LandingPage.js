@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import ReactPlayer from 'react-player';
-import ReactMarkdown from 'react-markdown';
 import {
   Container,
   Row,
@@ -19,6 +18,9 @@ import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
 import 'src/components/constants.css';
 import './LandingPage.css';
 
+function createMarkup(textTran){
+  return {__html: textTran};
+}
 function LandingPage() {
   const [loading, set_loading] = useState(true);
   const [videoLink, set_videoLink] = useState(undefined);
@@ -63,9 +65,7 @@ function LandingPage() {
             {/* This is the title text in orage */}
             <Col>
               <div className='OrangeText' style={{fontSize: '4em'}}>
-                <ReactMarkdown>
-                  {shortDescription}
-                </ReactMarkdown>
+                <div dangerouslySetInnerHTML={createMarkup(shortDescription)} />
               </div>
             </Col>
           </Row>
@@ -150,11 +150,8 @@ function LandingPage() {
           <Row container='justify-content-md-center'>
             <Col>
               <div className='BlueText' style={{fontSize:'1.3em'}}>
-                <ReactMarkdown>
-                  {LandingParagraph}
-                </ReactMarkdown>
+                <div dangerouslySetInnerHTML={createMarkup(LandingParagraph)} />
               </div>
-
             </Col>
           </Row>
         </Container>

@@ -1,8 +1,7 @@
 import { Container, Row, Col, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import backGround from 'src/assets/background.jpg';
-
+import { createMarkup } from "../ComponentFunction/index";
 
 const End_Frame = (zone, index, jsonObject) => {
     return (
@@ -10,9 +9,7 @@ const End_Frame = (zone, index, jsonObject) => {
         backgroundBlendMode:'multiply'}}>
         <Container className='d-flex justify-content-center align-items-center'>
           <div id='EndFrameText'>
-            <ReactMarkdown className='GrayText text-center SubText'>
-              {zone.text}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.text)} className='GrayText text-center SubText'/>
           </div>
         </Container>
         <Container className='d-flex justify-content-center align-items-center'>

@@ -1,7 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import ReactMarkdown from 'react-markdown';
-import {subcomponent_image, SwitchBack, SwitchFront} from "../ComponentFunction/index";
+import {subcomponent_image, SwitchBack, SwitchFront, createMarkup} from "../ComponentFunction/index";
 
 const InteractiveFrame3 = (zone, index, jsonObject) =>{
 
@@ -130,9 +129,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
         <Container>
           <Row>
             <Col>
-              <ReactMarkdown className='OrangeText MainText text-center my-5'>
-                {zone.main_text}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='OrangeText MainText text-center my-5'/>
             </Col>
           </Row>
           <Row className='d-flex justify-content-around'>
