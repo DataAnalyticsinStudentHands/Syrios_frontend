@@ -86,65 +86,65 @@ const Testframe2 =(zone, index, jsonObject) =>{
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
-const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
+const SwitchComponent = (zone, index, fullpageApi,) => {
   let jsx = undefined;
   switch (zone.__component) {
     case 'frame.title':
-      jsx = Title(zone, index, jsonObject);
+      jsx = Title(zone, index);
       break;
     case 'frame.endframe':
-      jsx = End_Frame(zone, index,jsonObject);
+      jsx = End_Frame(zone, index,fullpageApi);
       break;
     case 'frame.frame1':
-      jsx = Frame1(zone, index,jsonObject);
+      jsx = Frame1(zone, index, fullpageApi);
       break;
     case 'frame.frame2':
-      jsx = Frame2(zone, index,jsonObject);
+      jsx = Frame2(zone, index, fullpageApi);
       break;
     case 'frame.frame3':
-      jsx = Frame3(zone, index,jsonObject);
+      jsx = Frame3(zone, index, fullpageApi);
       break;
     case 'frame.frame4':
-      jsx = Frame4(zone, index,jsonObject);
+      jsx = Frame4(zone, index, fullpageApi);
       break;
     case 'frame.frame5':
-      jsx = Frame5(zone, index, jsonObject);
+      jsx = Frame5(zone, index, fullpageApi);
       break;
     case 'frame.frame6':
-      jsx = Frame6(zone, index, jsonObject);
+      jsx = Frame6(zone, index, fullpageApi);
       break;
     case 'frame.frame7':
-      jsx = Frame7(zone, index, jsonObject);
+      jsx = Frame7(zone, index, fullpageApi);
       break;
     case 'frame.frame8':
-      jsx = Frame8(zone, index, jsonObject);
+      jsx = Frame8(zone, index, fullpageApi);
       break;
     case 'frame.frame9':
-      jsx = Frame9(zone, index, jsonObject);
+      jsx = Frame9(zone, index, fullpageApi);
       break; 
     case 'frame.frame10':
-      jsx = Frame10(zone, index, jsonObject);
+      jsx = Frame10(zone, index, fullpageApi);
       break; 
     case 'frame.interactive-frame1':
-      jsx = InteractiveFrame1(zone, index, jsonObject);
+      jsx = InteractiveFrame1(zone, index, fullpageApi);
       break;
     case 'frame.interactive-frame2':
-      jsx = InteractiveFrame2(zone, index, jsonObject);
+      jsx = InteractiveFrame2(zone, index, fullpageApi);
       break;
     case 'frame.interactive-frame3':
-      jsx = InteractiveFrame3(zone, index, jsonObject);
+      jsx = InteractiveFrame3(zone, index, fullpageApi);
       break;
     case 'frame.interactive-frame4':
-      jsx = InteractiveFrame4(zone, index, jsonObject);
+      jsx = InteractiveFrame4(zone, index, fullpageApi);
       break;
     case 'frame.interactive-frame5':
-      jsx = InteractiveFrame5(zone, index, jsonObject);
+      jsx = InteractiveFrame5(zone, index, fullpageApi);
       break;
     case 'frame.testframe':
-      jsx = Testframe(zone, index, jsonObject);
+      jsx = Testframe(zone, index);
       break;
     case 'frame.testframe2':
-      jsx = Testframe2(zone, index, jsonObject);
+      jsx = Testframe2(zone, index);
       break;
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);

@@ -478,3 +478,25 @@ Button:hover {
   position: absolute;
   z-index: 1;
 }
+
+button.MoveToTop {
+  position: fixed;
+  font-size: 3em;
+  z-index: 99;
+  bottom: 80px;
+  right: -40px;
+  font-size: 6px;
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+button.MoveToTop:hover {
+  color: #737271;
+}
+.MoveToTopIcon {
+  background-color: #d8b848 !important;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 50%;
+}

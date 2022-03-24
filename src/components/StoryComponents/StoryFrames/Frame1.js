@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
 import { mainText, bigSubText, subText, capText, IsEmptyOrWhiteSpace, sub_cap_blue_bg } from "../ComponentFunction/index";
 
-const Frame1 = (zone, index, jsonObject) => {
+const Frame1 = (zone, index, fullpageApi) => {
     let subtext = undefined;
     if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right) && !IsEmptyOrWhiteSpace(zone.caption_text_right)) {
       subtext = (
