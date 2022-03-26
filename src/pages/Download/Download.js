@@ -100,7 +100,7 @@ function Download(){
                                         &#xe810;</i>
                                     </Col>
                                     <Col xs={9}>
-                                        <Row className='OrangeText' id='downLoad_Sub_Title'>
+                                        <Row className='OrangeText mb-3' id='downLoad_Sub_Title'>
                                             {subTitle}
                                         </Row>
                                         <Row className='GrayText' id='downLoad_Sub_Text'>
@@ -120,7 +120,7 @@ function Download(){
                         <Col xs={3}>
                             <Container className='d-flex flex-column align-items-center'>
                                 <Row className='text-center'>
-                                    <p>
+                                    <p className='BlueText'>
                                         Please provide your your name and email address in the form below to start the download.
                                     </p>
                                 </Row>
@@ -137,7 +137,7 @@ function Download(){
                                                 value = {formik.values.fullName}
                                                 className='form-control'
                                             />
-                                            {formik.touched.fullName && formik.errors.fullName ? <p>{formik.errors.fullName}</p>: null}
+                                            {formik.touched.fullName && formik.errors.fullName ? <p className='GrayText'>{formik.errors.fullName}</p>: null}
                                         </div>
                                         <div className='form-group mt-4'>
                                             <label className='GrayText' htmlFor='from'>Email:</label>
@@ -150,11 +150,11 @@ function Download(){
                                                 value = {formik.values.from}
                                                 className='form-control'
                                             />
-                                            {formik.touched.from && formik.errors.from ? <p>{formik.errors.from}</p>: null}
+                                            {formik.touched.from && formik.errors.from ? <small className='GrayText'>{formik.errors.from}</small>: null}
                                         </div>
                                         
                                         <div className='text-center my-5'>
-                                            <button type='submit' disabled={!formik.isValid}>
+                                            <button type='submit' className='downloadButton' disabled={!formik.isValid}>
                                                 Submit
                                             </button>
                                             <CSVLink

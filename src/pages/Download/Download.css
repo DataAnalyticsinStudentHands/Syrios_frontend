@@ -27,6 +27,20 @@
 a.InternalLink {
   text-decoration: underline !important;
 }
+
+.downloadButton {
+  color: #ffffff;
+  background: #7899a8 0% 0% no-repeat padding-box;
+}
+.downloadButton:hover {
+  color: #7899a8;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #7899a8;
+  border-radius: 15px !important;
+  opacity: 1;
+  width: 250px;
+  transition: 0.5s;
+}
 /* .ExternalLink {
   color: #7899a8;
   font-size: 18px;
