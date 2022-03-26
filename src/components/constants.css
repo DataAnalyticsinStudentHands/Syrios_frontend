@@ -96,7 +96,53 @@ html {
 li p {
   white-space: nowrap;
 }
+a.Link {
+  color: #183848;
+}
+/* a.Link:visited {
+  color: #183848;
+} */
+a.Link:hover {
+  color: #7899a8;
+}
+a.Link:active {
+  color: #183848;
+}
+.Icon {
+  color: #7899a8;
+}
 
+/* a.InternalLink {
+  text-decoration: underline !important;
+} */
+
+.ExternalLink {
+  font-style: italic;
+  font-weight: bold;
+}
+.ExternalIcon {
+  /* font-size: 25px; */
+}
+.NomisamaLink {
+  font-style: italic;
+  font-weight: bold;
+}
+.NomisamaIcon {
+  /* font-size: 25px; */
+}
+.GlossaryLink {
+  font-style: italic;
+  font-weight: bold;
+}
+.GlosseryIcon {
+  /* font-size: 20px; */
+}
+a.InternalLink {
+  /* font-style: italic;
+  font-weight: bold; */
+}
+.InternalNumber {
+}
 /* Adobe XD generated CSS */
 :root {
   /* Colors: */

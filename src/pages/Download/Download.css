@@ -24,6 +24,19 @@
   font-size: large;
 }
 
+a.InternalLink {
+  text-decoration: underline !important;
+}
+/* .ExternalLink {
+  color: #7899a8;
+  font-size: 18px;
+}
+a.ExternalIcon {
+  color: #183848;
+  font-size: 18px;
+  font-weight: bolder;
+  text-decoration: underline !important;
+}
 a.NOMISMALink {
   color: #183848;
   font-style: italic;
@@ -44,13 +57,11 @@ a.GlosseryLink {
   font-size: 20px;
 }
 a.externalLink {
-  color: yellow;
-}
-a.internalLink {
   color: #183848;
-  /* font-weight: bolder; */
-  text-decoration: underline !important;
+  font-style: italic;
+  font-weight: bold;
 }
+
 sup {
   color: #7899a8;
-}
+} */

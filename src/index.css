@@ -66,34 +66,3 @@ code {
 html {
   background: url(src/assets/background.jpg);
 }
-
-a.NOMISMALink {
-  color: #183848;
-  font-style: italic;
-  font-weight: bold;
-}
-.NOMISMAIcon {
-  color: #7899a8;
-  font-size: 18px;
-}
-
-a.GlosseryLink {
-  color: #183848;
-  font-style: italic;
-  font-weight: bolder;
-}
-.GlosseryIcon {
-  color: #7899a8;
-  font-size: 20px;
-}
-a.externalLink {
-  color: yellow;
-}
-a.internalLink {
-  color: #183848;
-  /* font-weight: bolder; */
-  text-decoration: underline !important;
-}
-sup {
-  color: #7899a8;
-}
