@@ -9,8 +9,12 @@ const Frame3 = (zone, index, jsonObject) => {
         backgroundBlendMode:'multiply'}}>
         {subcomponent_image_with_dynamic_sizing(zone.images)}
         <div style={{marginTop: '-60px'}}>
-          {mainText(zone.main_text)}
-          {subText(zone.sub_text)}
+          <div>
+            {mainText(zone.main_text)}
+          </div>
+          <div className='mt-3'>
+            {subText(zone.sub_text)}
+          </div>
         </div>
       </div>
     );

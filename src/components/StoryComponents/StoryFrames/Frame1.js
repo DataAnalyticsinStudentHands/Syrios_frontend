@@ -12,12 +12,6 @@ const Frame1 = (zone, index, fullpageApi) => {
               {bigSubText(zone.sub_text_left)}
             </Col>
             <Col xs={6} className='p-3'>
-              {/* <Row>
-                {subText(zone.sub_text_right)}
-              </Row>
-              <Row>
-                {capText(zone.caption_text_right)}
-              </Row> */}
               {sub_cap_blue_bg(zone.sub_text_right,zone.caption_text_right)}
             </Col>
           </Row>

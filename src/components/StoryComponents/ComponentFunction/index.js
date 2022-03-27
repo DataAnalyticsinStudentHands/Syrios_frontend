@@ -2,6 +2,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import backGround from 'src/assets/background.jpg';
+import ReactMarkdown from 'react-markdown';
 
 
 export const mainText = (main_text) =>{
@@ -9,7 +10,10 @@ export const mainText = (main_text) =>{
     if(!IsEmptyOrWhiteSpace(main_text)){
       MainText=(
         <Container className='d-flex justify-content-center align-self-center'>
-          <div className='OrangeText MainText text-center' dangerouslySetInnerHTML={createMarkup(main_text)} />
+            <ReactMarkdown className='OrangeText MainText text-center'>
+              {main_text}
+            </ReactMarkdown>
+          {/* <div className='OrangeText MainText text-center' dangerouslySetInnerHTML={createMarkup(main_text)} /> */}
         </Container>
       )
     }
