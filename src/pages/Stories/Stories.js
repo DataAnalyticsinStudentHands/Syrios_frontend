@@ -18,11 +18,8 @@ const Stories = () => {
 			axios.get(process.env.REACT_APP_strapiURL + '/api/stories?populate=*') // Call stories objects to get story info so we can sort our informatoin around
 				.then((res) => {
 					let data = res.data.data
-					// console.log(data)
-
 					let storiesJSX = [];
 					data.forEach((e, index) => {
-						//console.log(e)
 						storiesJSX.push(
 							<Col key={`${index}`}>
 								<Link to={`/StoryReader?id=${e.id}`}>
@@ -42,8 +39,6 @@ const Stories = () => {
 					});
 					let pageJSX = [];
 					storiesJSX.forEach((e, index) => {
-						// console.log(e)
-						// console.log(index)
 						pageJSX.push(
 							<Col key={`story_${index}`}>
 							{/* <Col key={`${e.key}`}>  */}

@@ -28,7 +28,6 @@ function Download(){
             // axios.get(apiURL)
             axios.get(process.env.REACT_APP_strapiURL + '/api/download?populate=image.image')
                 .then((res)=>{
-                    // console.log(res)
                     setSubTitle(res.data.data.attributes.sub_title);
                     setSubText(res.data.data.attributes.sub_text);
                     setImage(res.data.data.attributes.image);
@@ -63,12 +62,12 @@ function Download(){
                 .then( 
                     resetForm()
                 ).catch(err =>{
-                    console.log(err)
+                    console.error(err)
                 })
 
             axios.get(process.env.REACT_APP_strapiURL + '/coins')
                 .then((res)=>setCoinData(res.data))
-                .catch((err)=> console.log(err))
+                .catch((err)=> console.error(err))
             csvLink.current.link.click()
         }
     })

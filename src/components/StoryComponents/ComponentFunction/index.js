@@ -246,7 +246,6 @@ export const subcomponent_image_with_dynamic_sizing = (images) => {
         return;
       }
     });
-    // console.log(imagesJSX);
     return (
       <div>
         <Container>

@@ -24,13 +24,10 @@ import InteractiveFrame4 from 'src/components/StoryComponents/StoryFrames/Intera
 import InteractiveFrame5 from 'src/components/StoryComponents/StoryFrames/InteractiveFrame5';
 
 // const Testframe =(zone, index) =>{
-
-//   //console.log(jsonObject, 'Yee! I get the image link');
 //   let instance = []
 //   for (var i = 0; i < jsonObject.results.bindings.length; i++){
 //     instance.push(jsonObject.results.bindings[i].image.value)
 //   }
-//   //console.log(instance);
 
 //   return(
 //     <div key={`story_comp_${index}`} className='section'  style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
@@ -63,12 +60,10 @@ import InteractiveFrame5 from 'src/components/StoryComponents/StoryFrames/Intera
 // }
 // const Testframe2 =(zone, index) =>{
 
-//   //console.log(jsonObject.results.bindings);
 //   let instance = []
 //   for (var i = 0; i < jsonObject.results.bindings.length; i++){
 //     instance.push(jsonObject.results.bindings[i].instanceLabel.value)
 //   }
-//   //console.log(instance);
 
 //   return(
 //     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
@@ -88,17 +83,14 @@ import InteractiveFrame5 from 'src/components/StoryComponents/StoryFrames/Intera
 // This function is for mapping name and functions over.
 // Did this for organization really. 
 const SwitchComponent = (zone, index) => {
-  console.log(zone, index)
   let jsx = undefined;
 
   for (let i=0; i<zone.zone.length;i++){
     switch (zone.zone[i].__component) {
       case 'frame.title':
-        console.log('Titie frame switched')
         jsx = Title(zone.zone[i], i);
         break;
       case 'frame.endframe':
-        console.log('End frame switched')
         jsx = End_Frame(zone.zone[i], i);
         break;
       case 'frame.frame1':

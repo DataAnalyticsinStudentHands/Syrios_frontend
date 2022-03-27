@@ -298,9 +298,6 @@ const CoinSort = () => {
               Sort By: <i 
               className="demo-icon icon-info BlueText InfoIcon"
                 onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
-                  let dom = e.target;
-
-                  console.log(dom);
                 }}>&#xe817;</i>
             </p>
             <CoinSortDropDown id='SortByDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size']} defaultSelection='None' />
@@ -337,9 +334,6 @@ const CoinSort = () => {
               Filter: <i 
               className="demo-icon icon-info BlueText InfoIcon"
                 onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
-                  let dom = e.target;
-
-                  console.log(dom);
                 }}>&#xe817;</i>
             </p>
             <CoinSortDropDown id='FilterDropDown' items={['None', 'Including', 'Excluding']} defaultSelection='None' />

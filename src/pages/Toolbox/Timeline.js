@@ -85,7 +85,6 @@ const defaultEventData = {
 //
 function setupTimelineBackground(obj) {
   let res = obj.res;
-  console.log(res);
   let yOffset = obj.yOffset;
   // Push background backdrop react-native-svg elements onto render array for react to load
   let jsxArr = [];

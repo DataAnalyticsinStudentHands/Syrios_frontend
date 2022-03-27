@@ -168,7 +168,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                         style={{width: '150px'}}
                         onClick={(e)=>{
                           let dom = e.target.parentElement.parentElement.parentElement.parentElement
-                          // console.log(dom)
                           switchForFront(dom)
                         }}
                       >
@@ -181,7 +180,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                         style={{width: '150px'}}
                         onClick={(e)=>{
                           let dom = e.target.parentElement.parentElement.parentElement.parentElement
-                          // console.log(dom)
                           switchForBack(dom)
                         }}
                       >

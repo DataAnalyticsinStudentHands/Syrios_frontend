@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import {IsEmptyOrWhiteSpace} from "../ComponentFunction/index";
 
 const InteractiveFrame1 = (zone, index, jsonObject) => {
-  // console.log(zone)
     let blueBackgroundMaxHeight = '200px';
   
     const FadeThenSwitchCompAndReset = (dom) => { // This function REQUIRES e.target to be compare scale or reset scale

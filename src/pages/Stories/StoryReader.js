@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import qs from 'qs';
 
 import './Stories.css';
 import Navbar from 'src/components/Navbar.js';
@@ -17,35 +18,32 @@ const StoryReader = () => {
 		return new URLSearchParams(useLocation().search).get('id');
 	}
 	const storyId = Get_id();
-	//console.log(storyId)
 
+  const query = qs.stringify({
+    filters:{
+      id: {
+        $eq: storyId,
+      },
+    },
+    populate: {
+      populate: '*',
+      zone: {
+        populate: '*',
+      },
+    },
+  });
+
+  console.log(`${process.env.REACT_APP_strapiURL}/api/stories/?${query}`);
 
 	useEffect(() => {
 		if (loading) {
-			axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/?id=${storyId}&populate=*`)
+			axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/?${query}`)
 				.then((res) => {
-					// console.log(res.data.data)
-					setStoryZone(res.data.data);
-					console.log(storyZone)
+					setStoryZone(res.data.data[0]);
+					console.log(storyZone);
 					ChangeCreditsAndReferences(res.data.data.credits_and_references);
 					setLoading(false);
 
-					// let wikidatas = []
-					// let wikidataIndex = []
-					// for (let i = 0; i < storyZone.length;i++){
-					// 	if(storyZone[i].wiki_data !== undefined){
-					// 		 wikidatas.push(storyZone[i].wiki_data)
-					// 		 wikidataIndex.push(i)
-					// 	}
-					// }
-					// if(wikidatas.length !== 0){
-					// 	axios.all(wikidatas.map((wikidata)=>axios.get(wikidata)))
-					// 	.then((res)=>{
-					// 		for(let i = 0; i<wikidataIndex.length; i++){
-					// 			jsonObject[wikidataIndex[i]] = res[i].data
-					// 		}
-					// 	});
-					// }
 					});
 				}
 			});

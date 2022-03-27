@@ -208,7 +208,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           }, 400);
           break;
         default:
-          console.log();
+          break;
       }
   
   

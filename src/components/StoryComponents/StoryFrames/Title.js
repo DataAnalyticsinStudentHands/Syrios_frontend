@@ -5,7 +5,6 @@ import backGround from 'src/assets/background.jpg';
 import {IsEmptyOrWhiteSpace,subcomponent_image_only } from "../ComponentFunction/index";
 
 const Title = (zone, index) => {
-    console.log(zone)
     let title = undefined
     if (!IsEmptyOrWhiteSpace(zone.main_text)){
       title = (

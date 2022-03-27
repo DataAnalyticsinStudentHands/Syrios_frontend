@@ -125,7 +125,6 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
       return;
     }
   });
-  // console.log(imagesJSX);
   return (
     <div>
       <Container>
@@ -228,7 +227,6 @@ const End_Frame = (zone, index, jsonObject) => {
 
 
 const Frame1 = (zone, index, jsonObject) => {
-  //console.log(zone);
   let subText = undefined;
   if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right) && !IsEmptyOrWhiteSpace(zone.caption_text_right)) {
     subText = (
@@ -370,7 +368,6 @@ const Frame3 = (zone, index, jsonObject) => {
 }
 
 const Frame4 = (zone, index, jsonObject) =>{
-  // console.log(zone)
   let main_text= undefined;
   if(!IsEmptyOrWhiteSpace(zone.main_text)){
     main_text = (
@@ -432,7 +429,6 @@ const Frame4 = (zone, index, jsonObject) =>{
 }
 
 const Frame5 = (zone, index, jsonObject) =>{
-  //console.log(zone,'frame 5');
   let main_text = undefined
   if (!IsEmptyOrWhiteSpace(zone.main_text)){
     main_text = (
@@ -444,7 +440,6 @@ const Frame5 = (zone, index, jsonObject) =>{
 
     )
   }
-  //console.log(zone.text_middle);
   let sub_text_middle = undefined
   if(zone.sub_text_middle.light_blue_caption_background){
     sub_text_middle = (
@@ -532,7 +527,6 @@ const Frame6 = (zone, index, jsonObject) =>{
 }
 
 const Frame7 = (zone, index, jsonObject) =>{
-  //console.log(zone, 'frame7');
 
   let main_text = undefined
   if (!IsEmptyOrWhiteSpace(zone.main_text)){
@@ -1330,7 +1324,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                       style={{width: '150px'}}
                       onClick={(e)=>{
                         let dom = e.target.parentElement.parentElement.parentElement.parentElement
-                        // console.log(dom)
                         switchForFront(dom)
                       }}
                     >
@@ -1343,7 +1336,6 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                       style={{width: '150px'}}
                       onClick={(e)=>{
                         let dom = e.target.parentElement.parentElement.parentElement.parentElement
-                        // console.log(dom)
                         switchForBack(dom)
                       }}
                     >
@@ -1589,7 +1581,6 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
         }, 400);
         break;
       default:
-        console.log();
     }
 
 
@@ -1674,12 +1665,10 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
 
 const Testframe =(zone, index, jsonObject) =>{
 
-  //console.log(jsonObject, 'Yee! I get the image link');
   let instance = []
   for (var i = 0; i < jsonObject.results.bindings.length; i++){
     instance.push(jsonObject.results.bindings[i].image.value)
   }
-  //console.log(instance);
 
   return(
     <div key={`story_comp_${index}`} className='section'  style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
@@ -1711,12 +1700,10 @@ const Testframe =(zone, index, jsonObject) =>{
 }
 const Testframe2 =(zone, index, jsonObject) =>{
 
-  //console.log(jsonObject.results.bindings);
   let instance = []
   for (var i = 0; i < jsonObject.results.bindings.length; i++){
     instance.push(jsonObject.results.bindings[i].instanceLabel.value)
   }
-  //console.log(instance);
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>

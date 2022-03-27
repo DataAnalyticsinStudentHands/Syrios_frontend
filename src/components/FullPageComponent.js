@@ -2,7 +2,6 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
 function fullPageComponent(storyZone, storyId){
-  //console.log(storyZone)
     return(
         <ReactFullpage
         //fullpage options
@@ -10,9 +9,6 @@ function fullPageComponent(storyZone, storyId){
         navigation = {true}
         autoScrolling = {true}
         render={() => {
-
-          console.log(storyZone, storyId)
-
           let storyJSX = [];
 
           // for (let i = 0; i < storyZone.length; i++) {
