@@ -87,7 +87,7 @@ export const sub_cap_blue_bg = (sub_text, cap_text)=>{
   }
 
 export function IsEmptyOrWhiteSpace(str) {
-    return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
+    return (str==null) ? true : (str.match(/^\s*$/) || []).length > 0;
   }
 
 export const subcomponent_image_only = (image) => {
