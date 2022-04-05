@@ -21,7 +21,7 @@ const Stories = () => {
 					res.data.forEach((e) => {
 						storiesJSX.push(
 							<Col key={`${e.id}`}>
-								<Link to={`/StoryReader?id=${e._id}`}>
+								<Link to={`/StoryReader?id=${e.id}`}>
 									<div className='SelectStoryDiv'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.story_image.url}`}
