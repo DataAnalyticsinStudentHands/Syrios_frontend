@@ -12,10 +12,9 @@ import 'src/components/constants.css';
 const Stories = () => {
 	const [loading, set_loading] = useState(true);
 	const [stories, setStories] = useState(undefined)
-
 	useEffect(() => {
 		if (loading) {
-			axios.get(process.env.REACT_APP_strapiURL + '/api/stories?populate=*') // Call stories objects to get story info so we can sort our informatoin around
+			axios.get(process.env.REACT_APP_strapiURL + '/api/stories') // Call stories objects to get story info so we can sort our informatoin around
 				.then((res) => {
 					let data = res.data.data
 					let storiesJSX = [];
@@ -25,23 +24,24 @@ const Stories = () => {
 								<Link to={`/StoryReader?id=${e.id}`}>
 									<div className='SelectStoryDiv'>
 										<img
-											src={`${process.env.REACT_APP_strapiURL}${e.attributes.story_image.data.attributes.url}`}
+											src={`${process.env.REACT_APP_strapiURL}${e.attributes.image.data.attributes.url}`}
                       						alt='Story_Image'
 											width='100%'
 										/>
 										<p className='OrangeText SelectStoryText text-center'>
-											{e.attributes.story_name}
+											{e.attributes.name}
 										</p>
 									</div>
 								</Link>
 							</Col>
 						)
 					});
+
 					let pageJSX = [];
 					storiesJSX.forEach((e, index) => {
 						pageJSX.push(
 							<Col key={`story_${index}`}>
-							{/* <Col key={`${e.key}`}>  */}
+							{/* <Col key={`${e.key}`}> */}
 								{e}
 							</Col>
 						);

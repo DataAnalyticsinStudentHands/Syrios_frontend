@@ -1,50 +1,61 @@
 /* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import { IsEmptyOrWhiteSpace, sub_cap_blue_bg } from "../ComponentFunction/index";
+import { subcomponent_image } from "../ComponentFunction/index";
 
-
-const Frame4 = (zone, index, jsonObject) =>{
+function createMarkup(textTran){
+  return {__html: textTran};
+}
+const Frame4 = (zone, index) =>{
   
-    let subQuote = undefined;
-  
-    if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right)) {
-      subQuote = (
-        <Row className='justify-content-between'>
-            <Col xs={{span:5}} className='justify-content-center align-self-center'>
-                {/* {subText(zone.sub_text_left)}
-                {capText(zone.cap_text_left)} */}
-                {sub_cap_blue_bg(zone.sub_text_left, zone.cap_text_left)}
-            </Col>
-            <Col xs={{span:5}} className='justify-content-center align-self-center'>
-                {/* {subText(zone.sub_text_right)}
-                {capText(zone.cap_text_right)} */}
-                {sub_cap_blue_bg(zone.sub_text_right, zone.cap_text_right)}
-            </Col>
-        </Row>
-      );
-    }
-    if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_left)){
-      subQuote = (
-        <Row className='justify-content-between' >
-          <Col xs={{span:5}} className='justify-content-center align-self-center'>
-            {/* {subText(zone.sub_text_left)}
-            {capText(zone.cap_text_left)} */}
-            {sub_cap_blue_bg(zone.sub_text_left, zone.cap_text_left)}
-          </Col>
-        </Row>
-      )
-    }
+  if (zone.head.updown_switch){
     return(
-      <div key={`story_comp_${index}`} className='section' 
-      style={{ 
-        backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
-        backgroundBlendMode:'multiply'}}>
-        <Container className='justify-content-center align-items-center' style={{marginBottom:'30%'}}>
-            {subQuote}
-        </Container>
-      </div>
+      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+      <Container>
+        <Row className='d-flex justify-content-between align-items-center mb-5'>
+            <Col xs={3}>
+              {subcomponent_image(zone.image_left)}
+            </Col>
+            <Col xs={3}>
+              {subcomponent_image(zone.image_middle)}
+            </Col>
+            <Col xs={3}>
+              {subcomponent_image(zone.image_right)}
+            </Col>
+        </Row>
+        
+        <Row className='d-flex justify-content-center '>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+        </Row>
+
+      </Container>
+    </div>
     )
   }
+  else{
+    return(
+      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+      <Container>
+        <Row className='d-flex justify-content-center mb-5'>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+        </Row>
+        <Row className='d-flex justify-content-between align-items-center'>
+          <Col xs={3}>
+            {subcomponent_image(zone.image_left)}
+          </Col>
+          <Col xs={3}>
+            {subcomponent_image(zone.image_middle)}
+          </Col>
+          <Col xs={3}>
+            {subcomponent_image(zone.image_right)}
+          </Col>
+        </Row>
+      </Container>
+    </div>
+    )
+  }
+}
 
   export default Frame4

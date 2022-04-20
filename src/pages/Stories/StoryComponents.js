@@ -84,60 +84,58 @@ import InteractiveFrame5 from 'src/components/StoryComponents/StoryFrames/Intera
 // Did this for organization really. 
 const SwitchComponent = (zone, index) => {
   let jsx = undefined;
-
-  for (let i=0; i<zone.zone.length;i++){
-    switch (zone.zone[i].__component) {
+    switch (zone.__component) {
       case 'frame.title':
-        jsx = Title(zone.zone[i], i);
+        jsx = Title(zone, index);
         break;
-      case 'frame.endframe':
-        jsx = End_Frame(zone.zone[i], i);
+      case 'frame.end':
+        jsx = End_Frame(zone, index);
         break;
-      case 'frame.frame1':
+      case 'frame.1':
         jsx = Frame1(zone, index);
         break;
-      case 'frame.frame2':
+      case 'frame.2':
         jsx = Frame2(zone, index);
         break;
-      case 'frame.frame3':
+      case 'frame.3':
         jsx = Frame3(zone, index);
         break;
-      case 'frame.frame4':
+      case 'frame.4':
         jsx = Frame4(zone, index);
         break;
-      case 'frame.frame5':
+      case 'frame.5':
         jsx = Frame5(zone, index);
         break;
-      case 'frame.frame6':
-        jsx = Frame6(zone, index);
-        break;
-      case 'frame.frame7':
-        jsx = Frame7(zone, index);
-        break;
-      case 'frame.frame8':
-        jsx = Frame8(zone, index);
-        break;
-      case 'frame.frame9':
-        jsx = Frame9(zone, index);
-        break; 
-      case 'frame.frame10':
-        jsx = Frame10(zone, index);
-        break; 
-      case 'frame.interactive-frame1':
-        jsx = InteractiveFrame1(zone, index);
-        break;
-      case 'frame.interactive-frame2':
-        jsx = InteractiveFrame2(zone, index);
-        break;
-      case 'frame.interactive-frame3':
-        jsx = InteractiveFrame3(zone, index);
-        break;
-      case 'frame.interactive-frame4':
-        jsx = InteractiveFrame4(zone, index);
-        break;
-      case 'frame.interactive-frame5':
-        jsx = InteractiveFrame5(zone, index);
-        break;
+      // case 'frame.6':
+      //   jsx = Frame6(zone, index);
+      //   break;
+      // case 'frame.7':
+      //   jsx = Frame7(zone, index);
+      //   break;
+      // case 'frame.8':
+      //   jsx = Frame8(zone, index);
+      //   break;
+      // case 'frame.9':
+      //   jsx = Frame9(zone, index);
+      //   break; 
+      // case 'frame.10':
+      //   jsx = Frame10(zone, index);
+      //   break; 
+      // case 'frame.interactive-frame1':
+      //   jsx = InteractiveFrame1(zone, index);
+      //   break;
+      // case 'frame.interactive-frame2':
+      //   jsx = InteractiveFrame2(zone, index);
+      //   break;
+      // case 'frame.interactive-frame3':
+      //   jsx = InteractiveFrame3(zone, index);
+      //   break;
+      // case 'frame.interactive-frame4':
+      //   jsx = InteractiveFrame4(zone, index);
+      //   break;
+      // case 'frame.interactive-frame5':
+      //   jsx = InteractiveFrame5(zone, index);
+      //   break;
       // case 'frame.testframe':
       //   jsx = Testframe(zone, index);
       //   break;
@@ -147,10 +145,9 @@ const SwitchComponent = (zone, index) => {
       default:
         console.error(`Error: Unrecognized component '${zone.__component}'`);
     }
-  
     return jsx;
   }
-  }
+  
 
   
 
