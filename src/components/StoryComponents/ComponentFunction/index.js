@@ -72,8 +72,6 @@ return(
 }
 
 export const sub_cap_blue_bg = (text)=>{
-  console.log(text)
-
   if(text.light_blue_background){
       return (
         <Container className='LightBlueBackground' style={{padding: '20px', paddingTop: '20px'}}>
@@ -82,15 +80,23 @@ export const sub_cap_blue_bg = (text)=>{
         </Container>
       )
     }
-    else{
-      return(
-        <Container style={{padding: '20px', paddingTop: '20px'}}>
+  else if(text.light_yellow_background){
+    return (
+      <Container className='LightYellowBackground' style={{padding: '20px', paddingTop: '20px'}}>
+        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='BlueText text-center SubText'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='GrayText text-center CaptionText'/>
+      </Container>
+    )
+  }    
+  else{
+    return(
+      <Container style={{padding: '20px', paddingTop: '20px'}}>
         <div dangerouslySetInnerHTML={createMarkup(text.text)} className='BlueText text-center SubText'/>
         <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='GrayText text-center CaptionText'/>
       </Container>
-      )
-    }
+    )
   }
+}
 
 export function IsEmptyOrWhiteSpace(str) {
     return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -117,7 +123,6 @@ return (
 }
 
 export const subcomponent_image = (image) => {  
-  console.log(image)  
     image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
     let imageSizes = {
     "XXS": "50px",
@@ -128,26 +133,6 @@ export const subcomponent_image = (image) => {
     "XL": "750px",
     "XXL": "1200px"
     };
-    // const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
-
-    // let caption = undefined; 
-    // if (!IsEmptyOrWhiteSpace(image.caption)) {
-    // caption = (
-    //     <>
-    //     <Container 
-    //       className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
-    //       style={{width:imageSizes[image.size]}}>
-    //         <ReactMarkdown 
-    //         className='GrayText CaptionText text-center' 
-    //         style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
-    //         >
-    //         {image.caption}
-    //         </ReactMarkdown>
-    //     </Container>
-    //     </>
-    // );
-    // }
-    
     return (
     <Container 
       className={`d-flex justify-content-center align-items-center ${image.light_blue_background ? "LightBlueBackground" : ""}`}
@@ -160,7 +145,8 @@ export const subcomponent_image = (image) => {
               />
             <div 
               className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
-              style={{width:imageSizes[image.size]}}>
+              // style={{width:imageSizes[image.size]}}
+            >
                 <div 
                   dangerouslySetInnerHTML={createMarkup(image.caption)} 
                   className='GrayText CaptionText text-center'
@@ -170,7 +156,6 @@ export const subcomponent_image = (image) => {
                 />
             </div>
           </Row>
-
     </Container>
     );
 }

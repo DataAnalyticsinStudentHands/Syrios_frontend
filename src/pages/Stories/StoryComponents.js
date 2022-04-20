@@ -106,12 +106,12 @@ const SwitchComponent = (zone, index) => {
       case 'frame.5':
         jsx = Frame5(zone, index);
         break;
-      // case 'frame.6':
-      //   jsx = Frame6(zone, index);
-      //   break;
-      // case 'frame.7':
-      //   jsx = Frame7(zone, index);
-      //   break;
+      case 'frame.6':
+        jsx = Frame6(zone, index);
+        break;
+      case 'frame.7':
+        jsx = Frame7(zone, index);
+        break;
       // case 'frame.8':
       //   jsx = Frame8(zone, index);
       //   break;

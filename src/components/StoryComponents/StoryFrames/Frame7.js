@@ -1,51 +1,89 @@
 /* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import ReactMarkdown from 'react-markdown';
+import { subcomponent_image, sub_cap_blue_bg } from "../ComponentFunction/index";
 
-import {IsEmptyOrWhiteSpace, mainText, capText, subcomponent_image } from "../ComponentFunction/index";
+function createMarkup(textTran){
+  return {__html: textTran};
+}
+const Frame7 = (zone, index) =>{
+    let grid = {
+      "half": 2,
+      "third": 3,
+      "quarter": 4,
+      "two":1.5,
+      "three":1.333333,
+      "four":1.25
+    };
 
-const Frame7 = (zone, index, jsonObject) =>{
-
-    let sub_text_right_top = undefined
-    if (!IsEmptyOrWhiteSpace(zone.sub_text_right_top)){
-      sub_text_right_top =(
-        <Row className='GrayText align-items-start SubText'>
-          <ReactMarkdown>
-            {zone.sub_text_right_top}
-          </ReactMarkdown>
-        </Row>
+    // console.log('image:',(12/grid[zone.grid])*(grid[zone.grid]-1),'text:',(12/grid[zone.grid]))
+    let frameBody = undefined
+    if (zone.left_right_switch){
+      frameBody=(
+        <>
+          <Col xs={Math.round((12/grid[zone.grid]))}>
+            <Row className='mb-5'>
+              <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left ${zone.text7.text_color} ${zone.text7.font_size}`}/>
+            </Row>
+            <Row className='mt-5'>
+              {sub_cap_blue_bg(zone.right)}
+            </Row>
+          </Col>
+          <Col xs={Math.round((12/grid[zone.grid])*(grid[zone.grid]-1))}>
+            {subcomponent_image(zone.left)}
+          </Col>
+        </>
       )
     }
-    let cap_text_right_bottom = undefined
-    if (!IsEmptyOrWhiteSpace(zone.cap_text_bottom)){
-      cap_text_right_bottom =(
-        <Row className='LightYellowBackground align-items-end GrayText CaptionText' style={{padding: '20px', paddingTop: '20px'}}>
-          <ReactMarkdown>
-            {zone.cap_text_bottom}
-          </ReactMarkdown>
-        </Row>
+    else{
+      frameBody=(
+        <>
+          <Col xs={Math.round((12/grid[zone.grid])*(grid[zone.grid]-1))}>
+            {subcomponent_image(zone.left)}
+          </Col>
+          <Col xs={Math.round((12/grid[zone.grid]))}>
+            <Row className='mb-5'>
+              <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left ${zone.text7.text_color} ${zone.text7.font_size}`}/>
+            </Row>
+            <Row className='mt-5'>
+              {sub_cap_blue_bg(zone.right)}
+            </Row>
+          </Col>
+        </>
       )
     }
+
+    if (zone.head.updown_switch){
+      return(
+        <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+        <Container>
+          <Row className='d-flex justify-content-between align-items-center mb-5'>
+            {frameBody}
+          </Row>
+          <Row className='d-flex justify-content-center '>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+          </Row>
   
-    return(
-      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
-        backgroundBlendMode:'multiply'}}>
-          <Container className='mb-5'>
-            {mainText(zone.main_text)}
-          </Container>
-          {capText(zone.cap_text_top)}
-          <Container className='d-flex justify-content-between align-self-center my-5'>
-              <Col xs={8} className='d-flex justify-content-between align-self-center'>
-                {subcomponent_image(zone.image)}
-              </Col>
-              <Col xs={4} className='justify-content-between d-flex flex-column'>
-                {sub_text_right_top}
-                {cap_text_right_bottom}
-              </Col>
-          </Container>
-          {capText(zone.cap_text_bottom)}
+        </Container>
       </div>
-    )
+      )
+    }
+    else{
+      return(
+        <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+        <Container>
+          <Row className='d-flex justify-content-center mb-5'>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+          </Row>
+          <Row className='d-flex justify-content-around align-items-center'>
+            {frameBody}
+          </Row>
+        </Container>
+      </div>
+      )
+    }
+
   }
   export default Frame7
