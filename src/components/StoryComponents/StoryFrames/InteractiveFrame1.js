@@ -4,8 +4,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
 import {IsEmptyOrWhiteSpace} from "../ComponentFunction/index";
 
-const InteractiveFrame1 = (zone, index, jsonObject) => {
-    let blueBackgroundMaxHeight = '200px';
+function createMarkup(textTran){
+  return {__html: textTran};
+}
+const InteractiveFrame1 = (zone, index, jsonObject) => {  
+  let blueBackgroundMaxHeight = '200px';
   
     const FadeThenSwitchCompAndReset = (dom) => { // This function REQUIRES e.target to be compare scale or reset scale
       // There are more try catches here than the amount of classes you have to take to get a degree.
@@ -205,56 +208,58 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         backgroundBlendMode:'multiply'}}>
         <Container className='justify-content-center align-items-center'>
           {/* Main text */}
-          <Row>
-            <Col>
+          <Row className='mb-5'>
               <ReactMarkdown className='OrangeText MainText text-center'>
                 {zone.main_text}
               </ReactMarkdown>
-            </Col>
+              {/* <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='OrangeText MainText text-center'/> */}
+
           </Row>
           {/* Blue background css grid goodie */}
           <Row className='LightBlueBackground InteractiveFrame1LightBlueSizing d-flex justify-content-around'>
   
             {/* Images left */}
             <Col xs={3}> 
-              <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+              <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: blueBackgroundMaxHeight}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.data.attributes.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left_front.data.attributes.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.data.attributes.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.left_front11.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.left_front11.data.attributes.alternativeText) ? 'Interactive_frame_left_front_image' : zone.left_front11.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageFrontLeft'
                   id='InteractiveFrame1'
                 />
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.data.attributes.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left_back.data.attributes.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.data.attributes.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.left_back11.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.left_back11.data.attributes.alternativeText) ? 'Interactive_frame_left_back_image' : zone.left_back11.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageBackLeft'
                   id='InteractiveFrame1'
                 />
               </div>
             </Col>
-  
+
             {/* Text_center */}
             <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}}>
-              <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextFront'>
-                {zone.sub_text_middle_front}
-              </ReactMarkdown>
-              <ReactMarkdown className='GrayText SubText text-center InteractiveFrame1TextBack'>
-                {zone.sub_text_middle_back}
-              </ReactMarkdown>
+              <div 
+                dangerouslySetInnerHTML={createMarkup(zone.text_front)} 
+                className='GrayText SubText text-center InteractiveFrame1TextFront'
+              />
+              <div 
+                dangerouslySetInnerHTML={createMarkup(zone.text_back)} 
+                className='GrayText SubText text-center InteractiveFrame1TextBack'
+              />
             </Col>
   
             {/* Images Right */}
             <Col xs={3}> 
-              <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+              <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: blueBackgroundMaxHeight}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.data.attributes.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_front.data.attributes.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.data.attributes.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.right_front11.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.right_front11.data.attributes.alternativeText) ? 'Interactive_frame_right_front_image' : zone.right_front11.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageFrontRight'
                   id='InteractiveFrame1'
                 />
                 <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.data.attributes.url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right_back.data.attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.data.attributes.alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.right_back11.data.attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.right_back11.data.attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.right_back11.data.attributes.alternativeText}
                   className=' InteractiveFrame1ImageBackRight'
                   id='InteractiveFrame1'
                 />

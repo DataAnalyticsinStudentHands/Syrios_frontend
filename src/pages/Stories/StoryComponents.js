@@ -121,21 +121,21 @@ const SwitchComponent = (zone, index) => {
       // case 'frame.10':
       //   jsx = Frame10(zone, index);
       //   break; 
-      // case 'frame.interactive-frame1':
-      //   jsx = InteractiveFrame1(zone, index);
-      //   break;
-      // case 'frame.interactive-frame2':
-      //   jsx = InteractiveFrame2(zone, index);
-      //   break;
-      // case 'frame.interactive-frame3':
-      //   jsx = InteractiveFrame3(zone, index);
-      //   break;
-      // case 'frame.interactive-frame4':
-      //   jsx = InteractiveFrame4(zone, index);
-      //   break;
-      // case 'frame.interactive-frame5':
-      //   jsx = InteractiveFrame5(zone, index);
-      //   break;
+      case 'frame.11':
+        jsx = InteractiveFrame1(zone, index);
+        break;
+      case 'frame.12':
+        jsx = InteractiveFrame2(zone, index);
+        break;
+      case 'frame.13':
+        jsx = InteractiveFrame3(zone, index);
+        break;
+      case 'frame.14':
+        jsx = InteractiveFrame4(zone, index);
+        break;
+      case 'frame.15':
+        jsx = InteractiveFrame5(zone, index);
+        break;
       // case 'frame.testframe':
       //   jsx = Testframe(zone, index);
       //   break;

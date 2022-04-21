@@ -3,8 +3,11 @@ import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import {SwitchFront,SwitchBack,FlipCoinImg,FlipCoin } from "../ComponentFunction/index";
 
-
+function createMarkup(textTran){
+  return {__html: textTran};
+}
 const InteractiveFrame5 = (zone, index, jsonObject) =>{
+  console.log(zone)
     let switchDir = true
     const switchWord = (dom) =>{
       let main_text = dom.childNodes[0]
@@ -25,18 +28,22 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
         backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='mb-5'>
-            <p className='OrangeText MainText text-center' style={{display:'black', opacity:1, transition:'0.3s'}}>
-              {zone.main_text_front}
-            </p>
-            <p className='OrangeText MainText text-center' style={{display:'none', opacity:0, transition:'0.3s'}}>
-              {zone.main_text_back}
-            </p>
+            <div 
+              dangerouslySetInnerHTML={createMarkup(zone.main_text_front)} 
+              className='OrangeText MainText text-center'
+              style={{display:'black', opacity:1, transition:'0.3s'}}
+            />
+            <div 
+              dangerouslySetInnerHTML={createMarkup(zone.main_text_back)} 
+              className='OrangeText MainText text-center'
+              style={{display:'none', opacity:0, transition:'0.3s'}}
+            />
           </Row>
   
           <Row className='d-flex justify-content-between'>
             <Col xs={6} className="d-flex justify-content-center">
               <Col xs={6} className="d-flex justify-content-end">
-                {FlipCoinImg(zone.image_left_front,zone.image_left_back)}
+                {FlipCoinImg(zone.left_front,zone.left_back)}
               </Col>
               <Col xs={6} className="d-flex justify-content-start">
                 <i 
@@ -52,12 +59,16 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
               </Col>
             </Col>
             <Col xs={6} className='LightBlueBackground d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'125px'}}>
-              <p className='BlueText text-center SubText' style={{display:'black', opacity:1, transition:'0.3s'}}>
-                {zone.sub_text_right_front}
-              </p>
-              <p className='BlueText text-center SubText' style={{display:'none', opacity:0, transition:'0.3s'}}>
-                {zone.sub_text_right_back}
-              </p>
+              <div 
+                dangerouslySetInnerHTML={createMarkup(zone.right_front)} 
+                className='BlueText text-center SubText'
+                style={{display:'black', opacity:1, transition:'0.3s'}}
+              />
+              <div 
+                dangerouslySetInnerHTML={createMarkup(zone.right_back)} 
+                className='BlueText text-center SubText'
+                style={{display:'none', opacity:0, transition:'0.3s'}}
+              />
             </Col>
           </Row>
         </Container>

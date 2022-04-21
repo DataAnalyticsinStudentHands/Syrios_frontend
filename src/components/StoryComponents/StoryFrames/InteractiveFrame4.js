@@ -3,9 +3,11 @@ import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
 import {IsEmptyOrWhiteSpace, mainText} from "../ComponentFunction/index";
-
+function createMarkup(textTran){
+  return {__html: textTran};
+}
 const InteractiveFrame4 = (zone, index, jsonObject) => {
-
+  console.log(zone)
     const frameWithTwoImage = (zone) =>{
       return(
         <Row className='d-flex justify-content-around'>
@@ -13,53 +15,47 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           <Row className='d-flex align-items-stretch justify-content-between' >
             <Col xs={6} className='align-self-end'>
               <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.images_left.data[0].attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.images_left.data[0].attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.images_left.data[0].attributes.alternativeText}
                   id='InteractiveFrame4ImageS'
               />
             </Col>
             <Col xs={6}>
               <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left[1].url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[1].alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.images_left.data[1].attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.images_left.data[1].attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.images_left.data[1].attributes.alternativeText}
                   id='InteractiveFrame4ImageM'
                 />
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground '>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_left}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.left)} className='mt-3'/>
           </Row>
         </Col>
   
         <Col xs={3} className='d-flex justify-content-center align-items-end'>
-          <ReactMarkdown className='SubText text-center GrayText'>
-            {zone.text_mid}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.mid)} className='SubText text-center GrayText'/>
         </Col>
   
         <Col xs={3}>
           <Row className='d-flex align-items-stretch justify-content-between' >
             <Col xs={6} className='align-self-end'>
               <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.images_right.data[0].attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.images_right.data[0].attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.images_right.data[0].attributes.alternativeText}
                   id='InteractiveFrame4ImageS'
                 />
             </Col>
             <Col xs={6}>
               <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right[1].url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[1].alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.images_right.data[1].attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.images_right.data[1].attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.images_right.data[1].attributes.alternativeText}
                   id='InteractiveFrame4ImageM'
                 />
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_right}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.right)} className='mt-3'/>
           </Row>
         </Col>
       </Row>
@@ -72,39 +68,33 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           <Row className='d-flex align-items-stretch justify-content-center' >
             <Col className='d-flex justify-content-center'>
               <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.images_left.data[0].attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.images_left.data[0].attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.images_left.data[0].attributes.alternativeText}
                   id='InteractiveFrame4ImageL'
               />
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_left}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.left)} className='mt-3'/>
           </Row>
         </Col>
   
         <Col xs={3} className='d-flex justify-content-center align-items-end'>
-          <ReactMarkdown className='SubText text-center GrayText'>
-            {zone.text_mid}
-          </ReactMarkdown>
+          <div dangerouslySetInnerHTML={createMarkup(zone.mid)} className='SubText text-center GrayText'/>
         </Col>
   
         <Col xs={3}>
           <Row className='d-flex justify-content-center' >
             <Col className='d-flex justify-content-center'>
               <img
-                  src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
-                  alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+                  src={`${process.env.REACT_APP_strapiURL}${zone.images_right.data[0].attributes.url}`}
+                  alt={IsEmptyOrWhiteSpace(zone.images_right.data[0].attributes.alternativeText) ? 'Interactive_frame_right_back_image' : zone.images_right.data[0].attributes.alternativeText}
                   id='InteractiveFrame4ImageL'
                 />
             </Col>
           </Row>
           <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
-            <ReactMarkdown className='mt-3'>
-              {zone.text_right}
-            </ReactMarkdown>
+            <div dangerouslySetInnerHTML={createMarkup(zone.right)} className='mt-3'/>
           </Row>
         </Col>
       </Row>
@@ -229,7 +219,8 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
                   switchFrame(dom,i)
                 }}
               >
-                Denomination
+                
+                {zone.component[0].button_name}
               </button>
             </Col>
             <Col xs={6} sm={3} className='d-flex justify-content-center'>
@@ -241,7 +232,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
                   switchFrame(dom,i)
                 }}
               >
-                Mint Date
+                {zone.component[1].button_name}
               </button>
             </Col>
             <Col xs={6} sm={3} className='d-flex justify-content-center'>
@@ -253,7 +244,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
                   switchFrame(dom,i)
                 }}
               >
-                Mint Marks
+                {zone.component[2].button_name}
               </button>
             </Col>
             <Col xs={6} sm={3} className='d-flex justify-content-center'>
@@ -265,22 +256,22 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
                   switchFrame(dom,i)
                 }}
               >
-                Other Marks
+                {zone.component[3].button_name}
               </button>
             </Col>
           </Row>
           <Row className='mt-5 d-flex justify-content-around' style={{height: '200px'}} >
               <div style={{display:'block', opacity:'1.0', transition:'0.3s'}}>
-                {frameWithTwoImage(zone.image_component[0])}
+                {frameWithTwoImage(zone.component[0])}
               </div>
               <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-                {frameWithOneImage(zone.image_component[1])}
+                {frameWithOneImage(zone.component[1])}
               </div>
               <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-                {frameWithOneImage(zone.image_component[2])}
+                {frameWithOneImage(zone.component[2])}
               </div>
               <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-                {frameWithOneImage(zone.image_component[3])}
+                {frameWithOneImage(zone.component[3])}
               </div>
           </Row>
         </Container>

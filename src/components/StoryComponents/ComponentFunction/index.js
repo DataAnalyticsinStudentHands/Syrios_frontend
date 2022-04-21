@@ -122,7 +122,8 @@ return (
 );
 }
 
-export const subcomponent_image = (image) => {  
+export const subcomponent_image = (image) => {
+  console.log(image)
     image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
     let imageSizes = {
     "XXS": "50px",
@@ -143,10 +144,10 @@ export const subcomponent_image = (image) => {
               alt={image.image.data.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
               width={imageSizes[image.size]}
               />
-            <div 
-              className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
-              // style={{width:imageSizes[image.size]}}
-            >
+              <div 
+                className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
+                // style={{width:imageSizes[image.size]}}
+              >
                 <div 
                   dangerouslySetInnerHTML={createMarkup(image.caption)} 
                   className='GrayText CaptionText text-center'
@@ -260,15 +261,16 @@ export const FlipCoin = (dom) =>{
   }
 
 export const FlipCoinImg = (img_fornt, img_back) =>{
-    let Coin = undefined
+  // console.log(img_fornt)  
+  let Coin = undefined
     Coin = (
       <div className='flip-box'>
         <div className='flip-box-inner'>
           <div className='flip-box-front'>
-            {subcomponent_image_only(img_fornt)}
+            {subcomponent_image(img_fornt)}
           </div>
           <div className='flip-box-back'>
-            {subcomponent_image_only(img_back)}
+            {subcomponent_image(img_back)}
           </div>
         </div>
       </div>

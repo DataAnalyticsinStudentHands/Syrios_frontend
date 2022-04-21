@@ -4,68 +4,20 @@ import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
 import {subcomponent_image, SwitchBack, SwitchFront} from "../ComponentFunction/index";
 
-const InteractiveFrame3 = (zone, index, jsonObject) =>{
+function createMarkup(textTran){
+  return {__html: textTran};
+}
 
+const InteractiveFrame3 = (zone, index) =>{
     const switchForFront = (dom) =>{
-      
       let imgLeftDiv = dom.childNodes[0]
       let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
       let imgRightDiv = dom.childNodes[2]
       SwitchBack(imgLeftDiv)
       SwitchBack(textmidDiv)
       SwitchBack(imgRightDiv)
-      // imgLeftDiv.childNodes[1].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgLeftDiv.childNodes[1].style.display = 'none';
-      //     imgLeftDiv.childNodes[0].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgLeftDiv.childNodes[0].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // textmidDiv.childNodes[1].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     textmidDiv.childNodes[1].style.display = 'none';
-      //     textmidDiv.childNodes[0].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       textmidDiv.childNodes[0].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // imgRightDiv.childNodes[1].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgRightDiv.childNodes[1].style.display = 'none';
-      //     imgRightDiv.childNodes[0].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgRightDiv.childNodes[0].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
+
     }
-  
     const switchForBack = (dom) =>{  
       let imgLeftDiv = dom.childNodes[0]
       let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
@@ -73,77 +25,24 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
       SwitchFront(imgLeftDiv)
       SwitchFront(textmidDiv)
       SwitchFront(imgRightDiv)
-      // imgLeftDiv.childNodes[0].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgLeftDiv.childNodes[0].style.display = 'none';
-      //     imgLeftDiv.childNodes[1].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgLeftDiv.childNodes[1].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // textmidDiv.childNodes[0].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     textmidDiv.childNodes[0].style.display = 'none';
-      //     textmidDiv.childNodes[1].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       textmidDiv.childNodes[1].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
-  
-      // imgRightDiv.childNodes[0].style.opacity = '0.0';
-      // setTimeout(() => {
-      //   try {
-      //     imgRightDiv.childNodes[0].style.display = 'none';
-      //     imgRightDiv.childNodes[1].style.display = 'block';
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      //   setTimeout(() => {
-      //     try {
-      //       imgRightDiv.childNodes[1].style.opacity = '1.0';
-      //     } catch (error) {
-      //       console.error(error);
-      //     }
-      //   });
-      // }, 400);
     }
-  
     return(
       <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
         <Container>
           <Row>
-            <Col>
               <ReactMarkdown className='OrangeText MainText text-center my-5'>
-                {zone.main_text}
+                {zone.title}
               </ReactMarkdown>
-            </Col>
           </Row>
           <Row className='d-flex justify-content-around'>
             {/* image_lieft */}
             <Col xs={3}>
               <div style={{display:'black', opacity:1, transition:'0.3s'}}>
-                {subcomponent_image(zone.image_left_front)}
+                {subcomponent_image(zone.left_front13)}
               </div>
               <div style={{display:'none', opacity:0, transition:'0.3s'}}>
-                {subcomponent_image(zone.image_left_back)}
+                {subcomponent_image(zone.left_back13)}
               </div>
             </Col>
             {/* text in the middle */}
@@ -151,13 +50,17 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                 <Row className='d-flex justify-content-center'>
                 </Row>
                 <Row className='d-flex justify-content-center' >
-                  <Col xs={{span:9}} className='text-center GrayText SubText'>
-                    <p style={{display:'black', opacity:1, transition:'0.3s'}}>
-                      {zone.sub_text_mid_front}
-                    </p>
-                    <p style={{display:'none', opacity:0, transition:'0.3s'}}>
-                      {zone.text_mid_back}
-                    </p>
+                  <Col xs={{span:9}}>
+                    <div 
+                      dangerouslySetInnerHTML={createMarkup(zone.mid_front)} 
+                      className='text-center GrayText SubText'
+                      style={{display:'black', opacity:1, transition:'0.3s'}}  
+                    />
+                    <div 
+                      dangerouslySetInnerHTML={createMarkup(zone.mid_back)} 
+                      className='text-center GrayText SubText'
+                      style={{display:'none', opacity:0, transition:'0.3s'}}  
+                    />
                   </Col>
                 </Row>
   
@@ -191,10 +94,10 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
             {/* image right */}
             <Col xs={3}>
               <div style={{display:'black', opacity:1, transition:'0.3s'}}>
-                {subcomponent_image(zone.image_right_front)}
+                {subcomponent_image(zone.right_front13)}
               </div>
               <div style={{display:'none', opacity:0, transition:'0.3s'}}>
-                {subcomponent_image(zone.image_right_back)}
+                {subcomponent_image(zone.right_back13)}
               </div>
             </Col>
           </Row>
