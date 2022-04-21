@@ -11,35 +11,31 @@ import Footer from 'src/components/Footer';
 
 import './Download.css';
 
-//import { subcomponent_image_only } from 'src/components/StoryComponents/ComponentFunction';
-
+function createMarkup(textTran){
+    return {__html: textTran};
+}
 function Download(){
     const [isLoading, set_isLoading] = useState(true);
     const [coinData, setCoinData] = useState([])
     const csvLink = useRef()
 
-    const [subTitle, setSubTitle] = useState(undefined)
-    const [subText, setSubText] = useState(undefined)
+    const [title, setTitle] = useState(undefined)
+    const [text, setText] = useState(undefined)
     const [image, setImage] = useState(undefined)
+
     
     useEffect(()=>{
         if(isLoading){
-            // let apiURL = 'http://localhost:1337/download'
-            // axios.get(apiURL)
-            axios.get(process.env.REACT_APP_strapiURL + '/api/download?populate=image.image')
+            axios.get(process.env.REACT_APP_strapiURL + '/api/download')
                 .then((res)=>{
-                    setSubTitle(res.data.data.attributes.sub_title);
-                    setSubText(res.data.data.attributes.sub_text);
+                    setTitle(res.data.data.attributes.title);
+                    setText(res.data.data.attributes.text);
                     setImage(res.data.data.attributes.image);
                     set_isLoading(false);
                 });
         }
     });
     
-    function createMarkup(textTran){
-        return {__html: textTran};
-    }
-
     const formik = useFormik({
         initialValues:{
             fullName:"",
@@ -81,15 +77,6 @@ function Download(){
             </>
         );
     }
-    let imageSizes = {
-        "XXS": "50px",
-        "XS": "150px",
-        "S": "250px",
-        "M": "350px",
-        "L": "450px",
-        "XL": "550px",
-        "XXL": "650px"
-    };
 
     return(
         <>
@@ -114,27 +101,21 @@ function Download(){
                                     </Col>
                                     <Col xs={9}>
                                         <Row className='OrangeText' id='downLoad_Sub_Title'>
-                                            {subTitle}
+                                            {title}
                                         </Row>
                                         <Row className='GrayText' id='downLoad_Sub_Text'>
                                             {/* {subText} */}
-                                            <div dangerouslySetInnerHTML={createMarkup(subText)} />
+                                            <div dangerouslySetInnerHTML={createMarkup(text)} />
                                         </Row>
                                     </Col>
                                 </Row>
                                 <Row className='my-5'>
-                                    {/* <img
+                                    <img
                                         alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
                                         className='FrameImage'
                                         src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
-                                    /> */}
-                                        <img
-                                            // width={imageSizes[image.size]}
-                                            src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
-                                            alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-                                            style={{width:imageSizes[image.size]}}
-                                        />
-                                    {/* {subcomponent_image_only(image.data.attributes)} */}
+                                    />
+
                                 </Row>
                             </div>
                         </Col>

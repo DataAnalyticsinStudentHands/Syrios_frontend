@@ -4,10 +4,10 @@ import axios from 'axios';
 import 'src/pages/Stories/Stories.css';
 import Navbar from 'src/components/Navbar.js';
 import Footer, { ChangeCreditsAndReferences } from 'src/components/Footer.js';
-import fullPageComponent from 'src/components/FullPageComponent';
+// import fullPageComponent from 'src/components/FullPageComponent';
 import LoadingPage from 'src/components/LoadingPage.js';
-
-
+import ReactFullpage from '@fullpage/react-fullpage';
+import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
 const HowToReadACoin = () => {
   const [loading, setLoading] = useState(true);
@@ -15,11 +15,11 @@ const HowToReadACoin = () => {
 
   useEffect(() => {
     if (loading) {
-      axios.get(`${process.env.REACT_APP_strapiURL}/api/how-to-read-a-coin?populate=zone.image_left_front,zone.image_left_back,zone.image_right_front,zone.image_right_back,credits_and_references.source_material_references,credits_and_references.read_more_references`)
+      axios.get(`${process.env.REACT_APP_strapiURL}/api/how-to-read-a-coin`)
         .then((res, error) => {
           let data =res.data.data.attributes
           setStoryZone(data.zone)
-          ChangeCreditsAndReferences(data.credits_and_references);
+          // ChangeCreditsAndReferences(data.credits_and_references);
           setLoading(false);
         });
     }
@@ -38,7 +38,26 @@ const HowToReadACoin = () => {
   return (
     <>
       {Navbar()}
-      {fullPageComponent(storyZone)}
+			<ReactFullpage
+				//fullpage options
+				licenseKey = {'YOUR_KEY_HERE'}
+				navigation = {true}
+				autoScrolling = {true}
+				
+				render={() => {
+					let storyJSX = [];
+					for (let i = 0; i < storyZone.length; i++) {
+						storyJSX.push(SwitchComponent(storyZone[i], i));
+					}
+					// console.log(storyJSX)
+
+					return (
+						<ReactFullpage.Wrapper>
+						{storyJSX}
+						</ReactFullpage.Wrapper>
+					);
+				}}
+			/>	      
       {Footer(true)}
     </>
   );

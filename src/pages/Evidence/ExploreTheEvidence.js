@@ -36,35 +36,34 @@ const ExploreTheEvidence = () => {
 
   useEffect(() => {
     if (isLoading) {
-      axios.get(process.env.REACT_APP_strapiURL+'/api/explore-the-evidence?populate=*')
+      axios.get(process.env.REACT_APP_strapiURL+'/api/explore-the-evidence')
         .then((res, error) => {
           if (error) {
             console.error(error);
           } else {
             let data = res.data.data.attributes
-
             setTitle(data.title)
 
-            setSortCoinsImage(data.sort_coins_image.data.attributes)
-            setSortCoinsTitle(data.sort_coins_title)
-            setSortCoinsCaption(data.sort_coins_caption)
+            setSortCoinsImage(data.sort.image.data.attributes)
+            setSortCoinsTitle(data.sort.title)
+            setSortCoinsCaption(data.sort.caption)
 
-            setMapCoinsImage(data.map_coins_image.data.attributes)
-            setMapCoinsTitle(data.map_coins_title)
-            setMapCoinsCaption(data.map_coins_caption)
+            setMapCoinsImage(data.map.image.data.attributes)
+            setMapCoinsTitle(data.map.title)
+            setMapCoinsCaption(data.map.caption)
 
-            setCoinTimelineImage(data.coin_timeline_image.data.attributes)
-            setCoinTimelineTitle(data.coin_timeline_title)
-            setCoinTimelineCaption(data.coin_timeline_caption)
+            setCoinTimelineImage(data.timeline.image.data.attributes)
+            setCoinTimelineTitle(data.timeline.title)
+            setCoinTimelineCaption(data.timeline.caption)
 
-            setDownloadDatasetTitle(data.download_dataset_title)
-            setDownloadDatasetCaption(data.download_dataset_caption)
+            setDownloadDatasetTitle(data.download_title)
+            setDownloadDatasetCaption(data.download_caption)
 
             set_isLoading(false);
           }
         });
     }
-  });
+  },[]);
 
   if (isLoading) {
     return (
