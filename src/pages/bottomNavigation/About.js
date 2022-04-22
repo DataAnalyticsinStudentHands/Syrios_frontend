@@ -9,24 +9,12 @@ import Footer from 'src/components/Footer.js';
 import './About.css'
 import 'src/components/constants.css'
 
-
+function createMarkup(textTran){
+  return {__html: textTran};
+}
 
 const TeamJsx = (e, index) => { // This function is used to display profile picture, and detail of what the person contributed to the project
   // The detail for the person's information needs some "special" love for it to work. New lines don't work well, so each new line will be a new row
-  let detailJsxArr = [];
-  e.detail.split("\n").forEach((e) => {
-    detailJsxArr.push(
-      <Row key={e} className='RowDecreaseToParagraphSize'>
-        {/* The detailed information needs to force newline with new row */}
-        <Col>
-          <ReactMarkdown className='GrayText'>
-            {e}
-          </ReactMarkdown>
-        </Col>
-      </Row>
-    );
-  });
-
   // Return profile information
   return (
     <Row key={`ProjectDirectors_${index}`}>
@@ -45,22 +33,19 @@ const TeamJsx = (e, index) => { // This function is used to display profile pict
         <Container style={{margin: '20px' }}>
           <Row>
             {/* name and alias */}
-            <Col>
-              <p className='GrayText' style={{ fontSize: '2em' }}>
+            <Col className='GrayText' style={{ fontSize: '2em' }}>
                 {e.name}
-              </p>
             </Col>
           </Row>
           <Row>
             {/* their role */}
-            <Col>
-              <ReactMarkdown className='GrayText'>
+            <Col className='GrayText'>
                 {e.role}
-              </ReactMarkdown>
             </Col>
           </Row>
           {/* This is the paragraph below. This is the only way to enforce a newline character by making a new row */}                      
-          {detailJsxArr}
+          {/* {detailJsxArr} */}
+          <div dangerouslySetInnerHTML={createMarkup(e.detail)} className='GrayText CaptionText text-left'/>
         </Container>
       </Col>
     </Row>
@@ -71,51 +56,55 @@ const About = () => {
   const [isLoading, set_isLoading] = useState(true);
   const [description, setDescription] = useState(undefined)
   const [acknowledgements, setAcknowledgements] = useState(undefined)
-  const [digital_media_and_content_team, setDigitalMediaAndContentTeam] = useState(undefined)
+  const [digitalMediaAndContentTeam, setDigitalMediaAndContentTeam] = useState(undefined)
   const [logo, setLogo] = useState(undefined)
-  const [project_directors, setProjectDirectors] = useState(undefined)
-  const [past_student_research_assistants, setPastStudentResearchAssigstants]= useState(undefined)
+  const [projectDirectors, setProjectDirectors] = useState(undefined)
+  const [pastStudentResearchAssistants, setPastStudentResearchAssigstants]= useState(undefined)
 
   useEffect(() => {
     if(isLoading) {
       // axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
-      axios.get(`${process.env.REACT_APP_strapiURL}/api/about-us?populate=project_directors.picture,digital_media_and_content_team.picture,logo,acknowledgements`)
+      axios.get(`${process.env.REACT_APP_strapiURL}/api/about-us`)
         .then((res) => {
           let data = res.data.data.attributes
+          console.log(data)
+
+          setDescription(data.description)
+          setLogo(data.logo)
+          setPastStudentResearchAssigstants(data.past_student_research_assistants)
 
           let projectDirectorsJsxArr = [];
           data.project_directors.forEach((e, index) => {
             projectDirectorsJsxArr.push(TeamJsx(e, index));
           });
           setProjectDirectors(projectDirectorsJsxArr)
+          console.log(projectDirectors)
 
           let digitalMediaAndContentTeamJsxArr = [];
-          data.digital_media_and_content_team.forEach((e, index) => {
+          data.media_content_team.forEach((e, index) => {
             digitalMediaAndContentTeamJsxArr.push(TeamJsx(e, index));
           });
           setDigitalMediaAndContentTeam(digitalMediaAndContentTeamJsxArr)
 
           let acknowledgementsJsxArr = []
-          data.acknowledgements.forEach((e, index) => {
+          data.acknowledgements.forEach((e,index) => {
             acknowledgementsJsxArr.push(
-              <Row className='RowDecreaseToParagraphSize' key={`acknowledgements_${index}`}>
+              <Row 
+                className='RowDecreaseToParagraphSize' 
+                key={`acknowledgements_${index}`}
+              >
                 <Col>
-                  <ReactMarkdown className='text-center AboutAcknowlegments GrayText'>
-                    {e.text}
-                  </ReactMarkdown>
+                  <div dangerouslySetInnerHTML={createMarkup(e.text)} className='text-center AboutAcknowlegments GrayText'/>
                 </Col>
               </Row>
             );
           })
           setAcknowledgements(acknowledgementsJsxArr)
-          setDescription(data.description)
-          setLogo(data.logo)
-          setPastStudentResearchAssigstants(data.past_student_research_assistants)
           set_isLoading(false);
 
         })
     }
-  });
+  },[]);
 
   if (isLoading) { // isLoading is true, show loading page, else show real page
     return (
@@ -145,12 +134,10 @@ const About = () => {
               <img
                 alt='logo'
                 width='90%'
-                src={process.env.REACT_APP_strapiURL+logo.data[0].attributes.url}/>
+                src={process.env.REACT_APP_strapiURL+logo.data.attributes.url}/>
             </Col>
             <Col>
-              <ReactMarkdown className='GrayText'>
-                {description}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup(description)} className='GrayText'/>
             </Col>
           </Row>
         </Container>
@@ -170,7 +157,7 @@ const About = () => {
               </p>
             </Col>
           </Row>
-          {project_directors}
+          {projectDirectors}
 
           <Row>
             <Col>
@@ -179,8 +166,7 @@ const About = () => {
               </p>
             </Col>
           </Row>
-          {digital_media_and_content_team}
-
+          {digitalMediaAndContentTeam}
           <Row style={{ marginTop: '200px', marginBottom: '50px' }}>
             <Col>
               <p className='GrayText text-center' style={{ fontSize: '4em' }}>
@@ -190,9 +176,7 @@ const About = () => {
           </Row>
           <Row className='LightBlueBackground'>
             <Col style={{ margin: '20px', marginBottom: '15px' }}>
-              <ReactMarkdown className='GrayText'>
-                {past_student_research_assistants}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={createMarkup(pastStudentResearchAssistants)} className='GrayText CaptionText text-center'/>
             </Col>
           </Row>
 
@@ -204,7 +188,6 @@ const About = () => {
             </Col>
           </Row>
           {acknowledgements}
-
         </Container>
       </div>
       {Footer()}

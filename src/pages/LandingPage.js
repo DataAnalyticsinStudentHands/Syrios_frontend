@@ -19,11 +19,14 @@ import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
 import 'src/components/constants.css';
 import './LandingPage.css';
 
+function createMarkup(textTran){
+  return {__html: textTran};
+}
 function LandingPage() {
-  const [loading, set_loading] = useState(true);
-  const [videoLink, set_videoLink] = useState(undefined);
-  const [shortDescription, set_shortDescription] = useState(undefined);
-  const [LandingParagraph, set_landingParagraph] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const [videoLink, setVideoLink] = useState(undefined);
+  const [shortDescription, setShortDescription] = useState(undefined);
+  const [LandingParagraph, setLandingParagraph] = useState(undefined);
 
   useEffect(() => {
     if (loading) {
@@ -33,13 +36,12 @@ function LandingPage() {
             console.error(err);
             return;
           }
-
           // This is where the landing page is defined via strapi
           let data = res.data.data.attributes;
-          set_videoLink(data.videoLink);
-          set_shortDescription(data.shortDescription);
-          set_landingParagraph(data.LandingParagraph);
-          set_loading(false);
+          setVideoLink(data.video_link);
+          setShortDescription(data.title);
+          setLandingParagraph(data.text);
+          setLoading(false);
         });
     }
   });
@@ -153,14 +155,12 @@ function LandingPage() {
             </Col>
           </Row>
           {/* Landing paragraph */}
-          <Row container='justify-content-md-center'>
+          <Row className='justify-content-md-center mt-5'>
             <Col>
-              <div className='BlueText' style={{fontSize:'1.3em'}}>
-                <ReactMarkdown>
-                  {LandingParagraph}
-                </ReactMarkdown>
-              </div>
-
+                <div 
+                  dangerouslySetInnerHTML={createMarkup(LandingParagraph)} 
+                  className='BlueText' style={{fontSize:'1.3em'}}
+                />
             </Col>
           </Row>
         </Container>
