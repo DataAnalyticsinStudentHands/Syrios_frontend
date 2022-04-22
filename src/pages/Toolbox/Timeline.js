@@ -8,6 +8,7 @@ import Svg, {
 } from 'react-native-svg';
 import axios from 'axios';
 
+import { createMarkup } from 'src/utils/markup.js';
 import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -44,7 +45,7 @@ const defaultCoinData = {
   "Diameter": 28,
   "Era": "Seleucus I",
   "CatalogueDate": "N/A",
-  "_id": "5f60f649f0154e6e3ae4eceb",
+  "id": "5f60f649f0154e6e3ae4eceb",
   "Title": "Antioch Silver Coin of Seleucus I",
   "FromDate": -300,
   "ToDate": -281,
@@ -84,7 +85,7 @@ const defaultEventData = {
 };
 //
 function setupTimelineBackground(obj) {
-  let res = obj.res;
+  let res = obj.res.data;
   let yOffset = obj.yOffset;
   // Push background backdrop react-native-svg elements onto render array for react to load
   let jsxArr = [];
@@ -93,7 +94,7 @@ function setupTimelineBackground(obj) {
 
   // We are parsing object keys to get start and end dates to match
   // The XXX part of start_XXX_x and end_XXX_x must match case insensitive
-  let keys = Object.keys(res.data[0]);
+  let keys = Object.keys(res.data[0].attributes);
   let startEndKeyPairs = [];
 
   // We need to get our keys and put then in a start end key pairs so we can process the data
@@ -116,6 +117,7 @@ function setupTimelineBackground(obj) {
       }
     }
   });
+
   // By here, the object keys for start and end date should be ordered. Yes this is a O(n^3) algorithm, but idc. data set should be relatively small
 
   /* Objective: format data into react-native-svg freindly path for automatic interpolation with bezier curves.
@@ -150,8 +152,8 @@ function setupTimelineBackground(obj) {
 
   // Min and Maxheight are useful to let us offset negative dates and move it downwards because react-native-svg doesn't like using negative numbers
   // This makes it easy for react-native-svg to start at 0 for y value
-  let minHeight = (res.data[0].y_date); // We can assume index 0 is the smallest because it is ordered by ascending
-  let maxHeight = (res.data[res.data.length-1].y_date); // We can assume index last is the biggest because it is ordered by ascending
+  let minHeight = (res.data[0].attributes.y_date); // We can assume index 0 is the smallest because it is ordered by ascending
+  let maxHeight = (res.data[res.data.length-1].attributes.y_date); // We can assume index last is the biggest because it is ordered by ascending
   let viewBoxHeight = (Math.abs(minHeight-maxHeight)); // The size of the viewbox
   viewBoxMinHeight = minHeight;
   viewBoxTotalHeight = viewBoxHeight;
@@ -164,6 +166,7 @@ function setupTimelineBackground(obj) {
 
   // This is where the magic happens for setting up the background curves
   res.data.forEach((e, index) => {
+    e = e.attributes; // This is to make querying the value e easier since all the important information is in the attrubutes
     for (let i = 0; i < startEndKeyPairs.length; i++) {
       if (e[startEndKeyPairs[i][0]] === null || e[startEndKeyPairs[i][1]] === null || isNaN(e[startEndKeyPairs[i][0]]) || isNaN(e[startEndKeyPairs[i][1]])) { // Avoid null points. These get ugly if we aren't careful
         continue;
@@ -242,6 +245,7 @@ function setupTimelineBackground(obj) {
   // Need to setup lines at every 50 years with text. Need each 50 year point
   let y_datesMod50 = [];
   res.data.forEach((e) => {
+    e = e.attributes;
     if (e.y_date % 50 === 0) {
       y_datesMod50.push(e.y_date);
     }
@@ -300,7 +304,7 @@ function setupTimelineBackground(obj) {
 }
 
 function loadTimelineInfo(obj) {
-  let res = obj.res;
+  let res = obj.res.data.data.attributes;
   let yOffset = obj.yOffset;
   let viewBoxMinHeight = obj.viewBoxMinHeight;
   let updateCoinInfo = obj.updateCoinInfo;
@@ -315,8 +319,8 @@ function loadTimelineInfo(obj) {
     coinInfoArr.push(e);
     return (
       <Image
-        id={e._id}
-        key={`coin_image${e._id}`}
+        id={e.id}
+        key={`coin_image${e.id}`}
         className='CoinImage'
         x={e.x - coinSize / 2}
         y={e.y + Math.abs(viewBoxMinHeight) + yOffset - coinSize / 2}
@@ -327,7 +331,7 @@ function loadTimelineInfo(obj) {
     );
   };
 
-  res.data.zone.forEach((e) => {
+  res.zone.forEach((e) => {
     switch (e.__component) {
       case 'timeline-objects.coin-reference-singular':
         jsxArr.push(SetupCoin(e));
@@ -336,7 +340,7 @@ function loadTimelineInfo(obj) {
         jsxArr.push(
           <Path
             d={`M${e.parent_x} ${e.parent_y+Math.abs(viewBoxMinHeight)+yOffset} S${e.parent_x} ${e.child_y+Math.abs(viewBoxMinHeight)+yOffset} ${e.child_x} ${e.child_y+Math.abs(viewBoxMinHeight)+yOffset}`}
-            key={`path${e._id}`}
+            key={`path${e.id}`}
             stroke='#173847'
             fill='none'
             strokeWidth={coinStrokeWidth*2}
@@ -347,31 +351,31 @@ function loadTimelineInfo(obj) {
           ...e,
           x: e.child_x,
           y: e.child_y,
-          _id: e.child._id,
+          id: e.child.id,
           coin: e.child
         }));
         jsxArr.push(SetupCoin({
           ...e,
           x: e.parent_x,
           y: e.parent_y,
-          _id: e.parent._id,
+          id: e.parent.id,
           coin: e.parent
         }));
         break;
-      case 'timeline-objects.event-ref':
+      case 'timeline-objects.event':
         eventInfoArr.push(e.event);
         let sizeOfEvent = 2.3;
 
         jsxArr.push(
           <Rect
-            id={e.event._id}
-            key={`event${e.event._id}`}
+            id={e.event.data.id}
+            key={`event${e.event.data.id}`}
             className='Event'
             x={e.x - sizeOfEvent / 2}
             y={e.y + Math.abs(viewBoxMinHeight) + yOffset - sizeOfEvent / 2}
             width={sizeOfEvent}
             height={sizeOfEvent}
-            fill={e.event.color}
+            fill={e.event.data.attributes.color}
             stroke='black'
             strokeWidth='0.1'
             onClick={updateEventInfo}/>
@@ -406,7 +410,7 @@ const Timeline = () => {
     let dom = imgDomObj.target;
 
     let tmpCoinMetaData = coins.filter(e => {
-      return e._id === dom.id;
+      return e.id === dom.id;
     })[0].coin;
 
     // Run update through here
@@ -425,8 +429,8 @@ const Timeline = () => {
     let dom = eventDomObj.target;
 
     let tmpEventMetaData = events.filter(e => {
-      return e._id === dom.id;
-    })[0];
+      return e.data.id == dom.id;
+    })[0].data.attributes;
 
     set_eventMetaData(tmpEventMetaData);
     set_showEventInfo(true);
@@ -435,7 +439,7 @@ const Timeline = () => {
   useEffect(() => {
     // This is the background
     if (timelineBackgroundIsLoading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/timelines?_limit=-1&_sort=y_date:ASC')
+      axios.get(process.env.REACT_APP_strapiURL + '/api/timelines')
         .then((res, err) => {
           if (err) {
             console.error(err);
@@ -454,12 +458,12 @@ const Timeline = () => {
 
     // This is the coins and events and connecting stuff **********************
     if (timelineInfoIsLoading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/timeline-info')
+      axios.get(process.env.REACT_APP_strapiURL + '/api/timeline-info')
         .then((res, err) => {
           if (err) {
             console.error(err);
           } else {
-            set_timelineDescription(res.data.timeline_description);
+            set_timelineDescription(res.data.data.attributes.text);
 
             var timelineInfoInterval = setInterval(function() {
               if (!timelineBackgroundIsLoading) {
@@ -496,10 +500,8 @@ const Timeline = () => {
           TIMELINE
         </p>
       </div>
-      <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '6em'}}>
-        <p className='GrayText text-center' style={{fontStyle:'italic'}}>
-          {timelineDescription}
-        </p>
+      <div className='d-flex align-items-center justify-content-center GrayText text-center' style={{position: 'relative', top: '6em', fontStyle:'italic'}}>
+        <div dangerouslySetInnerHTML={createMarkup(timelineDescription)} />
       </div>
       <Svg
         height='100%'

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { createMarkup } from 'src/utils/markup.js';
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 import { colors } from 'src/components/constants.js';
 
@@ -28,6 +29,7 @@ function loadTags(tags) { // Split every tag into individual components with del
 }
 
 const EventInfo = (props) => {
+  console.log(props.EventMetaData);
 
   const closeHandler = (e) => {
     props.onClose(false);
@@ -53,15 +55,13 @@ const EventInfo = (props) => {
           {/* title */}
           <div id='EventTitle'>
             <p className='DarkBlueText'>
-              {props.EventMetaData.Title}
+              {props.EventMetaData.title}
             </p>
           </div>
 
           {/* description */}
-          <div id='EventDescription'>
-            <p className='DarkBlueText'>
-              {props.EventMetaData.detail}
-            </p>
+          <div id='EventDescription' className='DarkBlueText'>
+            <div dangerouslySetInnerHTML={createMarkup(props.EventMetaData.text)} />
           </div>
 
           {/* Cultural connections */}
