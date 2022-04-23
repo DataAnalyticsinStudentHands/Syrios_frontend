@@ -28,7 +28,6 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                       className='demo-icon icon-coin-scale InteractiveFrame1ScaleIcon'
                       onClick={(e)=> {
                         let dom = e.target.parentElement.parentElement.parentElement.parentElement;
-                        console.log(dom)
                         let coin_left = dom.childNodes[0].childNodes[0].childNodes[0]
                         let coin_right = dom.childNodes[2].childNodes[0].childNodes[0]
                         

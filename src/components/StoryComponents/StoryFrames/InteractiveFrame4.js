@@ -1,13 +1,12 @@
 /* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
-import ReactMarkdown from 'react-markdown';
+// import ReactMarkdown from 'react-markdown';
 import {IsEmptyOrWhiteSpace, mainText} from "../ComponentFunction/index";
 function createMarkup(textTran){
   return {__html: textTran};
 }
-const InteractiveFrame4 = (zone, index, jsonObject) => {
-  console.log(zone)
+const InteractiveFrame4 = (zone, index) => {
     const frameWithTwoImage = (zone) =>{
       return(
         <Row className='d-flex justify-content-around'>
@@ -101,23 +100,45 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
       )
     }
     const switchFrame = (dom,i) =>{
-  
-      let option1 = dom.childNodes[0]
-      let option2 = dom.childNodes[1]
-      let option3 = dom.childNodes[2]
-      let option4 = dom.childNodes[3]
+
+      let option0 = dom.childNodes[0]
+      let option1 = dom.childNodes[1]
+      let option2 = dom.childNodes[2]
+      let option3 = dom.childNodes[3]
   
       switch(i){
-        case 'option1':
+        case 'option0':
+          option1.style.opacity = '0.0';
           option2.style.opacity = '0.0';
           option3.style.opacity = '0.0';
-          option4.style.opacity = '0.0';
           setTimeout(() => {
             try {
+              option0.style.display = 'block';
+              option1.style.display = 'none';
+              option2.style.display = 'none';
+              option3.style.display = 'none';
+            } catch (error) {
+              console.error(error);
+            }
+            setTimeout(() => {
+              try {
+                option0.style.opacity = '1.0';
+              } catch (error) {
+                console.error(error);
+              }
+            });
+          }, 400);
+          break;
+        case 'option1':
+          option0.style.opacity = '0.0';
+          option2.style.opacity = '0.0';
+          option3.style.opacity = '0.0';
+          setTimeout(() => {
+            try {
+              option0.style.display = 'none';
               option1.style.display = 'block';
               option2.style.display = 'none';
               option3.style.display = 'none';
-              option4.style.display = 'none';
             } catch (error) {
               console.error(error);
             }
@@ -129,17 +150,17 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
               }
             });
           }, 400);
-          break;
+            break;
         case 'option2':
+          option0.style.opacity = '0.0';
           option1.style.opacity = '0.0';
           option3.style.opacity = '0.0';
-          option4.style.opacity = '0.0';
           setTimeout(() => {
             try {
+              option0.style.display = 'none';
               option1.style.display = 'none';
               option2.style.display = 'block';
               option3.style.display = 'none';
-              option4.style.display = 'none';
             } catch (error) {
               console.error(error);
             }
@@ -151,17 +172,18 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
               }
             });
           }, 400);
-            break;
+  
+          break;
         case 'option3':
+          option0.style.opacity = '0.0';
           option1.style.opacity = '0.0';
           option2.style.opacity = '0.0';
-          option4.style.opacity = '0.0';
           setTimeout(() => {
             try {
+              option0.style.display = 'none';
               option1.style.display = 'none';
               option2.style.display = 'none';
               option3.style.display = 'block';
-              option4.style.display = 'none';
             } catch (error) {
               console.error(error);
             }
@@ -173,35 +195,65 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
               }
             });
           }, 400);
-  
-          break;
-        case 'option4':
-          option2.style.opacity = '0.0';
-          option1.style.opacity = '0.0';
-          option3.style.opacity = '0.0';
-          setTimeout(() => {
-            try {
-              option1.style.display = 'none';
-              option2.style.display = 'none';
-              option3.style.display = 'none';
-              option4.style.display = 'block';
-            } catch (error) {
-              console.error(error);
-            }
-            setTimeout(() => {
-              try {
-                option4.style.opacity = '1.0';
-              } catch (error) {
-                console.error(error);
-              }
-            });
-          }, 400);
           break;
         default:
           break;
       }
-  
-  
+    }
+    const optionButton = (component) =>{
+      let buttonOption = []
+      component.forEach((e, index) => {
+        buttonOption.push(
+          <Col xs={6} sm={3} className='d-flex justify-content-center'>
+          <button	
+            className='BlueText text-center my-2' 
+            onClick={(e)=>{
+              let i = `option${index}`
+              let dom = e.target.parentElement.parentElement.nextSibling
+              switchFrame(dom,i)
+            }}
+          >
+            {e.button_name}
+          </button>
+        </Col>
+        )
+        
+      });
+      return(
+        buttonOption
+      )
+    }
+
+    const contentComponent = (component) =>{
+      let componentContent = []
+      component.forEach((e,index)=>{
+        if(index === 0 ){
+          componentContent.push(
+            <div style={{display:'block', opacity:'1.0', transition:'0.3s'}}>
+            {frameWithTwoImage(zone.component[index])}
+          </div>
+          )
+        }
+        else{
+          if (e.images_left.data.length ===2 && e.images_right.data.length ===2){
+            componentContent.push(
+              <div style={{display:'none', opacity:'1.0', transition:'0.3s'}}>
+                {frameWithTwoImage(zone.component[index])}
+              </div>
+            )
+          }
+          else{
+            componentContent.push(
+              <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
+                {frameWithOneImage(zone.component[index])}
+              </div>
+            )
+          }
+        }
+      })
+      return(
+        componentContent
+      )
     }
   
     return (
@@ -210,69 +262,10 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
             {mainText(zone.main_text)}
         <Container className='my-5'>
           <Row className='d-flex justify-content-between'>
-            <Col xs={6} sm={3} className='d-flex justify-content-center'>
-              <button	
-                className='BlueText text-center my-2' 
-                onClick={(e)=>{
-                  let i = 'option1'
-                  let dom = e.target.parentElement.parentElement.nextSibling
-                  switchFrame(dom,i)
-                }}
-              >
-                
-                {zone.component[0].button_name}
-              </button>
-            </Col>
-            <Col xs={6} sm={3} className='d-flex justify-content-center'>
-              <button	
-                className='BlueText text-center my-2' 
-                onClick={(e)=>{
-                  let i = 'option2'
-                  let dom = e.target.parentElement.parentElement.nextSibling
-                  switchFrame(dom,i)
-                }}
-              >
-                {zone.component[1].button_name}
-              </button>
-            </Col>
-            <Col xs={6} sm={3} className='d-flex justify-content-center'>
-              <button	
-                className='BlueText text-center my-2' 
-                onClick={(e)=>{
-                  let i = 'option3'
-                  let dom = e.target.parentElement.parentElement.nextSibling
-                  switchFrame(dom,i)
-                }}
-              >
-                {zone.component[2].button_name}
-              </button>
-            </Col>
-            <Col xs={6} sm={3} className='d-flex justify-content-center'>
-              <button	
-                className='BlueText text-center my-2' 
-                onClick={(e)=>{
-                  let i = 'option4'
-                  let dom = e.target.parentElement.parentElement.nextSibling
-                  switchFrame(dom,i)
-                }}
-              >
-                {zone.component[3].button_name}
-              </button>
-            </Col>
+            {optionButton(zone.component)}
           </Row>
           <Row className='mt-5 d-flex justify-content-around' style={{height: '200px'}} >
-              <div style={{display:'block', opacity:'1.0', transition:'0.3s'}}>
-                {frameWithTwoImage(zone.component[0])}
-              </div>
-              <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-                {frameWithOneImage(zone.component[1])}
-              </div>
-              <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-                {frameWithOneImage(zone.component[2])}
-              </div>
-              <div style={{display:'none', opacity:'0.0', transition:'0.3s'}}>
-                {frameWithOneImage(zone.component[3])}
-              </div>
+            {contentComponent(zone.component)}
           </Row>
         </Container>
       </div>

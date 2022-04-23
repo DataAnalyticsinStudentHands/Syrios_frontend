@@ -37,10 +37,9 @@ const StoryReader = () => {
 		if (loading) {
 			axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/${storyId}`)
 				.then((res) => {
-					// console.log(res)
 					let zone = res.data.data.attributes.zone
 					setStoryZone(zone);
-					// ChangeCreditsAndReferences(res.data.data.credits_and_references);
+					// ChangeCreditsAndReferences(res.data.data.attributes.credits_and_references);
 					setLoading(false);
 						}
 					);

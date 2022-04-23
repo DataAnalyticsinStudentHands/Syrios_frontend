@@ -7,7 +7,6 @@ function createMarkup(textTran){
   return {__html: textTran};
 }
 const InteractiveFrame5 = (zone, index, jsonObject) =>{
-  console.log(zone)
     let switchDir = true
     const switchWord = (dom) =>{
       let main_text = dom.childNodes[0]
@@ -40,12 +39,10 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
             />
           </Row>
   
-          <Row className='d-flex justify-content-between'>
+          <Row className='d-flex justify-content-center'>
             <Col xs={6} className="d-flex justify-content-center">
-              <Col xs={6} className="d-flex justify-content-end">
+              <Col xs={8} className="d-flex justify-content-end">
                 {FlipCoinImg(zone.left_front,zone.left_back)}
-              </Col>
-              <Col xs={6} className="d-flex justify-content-start">
                 <i 
                   className='demo-icon icon-coin-scale InteractiveFrame5ScaleIcon'
                   onClick={(e)=> {

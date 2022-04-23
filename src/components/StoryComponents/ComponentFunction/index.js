@@ -123,7 +123,6 @@ return (
 }
 
 export const subcomponent_image = (image) => {
-  console.log(image)
     image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
     let imageSizes = {
     "XXS": "50px",

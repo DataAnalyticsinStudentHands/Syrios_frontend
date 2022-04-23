@@ -14,12 +14,11 @@ import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
 export const ChangeCreditsAndReferences = (obj) => {
   if (obj === undefined || obj === null) return;
-
   // Check every 200ms if footer has been rendered. If true, delete the interval and update credits and references
   var interval = setInterval(function() {
     let dom = document.getElementById('CreditsAndReferences');
     if (dom !== undefined) {
-      clearInterval(interval);
+      clearInterval(interval); 
       let sourceMaterialReferences = undefined, readMoreReferences = undefined;
       dom.childNodes.forEach((e) => { // We need these dom elements so we can push list items into the innerHTML 
         let lowerTitle = e.title.toLowerCase();
