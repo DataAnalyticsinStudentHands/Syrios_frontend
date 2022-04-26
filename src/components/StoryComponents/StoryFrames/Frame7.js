@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
 import { subcomponent_image, sub_cap_blue_bg } from "../ComponentFunction/index";
@@ -16,7 +15,6 @@ const Frame7 = (zone, index) =>{
       "four":1.25
     };
 
-    // console.log('image:',(12/grid[zone.grid])*(grid[zone.grid]-1),'text:',(12/grid[zone.grid]))
     let frameBody = undefined
     if (zone.left_right_switch){
       frameBody=(
@@ -55,7 +53,7 @@ const Frame7 = (zone, index) =>{
 
     if (zone.head.updown_switch){
       return(
-        <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+        <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-between align-items-center mb-5'>
             {frameBody}
@@ -71,7 +69,7 @@ const Frame7 = (zone, index) =>{
     }
     else{
       return(
-        <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+        <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-center mb-5'>
               <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>

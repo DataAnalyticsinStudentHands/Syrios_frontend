@@ -72,8 +72,6 @@ const StoryReader = () => {
 					for (let i = 0; i < storyZone.length; i++) {
 						storyJSX.push(SwitchComponent(storyZone[i], i));
 					}
-					// console.log(storyJSX)
-
 					return (
 						<ReactFullpage.Wrapper>
 						{storyJSX}

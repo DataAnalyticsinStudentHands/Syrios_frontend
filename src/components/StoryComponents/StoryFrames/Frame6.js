@@ -20,10 +20,10 @@ const Frame6 = (zone, index) =>{
     if (zone.left_right_switch){
       frameBody=(
         <>
-          <Col xs={(12/grid[zone.grid])}>
+          <Col xs={(12/grid[zone.grid])-1}>
             {sub_cap_blue_bg(zone.text6)}
           </Col>
-          <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)}>
+          <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
             {subcomponent_image(zone.image6)}
           </Col>
         </>
@@ -32,10 +32,10 @@ const Frame6 = (zone, index) =>{
     else{
       frameBody=(
         <>
-          <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)}>
+          <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
             {subcomponent_image(zone.image6)}
           </Col>
-          <Col xs={(12/grid[zone.grid])}>
+          <Col xs={(12/grid[zone.grid])-1}>
             {sub_cap_blue_bg(zone.text6)}
           </Col>
         </>
@@ -44,7 +44,14 @@ const Frame6 = (zone, index) =>{
 
     if (zone.head.updown_switch){
       return(
-        <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+        <div 
+          key={`story_comp_${index}`} 
+          className='section' 
+          style={{ 
+            backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
+            backgroundBlendMode:'multiply'
+          }}
+        >
         <Container>
           <Row className='d-flex justify-content-between align-items-center mb-5'>
             {frameBody}
@@ -60,7 +67,14 @@ const Frame6 = (zone, index) =>{
     }
     else{
       return(
-        <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+        <div 
+          key={`story_comp_${index}`} 
+          className='section' 
+          style={{ 
+            backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
+            backgroundBlendMode:'multiply'
+          }}
+        >
         <Container>
           <Row className='d-flex justify-content-center mb-5'>
               <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>

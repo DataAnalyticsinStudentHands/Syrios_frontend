@@ -3,10 +3,10 @@ import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
 import {subcomponent_image, SwitchBack, SwitchFront} from "../ComponentFunction/index";
-
-function createMarkup(textTran){
-  return {__html: textTran};
-}
+import { createMarkup } from 'src/utils/markup';
+// function createMarkup(textTran){
+//   return {__html: textTran};
+// }
 
 const InteractiveFrame3 = (zone, index) =>{
     const switchForFront = (dom) =>{

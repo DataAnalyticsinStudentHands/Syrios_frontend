@@ -99,7 +99,7 @@ export const sub_cap_blue_bg = (text)=>{
 }
 
 export function IsEmptyOrWhiteSpace(str) {
-    return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
+    return str=== null ? true : (str.match(/^\s*$/) || []).length > 0;
   }
 
 export const subcomponent_image_only = (image) => {
@@ -139,13 +139,12 @@ export const subcomponent_image = (image) => {
       style={{padding: '20px', paddingBottom: '0px'}}>
           <Row className='d-flex justify-content-center align-items-center'>
               <img
-              src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
-              alt={image.image.data.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-              width={imageSizes[image.size]}
+                src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
+                alt={image.image.data.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
+                width={imageSizes[image.size]}
               />
               <div 
                 className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
-                // style={{width:imageSizes[image.size]}}
               >
                 <div 
                   dangerouslySetInnerHTML={createMarkup(image.caption)} 
@@ -161,6 +160,7 @@ export const subcomponent_image = (image) => {
 }
 
 export const subcomponent_image_with_dynamic_sizing = (images) => {
+  console.log(images)
     let imageSizes = {
       "XXS": "50px",
       "XS": "150px",

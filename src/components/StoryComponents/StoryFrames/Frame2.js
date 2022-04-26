@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
 
@@ -28,9 +27,15 @@ const Frame2 = (zone, index, jsonObject) => {
 
   if (zone.head.updown_switch){
     return(
-      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
-      <Container>
-        
+      <div 
+      key={`story_comp_${index}`} 
+      className='section' 
+      style={{ 
+        backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
+        backgroundBlendMode:'multiply'
+      }}
+    >      
+    <Container>    
         <div className={`${zone.image2.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
           <Container className='d-flex justify-content-center align-items-center'>
               <img
@@ -65,7 +70,7 @@ const Frame2 = (zone, index, jsonObject) => {
   }
   else{
     return(
-      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+      <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-center mb-5'>
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
