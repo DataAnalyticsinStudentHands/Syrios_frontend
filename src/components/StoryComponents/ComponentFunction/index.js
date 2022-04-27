@@ -103,7 +103,6 @@ export function IsEmptyOrWhiteSpace(str) {
   }
 
 export const subcomponent_image_only = (image) => {
-  console.log(image.data.attributes)
 let imageSizes = {
     "XXS": "50px",
     "XS": "150px",
@@ -160,7 +159,6 @@ export const subcomponent_image = (image) => {
 }
 
 export const subcomponent_image_with_dynamic_sizing = (images) => {
-  console.log(images)
     let imageSizes = {
       "XXS": "50px",
       "XS": "150px",
@@ -260,7 +258,6 @@ export const FlipCoin = (dom) =>{
   }
 
 export const FlipCoinImg = (img_fornt, img_back) =>{
-  // console.log(img_fornt)  
   let Coin = undefined
     Coin = (
       <div className='flip-box'>

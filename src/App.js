@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
 	BrowserRouter,
 	Route,
@@ -18,7 +18,16 @@ import Download from 'src/pages/Download/Download.js';
 
 import background from 'src/assets/background.jpg';
 
+import ReactGA from 'react-ga';
+const TRACKING_ID = 'G-2XL6S9VYH0'
+ReactGA.initialize(TRACKING_ID);
+
 function App() {
+
+	useEffect(()=>{
+		ReactGA.pageview(window.location.pathname + window.location.search);
+	},[])
+
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
 			{// Link is used to download the bootstrap css
