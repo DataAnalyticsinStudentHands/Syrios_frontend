@@ -43,7 +43,6 @@ const Footer = (props) => {
 
   const [credits_and_references_height, set_credits_and_references_height] = useState('0vh');
   let has_credits_and_references = props.has_credits_and_references == null ? false : props.has_credits_and_references;
-  console.log(props.credits_and_references);
   return (
     <div id='Footer'>
       {/* NEH */}

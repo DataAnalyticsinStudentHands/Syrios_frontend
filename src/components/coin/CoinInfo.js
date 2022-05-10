@@ -92,14 +92,14 @@ const CoinInfo = (props) => {
                 <div className='flip-box-front'>
                   <img
                     id='CoinImageFront'
-                    src={process.env.REACT_APP_strapiURL + props.CoinMetaData.obverseFile.url}
+                    src={process.env.REACT_APP_strapiURL + props.CoinMetaData.obverse_file.url}
                     alt='Logo'
                   />
                 </div>
                 <div className='flip-box-back'>
                   <img
                     id='CoinImageBack'
-                    src={process.env.REACT_APP_strapiURL + props.CoinMetaData.reverseFile.url}
+                    src={process.env.REACT_APP_strapiURL + props.CoinMetaData.reverse_file.url}
                     alt='Colorless logo'
                   />
                 </div>

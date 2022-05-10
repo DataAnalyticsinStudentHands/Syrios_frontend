@@ -29,8 +29,6 @@ function loadTags(tags) { // Split every tag into individual components with del
 }
 
 const EventInfo = (props) => {
-  console.log(props.EventMetaData);
-
   const closeHandler = (e) => {
     props.onClose(false);
   };

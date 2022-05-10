@@ -19,71 +19,162 @@ import { colors } from 'src/components/constants.js';
 import 'src/components/constants.css';
 import './Timeline.css';
 
-import OldLogo from 'src/assets/OldLogo.png';
-import OldLogoColorless from 'src/assets/OldLogoColorless.png';
-
 
 
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 const defaultCoinData = {
-  "Bibliography": "Seleucid Coins I.1, no. 13",
-  "ReverseType": "Zeus enthroned l., holding Nike and sceptre, dotted border",
-  "Image": "Yes",
-  "Region": "Syria",
-  "Mint": "Antioch",
-  "State": "Seleucid",
-  "Date": "c. 300 BCE-281 BCE",
-  "Material": "AR (silver)",
-  "Denomination": "tetradrachm",
-  "ObverseLegend": "none",
-  "ReverseLegend": "ΣΕΛΕΥΚΟΥ BAΣΙΛΕΩΣ",
-  "SourceImage": "http://numismatics.org/collection/1944.100.75011",
-  "RightsHolder": "American Numismatic Society - 1944.100.75011",
-  "ObverseType": "Head of young Heracles r. in lion skin headdress",
-  "IssuingAuthority": "Central",
-  "Diameter": 28,
-  "Era": "Seleucus I",
-  "CatalogueDate": "N/A",
-  "id": "5f60f649f0154e6e3ae4eceb",
-  "Title": "Antioch Silver Coin of Seleucus I",
-  "FromDate": -300,
-  "ToDate": -281,
-  "TypeCategory": "god, idea",
-  "obverseFile": {
-    "name": "03097ffa28fa77ec8f48115c466eaf3f.png",
-    "alternativeText": "",
-    "caption": "",
-    "hash": "03097ffa28fa77ec8f48115c466eaf3f_1c0d413fb4",
-    "ext": ".png",
-    "mime": "image/png",
-    "size": 670,
-    "width": 600,
-    "height": 598,
-    "url": OldLogo,
+  "reverse_type": "Tyche holding sceptre and cornucopia",
+  "mint": "Antioch",
+  "to_date": -150,
+  "material": "Silver",
+  "denomination": "Tetradrachm",
+  "obverse_legend": "None",
+  "reverse_legend": "ΒΑΣΙΛΕΩΣ ΔΗΜΗΤΡΙΟΥ",
+  "obverse_type": "Demetrius I",
+  "issuing_authority": "Royal",
+  "diameter": 29,
+  "createdAt": "2022-05-09T19:17:41.794Z",
+  "updatedAt": "2022-05-09T19:48:01.929Z",
+  "coin_id": "antioch_silver_demetrius1_tyche",
+  "modern_country": "Syria",
+  "ancient_territory": "Syria",
+  "mint_nomisma_uri": "http://nomisma.org/id/antiocheia_syria",
+  "mint_modern_name": "Antakya",
+  "longitude": 36.2,
+  "latitude": 36.16,
+  "date_range": "c. 162 BCE-150 BCE",
+  "from_date": -162,
+  "governing_power": "Seleucid",
+  "nomisma_obverse_uri": "http://nomisma.org/id/demetrius_i_soter",
+  "nomisma_reverse_uri": "http://nomisma.org/id/tyche",
+  "language": "Greek",
+  "source_image": "http://numismatics.org/collection/1950.84.7?lang=en",
+  "stable_id": null,
+  "wikidata": null,
+  "right_holder": "American Numsimatic Society - 1950.84.7",
+  "ref1": "Seleucid Coins 1.1, no. 1633-4",
+  "ref2": null,
+  "has_image": true,
+  "obverse_file": {
+    "data": {
+      "id": 816,
+      "attributes": {
+        "name": "7b9d83483f17c053bdd9226b607154e1.png",
+        "alternativeText": "7b9d83483f17c053bdd9226b607154e1.png",
+        "caption": "7b9d83483f17c053bdd9226b607154e1.png",
+        "width": 600,
+        "height": 601,
+        "formats": {
+          "small": {
+            "ext": ".png",
+            "url": "/uploads/small_7b9d83483f17c053bdd9226b607154e1_452122071f.png",
+            "hash": "small_7b9d83483f17c053bdd9226b607154e1_452122071f",
+            "mime": "image/png",
+            "name": "small_7b9d83483f17c053bdd9226b607154e1.png",
+            "path": null,
+            "size": 489.31,
+            "width": 499,
+            "height": 500
+          },
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_7b9d83483f17c053bdd9226b607154e1_452122071f.png",
+            "hash": "thumbnail_7b9d83483f17c053bdd9226b607154e1_452122071f",
+            "mime": "image/png",
+            "name": "thumbnail_7b9d83483f17c053bdd9226b607154e1.png",
+            "path": null,
+            "size": 53.76,
+            "width": 156,
+            "height": 156
+          }
+        },
+        "hash": "7b9d83483f17c053bdd9226b607154e1_452122071f",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 214.82,
+        "url": "/uploads/7b9d83483f17c053bdd9226b607154e1_452122071f.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2022-04-14T13:47:45.853Z",
+        "updatedAt": "2022-04-14T13:47:45.853Z"
+      }
+    }
   },
-  "reverseFile": {
-    "name": "d41af4256e8f82a1f9a0e13058fdb02a.png",
-    "alternativeText": "",
-    "caption": "",
-    "hash": "d41af4256e8f82a1f9a0e13058fdb02a_3bc8c63674",
-    "ext": ".png",
-    "mime": "image/png",
-    "size": 659.85,
-    "width": 600,
-    "height": 616,
-    "url": OldLogoColorless,
-  }
+  "reverse_file": {
+    "data": {
+      "id": 1510,
+      "attributes": {
+        "name": "eecaa68a86a7d889cba45f21ba821a9a.png",
+        "alternativeText": "eecaa68a86a7d889cba45f21ba821a9a.png",
+        "caption": "eecaa68a86a7d889cba45f21ba821a9a.png",
+        "width": 600,
+        "height": 596,
+        "formats": {
+          "small": {
+            "ext": ".png",
+            "url": "/uploads/small_eecaa68a86a7d889cba45f21ba821a9a_4cf4dcbc1c.png",
+            "hash": "small_eecaa68a86a7d889cba45f21ba821a9a_4cf4dcbc1c",
+            "mime": "image/png",
+            "name": "small_eecaa68a86a7d889cba45f21ba821a9a.png",
+            "path": null,
+            "size": 526.33,
+            "width": 500,
+            "height": 497
+          },
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_eecaa68a86a7d889cba45f21ba821a9a_4cf4dcbc1c.png",
+            "hash": "thumbnail_eecaa68a86a7d889cba45f21ba821a9a_4cf4dcbc1c",
+            "mime": "image/png",
+            "name": "thumbnail_eecaa68a86a7d889cba45f21ba821a9a.png",
+            "path": null,
+            "size": 58.31,
+            "width": 157,
+            "height": 156
+          }
+        },
+        "hash": "eecaa68a86a7d889cba45f21ba821a9a_4cf4dcbc1c",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 235.95,
+        "url": "/uploads/eecaa68a86a7d889cba45f21ba821a9a_4cf4dcbc1c.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2022-04-14T13:57:53.247Z",
+        "updatedAt": "2022-04-14T13:57:53.247Z"
+      }
+    }
+  },
+  "type_category": [
+    {
+      "id": 1,
+      "type_category": "Ruler"
+    },
+    {
+      "id": 3,
+      "type_category": "God"
+    },
+    {
+      "id": 2,
+      "type_category": "Object"
+    }
+  ]
 };
 
 const defaultEventData = {
-  "Title": "No Event",
-  "detail": "no detail",
-  "TypeCategory": "N/A",
-  "tags": "N/A",
-  "color": "#FF00FF",
+  "title": "Alexander the Great Dies",
+  "tags": "Greek, Political",
+  "text": "<p>In 323 BCE, Alexander the Great died from an illness while in the city of Babylon.&nbsp;</p>\n<p><em>[Alexander's soldiers] longed to see him...most from grief and longing for their King pressed in to see Alexander. They say that he was already speechless as the army filed past; yet he greeted one and all, raising his head, though with difficulty, and signing to them with his eyes... Alexander shortly afterwards breathed his last... Some have recorded that his friends asked him to whom he left his kingdom; and replied, \"to the best.\"</em> -Arrian, <em>Anabsis of Alexander</em> 7.26&nbsp;</p>",
+  "TypeCategory": null,
+  "color": "#987818",
+  "createdAt": "2022-04-18T17:11:02.281Z",
+  "updatedAt": "2022-04-18T17:11:02.281Z"
 };
-//
+
+
 function setupTimelineBackground(obj) {
   let res = obj.res.data;
   let yOffset = obj.yOffset;
@@ -349,17 +440,17 @@ function loadTimelineInfo(obj) {
 
         jsxArr.push(SetupCoin({
           ...e,
-          x: e.child_x,
-          y: e.child_y,
-          id: e.child.id,
-          coin: e.child
+          x: e.coin_b_x,
+          y: e.coin_b_y,
+          id: e.coin_b.id,
+          coin: e.coin_b
         }));
         jsxArr.push(SetupCoin({
           ...e,
-          x: e.parent_x,
-          y: e.parent_y,
-          id: e.parent.id,
-          coin: e.parent
+          x: e.coin_a_x,
+          y: e.coin_a_y,
+          id: e.coin_a.id,
+          coin: e.coin_a
         }));
         break;
       case 'timeline-objects.event':
@@ -429,7 +520,7 @@ const Timeline = () => {
     let dom = eventDomObj.target;
 
     let tmpEventMetaData = events.filter(e => {
-      return e.data.id == dom.id;
+      return e.data.id === dom.id;
     })[0].data.attributes;
 
     set_eventMetaData(tmpEventMetaData);
