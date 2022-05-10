@@ -377,7 +377,7 @@ const CoinSort = () => {
         <div id='Coins'>
         </div>
       </div>
-    {Footer()}
+      <Footer />
     </>
   );
 }

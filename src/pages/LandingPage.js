@@ -16,12 +16,10 @@ import EvidenceBgPic from 'src/assets/pages/LandingPageAssets/Evidence.jpg';
 import HistoriansToolboxBgPic from 'src/assets/pages/LandingPageAssets/HistoriansToolbox.jpg';
 import HowToReadBgPic from 'src/assets/pages/LandingPageAssets/HowToRead.jpg';
 import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
+import createMarkup from 'src/utils/markup.js';
 import 'src/components/constants.css';
 import './LandingPage.css';
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
 function LandingPage() {
   const [loading, setLoading] = useState(true);
   const [videoLink, setVideoLink] = useState(undefined);
@@ -54,16 +52,16 @@ function LandingPage() {
   if (loading) {
     return (
       <div>
-        {Navbar()}
-        {LoadingPage()}
-        {Footer()}
+        <Navbar />
+        <LoadingPage />
+        <Footer />
       </div>
     );
   }
 
   return (
     <div>
-      {Navbar()}
+      <Navbar />
       <div id='LandingPage' className='d-flex align-items-center'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <Container style={{height: '640px', paddingTop: '1em'}}>
@@ -165,7 +163,7 @@ function LandingPage() {
           </Row>
         </Container>
       </div>
-      {Footer()}
+      <Footer />
     </div>
   );
 }

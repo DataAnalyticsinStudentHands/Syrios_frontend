@@ -16,7 +16,7 @@ const Stories = () => {
 		if (loading) {
 			axios.get(process.env.REACT_APP_strapiURL + '/api/stories') // Call stories objects to get story info so we can sort our informatoin around
 				.then((res) => {
-					let data = res.data.data
+					let data = res.data.data;
 					let storiesJSX = [];
 					data.forEach((e, index) => {
 						storiesJSX.push(
@@ -55,16 +55,16 @@ const Stories = () => {
 	if (loading) {
 		return (
 			<>
-				{Navbar()}
-				{LoadingPage()}
-				{Footer()}
+        <Navbar />
+        <LoadingPage />
+        <Footer />
 			</>
 		);
 	}
 
 	return (
 		<>
-			{Navbar()}
+      <Navbar />
 			<div id='d-flex justify-content-center align-items-center StoriesPage'>
 				<Container style={{position: 'relative', top: '100px'}}>
 					<Row container='justify-content-md-center'>
@@ -112,7 +112,7 @@ const Stories = () => {
 					</Row>
 				</Container>
 			</div>
-			{Footer()}
+      <Footer />
 		</>
 	)
 }

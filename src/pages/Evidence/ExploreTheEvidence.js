@@ -68,16 +68,16 @@ const ExploreTheEvidence = () => {
   if (isLoading) {
     return (
       <>
-        {Navbar()}
-        {LoadingPage()}
-        {Footer()}
+        <Navbar />
+        <LoadingPage />
+        <Footer />
       </>
     );
   }
 
   return (
     <>
-      {Navbar()}
+      <Navbar />
       <div id='ExploreTheEvidence'>
                 <Container>
                   <Row>
@@ -162,7 +162,7 @@ const ExploreTheEvidence = () => {
                   </Row>
                 </Container>
               </div>
-      {Footer()}
+      <Footer />
     </>
   );
 }

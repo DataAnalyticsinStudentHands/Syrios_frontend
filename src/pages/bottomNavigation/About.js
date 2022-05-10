@@ -34,13 +34,13 @@ const TeamJsx = (e, index) => { // This function is used to display profile pict
           <Row>
             {/* name and alias */}
             <Col className='GrayText' style={{ fontSize: '2em' }}>
-                {e.name}
+              {e.name}
             </Col>
           </Row>
           <Row>
             {/* their role */}
             <Col className='GrayText'>
-                {e.role}
+              {e.role}
             </Col>
           </Row>
           {/* This is the paragraph below. This is the only way to enforce a newline character by making a new row */}                      
@@ -109,15 +109,15 @@ const About = () => {
   if (isLoading) { // isLoading is true, show loading page, else show real page
     return (
       <>
-        {Navbar()}
-        {LoadingPage()}
-        {Footer()}
+        <Navbar />
+        <LoadingPage />
+        <Footer />
       </>
     );
   }
   return (
     <>
-      {Navbar()}
+      <Navbar />
       <div id='About'>
         <Container>
           <Row>
@@ -190,7 +190,7 @@ const About = () => {
           {acknowledgements}
         </Container>
       </div>
-      {Footer()}
+      <Footer />
     </>
   );
 }

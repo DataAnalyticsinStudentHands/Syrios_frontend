@@ -494,7 +494,7 @@ const Timeline = () => {
 
   return (
     <div id='Timeline'>
-      {Navbar()}
+      <Navbar />
       <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '8em'}}>
         <p className='BlueText text-center' style={{fontSize:'3em'}}>
           TIMELINE
@@ -519,7 +519,7 @@ const Timeline = () => {
         onClose={eventInfoPopupCloseHandler}
         show={showEventInfo}
         EventMetaData={eventMetaData}/>
-      {Footer()}
+      <Footer />
     </div>
   );
 }

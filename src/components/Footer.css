@@ -82,7 +82,31 @@
   transition: 0.3s;
 }
 
+#CreditsAndReferncesXIcon:hover {
+  color: #183848;
+}
+
+#CreditsAndReferencesLists {
+  height: 100%;
+  width: 80%;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.list-items p {
+  word-wrap: break-word;
+}
+
+.list-items p a {
+  word-wrap: break-word;
+}
+
 .CreditsAndReferencesList[title]::before {
+  align-content: start;
   content: attr(title);
   /* then add some nice styling as needed, eg: */
   display: block;
@@ -92,10 +116,22 @@
   font-size: 2em;
 }
 
+@media only screen and (max-width: 767px) {
+  .CreditsAndReferencesList[title]::before {
+    font-size: 1em;
+  }
+
+  .list-items p {
+    font-size: 0.5em;
+  }
+}
+
 .CreditsAndReferencesList {
+  width: 90% !important;
   counter-reset: item;
   height: 95%;
   margin: 1em;
+  overflow: hidden;
 }
 
 .CreditsAndReferencesListItem {

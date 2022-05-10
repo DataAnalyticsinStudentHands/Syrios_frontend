@@ -1,73 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Row,
   Col,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import ReactDomServer from 'react-dom/server';
 
-import './Footer.css';
-import 'src/components/constants.css';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
-export const ChangeCreditsAndReferences = (obj) => {
-  if (obj === undefined || obj === null) return;
-  // Check every 200ms if footer has been rendered. If true, delete the interval and update credits and references
-  var interval = setInterval(function() {
-    let dom = document.getElementById('CreditsAndReferences');
-    if (dom !== undefined) {
-      clearInterval(interval); 
-      let sourceMaterialReferences = undefined, readMoreReferences = undefined;
-      dom.childNodes.forEach((e) => { // We need these dom elements so we can push list items into the innerHTML 
-        let lowerTitle = e.title.toLowerCase();
-        if (lowerTitle.includes('source') || lowerTitle.includes('material')) {
-          sourceMaterialReferences = e;
-        } else {
-          readMoreReferences = e;
-        }
+import './Footer.css';
+import 'src/components/constants.css';
+
+const Footer = (props) => {
+  const CreditsAndReferencesList = (props) => {
+    if (props.credits_and_references == null) return (<div></div>);
+
+    const CreateList = (props) => {
+      let list_jsx = [];
+      props.list.forEach((e, index) => {
+        list_jsx.push(
+          <li key={`${index}`}>
+            <div
+              className='list-items'
+              dangerouslySetInnerHTML={{ __html: e.text }} 
+            />
+        </li>);
       });
+      return list_jsx;
+    };
+    return (
+      <div id='CreditsAndReferencesLists'>
+        <ol className='CreditsAndReferencesList' title='Source material courtesy of:'>
+          <CreateList list={props.credits_and_references.source_material} />
+        </ol>
+        <ol className='CreditsAndReferencesList' title='To read more, check these out:'>
+          <CreateList list={props.credits_and_references.read_more} />
+        </ol>
+      </div>
+    );
+  }
 
-      const pushToJsxArr = (jsxArr, text) => { // takes jsxArr and link text and decides if it is a link or normal text. If normal, normal, if text, a href that boi.
-        const regex = new RegExp(/\[[^\]]*\]\([^)]*\)*/); // looks for text matching: [text](link)
-
-        let jsx = undefined;
-        if (regex.test(text)) {
-          let textNoUrl = text.slice(text.indexOf('[')+1,text.indexOf(']('));
-          let url = text.slice(text.indexOf('](')+2, text.lastIndexOf(')'));
-          jsx = (
-            <a href={url} className='CreditsAndReferencesListItemHref BlackText'>
-              {textNoUrl}
-            </a>
-          );
-        } else {
-          jsx = text
-        }
-        jsxArr.push(
-          ReactDomServer.renderToString(
-            <li className='CreditsAndReferencesListItem BlackText'>
-              {jsx}
-            </li>)
-        );
-      }
-
-      // Push stuff to jsxarray. Need one for Source Materical and Read More
-      let sourceMaterialReferencesJsxArr = [];
-      obj.source_material_references.forEach((e) => {
-        pushToJsxArr(sourceMaterialReferencesJsxArr, e.text);
-      });
-
-      let readMoreReferencesJsxArr = [];
-      obj.read_more_references.forEach((e) => {
-        pushToJsxArr(readMoreReferencesJsxArr, e.text);
-      });
-      sourceMaterialReferences.innerHTML = sourceMaterialReferencesJsxArr.join('');
-      readMoreReferences.innerHTML = readMoreReferencesJsxArr.join('');
-    }
-  }, 200); }
-
-const Footer = (loadCreditsAndReferences = false) => {
+  const [credits_and_references_height, set_credits_and_references_height] = useState('0vh');
+  let has_credits_and_references = props.has_credits_and_references == null ? false : props.has_credits_and_references;
+  console.log(props.credits_and_references);
   return (
     <div id='Footer'>
       {/* NEH */}
@@ -81,12 +57,11 @@ const Footer = (loadCreditsAndReferences = false) => {
         <Row className='justify-content-md-center'>
           {/* CREDITS & REFERENCES */}
           <Col sm={6}>
-            { loadCreditsAndReferences ? (
+            { has_credits_and_references ? (
               <button 
                 className='blandStyle WhiteText FooterText centerDiv'
                 onClick={() => {
-                  let dom = document.getElementById('CreditsAndReferences')
-                  dom.style.height = '45vh';
+                  set_credits_and_references_height('45vh');
                 }}>
                 CREDITS & REFERENCES
               </button>
@@ -115,26 +90,30 @@ const Footer = (loadCreditsAndReferences = false) => {
       {/* CREDITS & REFERENCES POPUP */}
       <OutsideClickHandler
         onOutsideClick={() => {
-          setTimeout(()=> {
-            let dom = document.getElementById('CreditsAndReferences');
-            if (parseInt(window.getComputedStyle(dom).height) > .05 * window.innerHeight) {
-              dom.style.height = '0vh';
-            }
-          }, 10);
+          // This timeout is necessary so if use clicks on credits and references on the footer expecting
+          // it to close, it will close. This is due to setTimeout pushing the set_credits_and_references_height('0vh'); 
+          // call further back in the call stack than the onClick for the button
+
+          if (credits_and_references_height !== '0vh') {
+            setTimeout(()=> {
+              set_credits_and_references_height('0vh');
+            }, 10);
+          }
         }}>
         <div 
           id='CreditsAndReferences'
-          className='d-flex align-items-center justify-content-center'>
+          className='d-flex align-items-center justify-content-center'
+          style={{
+            height: credits_and_references_height
+          }}>
           <i 
             id='CreditsAndReferncesXIcon'
             className='demo-icon icon-x-medium'
             onClick={(e) => {
-              document.getElementById('CreditsAndReferences').style.height = '0vh';
+              // Don't need timeout because I know for a FACT I am not clicking on the C&R button
+              set_credits_and_references_height('0vh');
             }}>&#xe838;</i>
-          <ol className='CreditsAndReferencesList' title='Source material courtesy of:'>
-          </ol>
-          <ol className='CreditsAndReferencesList' title='To read more, check these out:'>
-          </ol>
+          <CreditsAndReferencesList credits_and_references={props.credits_and_references} />
         </div>
       </OutsideClickHandler>
     </div>
