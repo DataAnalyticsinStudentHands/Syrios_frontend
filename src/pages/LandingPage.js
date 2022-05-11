@@ -68,7 +68,7 @@ function LandingPage() {
           <Row container='justify-content-md-center'>
             {/* This is the title text in orage */}
             <Col>
-              <div className='OrangeText' style={{fontSize: '4em'}}>
+              <div className='orange-text' style={{fontSize: '4em'}}>
                 <ReactMarkdown>
                   {shortDescription}
                 </ReactMarkdown>
@@ -96,7 +96,7 @@ function LandingPage() {
                       <Link to='/HowToReadACoin'>
                         <div className='LandingButtonImg' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
                           <div className='OnHoverDim'>
-                            <p className='blandStyle BoldWhiteText LandingButtonsText'>
+                            <p className='bland-style bold-white-text LandingButtonsText'>
                               How to Read a Coin
                             </p>
                           </div>
@@ -110,7 +110,7 @@ function LandingPage() {
                       <Link to='/Stories'>
                         <div className='LandingButtonImg' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
                           <div className='OnHoverDim'>
-                            <p className='blandStyle BoldWhiteText LandingButtonsText'>
+                            <p className='bland-style bold-white-text LandingButtonsText'>
                               Discover Stories from Coins
                             </p>
                           </div>
@@ -126,7 +126,7 @@ function LandingPage() {
                       <Link to='/Evidence/ExploreTheEvidence'>
                         <div className='LandingButtonImg' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
                           <div className='OnHoverDim'>
-                            <p className='blandStyle BoldWhiteText LandingButtonsText'>
+                            <p className='bland-style bold-white-text LandingButtonsText'>
                               Explore the Evidence
                             </p>
                           </div>
@@ -140,7 +140,7 @@ function LandingPage() {
                       <Link to='/'>
                         <div className='LandingButtonImg' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
                           <div className='OnHoverDim'>
-                            <p className='blandStyle BoldWhiteText LandingButtonsText'>
+                            <p className='bland-style bold-white-text LandingButtonsText'>
                               Open the Historian's Toolbox
                             </p>
                           </div>
@@ -157,7 +157,7 @@ function LandingPage() {
             <Col>
                 <div 
                   dangerouslySetInnerHTML={createMarkup(LandingParagraph)} 
-                  className='BlueText' style={{fontSize:'1.3em'}}
+                  className='blue-text' style={{fontSize:'1.3em'}}
                 />
             </Col>
           </Row>

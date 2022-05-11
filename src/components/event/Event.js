@@ -12,7 +12,7 @@ import './Event.css';
 function Tag(text) {
   return (
     <div key={text.toUpperCase()} className='Tag' style={{ backgroundColor: colors.findColor(text) }}>
-      <p className='WhiteText TagText'>
+      <p className='white-text TagText'>
         {text.toUpperCase()}
       </p>
     </div>
@@ -43,7 +43,7 @@ const EventInfo = (props) => {
           &#xe838;</i>
         <div id='EventInfoInnerDiv'>
           {/* tags */}
-          <p id='EventTagsTitle' className='GrayText'>
+          <p id='EventTagsTitle' className='gray-text'>
             INFLUENCES ON ANTIOCH:
           </p>
           <div id='EventTags'>
@@ -52,23 +52,23 @@ const EventInfo = (props) => {
 
           {/* title */}
           <div id='EventTitle'>
-            <p className='DarkBlueText'>
+            <p className='dark-blue-text'>
               {props.event_meta_data.title}
             </p>
           </div>
 
           {/* description */}
-          <div id='EventDescription' className='DarkBlueText'>
+          <div id='EventDescription' className='dark-blue-text'>
             <div dangerouslySetInnerHTML={createMarkup(props.event_meta_data.text)} />
           </div>
 
           {/* Cultural connections */}
           <div id='EventConnectionsBackground'>
             <div id='EventConnections'>
-              <p id='EventCulturalConnectionText' className='GrayText'>
+              <p id='EventCulturalConnectionText' className='gray-text'>
                 CULTURAL CONNECTIONS:
               </p>
-              <p id='EventCulturalConnectionList' className='BlueText TypeCategory'>
+              <p id='EventCulturalConnectionList' className='blue-text TypeCategory'>
                 {props.event_meta_data.TypeCategory}
               </p>
             </div>

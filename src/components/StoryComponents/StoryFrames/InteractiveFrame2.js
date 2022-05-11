@@ -20,7 +20,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
             {/* text in the middle */}
             <Col xs={4} className='align-items-center'>
                 <Row>
-                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='GrayText SubText text-center'/>
+                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='gray-text SubText text-center'/>
                 </Row>
                 <Row className='my-5' >
                   <Col className='d-flex justify-content-center'>
@@ -38,7 +38,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   </Col>
                 </Row>
                 <Row>
-                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='GrayText SubText text-center'/>
+                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='gray-text SubText text-center'/>
                 </Row>
             </Col>
             {/* image right */}

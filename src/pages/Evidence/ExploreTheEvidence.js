@@ -82,7 +82,7 @@ const ExploreTheEvidence = () => {
                 <Container>
                   <Row>
                     <Col>
-                      <p className='text-center BlueText' style={{ fontSize: '8em' }}>
+                      <p className='text-center blue-text' style={{ fontSize: '8em' }}>
                         {title}
                       </p>
                     </Col>
@@ -96,10 +96,10 @@ const ExploreTheEvidence = () => {
                           src={process.env.REACT_APP_strapiURL+sortCoinsImage.url}
                           style={{width:'300px'}}
                           />
-                        <p className='OrangeText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
+                        <p className='orange-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
                           {sortCoinsTitle}
                         </p>
-                        <ReactMarkdown className='GrayText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
+                        <ReactMarkdown className='gray-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
                           {sortCoinsCaption}
                         </ReactMarkdown>
                       </Link>
@@ -112,10 +112,10 @@ const ExploreTheEvidence = () => {
                           src={process.env.REACT_APP_strapiURL+mapCoinsImage.url}
                           style={{width:'300px'}}
                         />
-                        <p className='OrangeText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
+                        <p className='orange-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
                           {mapCoinsTitle}
                         </p>
-                        <ReactMarkdown className='GrayText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
+                        <ReactMarkdown className='gray-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
                           {mapCoinsCaption}
                         </ReactMarkdown>
                       </Link>
@@ -128,10 +128,10 @@ const ExploreTheEvidence = () => {
                           src={process.env.REACT_APP_strapiURL+coinTimelineImage.url}
                           style={{width:'300px'}}
                           />
-                        <p className='OrangeText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
+                        <p className='orange-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
                           {coinTimelineTitle}
                         </p>
-                        <ReactMarkdown className='GrayText ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
+                        <ReactMarkdown className='gray-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
                           {coinTimelineCaption}
                         </ReactMarkdown>
                       </Link>
@@ -151,10 +151,10 @@ const ExploreTheEvidence = () => {
                     </Col>
                     <Col id='ExploreTheEvidenceTextDiv' className='d-flex align-items-center justify-content-start'>
                       <Link to='/Download'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
-                        <p className='OrangeText ExploreTheEvidenceTitleText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
+                        <p className='orange-text ExploreTheEvidenceTitleText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
                           {downloadDatasetTitle}
                         </p>
-                        <ReactMarkdown className='GrayText ExploreTheEvidenceCaptionText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
+                        <ReactMarkdown className='gray-text ExploreTheEvidenceCaptionText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
                           {downloadDatasetCaption}
                         </ReactMarkdown>
                       </Link>

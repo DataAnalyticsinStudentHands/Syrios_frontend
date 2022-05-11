@@ -84,7 +84,7 @@ function Download(){
       <div id='downloadPage' className='d-flex align-items-center'>
         <Container className='justify-content-sm-center my-5'>
           <Row>
-            <p className='BlueText text-center' id='DownloadTitle'>
+            <p className='blue-text text-center' id='DownloadTitle'>
               Download the Data 
             </p>
           </Row>
@@ -100,10 +100,10 @@ function Download(){
                       &#xe810;</i>
                   </Col>
                   <Col xs={9}>
-                    <Row className='OrangeText' id='downLoad_Sub_Title'>
+                    <Row className='orange-text' id='downLoad_Sub_Title'>
                       {title}
                     </Row>
-                    <Row className='GrayText' id='downLoad_Sub_Text'>
+                    <Row className='gray-text' id='downLoad_Sub_Text'>
                       {/* {subText} */}
                       <div dangerouslySetInnerHTML={createMarkup(text)} />
                     </Row>
@@ -126,10 +126,10 @@ function Download(){
                     Please provide your your name and email address in the form below to start the download.
                   </p>
                 </Row>
-                <Row className='LightBlueBackground my-5 d-flex justify-content-center'>
+                <Row className='light-blue-background my-5 d-flex justify-content-center'>
                   <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                     <div className='form-group mt-4'>
-                      <label className='GrayText' htmlFor='fullName'>Full Name:</label>
+                      <label className='gray-text' htmlFor='fullName'>Full Name:</label>
                       <br/>
                       <input 
                         id = "fullName"
@@ -142,7 +142,7 @@ function Download(){
                       {formik.touched.fullName && formik.errors.fullName ? <p>{formik.errors.fullName}</p>: null}
                     </div>
                     <div className='form-group mt-4'>
-                      <label className='GrayText' htmlFor='email'>Email:</label>
+                      <label className='gray-text' htmlFor='email'>Email:</label>
                       <br/>
                       <input 
                         type='email'

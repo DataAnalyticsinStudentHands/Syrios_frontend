@@ -31,7 +31,7 @@ const InteractiveFrame3 = (zone, index) =>{
         backgroundBlendMode:'multiply'}}>
         <Container>
           <Row>
-              <ReactMarkdown className='OrangeText MainText text-center my-5'>
+              <ReactMarkdown className='orange-text MainText text-center my-5'>
                 {zone.title}
               </ReactMarkdown>
           </Row>
@@ -53,12 +53,12 @@ const InteractiveFrame3 = (zone, index) =>{
                   <Col xs={{span:9}}>
                     <div 
                       dangerouslySetInnerHTML={createMarkup(zone.mid_front)} 
-                      className='text-center GrayText SubText'
+                      className='text-center gray-text SubText'
                       style={{display:'black', opacity:1, transition:'0.3s'}}  
                     />
                     <div 
                       dangerouslySetInnerHTML={createMarkup(zone.mid_back)} 
-                      className='text-center GrayText SubText'
+                      className='text-center gray-text SubText'
                       style={{display:'none', opacity:0, transition:'0.3s'}}  
                     />
                   </Col>
@@ -67,7 +67,7 @@ const InteractiveFrame3 = (zone, index) =>{
                 <Row className='d-flex justify-content-center'>
                   <Col className='d-flex justify-content-center'>
                       <button	
-                        className='BlueText text-center my-2' 
+                        className='blue-text text-center my-2' 
                         style={{width: '150px'}}
                         onClick={(e)=>{
                           let dom = e.target.parentElement.parentElement.parentElement.parentElement
@@ -79,7 +79,7 @@ const InteractiveFrame3 = (zone, index) =>{
                   </Col>
                   <Col className='d-flex justify-content-center'>
                       <button	
-                        className='BlueText text-center my-2' 
+                        className='blue-text text-center my-2' 
                         style={{width: '150px'}}
                         onClick={(e)=>{
                           let dom = e.target.parentElement.parentElement.parentElement.parentElement

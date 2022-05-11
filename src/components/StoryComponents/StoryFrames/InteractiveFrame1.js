@@ -37,16 +37,16 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }
   
         // Get the row with light blue background because we need to do some display switch and opacity flipping on the sub elements
-        let rowLightBlueBackground = dom;
+        let row_light_blue_background = dom;
   
-        while (!rowLightBlueBackground.className.includes("row")) {
-          rowLightBlueBackground = rowLightBlueBackground.parentElement;
+        while (!row_light_blue_background.className.includes("row")) {
+          row_light_blue_background = row_light_blue_background.parentElement;
         }
-        rowLightBlueBackground = rowLightBlueBackground.previousSibling.previousSibling;
+        row_light_blue_background = row_light_blue_background.previousSibling.previousSibling;
 
-        let imgLeftDiv = rowLightBlueBackground.childNodes[0].childNodes[0];
-        let textCenterDiv = rowLightBlueBackground.childNodes[1];
-        let imgRightDiv = rowLightBlueBackground.childNodes[2].childNodes[0];
+        let imgLeftDiv = row_light_blue_background.childNodes[0].childNodes[0];
+        let textCenterDiv = row_light_blue_background.childNodes[1];
+        let imgRightDiv = row_light_blue_background.childNodes[2].childNodes[0];
   
         // If compare scale is active then switch to reset scale else switch to compare scale
         if (compareScaleActive) {
@@ -209,14 +209,14 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         <Container className='justify-content-center align-items-center'>
           {/* Main text */}
           <Row className='mb-5'>
-              <ReactMarkdown className='OrangeText MainText text-center'>
+              <ReactMarkdown className='orange-text MainText text-center'>
                 {zone.main_text}
               </ReactMarkdown>
-              {/* <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='OrangeText MainText text-center'/> */}
+              {/* <div dangerouslySetInnerHTML={createMarkup(zone.main_text)} className='orange-text MainText text-center'/> */}
 
           </Row>
           {/* Blue background css grid goodie */}
-          <Row className='LightBlueBackground InteractiveFrame1LightBlueSizing d-flex justify-content-around'>
+          <Row className='light-blue-background InteractiveFrame1LightBlueSizing d-flex justify-content-around'>
   
             {/* Images left */}
             <Col xs={3}> 
@@ -240,11 +240,11 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
             <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}}>
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.text_front)} 
-                className='GrayText SubText text-center InteractiveFrame1TextFront'
+                className='gray-text SubText text-center InteractiveFrame1TextFront'
               />
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.text_back)} 
-                className='GrayText SubText text-center InteractiveFrame1TextBack'
+                className='gray-text SubText text-center InteractiveFrame1TextBack'
               />
             </Col>
   
@@ -287,10 +287,10 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
             <Col 
               className='d-flex align-items-center justify-content-center'
               onClick={(e) => {FadeThenSwitchCompAndReset(e.target)}}>
-              <p className='OrangeText InteractiveFrame1CompareScale'>
+              <p className='orange-text InteractiveFrame1CompareScale'>
                 Compare Scale
               </p>
-              <p className='OrangeText InteractiveFrame1ResetScale'>
+              <p className='orange-text InteractiveFrame1ResetScale'>
                 Reset Scale
               </p>
             </Col>

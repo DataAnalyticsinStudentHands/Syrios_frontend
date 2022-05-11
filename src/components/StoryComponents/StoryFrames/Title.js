@@ -13,7 +13,7 @@ const Title = (zone, index) => {
     // if ((zone.title)){
     //   title = (
     //     <Container className='d-flex justify-content-center align-items-center'>
-    //       <ReactMarkdown className='BlueText text-center TitleText'>
+    //       <ReactMarkdown className='blue-text text-center TitleText'>
     //         {zone.title}
     //       </ReactMarkdown>
     //     </Container>
@@ -24,7 +24,7 @@ const Title = (zone, index) => {
     // if ((zone.subtitle)){
     //   subtitle = (
     //     <Container className='d-flex justify-content-center align-items-center'>
-    //       <ReactMarkdown className='OrangeText text-center SubTitleText'>
+    //       <ReactMarkdown className='orange-text text-center SubTitleText'>
     //         {zone.subtitle}
     //       </ReactMarkdown>
 
@@ -36,7 +36,7 @@ const Title = (zone, index) => {
     // if (!IsEmptyOrWhiteSpace(zone.caption)){
     //   caption = (
     //     <Container className='d-flex justify-content-center align-items-center mt-5'>
-    //         <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='GrayText text-center CaptionTitleText'/>
+    //         <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='gray-text text-center CaptionTitleText'/>
     //     </Container>
     //   )
     // }
@@ -59,19 +59,19 @@ const Title = (zone, index) => {
           </Container>
             {/* {title} */}
           <Container className='d-flex justify-content-center align-items-center'>
-            <ReactMarkdown className='BlueText text-center TitleText'>
+            <ReactMarkdown className='blue-text text-center TitleText'>
               {zone.title}
             </ReactMarkdown>
           </Container>
             {/* {subtitle} */}
           <Container className='d-flex justify-content-center align-items-center'>
-            <ReactMarkdown className='OrangeText text-center SubTitleText'>
+            <ReactMarkdown className='orange-text text-center SubTitleText'>
               {zone.subtitle}
             </ReactMarkdown>
           </Container>
             {/* {caption} */}
           <Container className='d-flex justify-content-center align-items-center mt-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='GrayText text-center CaptionTitleText'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='gray-text text-center CaptionTitleText'/>
           </Container>
       </div>
     );

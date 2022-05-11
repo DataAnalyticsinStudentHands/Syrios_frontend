@@ -57,8 +57,8 @@ const Frame6 = (zone, index) =>{
             {frameBody}
           </Row>
           <Row className='d-flex justify-content-center '>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
           </Row>
   
         </Container>
@@ -77,8 +77,8 @@ const Frame6 = (zone, index) =>{
         >
         <Container>
           <Row className='d-flex justify-content-center mb-5'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
             {frameBody}

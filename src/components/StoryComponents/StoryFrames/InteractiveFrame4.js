@@ -27,13 +27,13 @@ const InteractiveFrame4 = (zone, index) => {
                 />
             </Col>
           </Row>
-          <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground '>
+          <Row className='text-center CaptionText gray-text mt-4 light-blue-background '>
             <div dangerouslySetInnerHTML={createMarkup(zone.left)} className='mt-3'/>
           </Row>
         </Col>
   
         <Col xs={3} className='d-flex justify-content-center align-items-end'>
-          <div dangerouslySetInnerHTML={createMarkup(zone.mid)} className='SubText text-center GrayText'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.mid)} className='SubText text-center gray-text'/>
         </Col>
   
         <Col xs={3}>
@@ -53,7 +53,7 @@ const InteractiveFrame4 = (zone, index) => {
                 />
             </Col>
           </Row>
-          <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
+          <Row className='text-center CaptionText gray-text mt-4 light-blue-background'>
             <div dangerouslySetInnerHTML={createMarkup(zone.right)} className='mt-3'/>
           </Row>
         </Col>
@@ -73,13 +73,13 @@ const InteractiveFrame4 = (zone, index) => {
               />
             </Col>
           </Row>
-          <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
+          <Row className='text-center CaptionText gray-text mt-4 light-blue-background'>
             <div dangerouslySetInnerHTML={createMarkup(zone.left)} className='mt-3'/>
           </Row>
         </Col>
   
         <Col xs={3} className='d-flex justify-content-center align-items-end'>
-          <div dangerouslySetInnerHTML={createMarkup(zone.mid)} className='SubText text-center GrayText'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.mid)} className='SubText text-center gray-text'/>
         </Col>
   
         <Col xs={3}>
@@ -92,7 +92,7 @@ const InteractiveFrame4 = (zone, index) => {
                 />
             </Col>
           </Row>
-          <Row className='text-center CaptionText GrayText mt-4 LightBlueBackground'>
+          <Row className='text-center CaptionText gray-text mt-4 light-blue-background'>
             <div dangerouslySetInnerHTML={createMarkup(zone.right)} className='mt-3'/>
           </Row>
         </Col>
@@ -206,7 +206,7 @@ const InteractiveFrame4 = (zone, index) => {
         buttonOption.push(
           <Col xs={6} sm={3} className='d-flex justify-content-center'>
           <button	
-            className='BlueText text-center my-2' 
+            className='blue-text text-center my-2' 
             onClick={(e)=>{
               let i = `option${index}`
               let dom = e.target.parentElement.parentElement.nextSibling

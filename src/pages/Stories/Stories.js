@@ -28,7 +28,7 @@ const Stories = () => {
                       						alt='Story_Image'
 											width='100%'
 										/>
-										<p className='OrangeText SelectStoryText text-center'>
+										<p className='orange-text SelectStoryText text-center'>
 											{e.attributes.name}
 										</p>
 									</div>
@@ -69,7 +69,7 @@ const Stories = () => {
 				<Container style={{position: 'relative', top: '100px'}}>
 					<Row container='justify-content-md-center'>
 						<Col>
-							<p className='BlueText text-center' id='StoryMainTitle'>
+							<p className='blue-text text-center' id='StoryMainTitle'>
 								Discover Coin Stories
 							</p>
 						</Col>
@@ -77,7 +77,7 @@ const Stories = () => {
 					<Row container='justify-content-md-center' className='d-flex justify-content-center'>
 						<Col xs={6} sm={3}>
 							<button
-								className='BlueText'
+								className='blue-text'
 								onClick={() => {
 								}}>
 								By City Name
@@ -85,7 +85,7 @@ const Stories = () => {
 						</Col>
 						<Col xs={6} sm={3}>
 							<button
-								className='BlueText'
+								className='blue-text'
 								onClick={() => {
 								}}>
 								By Political Standing
@@ -93,14 +93,14 @@ const Stories = () => {
 						</Col>
 						<Col xs={6} sm={3}>
 							<button
-								className='BlueText'
+								className='blue-text'
 								onClick={() => {
 								}}>
 								By Economic System
 							</button>
 						</Col>
 						<Col xs={6} sm={3}>
-							<button className='BlueText'
+							<button className='blue-text'
 								onClick={() => {
 								}}>
 								By Socio-culture Perspective

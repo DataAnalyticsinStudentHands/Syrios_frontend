@@ -4,7 +4,7 @@
   --mainFonts: "syrios-entypo-subset", EB Garamond, Georgia, serif, FreeSerif;
 }
 
-.InfoIcon {
+.info-icon {
   cursor: pointer;
 }
 
@@ -16,19 +16,19 @@
   content: '"';
 }
 
-.imgFill {
+.img-fill {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.imgCover {
+.img-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.blandStyle {
+.bland-style {
   text-decoration: none !important;
   background: transparent !important;
   box-shadow: 0px 0px 0px transparent !important;
@@ -36,7 +36,7 @@
   text-shadow: 0px 0px 0px transparent !important;
 }
 
-.centerDiv {
+.center-div {
   position: absolute;
   margin: 0;
   top: 50%;
@@ -44,47 +44,47 @@
   transform: translateY(-50%);
 }
 
-.OrangeText {
+.orange-text {
   font-family: var(--mainFonts);
   color: #a85828;
 }
 
-.BlackText {
+.black-text {
   font-family: var(--mainFonts);
   color: #000000;
 }
 
-.BlueText {
+.blue-text {
   font-family: var(--mainFonts);
   color: #486678;
 }
 
-.DarkBlueText {
+.dark-blue-text {
   font-family: var(--mainFonts);
   color: #173847;
 }
 
-.GrayText {
+.gray-text {
   font-family: var(--mainFonts);
   color: #737271;
 }
 
-.WhiteText {
+.white-text {
   font-family: var(--mainFonts);
   color: #ffffff;
 }
 
-.BoldWhiteText {
+.bold-white-text {
   font-family: var(--mainFonts);
   color: #ffffff;
   font-weight: bold;
 }
 
-.LightBlueBackground {
+.light-blue-background {
   background: rgba(184, 204, 216, 0.75);
   border-radius: 10px;
 }
-.LightYellowBackground {
+.light-yellow-background {
   background: #f8e8b8;
   border-radius: 10px;
 }

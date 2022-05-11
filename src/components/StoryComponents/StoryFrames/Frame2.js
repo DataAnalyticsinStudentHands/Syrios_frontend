@@ -36,7 +36,7 @@ const Frame2 = (zone, index, jsonObject) => {
       }}
     >      
     <Container>    
-        <div className={`${zone.image2.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
+        <div className={`${zone.image2.light_blue_background ? "light-blue-background" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
           <Container className='d-flex justify-content-center align-items-center'>
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image2.image.data.attributes.url}`}            
@@ -45,11 +45,11 @@ const Frame2 = (zone, index, jsonObject) => {
               />
           </Container>
           <Container 
-            className={`d-flex justify-content-center align-items-center ${zone.image2.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
+            className={`d-flex justify-content-center align-items-center ${zone.image2.light_blue_caption_background ? "light-blue-background" : ""}`} 
             style={{width:imageSizes[zone.image2.size]}}>
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.image2.caption)} 
-                className='GrayText CaptionText text-center'
+                className='gray-text CaptionText text-center'
                 style={{padding: '0px', paddingTop: '20px',
                 // fontSize:image_brief_detail_font_size
               }}
@@ -59,8 +59,8 @@ const Frame2 = (zone, index, jsonObject) => {
 
         <Container>
           <Row className='d-flex justify-content-center mt-5'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
           </Row>
       </Container>
 
@@ -73,11 +73,11 @@ const Frame2 = (zone, index, jsonObject) => {
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-center mb-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='OrangeText MainText text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='GrayText CaptionText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
         </Row>
       </Container>
-      <div className={`${zone.image2.light_blue_background ? "LightBlueBackground" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
+      <div className={`${zone.image2.light_blue_background ? "light-blue-background" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
         <Container className='d-flex justify-content-center align-items-center'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${zone.image2.image.data.attributes.url}`}            
@@ -86,11 +86,11 @@ const Frame2 = (zone, index, jsonObject) => {
             />
         </Container>
         <Container 
-          className={`d-flex justify-content-center align-items-center ${zone.image2.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
+          className={`d-flex justify-content-center align-items-center ${zone.image2.light_blue_caption_background ? "light-blue-background" : ""}`} 
           style={{width:imageSizes[zone.image2.size]}}>
             <div 
               dangerouslySetInnerHTML={createMarkup(zone.image2.caption)} 
-              className='GrayText CaptionText text-center'
+              className='gray-text CaptionText text-center'
               style={{padding: '0px', paddingTop: '20px',
               // fontSize:image_brief_detail_font_size
             }}

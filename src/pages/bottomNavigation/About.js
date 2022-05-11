@@ -29,23 +29,23 @@ const TeamJsx = (e, index) => { // This function is used to display profile pict
         </div>
       </Col>
       {/* profile information */}
-      <Col className='LightBlueBackground'>
+      <Col className='light-blue-background'>
         <Container style={{margin: '20px' }}>
           <Row>
             {/* name and alias */}
-            <Col className='GrayText' style={{ fontSize: '2em' }}>
+            <Col className='gray-text' style={{ fontSize: '2em' }}>
               {e.name}
             </Col>
           </Row>
           <Row>
             {/* their role */}
-            <Col className='GrayText'>
+            <Col className='gray-text'>
               {e.role}
             </Col>
           </Row>
           {/* This is the paragraph below. This is the only way to enforce a newline character by making a new row */}                      
           {/* {detailJsxArr} */}
-          <div dangerouslySetInnerHTML={createMarkup(e.detail)} className='GrayText CaptionText text-left'/>
+          <div dangerouslySetInnerHTML={createMarkup(e.detail)} className='gray-text CaptionText text-left'/>
         </Container>
       </Col>
     </Row>
@@ -94,7 +94,7 @@ const About = () => {
                 key={`acknowledgements_${index}`}
               >
                 <Col>
-                  <div dangerouslySetInnerHTML={createMarkup(e.text)} className='text-center AboutAcknowlegments GrayText'/>
+                  <div dangerouslySetInnerHTML={createMarkup(e.text)} className='text-center AboutAcknowlegments gray-text'/>
                 </Col>
               </Row>
             );
@@ -122,7 +122,7 @@ const About = () => {
         <Container>
           <Row>
             <Col>
-              <p id='AboutTitle' className='BlueText text-center'>
+              <p id='AboutTitle' className='blue-text text-center'>
                 {/* {title} */} 
                 {/* Why we need call title, no need */}
                 About the Syrios Project
@@ -137,14 +137,14 @@ const About = () => {
                 src={process.env.REACT_APP_strapiURL+logo.data.attributes.url}/>
             </Col>
             <Col>
-              <div dangerouslySetInnerHTML={createMarkup(description)} className='GrayText'/>
+              <div dangerouslySetInnerHTML={createMarkup(description)} className='gray-text'/>
             </Col>
           </Row>
         </Container>
         <Container>
           <Row>
             <Col>
-              <p id='AboutMeetTheTeam' className='BlueText text-center'>
+              <p id='AboutMeetTheTeam' className='blue-text text-center'>
                 Meet the Team
               </p>
             </Col>
@@ -152,7 +152,7 @@ const About = () => {
 
           <Row>
             <Col>
-              <p id='AboutProjectDirectors' className='OrangeText text-center'>
+              <p id='AboutProjectDirectors' className='orange-text text-center'>
                 Project Directors
               </p>
             </Col>
@@ -161,7 +161,7 @@ const About = () => {
 
           <Row>
             <Col>
-              <p id='AboutDigitalTeam' className='OrangeText text-center'>
+              <p id='AboutDigitalTeam' className='orange-text text-center'>
                 Digital Team and Media Directors
               </p>
             </Col>
@@ -169,20 +169,20 @@ const About = () => {
           {digitalMediaAndContentTeam}
           <Row style={{ marginTop: '200px', marginBottom: '50px' }}>
             <Col>
-              <p className='GrayText text-center' style={{ fontSize: '4em' }}>
+              <p className='gray-text text-center' style={{ fontSize: '4em' }}>
                 Past Student Research Assistants
               </p>
             </Col>
           </Row>
-          <Row className='LightBlueBackground'>
+          <Row className='light-blue-background'>
             <Col style={{ margin: '20px', marginBottom: '15px' }}>
-              <div dangerouslySetInnerHTML={createMarkup(pastStudentResearchAssistants)} className='GrayText CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(pastStudentResearchAssistants)} className='gray-text CaptionText text-center'/>
             </Col>
           </Row>
 
           <Row style={{ marginTop: '100px', marginBottom: '40px' }}>
             <Col>
-              <p className='OrangeText text-center' style={{ fontSize: '4em' }}>
+              <p className='orange-text text-center' style={{ fontSize: '4em' }}>
                 Acknowlegments
               </p>
             </Col>

@@ -29,12 +29,12 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
           <Row className='mb-5'>
             <div 
               dangerouslySetInnerHTML={createMarkup(zone.main_text_front)} 
-              className='OrangeText MainText text-center'
+              className='orange-text MainText text-center'
               style={{display:'black', opacity:1, transition:'0.3s'}}
             />
             <div 
               dangerouslySetInnerHTML={createMarkup(zone.main_text_back)} 
-              className='OrangeText MainText text-center'
+              className='orange-text MainText text-center'
               style={{display:'none', opacity:0, transition:'0.3s'}}
             />
           </Row>
@@ -55,15 +55,15 @@ const InteractiveFrame5 = (zone, index, jsonObject) =>{
                   &#xe833;</i>
               </Col>
             </Col>
-            <Col xs={6} className='LightBlueBackground d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'125px'}}>
+            <Col xs={6} className='light-blue-background d-flex justify-content-center align-items-center'style={{padding: '20px', paddingTop: '20px', marginTop:'125px'}}>
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.right_front)} 
-                className='BlueText text-center SubText'
+                className='blue-text text-center SubText'
                 style={{display:'black', opacity:1, transition:'0.3s'}}
               />
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.right_back)} 
-                className='BlueText text-center SubText'
+                className='blue-text text-center SubText'
                 style={{display:'none', opacity:0, transition:'0.3s'}}
               />
             </Col>

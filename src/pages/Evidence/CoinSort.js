@@ -114,7 +114,7 @@ class CoinSortDropDown extends React.Component {
     return (
       <div ref={this.wrapperRef} className='CoinSortDropDownOuterMostDiv'>
         <div className='CoinSortDropDownTarget'>
-          <div className='CoinSortDropDownTargetText BlueText CoinSortText'>
+          <div className='CoinSortDropDownTargetText blue-text CoinSortText'>
           {this.state.selection}
           <i className="demo-icon icon-arrow-thin-down CoinSortDropDownTargetIconArrow">&#xe808;</i>
           </div>
@@ -127,7 +127,7 @@ class CoinSortDropDown extends React.Component {
               jsxArr.push(
                 <div 
                   key={`${this.props.items}${index}`} 
-                  className='BlueText CoinSortDropDownListCellOuterDiv'
+                  className='blue-text CoinSortDropDownListCellOuterDiv'
                   onClick={(e) => { // onClick, change the coin sort drop down target text to the appropriate selection and drop the dropdown
                     let dom = e.target;
 
@@ -224,16 +224,16 @@ const CoinSort = () => {
     <>
       <Navbar />
       <div id='CoinSort'>
-        <p id='CoinSortTitle' className='OrangeText'>
+        <p id='CoinSortTitle' className='orange-text'>
           Coin Sort
         </p>
         <div id='CoinSortOptions'>
           {/* Arrange */}
           <div id='CoinSortArrange' className='CoinSortCell'>
             <div>
-              <p className='GrayText CoinSortText'>
+              <p className='gray-text CoinSortText'>
                 Arrange: <i 
-                  className="demo-icon icon-info BlueText InfoIcon"
+                  className="demo-icon icon-info blue-text info-icon"
                   onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
                     let popUp = undefined;
                     WhitePopUp.ArrayOfWhitePopUps.forEach((e) => {
@@ -247,25 +247,25 @@ const CoinSort = () => {
               </p> 
               <WhitePopUp id='ArrangeToolTipBox'>
                 <div className='ToolTipBox'>
-                  <p className='OrangeText ToolTipTitle'>
+                  <p className='orange-text ToolTipTitle'>
                     TOOL TIP: ARRANGEMENT OPTIONS
                   </p>
-                  <p className='BlueText ToolTipText'>
+                  <p className='blue-text ToolTipText'>
                     <span style={{fontWeight: 'bold'}}>1 x 1 Grid:</span> {ArrangeToolTipBox1x1GridDescription}
                   </p>
-                  <p className='BlueText ToolTipText'>
+                  <p className='blue-text ToolTipText'>
                     <span style={{fontWeight: 'bold'}}>2 x 1 Grid:</span> {ArrangeToolTipBox2x1GridDescription}
                   </p>
-                  <p className='BlueText ToolTipText'>
+                  <p className='blue-text ToolTipText'>
                     <span style={{fontWeight: 'bold'}}>3 x 1 Grid:</span> {ArrangeToolTipBox3x1GridDescription}
                   </p>
-                  <p className='BlueText ToolTipText'>
+                  <p className='blue-text ToolTipText'>
                     <span style={{fontWeight: 'bold'}}>2 x 2 Grid:</span> {ArrangeToolTipBox2x2GridDescription}
                   </p>
-                  <p className='BlueText ToolTipText'>
+                  <p className='blue-text ToolTipText'>
                     <span style={{fontWeight: 'bold'}}>3 x 2 Grid:</span> {ArrangeToolTipBox3x2GridDescription}
                   </p>
-                  <p className='BlueText ToolTipText'>
+                  <p className='blue-text ToolTipText'>
                     <span style={{fontWeight: 'bold'}}>6 x 3 Grid:</span> {ArrangeToolTipBox6x3GridDescription}
                   </p>
                 </div>
@@ -275,7 +275,7 @@ const CoinSort = () => {
             <CoinSortDropDown id='GridDropDown' items={['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid']} defaultSelection='None' />
             <div 
               id='CoinSortClearTable' 
-              className='CoinSortClearText OrangeText'
+              className='CoinSortClearText orange-text'
               onClick={(e) => {
                 let GridDropDown = undefined;
 
@@ -294,16 +294,16 @@ const CoinSort = () => {
 
           {/* Sort By */}
           <div id='CoinSortSortBy' className='CoinSortCell'>
-            <p className='GrayText CoinSortText'>
+            <p className='gray-text CoinSortText'>
               Sort By: <i 
-              className="demo-icon icon-info BlueText InfoIcon"
+              className="demo-icon icon-info blue-text info-icon"
                 onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
                 }}>&#xe817;</i>
             </p>
             <CoinSortDropDown id='SortByDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size']} defaultSelection='None' />
             <div 
               id='CoinSortClearSort' 
-              className='CoinSortClearText OrangeText'
+              className='CoinSortClearText orange-text'
               onClick={(e) => {
                 let SortByDropDown = undefined, ThenByDropDown = undefined;
 
@@ -321,7 +321,7 @@ const CoinSort = () => {
 
           {/* Then By */}
           <div id='CoinSortThenBy' className='CoinSortCell'>
-            <p className='GrayText CoinSortText'>
+            <p className='gray-text CoinSortText'>
               Then By:
             </p>
             <CoinSortDropDown id='ThenByDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size']} defaultSelection='None' />
@@ -330,16 +330,16 @@ const CoinSort = () => {
 
           {/* Filter */}
           <div id='CoinSortFilter' className='CoinSortCell'>
-            <p className='GrayText CoinSortText'>
+            <p className='gray-text CoinSortText'>
               Filter: <i 
-              className="demo-icon icon-info BlueText InfoIcon"
+              className="demo-icon icon-info blue-text info-icon"
                 onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
                 }}>&#xe817;</i>
             </p>
             <CoinSortDropDown id='FilterDropDown' items={['None', 'Including', 'Excluding']} defaultSelection='None' />
             <div 
               id='CoinSortClearFilter' 
-              className='CoinSortClearText OrangeText'
+              className='CoinSortClearText orange-text'
               onClick={(e) => {
                 let FilterDropDown = undefined, WithDropDown = undefined, OfKindDropDown = undefined;
 
@@ -359,7 +359,7 @@ const CoinSort = () => {
 
           {/* With */}
           <div id='WithDropDown' className='CoinSortCell'>
-            <p className='GrayText CoinSortText'>
+            <p className='gray-text CoinSortText'>
               With:
             </p>
             <CoinSortDropDown id='WithDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Type']} defaultSelection='None' />
@@ -367,7 +367,7 @@ const CoinSort = () => {
           
           {/* Of kind */}
           <div id='OfKindDropDown' className='CoinSortCell'>
-            <p className='GrayText CoinSortText'>
+            <p className='gray-text CoinSortText'>
               Of kind:
             </p>
             {OfKindDropDown}

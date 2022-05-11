@@ -12,7 +12,7 @@ export const mainText = (main_text) =>{
     if(!IsEmptyOrWhiteSpace(main_text)){
       MainText=(
         <Row className='d-flex justify-content-center align-self-center'>
-          <ReactMarkdown className='OrangeText MainText text-center'>
+          <ReactMarkdown className='orange-text MainText text-center'>
             {main_text}
           </ReactMarkdown>
         </Row>
@@ -28,7 +28,7 @@ let BigsubText = undefined
 if(!IsEmptyOrWhiteSpace(sub_text)){
     BigsubText=(
     <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='BlueText BigSubText text-center'>
+        <ReactMarkdown className='blue-text BigSubText text-center'>
         {sub_text}
         </ReactMarkdown>
     </Container>
@@ -44,7 +44,7 @@ let SubText = undefined
 if(!IsEmptyOrWhiteSpace(sub_text)){
     SubText=(
     <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='BlueText SubText text-center'>
+        <ReactMarkdown className='blue-text SubText text-center'>
         {sub_text}
         </ReactMarkdown>
     </Container>
@@ -60,7 +60,7 @@ let CubText = undefined
 if(!IsEmptyOrWhiteSpace(cap_text)){
     CubText=(
     <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='GrayText CaptionText text-center'>
+        <ReactMarkdown className='gray-text CaptionText text-center'>
         {cap_text}
         </ReactMarkdown>
     </Container>
@@ -74,25 +74,25 @@ return(
 export const sub_cap_blue_bg = (text)=>{
   if(text.light_blue_background){
       return (
-        <Container className='LightBlueBackground' style={{padding: '20px', paddingTop: '20px'}}>
-          <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='BlueText text-center SubText'/>
-          <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='GrayText text-center CaptionText'/>
+        <Container className='light-blue-background' style={{padding: '20px', paddingTop: '20px'}}>
+          <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center SubText'/>
+          <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center CaptionText'/>
         </Container>
       )
     }
   else if(text.light_yellow_background){
     return (
-      <Container className='LightYellowBackground' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='BlueText text-center SubText'/>
-        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='GrayText text-center CaptionText'/>
+      <Container className='light-yellow-background' style={{padding: '20px', paddingTop: '20px'}}>
+        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center SubText'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center CaptionText'/>
       </Container>
     )
   }    
   else{
     return(
       <Container style={{padding: '20px', paddingTop: '20px'}}>
-        <div dangerouslySetInnerHTML={createMarkup(text.text)} className='BlueText text-center SubText'/>
-        <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='GrayText text-center CaptionText'/>
+        <div dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center SubText'/>
+        <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center CaptionText'/>
       </Container>
     )
   }
@@ -134,7 +134,7 @@ export const subcomponent_image = (image) => {
     };
     return (
     <Container 
-      className={`d-flex justify-content-center align-items-center ${image.light_blue_background ? "LightBlueBackground" : ""}`}
+      className={`d-flex justify-content-center align-items-center ${image.light_blue_background ? "light-blue-background" : ""}`}
       style={{padding: '20px', paddingBottom: '0px'}}>
           <Row className='d-flex justify-content-center align-items-center'>
               <img
@@ -143,11 +143,11 @@ export const subcomponent_image = (image) => {
                 width={imageSizes[image.size]}
               />
               <div 
-                className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "LightBlueBackground" : ""}`} 
+                className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "light-blue-background" : ""}`} 
               >
                 <div 
                   dangerouslySetInnerHTML={createMarkup(image.caption)} 
-                  className='GrayText CaptionText text-center'
+                  className='gray-text CaptionText text-center'
                   style={{padding: '0px', paddingTop: '10px', 
                   // fontSize:image_brief_detail_font_size
                 }}
@@ -175,13 +175,13 @@ export const subcomponent_image_with_dynamic_sizing = (images) => {
       if (!IsEmptyOrWhiteSpace(image.link) && !IsEmptyOrWhiteSpace(image.brief_detail)) {
         imagesJSX.push(
           <Col key={image.id} className='text-center'>
-            <Link to={image.link} className='blandStyle'>
+            <Link to={image.link} className='bland-style'>
               <img
                 src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}
                 alt='dynamic_image'
                 width={imageSizes[image.size]}
               />
-              <p className='OrangeText' style={{fontSize: image_brief_detail_font_size}}>
+              <p className='orange-text' style={{fontSize: image_brief_detail_font_size}}>
                 {image.brief_detail}
               </p>
             </Link>
@@ -193,7 +193,7 @@ export const subcomponent_image_with_dynamic_sizing = (images) => {
       if (!IsEmptyOrWhiteSpace(image.link)) {
         imagesJSX.push(
           <Col key={image.id} className='text-center'>
-            <Link to={image.link} className='blandStyle'>
+            <Link to={image.link} className='bland-style'>
               <img
                 src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}
                 alt='dynamic_image'
@@ -213,7 +213,7 @@ export const subcomponent_image_with_dynamic_sizing = (images) => {
                 width={imageSizes[image.size]}
                 className='justify-content-center'
               />
-              <p className='BlackText' style={{fontSize: image_brief_detail_font_size}}>
+              <p className='black-text' style={{fontSize: image_brief_detail_font_size}}>
                 {image.brief_detail}
               </p>
           </Col>

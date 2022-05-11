@@ -58,7 +58,7 @@ const Footer = (props) => {
           <Col sm={6}>
             { has_credits_and_references ? (
               <button 
-                className='blandStyle WhiteText FooterText centerDiv'
+                className='bland-style white-text FooterText center-div'
                 onClick={() => {
                   set_credits_and_references_height('45vh');
                 }}>
@@ -70,16 +70,16 @@ const Footer = (props) => {
           </Col>
           {/* ABOUT US */}
           <Col sm={3} xs={0}>
-            <Link to='/About' className='blandStyle d-none d-md-block'>
-              <p className='WhiteText FooterText centerDiv'>
+            <Link to='/About' className='bland-style d-none d-md-block'>
+              <p className='white-text FooterText center-div'>
                 ABOUT US
               </p>
             </Link>
           </Col>
           {/* CONTACT US */}
           <Col sm={3} xs={0}>
-            <Link to='/' className='blandStyle d-none d-md-block'>
-              <p className='WhiteText FooterText centerDiv'>
+            <Link to='/' className='bland-style d-none d-md-block'>
+              <p className='white-text FooterText center-div'>
                 CONTACT US
               </p>
             </Link>

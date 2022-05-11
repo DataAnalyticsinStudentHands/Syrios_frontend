@@ -365,7 +365,7 @@ function setup_timeline_background(obj) {
         textAnchor='end'
         fontWeight='thin'
         y={`${e+Math.abs(min_height)+y_offset+0.4}`}
-        className='GrayText'
+        className='gray-text'
         key={`text_${jsx_arr.length}`}
         style={{fontSize: '1px'}}>
         {(() => {
@@ -586,11 +586,11 @@ const Timeline = () => {
     <div id='Timeline'>
       <Navbar />
       <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '8em'}}>
-        <p className='BlueText text-center' style={{fontSize:'3em'}}>
+        <p className='blue-text text-center' style={{fontSize:'3em'}}>
           TIMELINE
         </p>
       </div>
-      <div className='d-flex align-items-center justify-content-center GrayText text-center' style={{position: 'relative', top: '6em', fontStyle:'italic'}}>
+      <div className='d-flex align-items-center justify-content-center gray-text text-center' style={{position: 'relative', top: '6em', fontStyle:'italic'}}>
         <div dangerouslySetInnerHTML={createMarkup(timeline_description)} />
       </div>
       <Svg
