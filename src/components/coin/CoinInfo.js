@@ -9,6 +9,14 @@ import './coinFlip.css';
 
 
 const CoinInfo = (props) => {
+  const StringifyTypeCategory = (type_category) => {
+    let stringified_list = `${type_category[0].type_category}`;
+    for (let i = 1; i < type_category.length; i++) {
+      stringified_list += `, ${type_category[i].type_category}`;
+    }
+
+    return stringified_list;
+  };
   /*** Coin info that shows up when you click on a coin.
       The premise behind it is to have interactable code anywhere with getDocumentById to change the innerHTML portion of the code.
       Once the content has been changed to whatever is desired, change the z-index and opacity to lift it from the shadows
@@ -29,210 +37,70 @@ const CoinInfo = (props) => {
     props.onClose(false);
   };
 
+  console.log(props.coin_meta_data);
+
   return (
     <WhitePopUp show={props.show} onClose={closeHandler}>
-      <div id='CoinInfo'>
+      <div className='coin-info'>
         <i
-          id='CoinInfo-x-icon'
-          className='demo-icon icon-x-medium'
+          className='coin-info-x-icon demo-icon icon-x-medium'
           onClick={closeHandler}>
           &#xe838;</i>
-        <div id='CoinInfoGrid'>
-          {/* Our coin images */}
-          <div id='CoinImageDiv'>
-            <i
-              id='CoinInfoRotateButton'
-              className='demo-icon icon-coin-rotate'
-              onClick={rotateCoin}>
-              &#xe833;</i>
-            <i
-              id='CoinInfoScaleButton'
-              className='demo-icon icon-coin-scale'
-              onClick={(e) => {
-                let dom = document.getElementById('CoinScaleDottedCircle');
-                let newHeight = parseInt(window.getComputedStyle(document.getElementById('CoinImageFront').parentElement.parentElement.parentElement).height)*0.1;
-                document.getElementById('CoinImageFront').height = newHeight;
-                document.getElementById('CoinImageBack').height = newHeight;
-                document.getElementById('CoinScaleDiameterText').style.fontSize = 0;
-
-                if (dom.style.height.includes('100%')) {
-                  dom.style.height = '0%';
-                  let newHeight = parseInt(window.getComputedStyle(document.getElementById('CoinImageFront').parentElement.parentElement.parentElement).height) * .7;
-                  document.getElementById('CoinImageFront').height = newHeight;
-                  document.getElementById('CoinImageBack').height = newHeight;
-                } else {
-                  dom.style.height = '100%';
-
-                  let previousComputedHeight = '0px';
-                  var CoinInfoScaleCircleInterval = setInterval(() => {
-                    if (previousComputedHeight === window.getComputedStyle(dom).height) {
-                      clearInterval(CoinInfoScaleCircleInterval);
-                      previousComputedHeight = parseInt(previousComputedHeight.substring('0',previousComputedHeight.indexOf('px')));
-
-                      let diameter = props.CoinMetaData.Diameter;
-
-                      newHeight = previousComputedHeight * (diameter * 2 / 100);
-                      document.getElementById('CoinImageFront').height = newHeight;
-                      document.getElementById('CoinImageBack').height = newHeight;
-
-                      document.getElementById('CoinScaleDiameterText').style.fontSize = '12px';
-                    }
-                    previousComputedHeight = window.getComputedStyle(dom).height;
-                  }, 50);
-                }
-              }}>&#xe834;</i>
-            <div id='CoinScaleDottedCircle' />
-            <div id='CoinScaleDiameterDiv'>
-              <p id='CoinScaleDiameterText' className='BlueText'>
-                {'Diameter: ' + (props.CoinMetaData.Diameter == - 1 ? 'N/A' : props.CoinMetaData.Diameter + 'mm') }
-              </p>
-            </div>
-            <div className='flip-box' style={{ position: 'relative', left: '2%' }}>
-              <div className='flip-box-inner' style={{ transform: coinRotation }}>
-                <div className='flip-box-front'>
-                  <img
-                    id='CoinImageFront'
-                    src={process.env.REACT_APP_strapiURL + props.CoinMetaData.obverse_file.url}
-                    alt='Logo'
-                  />
-                </div>
-                <div className='flip-box-back'>
-                  <img
-                    id='CoinImageBack'
-                    src={process.env.REACT_APP_strapiURL + props.CoinMetaData.reverse_file.url}
-                    alt='Colorless logo'
-                  />
-                </div>
-              </div>
-            </div>
+        <div className='coin-image'>
+        </div>
+        <div className='coin-details'>
+          <div className='coin-title DarkBlueText'>
+            {`${props.coin_meta_data.mint}`}
           </div>
-          {/* this main info with era, date, min, authority, title, etc... */}
-          <div id='CoinMainInfo'>
-            <div id='CoinMainInfoTitle'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {props.CoinMetaData.Title}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoRegion'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'REGION: ' + props.CoinMetaData.Region}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoState'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'STATE: ' + props.CoinMetaData.State}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoMint'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'MINT: ' + props.CoinMetaData.Mint}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoAuthority'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'AUTHORITY: ' + props.CoinMetaData.IssuingAuthority}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoEra'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'ERA: ' + props.CoinMetaData.Era}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'DATE(S): ' + props.CoinMetaData.Date}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoCatalogueDate'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'CATALOGE DATE: ' + props.CoinMetaData.CatalogueDate}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoMaterial'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'MATERIAL: ' + props.CoinMetaData.Material}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDenomination'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'DENOMINATION: ' + props.CoinMetaData.Denomination}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoDiameter'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'DIAMETER: ' + props.CoinMetaData.Diameter + 'mm'}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinMainInfoCulturalConnections'>
-              <ReactMarkdown className='DarkBlueText text-start'>
-                {'CULTURAL CONNECTIONS: ' + props.CoinMetaData.TypeCategory}
-              </ReactMarkdown>
-            </div>
+          {/* column 1 of coin details */}
+          <div className='coin-ancient-territory'>
+            <span className='GrayText coin-details-gray-text'>ANCIENT TERRITORY: </span><span className='DarkBlueText'>{props.coin_meta_data.ancient_territory}</span>
           </div>
-          {/* Reverse, reverse legend, obverse, obverse legend */}
-          <div id='CoinImageType'>
-            <div id='CoinImageTypeObverse'>
-              <p className='GrayText text-center'>
-                OBVERSE TYPE:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                {props.CoinMetaData.ObverseType}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeObverseLegend'>
-              <p className='GrayText text-center'>
-                OBVERSE LEGEND:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                {props.CoinMetaData.ObverseLegend}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeReverse'>
-              <p className='GrayText text-center'>
-                REVERSE TYPE:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                {props.CoinMetaData.ReverseType}
-              </ReactMarkdown>
-            </div>
-            <div id='CoinImageTypeReverseLegend'>
-              <p className='GrayText text-center'>
-                REVERSE LEGEND:
-              </p>
-              <ReactMarkdown className='DarkBlueText CoinImageTypeDynamicText text-center'>
-                {props.CoinMetaData.ReverseLegend}
-              </ReactMarkdown>
-            </div>
+          <div className='coin-modern-country'>
+            <span className='GrayText coin-details-gray-text'>MODERN COUNTRY: </span><span className='DarkBlueText'>{props.coin_meta_data.modern_country}</span>
           </div>
-          {/* Bibliography, source url, etc */}
-          <div id='CoinSourceMaterial'>
-            <div id='CoinSourceMaterialGrid'>
-              <div id='CoinSourceMaterialSourceImage'>
-                <p className='GrayText text-start'>
-                  SOURCE IMAGE:
-                </p>
-                <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
-                  {props.CoinMetaData.SourceImage}
-                </ReactMarkdown>
-              </div>
-              <div id='CoinSourceMaterialRightsHolder'>
-                <p className='GrayText text-start'>
-                  RIGHTS HOLDER:
-                </p>
-                <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
-                  {props.CoinMetaData.RightsHolder}
-                </ReactMarkdown>
-              </div>
-              <div id='CoinSourceMaterialBibliography'>
-                <p className='GrayText text-start'>
-                  BIBLIOGRAPHY:
-                </p>
-                <ReactMarkdown className='DarkBlueText CoinSourceMaterialDynamicText text-start'>
-                  {props.CoinMetaData.Bibliography}
-                </ReactMarkdown>
-              </div>
-            </div>
+          <div className='coin-issuing-authority'>
+            <span className='GrayText coin-details-gray-text'>ISSUING AUTHORITY: </span><span className='DarkBlueText'>{props.coin_meta_data.issuing_authority}</span>
           </div>
+          <div className='coin-governing-power'>
+            <span className='GrayText coin-details-gray-text'>GOVERNING POWER: </span><span className='DarkBlueText'>{props.coin_meta_data.governing_power}</span>
+          </div>
+          <div className='coin-language'>
+            <span className='GrayText coin-details-gray-text'>LANGUAGE: </span><span className='DarkBlueText'>{props.coin_meta_data.language}</span>
+          </div>
+          {/* column 2 of coin details */}
+          <div className='coin-mint'>
+            <span className='GrayText coin-details-gray-text'>MINT: </span><span className='DarkBlueText'>{props.coin_meta_data.mint}</span>
+          </div>
+          <div className='coin-mint-modern-name'>
+            <span className='GrayText coin-details-gray-text'>MINT MODERN NAME: </span><span className='DarkBlueText'>{props.coin_meta_data.mint_modern_name}</span>
+          </div>
+          <div className='coin-material'>
+            <span className='GrayText coin-details-gray-text'>MATERIAL: </span><span className='DarkBlueText'>{props.coin_meta_data.material}</span>
+          </div>
+          <div className='coin-denomination'>
+            <span className='GrayText coin-details-gray-text'>DENOMINATION: </span><span className='DarkBlueText'>{props.coin_meta_data.denomination}</span>
+          </div>
+          <div className='coin-diameter'>
+            <span className='GrayText coin-details-gray-text'>DIAMETER: </span><span className='DarkBlueText'>{props.coin_meta_data.diameter == null ? "N/A" : `${props.coin_meta_data.diameter}mm`}</span>
+          </div>
+          {/* column 3 of coin details */}
+          <div className='coin-date-range'>
+            <span className='GrayText coin-details-gray-text'>DATE RANGE: </span><span className='DarkBlueText'>{props.coin_meta_data.date_range}</span>
+          </div>
+          <div className='coin-latitude'>
+            <span className='GrayText coin-details-gray-text'>LATITUDE: </span><span className='DarkBlueText'>{props.coin_meta_data.latitude}</span>
+          </div>
+          <div className='coin-longitude'>
+            <span className='GrayText coin-details-gray-text'>LONGITUDE: </span><span className='DarkBlueText'>{props.coin_meta_data.longitude}</span>
+          </div>
+          <div className='coin-categories'>
+            <span className='GrayText coin-details-gray-text'>CATEGORIES: </span><span className='DarkBlueText'>{StringifyTypeCategory(props.coin_meta_data.type_category)}</span>
+          </div>
+        </div>
+        <div className='coin-types'>
+        </div>
+        <div className='coin-source-material'>
         </div>
       </div>
     </WhitePopUp>

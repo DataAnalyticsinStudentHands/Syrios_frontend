@@ -23,7 +23,7 @@ import './Timeline.css';
 
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
-const defaultCoinData = {
+const default_coin_data = {
   "reverse_type": "Tyche holding sceptre and cornucopia",
   "mint": "Antioch",
   "to_date": -150,
@@ -164,7 +164,7 @@ const defaultCoinData = {
   ]
 };
 
-const defaultEventData = {
+const default_event_data = {
   "title": "Alexander the Great Dies",
   "tags": "Greek, Political",
   "text": "<p>In 323 BCE, Alexander the Great died from an illness while in the city of Babylon.&nbsp;</p>\n<p><em>[Alexander's soldiers] longed to see him...most from grief and longing for their King pressed in to see Alexander. They say that he was already speechless as the army filed past; yet he greeted one and all, raising his head, though with difficulty, and signing to them with his eyes... Alexander shortly afterwards breathed his last... Some have recorded that his friends asked him to whom he left his kingdom; and replied, \"to the best.\"</em> -Arrian, <em>Anabsis of Alexander</em> 7.26&nbsp;</p>",
@@ -175,18 +175,18 @@ const defaultEventData = {
 };
 
 
-function setupTimelineBackground(obj) {
+function setup_timeline_background(obj) {
   let res = obj.res.data;
-  let yOffset = obj.yOffset;
+  let y_offset = obj.y_offset;
   // Push background backdrop react-native-svg elements onto render array for react to load
-  let jsxArr = [];
-  let viewBoxMinHeight = 0;
-  let viewBoxTotalHeight = 0;
+  let jsx_arr = [];
+  let view_box_min_height = 0;
+  let view_box_total_height = 0;
 
   // We are parsing object keys to get start and end dates to match
   // The XXX part of start_XXX_x and end_XXX_x must match case insensitive
   let keys = Object.keys(res.data[0].attributes);
-  let startEndKeyPairs = [];
+  let start_end_key_pairs = [];
 
   // We need to get our keys and put then in a start end key pairs so we can process the data
   keys.forEach((e) => {
@@ -194,7 +194,7 @@ function setupTimelineBackground(obj) {
       let identifier = e.substring(e.indexOf('_')+1, e.lastIndexOf('_')).toLowerCase();
       let pushed = false;
       // push it to a double array of Nx2 size.
-      startEndKeyPairs.forEach((ee) => {
+      start_end_key_pairs.forEach((ee) => {
         ee.forEach((eee) => { // Lol eee. I was about to add another e for fun.
           if (eee.toLowerCase().includes(identifier)) {
             ee.push(e);
@@ -204,7 +204,7 @@ function setupTimelineBackground(obj) {
       });
       // For new end or start x dates
       if (!pushed) {
-        startEndKeyPairs.push([e]);
+        start_end_key_pairs.push([e]);
       }
     }
   });
@@ -238,62 +238,62 @@ function setupTimelineBackground(obj) {
    *
    * Noticed that Q works the best. Some of the other options tend to have "problems"
    */
-  let curveStyle = 'Q';
+  let curve_style = 'Q';
 
 
   // Min and Maxheight are useful to let us offset negative dates and move it downwards because react-native-svg doesn't like using negative numbers
   // This makes it easy for react-native-svg to start at 0 for y value
-  let minHeight = (res.data[0].attributes.y_date); // We can assume index 0 is the smallest because it is ordered by ascending
-  let maxHeight = (res.data[res.data.length-1].attributes.y_date); // We can assume index last is the biggest because it is ordered by ascending
-  let viewBoxHeight = (Math.abs(minHeight-maxHeight)); // The size of the viewbox
-  viewBoxMinHeight = minHeight;
-  viewBoxTotalHeight = viewBoxHeight;
+  let min_height = (res.data[0].attributes.y_date); // We can assume index 0 is the smallest because it is ordered by ascending
+  let max_height = (res.data[res.data.length-1].attributes.y_date); // We can assume index last is the biggest because it is ordered by ascending
+  let view_box_height = (Math.abs(min_height-max_height)); // The size of the viewbox
+  view_box_min_height = min_height;
+  view_box_total_height = view_box_height;
   // Setup X and Y containers for render
-  let startEndKeyPairSVGValues = JSON.parse(JSON.stringify(startEndKeyPairs));
-  for (let i = 0; i < startEndKeyPairSVGValues.length; i++) {
-    startEndKeyPairSVGValues[i][0] = [];
-    startEndKeyPairSVGValues[i][1] = [];
+  let start_end_key_pair_svg_values = JSON.parse(JSON.stringify(start_end_key_pairs));
+  for (let i = 0; i < start_end_key_pair_svg_values.length; i++) {
+    start_end_key_pair_svg_values[i][0] = [];
+    start_end_key_pair_svg_values[i][1] = [];
   }
 
   // This is where the magic happens for setting up the background curves
   res.data.forEach((e, index) => {
     e = e.attributes; // This is to make querying the value e easier since all the important information is in the attrubutes
-    for (let i = 0; i < startEndKeyPairs.length; i++) {
-      if (e[startEndKeyPairs[i][0]] === null || e[startEndKeyPairs[i][1]] === null || isNaN(e[startEndKeyPairs[i][0]]) || isNaN(e[startEndKeyPairs[i][1]])) { // Avoid null points. These get ugly if we aren't careful
+    for (let i = 0; i < start_end_key_pairs.length; i++) {
+      if (e[start_end_key_pairs[i][0]] === null || e[start_end_key_pairs[i][1]] === null || isNaN(e[start_end_key_pairs[i][0]]) || isNaN(e[start_end_key_pairs[i][1]])) { // Avoid null points. These get ugly if we aren't careful
         continue;
       }
 
-      if (startEndKeyPairSVGValues[i][0] === undefined || startEndKeyPairSVGValues[i][0].length === 0) { // If this is a "new" timeline object (meaning everything else for it was undefined up until this point), move to.
-        startEndKeyPairSVGValues[i][0].push(`M${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
-        startEndKeyPairSVGValues[i][1].push(`${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
-      } else if (startEndKeyPairSVGValues[i][0].length === 1) { // If this timeline object was "recently" made (the above statement), make it have the proper curve style
-        startEndKeyPairSVGValues[i][0].push(`${curveStyle}${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
-        startEndKeyPairSVGValues[i][1].push(`${curveStyle}${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+      if (start_end_key_pair_svg_values[i][0] === undefined || start_end_key_pair_svg_values[i][0].length === 0) { // If this is a "new" timeline object (meaning everything else for it was undefined up until this point), move to.
+        start_end_key_pair_svg_values[i][0].push(`M${e[start_end_key_pairs[i][0]]} ${e.y_date + Math.abs(min_height)+y_offset} `);
+        start_end_key_pair_svg_values[i][1].push(`${e[start_end_key_pairs[i][1]]} ${e.y_date + Math.abs(min_height)+y_offset} `);
+      } else if (start_end_key_pair_svg_values[i][0].length === 1) { // If this timeline object was "recently" made (the above statement), make it have the proper curve style
+        start_end_key_pair_svg_values[i][0].push(`${curve_style}${e[start_end_key_pairs[i][0]]} ${e.y_date + Math.abs(min_height)+y_offset} `);
+        start_end_key_pair_svg_values[i][1].push(`${curve_style}${e[start_end_key_pairs[i][1]]} ${e.y_date + Math.abs(min_height)+y_offset} `);
       } else { // If this timeline object is done being made and just needs to continue output dates, do that
-        startEndKeyPairSVGValues[i][0].push(`${e[startEndKeyPairs[i][0]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
-        startEndKeyPairSVGValues[i][1].push(`${e[startEndKeyPairs[i][1]]} ${e.y_date + Math.abs(minHeight)+yOffset} `);
+        start_end_key_pair_svg_values[i][0].push(`${e[start_end_key_pairs[i][0]]} ${e.y_date + Math.abs(min_height)+y_offset} `);
+        start_end_key_pair_svg_values[i][1].push(`${e[start_end_key_pairs[i][1]]} ${e.y_date + Math.abs(min_height)+y_offset} `);
       }
     }
   });
 
   // This fix is to FORCE svg-react-native to draw lines at the very top of the timeline for those timeline objects that start at the top of the timeline
   // Without this, there is a slanted line at the top of the timeline for timeline objects. Other objects face this problem, but it isn't as bad of a problem unless it is at the top
-  for (let i = 0; i < startEndKeyPairSVGValues.length; i++) {                 
-    if (parseInt(startEndKeyPairSVGValues[i][0][0].substring(startEndKeyPairSVGValues[i][0][0].indexOf(' ')))+minHeight-6 > minHeight) {
+  for (let i = 0; i < start_end_key_pair_svg_values.length; i++) {                 
+    if (parseInt(start_end_key_pair_svg_values[i][0][0].substring(start_end_key_pair_svg_values[i][0][0].indexOf(' ')))+min_height-6 > min_height) {
       continue;
     }
-    startEndKeyPairSVGValues[i][0][1] = startEndKeyPairSVGValues[i][0][1].replace(curveStyle, 'L');
-    startEndKeyPairSVGValues[i][0][4] = curveStyle + startEndKeyPairSVGValues[i][0][4];
+    start_end_key_pair_svg_values[i][0][1] = start_end_key_pair_svg_values[i][0][1].replace(curve_style, 'L');
+    start_end_key_pair_svg_values[i][0][4] = curve_style + start_end_key_pair_svg_values[i][0][4];
 
-    startEndKeyPairSVGValues[i][1][3] = 'L'+startEndKeyPairSVGValues[i][1][3];
+    start_end_key_pair_svg_values[i][1][3] = 'L'+start_end_key_pair_svg_values[i][1][3];
   }
-  for (let i = 0; i < startEndKeyPairs.length; i++) {
-    jsxArr.push(
+  for (let i = 0; i < start_end_key_pairs.length; i++) {
+    jsx_arr.push(
       <Path
-        d={startEndKeyPairSVGValues[i][0].join("") + startEndKeyPairSVGValues[i][1].reverse().join("")}
+        d={start_end_key_pair_svg_values[i][0].join("") + start_end_key_pair_svg_values[i][1].reverse().join("")}
         stroke='none'
-        fill={colors.findColor(startEndKeyPairs[i][0])}
-        key={`timeline_${jsxArr.length}`}
+        fill={colors.findColor(start_end_key_pairs[i][0])}
+        key={`timeline_${jsx_arr.length}`}
         style={{
           opacity: '0.6'
         }}/>
@@ -308,24 +308,24 @@ function setupTimelineBackground(obj) {
    * ********************************************************************************************** */
 
   // This is that slightly white background you see in the middle of the screen
-  jsxArr.push(                
+  jsx_arr.push(                
     <Rect
       key='timeline_white'
       x='33'
-      y={`${yOffset}`}
+      y={`${y_offset}`}
       width='33'
-      height={viewBoxHeight}
+      height={view_box_height}
       stroke='none'
       fill='rgba(255,255,255,0.3)'/>
   );
   // This is how I get the bottom half of that slightly white background to be more opaque, by putting another one on top of it at the appropriate y level
-  jsxArr.push(
+  jsx_arr.push(
     <Rect
       key='timeline_double_white'
       x='33'
-      y={`${yOffset+200}`}
+      y={`${y_offset+200}`}
       width='33'
-      height={viewBoxHeight}
+      height={view_box_height}
       stroke='black'
       strokeWidth='0.06'
       fill='rgba(255,255,255,0.3)'/>
@@ -334,39 +334,39 @@ function setupTimelineBackground(obj) {
 
 
   // Need to setup lines at every 50 years with text. Need each 50 year point
-  let y_datesMod50 = [];
+  let y_dates_mod_50 = [];
   res.data.forEach((e) => {
     e = e.attributes;
     if (e.y_date % 50 === 0) {
-      y_datesMod50.push(e.y_date);
+      y_dates_mod_50.push(e.y_date);
     }
   });
 
-  y_datesMod50.forEach((e) => { // build jsxArr for y_date lines at every 50 years
+  y_dates_mod_50.forEach((e) => { // build jsx_arr for y_date lines at every 50 years
 
     // Dotted lines
-    jsxArr.push(
+    jsx_arr.push(
       <Line
-        key={`dottedLine_${jsxArr.length}`}
+        key={`dottedLine_${jsx_arr.length}`}
         stroke='black'
         strokeDasharray='0.1, 0.2'
         strokeWidth='0.1'
         x1={0}
         x2={93}
-        y1={e+Math.abs(minHeight)+yOffset}
-        y2={e+Math.abs(minHeight)+yOffset}
+        y1={e+Math.abs(min_height)+y_offset}
+        y2={e+Math.abs(min_height)+y_offset}
       />
     );
 
     // The text you see every 50 years and the one hyphen at the end of the screen
-    jsxArr.push(
+    jsx_arr.push(
       <Text
         x='98%'
         textAnchor='end'
         fontWeight='thin'
-        y={`${e+Math.abs(minHeight)+yOffset+0.4}`}
+        y={`${e+Math.abs(min_height)+y_offset+0.4}`}
         className='GrayText'
-        key={`text_${jsxArr.length}`}
+        key={`text_${jsx_arr.length}`}
         style={{fontSize: '1px'}}>
         {(() => {
           // BCE vs CE or BC vs AD. Whatever you like.
@@ -378,74 +378,78 @@ function setupTimelineBackground(obj) {
         })()}
       </Text>
     );
-    jsxArr.push(
+    jsx_arr.push(
       <Line
         stroke='#282828'
         strokeWidth='0.1'
-        key={`dash_${jsxArr.length}`}
+        key={`dash_${jsx_arr.length}`}
         x1='100%'
         x2='98.5%'
-        y1={`${e+Math.abs(minHeight)+yOffset}`}
-        y2={`${e+Math.abs(minHeight)+yOffset}`}
+        y1={`${e+Math.abs(min_height)+y_offset}`}
+        y2={`${e+Math.abs(min_height)+y_offset}`}
       />
     );
   });
 
-  return { jsxArr, viewBoxMinHeight, viewBoxTotalHeight };
+  return { jsx_arr, view_box_min_height, view_box_total_height };
 }
 
-function loadTimelineInfo(obj) {
+function load_timeline_info(obj) {
   let res = obj.res.data.data.attributes;
-  let yOffset = obj.yOffset;
-  let viewBoxMinHeight = obj.viewBoxMinHeight;
-  let updateCoinInfo = obj.updateCoinInfo;
-  let updateEventInfo = obj.updateEventInfo;
-  const coinSize = 8; // Size of coins on timeline
-  const coinStrokeWidth = .5; // Stroke width of coins on timeline
-  let jsxArr = [];
-  let coinInfoArr = [];
-  let eventInfoArr = [];
+  let y_offset = obj.y_offset;
+  let view_box_min_height = obj.view_box_min_height;
+  let update_coin_info = obj.update_coin_info;
+  let update_event_info = obj.update_event_info;
+  const coin_size = 8; // Size of coins on timeline
+  const coin_stroke_width = .5; // Stroke width of coins on timeline
+  let jsx_arr = [];
+  let coin_info_arr = [];
+  let event_info_arr = [];
 
   const SetupCoin = (e) => {
-    coinInfoArr.push(e);
+    let coin_info = e.coin.data.attributes;
+    coin_info_arr.push({
+      ...coin_info,
+      id: e.id,
+    });
     return (
       <Image
         id={e.id}
         key={`coin_image${e.id}`}
         className='CoinImage'
-        x={e.x - coinSize / 2}
-        y={e.y + Math.abs(viewBoxMinHeight) + yOffset - coinSize / 2}
-        width={coinSize}
-        height={coinSize}
-        href={`${process.env.REACT_APP_strapiURL}${e.coin.obverseFile.url}`}
-        onClick={updateCoinInfo}/>
+        x={e.x - coin_size / 2}
+        y={e.y + Math.abs(view_box_min_height) + y_offset - coin_size / 2}
+        width={coin_size}
+        height={coin_size}
+        href={`${process.env.REACT_APP_strapiURL}${coin_info.obverse_file.data.attributes.url}`}
+        onClick={update_coin_info}/>
     );
   };
 
   res.zone.forEach((e) => {
     switch (e.__component) {
-      case 'timeline-objects.coin-reference-singular':
-        jsxArr.push(SetupCoin(e));
+      case 'timeline-objects.coin':
+        jsx_arr.push(SetupCoin(e));
         break;
-      case 'timeline-objects.coin-reference':
-        jsxArr.push(
+      case 'timeline-objects.connected_coins':
+        jsx_arr.push(
           <Path
-            d={`M${e.parent_x} ${e.parent_y+Math.abs(viewBoxMinHeight)+yOffset} S${e.parent_x} ${e.child_y+Math.abs(viewBoxMinHeight)+yOffset} ${e.child_x} ${e.child_y+Math.abs(viewBoxMinHeight)+yOffset}`}
+            d={`M${e.parent_x} ${e.parent_y+Math.abs(view_box_min_height)+y_offset} S${e.parent_x} ${e.child_y+Math.abs(view_box_min_height)+y_offset} ${e.child_x} ${e.child_y+Math.abs(view_box_min_height)+y_offset}`}
             key={`path${e.id}`}
             stroke='#173847'
             fill='none'
-            strokeWidth={coinStrokeWidth*2}
+            strokeWidth={coin_stroke_width*2}
           />
         );
 
-        jsxArr.push(SetupCoin({
+        jsx_arr.push(SetupCoin({
           ...e,
           x: e.coin_b_x,
           y: e.coin_b_y,
           id: e.coin_b.id,
           coin: e.coin_b
         }));
-        jsxArr.push(SetupCoin({
+        jsx_arr.push(SetupCoin({
           ...e,
           x: e.coin_a_x,
           y: e.coin_a_y,
@@ -454,22 +458,22 @@ function loadTimelineInfo(obj) {
         }));
         break;
       case 'timeline-objects.event':
-        eventInfoArr.push(e.event);
-        let sizeOfEvent = 2.3;
+        event_info_arr.push(e.event);
+        let size_of_event = 2.3;
 
-        jsxArr.push(
+        jsx_arr.push(
           <Rect
             id={e.event.data.id}
             key={`event${e.event.data.id}`}
             className='Event'
-            x={e.x - sizeOfEvent / 2}
-            y={e.y + Math.abs(viewBoxMinHeight) + yOffset - sizeOfEvent / 2}
-            width={sizeOfEvent}
-            height={sizeOfEvent}
+            x={e.x - size_of_event / 2}
+            y={e.y + Math.abs(view_box_min_height) + y_offset - size_of_event / 2}
+            width={size_of_event}
+            height={size_of_event}
             fill={e.event.data.attributes.color}
             stroke='black'
             strokeWidth='0.1'
-            onClick={updateEventInfo}/>
+            onClick={update_event_info}/>
         );
         break;
       default:
@@ -477,95 +481,90 @@ function loadTimelineInfo(obj) {
     }
   });
 
-  return { jsxArr, coinInfoArr, eventInfoArr };
+  return { jsx_arr, coin_info_arr, event_info_arr };
 }
 
 const Timeline = () => {
-  const [timelineBackgroundIsLoading, set_timelineBackgroundIsLoading] = useState(true);
-  const [timelineInfoIsLoading, set_timelineInfoIsLoading] = useState(true);
-  const [timelineBackground, set_timelineBackground] = useState(undefined); // This is just the background colors, with the dotted lines and numbering on the right hand side
-  const [timelineDescription, set_timelineDescription] = useState(undefined); // This is the description at the top of the page
-  const [timelineEventsAndCoins, set_timelineEventsAndCoins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
+  const [timeline_background_is_loading, set_timeline_background_is_loading] = useState(true);
+  const [timeline_info_is_loading, set_timeline_info_is_loading] = useState(true);
+  const [timeline_background, set_timeline_background] = useState(undefined); // This is just the background colors, with the dotted lines and numbering on the right hand side
+  const [timeline_description, set_timeline_description] = useState(undefined); // This is the description at the top of the page
+  const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
   // These are the view box dimensions
-  const [viewBoxMinHeight, set_viewBoxMinHeight] = useState(0);
-  const [viewBoxTotalHeight, set_viewBoxTotalHeight] = useState(0);
-  const yOffset = 5;
+  const [view_box_min_height, set_view_box_min_height] = useState(0);
+  const [view_box_total_height, set_view_box_total_height] = useState(0);
+  const y_offset = 5;
 
   // Coin info setup here. 
-  const [showCoinInfo, set_showCoinInfo] = useState(false);
-  const coinInfoPopupCloseHandler = (e) => { // This is used to show / remove popup on certain conditions
-    set_showCoinInfo(e);
+  const [show_coin_info, set_show_coin_info] = useState(false);
+  const coin_info_popup_close_handler = (e) => { // This is used to show / remove popup on certain conditions
+    set_show_coin_info(e);
   };
-  const [coinMetaData, set_coinMetaData] = useState(defaultCoinData);
-  const updateCoinInfo = (imgDomObj) => { // This is a function that is passed to the image comp per coin image and is called each time to update coin info if on click
-    let dom = imgDomObj.target;
-
-    let tmpCoinMetaData = coins.filter(e => {
-      return e.id === dom.id;
-    })[0].coin;
+  const [coin_meta_data, set_coin_meta_data] = useState(default_coin_data);
+  const update_coin_info = (img_dom_obj) => { // This is a function that is passed to the image comp per coin image and is called each time to update coin info if on click
+    let id = parseInt(img_dom_obj.target.id);
 
     // Run update through here
-    set_showCoinInfo(true);
-    set_coinMetaData(tmpCoinMetaData);
+    set_coin_meta_data(coins.filter(e => {
+      return e.id === id;
+    })[0]);
+    set_show_coin_info(true);
   };
 
   // Event info setup here.
-  const [showEventInfo, set_showEventInfo] = useState(false);
-  const eventInfoPopupCloseHandler = (e) => {
-    set_showEventInfo(e);
+  const [show_event_info, set_show_event_info] = useState(false);
+  const event_info_popup_close_handler = (e) => {
+    set_show_event_info(e);
   };
 
-  const [eventMetaData, set_eventMetaData] = useState(defaultEventData);
-  const updateEventInfo = (eventDomObj) => {
-    let dom = eventDomObj.target;
+  const [event_meta_data, set_event_meta_data] = useState(default_event_data);
+  const update_event_info = (event_dom_obj) => {
+    let id = parseInt(event_dom_obj.target.id);
 
-    let tmpEventMetaData = events.filter(e => {
-      return e.data.id === dom.id;
-    })[0].data.attributes;
-
-    set_eventMetaData(tmpEventMetaData);
-    set_showEventInfo(true);
+    // update event meta data
+    set_event_meta_data(events.filter(e => {
+      return e.data.id === id;
+    })[0].data.attributes);
+    set_show_event_info(true);
   };
 
   useEffect(() => {
     // This is the background
-    if (timelineBackgroundIsLoading) {
+    if (timeline_background_is_loading) {
       axios.get(process.env.REACT_APP_strapiURL + '/api/timelines')
         .then((res, err) => {
           if (err) {
             console.error(err);
             return;
           }
-          let resultFromSetupTimelineBackground = setupTimelineBackground({res,err, yOffset, });
+          let result_from_setup_timeline_background = setup_timeline_background({res,err, y_offset, });
 
-          set_viewBoxTotalHeight(resultFromSetupTimelineBackground.viewBoxTotalHeight);
-          set_viewBoxMinHeight(resultFromSetupTimelineBackground.viewBoxMinHeight);
-          set_timelineBackground(resultFromSetupTimelineBackground.jsxArr);
-          set_timelineBackgroundIsLoading(false);
+          set_view_box_total_height(result_from_setup_timeline_background.view_box_total_height);
+          set_view_box_min_height(result_from_setup_timeline_background.view_box_min_height);
+          set_timeline_background(result_from_setup_timeline_background.jsx_arr);
+          set_timeline_background_is_loading(false);
         });
     }
 
-
-
     // This is the coins and events and connecting stuff **********************
-    if (timelineInfoIsLoading) {
+    if (timeline_info_is_loading) {
       axios.get(process.env.REACT_APP_strapiURL + '/api/timeline-info')
         .then((res, err) => {
           if (err) {
             console.error(err);
           } else {
-            set_timelineDescription(res.data.data.attributes.text);
+            set_timeline_description(res.data.data.attributes.text);
 
-            var timelineInfoInterval = setInterval(function() {
-              if (!timelineBackgroundIsLoading) {
-                clearInterval(timelineInfoInterval);
+            var timeline_info_interval = setInterval(function() {
+              if (!timeline_background_is_loading) {
+                clearInterval(timeline_info_interval);
 
-                let tmpTimelineInfo = loadTimelineInfo({res, yOffset, viewBoxMinHeight, coins, events, updateCoinInfo, updateEventInfo});
+                let tmp = load_timeline_info({res, y_offset, view_box_min_height, coins, events, update_coin_info, update_event_info});
 
-                set_timelineEventsAndCoins(tmpTimelineInfo.jsxArr);
-                coins = tmpTimelineInfo.coinInfoArr;
-                events = tmpTimelineInfo.eventInfoArr;
-                set_timelineInfoIsLoading(false);
+                set_timeline_events_and_coins(tmp.jsx_arr);
+                coins = tmp.coin_info_arr;
+                events = tmp.event_info_arr;
+                set_timeline_info_is_loading(false);
               }
             }, 200);
           }
@@ -573,7 +572,7 @@ const Timeline = () => {
     }
   });
 
-  if (timelineInfoIsLoading && timelineBackgroundIsLoading) {
+  if (timeline_info_is_loading && timeline_background_is_loading) {
     return (
       <>
         <Navbar />
@@ -592,24 +591,24 @@ const Timeline = () => {
         </p>
       </div>
       <div className='d-flex align-items-center justify-content-center GrayText text-center' style={{position: 'relative', top: '6em', fontStyle:'italic'}}>
-        <div dangerouslySetInnerHTML={createMarkup(timelineDescription)} />
+        <div dangerouslySetInnerHTML={createMarkup(timeline_description)} />
       </div>
       <Svg
         height='100%'
         width='100%'
-        viewBox={`0 0 100 ${viewBoxTotalHeight}`}
+        viewBox={`0 0 100 ${view_box_total_height}`}
         style={{position: 'relative', top: '5em'}}>
-        {timelineBackground}
-        {timelineEventsAndCoins}
+        {timeline_background}
+        {timeline_events_and_coins}
       </Svg>
       <CoinInfo 
-        onClose={coinInfoPopupCloseHandler}
-        show={showCoinInfo}
-        CoinMetaData={coinMetaData}/>
+        onClose={coin_info_popup_close_handler}
+        show={show_coin_info}
+        coin_meta_data={coin_meta_data}/>
       <EventInfo
-        onClose={eventInfoPopupCloseHandler}
-        show={showEventInfo}
-        EventMetaData={eventMetaData}/>
+        onClose={event_info_popup_close_handler}
+        show={show_event_info}
+        event_meta_data={event_meta_data}/>
       <Footer />
     </div>
   );

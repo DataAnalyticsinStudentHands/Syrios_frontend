@@ -47,19 +47,19 @@ const EventInfo = (props) => {
             INFLUENCES ON ANTIOCH:
           </p>
           <div id='EventTags'>
-            {loadTags(props.EventMetaData.tags)}
+            {loadTags(props.event_meta_data.tags)}
           </div>
 
           {/* title */}
           <div id='EventTitle'>
             <p className='DarkBlueText'>
-              {props.EventMetaData.title}
+              {props.event_meta_data.title}
             </p>
           </div>
 
           {/* description */}
           <div id='EventDescription' className='DarkBlueText'>
-            <div dangerouslySetInnerHTML={createMarkup(props.EventMetaData.text)} />
+            <div dangerouslySetInnerHTML={createMarkup(props.event_meta_data.text)} />
           </div>
 
           {/* Cultural connections */}
@@ -69,7 +69,7 @@ const EventInfo = (props) => {
                 CULTURAL CONNECTIONS:
               </p>
               <p id='EventCulturalConnectionList' className='BlueText TypeCategory'>
-                {props.EventMetaData.TypeCategory}
+                {props.event_meta_data.TypeCategory}
               </p>
             </div>
           </div>
