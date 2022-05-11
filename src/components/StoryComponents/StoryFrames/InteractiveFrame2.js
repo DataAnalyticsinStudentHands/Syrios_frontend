@@ -6,8 +6,7 @@ import {FlipCoin,FlipCoinImg} from "../ComponentFunction/index";
 function createMarkup(textTran){
   return {__html: textTran};
 }
-const InteractiveFrame2 = (zone, index, jsonObject) =>{
-    // console.log(zone)
+const InteractiveFrame2 = (zone, index, json_object) =>{
     return(
       <div key={`story_comp_${index}`} className='section'style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
@@ -20,12 +19,12 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
             {/* text in the middle */}
             <Col xs={4} className='align-items-center'>
                 <Row>
-                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='gray-text SubText text-center'/>
+                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='gray-text sub-text text-center'/>
                 </Row>
                 <Row className='my-5' >
                   <Col className='d-flex justify-content-center'>
                     <i 
-                      className='demo-icon icon-coin-scale InteractiveFrame1ScaleIcon'
+                      className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
                       onClick={(e)=> {
                         let dom = e.target.parentElement.parentElement.parentElement.parentElement;
                         let coin_left = dom.childNodes[0].childNodes[0].childNodes[0]
@@ -38,7 +37,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   </Col>
                 </Row>
                 <Row>
-                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='gray-text SubText text-center'/>
+                  <div dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='gray-text sub-text text-center'/>
                 </Row>
             </Col>
             {/* image right */}
@@ -50,4 +49,5 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
       </div>
     )
   }
-export default InteractiveFrame2  
+
+export default InteractiveFrame2;

@@ -1,11 +1,10 @@
 /* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import { subcomponent_image, sub_cap_blue_bg } from "../ComponentFunction/index";
+import { SubcomponentImage, SubCapBlueBg } from "../ComponentFunction/index";
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
+import createMarkup from 'src/utils/Markup.js';
+
 const Frame6 = (zone, index) =>{
   let grid = {
     "half": 2,
@@ -16,27 +15,27 @@ const Frame6 = (zone, index) =>{
     "four":1.25
   };
 
-    let frameBody = undefined
+    let frame_body = undefined
     if (zone.left_right_switch){
-      frameBody=(
+      frame_body=(
         <>
           <Col xs={(12/grid[zone.grid])-1}>
-            {sub_cap_blue_bg(zone.text6)}
+            {SubCapBlueBg(zone.text6)}
           </Col>
           <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
-            {subcomponent_image(zone.image6)}
+            {SubcomponentImage(zone.image6)}
           </Col>
         </>
       )
     }
     else{
-      frameBody=(
+      frame_body=(
         <>
           <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
-            {subcomponent_image(zone.image6)}
+            {SubcomponentImage(zone.image6)}
           </Col>
           <Col xs={(12/grid[zone.grid])-1}>
-            {sub_cap_blue_bg(zone.text6)}
+            {SubCapBlueBg(zone.text6)}
           </Col>
         </>
       )
@@ -54,11 +53,11 @@ const Frame6 = (zone, index) =>{
         >
         <Container>
           <Row className='d-flex justify-content-between align-items-center mb-5'>
-            {frameBody}
+            {frame_body}
           </Row>
           <Row className='d-flex justify-content-center '>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
   
         </Container>
@@ -77,11 +76,11 @@ const Frame6 = (zone, index) =>{
         >
         <Container>
           <Row className='d-flex justify-content-center mb-5'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
-            {frameBody}
+            {frame_body}
           </Row>
         </Container>
       </div>

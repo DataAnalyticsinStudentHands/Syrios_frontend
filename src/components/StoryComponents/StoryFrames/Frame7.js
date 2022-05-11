@@ -1,10 +1,9 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import { subcomponent_image, sub_cap_blue_bg } from "../ComponentFunction/index";
+import { SubcomponentImage, SubCapBlueBg } from "../ComponentFunction/index";
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
+import createMarkup from 'src/utils/Markup.js';
+
 const Frame7 = (zone, index) =>{
     let grid = {
       "half": 2,
@@ -15,36 +14,36 @@ const Frame7 = (zone, index) =>{
       "four":1.25
     };
 
-    let frameBody = undefined
+    let frame_body = undefined
     if (zone.left_right_switch){
-      frameBody=(
+      frame_body=(
         <>
           <Col xs={Math.round((12/grid[zone.grid]))}>
             <Row className='mb-5'>
               <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left ${zone.text7.text_color} ${zone.text7.font_size}`}/>
             </Row>
             <Row className='mt-5'>
-              {sub_cap_blue_bg(zone.right)}
+              {SubCapBlueBg(zone.right)}
             </Row>
           </Col>
           <Col xs={Math.round((12/grid[zone.grid])*(grid[zone.grid]-1))}>
-            {subcomponent_image(zone.left)}
+            {SubcomponentImage(zone.left)}
           </Col>
         </>
       )
     }
     else{
-      frameBody=(
+      frame_body=(
         <>
           <Col xs={Math.round((12/grid[zone.grid])*(grid[zone.grid]-1))}>
-            {subcomponent_image(zone.left)}
+            {SubcomponentImage(zone.left)}
           </Col>
           <Col xs={Math.round((12/grid[zone.grid]))}>
             <Row className='mb-5'>
               <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left ${zone.text7.text_color} ${zone.text7.font_size}`}/>
             </Row>
             <Row className='mt-5'>
-              {sub_cap_blue_bg(zone.right)}
+              {SubCapBlueBg(zone.right)}
             </Row>
           </Col>
         </>
@@ -56,11 +55,11 @@ const Frame7 = (zone, index) =>{
         <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-between align-items-center mb-5'>
-            {frameBody}
+            {frame_body}
           </Row>
           <Row className='d-flex justify-content-center '>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
   
         </Container>
@@ -72,11 +71,11 @@ const Frame7 = (zone, index) =>{
         <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-center mb-5'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
-            {frameBody}
+            {frame_body}
           </Row>
         </Container>
       </div>

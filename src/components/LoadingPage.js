@@ -3,7 +3,7 @@ import "./LoadingPage.css"
 
 const LoadingPage = () => {
 	return (
-		<div className="LoadingBigDiv">
+		<div className="loading_big_div">
 			<div className="loader">
 			</div>
 		</div>

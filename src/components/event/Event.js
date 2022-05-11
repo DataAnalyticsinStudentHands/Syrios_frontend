@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createMarkup } from 'src/utils/markup.js';
+import { createMarkup } from 'src/utils/Markup.js';
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 import { colors } from 'src/components/constants.js';
 
@@ -9,20 +9,20 @@ import './Event.css';
 
 
 
-function Tag(text) {
+function tag(text) {
   return (
-    <div key={text.toUpperCase()} className='Tag' style={{ backgroundColor: colors.findColor(text) }}>
-      <p className='white-text TagText'>
+    <div key={text.toUpperCase()} className='tag' style={{ backgroundColor: colors.find_color(text) }}>
+      <p className='white-text tag-text'>
         {text.toUpperCase()}
       </p>
     </div>
   );
 };
 
-function loadTags(tags) { // Split every tag into individual components with delimiter ',' and push the resultant jsx to array
+function loadtags(tags) { // Split every tag into individual components with delimiter ',' and push the resultant jsx to array
   let jsxArr = [];
   tags.split(',').forEach((e) => {
-    jsxArr.push(Tag(e.trim()));
+    jsxArr.push(tag(e.trim()));
   });
 
   return jsxArr;
@@ -35,41 +35,41 @@ const EventInfo = (props) => {
 
   return (
     <WhitePopUp show={props.show} onClose={closeHandler}>
-      <div id='EventInfo'>
+      <div id='event-info'>
         <i
-          id='EventInfo-x-icon'
+          id='event-info-x-icon'
           className='demo-icon icon-x-medium'
           onClick={closeHandler}>
           &#xe838;</i>
-        <div id='EventInfoInnerDiv'>
+        <div id='event-info-inner-div'>
           {/* tags */}
-          <p id='EventTagsTitle' className='gray-text'>
+          <p id='event-tags-title' className='gray-text'>
             INFLUENCES ON ANTIOCH:
           </p>
-          <div id='EventTags'>
-            {loadTags(props.event_meta_data.tags)}
+          <div id='event-tags'>
+            {loadtags(props.eventMetaData.tags)}
           </div>
 
           {/* title */}
-          <div id='EventTitle'>
+          <div id='event-title'>
             <p className='dark-blue-text'>
-              {props.event_meta_data.title}
+              {props.eventMetaData.title}
             </p>
           </div>
 
           {/* description */}
-          <div id='EventDescription' className='dark-blue-text'>
-            <div dangerouslySetInnerHTML={createMarkup(props.event_meta_data.text)} />
+          <div id='event-description' className='dark-blue-text'>
+            <div dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
           </div>
 
           {/* Cultural connections */}
-          <div id='EventConnectionsBackground'>
-            <div id='EventConnections'>
-              <p id='EventCulturalConnectionText' className='gray-text'>
+          <div id='event-connections-background'>
+            <div id='event-connections'>
+              <p id='event-connections-text' className='gray-text'>
                 CULTURAL CONNECTIONS:
               </p>
-              <p id='EventCulturalConnectionList' className='blue-text TypeCategory'>
-                {props.event_meta_data.TypeCategory}
+              <p id='event-connections-list' className='blue-text type-category'>
+                {props.eventMetaData.type_category}
               </p>
             </div>
           </div>

@@ -8,30 +8,28 @@ import axios from 'axios';
 import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
+import createMarkup from 'src/utils/Markup.js';
 
 import './Download.css';
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
 function Download(){
-  const [isLoading, set_isLoading] = useState(true);
-  const [coinData, setCoinData] = useState([])
-  const csvLink = useRef()
+  const [is_loading, set_is_loading] = useState(true);
+  const [coin_data, set_coin_data] = useState([]);
+  const csv_link = useRef();
 
-  const [title, setTitle] = useState(undefined)
-  const [text, setText] = useState(undefined)
-  const [image, setImage] = useState(undefined)
+  const [title, set_title] = useState(undefined);
+  const [text, set_text] = useState(undefined);
+  const [image, set_image] = useState(undefined);
 
 
   useEffect(()=>{
-    if(isLoading){
+    if(is_loading){
       axios.get(process.env.REACT_APP_strapiURL + '/api/download')
         .then((res)=>{
-          setTitle(res.data.data.attributes.title);
-          setText(res.data.data.attributes.text);
-          setImage(res.data.data.attributes.image);
-          set_isLoading(false);
+          set_title(res.data.data.attributes.title);
+          set_text(res.data.data.attributes.text);
+          set_image(res.data.data.attributes.image);
+          set_is_loading(false);
         });
     }
   });
@@ -62,13 +60,13 @@ function Download(){
         })
 
       axios.get(process.env.REACT_APP_strapiURL + '/coins')
-        .then((res)=>setCoinData(res.data))
+        .then((res)=>set_coin_data(res.data))
         .catch((err)=> console.error(err))
-      csvLink.current.link.click()
+      csv_link.current.link.click()
     }
   })
 
-  if (isLoading) {
+  if (is_loading) {
     return(
       <>
         <Navbar />
@@ -81,10 +79,10 @@ function Download(){
   return(
     <>
       <Navbar />
-      <div id='downloadPage' className='d-flex align-items-center'>
+      <div id='download-page' className='d-flex align-items-center'>
         <Container className='justify-content-sm-center my-5'>
           <Row>
-            <p className='blue-text text-center' id='DownloadTitle'>
+            <p className='blue-text text-center' id='download-title'>
               Download the Data 
             </p>
           </Row>
@@ -95,15 +93,15 @@ function Download(){
                 <Row className='d-flex justify-content-between align-items-center'>
                   <Col xs={2} className='text-center'>
                     <i
-                      className='demo-icon icon-coin-scale downLoadIcon'
+                      className='demo-icon icon-coin-scale download-icon'
                     >
                       &#xe810;</i>
                   </Col>
                   <Col xs={9}>
-                    <Row className='orange-text' id='downLoad_Sub_Title'>
+                    <Row className='orange-text' id='download-sub-title'>
                       {title}
                     </Row>
-                    <Row className='gray-text' id='downLoad_Sub_Text'>
+                    <Row className='gray-text' id='download-sub-text'>
                       {/* {subText} */}
                       <div dangerouslySetInnerHTML={createMarkup(text)} />
                     </Row>
@@ -112,7 +110,7 @@ function Download(){
                 <Row className='my-5'>
                   <img
                     alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
-                    className='FrameImage'
+                    className='frame-image'
                     src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
                   />
 
@@ -160,10 +158,10 @@ function Download(){
                         Submit
                       </button>
                       <CSVLink
-                        data={coinData}
+                        data={coin_data}
                         filename='coins.csv'
                         className='hidden'
-                        ref={csvLink}
+                        ref={csv_link}
                         target='_blank'
                       />
                     </div>

@@ -15,57 +15,57 @@ import Footer from 'src/components/Footer.js';
 import './ExploreTheEvidence.css';
 
 const ExploreTheEvidence = () => {
-  const [isLoading, set_isLoading] = useState(true);
+  const [is_loading, set_is_loading] = useState(true);
 
-  const [title, setTitle] = useState(undefined)
+  const [title, set_title] = useState(undefined)
 
-  const [sortCoinsImage, setSortCoinsImage] = useState(undefined)
-  const [sortCoinsTitle, setSortCoinsTitle] =useState(undefined)
-  const [sortCoinsCaption, setSortCoinsCaption] = useState(undefined)
+  const [sort_coins_image, set_sort_coins_image] = useState(undefined)
+  const [sort_coins_title, set_sort_coins_title] =useState(undefined)
+  const [sort_coins_caption, set_sort_coins_caption] = useState(undefined)
 
-  const [mapCoinsImage, setMapCoinsImage] = useState(undefined)
-  const [mapCoinsTitle, setMapCoinsTitle] =useState(undefined)
-  const [mapCoinsCaption, setMapCoinsCaption] = useState(undefined)
+  const [map_coins_image, set_map_coins_image] = useState(undefined)
+  const [map_coins_title, set_map_coins_title] =useState(undefined)
+  const [map_coins_caption, set_map_coins_caption] = useState(undefined)
 
-  const [coinTimelineImage, setCoinTimelineImage] = useState(undefined)
-  const [coinTimelineTitle, setCoinTimelineTitle] =useState(undefined)
-  const [coinTimelineCaption, setCoinTimelineCaption] = useState(undefined)
+  const [coin_timeline_image, set_coin_timeline_image] = useState(undefined)
+  const [coin_timeline_title, set_coin_timeline_title] =useState(undefined)
+  const [coin_timeline_caption, set_coin_timeline_caption] = useState(undefined)
 
-  const [downloadDatasetTitle, setDownloadDatasetTitle] = useState(undefined)
-  const [downloadDatasetCaption, setDownloadDatasetCaption] =useState(undefined)
+  const [download_dataset_title, set_download_dataset_title] = useState(undefined)
+  const [downlaod_dataset_caption, set_download_dataset_caption] =useState(undefined)
 
   useEffect(() => {
-    if (isLoading) {
+    if (is_loading) {
       axios.get(process.env.REACT_APP_strapiURL+'/api/explore-the-evidence')
         .then((res, error) => {
           if (error) {
             console.error(error);
           } else {
             let data = res.data.data.attributes
-            setTitle(data.title)
+            set_title(data.title)
 
-            setSortCoinsImage(data.sort.image.data.attributes)
-            setSortCoinsTitle(data.sort.title)
-            setSortCoinsCaption(data.sort.caption)
+            set_sort_coins_image(data.sort.image.data.attributes)
+            set_sort_coins_title(data.sort.title)
+            set_sort_coins_caption(data.sort.caption)
 
-            setMapCoinsImage(data.map.image.data.attributes)
-            setMapCoinsTitle(data.map.title)
-            setMapCoinsCaption(data.map.caption)
+            set_map_coins_image(data.map.image.data.attributes)
+            set_map_coins_title(data.map.title)
+            set_map_coins_caption(data.map.caption)
 
-            setCoinTimelineImage(data.timeline.image.data.attributes)
-            setCoinTimelineTitle(data.timeline.title)
-            setCoinTimelineCaption(data.timeline.caption)
+            set_coin_timeline_image(data.timeline.image.data.attributes)
+            set_coin_timeline_title(data.timeline.title)
+            set_coin_timeline_caption(data.timeline.caption)
 
-            setDownloadDatasetTitle(data.download_title)
-            setDownloadDatasetCaption(data.download_caption)
+            set_download_dataset_title(data.download_title)
+            set_download_dataset_caption(data.download_caption)
 
-            set_isLoading(false);
+            set_is_loading(false);
           }
         });
     }
-  },[]);
+  });
 
-  if (isLoading) {
+  if (is_loading) {
     return (
       <>
         <Navbar />
@@ -78,7 +78,7 @@ const ExploreTheEvidence = () => {
   return (
     <>
       <Navbar />
-      <div id='ExploreTheEvidence'>
+      <div id='explore-the-evidence'>
                 <Container>
                   <Row>
                     <Col>
@@ -92,15 +92,15 @@ const ExploreTheEvidence = () => {
                     <Col xs={4}>
                       <Link to='/Evidence/CoinSort'>
                         <img
-                          alt={sortCoinsImage.alternativeText !== undefined ? sortCoinsImage.alternativeText : 'missing alt'}
-                          src={process.env.REACT_APP_strapiURL+sortCoinsImage.url}
+                          alt={sort_coins_image.alternativeText !== undefined ? sort_coins_image.alternativeText : 'missing alt'}
+                          src={process.env.REACT_APP_strapiURL+sort_coins_image.url}
                           style={{width:'300px'}}
                           />
-                        <p className='orange-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
-                          {sortCoinsTitle}
+                        <p className='orange-text explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
+                          {sort_coins_title}
                         </p>
-                        <ReactMarkdown className='gray-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
-                          {sortCoinsCaption}
+                        <ReactMarkdown className='gray-text explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
+                          {sort_coins_caption}
                         </ReactMarkdown>
                       </Link>
                     </Col>
@@ -108,15 +108,15 @@ const ExploreTheEvidence = () => {
                     <Col xs={4}>
                       <Link to='/'>
                         <img
-                          alt={mapCoinsImage.alternativeText !== undefined ? mapCoinsImage.alternativeText : 'missing alt'}
-                          src={process.env.REACT_APP_strapiURL+mapCoinsImage.url}
+                          alt={map_coins_image.alternativeText !== undefined ? map_coins_image.alternativeText : 'missing alt'}
+                          src={process.env.REACT_APP_strapiURL+map_coins_image.url}
                           style={{width:'300px'}}
                         />
-                        <p className='orange-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
-                          {mapCoinsTitle}
+                        <p className='orange-text explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
+                          {map_coins_title}
                         </p>
-                        <ReactMarkdown className='gray-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
-                          {mapCoinsCaption}
+                        <ReactMarkdown className='gray-text explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
+                          {map_coins_caption}
                         </ReactMarkdown>
                       </Link>
                     </Col>
@@ -124,15 +124,15 @@ const ExploreTheEvidence = () => {
                     <Col xs={4}>
                       <Link to='/Toolbox/Timeline'>
                         <img
-                          alt={coinTimelineImage.alternativeText !== undefined ? coinTimelineImage.alternativeText : 'missing alt'}
-                          src={process.env.REACT_APP_strapiURL+coinTimelineImage.url}
+                          alt={coin_timeline_image.alternativeText !== undefined ? coin_timeline_image.alternativeText : 'missing alt'}
+                          src={process.env.REACT_APP_strapiURL+coin_timeline_image.url}
                           style={{width:'300px'}}
                           />
-                        <p className='orange-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceTitleText'>
-                          {coinTimelineTitle}
+                        <p className='orange-text explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
+                          {coin_timeline_title}
                         </p>
-                        <ReactMarkdown className='gray-text ExploreTheEvidenceTextWidthFix ExploreTheEvidenceCaptionText'>
-                          {coinTimelineCaption}
+                        <ReactMarkdown className='gray-text explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
+                          {coin_timeline_caption}
                         </ReactMarkdown>
                       </Link>
                     </Col>
@@ -144,18 +144,18 @@ const ExploreTheEvidence = () => {
                   </Row>
                   {/* Download Dataset */}
                   <Row>
-                    <Col id='ExploreTheEvidenceIconDownloadDiv'>
+                    <Col id='explore-the-evidence-icon-download-div'>
                       <Link to='/Download'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
-                        <i id='ExploreTheEvidenceIconDownload' className='demo-icon icon-donwload'>&#xe810;</i>
+                        <i id='explore-the-evidence-icon-download' className='demo-icon icon-donwload'>&#xe810;</i>
                       </Link>
                     </Col>
-                    <Col id='ExploreTheEvidenceTextDiv' className='d-flex align-items-center justify-content-start'>
+                    <Col id='explore-the-evidence-text-div' className='d-flex align-items-center justify-content-start'>
                       <Link to='/Download'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
-                        <p className='orange-text ExploreTheEvidenceTitleText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
-                          {downloadDatasetTitle}
+                        <p className='orange-text explore-the-evidence-title-text explore-the-evidence-download-dataset-text-width-fix'>
+                          {download_dataset_title}
                         </p>
-                        <ReactMarkdown className='gray-text ExploreTheEvidenceCaptionText ExploreTheEvidenceDownloadDatasetTextWidthFix'>
-                          {downloadDatasetCaption}
+                        <ReactMarkdown className='gray-text explore-the-evidence-caption-text explore-the-evidence-download-dataset-text-width-fix'>
+                          {downlaod_dataset_caption}
                         </ReactMarkdown>
                       </Link>
                     </Col>

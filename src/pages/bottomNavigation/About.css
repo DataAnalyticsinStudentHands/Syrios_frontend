@@ -1,24 +1,24 @@
 @import url(src/components/constants.css);
 
-#About {
+#about {
   z-index: 0;
   padding-top: 10em;
   padding-bottom: 10em;
 }
 
-#AboutTitle {
+#about-title {
   font-size: 8em;
 }
 
-#AboutMeetTheTeam {
+#about-meet-the-team {
   font-size: 8em;
 }
 
-#AboutProjectDirectors {
+#about-project-directors {
   font-size: 5em;
 }
 
-.AboutMemberPictures {
+.about-member-pictures {
   margin-left: 10px;
   margin-top: 10px;
   width: 200px;
@@ -28,11 +28,11 @@
   background-color: white;
 }
 
-.AboutMemberPictures img {
+.about-member-pictures img {
   height: 100%;
 }
 
-.AboutMemberPicturesOutline {
+.about-member-pictures-outline {
   width: 220px;
   height: 220px;
   border-radius: 50%;
@@ -41,21 +41,21 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-#AboutDigitalTeam {
+#about-digital-team {
   margin-top: 100px;
   font-size: 5em;
 }
 
-.RowDecreaseToParagraphSize {
+.row-decrease-to-paragraph-size {
   margin-bottom: -1em;
 }
 
-.AboutAcknowlegments p a {
+.about-acknowlegments p a {
   text-decoration: underline !important;
   color: #486678;
   transition: 0.2s;
 }
 
-.AboutAcknowlegments p a:hover {
+.about-acknowlegments p a:hover {
   color: rgba(184, 204, 216);
 }

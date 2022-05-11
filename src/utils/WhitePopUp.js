@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
 import './WhitePopUp.css';
@@ -9,10 +9,9 @@ import './WhitePopUp.css';
 
 
 const WhitePopUp = (props) => {
-  const wrapperRef = useRef(null);
   const [show, set_show] = useState(false);
 
-  const closeHandler = (e) => { 
+  const CloseHandler = (e) => { 
     set_show(false);
     props.onClose(false);
   };
@@ -21,22 +20,22 @@ const WhitePopUp = (props) => {
     set_show(props.show);
   }, [props.show]);
 
-  let displayStyle = {
+  let display_style = {
     opacity: show ? 1 : 0,
     zIndex: show ? 1000 : -1000
   };
 
   return (
     <div>
-      <div className='TranslucentWhiteBackground' style={displayStyle}/>
+      <div className='translucent-white-background' style={display_style}/>
       <OutsideClickHandler 
-        onOutsideClick={closeHandler}>
-        <div className='SnowWhiteBackground' style={displayStyle}> 
+        onOutsideClick={CloseHandler}>
+        <div className='snow-white-background' style={display_style}> 
           <i
             className='demo-icon icon-x-medium x-icon'
-            onClick={closeHandler}>
+            onClick={CloseHandler}>
             &#xe838;</i>
-          <div className='WhitePopUpInnerPadding'>
+          <div className='white-pop-up-inner-padding'>
             {props.children}
           </div>
         </div>

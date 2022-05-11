@@ -4,7 +4,7 @@
   color: #183848;
 } */
 
-#Footer {
+#footer {
   position: fixed;
   background: #183848;
   bottom: 0px;
@@ -15,7 +15,7 @@
   z-index: 99998;
 }
 
-#FooterLogo {
+#footer-logo {
   position: absolute;
   left: 3px;
   margin: 0;
@@ -24,7 +24,7 @@
   transform: translateY(-50%);
 }
 
-#FooterLinks {
+#footer-links {
   right: 10px;
   position: absolute;
   margin: 0;
@@ -36,13 +36,13 @@
 
 /* sets width of footer links whenever the size gets to a certain size to make it more responsive */
 @media only screen and (max-width: 767px) {
-  #FooterLinks {
+  #footer-links {
     width: 13em;
   }
 }
 
 /* All text for footer should be this format */
-.FooterText {
+.footer-text {
   color: #ffffff !important;
   text-align: center;
   font-size: 14px;
@@ -51,12 +51,12 @@
   transition: 0.5s;
 }
 
-.FooterText:hover {
+.footer-text:hover {
   color: #b8ccd8 !important;
   cursor: pointer;
 }
 
-#CreditsAndReferences {
+#credits-and-references {
   width: 100%;
   height: 0vh;
   position: absolute;
@@ -71,7 +71,7 @@
   z-index: -1000000000;
 }
 
-#CreditsAndReferncesXIcon {
+#credits-and-references-x-icon {
   position: absolute;
   right: -30px;
   top: -15px;
@@ -82,11 +82,11 @@
   transition: 0.3s;
 }
 
-#CreditsAndReferncesXIcon:hover {
+#credits-and-references-x-icon:hover {
   color: #183848;
 }
 
-#CreditsAndReferencesLists {
+#credits-and-references-lists {
   height: 100%;
   width: 80%;
   overflow-y: hidden;
@@ -105,7 +105,7 @@
   word-wrap: break-word;
 }
 
-.CreditsAndReferencesList[title]::before {
+.credits-and-references-list[title]::before {
   align-content: start;
   content: attr(title);
   /* then add some nice styling as needed, eg: */
@@ -117,7 +117,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .CreditsAndReferencesList[title]::before {
+  .credits-and-references-list[title]::before {
     font-size: 1em;
   }
 
@@ -126,7 +126,7 @@
   }
 }
 
-.CreditsAndReferencesList {
+.credits-and-references-list {
   width: 90% !important;
   counter-reset: item;
   height: 95%;
@@ -134,14 +134,14 @@
   overflow: hidden;
 }
 
-.CreditsAndReferencesListItem {
+.credits-and-references-list-item {
   display: block;
   margin-bottom: 0.5em;
   margin-left: 2em;
   font-size: 0.8em;
 }
 
-.CreditsAndReferencesListItem::before {
+.credits-and-references-list-item::before {
   display: inline-block;
   content: "[" counter(item) "]";
   counter-increment: item;
@@ -149,11 +149,11 @@
   margin-left: -2em;
 }
 
-.CreditsAndReferencesListItemHref {
+.credits-and-references-list-item-href {
   text-decoration: none;
   transition: 0.2s;
 }
 
-.CreditsAndReferencesListItemHref:hover {
+.credits-and-references-list-item-href:hover {
   color: #173847;
 }

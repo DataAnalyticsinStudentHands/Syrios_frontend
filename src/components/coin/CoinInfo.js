@@ -37,7 +37,7 @@ const CoinInfo = (props) => {
     props.onClose(false);
   };
 
-  console.log(props.coin_meta_data);
+  console.log(props.coinMetaData);
 
   return (
     <WhitePopUp show={props.show} onClose={closeHandler}>
@@ -50,52 +50,52 @@ const CoinInfo = (props) => {
         </div>
         <div className='coin-details'>
           <div className='coin-title dark-blue-text'>
-            {`${props.coin_meta_data.mint}`}
+            {`${props.coinMetaData.mint}`}
           </div>
           {/* column 1 of coin details */}
           <div className='coin-ancient-territory'>
-            <span className='gray-text coin-details-gray-text'>ANCIENT TERRITORY: </span><span className='dark-blue-text'>{props.coin_meta_data.ancient_territory}</span>
+            <span className='gray-text coin-details-gray-text'>ANCIENT TERRITORY: </span><span className='dark-blue-text'>{props.coinMetaData.ancient_territory}</span>
           </div>
           <div className='coin-modern-country'>
-            <span className='gray-text coin-details-gray-text'>MODERN COUNTRY: </span><span className='dark-blue-text'>{props.coin_meta_data.modern_country}</span>
+            <span className='gray-text coin-details-gray-text'>MODERN COUNTRY: </span><span className='dark-blue-text'>{props.coinMetaData.modern_country}</span>
           </div>
           <div className='coin-issuing-authority'>
-            <span className='gray-text coin-details-gray-text'>ISSUING AUTHORITY: </span><span className='dark-blue-text'>{props.coin_meta_data.issuing_authority}</span>
+            <span className='gray-text coin-details-gray-text'>ISSUING AUTHORITY: </span><span className='dark-blue-text'>{props.coinMetaData.issuing_authority}</span>
           </div>
           <div className='coin-governing-power'>
-            <span className='gray-text coin-details-gray-text'>GOVERNING POWER: </span><span className='dark-blue-text'>{props.coin_meta_data.governing_power}</span>
+            <span className='gray-text coin-details-gray-text'>GOVERNING POWER: </span><span className='dark-blue-text'>{props.coinMetaData.governing_power}</span>
           </div>
           <div className='coin-language'>
-            <span className='gray-text coin-details-gray-text'>LANGUAGE: </span><span className='dark-blue-text'>{props.coin_meta_data.language}</span>
+            <span className='gray-text coin-details-gray-text'>LANGUAGE: </span><span className='dark-blue-text'>{props.coinMetaData.language}</span>
           </div>
           {/* column 2 of coin details */}
           <div className='coin-mint'>
-            <span className='gray-text coin-details-gray-text'>MINT: </span><span className='dark-blue-text'>{props.coin_meta_data.mint}</span>
+            <span className='gray-text coin-details-gray-text'>MINT: </span><span className='dark-blue-text'>{props.coinMetaData.mint}</span>
           </div>
           <div className='coin-mint-modern-name'>
-            <span className='gray-text coin-details-gray-text'>MINT MODERN NAME: </span><span className='dark-blue-text'>{props.coin_meta_data.mint_modern_name}</span>
+            <span className='gray-text coin-details-gray-text'>MINT MODERN NAME: </span><span className='dark-blue-text'>{props.coinMetaData.mint_modern_name}</span>
           </div>
           <div className='coin-material'>
-            <span className='gray-text coin-details-gray-text'>MATERIAL: </span><span className='dark-blue-text'>{props.coin_meta_data.material}</span>
+            <span className='gray-text coin-details-gray-text'>MATERIAL: </span><span className='dark-blue-text'>{props.coinMetaData.material}</span>
           </div>
           <div className='coin-denomination'>
-            <span className='gray-text coin-details-gray-text'>DENOMINATION: </span><span className='dark-blue-text'>{props.coin_meta_data.denomination}</span>
+            <span className='gray-text coin-details-gray-text'>DENOMINATION: </span><span className='dark-blue-text'>{props.coinMetaData.denomination}</span>
           </div>
           <div className='coin-diameter'>
-            <span className='gray-text coin-details-gray-text'>DIAMETER: </span><span className='dark-blue-text'>{props.coin_meta_data.diameter == null ? "N/A" : `${props.coin_meta_data.diameter}mm`}</span>
+            <span className='gray-text coin-details-gray-text'>DIAMETER: </span><span className='dark-blue-text'>{props.coinMetaData.diameter == null ? "N/A" : `${props.coinMetaData.diameter}mm`}</span>
           </div>
           {/* column 3 of coin details */}
           <div className='coin-date-range'>
-            <span className='gray-text coin-details-gray-text'>DATE RANGE: </span><span className='dark-blue-text'>{props.coin_meta_data.date_range}</span>
+            <span className='gray-text coin-details-gray-text'>DATE RANGE: </span><span className='dark-blue-text'>{props.coinMetaData.date_range}</span>
           </div>
           <div className='coin-latitude'>
-            <span className='gray-text coin-details-gray-text'>LATITUDE: </span><span className='dark-blue-text'>{props.coin_meta_data.latitude}</span>
+            <span className='gray-text coin-details-gray-text'>LATITUDE: </span><span className='dark-blue-text'>{props.coinMetaData.latitude}</span>
           </div>
           <div className='coin-longitude'>
-            <span className='gray-text coin-details-gray-text'>LONGITUDE: </span><span className='dark-blue-text'>{props.coin_meta_data.longitude}</span>
+            <span className='gray-text coin-details-gray-text'>LONGITUDE: </span><span className='dark-blue-text'>{props.coinMetaData.longitude}</span>
           </div>
           <div className='coin-categories'>
-            <span className='gray-text coin-details-gray-text'>CATEGORIES: </span><span className='dark-blue-text'>{StringifyTypeCategory(props.coin_meta_data.type_category)}</span>
+            <span className='gray-text coin-details-gray-text'>CATEGORIES: </span><span className='dark-blue-text'>{StringifyTypeCategory(props.coinMetaData.type_category)}</span>
           </div>
         </div>
         <div className='coin-types'>

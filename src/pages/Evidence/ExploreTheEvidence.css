@@ -1,39 +1,39 @@
 @import url(src/components/constants.css);
 
-#ExploreTheEvidence {
+#explore-the-evidence {
   padding-top: 4em;
   padding-bottom: 4em;
 }
 
-.ExploreTheEvidenceTitleText {
+.explore-the-evidence-title-text {
   margin-top: 20px;
 }
 
-.ExploreTheEvidenceCaptionText {
+.explore-the-evidence-caption-text {
   margin-top: -20px;
 }
 
-.ExploreTheEvidenceTextWidthFix {
+.explore-the-evidence-text-width-fix {
   width: 300px;
 }
 
-.ExploreTheEvidenceDownloadDatasetTextWidthFix {
+.explore-the-evidence-download-dataset-text-width-fix {
   width: 500px;
 }
 
-#ExploreTheEvidenceIconDownload {
+#explore-the-evidence-icon-download {
   font-size: 15em;
   color: #486678;
 }
 
-#DownloadDatasetImg {
+#download-dataset-img {
   filter: invert(66%) sepia(8%) saturate(1053%) hue-rotate(154deg) brightness(88%) contrast(89%);
 }
 
-#ExploreTheEvidenceTextDiv {
+#explore-the-evidence-text-div {
   margin-left: -400px;
 }
  
-#ExploreTheEvidenceIconDownloadDiv {
+#explore-the-evidence-icon-download-div {
   margin-left: 100px;
 }

@@ -16,15 +16,15 @@ import EvidenceBgPic from 'src/assets/pages/LandingPageAssets/Evidence.jpg';
 import HistoriansToolboxBgPic from 'src/assets/pages/LandingPageAssets/HistoriansToolbox.jpg';
 import HowToReadBgPic from 'src/assets/pages/LandingPageAssets/HowToRead.jpg';
 import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
-import createMarkup from 'src/utils/markup.js';
+import createMarkup from 'src/utils/Markup.js';
 import 'src/components/constants.css';
 import './LandingPage.css';
 
 function LandingPage() {
-  const [loading, setLoading] = useState(true);
-  const [videoLink, setVideoLink] = useState(undefined);
-  const [shortDescription, setShortDescription] = useState(undefined);
-  const [LandingParagraph, setLandingParagraph] = useState(undefined);
+  const [loading, set_loading] = useState(true);
+  const [video_link, setVideoLink] = useState(undefined);
+  const [short_description, setShortDescription] = useState(undefined);
+  const [landing_paragraph, set_landing_paragraph] = useState(undefined);
 
   useEffect(() => {
     if (loading) {
@@ -38,8 +38,8 @@ function LandingPage() {
           let data = res.data.data.attributes;
           setVideoLink(data.video_link);
           setShortDescription(data.title);
-          setLandingParagraph(data.text);
-          setLoading(false);
+          set_landing_paragraph(data.text);
+          set_loading(false);
         });
     }
   });
@@ -62,7 +62,7 @@ function LandingPage() {
   return (
     <div>
       <Navbar />
-      <div id='LandingPage' className='d-flex align-items-center'>
+      <div id='landing-page' className='d-flex align-items-center'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <Container style={{height: '640px', paddingTop: '1em'}}>
           <Row container='justify-content-md-center'>
@@ -70,7 +70,7 @@ function LandingPage() {
             <Col>
               <div className='orange-text' style={{fontSize: '4em'}}>
                 <ReactMarkdown>
-                  {shortDescription}
+                  {short_description}
                 </ReactMarkdown>
               </div>
             </Col>
@@ -78,11 +78,11 @@ function LandingPage() {
           <Row container='justify-content-md-center'>
             {/* This is the video */}
             <Col>
-              <div id='LandingVideo'>
-                <div id='LandingVideoSize'>
+              <div id='landing-video'>
+                <div id='landing-video-size'>
                   <ReactPlayer 
                     width='100%'
-                    url={videoLink} />
+                    url={video_link} />
                 </div>
               </div>
             </Col>
@@ -92,11 +92,11 @@ function LandingPage() {
                 <Row>
                   {/* How to Read a Coin */}
                   <Col>
-                    <div className='bg-white LandingButtonSize'>
+                    <div className='bg-white landing-button-size'>
                       <Link to='/HowToReadACoin'>
-                        <div className='LandingButtonImg' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
-                          <div className='OnHoverDim'>
-                            <p className='bland-style bold-white-text LandingButtonsText'>
+                        <div className='landing-button-img' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
+                          <div className='on-hover-dim'>
+                            <p className='bland-style bold-white-text landing-buttons-text'>
                               How to Read a Coin
                             </p>
                           </div>
@@ -106,11 +106,11 @@ function LandingPage() {
                   </Col>
                   {/* Discover Stories from Coins */}
                   <Col>
-                    <div className='bg-white LandingButtonSize'>
+                    <div className='bg-white landing-button-size'>
                       <Link to='/Stories'>
-                        <div className='LandingButtonImg' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
-                          <div className='OnHoverDim'>
-                            <p className='bland-style bold-white-text LandingButtonsText'>
+                        <div className='landing-button-img' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
+                          <div className='on-hover-dim'>
+                            <p className='bland-style bold-white-text landing-buttons-text'>
                               Discover Stories from Coins
                             </p>
                           </div>
@@ -122,11 +122,11 @@ function LandingPage() {
                 <Row>
                   {/* Explore the Evidence */}
                   <Col>
-                    <div className='bg-white LandingButtonSize'>
+                    <div className='bg-white landing-button-size'>
                       <Link to='/Evidence/ExploreTheEvidence'>
-                        <div className='LandingButtonImg' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
-                          <div className='OnHoverDim'>
-                            <p className='bland-style bold-white-text LandingButtonsText'>
+                        <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
+                          <div className='on-hover-dim'>
+                            <p className='bland-style bold-white-text landing-buttons-text'>
                               Explore the Evidence
                             </p>
                           </div>
@@ -136,11 +136,11 @@ function LandingPage() {
                   </Col>
                   {/* Open the Historian's Toolbox */}
                   <Col>
-                    <div className='bg-white LandingButtonSize'>
+                    <div className='bg-white landing-button-size'>
                       <Link to='/'>
-                        <div className='LandingButtonImg' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
-                          <div className='OnHoverDim'>
-                            <p className='bland-style bold-white-text LandingButtonsText'>
+                        <div className='landing-button-img' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
+                          <div className='on-hover-dim'>
+                            <p className='bland-style bold-white-text landing-buttons-text'>
                               Open the Historian's Toolbox
                             </p>
                           </div>
@@ -156,7 +156,7 @@ function LandingPage() {
           <Row className='justify-content-md-center mt-5'>
             <Col>
                 <div 
-                  dangerouslySetInnerHTML={createMarkup(LandingParagraph)} 
+                  dangerouslySetInnerHTML={createMarkup(landing_paragraph)} 
                   className='blue-text' style={{fontSize:'1.3em'}}
                 />
             </Col>

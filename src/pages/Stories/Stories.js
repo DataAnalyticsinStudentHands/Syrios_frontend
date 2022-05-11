@@ -11,24 +11,24 @@ import 'src/components/constants.css';
 
 const Stories = () => {
 	const [loading, set_loading] = useState(true);
-	const [stories, setStories] = useState(undefined)
+	const [stories, set_stories] = useState(undefined)
 	useEffect(() => {
 		if (loading) {
 			axios.get(process.env.REACT_APP_strapiURL + '/api/stories') // Call stories objects to get story info so we can sort our informatoin around
 				.then((res) => {
 					let data = res.data.data;
-					let storiesJSX = [];
+					let stories_jsx = [];
 					data.forEach((e, index) => {
-						storiesJSX.push(
+						stories_jsx.push(
 							<Col key={`${index}`}>
 								<Link to={`/StoryReader?id=${e.id}`}>
-									<div className='SelectStoryDiv'>
+									<div className='select-story-div'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.attributes.image.data.attributes.url}`}
                       						alt='Story_Image'
 											width='100%'
 										/>
-										<p className='orange-text SelectStoryText text-center'>
+										<p className='orange-text select-story-text text-center'>
 											{e.attributes.name}
 										</p>
 									</div>
@@ -37,16 +37,16 @@ const Stories = () => {
 						)
 					});
 
-					let pageJSX = [];
-					storiesJSX.forEach((e, index) => {
-						pageJSX.push(
+					let page_jsx = [];
+					stories_jsx.forEach((e, index) => {
+						page_jsx.push(
 							<Col key={`story_${index}`}>
 							{/* <Col key={`${e.key}`}> */}
 								{e}
 							</Col>
 						);
 					});
-					setStories(pageJSX)
+					set_stories(page_jsx)
 					set_loading(false);
 				});
 			}
@@ -65,11 +65,11 @@ const Stories = () => {
 	return (
 		<>
       <Navbar />
-			<div id='d-flex justify-content-center align-items-center StoriesPage'>
+			<div id='d-flex justify-content-center align-items-center stories-page'>
 				<Container style={{position: 'relative', top: '100px'}}>
 					<Row container='justify-content-md-center'>
 						<Col>
-							<p className='blue-text text-center' id='StoryMainTitle'>
+							<p className='blue-text text-center' id='story-main-title'>
 								Discover Coin Stories
 							</p>
 						</Col>

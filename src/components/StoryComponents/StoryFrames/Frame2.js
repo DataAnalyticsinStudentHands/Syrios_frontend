@@ -1,14 +1,9 @@
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
 
-import {subcomponent_image } from "../ComponentFunction/index";
+import createMarkup from 'src/utils/Markup.js';
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
-const Frame2 = (zone, index, jsonObject) => {
-  // console.log(zone)
-
+const Frame2 = (zone, index, json_object) => {
   zone.image2.light_blue_caption_background = zone.image2.light_blue_background ? false : zone.image2.light_blue_caption_background;
   
   let imageSizes = {
@@ -49,7 +44,7 @@ const Frame2 = (zone, index, jsonObject) => {
             style={{width:imageSizes[zone.image2.size]}}>
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.image2.caption)} 
-                className='gray-text CaptionText text-center'
+                className='gray-text caption-text text-center'
                 style={{padding: '0px', paddingTop: '20px',
                 // fontSize:image_brief_detail_font_size
               }}
@@ -59,8 +54,8 @@ const Frame2 = (zone, index, jsonObject) => {
 
         <Container>
           <Row className='d-flex justify-content-center mt-5'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
       </Container>
 
@@ -73,8 +68,8 @@ const Frame2 = (zone, index, jsonObject) => {
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-center mb-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
         </Row>
       </Container>
       <div className={`${zone.image2.light_blue_background ? "light-blue-background" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
@@ -90,7 +85,7 @@ const Frame2 = (zone, index, jsonObject) => {
           style={{width:imageSizes[zone.image2.size]}}>
             <div 
               dangerouslySetInnerHTML={createMarkup(zone.image2.caption)} 
-              className='gray-text CaptionText text-center'
+              className='gray-text caption-text text-center'
               style={{padding: '0px', paddingTop: '20px',
               // fontSize:image_brief_detail_font_size
             }}

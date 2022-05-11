@@ -10,8 +10,8 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
 const HowToReadACoin = () => {
-  const [loading, setLoading] = useState(true);
-  const [storyZone, setStoryZone] = useState(undefined);
+  const [loading, set_loading] = useState(true);
+  const [story_zone, set_story_zone] = useState(undefined);
   const [credits_and_references, set_credits_and_references] = useState(undefined);
 
   useEffect(() => {
@@ -19,9 +19,9 @@ const HowToReadACoin = () => {
       axios.get(`${process.env.REACT_APP_strapiURL}/api/how-to-read-a-coin`)
         .then((res, error) => {
           let data=res.data.data.attributes
-          setStoryZone(data.zone);
+          set_story_zone(data.zone);
           set_credits_and_references(data.credits_and_references);
-          setLoading(false);
+          set_loading(false);
         });
     }
   });
@@ -47,8 +47,8 @@ const HowToReadACoin = () => {
 				
 				render={() => {
 					let storyJSX = [];
-					for (let i = 0; i < storyZone.length; i++) {
-						storyJSX.push(SwitchComponent(storyZone[i], i));
+					for (let i = 0; i < story_zone.length; i++) {
+						storyJSX.push(SwitchComponent(story_zone[i], i));
 					}
 
 					return (
@@ -59,8 +59,8 @@ const HowToReadACoin = () => {
 				}}
 			/>	      
       <Footer
-        has_credits_and_references={true}
-        credits_and_references={credits_and_references}
+        hadCreditsAndReferences={true}
+        creditsAndRefernces={credits_and_references}
       />
     </>
   );

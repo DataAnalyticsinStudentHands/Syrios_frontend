@@ -18,7 +18,6 @@ import Download from 'src/pages/Download/Download.js';
 import background from 'src/assets/background.jpg';
 
 function App() {
-
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
 			{// Link is used to download the bootstrap css

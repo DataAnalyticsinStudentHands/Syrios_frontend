@@ -2,18 +2,18 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
 
-import {mainText, subcomponent_image_only,} from "../ComponentFunction/index";
+import { MainText, SubcomponentImageOnly } from "../ComponentFunction/index";
 
-const Frame10 = (zone, index, jsonObject) =>{
+const Frame10 = (zone, index, json_object) =>{
   let page = undefined
   if(zone.leftOrRight){
     page = (
       <Row className='d-flex justify-content-between align-self-center'>
         <Col xs={9} className="d-flex align-self-center">
-          {mainText(zone.main_text)}
+          {MainText(zone.main_text)}
         </Col>
         <Col xs={3}>
-          {subcomponent_image_only(zone.image)}
+          {SubcomponentImageOnly(zone.image)}
         </Col>
       </Row>
     )
@@ -22,10 +22,10 @@ const Frame10 = (zone, index, jsonObject) =>{
     page = (
       <Row className='d-flex justify-content-between align-self-center'>
         <Col xs={3}>
-          {subcomponent_image_only(zone.image)}
+          {SubcomponentImageOnly(zone.image)}
         </Col>
         <Col xs={9} className="d-flex align-self-center">
-          {mainText(zone.main_text)}
+          {MainText(zone.main_text)}
         </Col>
     </Row>
     )

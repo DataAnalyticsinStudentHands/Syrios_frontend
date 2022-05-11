@@ -11,12 +11,12 @@ const End_Frame = (zone, index) => {
       <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
         <Container className='d-flex justify-content-center align-items-center'>
-          <div id='EndFrameText'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.text)} className='gray-text text-center SubText'/>
+          <div id='end-frame-text'>
+            <div dangerouslySetInnerHTML={createMarkup(zone.text)} className='gray-text text-center sub-text'/>
           </div>
         </Container>
         <Container className='d-flex justify-content-center align-items-center'>
-          <p className='orange-text text-center MainText'>
+          <p className='orange-text text-center main-text'>
             Are you ready to learn more?
           </p>
         </Container>
@@ -24,14 +24,14 @@ const End_Frame = (zone, index) => {
           <Row className='d-flex justify-content-around'>
             <Col >
               <Link to='/Stories'>
-                <button	className='blue-text EndFrameButtonWidth text-center'>
+                <button	className='blue-text end-frame-button-width text-center'>
                   Tell Me a Story
                 </button>
               </Link>
             </Col>
             <Col>
               <Link to='/'>
-                <button	className='blue-text EndFrameButtonWidth text-center'>
+                <button	className='blue-text end-frame-button-width text-center'>
                   Explore Coins
                 </button>
               </Link>

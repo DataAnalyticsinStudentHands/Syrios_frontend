@@ -1,12 +1,12 @@
-.CoinImage {
+.coin-image {
   cursor: pointer;
   border-radius: 50%;
 }
 
-.Event {
+.event {
   cursor: pointer;
 }
 
-.TimelineInfoDynamicText {
+.timeline-info-dynamic-text {
   font-size: 16px;
 }

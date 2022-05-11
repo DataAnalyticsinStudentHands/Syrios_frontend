@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
-import { sub_cap_blue_bg } from "../ComponentFunction/index";
+import { SubCapBlueBg } from "../ComponentFunction/index";
 
 function createMarkup(textTran){
   return {__html: textTran};
@@ -19,17 +19,17 @@ const Frame1 = (zone, index) => {
         <Container>
           <Row className="d-flex justify-content-around">
             <Col xs={4}>
-              {sub_cap_blue_bg(zone.left)}
+              {SubCapBlueBg(zone.left)}
               
             </Col>
             <Col xs={4}>
-              {sub_cap_blue_bg(zone.right)}
+              {SubCapBlueBg(zone.right)}
             </Col>
           </Row>
 
           <Row>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
 
         </Container>
@@ -48,15 +48,15 @@ const Frame1 = (zone, index) => {
         >
         <Container>
           <Row>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
           <Row className="d-flex justify-content-around">
             <Col xs={4}>
-              {sub_cap_blue_bg(zone.left)}
+              {SubCapBlueBg(zone.left)}
             </Col>
             <Col xs={4}>
-              {sub_cap_blue_bg(zone.right)}
+              {SubCapBlueBg(zone.right)}
             </Col>
           </Row>
         </Container>

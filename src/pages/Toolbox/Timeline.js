@@ -8,7 +8,7 @@ import Svg, {
 } from 'react-native-svg';
 import axios from 'axios';
 
-import { createMarkup } from 'src/utils/markup.js';
+import { createMarkup } from 'src/utils/Markup.js';
 import Footer from 'src/components/Footer.js';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -292,7 +292,7 @@ function setup_timeline_background(obj) {
       <Path
         d={start_end_key_pair_svg_values[i][0].join("") + start_end_key_pair_svg_values[i][1].reverse().join("")}
         stroke='none'
-        fill={colors.findColor(start_end_key_pairs[i][0])}
+        fill={colors.find_color(start_end_key_pairs[i][0])}
         key={`timeline_${jsx_arr.length}`}
         style={{
           opacity: '0.6'
@@ -416,7 +416,7 @@ function load_timeline_info(obj) {
       <Image
         id={e.id}
         key={`coin_image${e.id}`}
-        className='CoinImage'
+        className='coin-image'
         x={e.x - coin_size / 2}
         y={e.y + Math.abs(view_box_min_height) + y_offset - coin_size / 2}
         width={coin_size}
@@ -465,7 +465,7 @@ function load_timeline_info(obj) {
           <Rect
             id={e.event.data.id}
             key={`event${e.event.data.id}`}
-            className='Event'
+            className='event'
             x={e.x - size_of_event / 2}
             y={e.y + Math.abs(view_box_min_height) + y_offset - size_of_event / 2}
             width={size_of_event}
@@ -604,11 +604,11 @@ const Timeline = () => {
       <CoinInfo 
         onClose={coin_info_popup_close_handler}
         show={show_coin_info}
-        coin_meta_data={coin_meta_data}/>
+        coinMetaData={coin_meta_data}/>
       <EventInfo
         onClose={event_info_popup_close_handler}
         show={show_event_info}
-        event_meta_data={event_meta_data}/>
+        eventMetaData={event_meta_data}/>
       <Footer />
     </div>
   );

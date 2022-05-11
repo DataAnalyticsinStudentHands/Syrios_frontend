@@ -1,39 +1,38 @@
 @import url(src/components/constants.css);
 
-#downloadPage {
+#download-page {
   position: fixed;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
   top: var(--footerHeight);
   bottom: var(--footerHeight);
-  /* background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg); */
 }
 
-#DownloadTitle {
+#download-title {
   font-size: 7em;
 }
 
-.downLoadIcon {
+.download-icon {
   font-size: 150px;
   color: #7899a8;
 }
-#downLoad_Sub_Title {
+#download-sub-title {
   font-size: x-large;
 }
-#downLoad_Sub_Text {
+#download-sub-text {
   font-size: large;
 }
 
-a.NOMISMALink {
+a.nomisma-link {
   color: red;
 }
-a.GlosseryLink {
+a.glossary-link {
   color: orange;
 }
-a.externalLink {
+a.external-link {
   color: yellow;
 }
-a.internalLink {
+a.internal-link {
   color: aqua;
 }

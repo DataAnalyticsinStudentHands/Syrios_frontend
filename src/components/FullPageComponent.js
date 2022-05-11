@@ -1,8 +1,7 @@
 import ReactFullpage from '@fullpage/react-fullpage';
 import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
-function fullPageComponent(storyZone, storyId){
-  // console.log(storyZone)
+function fullPageComponent(story_zone, story_id){
     return(
         <ReactFullpage
         //fullpage options
@@ -11,15 +10,14 @@ function fullPageComponent(storyZone, storyId){
         autoScrolling = {true}
         
         render={() => {
-          let storyJSX = [];
-          for (let i = 0; i < storyZone.length; i++) {
-            storyJSX.push(SwitchComponent(storyZone[i].attributes, storyId));
+          let story_jsx = [];
+          for (let i = 0; i < story_zone.length; i++) {
+            story_jsx.push(SwitchComponent(story_zone[i].attributes, story_id));
           }
-          console.log(storyJSX)
 
           return (
             <ReactFullpage.Wrapper>
-              {storyJSX}
+              {story_jsx}
             </ReactFullpage.Wrapper>
           );
         }}

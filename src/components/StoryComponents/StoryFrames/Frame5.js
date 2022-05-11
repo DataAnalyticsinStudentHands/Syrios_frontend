@@ -1,29 +1,28 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import {sub_cap_blue_bg, subcomponent_image  } from "../ComponentFunction/index";
+import {SubCapBlueBg, SubcomponentImage } from "../ComponentFunction/index";
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
-const Frame5 = (zone, index, jsonObjct) =>{
+import createMarkup from 'src/utils/Markup.js';
+
+const Frame5 = (zone, index, json_object) =>{
   if (zone.head.updown_switch){
     return(
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-between align-items-center mb-5'>
             <Col xs={3}>
-              {subcomponent_image(zone.image_left)}
+              {SubcomponentImage(zone.image_left)}
             </Col>
             <Col xs={3}>
-              {sub_cap_blue_bg(zone.middle)}
+              {SubCapBlueBg(zone.middle)}
             </Col>
             <Col xs={3}>
-              {subcomponent_image(zone.image_right)}
+              {SubcomponentImage(zone.image_right)}
             </Col>
         </Row>
         <Row className='d-flex justify-content-center '>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
         </Row>
 
       </Container>
@@ -35,18 +34,18 @@ const Frame5 = (zone, index, jsonObjct) =>{
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-center mb-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text MainText text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text CaptionText text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
         </Row>
         <Row className='d-flex justify-content-between align-items-center'>
           <Col xs={3}>
-            {subcomponent_image(zone.left)}
+            {SubcomponentImage(zone.left)}
           </Col>
           <Col xs={3}>
-          {sub_cap_blue_bg(zone.middle)}
+          {SubCapBlueBg(zone.middle)}
           </Col>
           <Col xs={3}>
-            {subcomponent_image(zone.right)}
+            {SubcomponentImage(zone.right)}
           </Col>
         </Row>
       </Container>

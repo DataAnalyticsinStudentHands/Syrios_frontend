@@ -2,36 +2,34 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
-import {subcomponent_image, SwitchBack, SwitchFront} from "../ComponentFunction/index";
-import { createMarkup } from 'src/utils/markup';
-// function createMarkup(textTran){
-//   return {__html: textTran};
-// }
+import {SubcomponentImage, SwitchBack, SwitchFront} from "../ComponentFunction/index";
+
+import { createMarkup } from 'src/utils/Markup.js';
 
 const InteractiveFrame3 = (zone, index) =>{
     const switchForFront = (dom) =>{
-      let imgLeftDiv = dom.childNodes[0]
-      let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
-      let imgRightDiv = dom.childNodes[2]
-      SwitchBack(imgLeftDiv)
-      SwitchBack(textmidDiv)
-      SwitchBack(imgRightDiv)
+      let img_left_div = dom.childNodes[0]
+      let text_mid_div = dom.childNodes[1].childNodes[1].childNodes[0]
+      let img_right_div = dom.childNodes[2]
+      SwitchBack(img_left_div)
+      SwitchBack(text_mid_div)
+      SwitchBack(img_right_div)
 
     }
     const switchForBack = (dom) =>{  
-      let imgLeftDiv = dom.childNodes[0]
-      let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
-      let imgRightDiv = dom.childNodes[2]
-      SwitchFront(imgLeftDiv)
-      SwitchFront(textmidDiv)
-      SwitchFront(imgRightDiv)
+      let img_left_div = dom.childNodes[0]
+      let text_mid_div = dom.childNodes[1].childNodes[1].childNodes[0]
+      let img_right_div = dom.childNodes[2]
+      SwitchFront(img_left_div)
+      SwitchFront(text_mid_div)
+      SwitchFront(img_right_div)
     }
     return(
       <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
         <Container>
           <Row>
-              <ReactMarkdown className='orange-text MainText text-center my-5'>
+              <ReactMarkdown className='orange-text main-text text-center my-5'>
                 {zone.title}
               </ReactMarkdown>
           </Row>
@@ -39,10 +37,10 @@ const InteractiveFrame3 = (zone, index) =>{
             {/* image_lieft */}
             <Col xs={3}>
               <div style={{display:'black', opacity:1, transition:'0.3s'}}>
-                {subcomponent_image(zone.left_front13)}
+                {SubcomponentImage(zone.left_front13)}
               </div>
               <div style={{display:'none', opacity:0, transition:'0.3s'}}>
-                {subcomponent_image(zone.left_back13)}
+                {SubcomponentImage(zone.left_back13)}
               </div>
             </Col>
             {/* text in the middle */}
@@ -53,12 +51,12 @@ const InteractiveFrame3 = (zone, index) =>{
                   <Col xs={{span:9}}>
                     <div 
                       dangerouslySetInnerHTML={createMarkup(zone.mid_front)} 
-                      className='text-center gray-text SubText'
+                      className='text-center gray-text sub-text'
                       style={{display:'black', opacity:1, transition:'0.3s'}}  
                     />
                     <div 
                       dangerouslySetInnerHTML={createMarkup(zone.mid_back)} 
-                      className='text-center gray-text SubText'
+                      className='text-center gray-text sub-text'
                       style={{display:'none', opacity:0, transition:'0.3s'}}  
                     />
                   </Col>
@@ -94,10 +92,10 @@ const InteractiveFrame3 = (zone, index) =>{
             {/* image right */}
             <Col xs={3}>
               <div style={{display:'black', opacity:1, transition:'0.3s'}}>
-                {subcomponent_image(zone.right_front13)}
+                {SubcomponentImage(zone.right_front13)}
               </div>
               <div style={{display:'none', opacity:0, transition:'0.3s'}}>
-                {subcomponent_image(zone.right_back13)}
+                {SubcomponentImage(zone.right_back13)}
               </div>
             </Col>
           </Row>
@@ -105,4 +103,4 @@ const InteractiveFrame3 = (zone, index) =>{
       </div>
     )
   }
-export default InteractiveFrame3
+export default InteractiveFrame3;

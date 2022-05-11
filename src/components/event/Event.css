@@ -2,7 +2,7 @@
 
 
 
-#EventWhiteBackground {
+#event-white-background {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -15,7 +15,7 @@
   opacity: 0;
 }
 
-#EventInfo-x-icon {
+#event-info-x-icon {
   font-size: 50px;
   color: #7899A8;
   cursor: pointer;
@@ -26,28 +26,28 @@
   z-index: 1000;
 }
 
-#EventInfo {
+#event-info {
   width: 80vw;
   max-width: 800px;
 }
 
-#EventInfoInnerDiv {
+#event-info-inner-div {
   margin: 30px;
 }
 
-#EventTagsTitle {
+#event-tags-title {
   font-size: 14px;
   margin-bottom: 3px;
 }
 
-#EventTags {
+#event-tags {
   display: flex;
   gap: 15px;
 
   margin-bottom: 30px;
 }
 
-.Tag {
+.tag {
   margin-bottom: 10px;
   border-radius: 4000000px;
   width: fit-content;
@@ -56,43 +56,43 @@
   justify-content:center;
 }
 
-.TagText {
+.tag-text {
   margin: 0px 20px 0px 20px !important;
   margin: 5px;
   font-size: 20px;
 }
 
-#EventTitle {
+#event-title {
   font-size: 30px;
 }
 
-#EventDescription {
+#event-description {
   font-size: 14px;
 }
 
-#EventConnectionsBackground {
+#event-connections-background {
   margin-top: 30px;
   background-color: rgba(155, 155, 160, 0.3);
 }
 
-#EventConnections {
+#event-connections {
   padding: 20px;
 }
 
-#EventCulturalConnectionText {
+#event-connections-text {
   margin-bottom: 0px;
   font-size:14px;
 }
 
-#EventCulturalConnectionList {
+#event-connections-list {
   font-size:14px;
 }
 
-.TypeCategory p a {
+.type-category p a {
   color: #173847;
   text-decoration: underline !important;
   transition: 0.2s;
 }
-.TypeCategory p a:hover {
+.type-category p a:hover {
   color: #7899A8;
 }

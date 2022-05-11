@@ -12,8 +12,8 @@ import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
 
 const StoryReader = () => {
   const [credits_and_references, set_credits_and_references] = useState(undefined);
-  const [loading, setLoading] = useState(true);
-  const [storyZone, setStoryZone] = useState(undefined)
+  const [loading, set_loading] = useState(true);
+  const [story_zone, set_story_zone] = useState(undefined)
   // Fetches story_id via url link.
   const Get_id = () => {
     return new URLSearchParams(useLocation().search).get('id');
@@ -26,9 +26,9 @@ const StoryReader = () => {
         .then((res) => {
           let zone = res.data.data.attributes.zone
           set_credits_and_references(res.data.data.attributes.credits_and_references);
-          setStoryZone(zone);
+          set_story_zone(zone);
           // ChangeCreditsAndReferences(res.data.data.attributes.credits_and_references);
-          setLoading(false);
+          set_loading(false);
         }
         );
     }
@@ -57,8 +57,8 @@ const StoryReader = () => {
 
         render={() => {
           let storyJSX = [];
-          for (let i = 0; i < storyZone.length; i++) {
-            storyJSX.push(SwitchComponent(storyZone[i], i));
+          for (let i = 0; i < story_zone.length; i++) {
+            storyJSX.push(SwitchComponent(story_zone[i], i));
           }
           return (
             <ReactFullpage.Wrapper>
@@ -68,8 +68,8 @@ const StoryReader = () => {
         }}
       />			
       <Footer
-        has_credits_and_references={true}
-        credits_and_references={credits_and_references}
+        hasCreditsAndReferences={true}
+        creditsAndReferences={credits_and_references}
       />
     </>
   );

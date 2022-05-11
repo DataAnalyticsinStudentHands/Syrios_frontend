@@ -1,10 +1,10 @@
 @import url(src/components/constants.css);
 
-#StoryMainTitle {
+#story-main-title {
   font-size: 7em;
 }
 @media only screen and (max-width: 767px) {
-  #StoryMainTitle {
+  #story-main-title {
     font-size: 2em;
   }
 }
@@ -22,22 +22,22 @@ a:visited {color:#00FF00;}
 a:hover {color:#FF00FF;}  
 a:active {color:#0000FF;}  */
 
-.SelectStoryDiv {
+.select-story-div {
   width: 120px;
   transition: 0.5s;
 }
 
-.SelectStoryDiv:hover {
+.select-story-div:hover {
   width: 150px;
 }
 
-.SelectStoryText {
+.select-story-text {
   font-size: 16px;
   margin: 11px;
   margin-bottom: -5px !important;
 }
 
-#StoriesPage {
+#stories-page {
   position: fixed;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -84,64 +84,64 @@ Button:hover {
   padding: 0px;
   /* background-blend-mode: multiply; */
 }
-.Blande_Image img:first-child {
+.blande-image img:first-child {
   position: absolute;
   mix-blend-mode: multiply;
 }
 /**** General classes ****/
 
-.TitleText {
+.title-text {
   font-size: 76px;
 }
-.SubTitleText {
+.sub-title-text {
   font-size: 20px;
 }
-.CaptionTitleText {
+.caption-title-text {
   font-size: 30px;
 }
 
-.MainText {
+.main-text {
   font-size: 40px;
 }
-.BigSubText {
+.big-sub-text {
   font-size: 32px;
 }
-.SubText {
+.sub-text {
   font-size: 24px;
 }
-.CaptionText {
+.caption-text {
   font-size: 16px;
   margin: 11px;
   margin-bottom: -5px !important;
 }
 
-.FrameImage {
+.frame-image {
   margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 767px) {
-  .MainText {
+  .main-text {
     font-size: 28px;
   }
-  .BigSubText {
+  .big-sub-text {
     font-size: 24px;
   }
-  .SubText {
+  .sub-text {
     font-size: 20px;
   }
 
-  .CaptionText {
+  .caption-text {
     font-size: 16px;
     margin: 11px;
     margin-bottom: -5px !important;
   }
 
-  .FrameImage {
+  .frame-image {
     margin-bottom: 10px;
   }
 }
 
-.HalfImageSize {
+.half-image-size {
   -webkit-transform: scale(0.5); /* Saf3.1+, Chrome */
   -moz-transform: scale(0.5); /* FF3.5+ */
   -ms-transform: scale(0.5); /* IE9 */
@@ -150,7 +150,7 @@ Button:hover {
 }
 
 @media only screen and (max-width: 767px) {
-  .HalfImageSize {
+  .half-image-size {
     -webkit-transform: scale(0.25); /* Saf3.1+, Chrome */
     -moz-transform: scale(0.25); /* FF3.5+ */
     -ms-transform: scale(0.25); /* IE9 */
@@ -158,47 +158,47 @@ Button:hover {
     transform: scale(0.25);
   }
 
-  .FrameImage {
+  .frame-image {
     width: 80% !important;
   }
 
-  .MainText {
+  .main-text {
     width: max(90%);
     font-size: 25px;
   }
-  .BigSubText {
+  .big-sub-text {
     font-size: 18px;
   }
-  .SubText {
+  .sub-text {
     font-size: 12px;
   }
 
-  .CaptionText {
+  .caption-text {
     font-size: 8px;
   }
 }
 
 /**** Title Frame ****/
 
-#TitleImage {
+#title-image {
   width: 300px;
 }
 
 @media only screen and (max-width: 767px) {
-  #TitleImage {
+  #title-image {
     width: 150px !important;
   }
 }
 
 /**** End Frame ****/
 
-.EndFrameButtonWidth {
+.end-frame-button-width {
   width: 270px;
   /* margin: 70px; */
 }
 
 @media only screen and (max-width: 767px) {
-  .EndFrameButtonWidth {
+  .end-frame-button-width {
     width: 100px;
     height: auto;
     /* margin: 10px; */
@@ -209,173 +209,173 @@ Button:hover {
 
 /**** Frame2 ****/
 
-#Frame2Image {
+#frame2-image {
   width: 700px;
 }
 
 @media only screen and (max-width: 767px) {
-  #Frame2Image {
+  #frame2-image {
     width: 350px !important;
   }
 }
 
 /**** Frame5 ****/
 
-#Frame5Image {
+#frame5-image {
   width: 300px;
 }
 
 @media only screen and (max-width: 767px) {
-  #Frame5Image {
+  #frame5-image {
     width: 150px !important;
   }
 }
 
 /**** Frame6 ****/
 
-#Frame6Image {
+#frame6-image {
   width: 400px;
 }
 
 @media only screen and (max-width: 767px) {
-  #Frame6Image {
+  #frame6-image {
     width: 200px !important;
   }
 }
 
 /**** Frame7 ****/
 
-#Frame7Image {
+#frame7-image {
   width: 800px;
 }
-#Frame7textBotten {
+#frame7-text-bottom {
   width: 1200px;
 }
 
 @media only screen and (max-width: 767px) {
-  #Frame7Image {
+  #frame7-image {
     width: 400px !important;
   }
-  #Frame7textBotten {
+  #frame7-text-bottom {
     width: 400px;
   }
 }
 
 /**** Frame8 ****/
-#Frame8ImageTitle {
+#frame8-image-title {
   width: 1200px;
 }
-#Frame8Image {
+#frame8-image {
   width: 300px;
 }
 
 @media only screen and (max-width: 767px) {
-  #Frame8ImageTitle {
+  #frame8-image-title {
     width: 600px;
   }
-  #Frame8Image {
+  #frame8-image {
     width: 200px !important;
   }
 }
 
 /**** Frame9 ****/
 
-#Frame9Image {
+#frame9-image {
   width: 300px;
 }
-#Frame9ImageMiddle {
+#frame9-image-middle {
   width: 250px;
 }
 @media only screen and (max-width: 767px) {
-  #Frame9Image {
+  #frame9-image {
     width: 150px;
   }
-  #Frame9ImageMiddle {
+  #frame9-image-middle {
     width: 125px;
   }
 }
-/**** InteractiveFrame2 ****/
-#InteractiveFrame2 {
+/**** interactive-frame2 ****/
+#interactive-frame2 {
   width: 200px;
 }
 @media only screen and (max-width: 767px) {
-  #InteractiveFrame2 {
+  #interactive-frame2 {
     width: 100px;
   }
 }
 
-/**** InteractiveFrame4 ****/
-#InteractiveFrame4ImageS {
+/**** interactive-frame4 ****/
+#interactive-frame4-image-S {
   width: 120px;
 }
-#InteractiveFrame4ImageM {
+#interactive-frame4-image-M {
   width: 150px;
 }
-#InteractiveFrame4ImageL {
+#interactive-frame4-image-L {
   width: 200px;
 }
 @media only screen and (max-width: 767px) {
-  #InteractiveFrame4ImageS {
+  #interactive-frame4-image-S {
     width: 40px;
   }
-  #InteractiveFrame4ImageM {
+  #interactive-frame4-image-M {
     width: 60px;
   }
-  #InteractiveFrame4ImageL {
+  #interactive-frame4-image-L {
     width: 100px;
   }
 }
 
 /**** End Frame ****/
-#AreYouReadyText {
+#are-you-ready-text {
   font-size: 76px;
 }
 
-#EndFrameText {
+#end-frame-text {
   font-size: 30px;
 }
 
-.EndFrameButtonWidth {
+.end-frame-button-width {
   width: 270px;
   margin: 70px;
 }
 
 /**** Interactive_Frame1 ****/
-.InteractiveFrame1ImageOuterDiv {
+.interactive-frame1-image-outer-div {
   position: relative;
   top: 0;
   left: 0;
   transition: 0.3s;
 }
 
-.InteractiveFrame1ImageFrontLeft {
+.interactive-frame1-image-front-left {
   max-height: 180px;
   display: block;
   opacity: 1;
   transition: 0.3s;
 }
 
-.InteractiveFrame1ImageBackLeft {
+.interactive-frame1-image-back-left {
   display: none;
   opacity: 0;
   transition: 0.3s;
 }
 
-.InteractiveFrame1ImageFrontRight {
+.interactive-frame1-image-front-right {
   max-height: 180px;
   display: block;
   opacity: 1;
   transition: 0.3s;
 }
 
-.InteractiveFrame1ImageBackRight {
+.interactive-frame1-image-back-right {
   max-height: 180px;
   display: none;
   opacity: 0;
   transition: 0.3s;
 }
 
-.InteractiveFrame1TextFront {
+.interactive-frame1-text-front {
   position: relative;
   /* top: 10px; */
   display: block;
@@ -383,7 +383,7 @@ Button:hover {
   transition: 0.3s;
 }
 
-.InteractiveFrame1TextBack {
+.interactive-frame1-text-back {
   position: relative;
   /* top: 10px; */
   display: none;
@@ -391,14 +391,14 @@ Button:hover {
   transition: 0.3s;
 }
 
-.InteractiveFrame1ScaleIcon {
+.interactive-frame1-scale-icon {
   margin-top: 10px;
   font-size: 80px;
   color: #7899a8;
   cursor: pointer;
 }
 
-.InteractiveFrame1CompareScale {
+.interactive-frame1-compare-scale {
   display: block;
   opacity: 1;
   margin-top: -10px;
@@ -407,7 +407,7 @@ Button:hover {
   font-size: 12px;
 }
 
-.InteractiveFrame1ResetScale {
+.interactive-frame1-reset-scale {
   display: none;
   opacity: 0;
   margin-top: -10px;
@@ -416,51 +416,51 @@ Button:hover {
   transition: 0.3s;
 }
 
-.InteractiveFrame1LightBlueSizing {
+.interactive-frame1-light-blue-sizing {
   width: auto;
 }
 
-.InteractiveFrame {
+.interactive-frame {
   display: none;
   opacity: 0;
   transition: 0.3s;
 }
-.InteractiveFrameActive {
+.interactive-frame-active {
   display: block;
   opacity: 1;
   transition: 0.3s;
 }
-#InteractiveFrame1 {
+#interactive-frame1 {
   width: 180px;
 }
 @media only screen and (max-width: 767px) {
-  #InteractiveFrame1 {
+  #interactive-frame1 {
     width: 90px;
   }
-  .InteractiveFrame1LightBlueSizing {
+  .interactive-frame1-light-blue-sizing {
     position: relative;
     left: 5% !important;
     width: 95%;
   }
 
-  .InteractiveFrame1CompareScale {
+  .interactive-frame1-compare-scale {
     margin-top: -5px;
   }
 
-  .InteractiveFrame1ResetScale {
+  .interactive-frame1-reset-scale {
     margin-top: -5px;
   }
 
-  .InteractiveFrame1ImageBackLeft {
+  .interactive-frame1-image-back-left {
     left: -70px !important;
   }
 
-  .InteractiveFrame1ImageBackRight {
+  .interactive-frame1-image-back-right {
     left: -70px !important;
   }
 }
 
-#CoinInfoRotateButton {
+#coin-info-rotate-button {
   position: absolute;
   bottom: 7px;
   right: 13%;
@@ -470,7 +470,7 @@ Button:hover {
   z-index: 1000;
 }
 
-.InteractiveFrame5ScaleIcon {
+.interactive-frame5-scale-icon {
   /* margin-top: 30px; */
   font-size: 50px;
   color: #7899a8;

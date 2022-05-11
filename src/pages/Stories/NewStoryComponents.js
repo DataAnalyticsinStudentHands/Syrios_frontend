@@ -10,7 +10,7 @@ import 'src/components/constants.css';
 import './Stories.css';
 import 'src/components/coin/coinFlip.css';
 
-function IsEmptyOrWhiteSpace(str) {
+function is_empty_or_white_space(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;
 }
 
@@ -20,7 +20,7 @@ const subcomponent_image = (image) => {
   // don't want to double the background causing opacity to double.
   image.light_blue_caption_background = image.light_blue_background ? false : image.light_blue_caption_background;
   
-  let imageSizes = {
+  let image_sizes = {
     "very_small": "50px",
     "small": "130px",
     "medium": "210px",
@@ -28,15 +28,15 @@ const subcomponent_image = (image) => {
     "very_big": "370px",
     "gigantic": "450px"
   };
-  const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
+  const image_brief_detail_font_size=Math.atan((parseInt(image_sizes[image.size])-250)/50)*30+50;
 
   let caption = undefined; 
-  if (!IsEmptyOrWhiteSpace(image.caption)) {
+  if (!is_empty_or_white_space(image.caption)) {
     caption = (
       <>
         <Container className={`d-flex justify-content-center align-items-center ${image.light_blue_caption_background ? "light-blue-background" : ""}`}>
           <ReactMarkdown 
-            className='FrameImage gray-text CaptionText text-center' 
+            className='frame-image gray-text caption-text text-center' 
             style={{padding: '0px', paddingTop: '20px', fontSize:image_brief_detail_font_size}}
           >
             {image.caption}
@@ -53,8 +53,8 @@ const subcomponent_image = (image) => {
           <img
             src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}            
             alt={image.image.alternativeText === undefined ? 'img' : image.image.alternativeText}
-            className='FrameImage'
-            width={imageSizes[image.size]} 
+            className='frame-image'
+            width={image_sizes[image.size]} 
           />
         </Container>
         {caption}
@@ -64,7 +64,7 @@ const subcomponent_image = (image) => {
 }
 
 const subcomponent_image_with_dynamic_sizing = (images) => {
-  let imageSizes = {
+  let image_sizes = {
     "very_small": "50px",
     "small": "130px",
     "medium": "210px",
@@ -73,17 +73,17 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
     "gigantic": "450px"
   };
 
-  let imagesJSX = []
+  let images_jsx = []
   images.forEach((image) => {
-    const image_brief_detail_font_size=Math.atan((parseInt(imageSizes[image.size])-250)/50)*30+50;
-    if (!IsEmptyOrWhiteSpace(image.link) && !IsEmptyOrWhiteSpace(image.brief_detail)) {
-      imagesJSX.push(
+    const image_brief_detail_font_size=Math.atan((parseInt(image_sizes[image.size])-250)/50)*30+50;
+    if (!is_empty_or_white_space(image.link) && !is_empty_or_white_space(image.brief_detail)) {
+      images_jsx.push(
         <Col key={image.id} className='text-center'>
           <Link to={image.link} className='bland-style'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
               alt='dynamic_image'
-              width={imageSizes[image.size]}
+              width={image_sizes[image.size]}
             />
             <p className='orange-text' style={{fontSize: image_brief_detail_font_size}}>
               {image.brief_detail}
@@ -94,27 +94,27 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
       return;
     }
 
-    if (!IsEmptyOrWhiteSpace(image.link)) {
-      imagesJSX.push(
+    if (!is_empty_or_white_space(image.link)) {
+      images_jsx.push(
         <Col key={image.id} className='text-center'>
           <Link to={image.link} className='bland-style'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
               alt='dynamic_image'
-              width={imageSizes[image.size]}/>
+              width={image_sizes[image.size]}/>
           </Link>
         </Col>
       );
       return;
     }
 
-    if (!IsEmptyOrWhiteSpace(image.brief_detail)) {
-      imagesJSX.push(
+    if (!is_empty_or_white_space(image.brief_detail)) {
+      images_jsx.push(
         <Col key={image.id} className='text-center'>
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.url}`}
               alt='dynamic_image'
-              width={imageSizes[image.size]}
+              width={image_sizes[image.size]}
               className='justify-content-center'
             />
             <p className='black-text' style={{fontSize: image_brief_detail_font_size}}>
@@ -129,7 +129,7 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
     <div>
       <Container>
         <Row style={{ marginTop: '80px', marginBottom: '150px'}} className='d-flex justify-content-center align-items-end'>
-          {imagesJSX}
+          {images_jsx}
         </Row>
       </Container>
     </div>
@@ -139,29 +139,29 @@ const subcomponent_image_with_dynamic_sizing = (images) => {
 
 
 // Title component for all stories
-const Title = (zone, index, jsonObject) => {
+const Title = (zone, index, json_object) => {
 
-  let mainText = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
-    mainText = (
-      <ReactMarkdown id='TitleText' className='blue-text text-center'>
+  let main_text = undefined
+  if (!is_empty_or_white_space(zone.main_text)){
+    main_text = (
+      <ReactMarkdown id='title-text' className='blue-text text-center'>
         {zone.main_text}
       </ReactMarkdown>
     )
   }
 
-  let subText = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text)){
-    subText = (
-      <ReactMarkdown id='SubTitleText' className='orange-text text-center'>
+  let sub_text = undefined
+  if (!is_empty_or_white_space(zone.sub_text)){
+    sub_text = (
+      <ReactMarkdown id='sub-title-text' className='orange-text text-center'>
         {zone.sub_text}
       </ReactMarkdown>
     )
   }
-  let capText = undefined
-  if (!IsEmptyOrWhiteSpace(zone.cap_text)){
-    capText = (
-      <ReactMarkdown id='CaptionTitleText' className='gray-text text-center'>
+  let cap_text = undefined
+  if (!is_empty_or_white_space(zone.cap_text)){
+    cap_text = (
+      <ReactMarkdown id='caption-title-text' className='gray-text text-center'>
         {zone.cap_text}
       </ReactMarkdown>
     )
@@ -170,36 +170,36 @@ const Title = (zone, index, jsonObject) => {
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='d-flex justify-content-center align-items-center'>
         <img
-          id='TitleImage'
+          id='title-image'
           src={`${process.env.REACT_APP_strapiURL}${zone.image.url}`}
           alt={zone.image.alternativeText !== undefined ? zone.image.alternativeText : 'title image'} 
         />
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        {mainText}
+        {main_text}
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        {subText}
+        {sub_text}
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        {capText}
+        {cap_text}
       </Container>
     </div>
   );
 }
 
-const End_Frame = (zone, index, jsonObject) => {
+const End_Frame = (zone, index, json_object) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='d-flex justify-content-center align-items-center'>
-        <div id='EndFrameText'>
-          <ReactMarkdown className='gray-text text-center SubText'>
+        <div id='end-frame-text'>
+          <ReactMarkdown className='gray-text text-center sub-text'>
             {zone.sub_text}
           </ReactMarkdown>
         </div>
       </Container>
       <Container className='d-flex justify-content-center align-items-center'>
-        <p className='orange-text text-center MainText'>
+        <p className='orange-text text-center main-text'>
           Are you ready to learn more?
         </p>
       </Container>
@@ -207,14 +207,14 @@ const End_Frame = (zone, index, jsonObject) => {
         <Row className='d-flex justify-content-around'>
           <Col >
             <Link to='/Stories'>
-              <button	className='blue-text EndFrameButtonWidth text-center'>
+              <button	className='blue-text end-frame-button-width text-center'>
                 Tell Me a Story
               </button>
             </Link>
           </Col>
           <Col>
             <Link to='/'>
-              <button	className='blue-text EndFrameButtonWidth text-center'>
+              <button	className='blue-text end-frame-button-width text-center'>
                 Explore Coins
               </button>
             </Link>
@@ -226,25 +226,25 @@ const End_Frame = (zone, index, jsonObject) => {
 }
 
 
-const Frame1 = (zone, index, jsonObject) => {
-  let subText = undefined;
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right) && !IsEmptyOrWhiteSpace(zone.caption_text_right)) {
-    subText = (
+const Frame1 = (zone, index, json_object) => {
+  let sub_text = undefined;
+  if (!is_empty_or_white_space(zone.sub_text_left) && !is_empty_or_white_space(zone.sub_text_right) && !is_empty_or_white_space(zone.caption_text_right)) {
+    sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
           <Col xs={6}>
-            <ReactMarkdown className='blue-text BigSubText text-center'>
+            <ReactMarkdown className='blue-text big-sub-text text-center'>
               {zone.sub_text_left}
             </ReactMarkdown>
           </Col>
           <Col xs={6} className='light-blue-background p-3'>
             <Row>
-              <ReactMarkdown className='blue-text SubText text-center'>
+              <ReactMarkdown className='blue-text sub-text text-center'>
                 {zone.sub_text_right}
               </ReactMarkdown>
             </Row>
             <Row>
-              <ReactMarkdown className='gray-text CaptionText text-center'>
+              <ReactMarkdown className='gray-text caption-text text-center'>
                 {zone.caption_text_right}
               </ReactMarkdown>
             </Row>
@@ -254,26 +254,26 @@ const Frame1 = (zone, index, jsonObject) => {
     );
   }
 
-  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_left)) {
-    subText = (
+  if (sub_text === undefined && !is_empty_or_white_space(zone.sub_text_left)) {
+    sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='gray-text BigSubText text-center'>
+        <ReactMarkdown className='gray-text big-sub-text text-center'>
           {zone.sub_text_left}
         </ReactMarkdown>
       </Container>
     );
   }
 
-  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_right)) {
-    subText = (
+  if (sub_text === undefined && !is_empty_or_white_space(zone.sub_text_right)) {
+    sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
-          <ReactMarkdown className='blue-text SubText text-center'>
+          <ReactMarkdown className='blue-text sub-text text-center'>
             {zone.sub_text_right}
           </ReactMarkdown>
         </Row>
         <Row>
-          <ReactMarkdown className='gray-text CaptionText text-center'>
+          <ReactMarkdown className='gray-text caption-text text-center'>
             {zone.caption_text_right}
           </ReactMarkdown>
         </Row>
@@ -281,11 +281,11 @@ const Frame1 = (zone, index, jsonObject) => {
     );
   }
 
-  if (subText === undefined && !IsEmptyOrWhiteSpace(zone.caption_text_right)) {
-    subText = (
+  if (sub_text === undefined && !is_empty_or_white_space(zone.caption_text_right)) {
+    sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row>
-          <ReactMarkdown className='gray-text CaptionText text-center'>
+          <ReactMarkdown className='gray-text caption-text text-center'>
             {zone.caption_text_right}
           </ReactMarkdown>
         </Row>
@@ -296,23 +296,23 @@ const Frame1 = (zone, index, jsonObject) => {
   return (
     <div key={`story_comp_${index}`} className='section testSection' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
       </Container>
-      {subText}
+      {sub_text}
     </div>
   );
 }
 
 
-const Frame2 = (zone, index, jsonObject) => {
+const Frame2 = (zone, index, json_object) => {
 
   let sub_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text)){
+  if (!is_empty_or_white_space(zone.sub_text)){
     sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='gray-text SubText text-center'>
+        <ReactMarkdown className='gray-text sub-text text-center'>
           {zone.sub_text}
         </ReactMarkdown>
       </Container>
@@ -326,7 +326,7 @@ const Frame2 = (zone, index, jsonObject) => {
       style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}
     >
       <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
       </Container>
@@ -336,23 +336,23 @@ const Frame2 = (zone, index, jsonObject) => {
   );
 }
 
-const Frame3 = (zone, index, jsonObject) => {
+const Frame3 = (zone, index, json_object) => {
   
   let main_text = undefined;
   if (zone.main_text !== undefined){
     main_text=(
       <Container style={{marginTop: '-110px'}}>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
       </Container>
     )
   }
-  let subText = undefined;
+  let sub_text = undefined;
   if (zone.sub_text !== undefined) {
-    subText = (
+    sub_text = (
       <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='gray-text SubText text-center'>
+        <ReactMarkdown className='gray-text sub-text text-center'>
           {zone.sub_text}
         </ReactMarkdown>
       </Container>
@@ -362,55 +362,55 @@ const Frame3 = (zone, index, jsonObject) => {
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ?  undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       {subcomponent_image_with_dynamic_sizing(zone.images)}
       {main_text}
-      {subText}
+      {sub_text}
     </div>
   );
 }
 
-const Frame4 = (zone, index, jsonObject) =>{
+const Frame4 = (zone, index, json_object) =>{
   let main_text= undefined;
-  if(!IsEmptyOrWhiteSpace(zone.main_text)){
+  if(!is_empty_or_white_space(zone.main_text)){
     main_text = (
       <Row className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
       </Row>
     )
   }
 
-  let subQuote = undefined;
+  let sub_quote = undefined;
 
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_left) && !IsEmptyOrWhiteSpace(zone.sub_text_right)) {
-    subQuote = (
+  if (!is_empty_or_white_space(zone.sub_text_left) && !is_empty_or_white_space(zone.sub_text_right)) {
+    sub_quote = (
       <Row className='justify-content-around'>
           <Col md={{span:5}} className='light-blue-background justify-content-center align-self-center my-2'style={{padding: '20px', paddingTop: '20px' }} >
-              <ReactMarkdown className='blue-text text-center SubText' >
+              <ReactMarkdown className='blue-text text-center sub-text' >
                 {zone.sub_text_left}
               </ReactMarkdown>
-              <ReactMarkdown className='gray-text text-center CaptionText'>
+              <ReactMarkdown className='gray-text text-center caption-text'>
                 {zone.cap_text_left}
               </ReactMarkdown>
           </Col>
           <Col md={{span:5, offset:2}} className='light-blue-background justify-content-center align-self-center my-5' style={{padding: '20px', paddingTop: '20px'}}>
-              <ReactMarkdown className='blue-text text-center SubText'>
+              <ReactMarkdown className='blue-text text-center sub-text'>
                 {zone.sub_text_right}
               </ReactMarkdown>
-              <ReactMarkdown className='gray-text text-center CaptionText'>
+              <ReactMarkdown className='gray-text text-center caption-text'>
                 {zone.cap_text_right}
               </ReactMarkdown>   
           </Col>
       </Row>
     );
   }
-  if (subQuote === undefined && !IsEmptyOrWhiteSpace(zone.sub_text_left)){
-    subQuote = (
+  if (sub_quote === undefined && !is_empty_or_white_space(zone.sub_text_left)){
+    sub_quote = (
       <Row className='justify-content-around' >
         <Col md={{span:5}} className='light-blue-background justify-content-center align-self-center' style={{padding: '20px', paddingTop: '20px'}}>
-            <ReactMarkdown className='blue-text text-center SubText' >
+            <ReactMarkdown className='blue-text text-center sub-text' >
               {zone.sub_text_left}
             </ReactMarkdown>
-            <ReactMarkdown className='gray-text text-center CaptionText'>
+            <ReactMarkdown className='gray-text text-center caption-text'>
               {zone.cap_text_left}
             </ReactMarkdown>
         </Col>
@@ -422,18 +422,18 @@ const Frame4 = (zone, index, jsonObject) =>{
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container className='justify-content-center align-items-center' style={{marginTop:'-20%'}}>
             {main_text}
-            {subQuote}
+            {sub_quote}
         </Container>
     </div>
   )
 }
 
-const Frame5 = (zone, index, jsonObject) =>{
+const Frame5 = (zone, index, json_object) =>{
   let main_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+  if (!is_empty_or_white_space(zone.main_text)){
     main_text = (
       <Container>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
       </Container>
@@ -443,8 +443,8 @@ const Frame5 = (zone, index, jsonObject) =>{
   let sub_text_middle = undefined
   if(zone.sub_text_middle.light_blue_caption_background){
     sub_text_middle = (
-      <Col sm={6} className='align-self-center text-center SubText px-0 py-3'>
-        <ReactMarkdown className='light-blue-background SubText gray-text'>
+      <Col sm={6} className='align-self-center text-center sub-text px-0 py-3'>
+        <ReactMarkdown className='light-blue-background sub-text gray-text'>
           {zone.sub_text_middle.sub_text}
         </ReactMarkdown>
       </Col>
@@ -452,8 +452,8 @@ const Frame5 = (zone, index, jsonObject) =>{
   }
   else{
     sub_text_middle = (
-      <Col sm={3} className='align-self-center text-center SubText'>
-        <ReactMarkdown className=' SubText mt-3 gray-text'>
+      <Col sm={3} className='align-self-center text-center sub-text'>
+        <ReactMarkdown className=' sub-text mt-3 gray-text'>
           {zone.sub_text_middle.sub_text}
         </ReactMarkdown>
       </Col>
@@ -478,13 +478,13 @@ const Frame5 = (zone, index, jsonObject) =>{
   )
 }
 
-const Frame6 = (zone, index, jsonObject) =>{
+const Frame6 = (zone, index, json_object) =>{
 
   let main_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+  if (!is_empty_or_white_space(zone.main_text)){
     main_text = (
       <Container className='d-flex justify-content-around align-self-center'>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
       </Container>
@@ -492,17 +492,17 @@ const Frame6 = (zone, index, jsonObject) =>{
     )
   }
   let sub_text_right=undefined
-  if(!IsEmptyOrWhiteSpace(zone.sub_text_right)){
+  if(!is_empty_or_white_space(zone.sub_text_right)){
     sub_text_right = (
-      <ReactMarkdown className='blue-text text-center SubText' >
+      <ReactMarkdown className='blue-text text-center sub-text' >
         {zone.sub_text_right}
       </ReactMarkdown>
     )
   }
   let cap_text_right=undefined
-  if(!IsEmptyOrWhiteSpace(zone.cap_text_right)){
+  if(!is_empty_or_white_space(zone.cap_text_right)){
     cap_text_right = (
-      <ReactMarkdown className='blue-text text-center CaptionText' >
+      <ReactMarkdown className='blue-text text-center caption-text' >
         {zone.cap_text_right}
       </ReactMarkdown>
     )
@@ -526,42 +526,42 @@ const Frame6 = (zone, index, jsonObject) =>{
   )
 }
 
-const Frame7 = (zone, index, jsonObject) =>{
+const Frame7 = (zone, index, json_object) =>{
 
   let main_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+  if (!is_empty_or_white_space(zone.main_text)){
     main_text =(
       <Container className='d-flex justify-content-center align-self-center'>
-          <ReactMarkdown className='orange-text MainText text-center'>
+          <ReactMarkdown className='orange-text main-text text-center'>
             {zone.main_text}
           </ReactMarkdown>
     </Container>
     )
   }
   let main_caption_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_caption_text)){
+  if (!is_empty_or_white_space(zone.main_caption_text)){
     main_caption_text =(
       <Container className='d-flex justify-content-center align-self-center'>
-          <ReactMarkdown className='gray-text CaptionText text-center'>
+          <ReactMarkdown className='gray-text caption-text text-center'>
             {zone.main_caption_text}
           </ReactMarkdown>
     </Container>
     )
   }
   let cap_text_bottom = undefined
-  if (!IsEmptyOrWhiteSpace(zone.cap_text_bottom)){
+  if (!is_empty_or_white_space(zone.cap_text_bottom)){
     cap_text_bottom =(
       <Container className='d-flex justify-content-center align-self-center'>
-      <Row className='my-3 text-center gray-text CaptionText' id={'Frame7textBotten'}>
+      <Row className='my-3 text-center gray-text caption-text' id={'frame7-text-bottom'}>
           {zone.cap_text_bottom}
       </Row>
     </Container>
     )
   }
   let sub_text_right = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_right)){
+  if (!is_empty_or_white_space(zone.sub_text_right)){
     sub_text_right =(
-      <Row className='gray-text align-items-start SubText'>
+      <Row className='gray-text align-items-start sub-text'>
         <ReactMarkdown>
           {zone.sub_text_right}
         </ReactMarkdown>
@@ -569,9 +569,9 @@ const Frame7 = (zone, index, jsonObject) =>{
     )
   }
   let cap_text_right = undefined
-  if (!IsEmptyOrWhiteSpace(zone.cap_text_right)){
+  if (!is_empty_or_white_space(zone.cap_text_right)){
     cap_text_right =(
-      <Row className='light-yellow-background p-3 align-items-end gray-text CaptionText'>
+      <Row className='light-yellow-background p-3 align-items-end gray-text caption-text'>
         <ReactMarkdown>
           {zone.cap_text_right}
         </ReactMarkdown>
@@ -597,10 +597,10 @@ const Frame7 = (zone, index, jsonObject) =>{
   )
 }
 
-const Frame8 = (zone, index, jsonObject) =>{
+const Frame8 = (zone, index, json_object) =>{
   
   let main_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+  if (!is_empty_or_white_space(zone.main_text)){
     main_text = (
         <ReactMarkdown>
           {zone.main_text}
@@ -608,17 +608,17 @@ const Frame8 = (zone, index, jsonObject) =>{
     )
   }
   let sub_text_right=undefined
-  if(!IsEmptyOrWhiteSpace(zone.sub_text_right)){
+  if(!is_empty_or_white_space(zone.sub_text_right)){
     sub_text_right = (
-      <ReactMarkdown className='blue-text text-center SubText' >
+      <ReactMarkdown className='blue-text text-center sub-text' >
         {zone.sub_text_right}
       </ReactMarkdown>
     )
   }
   let cap_text_right=undefined
-  if(!IsEmptyOrWhiteSpace(zone.cap_text_right)){
+  if(!is_empty_or_white_space(zone.cap_text_right)){
     cap_text_right = (
-      <ReactMarkdown className='blue-text text-center CaptionText' >
+      <ReactMarkdown className='blue-text text-center caption-text' >
         {zone.cap_text_right}
       </ReactMarkdown>
     )
@@ -635,7 +635,7 @@ const Frame8 = (zone, index, jsonObject) =>{
               {subcomponent_image(zone.image_left)}
             </Col>
             <Col md={8} className='justify-content-around d-flex flex-column'>
-              <Row className='orange-text MainText text-center align-self-center my-3'>
+              <Row className='orange-text main-text text-center align-self-center my-3'>
                 {main_text}
               </Row>
               <Row>
@@ -651,12 +651,12 @@ const Frame8 = (zone, index, jsonObject) =>{
   )
 }
 
-const Frame9 = (zone, index, jsonObject) =>{
+const Frame9 = (zone, index, json_object) =>{
   
   let main_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+  if (!is_empty_or_white_space(zone.main_text)){
     main_text = (
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
     )
@@ -684,62 +684,62 @@ const Frame9 = (zone, index, jsonObject) =>{
   )
 }
 // Interactive frames
-const InteractiveFrame1 = (zone, index, jsonObject) => {
-  let blueBackgroundMaxHeight = '200px';
+const interactive-frame1 = (zone, index, json_object) => {
+  let blue_background_max_height = '200px';
 
   const FadeThenSwitchCompAndReset = (dom) => { // This function REQUIRES e.target to be compare scale or reset scale
     // There are more try catches here than the amount of classes you have to take to get a degree.
-    let InteractiveFrame1CompareScale = undefined;
-    let InteractiveFrame1ResetScale = undefined;
+    let interactive_frame1_compare_scale = undefined;
+    let interactive_frame1_reset_scale = undefined;
     // Avoid fast clickers from breaking website
     try {
-      let compareScaleActive = true;
+      let compare_scale_active = true;
 
       // Are we rendering compare or reset scale?
-      if (dom.className.includes('InteractiveFrame1CompareScale')) {
-        InteractiveFrame1CompareScale = dom;
-        InteractiveFrame1ResetScale = dom.nextSibling;
-        compareScaleActive = true;
+      if (dom.className.includes('interactive_frame1_compare_scale')) {
+        interactive_frame1_compare_scale = dom;
+        interactive_frame1_reset_scale = dom.nextSibling;
+        compare_scale_active = true;
       } else {
-        InteractiveFrame1CompareScale = dom.previousSibling;
-        InteractiveFrame1ResetScale = dom;
-        compareScaleActive = false;
+        interactive_frame1_compare_scale = dom.previousSibling;
+        interactive_frame1_reset_scale = dom;
+        compare_scale_active = false;
       }
 
       // Leave IF the compare scale to reset scale animation has yet to finish
-      let computedOpacityCompareScale = window.getComputedStyle(InteractiveFrame1CompareScale).opacity;
-      let computedOpacityResetScale = window.getComputedStyle(InteractiveFrame1ResetScale).opacity;
-      if (computedOpacityCompareScale === 0 || computedOpacityCompareScale === 1 || computedOpacityResetScale === 0 || computedOpacityResetScale === 1) {
+      let computed_opacity_compare_scale = window.getComputedStyle(interactive_frame1_compare_scale).opacity;
+      let computedOpacityResetScale = window.getComputedStyle(interactive_frame1_reset_scale).opacity;
+      if (computed_opacity_compare_scale === 0 || computed_opacity_compare_scale === 1 || computedOpacityResetScale === 0 || computedOpacityResetScale === 1) {
         return 0;
       }
 
       // Get the row with light blue background because we need to do some display switch and opacity flipping on the sub elements
-      let rowlight-blue-background = dom;
+      let row_light_blue_background = dom;
 
-      while (!rowlight-blue-background.className.includes("row")) {
-        rowlight-blue-background = rowlight-blue-background.parentElement;
+      while (!row_light_blue_background.className.includes("row")) {
+        row_light_blue_background = row_light_blue_background.parentElement;
       }
-      rowlight-blue-background = rowlight-blue-background.previousSibling.previousSibling;
+      row_light_blue_background = row_light_blue_background.previousSibling.previousSibling;
 
-      let imgLeftDiv = rowlight-blue-background.childNodes[0].childNodes[0];
-      let textCenterDiv = rowlight-blue-background.childNodes[1];
-      let imgRightDiv = rowlight-blue-background.childNodes[2].childNodes[0];
+      let img_left_div = row_light_blue_background.childNodes[0].childNodes[0];
+      let text_center_div = row_light_blue_background.childNodes[1];
+      let img_right_div = row_light_blue_background.childNodes[2].childNodes[0];
       
 
       // If compare scale is active then switch to reset scale else switch to compare scale
-      if (compareScaleActive) {
+      if (compare_scale_active) {
         // Compare scale to Reset scale
-        InteractiveFrame1CompareScale.style.opacity = '0.0';
+        interactive_frame1_compare_scale.style.opacity = '0.0';
         setTimeout(() => {
           try {
-            InteractiveFrame1CompareScale.style.display = 'none';
-            InteractiveFrame1ResetScale.style.display = 'block';
+            interactive_frame1_compare_scale.style.display = 'none';
+            interactive_frame1_reset_scale.style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              InteractiveFrame1ResetScale.style.opacity = '1.0';
+              interactive_frame1_reset_scale.style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -747,17 +747,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
 
         // text center front to text center back
-        textCenterDiv.childNodes[0].style.opacity = '0.0';
+        text_center_div.childNodes[0].style.opacity = '0.0';
         setTimeout(() => {
           try {
-            textCenterDiv.childNodes[0].style.display = 'none';
-            textCenterDiv.childNodes[1].style.display = 'block';
+            text_center_div.childNodes[0].style.display = 'none';
+            text_center_div.childNodes[1].style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              textCenterDiv.childNodes[1].style.opacity = '1.0';
+              text_center_div.childNodes[1].style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -765,17 +765,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
 
         // image left front to image left back
-        imgLeftDiv.childNodes[1].style.opacity = '0.0';
+        img_left_div.childNodes[1].style.opacity = '0.0';
         setTimeout(() => {
           try {
-            imgLeftDiv.childNodes[1].style.display = 'none';
-            imgLeftDiv.childNodes[2].style.display = 'block';
+            img_left_div.childNodes[1].style.display = 'none';
+            img_left_div.childNodes[2].style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              imgLeftDiv.childNodes[2].style.opacity = '1.0';
+              img_left_div.childNodes[2].style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -783,17 +783,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
 
         // image right front to image right back
-        imgRightDiv.childNodes[1].style.opacity = '0.0';
+        img_right_div.childNodes[1].style.opacity = '0.0';
         setTimeout(() => {
           try {
-            imgRightDiv.childNodes[1].style.display = 'none';
-            imgRightDiv.childNodes[2].style.display = 'block';
+            img_right_div.childNodes[1].style.display = 'none';
+            img_right_div.childNodes[2].style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              imgRightDiv.childNodes[2].style.opacity = '1.0';
+              img_right_div.childNodes[2].style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -801,17 +801,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
       } else {
         // Reset scale to Compare scale
-        InteractiveFrame1ResetScale.style.opacity = '0.0';
+        interactive_frame1_reset_scale.style.opacity = '0.0';
         setTimeout(() => {
           try {
-            InteractiveFrame1CompareScale.style.display = 'block';
-            InteractiveFrame1ResetScale.style.display = 'none';
+            interactive_frame1_compare_scale.style.display = 'block';
+            interactive_frame1_reset_scale.style.display = 'none';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              InteractiveFrame1CompareScale.style.opacity = '1.0';
+              interactive_frame1_compare_scale.style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -819,17 +819,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
 
         // text center back to text center front
-        textCenterDiv.childNodes[1].style.opacity = '0.0';
+        text_center_div.childNodes[1].style.opacity = '0.0';
         setTimeout(() => {
           try {
-            textCenterDiv.childNodes[1].style.display = 'none';
-            textCenterDiv.childNodes[0].style.display = 'block';
+            text_center_div.childNodes[1].style.display = 'none';
+            text_center_div.childNodes[0].style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              textCenterDiv.childNodes[0].style.opacity = '1.0';
+              text_center_div.childNodes[0].style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -837,17 +837,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
 
         // image left back to image left front
-        imgLeftDiv.childNodes[2].style.opacity = '0.0';
+        img_left_div.childNodes[2].style.opacity = '0.0';
         setTimeout(() => {
           try {
-            imgLeftDiv.childNodes[2].style.display = 'none';
-            imgLeftDiv.childNodes[1].style.display = 'block';
+            img_left_div.childNodes[2].style.display = 'none';
+            img_left_div.childNodes[1].style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              imgLeftDiv.childNodes[1].style.opacity = '1.0';
+              img_left_div.childNodes[1].style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -855,17 +855,17 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         }, 400);
 
         // image right back to image right front
-        imgRightDiv.childNodes[2].style.opacity = '0.0';
+        img_right_div.childNodes[2].style.opacity = '0.0';
         setTimeout(() => {
           try {
-            imgRightDiv.childNodes[2].style.display = 'none';
-            imgRightDiv.childNodes[1].style.display = 'block';
+            img_right_div.childNodes[2].style.display = 'none';
+            img_right_div.childNodes[1].style.display = 'block';
           } catch (error) {
             console.error(error);
           }
           setTimeout(() => {
             try {
-              imgRightDiv.childNodes[1].style.opacity = '1.0';
+              img_right_div.childNodes[1].style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -878,61 +878,61 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
 
   };
   return (
-    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
+    <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == null ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='justify-content-center align-items-center'>
         {/* Main text */}
         <Row>
           <Col>
-            <ReactMarkdown className='orange-text MainText text-center'>
+            <ReactMarkdown className='orange-text main-text text-center'>
               {zone.main_text}
             </ReactMarkdown>
           </Col>
         </Row>
         {/* Blue background css grid goodie */}
-        <Row className='light-blue-background InteractiveFrame1LightBlueSizing d-flex justify-content-around'>
+        <Row className='light-blue-background interactive-frame1-light-blue-sizing d-flex justify-content-around'>
 
           {/* Images left */}
           <Col xs={3}> 
-            <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+            <div className='d-flex align-items-center justify-content-center interactive-frame1-image-outer-div' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
-                className=' InteractiveFrame1ImageFrontLeft'
-                id='InteractiveFrame1'
+                alt={is_empty_or_white_space(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
+                className=' interactive-frame1-image-front-left'
+                id='interactive-frame1'
               />
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
-                className=' InteractiveFrame1ImageBackLeft'
-                id='InteractiveFrame1'
+                alt={is_empty_or_white_space(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_back_image' : zone.image_left_back.alternativeText}
+                className=' interactive-frame1-image-back-left'
+                id='interactive-frame1'
               />
             </div>
           </Col>
 
           {/* Text_center */}
-          <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blueBackgroundMaxHeight}}>
-            <ReactMarkdown className='gray-text SubText text-center InteractiveFrame1TextFront'>
+          <Col xs={5} className='d-flex align-items-center justify-content-center' style={{height: blue_background_max_height}}>
+            <ReactMarkdown className='gray-text sub-text text-center interactive-frame1-text-front'>
               {zone.sub_text_middle_front}
             </ReactMarkdown>
-            <ReactMarkdown className='gray-text SubText text-center InteractiveFrame1TextBack'>
+            <ReactMarkdown className='gray-text sub-text text-center interactive-frame1-text-back'>
               {zone.sub_text_middle_back}
             </ReactMarkdown>
           </Col>
 
           {/* Images Right */}
           <Col xs={3}> 
-            <div className='d-flex align-items-center justify-content-center InteractiveFrame1ImageOuterDiv' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
+            <div className='d-flex align-items-center justify-content-center interactive-frame1-image-outer-div' style={{height: '200px'}}> {/* I fucking hate this. I HAVE to define the height element as an inline style. Not even !important css tag works in the Stories.css file */}
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
-                className=' InteractiveFrame1ImageFrontRight'
-                id='InteractiveFrame1'
+                alt={is_empty_or_white_space(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
+                className=' interactive-frame1-image-front-right'
+                id='interactive-frame1'
               />
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
-                className=' InteractiveFrame1ImageBackRight'
-                id='InteractiveFrame1'
+                alt={is_empty_or_white_space(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
+                className=' interactive-frame1-image-back-right'
+                id='interactive-frame1'
               />
             </div>
           </Col>
@@ -941,7 +941,7 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
         <Row>
           <Col className='d-flex align-items-center justify-content-center'>
             <i 
-              className='demo-icon icon-coin-scale InteractiveFrame1ScaleIcon'
+              className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
               onClick={(e)=> {
                 // Find dom parent element for compare scale and reset scale
                 let dom = e.target.parentElement.parentElement.nextSibling.childNodes[0].childNodes;
@@ -958,10 +958,10 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
           <Col 
             className='d-flex align-items-center justify-content-center'
             onClick={(e) => {FadeThenSwitchCompAndReset(e.target)}}>
-            <p className='orange-text InteractiveFrame1CompareScale'>
+            <p className='orange-text interactive_frame1_compare_scale'>
               Compare Scale
             </p>
-            <p className='orange-text InteractiveFrame1ResetScale'>
+            <p className='orange-text interactive_frame1_reset_scale'>
               Reset Scale
             </p>
           </Col>
@@ -971,23 +971,23 @@ const InteractiveFrame1 = (zone, index, jsonObject) => {
   )
 }
 
-const InteractiveFrame2 = (zone, index, jsonObject) =>{
+const interactive-frame2 = (zone, index, json_object) =>{
 
   let sub_text_middle_top = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_middle_top)){
+  if (!is_empty_or_white_space(zone.sub_text_middle_top)){
     sub_text_middle_top = (
       <Row>
-        <ReactMarkdown className='gray-text SubText text-center align-items-start'>
+        <ReactMarkdown className='gray-text sub-text text-center align-items-start'>
           {zone.sub_text_middle_top}
         </ReactMarkdown>
       </Row>
     )
   }
   let sub_text_middle_bottom = undefined
-  if (!IsEmptyOrWhiteSpace(zone.sub_text_middle_bottom)){
+  if (!is_empty_or_white_space(zone.sub_text_middle_bottom)){
     sub_text_middle_bottom = (
       <Row>
-        <ReactMarkdown className='gray-text SubText text-center align-items-start'>
+        <ReactMarkdown className='gray-text sub-text text-center align-items-start'>
           {zone.sub_text_middle_bottom}
         </ReactMarkdown>
       </Row>
@@ -1031,7 +1031,7 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
                   <Row>
                     <Col className='d-flex align-items-center justify-content-center'>
                       <i 
-                        className='demo-icon icon-coin-scale InteractiveFrame1ScaleIcon'
+                        className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
                         onClick={(e)=> {
                           let dom = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
                           
@@ -1067,95 +1067,95 @@ const InteractiveFrame2 = (zone, index, jsonObject) =>{
   )
 }
 
-const InteractiveFrame3 = (zone, index, jsonObject) =>{
+const interactive-frame3 = (zone, index, json_object) =>{
 
   const switchForFront = (dom) =>{
     
-    let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
-    let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
-    let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
-    let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
-    let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
+    let img_left_div = dom.childNodes[0].childNodes[0].childNodes[0]
+    let text_left_div = dom.childNodes[0].childNodes[1].childNodes[0]
+    let text_mid_div = dom.childNodes[1].childNodes[1].childNodes[0]
+    let img_right_div = dom.childNodes[2].childNodes[0].childNodes[0]
+    let text_right_div = dom.childNodes[2].childNodes[1].childNodes[0]
 
-    imgLeftDiv.childNodes[1].style.opacity = '0.0';
+    img_left_div.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgLeftDiv.childNodes[1].style.display = 'none';
-        imgLeftDiv.childNodes[0].style.display = 'block';
+        img_left_div.childNodes[1].style.display = 'none';
+        img_left_div.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgLeftDiv.childNodes[0].style.opacity = '1.0';
+          img_left_div.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    textLeftDiv.childNodes[1].style.opacity = '0.0';
+    text_left_div.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        textLeftDiv.childNodes[1].style.display = 'none';
-        textLeftDiv.childNodes[0].style.display = 'block';
+        text_left_div.childNodes[1].style.display = 'none';
+        text_left_div.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          textLeftDiv.childNodes[0].style.opacity = '1.0';
+          text_left_div.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    textmidDiv.childNodes[1].style.opacity = '0.0';
+    text_mid_div.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        textmidDiv.childNodes[1].style.display = 'none';
-        textmidDiv.childNodes[0].style.display = 'block';
+        text_mid_div.childNodes[1].style.display = 'none';
+        text_mid_div.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          textmidDiv.childNodes[0].style.opacity = '1.0';
+          text_mid_div.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    imgRightDiv.childNodes[1].style.opacity = '0.0';
+    img_right_div.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgRightDiv.childNodes[1].style.display = 'none';
-        imgRightDiv.childNodes[0].style.display = 'block';
+        img_right_div.childNodes[1].style.display = 'none';
+        img_right_div.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgRightDiv.childNodes[0].style.opacity = '1.0';
+          img_right_div.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    texRightDiv.childNodes[1].style.opacity = '0.0';
+    text_right_div.childNodes[1].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        texRightDiv.childNodes[1].style.display = 'none';
-        texRightDiv.childNodes[0].style.display = 'block';
+        text_right_div.childNodes[1].style.display = 'none';
+        text_right_div.childNodes[0].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          texRightDiv.childNodes[0].style.opacity = '1.0';
+          text_right_div.childNodes[0].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1167,91 +1167,91 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
 
   const switchForBack = (dom) =>{
     
-    let imgLeftDiv = dom.childNodes[0].childNodes[0].childNodes[0]
-    let textLeftDiv = dom.childNodes[0].childNodes[1].childNodes[0]
-    let textmidDiv = dom.childNodes[1].childNodes[1].childNodes[0]
-    let imgRightDiv = dom.childNodes[2].childNodes[0].childNodes[0]
-    let texRightDiv = dom.childNodes[2].childNodes[1].childNodes[0]
+    let img_left_div = dom.childNodes[0].childNodes[0].childNodes[0]
+    let text_left_div = dom.childNodes[0].childNodes[1].childNodes[0]
+    let text_mid_div = dom.childNodes[1].childNodes[1].childNodes[0]
+    let img_right_div = dom.childNodes[2].childNodes[0].childNodes[0]
+    let text_right_div = dom.childNodes[2].childNodes[1].childNodes[0]
 
-    imgLeftDiv.childNodes[0].style.opacity = '0.0';
+    img_left_div.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgLeftDiv.childNodes[0].style.display = 'none';
-        imgLeftDiv.childNodes[1].style.display = 'block';
+        img_left_div.childNodes[0].style.display = 'none';
+        img_left_div.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgLeftDiv.childNodes[1].style.opacity = '1.0';
+          img_left_div.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    textLeftDiv.childNodes[0].style.opacity = '0.0';
+    text_left_div.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        textLeftDiv.childNodes[0].style.display = 'none';
-        textLeftDiv.childNodes[1].style.display = 'block';
+        text_left_div.childNodes[0].style.display = 'none';
+        text_left_div.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          textLeftDiv.childNodes[1].style.opacity = '1.0';
+          text_left_div.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    textmidDiv.childNodes[0].style.opacity = '0.0';
+    text_mid_div.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        textmidDiv.childNodes[0].style.display = 'none';
-        textmidDiv.childNodes[1].style.display = 'block';
+        text_mid_div.childNodes[0].style.display = 'none';
+        text_mid_div.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          textmidDiv.childNodes[1].style.opacity = '1.0';
+          text_mid_div.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    imgRightDiv.childNodes[0].style.opacity = '0.0';
+    img_right_div.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        imgRightDiv.childNodes[0].style.display = 'none';
-        imgRightDiv.childNodes[1].style.display = 'block';
+        img_right_div.childNodes[0].style.display = 'none';
+        img_right_div.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          imgRightDiv.childNodes[1].style.opacity = '1.0';
+          img_right_div.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
       });
     }, 400);
 
-    texRightDiv.childNodes[0].style.opacity = '0.0';
+    text_right_div.childNodes[0].style.opacity = '0.0';
     setTimeout(() => {
       try {
-        texRightDiv.childNodes[0].style.display = 'none';
-        texRightDiv.childNodes[1].style.display = 'block';
+        text_right_div.childNodes[0].style.display = 'none';
+        text_right_div.childNodes[1].style.display = 'block';
       } catch (error) {
         console.error(error);
       }
       setTimeout(() => {
         try {
-          texRightDiv.childNodes[1].style.opacity = '1.0';
+          text_right_div.childNodes[1].style.opacity = '1.0';
         } catch (error) {
           console.error(error);
         }
@@ -1262,9 +1262,9 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
   }
 
   let main_text = undefined
-  if (!IsEmptyOrWhiteSpace(zone.main_text)){
+  if (!is_empty_or_white_space(zone.main_text)){
     main_text = (
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.main_text}
         </ReactMarkdown>
     )
@@ -1283,18 +1283,18 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                 <div className='d-flex align-items-center justify-content-center'> 
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_front.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
+                    alt={is_empty_or_white_space(zone.image_left_front.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_front.alternativeText}
                     style={{display:'block', opacity:1, transition:'0.3s',width:'200px'}}
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_left_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_back.alternativeText}
+                    alt={is_empty_or_white_space(zone.image_left_back.alternativeText) ? 'Interactive_frame_left_front_image' : zone.image_left_back.alternativeText}
                     style={{display:'none', opacity:0, transition:'0.3s', width:'200px'}}
                   />
                 </div>
               </Row>
               <Row className='p-3'>
-                <div className='text-center CaptionText gray-text'>
+                <div className='text-center caption-text gray-text'>
                   <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
                     {zone.cap_text_left_front}
                   </ReactMarkdown>
@@ -1308,7 +1308,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
           <Col xs={5} className='justify-content-between d-flex flex-column'>
               <Row className='d-flex justify-content-center'></Row>
               <Row className='d-flex justify-content-center' >
-                <Col xs={{span:9}} className='text-center gray-text SubText'>
+                <Col xs={{span:9}} className='text-center gray-text sub-text'>
                   <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
                     {zone.cap_text_mid_front}
                   </ReactMarkdown>
@@ -1350,18 +1350,18 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
                 <div className='d-flex align-items-center justify-content-center '> 
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_front.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
+                    alt={is_empty_or_white_space(zone.image_right_front.alternativeText) ? 'Interactive_frame_right_front_image' : zone.image_right_front.alternativeText}
                     style={{display:'block', opacity:1, transition:'0.3s',width:'200px'}}
                   />
                   <img
                     src={`${process.env.REACT_APP_strapiURL}${zone.image_right_back.url}`}
-                    alt={IsEmptyOrWhiteSpace(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
+                    alt={is_empty_or_white_space(zone.image_right_back.alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right_back.alternativeText}
                     style={{display:'none', opacity:0, transition:'0.3s',width:'200px'}}
                   />
                 </div>
               </Row>
               <Row className='p-3'>
-                <div className='text-center CaptionText gray-text'>
+                <div className='text-center caption-text gray-text'>
                   <ReactMarkdown style={{display:'block', opacity:1, transition:'0.3s'}}>
                     {zone.cap_text_right_front}
                   </ReactMarkdown>
@@ -1377,7 +1377,7 @@ const InteractiveFrame3 = (zone, index, jsonObject) =>{
   )
 }
 
-const InteractiveFrame4 = (zone, index, jsonObject) => {
+const interactive-frame4 = (zone, index, json_object) => {
 
   const frameWithTwoImage = (zone) =>{
     return(
@@ -1387,19 +1387,19 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           <Col xs={6} className='align-self-end'>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
-                id='InteractiveFrame4ImageS'
+                alt={is_empty_or_white_space(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+                id='interactive-frame4-image-S'
             />
           </Col>
           <Col xs={6}>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[1].url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_left[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[1].alternativeText}
-                id='InteractiveFrame4ImageM'
+                alt={is_empty_or_white_space(zone.image_left[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[1].alternativeText}
+                id='interactive-frame4-image-M'
               />
           </Col>
         </Row>
-        <Row className='text-center CaptionText gray-text mt-4 light-blue-background '>
+        <Row className='text-center caption-text gray-text mt-4 light-blue-background '>
           <ReactMarkdown className='mt-3'>
             {zone.text_left}
           </ReactMarkdown>
@@ -1407,7 +1407,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
       </Col>
 
       <Col xs={3} className='d-flex justify-content-center align-items-end'>
-        <ReactMarkdown className='SubText text-center gray-text'>
+        <ReactMarkdown className='sub-text text-center gray-text'>
           {zone.text_mid}
         </ReactMarkdown>
       </Col>
@@ -1417,19 +1417,19 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           <Col xs={6} className='align-self-end'>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
-                id='InteractiveFrame4ImageS'
+                alt={is_empty_or_white_space(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+                id='interactive-frame4-image-S'
               />
           </Col>
           <Col xs={6}>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[1].url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_right[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[1].alternativeText}
-                id='InteractiveFrame4ImageM'
+                alt={is_empty_or_white_space(zone.image_right[1].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[1].alternativeText}
+                id='interactive-frame4-image-M'
               />
           </Col>
         </Row>
-        <Row className='text-center CaptionText gray-text mt-4 light-blue-background'>
+        <Row className='text-center caption-text gray-text mt-4 light-blue-background'>
           <ReactMarkdown className='mt-3'>
             {zone.text_right}
           </ReactMarkdown>
@@ -1446,12 +1446,12 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           <Col className='d-flex justify-content-center'>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_left[0].url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
-                id='InteractiveFrame4ImageL'
+                alt={is_empty_or_white_space(zone.image_left[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_left[0].alternativeText}
+                id='interactive-frame4-image-L'
             />
           </Col>
         </Row>
-        <Row className='text-center CaptionText gray-text mt-4 light-blue-background'>
+        <Row className='text-center caption-text gray-text mt-4 light-blue-background'>
           <ReactMarkdown className='mt-3'>
             {zone.text_left}
           </ReactMarkdown>
@@ -1459,7 +1459,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
       </Col>
 
       <Col xs={3} className='d-flex justify-content-center align-items-end'>
-        <ReactMarkdown className='SubText text-center gray-text'>
+        <ReactMarkdown className='sub-text text-center gray-text'>
           {zone.text_mid}
         </ReactMarkdown>
       </Col>
@@ -1469,12 +1469,12 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
           <Col className='d-flex justify-content-center'>
             <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image_right[0].url}`}
-                alt={IsEmptyOrWhiteSpace(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
-                id='InteractiveFrame4ImageL'
+                alt={is_empty_or_white_space(zone.image_right[0].alternativeText) ? 'Interactive_frame_right_back_image' : zone.image_right[0].alternativeText}
+                id='interactive-frame4-image-L'
               />
           </Col>
         </Row>
-        <Row className='text-center CaptionText gray-text mt-4 light-blue-background'>
+        <Row className='text-center caption-text gray-text mt-4 light-blue-background'>
           <ReactMarkdown className='mt-3'>
             {zone.text_right}
           </ReactMarkdown>
@@ -1589,7 +1589,7 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
       <Container className='my-3'>
-        <ReactMarkdown className='orange-text MainText text-center'>
+        <ReactMarkdown className='orange-text main-text text-center'>
           {zone.title}
         </ReactMarkdown>
       </Container>
@@ -1663,11 +1663,11 @@ const InteractiveFrame4 = (zone, index, jsonObject) => {
   );
 }
 
-const Testframe =(zone, index, jsonObject) =>{
+const Testframe =(zone, index, json_object) =>{
 
   let instance = []
-  for (var i = 0; i < jsonObject.results.bindings.length; i++){
-    instance.push(jsonObject.results.bindings[i].image.value)
+  for (var i = 0; i < json_object.results.bindings.length; i++){
+    instance.push(json_object.results.bindings[i].image.value)
   }
 
   return(
@@ -1682,7 +1682,7 @@ const Testframe =(zone, index, jsonObject) =>{
           </Row>
           <Row>
             <img
-              src={jsonObject.results.bindings[0].image.value} 
+              src={json_object.results.bindings[0].image.value} 
               alt= {'test img link 2'}
               style={{'max-height':'180px','max-width':'180px'}}
             />
@@ -1698,18 +1698,18 @@ const Testframe =(zone, index, jsonObject) =>{
     </div>
   )
 }
-const Testframe2 =(zone, index, jsonObject) =>{
+const Testframe2 =(zone, index, json_object) =>{
 
   let instance = []
-  for (var i = 0; i < jsonObject.results.bindings.length; i++){
-    instance.push(jsonObject.results.bindings[i].instanceLabel.value)
+  for (var i = 0; i < json_object.results.bindings.length; i++){
+    instance.push(json_object.results.bindings[i].instanceLabel.value)
   }
 
   return(
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url})`}}>
         <Container>
           <Row>
-            {jsonObject.results.bindings[0].instanceLabel.value}
+            {json_object.results.bindings[0].instanceLabel.value}
           </Row>
           <Row>
             {instance[0]}
@@ -1721,59 +1721,59 @@ const Testframe2 =(zone, index, jsonObject) =>{
 
 // This function is for mapping name and functions over.
 // Did this for organization really. 
-const SwitchComponent = (zone, index, jsonObject, fullpageApi,) => {
+const SwitchComponent = (zone, index, json_object, fullpageApi,) => {
   let jsx = undefined;
   switch (zone.__component) {
     case 'frame.title':
-      jsx = Title(zone, index, jsonObject);
+      jsx = Title(zone, index, json_object);
       break;
     case 'frame.endframe':
-      jsx = End_Frame(zone, index,jsonObject);
+      jsx = End_Frame(zone, index,json_object);
       break;
     case 'frame.frame1':
-      jsx = Frame1(zone, index,jsonObject);
+      jsx = Frame1(zone, index,json_object);
       break;
     case 'frame.frame2':
-      jsx = Frame2(zone, index,jsonObject);
+      jsx = Frame2(zone, index,json_object);
       break;
     case 'frame.frame3':
-      jsx = Frame3(zone, index,jsonObject);
+      jsx = Frame3(zone, index,json_object);
       break;
     case 'frame.frame4':
-      jsx = Frame4(zone, index,jsonObject);
+      jsx = Frame4(zone, index,json_object);
       break;
     case 'frame.frame5':
-      jsx = Frame5(zone, index, jsonObject);
+      jsx = Frame5(zone, index, json_object);
       break;
     case 'frame.frame6':
-      jsx = Frame6(zone, index, jsonObject);
+      jsx = Frame6(zone, index, json_object);
       break;
     case 'frame.frame7':
-      jsx = Frame7(zone, index, jsonObject);
+      jsx = Frame7(zone, index, json_object);
       break;
     case 'frame.frame8':
-      jsx = Frame8(zone, index, jsonObject);
+      jsx = Frame8(zone, index, json_object);
       break;
     case 'frame.frame9':
-      jsx = Frame9(zone, index, jsonObject);
+      jsx = Frame9(zone, index, json_object);
       break; 
     case 'frame.interactive-frame1':
-      jsx = InteractiveFrame1(zone, index, jsonObject);
+      jsx = interactive-frame1(zone, index, json_object);
       break;
     case 'frame.interactive-frame2':
-      jsx = InteractiveFrame2(zone, index, jsonObject);
+      jsx = interactive-frame2(zone, index, json_object);
       break;
     case 'frame.interactive-frame3':
-      jsx = InteractiveFrame3(zone, index, jsonObject);
+      jsx = interactive-frame3(zone, index, json_object);
       break;
     case 'frame.interactive-frame4':
-      jsx = InteractiveFrame4(zone, index, jsonObject);
+      jsx = interactive-frame4(zone, index, json_object);
       break;
     case 'frame.testframe':
-      jsx = Testframe(zone, index, jsonObject);
+      jsx = Testframe(zone, index, json_object);
       break;
     case 'frame.testframe2':
-      jsx = Testframe2(zone, index, jsonObject);
+      jsx = Testframe2(zone, index, json_object);
       break;
     default:
       console.error(`Error: Unrecognized component '${zone.__component}'`);
