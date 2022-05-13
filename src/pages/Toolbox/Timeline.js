@@ -175,7 +175,7 @@ const default_event_data = {
 };
 
 
-function setup_timeline_background(obj) {
+function SetupTimelineBackground(obj) {
   let res = obj.res.data;
   let y_offset = obj.y_offset;
   // Push background backdrop react-native-svg elements onto render array for react to load
@@ -394,7 +394,7 @@ function setup_timeline_background(obj) {
   return { jsx_arr, view_box_min_height, view_box_total_height };
 }
 
-function load_timeline_info(obj) {
+function LoadTimelineInfo(obj) {
   let res = obj.res.data.data.attributes;
   let y_offset = obj.y_offset;
   let view_box_min_height = obj.view_box_min_height;
@@ -412,6 +412,7 @@ function load_timeline_info(obj) {
       ...coin_info,
       id: e.id,
     });
+    
     return (
       <Image
         id={e.id}
@@ -537,7 +538,7 @@ const Timeline = () => {
             console.error(err);
             return;
           }
-          let result_from_setup_timeline_background = setup_timeline_background({res,err, y_offset, });
+          let result_from_setup_timeline_background = SetupTimelineBackground({res,err, y_offset, });
 
           set_view_box_total_height(result_from_setup_timeline_background.view_box_total_height);
           set_view_box_min_height(result_from_setup_timeline_background.view_box_min_height);
@@ -559,7 +560,7 @@ const Timeline = () => {
               if (!timeline_background_is_loading) {
                 clearInterval(timeline_info_interval);
 
-                let tmp = load_timeline_info({res, y_offset, view_box_min_height, coins, events, update_coin_info, update_event_info});
+                let tmp = LoadTimelineInfo({res, y_offset, view_box_min_height, coins, events, update_coin_info, update_event_info});
 
                 set_timeline_events_and_coins(tmp.jsx_arr);
                 coins = tmp.coin_info_arr;

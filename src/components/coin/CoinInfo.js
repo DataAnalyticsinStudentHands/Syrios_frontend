@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 
@@ -37,8 +36,6 @@ const CoinInfo = (props) => {
     props.onClose(false);
   };
 
-  console.log(props.coinMetaData);
-
   return (
     <WhitePopUp show={props.show} onClose={closeHandler}>
       <div className='coin-info'>
@@ -50,7 +47,7 @@ const CoinInfo = (props) => {
         </div>
         <div className='coin-details'>
           <div className='coin-title dark-blue-text'>
-            {`${props.coinMetaData.mint}`}
+            <span style={{ fontSize: '1.5em' }}>{`${props.coinMetaData.coin_id}`}</span>
           </div>
           {/* column 1 of coin details */}
           <div className='coin-ancient-territory'>
