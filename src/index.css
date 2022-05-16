@@ -12,6 +12,11 @@ code {
   monospace;
 }
 
+/* Make all a elements inherit styling */
+body > div > a {
+  text-decoration: none;
+}
+
 /* Load syrios-entypo-subset font */
 @font-face {
   font-family: 'syrios-entypo-subset';

@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 
 import 'src/components/constants.css';
 import './Stories.css';
-import 'src/components/coin/coinFlip.css';
+import 'src/components/coin/CoinFlip.css';
 
 function is_empty_or_white_space(str) {
   return str===undefined ? true : (str.match(/^\s*$/) || []).length > 0;

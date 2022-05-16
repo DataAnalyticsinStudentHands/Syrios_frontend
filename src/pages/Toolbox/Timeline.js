@@ -429,7 +429,7 @@ function LoadTimelineInfo(obj) {
 
   res.zone.forEach((e) => {
     switch (e.__component) {
-      case 'timeline-objects.coin':
+      case 'timeline-objects.single-coin':
         jsx_arr.push(SetupCoin(e));
         break;
       case 'timeline-objects.connected_coins':

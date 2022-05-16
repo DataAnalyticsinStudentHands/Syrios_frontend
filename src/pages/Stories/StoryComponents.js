@@ -3,7 +3,7 @@
 // import backGround from 'src/assets/background.jpg';
 import 'src/components/constants.css';
 import './Stories.css';
-import 'src/components/coin/coinFlip.css';
+import 'src/components/coin/CoinFlip.css';
 
 import Title from 'src/components/StoryComponents/StoryFrames/Title';
 import End_Frame from 'src/components/StoryComponents/StoryFrames/End_Frame';

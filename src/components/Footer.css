@@ -1,7 +1,7 @@
 @import url(src/components/constants.css);
 
 /* a {
-  color: #183848;
+color: #183848;
 } */
 
 #footer {
@@ -98,11 +98,19 @@
 }
 
 .list-items p {
-  word-wrap: break-word;
 }
 
 .list-items p a {
+  color: #183848;
+  white-space: normal;
+  width: 100%;
+  height: auto;
   word-wrap: break-word;
+  transition: 0.3s;
+}
+
+.list-items p a:hover {
+  color: #486678;
 }
 
 .credits-and-references-list[title]::before {
