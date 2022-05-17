@@ -15,17 +15,6 @@
   opacity: 0;
 }
 
-#event-info-x-icon {
-  font-size: 50px;
-  color: #7899A8;
-  cursor: pointer;
-
-  position: absolute;
-  top: 0px;
-  right: -10px;
-  z-index: 1000;
-}
-
 #event-info {
   width: 80vw;
   max-width: 800px;

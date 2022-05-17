@@ -36,11 +36,6 @@ const EventInfo = (props) => {
   return (
     <WhitePopUp show={props.show} onClose={closeHandler}>
       <div id='event-info'>
-        <i
-          id='event-info-x-icon'
-          className='demo-icon icon-x-medium'
-          onClick={closeHandler}>
-          &#xe838;</i>
         <div id='event-info-inner-div'>
           {/* tags */}
           <p id='event-tags-title' className='gray-text'>
