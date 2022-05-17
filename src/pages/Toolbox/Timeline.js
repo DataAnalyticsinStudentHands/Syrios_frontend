@@ -408,6 +408,7 @@ function LoadTimelineInfo(obj) {
   let event_info_arr = [];
 
   const SetupCoin = (e) => {
+    const coin_pair = e.coin_pair == null ? undefined : e.coin_pair;
     let coin_info = e.coin.data.attributes;
     coin_info_arr.push({
       ...coin_info,
@@ -416,34 +417,24 @@ function LoadTimelineInfo(obj) {
 
     if (coin_info.obverse_file.data == null && coin_info.reverse_file.data == null) 
       return (
-        <>
-          <Circle
-            className='coin-image'
-            fill='white'
-            stroke='#173847'
-            strokeWidth='.5'
-            cx={e.x - coin_size / 5}
-            cy={e.y + Math.abs(view_box_min_height) + y_offset * 1.7 - coin_size / 2}
-            r={coin_size / 2.5}
-          />
-          <Text
-            id={e.id}
-            key={`coin_image${e.id}`}
-            className='coin-image'
-            x={e.x - coin_size / 2}
-            y={e.y + Math.abs(view_box_min_height) + y_offset * 1.8 - coin_size / 2}
-            width={coin_size / 400}
-            onClick={update_coin_info}
-            style={{fontSize: '1px'}}>
-            No Image
-          </Text>
-        </>
+        <Circle
+          id={e.id}
+          key={`coin_image${e.id}${coin_pair}`}
+          className='coin-image'
+          fill='white'
+          stroke='#173847'
+          strokeWidth='.5'
+          cx={e.x - coin_size / 5}
+          cy={e.y + Math.abs(view_box_min_height) + y_offset * 1.7 - coin_size / 2}
+          onClick={update_coin_info}
+          r={coin_size / 2.5}
+        />
       );
-   
+
     return (
       <Image
         id={e.id}
-        key={`coin_image${e.id}`}
+        key={`coin_image_${e.id}${coin_pair}`}
         className='coin-image'
         x={e.x - coin_size / 2}
         y={e.y + Math.abs(view_box_min_height) + y_offset - coin_size / 2}
@@ -459,11 +450,11 @@ function LoadTimelineInfo(obj) {
       case 'timeline-objects.single-coin':
         jsx_arr.push(SetupCoin(e));
         break;
-      case 'timeline-objects.connected_coins':
+      case 'timeline-objects.connected-coins':
         jsx_arr.push(
           <Path
-            d={`M${e.parent_x} ${e.parent_y+Math.abs(view_box_min_height)+y_offset} S${e.parent_x} ${e.child_y+Math.abs(view_box_min_height)+y_offset} ${e.child_x} ${e.child_y+Math.abs(view_box_min_height)+y_offset}`}
-            key={`path${e.id}`}
+            d={`M${e.coin_a_x} ${e.coin_a_y+Math.abs(view_box_min_height)+y_offset} S${e.coin_a_x} ${e.coin_b_y+Math.abs(view_box_min_height)+y_offset} ${e.coin_b_x} ${e.coin_b_y+Math.abs(view_box_min_height)+y_offset}`}
+            key={`path_${e.id}`}
             stroke='#173847'
             fill='none'
             strokeWidth={coin_stroke_width*2}
@@ -474,14 +465,16 @@ function LoadTimelineInfo(obj) {
           ...e,
           x: e.coin_b_x,
           y: e.coin_b_y,
-          id: e.coin_b.id,
+          id: e.coin_b.data.id,
+          coin_pair: 0,
           coin: e.coin_b
         }));
         jsx_arr.push(SetupCoin({
           ...e,
           x: e.coin_a_x,
           y: e.coin_a_y,
-          id: e.coin_a.id,
+          id: e.coin_a.data.id,
+          coin_pair: 1,
           coin: e.coin_a
         }));
         break;
