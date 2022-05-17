@@ -33,7 +33,7 @@
   transition: 0.1s;
 }
 
-.x-icon {
+.white-pop-up-x-icon {
   font-size: 50px;
   color: #7899A8;
   cursor: pointer;
@@ -42,6 +42,12 @@
   top: 0px;
   right: -10px;
   z-index: 1000;
+
+  transition: 0.3s;
+}
+
+.white-pop-up-x-icon:hover {
+  color: #183848;
 }
 
 .white-pop-up-inner-padding {

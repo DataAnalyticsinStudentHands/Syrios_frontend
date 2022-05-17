@@ -4,7 +4,8 @@ import Svg, {
   Text,
   Line,
   Rect,
-  Image
+  Image,
+  Circle
 } from 'react-native-svg';
 import axios from 'axios';
 
@@ -412,7 +413,33 @@ function LoadTimelineInfo(obj) {
       ...coin_info,
       id: e.id,
     });
-    
+
+    if (coin_info.obverse_file.data == null && coin_info.reverse_file.data == null) 
+      return (
+        <>
+          <Circle
+            className='coin-image'
+            fill='white'
+            stroke='#173847'
+            strokeWidth='.5'
+            cx={e.x - coin_size / 5}
+            cy={e.y + Math.abs(view_box_min_height) + y_offset * 1.7 - coin_size / 2}
+            r={coin_size / 2.5}
+          />
+          <Text
+            id={e.id}
+            key={`coin_image${e.id}`}
+            className='coin-image'
+            x={e.x - coin_size / 2}
+            y={e.y + Math.abs(view_box_min_height) + y_offset * 1.8 - coin_size / 2}
+            width={coin_size / 400}
+            onClick={update_coin_info}
+            style={{fontSize: '1px'}}>
+            No Image
+          </Text>
+        </>
+      );
+   
     return (
       <Image
         id={e.id}
@@ -605,11 +632,13 @@ const Timeline = () => {
       <CoinInfo 
         onClose={coin_info_popup_close_handler}
         show={show_coin_info}
-        coinMetaData={coin_meta_data}/>
+        coinMetaData={coin_meta_data}
+      />
       <EventInfo
         onClose={event_info_popup_close_handler}
         show={show_event_info}
-        eventMetaData={event_meta_data}/>
+        eventMetaData={event_meta_data}
+      />
       <Footer />
     </div>
   );

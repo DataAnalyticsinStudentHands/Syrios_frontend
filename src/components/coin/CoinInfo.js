@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 
@@ -141,6 +141,113 @@ const References = (props) => {
     );
 }
 
+export function CoinScaleAndFlip(props) {
+  const [coin_rotation, set_coin_rotation] = useState('rotateY(0deg)');
+  const [img_height, set_img_height] = useState('100%');
+  const [dotted_circle_height, set_dotted_circle_height] = useState('0%');
+  const [is_img_scaled, set_is_img_scaled] = useState(false);
+  const [size_diameter_jsx, set_size_diameter_jsx] = useState('0');
+
+  const ResetCoin = () => {
+    set_coin_rotation('rotateY(0deg)');
+    set_img_height('100%');
+    set_dotted_circle_height('0%');
+    set_is_img_scaled(false);
+  };
+
+  useEffect(() => {
+    ResetCoin();
+  }, [props.coinMetaData]);
+
+  useEffect(() => {
+    if (is_img_scaled)
+      set_size_diameter_jsx('1em');
+    else
+      set_size_diameter_jsx('0');
+  }, [is_img_scaled, props.coinMetaData.diameter]);
+
+  const ScaleCoin = () => {
+    if (is_img_scaled) {
+      set_dotted_circle_height('0%');
+      set_img_height('100%');
+    } else {
+      set_dotted_circle_height('80%');
+
+      // I did some tricky math to get these numbers. 
+      // jk it's just proportionalities with the dotted circle's height and the 
+      // fact that the dotted circle is 50mm
+      const box_percent = 100;
+      const box_height_mm = 62.5;
+      let height_of_coin_percent = (box_percent / box_height_mm) * props.coinMetaData.diameter;
+
+      if (height_of_coin_percent == null || height_of_coin_percent === 0) {
+        height_of_coin_percent = 5;
+      }
+
+      set_img_height(`${height_of_coin_percent}%`);
+    }
+    
+    set_is_img_scaled(!is_img_scaled);
+  };
+
+  const RotateCoin = () => {
+    if (coin_rotation.includes('(0deg)')) {
+      set_coin_rotation('rotateY(180deg)');
+    } else {
+      set_coin_rotation('rotateY(0deg)');
+    }
+  };
+
+  if (props.coinMetaData.obverse_file.data == null || props.coinMetaData.reverse_file.data == null)
+    return (
+      <div className='coin-image-box'>
+        <div className='coin-info-no-image dark-blue-text'>
+          No image
+        </div>
+      </div>
+    );
+
+  return (
+    <div className='coin-image-box'>
+      <div className='coin-info-dotted-circle' style={{height: dotted_circle_height}}/>
+      <div className='coin-info-image-diameter-box dark-blue-text' style={{fontSize: size_diameter_jsx}}>
+        DIAMETER: {props.coinMetaData.diameter == null ? 'N/A' : `${props.coinMetaData.diameter}mm`}
+        </div>
+        <div className='flip-box'>
+          <div className='flip-box-inner' style={{ transform: coin_rotation }}>
+          <div className='flip-box-front'>
+            <img
+              alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
+              className='coin-info-image-flip coin-info-image-flip-front'
+              src={process.env.REACT_APP_strapiURL + props.coinMetaData.obverse_file.data.attributes.url}
+              height={img_height}
+            />
+          </div>
+          <div className='flip-box-back'>
+            <img
+              alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
+              className='coin-info-image-flip coin-info-image-flip-back'
+              src={process.env.REACT_APP_strapiURL + props.coinMetaData.reverse_file.data.attributes.url}
+              height={img_height}
+            />
+          </div>
+        </div>
+      </div>
+      {/*** Scale and Rotate button. MUST be rendered after coin image ***/}
+      <i
+        className='demo-icon coin-info-icon-rotate'
+        onClick={RotateCoin}>
+        &#xe833;
+      </i>   
+      <i
+        className='demo-icon coin-info-scale-icon'
+        onClick={ScaleCoin}>
+      &#xe834;
+      </i>
+    </div>
+  );
+}
+
 
 const CoinInfo = (props) => {
   /*** Coin info that shows up when you click on a coin.
@@ -150,48 +257,16 @@ const CoinInfo = (props) => {
       Lastly, this uses CSS grid to position elements in a formative way ***/
   props.coinMetaData.coin_title = CoinIdIntoTitle(props.coinMetaData.coin_id);
 
-  const [coin_rotation, set_coin_rotation] = useState('rotateY(0deg)');
-  const RotateCoin = () => {
-    if (coin_rotation.includes('(0deg)')) {
-      set_coin_rotation('rotateY(180deg)');
-    } else {
-      set_coin_rotation('rotateY(0deg)');
-    }
-  };
-
   const CloseHandler = (e) => { 
-    set_coin_rotation('rotateY(0deg)');
     props.onClose(false);
   };
-
-  console.log(props.coinMetaData);
+  
   return (
     <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div className='coin-info'>
-        <i
-          className='coin-info-x-icon demo-icon icon-x-medium'
-          onClick={CloseHandler}>
-          &#xe838;</i>
         {/*** coin image ***/}
         <div className='coin-info-image'>
-          <div className='flip-box'>
-            <div className='flip-box-inner'>
-              <div className='flip-box-front'>
-                <img
-                  alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
-                  className='coin-info-image-flip coin-info-image-flip-front'
-                  src={process.env.REACT_APP_strapiURL + props.coinMetaData.obverse_file.data.attributes.url}
-                />
-              </div>
-              <div className='flip-box-back'>
-                <img
-                  alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
-                  className='coin-info-image-flip coin-info-image-flip-back'
-                  src={process.env.REACT_APP_strapiURL + props.coinMetaData.obverse_file.data.attributes.url}
-                />
-              </div>
-            </div>
-          </div>
+          <CoinScaleAndFlip coinMetaData={props.coinMetaData} />
         </div>
         {/*** coin details ***/}
         <div className='coin-info-details-background'>

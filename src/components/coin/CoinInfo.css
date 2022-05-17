@@ -44,8 +44,75 @@
   grid-template-rows: repeat(2, 1fr);
 }
 
+/*** COIN INFO IMAGE SECTION ***/
 .coin-info-image {
   grid-area: 1 / 1 / 2 / 2;
+}
+
+.coin-image-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.coin-info-icon-rotate {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  margin: 15px;
+
+  color: #7899A8;
+  font-size: 2.5em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.coin-info-icon-rotate:hover {
+  color: #183848;
+}
+
+.coin-info-scale-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 15px;
+
+  color: #7899A8;
+  font-size: 2.5em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.coin-info-scale-icon:hover {
+  color: #183848;
+}
+
+:root {
+  --coin-info-coin-image-translate-x: -50%;
+  --coin-info-coin-image-translate-y: -50%;
+}
+
+.coin-info-dotted-circle {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(var(--coin-info-coin-image-translate-x), var(--coin-info-coin-image-translate-y));
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.coin-info-dotted-circle:before {
+  position: absolute;
+  content: '';
+  height: calc(100% + 10px); 
+  width: calc(100% + 10px); 
+  border: 1px dashed black;
+  top: -13px;
+  left: -13px;
+  border-radius: inherit;
 }
 
 .coin-info-image-flip {
@@ -53,12 +120,30 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(calc(var(--coin-info-coin-image-translate-x) + 7%), calc(var(--coin-info-coin-image-translate-y) + 2%));
   max-width: 100%;
   max-height: 70%;
   transition: 0.5s;
 }
 
+.coin-info-image-diameter-box {
+  margin: 0;
+  position: absolute;
+  top: 78%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+
+  transition: 0.5s;
+}
+
+.coin-info-no-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*** COIN INFO DETAILS SECTION ***/
 .coin-info-details-background {
   grid-area: 1 / 2 / 2 / 3; 
 }
@@ -96,6 +181,7 @@
 .coin-info-longitude { grid-area: 4 / 3 / 5 / 4; }
 .coin-info-categories { grid-area: 5 / 3 / 7 / 4; } 
 
+/*** COIN INFO TYPES SECTION ***/
 .coin-info-types {
   grid-area: 2 / 1 / 3 / 2;
   display: grid;
@@ -110,6 +196,7 @@
 .coin-info-reverse-type { grid-area: 3 / 1 / 4 / 2; }
 .coin-info-reverse-legend { grid-area: 4 / 1 / 5 / 2; }
 
+/*** COIN INFO SOURCE MATERIALS AND REFERENCES SECTION ***/
 .coin-info-source-material-background {
   background-color: rgba(240, 224, 192, 0.5);
   grid-area: 2 / 2 / 3 / 3;
