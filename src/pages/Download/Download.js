@@ -51,8 +51,7 @@ function Download(){
     }),
     onSubmit: (values,{resetForm})=>{
 
-      let apiURL = `http://localhost:1337/download/send_email`
-      axios.post(apiURL, values)
+      axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
         .then( 
           resetForm()
         ).catch(err =>{
