@@ -19,7 +19,7 @@ const Frame6 = (zone, index) =>{
     if (zone.left_right_switch){
       frame_body=(
         <>
-          <Col xs={(12/grid[zone.grid])-1}>
+          <Col xs={(12/grid[zone.grid])-1} className='gray-text caption-text text-center'>
             {SubCapBlueBg(zone.text6)}
           </Col>
           <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
@@ -34,7 +34,7 @@ const Frame6 = (zone, index) =>{
           <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
             {SubcomponentImage(zone.image6)}
           </Col>
-          <Col xs={(12/grid[zone.grid])-1}>
+          <Col xs={(12/grid[zone.grid])-1} className='gray-text caption-text text-center'>
             {SubCapBlueBg(zone.text6)}
           </Col>
         </>
@@ -52,7 +52,7 @@ const Frame6 = (zone, index) =>{
           }}
         >
         <Container>
-          <Row className='d-flex justify-content-between align-items-center mb-5'>
+          <Row className='d-flex justify-content-between align-items-center'>
             {frame_body}
           </Row>
           <Row className='d-flex justify-content-center '>
@@ -75,7 +75,7 @@ const Frame6 = (zone, index) =>{
           }}
         >
         <Container>
-          <Row className='d-flex justify-content-center mb-5'>
+          <Row className='d-flex justify-content-center'>
               <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
               <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>

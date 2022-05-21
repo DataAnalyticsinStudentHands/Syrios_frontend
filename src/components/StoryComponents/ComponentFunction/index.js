@@ -28,7 +28,7 @@ export const BigSubText = (sub_text) =>{
   if(!IsEmptyOrWhiteSpace(sub_text)){
     big_sub_text_jsx=(
       <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='blue-text BigSubText text-center'>
+        <ReactMarkdown className='blue-text big-sub-text text-center'>
           {sub_text}
         </ReactMarkdown>
       </Container>
@@ -44,7 +44,7 @@ export const SubText = (sub_text) =>{
   if(!IsEmptyOrWhiteSpace(sub_text)){
     sub_text_jsx=(
       <Container className='d-flex justify-content-center align-items-center'>
-        <ReactMarkdown className='blue-text sub_text text-center'>
+        <ReactMarkdown className='blue-text sub-text text-center'>
           {sub_text}
         </ReactMarkdown>
       </Container>
@@ -75,7 +75,7 @@ export const SubCapBlueBg = (text)=>{
   if(text.light_blue_background){
     return (
       <Container className='light-blue-background' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center SubText'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center sub-text'/>
         <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center caption-text'/>
       </Container>
     )
@@ -83,7 +83,7 @@ export const SubCapBlueBg = (text)=>{
   else if(text.light_yellow_background){
     return (
       <Container className='light-yellow-background' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center SubText'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center sub-text'/>
         <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center caption-text'/>
       </Container>
     )
@@ -91,7 +91,7 @@ export const SubCapBlueBg = (text)=>{
   else{
     return(
       <Container style={{padding: '20px', paddingTop: '20px'}}>
-        <div dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center SubText'/>
+        <div dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center sub-text'/>
         <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center caption-text'/>
       </Container>
     )
@@ -237,7 +237,7 @@ export const SubcomponentImageWithDynamicSizing = (images) => {
   return (
     <div>
       <Container>
-        <Row style={{ marginTop: '80px', marginBottom: '150px'}} className='d-flex justify-content-center align-items-end'>
+        <Row className='d-flex justify-content-center align-items-end mt-3 mb-5'>
           {images_jsx}
         </Row>
       </Container>

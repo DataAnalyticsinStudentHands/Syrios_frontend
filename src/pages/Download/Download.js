@@ -42,7 +42,7 @@ function Download(){
     validationSchema:Yup.object({
       fullName: Yup.string()
       .min(7, '* Names must have at least 7 characters')
-      .max(30, "* Names can't be longer than 100 characters")
+      .max(30, "* Names can't be longer than 30 characters")
       .required('* Full name is required'),
       email:Yup.string()
       .email('* Must be a valid email address')
@@ -98,7 +98,7 @@ function Download(){
                       &#xe810;</i>
                   </Col>
                   <Col xs={9}>
-                    <Row className='orange-text' id='download-sub-title'>
+                    <Row className='orange-text mb-3' id='download-sub-title'>
                       {title}
                     </Row>
                     <Row className='gray-text' id='download-sub-text'>
@@ -107,22 +107,20 @@ function Download(){
                     </Row>
                   </Col>
                 </Row>
-                <Row className='my-5'>
+
+                <Row className=''>
                   <img
                     alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
                     className='frame-image'
                     src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
                   />
-
                 </Row>
               </div>
             </Col>
             <Col xs={3}>
               <Container className='d-flex flex-column align-items-center'>
-                <Row className='text-center'>
-                  <p>
+                <Row className='text-center gray-text'>
                     Please provide your your name and email address in the form below to start the download.
-                  </p>
                 </Row>
                 <Row className='light-blue-background my-5 d-flex justify-content-center'>
                   <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
