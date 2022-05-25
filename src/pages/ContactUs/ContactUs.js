@@ -77,16 +77,16 @@ function ContactUs(){
               Contact Us
           </Row>
           <Row className='d-flex justify-content-between'>
-            <Col xs={4}>
+            <Col xs={3}>
                 <img
                     alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
                     src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
                     width='100%'
                 />
             </Col>
-            <Col xs={8}>
+            <Col xs={9}>
                 <Form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
-                    <Form.Group className='mb-5'>
+                    <Form.Group className='mb-3'>
                         <Form.Label className='gray-text' htmlFor='name'>Name</Form.Label>
                         <Form.Control 
                             type="text" 
@@ -97,7 +97,7 @@ function ContactUs(){
                         />
                         {formik.touched.name && formik.errors.name ? <p>{formik.errors.name}</p>: null}
                     </Form.Group>
-                    <Form.Group className='mb-5'>
+                    <Form.Group className='mb-3'>
                         <Form.Label className='gray-text' htmlFor='email'>Email</Form.Label>
                         <Form.Control 
                             type="email"
@@ -108,7 +108,7 @@ function ContactUs(){
                         />
                         {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>: null}
                     </Form.Group>
-                    <Form.Group className='mb-5'>
+                    <Form.Group className='mb-3'>
                         <Form.Label className='gray-text' htmlFor='phone'>Phone</Form.Label>
                         <Form.Control 
                             type="text" 
@@ -123,7 +123,7 @@ function ContactUs(){
                         <Form.Label className='gray-text'>Message</Form.Label>
                         <Form.Control
                             as="textarea"
-                            rows={10}
+                            rows={5}
                             name="writtenMessage"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
