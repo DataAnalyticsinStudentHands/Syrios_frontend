@@ -78,7 +78,7 @@ const Footer = (props) => {
           </Col>
           {/* CONTACT US */}
           <Col sm={3} xs={0}>
-            <Link to='/' className='bland-style d-none d-md-block'>
+            <Link to='/ContactUs' className='bland-style d-none d-md-block'>
               <p className='white-text footer-text center-div'>
                 CONTACT US
               </p>

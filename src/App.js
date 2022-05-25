@@ -14,6 +14,7 @@ import About from 'src/pages/bottomNavigation/About.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort.js';
 import Download from 'src/pages/Download/Download.js';
+import ContactUs from './pages/ContactUs/ContactUs';
 
 import background from 'src/assets/background.jpg';
 
@@ -40,6 +41,8 @@ function App() {
 					<Route path='/Evidence/ExploreTheEvidence' element={<ExploreTheEvidence />} />
 					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 					<Route path='/Download' element={<Download />} />
+					<Route path='/ContactUs' element={<ContactUs />} />
+
 				</Routes>
 			</BrowserRouter>
 		</div>

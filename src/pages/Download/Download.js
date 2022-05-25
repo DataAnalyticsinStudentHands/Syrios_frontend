@@ -58,10 +58,10 @@ function Download(){
           console.error(err)
         })
 
-      axios.get(process.env.REACT_APP_strapiURL + '/coins')
-        .then((res)=>set_coin_data(res.data))
-        .catch((err)=> console.error(err))
-      csv_link.current.link.click()
+      // axios.get(process.env.REACT_APP_strapiURL + '/api/coins')
+      //   .then((res)=>set_coin_data(res.data))
+      //   .catch((err)=> console.error(err))
+      //   csv_link.current.link.click()
     }
   })
 
