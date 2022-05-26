@@ -62,7 +62,7 @@ function Download(){
       values.emailTo=emailTo
       axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
         .then( resetForm())
-        .then(setSubmitButton(false))
+        .then(setSubmitButton(true))
         .then(setShow(true))
         .catch(err =>{console.error(err)})
 
