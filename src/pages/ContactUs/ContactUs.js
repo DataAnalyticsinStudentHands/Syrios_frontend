@@ -72,7 +72,6 @@ function ContactUs(){
         
         values.emailSubject=emailSubject
         values.emailTo=emailTo
-        console.log(values)
         axios.post(process.env.REACT_APP_strapiURL + '/api/contact-us', values)
             .then(resetForm())
             .then(setSubmitButton(false))
