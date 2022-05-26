@@ -4,6 +4,7 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { Container, Row, Col, Alert} from 'react-bootstrap';
 import axios from 'axios';
+import { saveAs } from 'file-saver';
 
 import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -65,6 +66,11 @@ function Download(){
         .then(setSubmitButton(true))
         .then(setShow(true))
         .catch(err =>{console.error(err)})
+      
+      saveAs(
+        `${process.env.PUBLIC_URL}/uploads/Syrios_Coin_Data.zip`,
+        'Syrios_Coin_Data.zip'
+      )
 
       // axios.get(process.env.REACT_APP_strapiURL + '/api/coins')
       //   .then((res)=>set_coin_data(res.data))
