@@ -21,6 +21,8 @@ function Download(){
   const [text, set_text] = useState(undefined);
   const [image, set_image] = useState(undefined);
 
+  const [emailSubject, setEmailSubject] = useState(undefined);
+  const [emailTo, setEmailTo] = useState(undefined);
 
   useEffect(()=>{
     if(is_loading){
@@ -29,6 +31,8 @@ function Download(){
           set_title(res.data.data.attributes.title);
           set_text(res.data.data.attributes.text);
           set_image(res.data.data.attributes.image);
+          setEmailSubject(res.data.data.attributes.emailSubject);
+          setEmailTo(res.data.data.attributes.emailTo);
           set_is_loading(false);
         });
     }
@@ -51,12 +55,11 @@ function Download(){
     }),
     onSubmit: (values,{resetForm})=>{
 
+      values.emailSubject=emailSubject
+      values.emailTo=emailTo
       axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
-        .then( 
-          resetForm()
-        ).catch(err =>{
-          console.error(err)
-        })
+        .then( resetForm())
+        .catch(err =>{console.error(err)})
 
       // axios.get(process.env.REACT_APP_strapiURL + '/api/coins')
       //   .then((res)=>set_coin_data(res.data))
