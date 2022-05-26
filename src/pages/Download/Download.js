@@ -1,6 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useFormik } from "formik"
-// import {CSVLink} from "react-csv"
 import * as Yup from "yup"
 import { Container, Row, Col, Alert} from 'react-bootstrap';
 import axios from 'axios';
@@ -15,8 +14,6 @@ import './Download.css';
 
 function Download(){
   const [is_loading, set_is_loading] = useState(true);
-  // const [coin_data, set_coin_data] = useState([]);
-  // const csv_link = useRef();
 
   const [submitButton, setSubmitButton] = useState(false)
   const [show, setShow] = useState(false)
@@ -69,13 +66,9 @@ function Download(){
       
       saveAs(
         `${process.env.PUBLIC_URL}/uploads/Syrios_Coin_Data.zip`,
+        // `http://localhost:1337/uploads/Syrios_Coin_Data.zip`,
         'Syrios_Coin_Data.zip'
       )
-
-      // axios.get(process.env.REACT_APP_strapiURL + '/api/coins')
-      //   .then((res)=>set_coin_data(res.data))
-      //   .catch((err)=> console.error(err))
-      //   csv_link.current.link.click()
     }
   })
 
@@ -173,13 +166,6 @@ function Download(){
                       <button type='submit' disabled={!formik.isValid || submitButton}>
                         Submit
                       </button>
-                      {/* <CSVLink
-                        data={coin_data}
-                        filename='coins.csv'
-                        className='hidden'
-                        ref={csv_link}
-                        target='_blank'
-                      /> */}
                     </div>
                   </form>
                 </Row>
