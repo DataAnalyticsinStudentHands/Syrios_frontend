@@ -68,7 +68,7 @@ function ContactUs(){
                 "message":values.writtenMessage
             }
         }
-        axios.post(process.env.REACT_APP_strapiURL + '/api/contact-user-info', data)
+        axios.post(process.env.REACT_APP_strapiURL + '/api/contact-user-infos', data)
         
         values.emailSubject=emailSubject
         values.emailTo=emailTo
