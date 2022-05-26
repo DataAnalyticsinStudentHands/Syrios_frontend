@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { Container, Row, Col, Form} from 'react-bootstrap';
+import { Container, Row, Col, Form, Alert} from 'react-bootstrap';
 import axios from 'axios';
 
 import Navbar from 'src/components/Navbar';
@@ -15,14 +15,21 @@ const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?
 
 function ContactUs(){
   const [is_loading, set_is_loading] = useState(true);
+  const [submitButton, setSubmitButton] = useState(false)
+  const [show, setShow] = useState(false)
 
   const [image, set_image] = useState(undefined);
+
+  const [emailSubject, setEmailSubject] = useState(undefined);
+  const [emailTo, setEmailTo] = useState(undefined);
 
   useEffect(()=>{
     if(is_loading){
       axios.get(process.env.REACT_APP_strapiURL + '/api/contact-us')
         .then((res)=>{
             set_image(res.data.data.attributes.image);
+            setEmailSubject(res.data.data.attributes.emailSubject);
+            setEmailTo(res.data.data.attributes.emailTo);
             set_is_loading(false);
         });
     }
@@ -52,8 +59,24 @@ function ContactUs(){
           .required('*Message required'),
       }),
     onSubmit: (values,{resetForm})=>{
+
+        const data = {
+            "data":{
+                "name":values.name,
+                "email":values.email,
+                "phone":values.phone,
+                "message":values.writtenMessage
+            }
+        }
+        axios.post(process.env.REACT_APP_strapiURL + '/api/contact-user-info', data)
+        
+        values.emailSubject=emailSubject
+        values.emailTo=emailTo
+        console.log(values)
         axios.post(process.env.REACT_APP_strapiURL + '/api/contact-us', values)
             .then(resetForm())
+            .then(setSubmitButton(false))
+            .then(setShow(true))
             .catch(err =>{console.error(err)})
     }
   })
@@ -72,7 +95,13 @@ function ContactUs(){
     <>
       <Navbar />
       <div id='contactus-page' className='d-flex align-items-center'>
+
         <Container className='my-5'>
+            <Row>
+                <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
+                    Thanks for contacting us, we will get back to you soon!
+                </Alert>
+            </Row>
           <Row className='blue-text text-center justify-content-center' id='contactus-title'>
               Contact Us
           </Row>
@@ -136,7 +165,7 @@ function ContactUs(){
                         <div className="error-message">{formik.errors.writtenMessage}</div>
                         ) : null}
                     </Form.Group>
-                    <button type='submit' disabled={!formik.isValid}>
+                    <button type='submit' disabled={!formik.isValid || submitButton} >
                         Submit
                     </button>
                 </Form>
