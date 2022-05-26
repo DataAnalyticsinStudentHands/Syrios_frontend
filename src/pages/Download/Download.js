@@ -65,9 +65,9 @@ function Download(){
         .catch(err =>{console.error(err)})
       
       saveAs(
-        `${process.env.PUBLIC_URL}/uploads/Syrios_Coin_Data.zip`,
+        `${process.env.PUBLIC_URL}/uploads/Antioch_Coins_63e8ba8dec.csv`,
         // `http://localhost:1337/uploads/Syrios_Coin_Data.zip`,
-        'Syrios_Coin_Data.zip'
+        'AntiochCoins.csv'
       )
     }
   })
