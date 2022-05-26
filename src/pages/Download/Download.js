@@ -1,8 +1,8 @@
 import React, {useEffect, useState, useRef} from 'react';
 import { useFormik } from "formik"
-import {CSVLink} from "react-csv"
+// import {CSVLink} from "react-csv"
 import * as Yup from "yup"
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col, Alert} from 'react-bootstrap';
 import axios from 'axios';
 
 import Navbar from 'src/components/Navbar';
@@ -14,8 +14,11 @@ import './Download.css';
 
 function Download(){
   const [is_loading, set_is_loading] = useState(true);
-  const [coin_data, set_coin_data] = useState([]);
-  const csv_link = useRef();
+  // const [coin_data, set_coin_data] = useState([]);
+  // const csv_link = useRef();
+
+  const [submitButton, setSubmitButton] = useState(false)
+  const [show, setShow] = useState(false)
 
   const [title, set_title] = useState(undefined);
   const [text, set_text] = useState(undefined);
@@ -59,6 +62,7 @@ function Download(){
       values.emailTo=emailTo
       axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
         .then( resetForm())
+        .then(setSubmitButton(false))
         .catch(err =>{console.error(err)})
 
       // axios.get(process.env.REACT_APP_strapiURL + '/api/coins')
@@ -83,6 +87,11 @@ function Download(){
       <Navbar />
       <div id='download-page' className='d-flex align-items-center'>
         <Container className='justify-content-sm-center my-5'>
+            <Row>
+                <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
+                    Data is downloading ...
+                </Alert>
+            </Row>
           <Row>
             <p className='blue-text text-center' id='download-title'>
               Download the Data 
@@ -154,16 +163,16 @@ function Download(){
                     </div>
 
                     <div className='text-center mt-5'>
-                      <button type='submit' disabled={!formik.isValid}>
+                      <button type='submit' disabled={!formik.isValid || submitButton}>
                         Submit
                       </button>
-                      <CSVLink
+                      {/* <CSVLink
                         data={coin_data}
                         filename='coins.csv'
                         className='hidden'
                         ref={csv_link}
                         target='_blank'
-                      />
+                      /> */}
                     </div>
                   </form>
                 </Row>
