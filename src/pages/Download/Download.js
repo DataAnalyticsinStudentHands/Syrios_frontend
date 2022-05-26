@@ -63,6 +63,7 @@ function Download(){
       axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
         .then( resetForm())
         .then(setSubmitButton(false))
+        .then(setShow(true))
         .catch(err =>{console.error(err)})
 
       // axios.get(process.env.REACT_APP_strapiURL + '/api/coins')
