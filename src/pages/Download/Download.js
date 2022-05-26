@@ -1,9 +1,9 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useFormik } from "formik"
-import {CSVLink} from "react-csv"
 import * as Yup from "yup"
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col, Alert} from 'react-bootstrap';
 import axios from 'axios';
+import { saveAs } from 'file-saver';
 
 import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -14,13 +14,16 @@ import './Download.css';
 
 function Download(){
   const [is_loading, set_is_loading] = useState(true);
-  const [coin_data, set_coin_data] = useState([]);
-  const csv_link = useRef();
+
+  const [submitButton, setSubmitButton] = useState(false)
+  const [show, setShow] = useState(false)
 
   const [title, set_title] = useState(undefined);
   const [text, set_text] = useState(undefined);
   const [image, set_image] = useState(undefined);
 
+  const [emailSubject, setEmailSubject] = useState(undefined);
+  const [emailTo, setEmailTo] = useState(undefined);
 
   useEffect(()=>{
     if(is_loading){
@@ -29,6 +32,8 @@ function Download(){
           set_title(res.data.data.attributes.title);
           set_text(res.data.data.attributes.text);
           set_image(res.data.data.attributes.image);
+          setEmailSubject(res.data.data.attributes.emailSubject);
+          setEmailTo(res.data.data.attributes.emailTo);
           set_is_loading(false);
         });
     }
@@ -42,7 +47,7 @@ function Download(){
     validationSchema:Yup.object({
       fullName: Yup.string()
       .min(7, '* Names must have at least 7 characters')
-      .max(30, "* Names can't be longer than 100 characters")
+      .max(30, "* Names can't be longer than 30 characters")
       .required('* Full name is required'),
       email:Yup.string()
       .email('* Must be a valid email address')
@@ -51,18 +56,19 @@ function Download(){
     }),
     onSubmit: (values,{resetForm})=>{
 
-      let apiURL = `http://localhost:1337/download/send_email`
-      axios.post(apiURL, values)
-        .then( 
-          resetForm()
-        ).catch(err =>{
-          console.error(err)
-        })
-
-      axios.get(process.env.REACT_APP_strapiURL + '/coins')
-        .then((res)=>set_coin_data(res.data))
-        .catch((err)=> console.error(err))
-      csv_link.current.link.click()
+      values.emailSubject=emailSubject
+      values.emailTo=emailTo
+      axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
+        .then( resetForm())
+        .then(setSubmitButton(true))
+        .then(setShow(true))
+        .catch(err =>{console.error(err)})
+      
+      saveAs(
+        `${process.env.PUBLIC_URL}/uploads/Syrios_Coin_Data.zip`,
+        // `http://localhost:1337/uploads/Syrios_Coin_Data.zip`,
+        'Syrios_Coin_Data.zip'
+      )
     }
   })
 
@@ -81,6 +87,11 @@ function Download(){
       <Navbar />
       <div id='download-page' className='d-flex align-items-center'>
         <Container className='justify-content-sm-center my-5'>
+            <Row>
+                <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
+                    Data is downloading ...
+                </Alert>
+            </Row>
           <Row>
             <p className='blue-text text-center' id='download-title'>
               Download the Data 
@@ -98,7 +109,7 @@ function Download(){
                       &#xe810;</i>
                   </Col>
                   <Col xs={9}>
-                    <Row className='orange-text' id='download-sub-title'>
+                    <Row className='orange-text mb-3' id='download-sub-title'>
                       {title}
                     </Row>
                     <Row className='gray-text' id='download-sub-text'>
@@ -107,22 +118,20 @@ function Download(){
                     </Row>
                   </Col>
                 </Row>
-                <Row className='my-5'>
+
+                <Row className=''>
                   <img
                     alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
                     className='frame-image'
                     src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
                   />
-
                 </Row>
               </div>
             </Col>
             <Col xs={3}>
               <Container className='d-flex flex-column align-items-center'>
-                <Row className='text-center'>
-                  <p>
+                <Row className='text-center gray-text'>
                     Please provide your your name and email address in the form below to start the download.
-                  </p>
                 </Row>
                 <Row className='light-blue-background my-5 d-flex justify-content-center'>
                   <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
@@ -154,16 +163,9 @@ function Download(){
                     </div>
 
                     <div className='text-center mt-5'>
-                      <button type='submit' disabled={!formik.isValid}>
+                      <button type='submit' disabled={!formik.isValid || submitButton}>
                         Submit
                       </button>
-                      <CSVLink
-                        data={coin_data}
-                        filename='coins.csv'
-                        className='hidden'
-                        ref={csv_link}
-                        target='_blank'
-                      />
                     </div>
                   </form>
                 </Row>

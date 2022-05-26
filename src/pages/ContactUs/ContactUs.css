@@ -1,0 +1,15 @@
+#contactus-page {
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    top: var(--footerHeight);
+    bottom: var(--footerHeight);
+  }
+
+  #contactus-title {
+    font-size: 7em;
+  }
+  .form-label{
+      font-size: 18px;
+  }

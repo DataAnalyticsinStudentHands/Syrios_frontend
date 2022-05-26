@@ -53,7 +53,7 @@ const Frame2 = (zone, index, json_object) => {
         </div>
 
         <Container>
-          <Row className='d-flex justify-content-center mt-5'>
+          <Row className='d-flex justify-content-center'>
               <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
               <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
           </Row>
@@ -67,7 +67,7 @@ const Frame2 = (zone, index, json_object) => {
     return(
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
-        <Row className='d-flex justify-content-center mb-5'>
+        <Row className='d-flex justify-content-center'>
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
         </Row>
