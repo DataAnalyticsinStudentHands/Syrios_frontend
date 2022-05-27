@@ -21,6 +21,7 @@ function Download(){
   const [title, set_title] = useState(undefined);
   const [text, set_text] = useState(undefined);
   const [image, set_image] = useState(undefined);
+  const [coinData, setCoinData] = useState(undefined)
 
   const [emailSubject, setEmailSubject] = useState(undefined);
   const [emailTo, setEmailTo] = useState(undefined);
@@ -32,6 +33,7 @@ function Download(){
           set_title(res.data.data.attributes.title);
           set_text(res.data.data.attributes.text);
           set_image(res.data.data.attributes.image);
+          setCoinData(res.data.data.attributes.coinData.data.attributes.url)
           setEmailSubject(res.data.data.attributes.emailSubject);
           setEmailTo(res.data.data.attributes.emailTo);
           set_is_loading(false);
@@ -55,18 +57,16 @@ function Download(){
       .required('* Email is required'),
     }),
     onSubmit: (values,{resetForm})=>{
-
       values.emailSubject=emailSubject
       values.emailTo=emailTo
       axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
-        .then( resetForm())
+        .then(resetForm())
         .then(setSubmitButton(true))
         .then(setShow(true))
         .catch(err =>{console.error(err)})
-      
+
       saveAs(
-        `${process.env.PUBLIC_URL}/uploads/Antioch_Coins_63e8ba8dec.csv`,
-        // `http://localhost:1337/uploads/Syrios_Coin_Data.zip`,
+        `${process.env.REACT_APP_strapiURL}${coinData}`,
         'AntiochCoins.csv'
       )
     }
