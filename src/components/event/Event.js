@@ -29,12 +29,12 @@ function loadtags(tags) { // Split every tag into individual components with del
 }
 
 const EventInfo = (props) => {
-  const closeHandler = (e) => {
+  const CloseHandler = (e) => {
     props.onClose(false);
   };
 
   return (
-    <WhitePopUp show={props.show} onClose={closeHandler}>
+    <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div id='event-info'>
         <div id='event-info-inner-div'>
           {/* tags */}

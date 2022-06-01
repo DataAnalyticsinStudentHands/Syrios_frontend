@@ -54,6 +54,11 @@
   color: #000000;
 }
 
+.dark-text {
+  font-family: var(--mainFonts);
+  color: #313029;
+}
+
 .blue-text {
   font-family: var(--mainFonts);
   color: #486678;

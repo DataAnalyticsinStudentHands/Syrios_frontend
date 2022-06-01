@@ -1,4 +1,10 @@
 /* The blue box at the top of the screen and its dimensions are defined here */
+
+.navbar-spacer {
+  width: 100%;
+  height: var(--footerHeight);
+}
+
 #navbar {
 	position: fixed;
 	width: 100%;

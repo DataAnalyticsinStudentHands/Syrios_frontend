@@ -1,216 +1,93 @@
-import React, {useEffect, useState, createRef} from 'react';
-import ReactDOM from 'react-dom';
-import {
-  Container,
-  Row,
-  Col
-} from 'react-bootstrap';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
-import WhitePopUp from 'src/utils/WhitePopUp.js';
 
 import './CoinSort.css';
 
 
 
+const CoinSortDropDown = (props) => {
+  const [show, set_show] = useState(false);
+  const [selection, set_selection] = useState(props.state);
 
-const CoinSortDropDownTextToStrapiVariableKeys = [ // This is an array of objects that relate coin sort dropdown labels to their object keys that come from strapi.
-  // Example (also a live example)
-  // dropdownText is the name that resembles it in the drop down on the coin sort. In this case, the dropdownText is 'Size'
-  // strapiKey is the object key received by strapi. We don't rename it or whatnot. In this case, it is Diameter
-  // What this object is stating is for dropdownText 'Size' (case sensitive), the associative strapiKey will be 'Diameter' (case sensitive)
-  // dropdownText: 'Size', strapiKey: 'Diameter' }
-  { dropdownText: 'Size', strapiKey: 'Diameter' }, 
-  { dropdownText: 'Minting Date',  strapiKey: 'Date' },
-  { dropdownText: 'Issuing Authority', strapiKey: 'IssuingAuthority' },
-  { dropdownText: 'Governing Power', strapiKey: 'State' },
-  { dropdownText: 'Material', strapiKey: 'Material' },
-];
-
-// This is a class so I can more easily do stuff with the dropdowns
-// Plus, it's a great way of compartmentalizing the dropdowns. Lmao I butchered that spelling.
-class CoinSortDropDown extends React.Component {
-  wrapperRef = createRef();
-  
-  static ArrayOfCoinSortDropDowns = [];
-  constructor(props) {
-    super(props);
-    this.hide = true;
-
-    this.state = {
-      selection: this.props.defaultSelection,
-    };
-    
-    CoinSortDropDown.ArrayOfCoinSortDropDowns.push(this);
+  const CloseHandler = (e) => {
+    set_show(false);
   }
 
-  static defaultProps = {
-    items: [],
+  const OpenHandler = (e) => {
+    set_show(true);
+  }
+
+  const Select = (e) => {
+    set_selection(e.target.dataset.selection);
+    set_show(false);
+    props.set_state(selection);
+  }
+
+  let display_styling = {
+    opacity: show ? 1 : 0,
+    zIndex: show ? 1000 : -1000
   };
+  let selection_jsx = [];
 
-  // These are essentially for the dropdown to pop up or pop down
-  componentDidMount() {
-    document.addEventListener("mouseup", this.handleClickOutside);
-    document.addEventListener("mouseup", this.handleOnClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("mouseup", this.handleClickOutside);
-    document.removeEventListener("mouseup", this.handleOnClick);
-  }
-  
-  makeDropDownInvisible() {
-    let dom = ReactDOM.findDOMNode(this).querySelector('.CoinSortDropDownList');
-
-    dom.style.zIndex = -1000;
-    dom.style.opacity = 0;
-    dom.style.pointerEvents = 'none';
-  }
-
-  makeDropDownVisible() {
-    let dom = ReactDOM.findDOMNode(this).querySelector('.CoinSortDropDownList');
-
-    dom.style.zIndex = 1000;
-    dom.style.opacity = 1;
-    dom.style.pointerEvents = 'auto';
-  }
-
-
-  // If click outside is rendered, fined the correct dom element and move it's z-index to negative 1000
-  handleClickOutside = (event) => {
-    let thisDomNode = ReactDOM.findDOMNode(this);
-
-    if (
-      this.wrapperRef.current &&
-      !this.wrapperRef.current.contains(event.target)
-    ) {
-      this.hide = true;
-
-      this.makeDropDownInvisible();
-    }
-  };
-
-  // If click outside is rendered, find the correct dom element and move it's z-index to positive 1000
-  handleOnClick = (event) => {
-    if (
-      this.wrapperRef.current &&
-      this.wrapperRef.current.contains(event.target)
-    ) {
-      this.hide = true;
-
-      this.makeDropDownVisible();
-    }
-  };
-
-  setStateSelection(str) {
-    this.setState({ selection: str });
-  }
-
-  render() {
-    return (
-      <div ref={this.wrapperRef} className='CoinSortDropDownOuterMostDiv'>
-        <div className='CoinSortDropDownTarget'>
-          <div className='CoinSortDropDownTargetText blue-text CoinSortText'>
-          {this.state.selection}
-          <i className="demo-icon icon-arrow-thin-down CoinSortDropDownTargetIconArrow">&#xe808;</i>
-          </div>
-        </div>
-        <div className='CoinSortDropDownList'>
-          <i className="demo-icon icon-arrow-thin-down CoinSortDropDownListIconArrow">&#xe808;</i>
-          {(() => { // List of options dependent on the items prop
-            let jsxArr = [];
-            this.props.items.forEach((e, index) => {
-              jsxArr.push(
-                <div 
-                  key={`${this.props.items}${index}`} 
-                  className='blue-text CoinSortDropDownListCellOuterDiv'
-                  onClick={(e) => { // onClick, change the coin sort drop down target text to the appropriate selection and drop the dropdown
-                    let dom = e.target;
-
-                    let newFilter = dom.innerText;
-
-                    if (this.props.items.indexOf(newFilter) === -1) return;
-
-                    this.setStateSelection(newFilter);
-                    this.makeDropDownInvisible();
-
-                  }}>
-                  <div className='text-start'>
-                    {e}
-                  </div>
-                  <div className='CoinSortDropDownListUnderLine' />
-                </div>
-              );
-            });
-            return(
-              <div style={{ padding: '10px' }}>
-                {jsxArr}
-              </div>
-            );
-          })()}
-        </div>
+  props.selections.forEach((e, index) => {
+    selection_jsx.push(
+      <div key={`coin_sort_dropdown_${e + index}`} className='coin-sort-dropdown-item' onClick={Select} data-selection={e}>
+        <p data-selection={e} className='coin-sort-dropdown-item-text dark-blue-text'>
+          {e} { index === 0 &&
+          <i className='coin-sort-dropdown-arrow' style={{position: 'absolute', right: '0', marginRight: '20px'}}/>
+        }
+        </p>
+        <hr data-selection={e} className='coin-sort-dropdown-item-line-spacer' />
       </div>
     );
-  }
+  });
+
+  return (
+    <div className='coin-sort-option'>
+      <p className='dark-text' style={{fontSize: '14px', marginBottom: '3px'}}>
+        {props.title}
+      </p>
+      <div className='coin-sort-dropdown-outermost-div'>
+        <div className='coin-sort-dropdown-bar' onClick={OpenHandler}>
+          <p className='coin-sort-dropdow-bar-text blue-text'>
+            {selection}
+          </p>
+          <i className='coin-sort-dropdown-arrow'/>
+        </div>
+        <OutsideClickHandler show={show} onOutsideClick={CloseHandler}>
+          <div className='coin-sort-dropdown' style={display_styling}>
+            <div className='coin-sort-dropdown-items'>
+              {selection_jsx}
+            </div>
+          </div>
+        </OutsideClickHandler>
+      </div>
+    </div>
+  );
 }
 
 
 
-// The actual function
 const CoinSort = () => {
-  const [isLoading, set_isLoading] = useState(true);
-  const [coins, set_coins] = useState(undefined);
-  const [coinsPagination, set_coinsPagination] = useState(undefined);
-
-  // This is for the tool tips
-  const [ArrangeToolTipBox1x1GridDescription, set_ArrangeToolTipBox1x1GridDescription] = useState(undefined);
-  const [ArrangeToolTipBox2x1GridDescription, set_ArrangeToolTipBox2x1GridDescription] = useState(undefined);
-  const [ArrangeToolTipBox3x1GridDescription, set_ArrangeToolTipBox3x1GridDescription] = useState(undefined);
-  const [ArrangeToolTipBox2x2GridDescription, set_ArrangeToolTipBox2x2GridDescription] = useState(undefined);
-  const [ArrangeToolTipBox3x2GridDescription, set_ArrangeToolTipBox3x2GridDescription] = useState(undefined);
-  const [ArrangeToolTipBox6x3GridDescription, set_ArrangeToolTipBox6x3GridDescription] = useState(undefined);
-
-  // This is the different OfKind dropdowns available. 
-  // I realized that this needs to be Dynamic as Hell!
-  // My way of doing this is to set OfKindDropDowns as an array of OfKindDropDown.
-  // I will have an interval somewhere checking to see which filter set I am supposed to used (defined in the withDropdown).
-  // The Of Kind will list will be updated by that interval with a list of all the different names in there.
-  const [OfKindDropDowns, set_OfKindDropDowns] = useState(undefined);
-  const [OfKindDropDown, set_OfKindDropDown] = useState(<CoinSortDropDown id='OfKindDropDown' items={['None']} defaultSelection='None' />); // Just a default OfKindDropDown.
+  const arrangement_selections = ['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid'];
+  const sort_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
+  const [is_loading, set_is_loading] = useState(true);
+  const [arrangement_selection, set_arrangement_selection] = useState(arrangement_selections[0]);
+  const [sort_selection, set_sort_selection] = useState(sort_selections[0]);
 
   useEffect(() => {
-    if (isLoading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/coins?_limit=-1&_sort=y_date:ASC')
-        .then((res, err) => {
-          if (err) {
-            console.error(err);
-          } else {
-            set_coins(res.data);
-            set_isLoading(false);
-          }
-        });
-
-      axios.get(process.env.REACT_APP_strapiURL + '/coin-sort')
-        .then((res, err) => {
-          if (err) {
-            console.error(err);
-          } else {
-            set_ArrangeToolTipBox1x1GridDescription(res.data.ArrangeToolTipBox1x1GridDescription);
-            set_ArrangeToolTipBox2x1GridDescription(res.data.ArrangeToolTipBox2x1GridDescription);
-            set_ArrangeToolTipBox3x1GridDescription(res.data.ArrangeToolTipBox3x1GridDescription);
-            set_ArrangeToolTipBox2x2GridDescription(res.data.ArrangeToolTipBox2x2GridDescription);
-            set_ArrangeToolTipBox3x2GridDescription(res.data.ArrangeToolTipBox3x2GridDescription);
-            set_ArrangeToolTipBox6x3GridDescription(res.data.ArrangeToolTipBox6x3GridDescription);
-          }
-        });
-    }
+    axios.get(process.env.REACT_APP_strapiURL + '/api/coin-sort')
+      .then((res, err) => {
+        set_is_loading(false);
+      });
   });
 
-  if (isLoading) {
+  if (is_loading) {
     return (
       <>
         <Navbar />
@@ -221,164 +98,17 @@ const CoinSort = () => {
   }
 
   return (
-    <>
+    <div id='coin-sort-wrapper'>
       <Navbar />
-      <div id='CoinSort'>
-        <p id='CoinSortTitle' className='orange-text'>
-          Coin Sort
-        </p>
-        <div id='CoinSortOptions'>
-          {/* Arrange */}
-          <div id='CoinSortArrange' className='CoinSortCell'>
-            <div>
-              <p className='gray-text CoinSortText'>
-                Arrange: <i 
-                  className="demo-icon icon-info blue-text info-icon"
-                  onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
-                    let popUp = undefined;
-                    WhitePopUp.ArrayOfWhitePopUps.forEach((e) => {
-                      if (e.props.id.includes('ArrangeToolTipBox')) {
-                        popUp = e;
-                      }
-                    });
-
-                    popUp.show();
-                  }}>&#xe817;</i>
-              </p> 
-              <WhitePopUp id='ArrangeToolTipBox'>
-                <div className='ToolTipBox'>
-                  <p className='orange-text ToolTipTitle'>
-                    TOOL TIP: ARRANGEMENT OPTIONS
-                  </p>
-                  <p className='blue-text ToolTipText'>
-                    <span style={{fontWeight: 'bold'}}>1 x 1 Grid:</span> {ArrangeToolTipBox1x1GridDescription}
-                  </p>
-                  <p className='blue-text ToolTipText'>
-                    <span style={{fontWeight: 'bold'}}>2 x 1 Grid:</span> {ArrangeToolTipBox2x1GridDescription}
-                  </p>
-                  <p className='blue-text ToolTipText'>
-                    <span style={{fontWeight: 'bold'}}>3 x 1 Grid:</span> {ArrangeToolTipBox3x1GridDescription}
-                  </p>
-                  <p className='blue-text ToolTipText'>
-                    <span style={{fontWeight: 'bold'}}>2 x 2 Grid:</span> {ArrangeToolTipBox2x2GridDescription}
-                  </p>
-                  <p className='blue-text ToolTipText'>
-                    <span style={{fontWeight: 'bold'}}>3 x 2 Grid:</span> {ArrangeToolTipBox3x2GridDescription}
-                  </p>
-                  <p className='blue-text ToolTipText'>
-                    <span style={{fontWeight: 'bold'}}>6 x 3 Grid:</span> {ArrangeToolTipBox6x3GridDescription}
-                  </p>
-                </div>
-              </WhitePopUp>
-            </div>
-            {/* Tool tip */}
-            <CoinSortDropDown id='GridDropDown' items={['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid']} defaultSelection='None' />
-            <div 
-              id='CoinSortClearTable' 
-              className='CoinSortClearText orange-text'
-              onClick={(e) => {
-                let GridDropDown = undefined;
-
-                CoinSortDropDown.ArrayOfCoinSortDropDowns.forEach((e) => {
-                  if (e.props.id.includes('GridDropDown')) {
-                    GridDropDown = e;
-                  }
-                });
-
-                GridDropDown.setStateSelection('None');
-              }}>
-              <i className="demo-icon icon-x-thin">&#xe839;</i>Clear Table
-            </div>
-          </div>
-          <div className='CoinSortVerticalLine CoinSortCell' />
-
-          {/* Sort By */}
-          <div id='CoinSortSortBy' className='CoinSortCell'>
-            <p className='gray-text CoinSortText'>
-              Sort By: <i 
-              className="demo-icon icon-info blue-text info-icon"
-                onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
-                }}>&#xe817;</i>
-            </p>
-            <CoinSortDropDown id='SortByDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size']} defaultSelection='None' />
-            <div 
-              id='CoinSortClearSort' 
-              className='CoinSortClearText orange-text'
-              onClick={(e) => {
-                let SortByDropDown = undefined, ThenByDropDown = undefined;
-
-                CoinSortDropDown.ArrayOfCoinSortDropDowns.forEach((e) => {
-                  if (e.props.id.includes('SortByDropDown')) SortByDropDown = e;
-                  if (e.props.id.includes('ThenByDropDown')) ThenByDropDown = e;
-                });
-
-                SortByDropDown.setStateSelection('None');
-                ThenByDropDown.setStateSelection('None');
-              }}>
-              <i className="demo-icon icon-x-thin">&#xe839;</i>Clear Sort 
-            </div>
-          </div>
-
-          {/* Then By */}
-          <div id='CoinSortThenBy' className='CoinSortCell'>
-            <p className='gray-text CoinSortText'>
-              Then By:
-            </p>
-            <CoinSortDropDown id='ThenByDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size']} defaultSelection='None' />
-          </div>
-          <div className='CoinSortVerticalLine CoinSortCell' />
-
-          {/* Filter */}
-          <div id='CoinSortFilter' className='CoinSortCell'>
-            <p className='gray-text CoinSortText'>
-              Filter: <i 
-              className="demo-icon icon-info blue-text info-icon"
-                onClick={(e) => { // onClick move i-card for information as to what Arrange options do to z-index 1000
-                }}>&#xe817;</i>
-            </p>
-            <CoinSortDropDown id='FilterDropDown' items={['None', 'Including', 'Excluding']} defaultSelection='None' />
-            <div 
-              id='CoinSortClearFilter' 
-              className='CoinSortClearText orange-text'
-              onClick={(e) => {
-                let FilterDropDown = undefined, WithDropDown = undefined, OfKindDropDown = undefined;
-
-                CoinSortDropDown.ArrayOfCoinSortDropDowns.forEach((e) => {
-                  if (e.props.id.includes('FilterDropDown')) FilterDropDown = e;
-                  if (e.props.id.includes('WithDropDown')) WithDropDown = e;
-                  if (e.props.id.includes('OfKindDropDown')) OfKindDropDown = e;
-                });
-
-                FilterDropDown.setStateSelection('None');
-                WithDropDown.setStateSelection('None');
-                OfKindDropDown.setStateSelection('None');
-              }}>
-              <i className="demo-icon icon-x-thin">&#xe839;</i>Clear Filter
-            </div>
-          </div>
-
-          {/* With */}
-          <div id='WithDropDown' className='CoinSortCell'>
-            <p className='gray-text CoinSortText'>
-              With:
-            </p>
-            <CoinSortDropDown id='WithDropDown' items={['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Type']} defaultSelection='None' />
-          </div>
-          
-          {/* Of kind */}
-          <div id='OfKindDropDown' className='CoinSortCell'>
-            <p className='gray-text CoinSortText'>
-              Of kind:
-            </p>
-            {OfKindDropDown}
-          </div>
-          <div className='CoinSortVerticalLine CoinSortCell' />
-        </div>
-        <div id='Coins'>
-        </div>
+      <div className='navbar-spacer' />
+      <div id='coin-sort-spacer' />
+      <div id='coin-sort-options'>
+        <CoinSortDropDown title='Arrange:' selections={arrangement_selections} state={arrangement_selection} set_state={set_arrangement_selection}/>
+        <div className='coin-sort-menu-vr'/>
+        <CoinSortDropDown title='Sort:' selections={sort_selections} state={sort_selection} set_state={set_sort_selection} />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
