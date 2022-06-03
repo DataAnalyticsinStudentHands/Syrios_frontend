@@ -163,7 +163,7 @@ function Download(){
                     </div>
 
                     <div className='text-center my-4'>
-                      <button type='submit' disabled={!formik.isValid || submitButton}>
+                      <button type='submit' className='download-button' disabled={!formik.isValid || submitButton}>
                         Download Data
                       </button>
                     </div>

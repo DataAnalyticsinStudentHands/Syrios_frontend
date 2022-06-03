@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import backGround from 'src/assets/background.jpg';
 
@@ -20,23 +20,22 @@ const End_Frame = (zone, index) => {
             Are you ready to learn more?
           </p>
         </Container>
-        <Container className='d-flex justify-content-center align-items-center'>
-          <Row className='d-flex justify-content-around'>
-            <Col >
+        <Container className='d-flex justify-content-around align-items-center'>
+            <Col className="d-flex justify-content-around align-items-center">
               <Link to='/Stories'>
-                <button	className='blue-text end-frame-button-width text-center'>
+                <button	className='blue-text story-button'>
                   Tell Me a Story
                 </button>
               </Link>
             </Col>
-            <Col>
+            <Col className="d-flex justify-content-around align-items-center">
               <Link to='/'>
-                <button	className='blue-text end-frame-button-width text-center'>
+                <button	
+                  className='blue-text story-button'>
                   Explore Coins
                 </button>
               </Link>
             </Col>
-          </Row>
         </Container>
       </div>
     );

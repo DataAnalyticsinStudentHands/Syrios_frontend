@@ -46,7 +46,7 @@ a:link:active{
   /* background-blend-mode: multiply; */
 }
 
-Button {
+.story-button {
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #7899a8;
   border-radius: 15px !important;
@@ -55,7 +55,7 @@ Button {
   transition: 0.5s;
 }
 
-Button:hover {
+.story-button:hover {
   color: #ffffff;
   background: #7899a8 0% 0% no-repeat padding-box;
 }

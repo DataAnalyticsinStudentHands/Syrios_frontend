@@ -77,7 +77,7 @@ const Stories = () => {
 					<Row container='justify-content-md-center' className='d-flex justify-content-center'>
 						<Col xs={6} sm={3}>
 							<button
-								className='blue-text'
+								className='story-button blue-text'
 								onClick={() => {
 								}}>
 								By City Name
@@ -85,7 +85,7 @@ const Stories = () => {
 						</Col>
 						<Col xs={6} sm={3}>
 							<button
-								className='blue-text'
+								className='story-button blue-text'
 								onClick={() => {
 								}}>
 								By Political Standing
@@ -93,14 +93,15 @@ const Stories = () => {
 						</Col>
 						<Col xs={6} sm={3}>
 							<button
-								className='blue-text'
+								className='story-button blue-text'
 								onClick={() => {
 								}}>
 								By Economic System
 							</button>
 						</Col>
 						<Col xs={6} sm={3}>
-							<button className='blue-text'
+							<button 
+								className='story-button blue-text'
 								onClick={() => {
 								}}>
 								By Socio-culture Perspective
