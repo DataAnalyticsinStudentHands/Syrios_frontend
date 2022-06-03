@@ -87,30 +87,31 @@ function Download(){
       <Navbar />
       <div id='download-page' className='d-flex align-items-center'>
         <Container className='justify-content-sm-center my-5'>
-            <Row>
-                <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
-                    Data is downloading ...
-                </Alert>
-            </Row>
           <Row>
+              <Alert className='green-text' show={show} variant="success" onClose={() => setShow(false)} dismissible>
+                  Data is downloading ...
+              </Alert>
+          </Row>
+          <Row className='mb-5'>
             <p className='blue-text text-center' id='download-title'>
               Download the Data 
             </p>
           </Row>
-          <Row className='d-flex justify-content-between d-flex align-items-center'>
+          <Row className='d-flex justify-content-between align-items-center'>
             <Col xs={8}>
-              <div>
                 {/* left */}
-                <Row className='d-flex justify-content-between align-items-center'>
-                  <Col xs={2} className='text-center'>
+                <Row className='d-flex justify-content-between align-items-top'>
+                  <Col xs={2} className=''>
                     <i
                       className='demo-icon icon-coin-scale download-icon'
                     >
                       &#xe810;</i>
                   </Col>
-                  <Col xs={9}>
-                    <Row className='orange-text mb-3' id='download-sub-title'>
-                      {title}
+                  <Col xs={9} className=''>
+                    <Row className='orange-text' id='download-sub-title'>
+                      <div>
+                          {title}
+                      </div>
                     </Row>
                     <Row className='gray-text' id='download-sub-text'>
                       {/* {subText} */}
@@ -126,17 +127,16 @@ function Download(){
                     src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
                   />
                 </Row>
-              </div>
             </Col>
-            <Col xs={3}>
-              <Container className='d-flex flex-column align-items-center'>
-                <Row className='text-center gray-text'>
-                    Please provide your your name and email address in the form below to start the download.
+            <Col xs={4}>
+              <Container className='d-flex flex-column align-items-center mx-5'>
+                <Row className='text-center dark-blue-text'>
+                    <b><small>Please provide your your name and email address in the form below to start the download.</small></b>
                 </Row>
-                <Row className='light-blue-background my-5 d-flex justify-content-center'>
+                <Row className='light-blue-background my-2 d-flex justify-content-center'>
                   <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
-                    <div className='form-group mt-4'>
-                      <label className='gray-text' htmlFor='fullName'>Full Name:</label>
+                    <div className='form-group mt-3'>
+                      <label className='gray-text' htmlFor='fullName'>Full Name</label>
                       <br/>
                       <input 
                         id = "fullName"
@@ -146,10 +146,10 @@ function Download(){
                         value = {formik.values.fullName}
                         className='form-control'
                       />
-                      {formik.touched.fullName && formik.errors.fullName ? <p>{formik.errors.fullName}</p>: null}
+                      {formik.touched.fullName && formik.errors.fullName ? <p className='gray-text'>{formik.errors.fullName}</p>: null}
                     </div>
                     <div className='form-group mt-4'>
-                      <label className='gray-text' htmlFor='email'>Email:</label>
+                      <label className='gray-text' htmlFor='email'>Email Address</label>
                       <br/>
                       <input 
                         type='email'
@@ -159,12 +159,12 @@ function Download(){
                         value = {formik.values.email}
                         className='form-control'
                       />
-                      {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>: null}
+                      {formik.touched.email && formik.errors.email ? <p className='gray-text'>{formik.errors.email}</p>: null}
                     </div>
 
-                    <div className='text-center mt-5'>
+                    <div className='text-center my-4'>
                       <button type='submit' disabled={!formik.isValid || submitButton}>
-                        Submit
+                        Download Data
                       </button>
                     </div>
                   </form>

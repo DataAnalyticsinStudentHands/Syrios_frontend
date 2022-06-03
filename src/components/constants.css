@@ -48,6 +48,10 @@
   font-family: var(--mainFonts);
   color: #a85828;
 }
+.green-text{
+  font-family: var(--mainFonts);
+  color: #184818;
+}
 
 .black-text {
   font-family: var(--mainFonts);
@@ -86,12 +90,12 @@
 }
 
 .light-blue-background {
-  background: rgba(184, 204, 216, 0.75);
-  border-radius: 10px;
+  background: #b8ccd8;
+  border-radius: 15px;
 }
 .light-yellow-background {
   background: #f8e8b8;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 html {

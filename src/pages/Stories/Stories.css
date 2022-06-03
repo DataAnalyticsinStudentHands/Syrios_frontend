@@ -9,18 +9,18 @@
   }
 }
 
-/* strong { */
-  /* color: #487848; */
-  /* color: #78a878; */
-/* } */
-
 a:link {
-  color: #183848;
+  color: #487848;
 }
-/* a:link{color:#000000;}
-a:visited {color:#00FF00;}  
-a:hover {color:#FF00FF;}  
-a:active {color:#0000FF;}  */
+a:link:visited{
+  color:#184818
+}
+a:link:hover{
+  color:#184818
+}
+a:link:active{
+  color:#184818
+}
 
 .select-story-div {
   width: 120px;
