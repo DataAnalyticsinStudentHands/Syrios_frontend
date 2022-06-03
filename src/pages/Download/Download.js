@@ -67,7 +67,7 @@ function Download(){
 
       saveAs(
         `${process.env.REACT_APP_strapiURL}${coinData}`,
-        'AntiochCoins.csv'
+        'AntiochCoins.zip'
       )
     }
   })
