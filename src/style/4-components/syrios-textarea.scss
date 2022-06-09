@@ -1,0 +1,29 @@
+@import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss';
+@import '../2-foundations/_foundations-dir.scss';
+
+// .syrios-text-area-container {
+//   display: flex;
+//   flex-direction: column;
+//   margin: $syrios-space-16;
+
+//   .syrios-text-area-label {
+//     color: syrios-color(text, secondary);
+//     margin-bottom: $syrios-space-04;
+//   }
+
+//   .syrios-text-area-field {
+//     font-family: $syrios-theme-font-family;
+//     border-radius: syrios-rem(3px);
+//     border: syrios-rem(1px) syrios-color(border, primary-darker) solid;
+//     padding: $syrios-space-04 $syrios-space-08;
+
+//     &:focus {
+//       outline: syrios-color(border, brand) syrios-rem(1px) solid;
+//     }
+
+//     &::placeholder {
+//       color: syrios-color(text, placeholder);
+//     }
+//   }
+// }

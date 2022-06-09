@@ -51,7 +51,7 @@ function BootstrapNavbar() {
             <NavDropdown.Item><Link to='/' className='bland-style white-text navbar-text text-white'>Get to Know Syria</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/' className='bland-style white-text navbar-text text-white'>Get to Know Coins</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/Toolbox/Timeline' className='bland-style white-text navbar-text text-white'>Timeline</Link></NavDropdown.Item>
-            <NavDropdown.Item><Link to='/' className='bland-style white-text navbar-text text-white'>Glossary</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to='/Toolbox/Glossary' className='bland-style white-text navbar-text text-white'>Glossary</Link></NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title='RESOURCES' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/' className='bland-style white-text navbar-text text-white'>Teaching Resources</Link></NavDropdown.Item>

@@ -1,0 +1,27 @@
+@mixin syrios-shape($size: medium, $type: default) {
+  border-radius: syrios-shape($size, $type);
+}
+
+@mixin syrios-shape-container-surface($width: 100, $color: primary, $radius: brick, $background: canvas ) {
+  border-radius: syrios-shape($radius, default);
+  border: syrios-border($width, $color, solid);
+  background: syrios-color(background, $background);
+}
+
+@mixin syrios-shape-container-canvas($width: 100, $color: primary, $radius: brick, $background: canvas ) {
+  border-radius: syrios-shape($radius, default);
+  border: syrios-border($width, $color, solid);
+  background: syrios-color(background, $background);
+}
+
+@mixin syrios-shape-container-canvas-shaded($width: 100, $color: primary, $radius: brick, $background: canvas-shaded ) {
+  border-radius: syrios-shape($radius, default);
+  border: syrios-border($width, $color, solid);
+  background: syrios-color(background, $background);
+}
+
+@mixin syrios-shape-container-on-dark($width: 100, $color: primary, $radius: brick, $background: canvas ) {
+  border-radius: syrios-shape($radius, default);
+  border: syrios-border($width, $color, solid);
+  background: syrios-color(background, $background);
+}

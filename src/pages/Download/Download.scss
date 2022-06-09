@@ -1,4 +1,4 @@
-@import url(src/components/constants.css);
+// @import url(src/components/constants.css);
 
 #download-page {
   position: fixed;
@@ -9,12 +9,9 @@
   bottom: var(--footerHeight);
 }
 
-#download-title {
-  font-size: 7em;
-}
 
 .download-icon {
-  font-size: 150px;
+  font-size: 129px;
   color: #7899a8;
 }
 #download-sub-title {
@@ -50,16 +47,3 @@
   filter: drop-shadow(0px -2px 4px #d8d6d4);
 }
 
-
-/* a.nomisma-link {
-  color: red;
-}
-a.glossary-link {
-  color: orange;
-}
-a.external-link {
-  color: yellow;
-}
-a.internal-link {
-  color: aqua;
-} */

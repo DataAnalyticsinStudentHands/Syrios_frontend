@@ -1,0 +1,207 @@
+/* Character Styles */
+// @import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss'; //color font
+// @import '../2-foundations/_foundations-dir.scss'; //spacing
+
+.quote-text {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-italic;
+    font-weight: $syrios-font-weight-600;
+    font-size: $syrios-font-size-40;
+    line-height: $syrios-line-spacing-45;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-486678;
+  }
+  .quote-credit {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-45;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-737271;
+  }
+  .references-text-icon {
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-20;
+    line-height: $syrios-line-spacing-15;
+    letter-spacing: $syrios-character-spacing--0-2;
+    color: $syrios-color-b9ccd7;
+  }
+  .references-text-ordered-list-number {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-bold;
+    font-size: $syrios-font-size-15;
+    line-height: $syrios-line-spacing-15;
+    letter-spacing: $syrios-character-spacing--0-15;
+    color: $syrios-color-1a3847;
+  }
+  .references-text {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-15;
+    line-height: $syrios-line-spacing-15;
+    letter-spacing: $syrios-character-spacing--0-15;
+    color: $syrios-color-183848;
+  }
+  .references-h3 {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-600;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-ffffff;
+  }
+  .story-caption {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-15;
+    line-height: $syrios-line-spacing-20;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-737271;
+  }
+  .story-caption-keyword {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-italic;
+    font-weight: $syrios-font-weight-600;
+    font-size: $syrios-font-size-15;
+    line-height: $syrios-line-spacing-20;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+  }
+  .story-text-external-link-icon {
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-22;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-7899a8;
+  }
+  .story-text-definition-icon {
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-20;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-7899a8;
+  }
+  .story-text-keyword {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-italic;
+    font-weight: $syrios-font-weight-bold;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+  }
+  .story-text-footnote-link {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-bold;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-7899a8;
+  }
+  .story-text-link {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+    text-decoration: $syrios-decoration-underline;
+  }
+  .story-bullets {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-20;
+    line-height: $syrios-line-spacing-20;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-737271;
+  }
+  .story-text {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-737271;
+  }
+  .story-h1 {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-300;
+    font-size: $syrios-font-size-140;
+    line-height: $syrios-line-spacing-75;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-486678;
+  }
+  .story-h2 {
+    font-family: $syrios-font-family-garamondpremrpro-ltdisp;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-70;
+    line-height: $syrios-line-spacing-75;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-a85828;
+  }
+  .story-h2-keyword {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-italic;
+    font-weight: $syrios-font-weight-bold;
+    font-size: $syrios-font-size-70;
+    line-height: $syrios-line-spacing-75;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-d8a048;
+  }
+  .story-h3 {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-normal;
+    font-size: $syrios-font-size-40;
+    line-height: $syrios-line-spacing-45;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-737271;
+  }
+  .story-h3-keyword {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-italic;
+    font-weight: $syrios-font-weight-600;
+    font-size: $syrios-font-size-40;
+    line-height: $syrios-line-spacing-45;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+  }
+  .story-h4 {
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-600;
+    font-size: $syrios-font-size-20;
+    line-height: $syrios-line-spacing-25;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-a86818;
+    text-transform: $syrios-text-transform-uppercase;
+  }
+
+  .story-download-text {
+		line-height: $syrios-line-spacing-20;
+		font-family: $syrios-font-family-garamond-premier-pro;
+		font-style: $syrios-font-style-normal;
+		font-weight: $syrios-font-weight-bold;
+		font-size: $syrios-font-size-15;
+		color: $syrios-color-183848;
+  }
+
+  

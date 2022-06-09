@@ -9,7 +9,6 @@ import {
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import EvidenceBgPic from 'src/assets/pages/LandingPageAssets/Evidence.jpg';
@@ -17,8 +16,7 @@ import HistoriansToolboxBgPic from 'src/assets/pages/LandingPageAssets/Historian
 import HowToReadBgPic from 'src/assets/pages/LandingPageAssets/HowToRead.jpg';
 import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
 import createMarkup from 'src/utils/Markup.js';
-import 'src/components/constants.css';
-import './LandingPage.css';
+
 
 function LandingPage() {
   const [loading, set_loading] = useState(true);
@@ -32,6 +30,7 @@ function LandingPage() {
         .then((res, err) => {
           if (err) {
             console.error(err);
+            set_loading(false);
             return;
           }
           // This is where the landing page is defined via strapi
@@ -41,8 +40,8 @@ function LandingPage() {
           set_landing_paragraph(data.text);
           set_loading(false);
         });
-    }
-  });
+      }
+    });
 
 
   // Render components here
@@ -51,24 +50,23 @@ function LandingPage() {
   // else display page with navbar and footer
   if (loading) {
     return (
-      <div>
-        <Navbar />
+      <>
         <LoadingPage />
         <Footer />
-      </div>
+      </>
     );
   }
 
   return (
     <div>
-      <Navbar />
       <div id='landing-page' className='d-flex align-items-center'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <Container style={{height: '640px', paddingTop: '1em'}}>
           <Row container='justify-content-md-center'>
             {/* This is the title text in orage */}
             <Col>
-              <div className='orange-text' style={{fontSize: '4em'}}>
+              {/* <div className='orange-text' style={{fontSize: '4em'}}> */}
+              <div className='story-h2 text-center'>
                 <ReactMarkdown>
                   {short_description}
                 </ReactMarkdown>
@@ -157,7 +155,7 @@ function LandingPage() {
             <Col>
                 <div 
                   dangerouslySetInnerHTML={createMarkup(landing_paragraph)} 
-                  className='blue-text' style={{fontSize:'1.3em'}}
+                  className='blue-text' style={{fontSize:'20px'}}
                 />
             </Col>
           </Row>

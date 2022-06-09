@@ -56,19 +56,19 @@ const Title = (zone, index) => {
           </Container>
             {/* {title} */}
           <Container className='d-flex justify-content-center align-items-center'>
-            <ReactMarkdown className='blue-text text-center title-text'>
+            <ReactMarkdown className='story-h1'>
               {zone.title}
             </ReactMarkdown>
           </Container>
             {/* {subtitle} */}
           <Container className='d-flex justify-content-center align-items-center'>
-            <ReactMarkdown className='orange-text text-center sub-title-text'>
+            <ReactMarkdown className='story-h4'>
               {zone.subtitle}
             </ReactMarkdown>
           </Container>
             {/* {caption} */}
           <Container className='d-flex justify-content-center align-items-center mt-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='gray-text text-center caption-title-text'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='story-h3'/>
           </Container>
       </div>
     );

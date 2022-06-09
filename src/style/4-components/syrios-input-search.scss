@@ -1,0 +1,44 @@
+@import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss';
+@import '../2-foundations/_foundations-dir.scss';
+
+// .syrios-input-search-container {
+//   display: flex;
+//   flex-direction: column;
+//   margin: $syrios-space-16;
+//   position: relative;
+  
+//   .syrios-input-field {
+//     font-family: $syrios-theme-font-family;
+//     box-sizing: border-box;
+//     border-radius: syrios-shape(primary, default);
+//     border: syrios-rem(1px) syrios-color(border, primary-darker) solid;
+//     min-height: $syrios-space-40 * 1.1;
+//     padding: $syrios-space-08 $syrios-space-12;
+//     padding-left: syrios-rem(36px);
+
+
+//     &:focus {
+//       outline: syrios-color(border, brand) syrios-rem(1px) solid;
+//     }
+
+//     &:focus + .syrios-search-input-icon {
+//       color: syrios-color(text, link);
+//     }
+
+//     &::placeholder {
+//       color: syrios-color(text, placeholder);
+//     }
+
+//     &::-webkit-search-cancel-button {
+//       -webkit-appearance:searchfield-cancel-button;
+//     }
+//   }
+
+//   .syrios-search-input-icon {
+//     position: absolute;
+//     top: syrios-rem(10px);
+//     left: $syrios-space-12;
+//     color: syrios-color(text, secondary);
+//   }
+// }

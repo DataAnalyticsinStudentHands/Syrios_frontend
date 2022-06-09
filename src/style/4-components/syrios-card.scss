@@ -1,0 +1,19 @@
+@import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss';
+@import '../2-foundations/_foundations-dir.scss';
+
+// .syrios-card {
+//   background: red;
+//   box-sizing: border-box;
+//   display: block;
+//   width: 100%;
+//   background: syrios-color(background, canvas);
+//   border-radius: syrios-shape(primary, default);
+//   @include syrios-border(thin, primary, solid);
+
+//   p {margin: 0}
+// }
+
+// .syrios-card--sharp {
+//   border-radius: syrios-shape(squared);
+// }

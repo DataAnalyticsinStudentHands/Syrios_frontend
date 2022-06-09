@@ -1,0 +1,96 @@
+// **TYPOGRAPHY**
+@import url('https://use.typekit.net/khv6fdg.css');
+$syrios-garamond-premier-pro-display: "garamond-premier-pro-display",serif;
+$syrios-garamond-premier-pro: "garamond-premier-pro",serif; 
+$syrios-garamond-premier-pro-caption: "garamond-premier-pro-caption",serif; 
+$syrios-garamond-premier-pro-subhead: "garamond-premier-pro-subhead",serif; 
+
+@font-face {
+    font-family: 'syrios-entypo-subset';
+    src:
+        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot')format('eot'),
+        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.woff') format('woff'),
+        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.ttf') format('truetype'),
+        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+/* Font/text values */
+$syrios-font-family-garamond-premier-pro: Garamond Premier Pro;
+$syrios-font-family-syrios-entypo-subset: syrios-entypo-subset;
+$syrios-font-family-garamondpremrpro-ltdisp: GaramondPremrPro-LtDisp;
+
+$syrios-theme-base-font-size: 16px;
+
+// Color
+$syrios-color-313029: #313029;
+
+$syrios-color-737271: #737271;
+$syrios-color-d8d6d4: #d8d6d4;
+$syrios-color-f4f2f0: #f4f2f0;
+$syrios-color-ffffff: #ffffff;
+
+$syrios-color-184818: #184818;
+$syrios-color-487848: #487848;
+$syrios-color-78a878: #78a878;
+$syrios-color-c8e8c8: #c8e8c8;
+
+$syrios-color-183848: #183848;
+$syrios-color-486678: #486678;
+$syrios-color-7899a8: #7899a8;
+$syrios-color-b8ccd8: #b8ccd8;
+
+$syrios-color-987818: #987818;
+$syrios-color-d8b848: #d8b848;
+$syrios-color-e8d078: #e8d078;
+$syrios-color-f8e8b8: #f8e8b8;
+
+$syrios-color-a86818: #a86818;
+$syrios-color-d8a048: #d8a048;
+$syrios-color-e8c078: #e8c078;
+$syrios-color-f0e0c0: #f0e0c0;
+
+$syrios-color-b85828: #b85828;
+$syrios-color-d88858: #d88858;
+$syrios-color-e8b088: #e8b088;
+$syrios-color-e8d8c8: #e8d8c8;
+
+$syrios-color-a85828: #a85828;
+$syrios-color-b9ccd7: #b9ccd7;
+$syrios-color-1a3847: #1a3847;
+
+
+$syrios-font-style-normal: normal;
+$syrios-font-style-italic: italic;
+
+$syrios-font-weight-300: 300px;
+$syrios-font-weight-600: 600px;
+$syrios-font-weight-normal: normal;
+$syrios-font-weight-bold: bold;
+
+$syrios-font-size-15: 15px;
+$syrios-font-size-20: 20px;
+$syrios-font-size-22: 22px;
+$syrios-font-size-25: 25px;
+$syrios-font-size-40: 40px;
+$syrios-font-size-70: 70px;
+$syrios-font-size-140: 140px;
+
+$syrios-character-spacing-0: 0px;
+$syrios-character-spacing--0-15: -0.15px;
+$syrios-character-spacing--0-2: -0.2px;
+
+$syrios-line-spacing-15: 15px;
+$syrios-line-spacing-20: 20px;
+$syrios-line-spacing-25: 25px;
+$syrios-line-spacing-30: 30px;
+$syrios-line-spacing-45: 45px;
+$syrios-line-spacing-75: 75px;
+
+$syrios-text-transform-uppercase: uppercase;
+$syrios-decoration-underline: underline;
+$syrios-text-script-superscript: superscript;
+
+
+  

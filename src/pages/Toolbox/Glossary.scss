@@ -1,0 +1,47 @@
+$footerHeight:70px;
+
+#glossary-page{
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    top: $footerHeight;
+    bottom: var(--footerHeight);
+}
+
+.glossary-icon{
+    color: #7899a8;
+    font-size: 125px;
+}
+
+.search-icon{
+    color: #7899a8;
+    font-size: 25px;
+}
+
+#glossary-tabs-tab-home{
+    background-color: #F0E0C0;
+
+    /* border-bottom: 50px solid #F0E0C0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	height: 0;
+	width: 125px; */
+}
+
+#glossary-tabs-tab-home:hover, #glossary-tabs-tab-home.active{
+    background-color: #FFFF;
+
+    /* border-bottom: 50px solid #F0E0C0;
+	border-left: 25px solid transparent #F0E0C0;
+	border-right: 25px solid transparent #F0E0C0;
+	height: 0;
+	width: 125px; */
+}
+#glossary-tabs-tab-profile{
+    background-color: #F0E0C0
+}
+#glossary-tabs-tab-contact{
+    background-color: #F0E0C0
+}
+

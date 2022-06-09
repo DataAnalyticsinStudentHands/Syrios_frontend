@@ -10,8 +10,6 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 import createMarkup from 'src/utils/Markup.js';
 
-import './Download.css';
-
 function Download(){
   const [is_loading, set_is_loading] = useState(true);
 
@@ -86,15 +84,15 @@ function Download(){
     <>
       <Navbar />
       <div id='download-page' className='d-flex align-items-center'>
-        <Container className='justify-content-sm-center my-5'>
+        <Container className='my-5'>
           <Row>
               <Alert className='green-text' show={show} variant="success" onClose={() => setShow(false)} dismissible>
                   Data is downloading ...
               </Alert>
           </Row>
           <Row className='mb-5'>
-            <p className='blue-text text-center' id='download-title'>
-              Download the Data 
+            <p className='story-h1 text-center'>
+              Download the Data
             </p>
           </Row>
           <Row className='d-flex justify-content-between align-items-center'>
@@ -108,12 +106,12 @@ function Download(){
                       &#xe810;</i>
                   </Col>
                   <Col xs={9} className=''>
-                    <Row className='orange-text' id='download-sub-title'>
+                    <Row className='story-h4'>
                       <div>
                           {title}
                       </div>
                     </Row>
-                    <Row className='gray-text' id='download-sub-text'>
+                    <Row className='story-caption'>
                       {/* {subText} */}
                       <div dangerouslySetInnerHTML={createMarkup(text)} />
                     </Row>
@@ -130,10 +128,10 @@ function Download(){
             </Col>
             <Col xs={4}>
               <Container className='d-flex flex-column align-items-center mx-5'>
-                <Row className='text-center dark-blue-text'>
+                <Row className='text-center story-download-text px-5'>
                     <b><small>Please provide your your name and email address in the form below to start the download.</small></b>
                 </Row>
-                <Row className='light-blue-background my-2 d-flex justify-content-center'>
+                <Row className='light-blue-background my-2 d-flex justify-content-center' >
                   <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                     <div className='form-group mt-3'>
                       <label className='gray-text' htmlFor='fullName'>Full Name</label>

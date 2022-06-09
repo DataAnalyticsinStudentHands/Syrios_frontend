@@ -1,0 +1,86 @@
+@use "sass:math";
+$syrios-default-browser-font-size: 16;
+
+/// Returns the value in rem for a given pixel value.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in rem.
+
+@function syrios-rem($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'rem' {
+    @return $value;
+  } @else if $unit == 'px' {
+    @return math.div($value, 16px) * 1rem;
+  } @else {
+    @error 'Value must be in px, or rem.';
+  }
+}
+
+
+/// Returns the value in ems for a given pixel value. Note that this
+/// only works for elements that have had no font-size changes.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in ems.
+
+@function syrios-em($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'em' {
+    @return $value;
+  } @else if $unit == 'rem' {
+    @return $value / 1rem * 1em * ($syrios-theme-base-font-size / $syrios-default-browser-font-size);
+  } @else if $unit == 'px' {
+    @return $value / $syrios-default-browser-font-size * 1em;
+  } @else {
+    @error 'Value must be in px, rem, or em.';
+  }
+}
+
+
+/// Returns the list of available names in a given map.
+/// @param {Map} $map - The map of data to list the names from.
+/// @param {Number} $map - The level of depth to get names from.
+/// @return {String} The list of names in the map.
+
+@function syrios-available-names($map, $level: 1) {
+  @if type-of($map) != 'map' {
+    @return null;
+  }
+
+  $output: '';
+  $newline: '\A ';
+
+  @if $level == 1 {
+    @each $key, $value in $map {
+      $output: $output +
+        '#{$newline}- #{$key} #{syrios-available-names($value, $level + 1)}';
+    }
+  } @else {
+    $output: '(';
+    $i: 1;
+
+    @each $key, $value in $map {
+      $sep: if($i < length($map), ', ', '');
+      $output: $output + '#{$key}#{$sep}#{syrios-available-names($value, $level + 1)}';
+      $i: $i + 1;
+    }
+
+    $output: $output + ')';
+  }
+
+  @return $output;
+}
+
+
+
+
+
+
+
+
+

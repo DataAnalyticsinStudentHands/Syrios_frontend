@@ -1,0 +1,66 @@
+@import '../../0-base/_base-dir.scss';
+@import '../../1-themes/_themes-dir.scss';
+
+$syrios-text-font-family: $syrios-font-family-garamond-premier-pro;
+$syrios-text-base-font-size: $syrios-theme-base-font-size;
+
+// Data for each Type Style defined in the Style Sheet.
+$syrios-font-size-data: (
+  heading1: syrios-rem(96px),
+  heading2: syrios-rem(60px),
+  heading3: syrios-rem(48px),
+  heading4: syrios-rem(34px),
+  heading5: syrios-rem(24px), 
+  heading6: syrios-rem(20px),
+  subtitle2: syrios-rem(14px),
+  subtitle1: syrios-rem(16px),
+  body2: syrios-rem(14px),
+  body1: syrios-rem(16px),
+  caption: syrios-rem(13.712px),
+  overline: syrios-rem(13.712px),
+  list: syrios-rem(16px)
+) !default;
+
+// Data for each Type Style defined in the Style Sheet.
+$syrios-line-height-data: (
+  heading1: normal,
+  heading2: normal,
+  heading3: normal,
+  heading4: normal,
+  heading5: normal,
+  heading6: normal,
+  subtitle2: 1.6rem,
+  subtitle1: 1.6rem,
+  body2: 1.5rem,
+  body1: 1.5rem,
+  caption: 1.5rem,
+  overline: 1.5rem,
+  link: 1.5rem,
+  list: 1.5rem
+) !default;
+
+// Data for each Type Style defined in the Style Sheet.
+$syrios-letter-spacing-data: (
+  heading1: -1.5px,
+  heading2: -0.5px,
+  heading3: 0,
+  heading4: .25px,
+  heading5: 0,
+  heading6: .15px,
+  subtitle2:  .1px,
+  subtitle1: .15px,
+  body2: .7px,
+  body1: .7px,
+  caption: .4px,
+  overline: 1px,
+  link: 0,
+  list: 0
+) !default;
+
+// Data for each Type Style defined in the Style Sheet.
+$syrios-font-weight-data: (
+  bold: 600,
+  semibold: 500,
+  regular: 400,
+  light: 300
+) !default;

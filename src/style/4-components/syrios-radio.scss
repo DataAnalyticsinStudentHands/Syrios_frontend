@@ -1,0 +1,57 @@
+// .syrios-radio-container {
+//   display: flex;
+//   position: relative;
+//   padding-left: syrios-rem(35px);
+//   margin-bottom: $syrios-space-12;
+//   cursor: pointer;
+//   font-size: syrios-rem(22px);
+//   user-select: none;
+
+//   input[type="radio"] {
+//     height: 0;
+//     width: 0;
+//     visibility: hidden;
+//   }
+
+//   .syrios-radio {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: $syrios-space-20;
+//     width: $syrios-space-20;
+//     background: white;
+//     border: syrios-color(border, brand) syrios-rem(1px) solid;
+//     box-sizing: border-box;
+//     border-radius: 50%;
+//   }
+
+//   /* When the radio button is checked, add a blue background */
+//   input[type="radio"]:checked ~ .syrios-radio {
+//     background: syrios-color(background, brand);
+//   }
+
+//   .syrios-radio:after {
+//     content: "";
+//     position: absolute;
+//     display: none;
+//     top: 6px;
+//     left: 6px;
+//     width: 6px;
+//     height: 6px;
+//     border-radius: 50%;
+//     background: white;
+//   }
+
+//   input[type="radio"]:checked ~ .syrios-radio:after {
+//     display: block;
+//   }
+
+//   .syrios-radio:after {
+//     top: 6px;
+//     left: 6px;
+//     width: 6px;
+//     height: 6px;
+//     border-radius: 50%;
+//     background: syrios-color(background, canvas);
+//   }
+// }

@@ -1,0 +1,48 @@
+@import '../../0-base/_base-dir.scss';
+@import '../../1-themes/_themes-dir.scss';
+
+$syrios-shape-radius-small: syrios-rem(4px);
+$syrios-shape-radius-medium: syrios-rem(8px);
+$syrios-shape-radius-large: syrios-rem(16px);
+$syrios-shape-radius-xlarge: syrios-rem(24px);
+
+$syrios-shape-data: (
+  circle: (
+    default: 50%,
+    smaller-screen: null,
+    larger-screen: null
+  ),
+
+  squared: (
+    default: 0,
+    smaller-screen: null,
+    larger-screen: null
+  ),
+
+  primary: (
+    default: $syrios-shape-radius-small,
+    smaller-screen: $syrios-shape-radius-small,
+    larger-screen: $syrios-shape-radius-medium
+  ),
+
+  secondary: (
+    default: $syrios-shape-radius-medium,
+    smaller-screen: $syrios-shape-radius-small,
+    larger-screen: $syrios-shape-radius-large
+  ),
+
+  tertiary: (
+    default: $syrios-shape-radius-large,
+    smaller-screen: $syrios-shape-radius-medium,
+    larger-screen: $syrios-shape-radius-xlarge
+  ),
+
+  quaternary: (
+    default: $syrios-shape-radius-xlarge,
+    smaller-screen: $syrios-shape-radius-large,
+    larger-screen: $syrios-shape-radius-xlarge
+  ),
+) !default;
+
+
+

@@ -1,8 +1,12 @@
 @import url(src/components/constants.css);
 
 #explore-the-evidence {
-  padding-top: 4em;
-  padding-bottom: 4em;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  top: var(--footerHeight);
+  bottom: var(--footerHeight);
 }
 
 .explore-the-evidence-title-text {
@@ -23,7 +27,7 @@
 
 #explore-the-evidence-icon-download {
   font-size: 15em;
-  color: #486678;
+  color: #7899A8;
 }
 
 #download-dataset-img {
@@ -36,4 +40,10 @@
  
 #explore-the-evidence-icon-download-div {
   margin-left: 100px;
+}
+
+.explore-the-evidence-image{
+  width: 300px;
+  border-style: double;
+  border-color: $syrios-color-737271;
 }

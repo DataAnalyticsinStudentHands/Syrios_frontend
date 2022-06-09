@@ -9,7 +9,8 @@
   }
 }
 
-a:link {
+/* /style/3-application/app.scss */
+/* a:link {
   color: #487848;
 }
 a:link:visited{
@@ -20,7 +21,7 @@ a:link:hover{
 }
 a:link:active{
   color:#184818
-}
+} */
 
 .select-story-div {
   width: 120px;
@@ -32,9 +33,10 @@ a:link:active{
 }
 
 .select-story-text {
-  font-size: 16px;
+  font-size: 15px;
   margin: 11px;
   margin-bottom: -5px !important;
+
 }
 
 #stories-page {

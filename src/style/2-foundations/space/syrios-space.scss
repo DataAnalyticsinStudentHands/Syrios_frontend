@@ -1,0 +1,58 @@
+@import '../../0-base/_base-dir.scss';
+@import '../../1-themes/_themes-dir.scss';
+
+$syrios-space-01:  syrios-rem(1px); // 1px
+$syrios-space-02:  syrios-rem(2px); // 2px
+$syrios-space-04:  syrios-rem(4px); // 4px
+$syrios-space-08:  syrios-rem(8px); // 8px
+$syrios-space-12:  syrios-rem(12px); // 12px
+$syrios-space-16:  syrios-rem(16px); // 16px
+$syrios-space-20:  syrios-rem(20px); // 20px
+$syrios-space-24:  syrios-rem(24px); // 24px
+$syrios-space-32:  syrios-rem(32px); // 32px
+$syrios-space-40:  syrios-rem(40px); // 40px
+$syrios-space-48:  syrios-rem(48px); // 48px
+$syrios-space-64:  syrios-rem(64px);  // 64px
+$syrios-space-80:  syrios-rem(80px);  // 80px
+$syrios-space-96:  syrios-rem(96px);  // 96px
+$syrios-space-128: syrios-rem(128px); // 128px
+$syrios-space-160: syrios-rem(160px); // 160px
+
+$syrios-spacing-data: (
+  none: 0,
+  space-01: $syrios-space-01, 
+  space-02: $syrios-space-02,
+  space-04: $syrios-space-04,
+  space-08: $syrios-space-08,
+  space-12: $syrios-space-12,
+  space-16: $syrios-space-16,
+  space-20: $syrios-space-20,
+  space-24: $syrios-space-24,
+  space-32: $syrios-space-32,
+  space-40: $syrios-space-40,
+  space-48: $syrios-space-48,
+  space-64: $syrios-space-64,
+  space-80: $syrios-space-80,
+  space-96: $syrios-space-96,
+  space-128: $syrios-space-128,
+  space-160: $syrios-space-160,
+) !default;
+
+$syrios-container-inset: (
+  s:  (
+    dense: $syrios-space-04 $syrios-space-08, // 4px 8px
+    default: $syrios-space-08,                // 8px
+    open: $syrios-space-12 $syrios-space-08   // 12px 8px
+  ),
+  m:  (
+    dense: $syrios-space-08 $syrios-space-16, // 8px 16px
+    default: $syrios-space-16,                // 16px
+    open: $syrios-space-24 $syrios-space-16  // 24px 16px
+  ),
+  l:  (
+    dense: $syrios-space-12 $syrios-space-24, // 12px 24px
+    default: $syrios-space-24,                // 24px
+    open: $syrios-space-32 $syrios-space-24  // 32px 24px
+  ),
+) !default;
+

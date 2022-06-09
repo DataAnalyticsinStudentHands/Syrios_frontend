@@ -1,0 +1,140 @@
+
+/// Returns desired styles for a given typography style.
+///
+/// @param {String} $weight - light, regular, semibold, bold.
+
+@mixin syrios-text-style-heading1($weight: light) {
+  font-size:   syrios-font-size(heading1);
+  line-height: syrios-line-height(heading1);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(heading1);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-heading2($weight: light) {
+  font-size:   syrios-font-size(heading2);
+  line-height: syrios-line-height(heading2);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(heading2);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-heading3($weight: regular) {
+  font-size:   syrios-font-size(heading3);
+  line-height: syrios-line-height(heading3);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(heading3);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-heading4($weight: regular) {
+  font-size:   syrios-font-size(heading4);
+  line-height: syrios-line-height(heading4);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(heading4);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-heading5($weight: regular) {
+  font-size:   syrios-font-size(heading5);
+  line-height: syrios-line-height(heading5);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(heading5);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-heading6($weight: semibold) {
+  font-size:   syrios-font-size(heading6);
+  line-height: syrios-line-height(heading6);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(heading6);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-subtitle2($weight: semibold) {
+  font-size:   syrios-font-size(subtitle2);
+  line-height: syrios-line-height(subtitle2);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(subtitle2);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-subtitle1($weight: regular) {
+  font-size:   syrios-font-size(subtitle1);
+  line-height: syrios-line-height(subtitle1);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(subtitle1);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-body2($weight: regular) {
+  font-size:   syrios-font-size(body2);
+  line-height: syrios-line-height(body2);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(body2);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-body1($weight: regular) {
+  font-size:   syrios-font-size(body1);
+  line-height: syrios-line-height(body1);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(body1);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-caption($weight: regular) {
+  font-size:   syrios-font-size(caption);
+  line-height: syrios-line-height(caption);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(caption);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-overline($weight: regular) {
+  font-size:   syrios-font-size(overline);
+  line-height: syrios-line-height(overline);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(overline);
+  text-transform: uppercase;
+  color: syrios-color(text, secondary);
+  text-rendering: optimizeLegibility;
+}
+
+@mixin syrios-text-style-link($weight: regular) {
+  line-height: syrios-line-height(link);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(link);
+  text-rendering: optimizeLegibility;
+
+  a {
+    text-decoration: underline;
+    text-rendering: optimizeLegibility;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin syrios-text-style-list($weight: regular) {
+  font-size:   syrios-font-size(list);
+  line-height: syrios-line-height(list);
+  font-weight: syrios-font-weight($weight);
+  font-family: $syrios-text-font-family;
+  letter-spacing: syrios-letter-spacing(list);
+  text-rendering: optimizeLegibility;
+}

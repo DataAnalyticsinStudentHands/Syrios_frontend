@@ -8,7 +8,6 @@ import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 // import createMarkup from 'src/utils/Markup.js';
-import './ContactUs.css';
 
 // RegEx for phone number validation
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -101,8 +100,10 @@ function ContactUs(){
                     Thanks for contacting us, we will get back to you soon!
                 </Alert>
             </Row>
-          <Row className='blue-text text-center justify-content-center' id='contactus-title'>
+          <Row>
+            <p className='story-h1 text-center'>
               Contact Us
+            </p>
           </Row>
           <Row className='d-flex justify-content-between'>
             <Col xs={3}>
@@ -115,7 +116,7 @@ function ContactUs(){
             <Col xs={9}>
                 <Form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                     <Form.Group className='mb-3'>
-                        <Form.Label className='gray-text' htmlFor='name'>Name</Form.Label>
+                        <Form.Label className='story-text' htmlFor='name'>Name</Form.Label>
                         <Form.Control 
                             type="text" 
                             name="name"
@@ -126,7 +127,7 @@ function ContactUs(){
                         {formik.touched.name && formik.errors.name ? <p>{formik.errors.name}</p>: null}
                     </Form.Group>
                     <Form.Group className='mb-3'>
-                        <Form.Label className='gray-text' htmlFor='email'>Email</Form.Label>
+                        <Form.Label className='story-text' htmlFor='email'>Email</Form.Label>
                         <Form.Control 
                             type="email"
                             name="email"
@@ -137,7 +138,7 @@ function ContactUs(){
                         {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>: null}
                     </Form.Group>
                     <Form.Group className='mb-3'>
-                        <Form.Label className='gray-text' htmlFor='phone'>Phone</Form.Label>
+                        <Form.Label className='story-text' htmlFor='phone'>Phone</Form.Label>
                         <Form.Control 
                             type="text" 
                             name = "phone"
@@ -148,7 +149,7 @@ function ContactUs(){
                         {formik.touched.phone && formik.errors.phone ? <p>{formik.errors.phone}</p>: null}
                     </Form.Group>
                     <Form.Group className='mb-5'>
-                        <Form.Label className='gray-text'>Message</Form.Label>
+                        <Form.Label className='story-text'>Message</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={5}

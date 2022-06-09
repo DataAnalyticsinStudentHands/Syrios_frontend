@@ -5,8 +5,6 @@ import {Container,Row, Col} from 'react-bootstrap';
 import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
-import './About.css'
-import 'src/components/constants.css'
 
 function createMarkup(textTran){
   return {__html: textTran};
@@ -32,19 +30,19 @@ const TeamJsx = (e, index) => { // This function is used to display profile pict
         <Container style={{margin: '20px' }}>
           <Row>
             {/* name and alias */}
-            <Col className='gray-text' style={{ fontSize: '2em' }}>
+            <Col className='story-h3'>
               {e.name}
             </Col>
           </Row>
           <Row>
             {/* their role */}
-            <Col className='gray-text'>
+            <Col className='story-text'>
               {e.role}
             </Col>
           </Row>
           {/* This is the paragraph below. This is the only way to enforce a newline character by making a new row */}                      
           {/* {detailJsxArr} */}
-          <div dangerouslySetInnerHTML={createMarkup(e.detail)} className='gray-text caption-text text-left'/>
+          <div dangerouslySetInnerHTML={createMarkup(e.detail)} className='story-text text-left'/>
         </Container>
       </Col>
     </Row>
@@ -117,12 +115,10 @@ const About = () => {
       <Navbar />
       <div id='about'>
         <Container>
-          <Row>
+          <Row className='my-5'>
             <Col>
-              <p id='about-title' className='blue-text text-center'>
-                {/* {title} */} 
-                {/* Why we need call title, no need */}
-                about the Syrios Project
+              <p className='story-h1 text-center'>
+                About the Syrios Project
               </p>
             </Col>
           </Row>
@@ -134,31 +130,31 @@ const About = () => {
                 src={process.env.REACT_APP_strapiURL+logo.data.attributes.url}/>
             </Col>
             <Col>
-              <div dangerouslySetInnerHTML={createMarkup(description)} className='gray-text'/>
+              <div dangerouslySetInnerHTML={createMarkup(description)} className='story-text'/>
             </Col>
           </Row>
         </Container>
         <Container>
-          <Row>
+          <Row className='mt-5'>
             <Col>
-              <p id='about-meet-the-team' className='blue-text text-center'>
+              <p className='story-h1 text-center'>
                 Meet the Team
               </p>
             </Col>
           </Row>
 
-          <Row>
+          <Row className='mb-5'>
             <Col>
-              <p id='about-project-directors' className='orange-text text-center'>
+              <p className='story-h2 text-center'>
                 Project Directors
               </p>
             </Col>
           </Row>
           {project_directors}
 
-          <Row>
+          <Row className='my-5'> 
             <Col>
-              <p id='about-digital-team' className='orange-text text-center'>
+              <p className='story-h2 text-center about-digital-team'>
                 Digital Team and Media Directors
               </p>
             </Col>
@@ -166,7 +162,7 @@ const About = () => {
           {digital_media_and_content_team}
           <Row style={{ marginTop: '200px', marginBottom: '50px' }}>
             <Col>
-              <p className='gray-text text-center' style={{ fontSize: '4em' }}>
+              <p className='story-h3 text-center' >
                 Past Student Research Assistants
               </p>
             </Col>
@@ -179,7 +175,7 @@ const About = () => {
 
           <Row style={{ marginTop: '100px', marginBottom: '40px' }}>
             <Col>
-              <p className='orange-text text-center' style={{ fontSize: '4em' }}>
+              <p className='story-h2 text-center' >
                 Acknowlegments
               </p>
             </Col>

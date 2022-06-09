@@ -1,0 +1,49 @@
+@import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss';
+@import '../2-foundations/_foundations-dir.scss';
+
+// .syrios-input-select-container {
+//   display: flex;
+//   flex-direction: column;
+//   margin: $syrios-space-16;
+//   position: relative;
+
+//   .syrios-input-label {
+//     color: syrios-color(text, secondary);
+//     margin-bottom: $syrios-space-04;
+//   }
+
+//   .syrios-input-field {
+//     box-sizing: border-box;
+//     background: white;
+//     font-family: $syrios-theme-font-family;
+//     border-radius: syrios-shape(primary, default);
+//     border: syrios-rem(1px) syrios-color(border, primary-darker) solid;
+//     min-height: $syrios-space-40 * 1.1;
+//     padding: $syrios-space-08 $syrios-space-12;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     cursor: pointer;
+
+
+//     &:focus {
+//       outline: syrios-color(border, brand) syrios-rem(1px) solid;
+//     }
+
+//     &::placeholder {
+//       color: syrios-color(text, placeholder);
+//     }
+
+//     &::-ms-expand {
+//       display: none;
+//     }
+//   }
+
+//   .syrios-select-chevron-down {
+//     position: absolute;
+//     color: syrios-color(text, link);
+//     right: $syrios-space-12;
+//     top: syrios-rem(38px);
+//     pointer-events: none;
+//   }
+// }

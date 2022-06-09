@@ -1,0 +1,19 @@
+/// Returns the shape value for a given shape name and group.
+///
+/// @param {String} $size - The shape's size.
+/// @param {Number} $type - The darkness/lightness of the shape. Defaults to base. The higher the number, the darker the shape.
+/// @return {Number} The shape value.
+
+@function syrios-shape($type: brick, $size: default) {
+  $fetched-shape: map-get(map-get($syrios-shape-data, $type), $size);
+
+  @if map-has-key($syrios-shape-data, $fetched-shape) {
+    $fetched-shape: map-get(map-get($syrios-shape-data, $fetched-shape), $size);
+  }
+
+  @if ($fetched-shape) {
+    @return $fetched-shape;
+  } @else {
+    @error 'shape `#{$size} - #{$type}` not found. Available shapes: #{$syrios-shape-data}';
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../0-base/_base-dir.scss';
+@import '../../1-themes/_themes-dir.scss';
+
+$syrios-border-thin: syrios-rem(1px);
+$syrios-border-thick: syrios-rem(2px);
+$syrios-border-thicker: syrios-rem(3px);
+$syrios-border-thickest: syrios-rem(5px);
+
+$syrios-border-weight-data: (
+  thin: $syrios-border-thin,
+  thick: $syrios-border-thick,
+  thicker: $syrios-border-thicker,
+  thickest: $syrios-border-thickest,
+);

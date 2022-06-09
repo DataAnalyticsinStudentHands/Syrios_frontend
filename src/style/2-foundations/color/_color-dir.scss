@@ -1,0 +1,30 @@
+// @import './syrios-color.scss';
+// @import './functions.scss';
+// @import './mixins.scss';
+@import '../../1-themes/themes-dir.scss';
+
+.orange-text {
+    color:$syrios-color-a86818
+}
+.green-text{
+    color: $syrios-color-184818;
+}
+.black-text {
+    color: $syrios-color-313029;
+}
+.dark-text {
+    color: $syrios-color-313029;
+}
+.blue-text {
+    color: $syrios-color-486678;
+}
+.dark-blue-text {
+    color: $syrios-color-183848;
+}
+.gray-text {
+    color: $syrios-color-737271;
+}
+.white-text {
+    color: $syrios-color-ffffff;
+}
+

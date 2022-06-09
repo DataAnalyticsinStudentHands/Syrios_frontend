@@ -1,4 +1,4 @@
-@import url(src/components/constants.css);
+/* @import url(src/components/constants.css); */
 
 
 #landing-page {
@@ -8,7 +8,8 @@
 	width: 100%;
 	top: var(--footerHeight);
 	bottom: var(--footerHeight);
-	background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg);
+	// background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg);
+	background:url('../assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg')
 }
 
 #landing-video {

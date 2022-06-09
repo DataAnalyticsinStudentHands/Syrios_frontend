@@ -1,0 +1,51 @@
+@import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss';
+@import '../2-foundations/_foundations-dir.scss';
+
+// .syrios-switch-container {
+//   max-width: syrios-rem(52px);
+  
+//   .syrios-switch-nob {
+//     cursor: pointer;
+//     height: syrios-rem(31px);
+//     width: syrios-rem(49px);
+//     background: white;
+//     border-radius: syrios-rem(15px);
+//     border: syrios-rem(1px) solid syrios-color(border, brand);
+//     box-sizing: border-box;
+//     position: relative;
+
+//     &:before {
+//       content: '';
+//       cursor: pointer;
+//       height: syrios-rem(27px);
+//       width: syrios-rem(27px);
+//       border-radius: 50%;
+//       background: white;
+//       border: syrios-rem(1px) solid syrios-color(border, brand);
+//       box-sizing: border-box;
+//       left: syrios-rem(1px);
+//       top: syrios-rem(1px);
+//       box-shadow: syrios-elevation(100);
+//       position: absolute;
+//       transition: all syrios-duration(base) syrios-easing(base);
+//       max-width: syrios-rem(30px);
+//     }
+//   }
+
+//   input[type=checkbox]:checked + .syrios-switch-nob:before {
+//     top: syrios-rem(2px);
+//     left: syrios-rem(20px);
+//   }
+
+//   input[type=checkbox]:checked + .syrios-switch-nob {
+//     border: 0; 
+//     background: syrios-color(background, brand);
+//   }
+
+//   input[type=checkbox] {
+//     height: syrios-rem(0);
+//     width: syrios-rem(0);
+//     visibility: hidden;
+//   }
+// }

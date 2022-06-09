@@ -1,0 +1,61 @@
+@import '../0-base/_base-dir.scss';
+@import '../1-themes/_themes-dir.scss';
+@import '../2-foundations/_foundations-dir.scss';
+
+// .syrios-checkbox-container {
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+//   user-select: none;
+
+//   .syrios-checkbox {
+//     cursor: pointer;
+//     height: syrios-rem(44px);
+//     width: syrios-rem(44px);
+//     background: white;
+//     border-radius: syrios-rem(15px);
+//     border: syrios-rem(1px) solid syrios-color(text, primary);
+//     box-sizing: border-box;
+//     position: relative;
+//   }
+
+//   .syrios-checkmark {
+//     cursor: pointer;
+//     height: syrios-rem(20px);
+//     width: syrios-rem(20px);
+//     background-color: syrios-color(icon, default-on-dark);
+//     border-radius: syrios-rem(2px);
+//     border: syrios-rem(1px) solid syrios-color(text, link);
+//     box-sizing: border-box;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     color: syrios-color(icon, default-on-dark);
+//     margin-right: $syrios-space-16;
+//   }
+
+//   .syrios-checkmark:after {
+//     content: "";
+//     position: absolute;
+//     display: none;
+// }
+
+//   .syrios-checkmark:after {
+//     left: syrios-rem(9px);
+//     top: syrios-rem(5px);
+//   }
+
+//   input[type=checkbox]:checked ~ .syrios-checkmark {
+//     background: syrios-color(background, brand);
+//   }
+
+//   input[type=checkbox]:checked ~ .syrios-checkmark:after {
+//     display: block;
+//   }
+
+//   input[type=checkbox] {
+//     height: 0;
+//     width: 0;
+//     visibility: hidden;
+//   }
+// }

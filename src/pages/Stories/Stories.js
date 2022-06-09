@@ -69,7 +69,7 @@ const Stories = () => {
 				<Container style={{position: 'relative', top: '100px'}}>
 					<Row container='justify-content-md-center'>
 						<Col>
-							<p className='blue-text text-center' id='story-main-title'>
+							<p className='story-h1 text-center' id='story-main-title'>
 								Discover Coin Stories
 							</p>
 						</Col>
