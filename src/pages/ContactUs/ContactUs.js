@@ -4,7 +4,6 @@ import * as Yup from "yup"
 import { Container, Row, Col, Form, Alert} from 'react-bootstrap';
 import axios from 'axios';
 
-import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 // import createMarkup from 'src/utils/Markup.js';
@@ -82,7 +81,6 @@ function ContactUs(){
   if (is_loading) {
     return(
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -91,7 +89,6 @@ function ContactUs(){
 
   return(
     <>
-      <Navbar />
       <div id='contactus-page' className='d-flex align-items-center'>
 
         <Container className='my-5'>
@@ -165,7 +162,7 @@ function ContactUs(){
                         <div className="error-message">{formik.errors.writtenMessage}</div>
                         ) : null}
                     </Form.Group>
-                    <button type='submit' disabled={!formik.isValid || submitButton} >
+                    <button type='submit' className='contact-us-button' disabled={!formik.isValid || submitButton} >
                         Submit
                     </button>
                 </Form>

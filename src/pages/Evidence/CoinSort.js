@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
-import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
@@ -86,7 +85,6 @@ const CoinSort = () => {
   if (is_loading) {
     return (
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -95,7 +93,6 @@ const CoinSort = () => {
 
   return (
     <div id='coin-sort-wrapper'>
-      <Navbar />
       <div className='navbar-spacer' />
       <div id='coin-sort-spacer' />
       <div id='coin-sort-options'>

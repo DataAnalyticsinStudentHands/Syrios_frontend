@@ -6,7 +6,7 @@ $footerHeight:70px;
     -webkit-overflow-scrolling: touch;
     width: 100%;
     top: $footerHeight;
-    bottom: var(--footerHeight);
+    bottom: $footerHeight;
 }
 
 .glossary-icon{

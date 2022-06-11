@@ -2,13 +2,13 @@
 
 .navbar-spacer {
   width: 100%;
-  height: var(--footerHeight);
+  height: $footerHeight;
 }
 
 #navbar {
 	position: fixed;
 	width: 100%;
-	height: var(--footerHeight);
+	height: $footerHeight;
 	background: #183848 0% 0% no-repeat padding-box;
 	box-shadow: 0px 0px 60px #24201659;
 	opacity: 1;

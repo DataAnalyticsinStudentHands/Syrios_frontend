@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from 'src/components/Navbar.js'
 import Footer from 'src/components/Footer.js'
 // import LoadingPage from 'src/components/LoadingPage.js';
 
@@ -52,7 +51,6 @@ const Glossary = () =>{
 
     return(
         <>
-            <Navbar/>
             <div id='glossary-page' className='d-flex align-items-center'>
                 <Container>
                     <Row >

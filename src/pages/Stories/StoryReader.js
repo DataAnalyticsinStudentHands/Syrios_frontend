@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-import Navbar from 'src/components/Navbar.js';
 import Footer from 'src/components/Footer.js';
 // import fullPageComponent from 'src/components/FullPageComponent';
 import LoadingPage from 'src/components/LoadingPage.js';
@@ -38,7 +37,6 @@ const StoryReader = () => {
   if (loading) {
     return (
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -47,7 +45,6 @@ const StoryReader = () => {
 
   return (
     <>
-      <Navbar />
       <ReactFullpage
         //fullpage options
         licenseKey = {'YOUR_KEY_HERE'}

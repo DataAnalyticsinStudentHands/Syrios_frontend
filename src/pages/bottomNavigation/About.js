@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Container,Row, Col} from 'react-bootstrap';
 
-import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 
@@ -104,7 +103,6 @@ const About = () => {
   if (is_loading) { // is_loading is true, show loading page, else show real page
     return (
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -112,7 +110,6 @@ const About = () => {
   }
   return (
     <>
-      <Navbar />
       <div id='about'>
         <Container>
           <Row className='my-5'>

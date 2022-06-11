@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 import logo from 'src/assets/logoWhiteText.svg';
 
+
 function BootstrapNavbar() {
   return (
     <Navbar id='navbar' collapseOnSelect expand='md' className='navbar-dark'>

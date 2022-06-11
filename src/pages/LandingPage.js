@@ -80,6 +80,8 @@ function LandingPage() {
                 <div id='landing-video-size'>
                   <ReactPlayer 
                     width='100%'
+                    // width='930px'
+                    // height='523px'
                     url={video_link} />
                 </div>
               </div>
@@ -155,7 +157,7 @@ function LandingPage() {
             <Col>
                 <div 
                   dangerouslySetInnerHTML={createMarkup(landing_paragraph)} 
-                  className='blue-text' style={{fontSize:'20px'}}
+                  className='landing-text' 
                 />
             </Col>
           </Row>

@@ -11,7 +11,6 @@ import axios from 'axios';
 
 import { createMarkup } from 'src/utils/Markup.js';
 import Footer from 'src/components/Footer.js';
-import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
 import EventInfo from 'src/components/event/Event.js';
@@ -591,7 +590,6 @@ const Timeline = () => {
   if (timeline_info_is_loading && timeline_background_is_loading) {
     return (
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -600,7 +598,6 @@ const Timeline = () => {
 
   return (
     <div id='Timeline'>
-      <Navbar />
       <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '8em'}}>
         <p className='blue-text text-center' style={{fontSize:'3em'}}>
           TIMELINE

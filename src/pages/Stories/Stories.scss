@@ -1,12 +1,21 @@
-
+#stories-page{
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
 .select-story-div {
-  width: 120px;
+  width: 190px;
+  height: 164px;
   transition: 0.5s;
+
+  &:hover{
+    width: 220px;
+    height: 195px;
+  }
 }
 
-.select-story-div:hover {
-  width: 150px;
-}
+
 
 .select-story-text {
   font-size: 15px;

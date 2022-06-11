@@ -23,7 +23,7 @@ const End_Frame = (zone, index) => {
         <Container className='d-flex justify-content-around align-items-center'>
             <Col className="d-flex justify-content-around align-items-center">
               <Link to='/Stories'>
-                <button	className='blue-text story-button'>
+                <button	className='story-end-frame-button'>
                   Tell Me a Story
                 </button>
               </Link>
@@ -31,7 +31,7 @@ const End_Frame = (zone, index) => {
             <Col className="d-flex justify-content-around align-items-center">
               <Link to='/'>
                 <button	
-                  className='blue-text story-button'>
+                  className='story-end-frame-button'>
                   Explore Coins
                 </button>
               </Link>

@@ -12,7 +12,7 @@ export const MainText = (main_text) =>{
   if(!IsEmptyOrWhiteSpace(main_text)){
     main_text_jsx=(
       <Row className='d-flex justify-content-center align-self-center'>
-        <ReactMarkdown className='orange-text main_text_jsx text-center'>
+        <ReactMarkdown className='story-h2 text-center'>
           {main_text}
         </ReactMarkdown>
       </Row>

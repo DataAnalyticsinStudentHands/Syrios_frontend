@@ -5,7 +5,6 @@ import { Container, Row, Col, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
-import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 import createMarkup from 'src/utils/Markup.js';
@@ -73,7 +72,6 @@ function Download(){
   if (is_loading) {
     return(
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -82,7 +80,6 @@ function Download(){
 
   return(
     <>
-      <Navbar />
       <div id='download-page' className='d-flex align-items-center'>
         <Container className='my-5'>
           <Row>

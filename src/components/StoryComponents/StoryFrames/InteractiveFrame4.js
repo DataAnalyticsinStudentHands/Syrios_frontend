@@ -206,7 +206,7 @@ const InteractiveFrame4 = (zone, index) => {
       button_option.push(
         <Col xs={6} sm={3} className='d-flex justify-content-center'>
           <button	
-            className='blue-text text-center my-2' 
+            className='story-frame14-button my-2' 
             onClick={(e)=>{
               let i = `option${index}`
               let dom = e.target.parentElement.parentElement.nextSibling
@@ -259,8 +259,9 @@ const InteractiveFrame4 = (zone, index) => {
   return (
     <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
       backgroundBlendMode:'multiply'}}>
+
       {MainText(zone.main_text)}
-      <Container className='my-5'>
+      <Container className=''>
         <Row className='d-flex justify-content-between'>
           {OptionButton(zone.component)}
         </Row>

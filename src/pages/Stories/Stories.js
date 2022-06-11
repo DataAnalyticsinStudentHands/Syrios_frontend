@@ -3,7 +3,6 @@ import { Container, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 
@@ -54,26 +53,24 @@ const Stories = () => {
 	if (loading) {
 		return (
 			<>
-        <Navbar />
-        <LoadingPage />
-        <Footer />
+				<LoadingPage />
+				<Footer />
 			</>
 		);
 	}
 
 	return (
 		<>
-      <Navbar />
-			<div id='d-flex justify-content-center align-items-center stories-page'>
-				<Container style={{position: 'relative', top: '100px'}}>
+			<div id='stories-page' className='d-flex align-items-center'>
+				<Container >
 					<Row container='justify-content-md-center'>
 						<Col>
-							<p className='story-h1 text-center' id='story-main-title'>
+							<p className='story-h1 text-center'>
 								Discover Coin Stories
 							</p>
 						</Col>
 					</Row>
-					<Row container='justify-content-md-center' className='d-flex justify-content-center'>
+					<Row container='justify-content-md-center' className='d-flex justify-content-center mt-5'>
 						<Col xs={6} sm={3}>
 							<button
 								className='story-button blue-text'

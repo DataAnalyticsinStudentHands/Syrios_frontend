@@ -8,7 +8,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-import Navbar from 'src/components/Navbar.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 
@@ -66,7 +65,6 @@ const ExploreTheEvidence = () => {
   if (is_loading) {
     return (
       <>
-        <Navbar />
         <LoadingPage />
         <Footer />
       </>
@@ -75,7 +73,6 @@ const ExploreTheEvidence = () => {
 
   return (
     <>
-      <Navbar />
       <div id='explore-the-evidence' className='d-flex align-items-center'>
         <Container>
           <Row>

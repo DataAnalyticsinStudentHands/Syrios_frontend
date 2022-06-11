@@ -65,16 +65,24 @@
     line-height: $syrios-line-spacing-20;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-737271;
+
+    & p {
+      & strong{
+        font-style: $syrios-font-style-italic;
+        font-weight: $syrios-font-weight-600;
+        color: $syrios-color-183848;
+      }
+    }
   }
-  .story-caption-keyword {
-    font-family: $syrios-font-family-garamond-premier-pro;
-    font-style: $syrios-font-style-italic;
-    font-weight: $syrios-font-weight-600;
-    font-size: $syrios-font-size-15;
-    line-height: $syrios-line-spacing-20;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
-  }
+  // .story-caption-keyword {
+  //   font-family: $syrios-font-family-garamond-premier-pro;
+  //   font-style: $syrios-font-style-italic;
+  //   font-weight: $syrios-font-weight-600;
+  //   font-size: $syrios-font-size-15;
+  //   line-height: $syrios-line-spacing-20;
+  //   letter-spacing: $syrios-character-spacing-0;
+  //   color: $syrios-color-183848;
+  // }
   .story-text-external-link-icon {
     font-family: $syrios-font-family-syrios-entypo-subset;
     font-style: $syrios-font-style-normal;
@@ -93,15 +101,15 @@
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-7899a8;
   }
-  .story-text-keyword {
-    font-family: $syrios-garamond-premier-pro-caption;
-    font-style: $syrios-font-style-italic;
-    font-weight: $syrios-font-weight-bold;
-    font-size: $syrios-font-size-25;
-    line-height: $syrios-line-spacing-30;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
-  }
+  // .story-text-keyword {
+  //   font-family: $syrios-garamond-premier-pro-caption;
+  //   font-style: $syrios-font-style-italic;
+  //   font-weight: $syrios-font-weight-bold;
+  //   font-size: $syrios-font-size-25;
+  //   line-height: $syrios-line-spacing-30;
+  //   letter-spacing: $syrios-character-spacing-0;
+  //   color: $syrios-color-183848;
+  // }
   .story-text-footnote-link {
     font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
@@ -138,9 +146,20 @@
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-737271;
+    & p {
+      & strong{
+        font-family: $syrios-garamond-premier-pro-caption;
+        font-style: $syrios-font-style-italic;
+        font-weight: $syrios-font-weight-bold;
+        font-size: $syrios-font-size-25;
+        line-height: $syrios-line-spacing-30;
+        letter-spacing: $syrios-character-spacing-0;
+        color: $syrios-color-183848;
+      }
+    }
   }
   .story-h1 {
-    font-family: $syrios-font-family-garamondpremrpro-ltdisp;
+    font-family: $syrios-garamond-premier-pro-display;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-light;
     font-size: $syrios-font-size-140;
@@ -149,23 +168,34 @@
     color: $syrios-color-486678;
   }
   .story-h2 {
-    font-family: $syrios-font-family-garamondpremrpro-ltdisp;
+    font-family: $syrios-garamond-premier-pro-display;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-light;
     font-size: $syrios-font-size-70;
     line-height: $syrios-line-spacing-75;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-a85828;
+
+    & p{
+      & strong{
+        font-style: $syrios-font-style-italic;
+        font-weight: $syrios-font-weight-bold;
+        font-size: $syrios-font-size-70;
+        line-height: $syrios-line-spacing-75;
+        letter-spacing: $syrios-character-spacing-0;
+        color: #D8A048;
+      }
+    }
   }
-  .story-h2-keyword {
-    font-family: $syrios-font-family-garamondpremrpro-ltdisp;
-    font-style: $syrios-font-style-italic;
-    font-weight: $syrios-font-weight-bold;
-    font-size: $syrios-font-size-70;
-    line-height: $syrios-line-spacing-75;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-a85828;
-  }
+  // .story-h2-keyword {
+  //   font-family: $syrios-font-family-garamondpremrpro-ltdisp;
+  //   font-style: $syrios-font-style-italic;
+  //   font-weight: $syrios-font-weight-bold;
+  //   font-size: $syrios-font-size-70;
+  //   line-height: $syrios-line-spacing-75;
+  //   letter-spacing: $syrios-character-spacing-0;
+  //   color: $syrios-color-a85828;
+  // }
   .story-h3 {
     font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
@@ -174,16 +204,29 @@
     line-height: $syrios-line-spacing-45;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-737271;
+
+    & p {
+      & strong{
+        font-family: $syrios-garamond-premier-pro;
+        font-style: $syrios-font-style-italic;
+        font-weight: $syrios-font-weight-semi-bold;
+        font-size: $syrios-font-size-40;
+        line-height: $syrios-line-spacing-45;
+        letter-spacing: $syrios-character-spacing-0;
+        color: $syrios-color-183848;
+      }
+    }
   }
-  .story-h3-keyword {
-    font-family: $syrios-garamond-premier-pro;
-    font-style: $syrios-font-style-italic;
-    font-weight: $syrios-font-weight-semi-bold;
-    font-size: $syrios-font-size-40;
-    line-height: $syrios-line-spacing-45;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
-  }
+
+  // .story-h3-keyword {
+  //   font-family: $syrios-garamond-premier-pro;
+  //   font-style: $syrios-font-style-italic;
+  //   font-weight: $syrios-font-weight-semi-bold;
+  //   font-size: $syrios-font-size-40;
+  //   line-height: $syrios-line-spacing-45;
+  //   letter-spacing: $syrios-character-spacing-0;
+  //   color: $syrios-color-183848;
+  // }
   .story-h4 {
     font-family: $syrios-garamond-premier-pro-subhead;
     font-style: $syrios-font-style-normal;
@@ -204,4 +247,34 @@
 		color: $syrios-color-183848;
   }
 
+  .story-nav-text {
+    font-family: $syrios-garamond-premier-pro-caption;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-medium;
+    font-size: $syrios-font-size-14;
+    line-height: $syrios-line-spacing-17;
+    letter-spacing: $syrios-character-spacing--80;
+    color: $syrios-color-ffffff;
+    text-transform: $syrios-text-transform-uppercase;
+  }
+
+  .landing-text{
+    font-family: $syrios-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-size: 28px;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: #486678;
+
+    & p {
+      font-weight: $syrios-font-weight-medium;
+
+      & strong {
+        font-weight: $syrios-font-weight-bold;
+      }
+      & em {
+        font-style: italic;
+      }
+    }
+  }
   
