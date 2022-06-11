@@ -75,24 +75,24 @@ export const SubCapBlueBg = (text)=>{
   if(text.light_blue_background){
     return (
       <Container className='light-blue-background' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center sub-text'/>
-        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center caption-text'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
       </Container>
     )
   }
   else if(text.light_yellow_background){
     return (
       <Container className='light-yellow-background' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center sub-text'/>
-        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center caption-text'/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center '/>
+        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center '/>
       </Container>
     )
   }    
   else{
     return(
       <Container style={{padding: '20px', paddingTop: '20px'}}>
-        <div dangerouslySetInnerHTML={createMarkup(text.text)} className='blue-text text-center sub-text'/>
-        <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='gray-text text-center caption-text'/>
+        <div dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center '/>
+        <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
       </Container>
     )
   }
@@ -147,7 +147,7 @@ export const SubcomponentImage = (image) => {
         >
           <div 
             dangerouslySetInnerHTML={createMarkup(image.caption)} 
-            className='gray-text caption-text text-center'
+            className='story-caption text-center'
             style={{padding: '0px', paddingTop: '10px', 
               // fontSize:image_brief_detail_font_size
             }}

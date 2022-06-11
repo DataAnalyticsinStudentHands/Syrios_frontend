@@ -19,7 +19,7 @@ const Frame6 = (zone, index) =>{
     if (zone.left_right_switch){
       frame_body=(
         <>
-          <Col xs={(12/grid[zone.grid])-1} className='gray-text caption-text text-center'>
+          <Col xs={(12/grid[zone.grid])-1} className='text-center'>
             {SubCapBlueBg(zone.text6)}
           </Col>
           <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
@@ -34,7 +34,7 @@ const Frame6 = (zone, index) =>{
           <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
             {SubcomponentImage(zone.image6)}
           </Col>
-          <Col xs={(12/grid[zone.grid])-1} className='gray-text caption-text text-center'>
+          <Col xs={(12/grid[zone.grid])-1} className='text-center'>
             {SubCapBlueBg(zone.text6)}
           </Col>
         </>
@@ -56,8 +56,8 @@ const Frame6 = (zone, index) =>{
             {frame_body}
           </Row>
           <Row className='d-flex justify-content-center '>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
   
         </Container>
@@ -76,8 +76,8 @@ const Frame6 = (zone, index) =>{
         >
         <Container>
           <Row className='d-flex justify-content-center'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
             {frame_body}

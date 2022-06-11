@@ -21,8 +21,8 @@ const Frame5 = (zone, index, json_object) =>{
             </Col>
         </Row>
         <Row className='d-flex justify-content-center '>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
         </Row>
 
       </Container>
@@ -34,15 +34,15 @@ const Frame5 = (zone, index, json_object) =>{
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-center'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
         </Row>
         <Row className='d-flex justify-content-between align-items-center'>
           <Col xs={3}>
             {SubcomponentImage(zone.left)}
           </Col>
           <Col xs={3}>
-          {SubCapBlueBg(zone.middle)}
+            {SubCapBlueBg(zone.middle)}
           </Col>
           <Col xs={3}>
             {SubcomponentImage(zone.right)}

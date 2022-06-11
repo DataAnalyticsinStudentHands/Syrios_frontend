@@ -4,11 +4,6 @@ import { createMarkup } from 'src/utils/Markup.js';
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 import { colors } from 'src/components/constants.js';
 
-import './Event.css';
-
-
-
-
 function tag(text) {
   return (
     <div key={text.toUpperCase()} className='tag' style={{ backgroundColor: colors.find_color(text) }}>

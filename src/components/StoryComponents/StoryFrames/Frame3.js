@@ -12,8 +12,8 @@ const Frame3 = (zone, index) => {
         <Container>
           {SubcomponentImageWithDynamicSizing(zone.images)}
           <Row className='d-flex justify-content-center'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
         </Container>
       </div>
@@ -24,8 +24,8 @@ const Frame3 = (zone, index) => {
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-center'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
           {SubcomponentImageWithDynamicSizing(zone.images)}
         </Container>

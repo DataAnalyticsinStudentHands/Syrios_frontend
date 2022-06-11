@@ -4,9 +4,9 @@
 // @import '../2-foundations/_foundations-dir.scss'; //spacing
 
 .quote-text {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro-caption;
     font-style: $syrios-font-style-italic;
-    font-weight: $syrios-font-weight-600;
+    font-weight: $syrios-font-weight-semi-bold;
     font-size: $syrios-font-size-40;
     line-height: $syrios-line-spacing-45;
     letter-spacing: $syrios-character-spacing-0;
@@ -15,7 +15,7 @@
   .quote-credit {
     font-family: $syrios-font-family-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-25;
     line-height: $syrios-line-spacing-45;
     letter-spacing: $syrios-character-spacing-0;
@@ -24,43 +24,43 @@
   .references-text-icon {
     font-family: $syrios-font-family-syrios-entypo-subset;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-20;
     line-height: $syrios-line-spacing-15;
-    letter-spacing: $syrios-character-spacing--0-2;
+    letter-spacing: $syrios-character-spacing--20;
     color: $syrios-color-b9ccd7;
   }
   .references-text-ordered-list-number {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro-caption;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-bold;
     font-size: $syrios-font-size-15;
     line-height: $syrios-line-spacing-15;
-    letter-spacing: $syrios-character-spacing--0-15;
+    letter-spacing: $syrios-character-spacing--10;
     color: $syrios-color-1a3847;
   }
   .references-text {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro-caption;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-normal;
     font-size: $syrios-font-size-15;
     line-height: $syrios-line-spacing-15;
-    letter-spacing: $syrios-character-spacing--0-15;
+    letter-spacing: $syrios-character-spacing--10;
     color: $syrios-color-183848;
   }
   .references-h3 {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-600;
+    font-weight: $syrios-font-weight-semi-bold;
     font-size: $syrios-font-size-25;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-ffffff;
   }
   .story-caption {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-15;
     line-height: $syrios-line-spacing-20;
     letter-spacing: $syrios-character-spacing-0;
@@ -87,14 +87,14 @@
   .story-text-definition-icon {
     font-family: $syrios-font-family-syrios-entypo-subset;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-20;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-7899a8;
   }
   .story-text-keyword {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro-caption;
     font-style: $syrios-font-style-italic;
     font-weight: $syrios-font-weight-bold;
     font-size: $syrios-font-size-25;
@@ -103,18 +103,18 @@
     color: $syrios-color-183848;
   }
   .story-text-footnote-link {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-bold;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-25;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-7899a8;
   }
   .story-text-link {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-25;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
@@ -122,27 +122,27 @@
     text-decoration: $syrios-decoration-underline;
   }
   .story-bullets {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-20;
     line-height: $syrios-line-spacing-20;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-737271;
   }
   .story-text {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-25;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-737271;
   }
   .story-h1 {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-font-family-garamondpremrpro-ltdisp;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-300;
+    font-weight: $syrios-font-weight-light;
     font-size: $syrios-font-size-140;
     line-height: $syrios-line-spacing-75;
     letter-spacing: $syrios-character-spacing-0;
@@ -151,43 +151,43 @@
   .story-h2 {
     font-family: $syrios-font-family-garamondpremrpro-ltdisp;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-light;
     font-size: $syrios-font-size-70;
     line-height: $syrios-line-spacing-75;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-a85828;
   }
   .story-h2-keyword {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-font-family-garamondpremrpro-ltdisp;
     font-style: $syrios-font-style-italic;
     font-weight: $syrios-font-weight-bold;
     font-size: $syrios-font-size-70;
     line-height: $syrios-line-spacing-75;
     letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-d8a048;
+    color: $syrios-color-a85828;
   }
   .story-h3 {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-normal;
+    font-weight: $syrios-font-weight-regular;
     font-size: $syrios-font-size-40;
     line-height: $syrios-line-spacing-45;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-737271;
   }
   .story-h3-keyword {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-italic;
-    font-weight: $syrios-font-weight-600;
+    font-weight: $syrios-font-weight-semi-bold;
     font-size: $syrios-font-size-40;
     line-height: $syrios-line-spacing-45;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-183848;
   }
   .story-h4 {
-    font-family: $syrios-font-family-garamond-premier-pro;
+    font-family: $syrios-garamond-premier-pro-subhead;
     font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-600;
+    font-weight: $syrios-font-weight-semi-bold;
     font-size: $syrios-font-size-20;
     line-height: $syrios-line-spacing-25;
     letter-spacing: $syrios-character-spacing-0;

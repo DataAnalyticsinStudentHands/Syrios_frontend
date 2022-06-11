@@ -1,9 +1,8 @@
 /* eslint-disable eqeqeq */
 // import {Container,Row} from 'react-bootstrap';
 // import backGround from 'src/assets/background.jpg';
-import 'src/components/constants.css';
-import './Stories.css';
-import 'src/components/coin/CoinFlip.css';
+
+// import 'src/components/coin/CoinFlip.css';
 
 import Title from 'src/components/StoryComponents/StoryFrames/Title';
 import End_Frame from 'src/components/StoryComponents/StoryFrames/End_Frame';

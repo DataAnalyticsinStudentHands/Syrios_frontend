@@ -37,3 +37,5 @@ Antioch_Dataset_08242020.zip
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.vscode

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
-import './WhitePopUp.css';
-
-
 // WhitePopUp is a class that wraps information with a white popup and a translucent white background that covers everything but the navbar and footer.
 // Has an X-icon prebuilt and closes on out side click.
-
 
 const WhitePopUp = (props) => {
   const [show, set_show] = useState(false);

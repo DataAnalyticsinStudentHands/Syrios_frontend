@@ -17,11 +17,6 @@ import CoinInfo from 'src/components/coin/CoinInfo.js';
 import EventInfo from 'src/components/event/Event.js';
 import { colors } from 'src/components/constants.js';
 
-import 'src/components/constants.css';
-import './Timeline.css';
-
-
-
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 const default_coin_data = {

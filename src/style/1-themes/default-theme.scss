@@ -64,8 +64,26 @@ $syrios-color-1a3847: #1a3847;
 $syrios-font-style-normal: normal;
 $syrios-font-style-italic: italic;
 
-$syrios-font-weight-300: 300px;
-$syrios-font-weight-600: 600px;
+$syrios-font-weight-100: 100;
+$syrios-font-weight-200: 200;
+$syrios-font-weight-300: 300;
+$syrios-font-weight-400: 400;
+$syrios-font-weight-500: 500;
+$syrios-font-weight-600: 600;
+$syrios-font-weight-700: 700;
+$syrios-font-weight-800: 800;
+$syrios-font-weight-900: 900;
+
+$syrios-font-weight-thin: 100;
+$syrios-font-weight-extra-light: 200;
+$syrios-font-weight-light: 300;
+$syrios-font-weight-regular: 400;
+$syrios-font-weight-medium: 500;
+$syrios-font-weight-semi-bold: 600;
+$syrios-font-weight-bold: 700;
+$syrios-font-weight-extra-bold: 800;
+$syrios-font-weight-black: 900;
+
 $syrios-font-weight-normal: normal;
 $syrios-font-weight-bold: bold;
 
@@ -73,6 +91,9 @@ $syrios-font-size-15: 15px;
 $syrios-font-size-20: 20px;
 $syrios-font-size-22: 22px;
 $syrios-font-size-25: 25px;
+$syrios-font-size-30: 30px;
+$syrios-font-size-36: 36px;
+
 $syrios-font-size-40: 40px;
 $syrios-font-size-70: 70px;
 $syrios-font-size-140: 140px;
@@ -80,6 +101,9 @@ $syrios-font-size-140: 140px;
 $syrios-character-spacing-0: 0px;
 $syrios-character-spacing--0-15: -0.15px;
 $syrios-character-spacing--0-2: -0.2px;
+$syrios-character-spacing--20: -20px;
+$syrios-character-spacing--10: -0px;
+
 
 $syrios-line-spacing-15: 15px;
 $syrios-line-spacing-20: 20px;

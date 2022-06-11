@@ -2,3 +2,26 @@
 @import '../1-themes/_themes-dir.scss';
 @import '../2-foundations/_foundations-dir.scss';
 
+.story-button {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 2px solid #7899a8;
+    border-radius: 30px !important;
+    opacity: 1;
+    width: 450px;
+    height: 60px;
+    transition: 0.5s;
+
+    font-family: $syrios-garamond-premier-pro-caption;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-medium;
+    font-size: $syrios-font-size-30;
+    line-height: $syrios-line-spacing-45;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-7899a8;
+
+  
+    &:hover {
+    color: #ffffff;
+    background: #7899a8 0% 0% no-repeat padding-box;
+  }
+}

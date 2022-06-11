@@ -1,27 +1,3 @@
-@import url(src/components/constants.css);
-
-#story-main-title {
-  font-size: 7em;
-}
-@media only screen and (max-width: 767px) {
-  #story-main-title {
-    font-size: 2em;
-  }
-}
-
-/* /style/3-application/app.scss */
-/* a:link {
-  color: #487848;
-}
-a:link:visited{
-  color:#184818
-}
-a:link:hover{
-  color:#184818
-}
-a:link:active{
-  color:#184818
-} */
 
 .select-story-div {
   width: 120px;
@@ -44,23 +20,23 @@ a:link:active{
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   height: 100%;
-  background: url(src/assets/background.jpg);
+  // background: url(src/assets/background.jpg);
   /* background-blend-mode: multiply; */
 }
 
-.story-button {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #7899a8;
-  border-radius: 15px !important;
-  opacity: 1;
-  width: 250px;
-  transition: 0.5s;
-}
+// .story-button {
+//   background: #ffffff 0% 0% no-repeat padding-box;
+//   border: 1px solid #7899a8;
+//   border-radius: 15px !important;
+//   opacity: 1;
+//   width: 250px;
+//   transition: 0.5s;
+// }
 
-.story-button:hover {
-  color: #ffffff;
-  background: #7899a8 0% 0% no-repeat padding-box;
-}
+// .story-button:hover {
+//   color: #ffffff;
+//   background: #7899a8 0% 0% no-repeat padding-box;
+// }
 
 /******************** THIS IS FOR THE STORIES ****************/
 #fp-nav ul li a span,
@@ -92,30 +68,30 @@ a:link:active{
 }
 /**** General classes ****/
 
-.title-text {
-  font-size: 76px;
-}
-.sub-title-text {
-  font-size: 20px;
-}
-.caption-title-text {
-  font-size: 30px;
-}
+// .title-text {
+//   font-size: 76px;
+// }
+// .sub-title-text {
+//   font-size: 20px;
+// }
+// .caption-title-text {
+//   font-size: 30px;
+// }
 
-.main-text {
-  font-size: 40px;
-}
-.big-sub-text {
-  font-size: 32px;
-}
-.sub-text {
-  font-size: 24px;
-}
-.caption-text {
-  font-size: 18px;
-  margin: 11px;
-  margin-bottom: -5px !important;
-}
+// .main-text {
+//   font-size: 40px;
+// }
+// .big-sub-text {
+//   font-size: 32px;
+// }
+// .sub-text {
+//   font-size: 24px;
+// }
+// .caption-text {
+//   font-size: 18px;
+//   margin: 11px;
+//   margin-bottom: -5px !important;
+// }
 
 .frame-image {
   margin-bottom: 10px;
@@ -333,9 +309,6 @@ a:link:active{
   font-size: 76px;
 }
 
-#end-frame-text {
-  font-size: 30px;
-}
 
 .end-frame-button-width {
   width: 270px;

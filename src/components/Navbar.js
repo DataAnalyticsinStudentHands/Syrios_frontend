@@ -7,8 +7,6 @@ import {
 import { Link } from 'react-router-dom';
 
 import logo from 'src/assets/logoWhiteText.svg';
-import './Navbar.css'
-import 'src/components/constants.css'
 
 function BootstrapNavbar() {
   return (

@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 import Navbar from 'src/components/Navbar';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
-import './Stories.css';
-import 'src/components/constants.css';
+
 
 const Stories = () => {
 	const [loading, set_loading] = useState(true);

@@ -6,10 +6,6 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
-import './CoinSort.css';
-
-
-
 const CoinSortDropDown = (props) => {
   const [show, set_show] = useState(false);
   const [selection, set_selection] = useState(props.state);

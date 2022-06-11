@@ -5,6 +5,7 @@ import { SubcomponentImage, SubCapBlueBg } from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup.js';
 
 const Frame7 = (zone, index) =>{
+
     let grid = {
       "half": 2,
       "third": 3,
@@ -20,7 +21,7 @@ const Frame7 = (zone, index) =>{
         <>
           <Col xs={Math.round((12/grid[zone.grid]))}>
             <Row className=''>
-              <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left ${zone.text7.text_color} ${zone.text7.font_size}`}/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left story-h3`}/>
             </Row>
             <Row className=''>
               {SubCapBlueBg(zone.right)}
@@ -35,12 +36,12 @@ const Frame7 = (zone, index) =>{
     else{
       frame_body=(
         <>
-          <Col xs={Math.round((12/grid[zone.grid])*(grid[zone.grid]-1))}>
+          <Col xs={7}>
             {SubcomponentImage(zone.left)}
           </Col>
-          <Col xs={Math.round((12/grid[zone.grid]))}>
+          <Col xs={5}>
             <Row className=''>
-              <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left ${zone.text7.text_color} ${zone.text7.font_size}`}/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.text7.text)} className={ `text-left story-h3`}/>
             </Row>
             <Row className=''>
               {SubCapBlueBg(zone.right)}
@@ -58,8 +59,8 @@ const Frame7 = (zone, index) =>{
             {frame_body}
           </Row>
           <Row className='d-flex justify-content-center'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
   
         </Container>
@@ -71,8 +72,8 @@ const Frame7 = (zone, index) =>{
         <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
           <Row className='d-flex justify-content-center'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
             {frame_body}

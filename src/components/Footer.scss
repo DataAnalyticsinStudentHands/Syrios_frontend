@@ -1,4 +1,3 @@
-@import url(src/components/constants.css);
 
 /* a {
 color: #183848;
@@ -61,7 +60,7 @@ color: #183848;
   height: 0vh;
   position: absolute;
   bottom: 70px;
-  background: url(src/assets/credits&references.jpg);
+  background: url('../assets/credits&references.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   overflow-y: hidden;

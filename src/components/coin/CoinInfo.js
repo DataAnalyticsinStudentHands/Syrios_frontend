@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 
-import './CoinInfo.css';
-import './CoinFlip.css';
-
 export function StringifyTypeCategory(type_category) {
   let stringified_list = `${type_category[0].type_category}`;
   for (let i = 1; i < type_category.length; i++) {

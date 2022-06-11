@@ -36,8 +36,8 @@ const Frame2 = (zone, index, json_object) => {
               <img
                 src={`${process.env.REACT_APP_strapiURL}${zone.image2.image.data.attributes.url}`}            
                 alt={zone.image2.image.alternativeText === undefined ? 'img' : zone.image2.image.data.attributes.alternativeText}
-                width={imageSizes[zone.image2.size]}
-              />
+                style={{width:"290px"}}
+              /> 
           </Container>
           <Container 
             className={`d-flex justify-content-center align-items-center ${zone.image2.light_blue_caption_background ? "light-blue-background" : ""}`} 
@@ -53,13 +53,13 @@ const Frame2 = (zone, index, json_object) => {
         </div>
 
         <Container>
-          <Row className='d-flex justify-content-center'>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+          <Row className='d-flex justify-content-center mt-5'>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+              <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
       </Container>
 
-      </Container>
+    </Container>
     </div>
     )
   }
@@ -68,8 +68,8 @@ const Frame2 = (zone, index, json_object) => {
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-center'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
+          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
         </Row>
       </Container>
       <div className={`${zone.image2.light_blue_background ? "light-blue-background" : ""}`} style={{padding: '20px', paddingBottom: '0px'}}>
@@ -77,7 +77,7 @@ const Frame2 = (zone, index, json_object) => {
             <img
               src={`${process.env.REACT_APP_strapiURL}${zone.image2.image.data.attributes.url}`}            
               alt={zone.image2.image.alternativeText === undefined ? 'img' : zone.image2.image.data.attributes.alternativeText}
-              width={imageSizes[zone.image2.size]}
+              style={{width:"290px"}}
             />
         </Container>
         <Container 

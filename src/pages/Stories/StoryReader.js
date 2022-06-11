@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-import './Stories.css';
 import Navbar from 'src/components/Navbar.js';
 import Footer from 'src/components/Footer.js';
 // import fullPageComponent from 'src/components/FullPageComponent';

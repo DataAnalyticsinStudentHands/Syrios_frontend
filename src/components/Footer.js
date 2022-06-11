@@ -9,9 +9,6 @@ import { Link } from 'react-router-dom';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
-import './Footer.css';
-import 'src/components/constants.css';
-
 const Footer = (props) => {
   const CreditsAndReferencesList = (props) => {
     if (props.creditsAndReferences == null) return (<div></div>);
