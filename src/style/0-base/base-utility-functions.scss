@@ -58,7 +58,7 @@ $syrios-default-browser-font-size: 16;
   @if $level == 1 {
     @each $key, $value in $map {
       $output: $output +
-        '#{$newline}- #{$key} #{syrios-available-names($value, $level + 1)}';
+      '#{$newline}- #{$key} #{syrios-available-names($value, $level + 1)}';
     }
   } @else {
     $output: '(';
@@ -75,12 +75,3 @@ $syrios-default-browser-font-size: 16;
 
   @return $output;
 }
-
-
-
-
-
-
-
-
-

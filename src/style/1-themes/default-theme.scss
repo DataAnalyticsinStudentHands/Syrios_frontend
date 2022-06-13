@@ -6,15 +6,15 @@ $syrios-garamond-premier-pro-caption: "garamond-premier-pro-caption",serif;
 $syrios-garamond-premier-pro-subhead: "garamond-premier-pro-subhead",serif; 
 
 @font-face {
-    font-family: 'syrios-entypo-subset';
-    src:
-        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot')format('eot'),
-        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.woff') format('woff'),
-        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.ttf') format('truetype'),
-        url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'syrios-entypo-subset';
+  src:
+  url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.eot')format('eot'),
+  url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.woff') format('woff'),
+  url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.ttf') format('truetype'),
+  url('../../assets/SyriosFontAndIcons/font/syrios-entypo-subset.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* Font/text values */
 $syrios-font-family-garamond-premier-pro: Garamond Premier Pro;
@@ -123,4 +123,4 @@ $syrios-decoration-underline: underline;
 $syrios-text-script-superscript: superscript;
 
 
-  
+
