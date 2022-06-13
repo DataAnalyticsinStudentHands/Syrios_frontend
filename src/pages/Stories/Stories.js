@@ -24,9 +24,9 @@ const Stories = () => {
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.attributes.image.data.attributes.url}`}
                       						alt='Story_Image'
-											width='100%'
+											height='100%'
 										/>
-										<p className='orange-text select-story-text text-center'>
+										<p className='select-story-text text-center'>
 											{e.attributes.name}
 										</p>
 									</div>

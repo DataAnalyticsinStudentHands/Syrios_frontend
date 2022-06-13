@@ -28,7 +28,6 @@ function App() {
 		>
 			{// Link is used to download the bootstrap css
 			}
-			{/* WHY WE HAVE THIS??? CAN WE DO IMPORT */}
 			<link
 				rel="stylesheet"
 				href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
