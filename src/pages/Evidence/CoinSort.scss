@@ -198,6 +198,13 @@
 }
 
 .coin-sort-dropdown-item-text {
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-normal;
+  font-size: $syrios-font-size-15;
+  line-height: $syrios-line-spacing-15;
+  letter-spacing: $syrios-character-spacing--10;
+  color: $syrios-color-183848;
   margin-bottom: -10px;
   margin-left: 15px;
 }

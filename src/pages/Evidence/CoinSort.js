@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import qs from 'qs';
 
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
@@ -25,14 +26,14 @@ const CoinSortDropDown = (props) => {
 
   let display_styling = {
     opacity: show ? 1 : 0,
-    zIndex: show ? 1000 : -1000
+    zIndex: show ? 1000 : -1000,
   };
   let selection_jsx = [];
 
   props.selections.forEach((e, index) => {
     selection_jsx.push(
       <div key={`coin_sort_dropdown_${e + index}`} className='coin-sort-dropdown-item' onClick={Select} data-selection={e}>
-        <p data-selection={e} className='coin-sort-dropdown-item-text dark-blue-text'>
+        <p data-selection={e} className='coin-sort-dropdown-item-text'>
           {e} { index === 0 &&
           <i className='coin-sort-dropdown-arrow' style={{position: 'absolute', right: '0', marginRight: '20px'}}/>
           }
@@ -70,12 +71,15 @@ const CoinSortDropDown = (props) => {
 
 const CoinSort = () => {
   const arrangement_selections = ['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid'];
+  const arrangement_selections_query_relation = [0, 1, 2, 3, 4, 6, 18];
   const sort_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-  const sort_selections_query_name = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
+  const sort_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
   const then_by_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-  const tehn_by_selections_query_name = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
+  const then_by_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
   const filter_selections = ['None', 'Including', 'Excluding'];
+  const filter_selections_query_relation = [null, true, false];
   const with_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
+  const with_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
   const of_kind_selections = ['None', 'God', 'Ruler', 'Female', 'Idea', 'Animal', 'Object', 'Nature', 'War/Weapon', 'Letter', 'Building', 'Other'];
   const [is_loading, set_is_loading] = useState(true);
 
@@ -85,6 +89,9 @@ const CoinSort = () => {
   const [filter_selection, set_filter_selection] = useState(filter_selections[0]);
   const [with_selection, set_with_selection] = useState(with_selections[0]);
   const [of_kind_selection, set_of_kind_selection] = useState(of_kind_selections[0]);
+
+  const [go_right, set_go_right] = useState(false);
+  const [go_left, set_go_left] = useState(false);
 
   const [scale_all, set_scale_all] = useState(false);
   const [rotate_all, set_rotate_all] = useState(false);
