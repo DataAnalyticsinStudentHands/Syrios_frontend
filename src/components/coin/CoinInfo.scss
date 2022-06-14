@@ -42,6 +42,33 @@
   grid-template-rows: repeat(2, 1fr);
 }
 
+.coin-info-dark-text {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-183848;
+}
+
+.coin-info-dark-text > a {
+  color: #7899A8;
+}
+
+.coin-info-dark-text > a:hover {
+  color: #183848;
+}
+
+.coin-info-small-gray-text {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
+}
+
 /*** COIN INFO IMAGE SECTION ***/
 .coin-info-image {
   grid-area: 1 / 1 / 2 / 2;

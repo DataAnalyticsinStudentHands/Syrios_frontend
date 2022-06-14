@@ -48,6 +48,15 @@ color: #183848;
   letter-spacing: 0px;
   opacity: 1;
   transition: 0.5s;
+  
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  font-size: $syrios-font-size-14;
+  line-height: $syrios-line-spacing-17;
+  letter-spacing: $syrios-character-spacing--80;
+  color: $syrios-color-ffffff;
+  text-transform: $syrios-text-transform-uppercase;
 }
 
 .footer-text:hover {
@@ -94,22 +103,44 @@ color: #183848;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: 20px;
+  letter-spacing: $syrios-character-spacing-0;
 }
 
-.list-items p {
+.credits-and-references-list-items p {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-25;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-183848;
+  font-size: 16px;
 }
 
-.list-items p a {
+.credits-and-references-list-items p a {
   color: #183848;
   white-space: normal;
   width: 100%;
   height: auto;
   word-wrap: break-word;
   transition: 0.3s;
+ 
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: 16px;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-183848;
 }
 
-.list-items p a:hover {
-  color: #486678;
+.credits-and-references-list-items p a:hover {
+  color: #486678 !important;
 }
 
 .credits-and-references-list[title]::before {
@@ -117,7 +148,6 @@ color: #183848;
   content: attr(title);
   /* then add some nice styling as needed, eg: */
   display: block;
-  font-family: var(--mainFonts);
   color: #ffffff;
   font-weight: bold;
   font-size: 2em;
@@ -146,6 +176,14 @@ color: #183848;
   margin-bottom: 0.5em;
   margin-left: 2em;
   font-size: 0.8em;
+ 
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-25;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-183848;
 }
 
 .credits-and-references-list-item::before {
@@ -154,6 +192,14 @@ color: #183848;
   counter-increment: item;
   width: 2em;
   margin-left: -2em;
+  
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-25;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-183848;
 }
 
 .credits-and-references-list-item-href {

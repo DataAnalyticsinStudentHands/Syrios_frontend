@@ -51,6 +51,15 @@
 	font-size: 1.2em;
 	text-decoration: none !important;
 	color: white;
+  margin: 10px;
+  
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-semi-bold;
+  font-size: $syrios-font-size-25;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-ffffff;
 }
 
 a:link {

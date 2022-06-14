@@ -10,3 +10,22 @@
 .timeline-info-dynamic-text {
   font-size: 16px;
 }
+
+.timeline-main-text {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-size: $syrios-font-size-23;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: #486678;
+}
+
+.timeline-description-text {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: 16px;
+  line-height: $syrios-line-spacing-45;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
+}

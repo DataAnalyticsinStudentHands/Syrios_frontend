@@ -7,7 +7,7 @@ import { colors } from 'src/components/constants.js';
 function tag(text) {
   return (
     <div key={text.toUpperCase()} className='tag' style={{ backgroundColor: colors.find_color(text) }}>
-      <p className='white-text tag-text'>
+      <p className='tag-text'>
         {text.toUpperCase()}
       </p>
     </div>
@@ -33,7 +33,7 @@ const EventInfo = (props) => {
       <div id='event-info'>
         <div id='event-info-inner-div'>
           {/* tags */}
-          <p id='event-tags-title' className='gray-text'>
+          <p id='event-tags-title'>
             INFLUENCES ON ANTIOCH:
           </p>
           <div id='event-tags'>
@@ -42,7 +42,7 @@ const EventInfo = (props) => {
 
           {/* title */}
           <div id='event-title'>
-            <p className='dark-blue-text'>
+            <p>
               {props.eventMetaData.title}
             </p>
           </div>

@@ -46,6 +46,7 @@ export function CoinIdIntoTitle(coin_id) {
   if (coin_title_length === 0) return coin_id;
   coin_title[0] = coin_title[0].toUpperCase();
   for (let i = 0; i < coin_title_length; i++) {
+    if (coin_title[i] === '(') break; // For bibliography numbers shouldn't get romanized
     if (coin_title[i] === '_') {
       coin_title[i] = ' ';
       if (i < coin_title_length)
@@ -112,27 +113,27 @@ const References = (props) => {
   if (props.coinMetaData.ref1 == null || props.coinMetaData.ref1.length === 0)
     return (
       <div className='coin-info-ref-1'>
-        <span className='gray-text coin-info-small-gray-text'>REFERENCE:<br /></span>
-        <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
+        <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+        <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
       </div>
     );
   else if (props.coinMetaData.ref2 == null || props.coinMetaData.ref2.length === 0)
     return (
       <div className='coin-info-ref-1'>
-        <span className='gray-text coin-info-small-gray-text'>REFERENCE:<br /></span>
-        <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
+        <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+        <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
       </div>
     );
   else 
     return (
       <>
         <div className='coin-info-ref-1'>
-          <span className='gray-text coin-info-small-gray-text'>REFERENCE:<br /></span>
-          <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
+          <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+          <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
         </div>
         <div className='coin-info-ref-2'>
-          <span className='gray-text coin-info-small-gray-text'>REFERENCE:<br /></span>
-          <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
+          <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+          <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
         </div>
       </>
     );
@@ -198,7 +199,7 @@ export function CoinScaleAndFlip(props) {
   if (props.coinMetaData.obverse_file.data == null || props.coinMetaData.reverse_file.data == null)
     return (
       <div className='coin-image-box'>
-        <div className='coin-info-no-image dark-blue-text'>
+        <div className='coin-info-no-image coin-info-dark-text'>
           No image
         </div>
       </div>
@@ -207,7 +208,7 @@ export function CoinScaleAndFlip(props) {
   return (
     <div className='coin-image-box'>
       <div className='coin-info-dotted-circle' style={{height: dotted_circle_height}}/>
-      <div className='coin-info-image-diameter-box dark-blue-text' style={{fontSize: size_diameter_jsx}}>
+      <div className='coin-info-image-diameter-box coin-info-dark-text' style={{fontSize: size_diameter_jsx}}>
         DIAMETER: {props.coinMetaData.diameter == null ? 'N/A' : `${props.coinMetaData.diameter}mm`}
         </div>
         <div className='flip-box'>
@@ -268,101 +269,101 @@ const CoinInfo = (props) => {
         {/*** coin details ***/}
         <div className='coin-info-details-background'>
           <div className='coin-info-details'>
-            <div className='coin-info-title dark-blue-text'>
+            <div className='coin-info-title coin-info-dark-text'>
               <span style={{ fontSize: '1.5em' }}>{`${props.coinMetaData.coin_title}`}</span>
             </div>
             {/* column 1 of coin details */}
             <div className='coin-info-ancient-territory'>
-              <span className='gray-text coin-info-small-gray-text'>ANCIENT TERRITORY: </span><span className='dark-blue-text'>{props.coinMetaData.ancient_territory}</span>
+              <span className='coin-info-small-gray-text'>ANCIENT TERRITORY: </span><span className='coin-info-dark-text'>{props.coinMetaData.ancient_territory}</span>
             </div>
             <div className='coin-info-modern-country'>
-              <span className='gray-text coin-info-small-gray-text'>MODERN COUNTRY: </span><span className='dark-blue-text'>{props.coinMetaData.modern_country}</span>
+              <span className='coin-info-small-gray-text'>MODERN COUNTRY: </span><span className='coin-info-dark-text'>{props.coinMetaData.modern_country}</span>
             </div>
             <div className='coin-info-issuing-authority'>
-              <span className='gray-text coin-info-small-gray-text'>ISSUING AUTHORITY: </span><span className='dark-blue-text'>{props.coinMetaData.issuing_authority}</span>
+              <span className='coin-info-small-gray-text'>ISSUING AUTHORITY: </span><span className='coin-info-dark-text'>{props.coinMetaData.issuing_authority}</span>
             </div>
             <div className='coin-info-governing-power'>
-              <span className='gray-text coin-info-small-gray-text'>GOVERNING POWER: </span><span className='dark-blue-text'>{props.coinMetaData.governing_power}</span>
+              <span className='coin-info-small-gray-text'>GOVERNING POWER: </span><span className='coin-info-dark-text'>{props.coinMetaData.governing_power}</span>
             </div>
             <div className='coin-info-language'>
-              <span className='gray-text coin-info-small-gray-text'>LANGUAGE: </span><span className='dark-blue-text'>{props.coinMetaData.language}</span>
+              <span className='coin-info-small-gray-text'>LANGUAGE: </span><span className='coin-info-dark-text'>{props.coinMetaData.language}</span>
             </div>
             {/* column 2 of coin details */}
             <div className='coin-info-mint'>
-              <span className='gray-text coin-info-small-gray-text'>MINT: </span><span className='dark-blue-text'>{props.coinMetaData.mint}</span>
+              <span className='coin-info-small-gray-text'>MINT: </span><span className='coin-info-dark-text'>{props.coinMetaData.mint}</span>
             </div>
             <div className='coin-info-mint-modern-name'>
-              <span className='gray-text coin-info-small-gray-text'>MINT MODERN NAME: </span><span className='dark-blue-text'>{props.coinMetaData.mint_modern_name}</span>
+              <span className='coin-info-small-gray-text'>MINT MODERN NAME: </span><span className='coin-info-dark-text'>{props.coinMetaData.mint_modern_name}</span>
             </div>
             <div className='coin-info-material'>
-              <span className='gray-text coin-info-small-gray-text'>MATERIAL: </span><span className='dark-blue-text'>{props.coinMetaData.material}</span>
+              <span className='coin-info-small-gray-text'>MATERIAL: </span><span className='coin-info-dark-text'>{props.coinMetaData.material}</span>
             </div>
             <div className='coin-info-denomination'>
-              <span className='gray-text coin-info-small-gray-text'>DENOMINATION: </span><span className='dark-blue-text'>{props.coinMetaData.denomination}</span>
+              <span className='coin-info-small-gray-text'>DENOMINATION: </span><span className='coin-info-dark-text'>{props.coinMetaData.denomination}</span>
             </div>
             <div className='coin-info-diameter'>
-              <span className='gray-text coin-info-small-gray-text'>DIAMETER: </span><span className='dark-blue-text'>{props.coinMetaData.diameter == null ? "N/A" : `${props.coinMetaData.diameter}mm`}</span>
+              <span className='coin-info-small-gray-text'>DIAMETER: </span><span className='coin-info-dark-text'>{props.coinMetaData.diameter == null ? "N/A" : `${props.coinMetaData.diameter}mm`}</span>
             </div>
             {/* column 3 of coin details */}
             <div className='coin-info-date-range'>
-              <span className='gray-text coin-info-small-gray-text'>DATE RANGE: </span><span className='dark-blue-text'>{props.coinMetaData.date_range}</span>
+              <span className='coin-info-small-gray-text'>DATE RANGE: </span><span className='coin-info-dark-text'>{props.coinMetaData.date_range}</span>
             </div>
             <div className='coin-info-latitude'>
-              <span className='gray-text coin-info-small-gray-text'>LATITUDE: </span><span className='dark-blue-text'>{props.coinMetaData.latitude}</span>
+              <span className='coin-info-small-gray-text'>LATITUDE: </span><span className='coin-info-dark-text'>{props.coinMetaData.latitude}</span>
             </div>
             <div className='coin-info-longitude'>
-              <span className='gray-text coin-info-small-gray-text'>LONGITUDE: </span><span className='dark-blue-text'>{props.coinMetaData.longitude}</span>
+              <span className='coin-info-small-gray-text'>LONGITUDE: </span><span className='coin-info-dark-text'>{props.coinMetaData.longitude}</span>
             </div>
             <div className='coin-info-categories'>
-              <span className='gray-text coin-info-small-gray-text'>CATEGORIES: </span><span className='dark-blue-text'>{StringifyTypeCategory(props.coinMetaData.type_category)}</span>
+              <span className='coin-info-small-gray-text'>CATEGORIES: </span><span className='coin-info-dark-text'>{StringifyTypeCategory(props.coinMetaData.type_category)}</span>
             </div>
           </div>
         </div>
         {/*** Obverse / Reverse data ***/}
         <div className='coin-info-types'>
           <div className='coin-info-obverse-type text-center'>
-            <span className='gray-text coin-info-small-gray-text'>OBVERSE TYPE:<br /></span>
-            <span style={{fontStyle: 'italic'}} className='dark-blue-text'>{IfEmptyReturnNone(props.coinMetaData.obverse_type)}</span>
+            <span className='coin-info-small-gray-text'>OBVERSE TYPE:<br /></span>
+            <span style={{fontStyle: 'italic'}} className='coin-info-dark-text'>{IfEmptyReturnNone(props.coinMetaData.obverse_type)}</span>
           </div>
           <div className='coin-info-obverse-legend text-center'>
-            <span className='gray-text coin-info-small-gray-text'>OBVERSE LEGEND:<br /></span>
-            <span style={{fontStyle: 'italic'}} className='dark-blue-text'>{IfEmptyReturnNone(props.coinMetaData.obverse_legend)}</span>
+            <span className='coin-info-small-gray-text'>OBVERSE LEGEND:<br /></span>
+            <span style={{fontStyle: 'italic'}} className='coin-info-dark-text'>{IfEmptyReturnNone(props.coinMetaData.obverse_legend)}</span>
           </div>
           <div className='coin-info-reverse-type text-center'>
-            <span className='gray-text coin-info-small-gray-text'>REVERSE TYPE:<br /></span>
-            <span style={{fontStyle: 'italic'}} className='dark-blue-text'>{IfEmptyReturnNone(props.coinMetaData.reverse_type)}</span>
+            <span className='coin-info-small-gray-text'>REVERSE TYPE:<br /></span>
+            <span style={{fontStyle: 'italic'}} className='coin-info-dark-text'>{IfEmptyReturnNone(props.coinMetaData.reverse_type)}</span>
           </div>
           <div className='coin-info-reverse-legend text-center'>
-            <span className='gray-text coin-info-small-gray-text'>REVERSE LEGEND:<br /></span>
-            <span style={{fontStyle: 'italic'}} className='dark-blue-text'>{IfEmptyReturnNone(props.coinMetaData.reverse_legend)}</span>
+            <span className='coin-info-small-gray-text'>REVERSE LEGEND:<br /></span>
+            <span style={{fontStyle: 'italic'}} className='coin-info-dark-text'>{IfEmptyReturnNone(props.coinMetaData.reverse_legend)}</span>
           </div>
         </div>
         {/*** SOURCE MATERIAL ***/}
         <div className='coin-info-source-material-background'>
           <div className='coin-info-source-material'>
             <div className='coin-info-source-image'>
-              <span className='gray-text coin-info-small-gray-text'>SOURCE IMAGE:<br /></span>
-              <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.source_image)}</span>
+              <span className='coin-info-small-gray-text'>SOURCE IMAGE:<br /></span>
+              <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.source_image)}</span>
             </div>
             <div className='coin-info-rights-holder'>
-              <span className='gray-text coin-info-small-gray-text'>RIGHTS HOLDER:<br /></span>
-              <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.right_holder)}</span>
+              <span className='coin-info-small-gray-text'>RIGHTS HOLDER:<br /></span>
+              <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.right_holder)}</span>
             </div>
             <div className='coin-info-wikidata'>
-              <span className='gray-text coin-info-small-gray-text'>WIKIDATA:<br /></span>
-              <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.wikidata)}</span>
+              <span className='coin-info-small-gray-text'>WIKIDATA:<br /></span>
+              <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.wikidata)}</span>
             </div>
             <div className='coin-info-mint-nomisma-uri'>
-              <span className='gray-text coin-info-small-gray-text'>MINT NOMISMA URI:<br /></span>
-              <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.mint_nomisma_uri)}</span>
+              <span className='coin-info-small-gray-text'>MINT NOMISMA URI:<br /></span>
+              <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.mint_nomisma_uri)}</span>
             </div>
             <div className='coin-info-obverse-nomisma-uri'>
-              <span className='gray-text coin-info-small-gray-text'>OBVERSE NOMISMA URI:<br /></span>
-              <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.mint_nomisma_uri)}</span>
+              <span className='coin-info-small-gray-text'>OBVERSE NOMISMA URI:<br /></span>
+              <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.mint_nomisma_uri)}</span>
             </div>
             <div className='coin-info-reverse-nomisma-uri'>
-              <span className='gray-text coin-info-small-gray-text'>REVERSE NOMISMA URI:<br /></span>
-              <span className='dark-blue-text'>{IfUrlHrefElseString(props.coinMetaData.nomisma_reverse_uri)}</span>
+              <span className='coin-info-small-gray-text'>REVERSE NOMISMA URI:<br /></span>
+              <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.nomisma_reverse_uri)}</span>
             </div>
             <References coinMetaData={props.coinMetaData}/>
           </div>

@@ -22,6 +22,13 @@
 }
 
 #event-tags-title {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
   font-size: 14px;
   margin-bottom: 3px;
 }
@@ -43,17 +50,53 @@
 }
 
 .tag-text {
-  margin: 0px 20px 0px 20px !important;
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  font-size: $syrios-font-size-14;
+  line-height: $syrios-line-spacing-17;
+  letter-spacing: $syrios-character-spacing--80;
+  color: $syrios-color-ffffff;
+  text-transform: $syrios-text-transform-uppercase;
+  margin: 10px 20px 10px 20px !important;
   margin: 5px;
   font-size: 20px;
 }
 
 #event-title {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-40;
+  line-height: $syrios-line-spacing-45;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
   font-size: 30px;
 }
 
 #event-description {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-40;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
   font-size: 14px;
+}
+
+#event-description > div > p > a {
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-italic;
+  font-weight: $syrios-font-weight-semi-bold;
+  line-height: $syrios-line-spacing-45;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-486678;
+
+  transition: 0.3s;
+}
+
+#event-description > div > p > a:hover {
+  color: #7899A8;
 }
 
 #event-connections-background {
@@ -63,14 +106,37 @@
 
 #event-connections {
   padding: 20px;
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
 }
 
 #event-connections-text {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
   margin-bottom: 0px;
   font-size:14px;
 }
 
 #event-connections-list {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-737271;
+  margin-bottom: 0px;
+  font-size:14px;
   font-size:14px;
 }
 

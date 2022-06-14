@@ -19,7 +19,7 @@ const Footer = (props) => {
         list_jsx.push(
           <li key={`${index}`}>
             <div
-              className='list-items'
+              className='credits-and-references-list-items'
               dangerouslySetInnerHTML={{ __html: e.text }} 
             />
         </li>);

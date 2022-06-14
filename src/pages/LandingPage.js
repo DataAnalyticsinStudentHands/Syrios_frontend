@@ -96,7 +96,7 @@ function LandingPage() {
                       <Link to='/HowToReadACoin'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
                           <div className='on-hover-dim'>
-                            <p className='bland-style bold-white-text landing-buttons-text'>
+                            <p className='landing-buttons-text'>
                               How to Read a Coin
                             </p>
                           </div>
@@ -110,7 +110,7 @@ function LandingPage() {
                       <Link to='/Stories'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
                           <div className='on-hover-dim'>
-                            <p className='bland-style bold-white-text landing-buttons-text'>
+                            <p className='landing-buttons-text'>
                               Discover Stories from Coins
                             </p>
                           </div>
@@ -126,7 +126,7 @@ function LandingPage() {
                       <Link to='/Evidence/ExploreTheEvidence'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
                           <div className='on-hover-dim'>
-                            <p className='bland-style bold-white-text landing-buttons-text'>
+                            <p className='landing-buttons-text'>
                               Explore the Evidence
                             </p>
                           </div>
@@ -140,7 +140,7 @@ function LandingPage() {
                       <Link to='/'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
                           <div className='on-hover-dim'>
-                            <p className='bland-style bold-white-text landing-buttons-text'>
+                            <p className='landing-buttons-text'>
                               Open the Historian's Toolbox
                             </p>
                           </div>

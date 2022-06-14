@@ -12,7 +12,7 @@ import Timeline from 'src/pages/Toolbox/Timeline.js';
 import Stories from 'src/pages/Stories/Stories.js';
 import StoryReader from 'src/pages/Stories/StoryReader.js';
 import HowToReadACoin from 'src/pages/HowToReadACoin.js';
-import About from 'src/pages/bottomNavigation/About.js';
+import AboutUs from 'src/pages/AboutUs/AboutUs.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort.js';
 import Download from 'src/pages/Download/Download.js';
@@ -43,7 +43,7 @@ function App() {
 					<Route path='/Stories' element={<Stories />} />
 					<Route path='/StoryReader' element={<StoryReader />} />
 					<Route path='/HowToReadACoin' element={<HowToReadACoin />} />
-					<Route path='/About' element={<About />} />
+					<Route path='/About' element={<AboutUs />} />
 					<Route path='/Evidence/ExploreTheEvidence' element={<ExploreTheEvidence />} />
 					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 					<Route path='/Download' element={<Download />} />
