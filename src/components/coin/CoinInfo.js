@@ -258,7 +258,7 @@ const CoinInfo = (props) => {
   const CloseHandler = (e) => { 
     props.onClose(false);
   };
-  
+ 
   return (
     <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div className='coin-info'>
@@ -283,7 +283,7 @@ const CoinInfo = (props) => {
               <span className='coin-info-small-gray-text'>ISSUING AUTHORITY: </span><span className='coin-info-dark-text'>{props.coinMetaData.issuing_authority}</span>
             </div>
             <div className='coin-info-governing-power'>
-              <span className='coin-info-small-gray-text'>GOVERNING POWER: </span><span className='coin-info-dark-text'>{props.coinMetaData.governing_power}</span>
+              <span className='coin-info-small-gray-text'>GOVERNING POWER: </span><span className='coin-info-dark-text'>{props.coinMetaData.governing_power.data.attributes.governing_power}</span>
             </div>
             <div className='coin-info-language'>
               <span className='coin-info-small-gray-text'>LANGUAGE: </span><span className='coin-info-dark-text'>{props.coinMetaData.language}</span>

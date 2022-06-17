@@ -40,7 +40,15 @@ const default_coin_data = {
   "latitude": 36.16,
   "date_range": "c. 162 BCE-150 BCE",
   "from_date": -162,
-  "governing_power": "Seleucid",
+  "governing_power": {
+    "data": {
+      "id": 3,
+      "attributes": {
+        "governing_power": "Seleucid",
+        "color": "#d8b8f8"
+      }
+    }
+  },
   "nomisma_obverse_uri": "http://nomisma.org/id/demetrius_i_soter",
   "nomisma_reverse_uri": "http://nomisma.org/id/tyche",
   "language": "Greek",
