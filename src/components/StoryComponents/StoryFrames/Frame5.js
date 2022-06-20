@@ -1,8 +1,6 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import {SubCapBlueBg, SubcomponentImage } from "../ComponentFunction/index";
-
-import createMarkup from 'src/utils/Markup.js';
+import {SubcomponentImage, TextComponent, HeadComponent } from "../ComponentFunction/index";
 
 const Frame5 = (zone, index, json_object) =>{
   if (zone.head.updown_switch){
@@ -10,19 +8,19 @@ const Frame5 = (zone, index, json_object) =>{
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
         <Row className='d-flex justify-content-between align-items-center'>
-            <Col xs={3}>
-              {SubcomponentImage(zone.image_left)}
+            <Col >
+              {SubcomponentImage(zone.image5_left)}
+
             </Col>
-            <Col xs={3}>
-              {SubCapBlueBg(zone.middle)}
+            <Col >
+              <TextComponent text = {zone.text5_middle}/>
             </Col>
-            <Col xs={3}>
-              {SubcomponentImage(zone.image_right)}
+            <Col >
+              {SubcomponentImage(zone.image5_right)}
             </Col>
         </Row>
-        <Row className='d-flex justify-content-center '>
-          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
-          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
+        <Row className='d-flex justify-content-center mt-5'>
+        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
         </Row>
 
       </Container>
@@ -33,19 +31,18 @@ const Frame5 = (zone, index, json_object) =>{
     return(
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
       <Container>
-        <Row className='d-flex justify-content-center'>
-          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
-          <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
+        <Row className='d-flex justify-content-center mb-5'>
+        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
         </Row>
         <Row className='d-flex justify-content-between align-items-center'>
           <Col xs={3}>
-            {SubcomponentImage(zone.left)}
+            {SubcomponentImage(zone.image5_left)}
           </Col>
           <Col xs={3}>
-            {SubCapBlueBg(zone.middle)}
+            <TextComponent text = {zone.text5_middle}/>
           </Col>
           <Col xs={3}>
-            {SubcomponentImage(zone.right)}
+            {SubcomponentImage(zone.image5_right)}
           </Col>
         </Row>
       </Container>

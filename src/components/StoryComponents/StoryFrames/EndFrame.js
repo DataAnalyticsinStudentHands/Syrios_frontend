@@ -6,9 +6,12 @@ import backGround from 'src/assets/background.jpg';
 function createMarkup(textTran){
   return {__html: textTran};
 }
-const End_Frame = (zone, index) => {
+const End_Frame = (props) => {
+  let zone = props.zone
     return (
-      <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
+      <div 
+      // key={`story_comp_${index}`} 
+      className='section' style={{ backgroundImage: zone.background == (undefined || null) ? undefined:`url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'}}>
         <Container className='d-flex justify-content-center align-items-center my-5'>
           <div id='end-frame-text'>

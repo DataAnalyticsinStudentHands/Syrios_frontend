@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import backGround from 'src/assets/background.jpg';
 import { HeadComponent, TextComponent } from "../ComponentFunction/index";
 
-const Frame1 = (props) => {
+const TextText = (props) => {
   let zone = props.zone
     if (zone.head.updown_switch){
       return(
@@ -17,10 +17,10 @@ const Frame1 = (props) => {
         <Container>
           <Row className="d-flex justify-content-around align-items-center mb-5">
             <Col xs={5}>
-              <TextComponent text = {zone.left}/>
+              <TextComponent text = {zone.tt_text_left}/>
             </Col>
             <Col xs={5}>
-              <TextComponent text = {zone.right}/>
+              <TextComponent text = {zone.tt_text_right}/>
             </Col>
           </Row>
           <Row className="mt-5">
@@ -46,10 +46,10 @@ const Frame1 = (props) => {
           </Row>
           <Row className="d-flex justify-content-around align-items-center mt-5">
             <Col xs={5}>
-              <TextComponent text = {zone.left}/>
+              <TextComponent text = {zone.tt_text_left}/>
             </Col>
             <Col xs={5}>
-              <TextComponent text = {zone.right}/>
+              <TextComponent text = {zone.tt_text_right}/>
             </Col>
           </Row>
         </Container>
@@ -58,4 +58,4 @@ const Frame1 = (props) => {
 
     }
   }
-  export default Frame1
+  export default TextText

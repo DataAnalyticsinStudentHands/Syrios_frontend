@@ -9,8 +9,8 @@ const Frame4 = (zone, index) =>{
   if (zone.head.updown_switch){
     return(
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
-      {/* <Container> */}
-        <Row className='d-flex justify-content-between align-items-center '>
+      <Container>
+        <Row className='d-flex justify-content-around align-items-end '>
             <Col xs={3}>
               {SubcomponentImage(zone.image_left)}
             </Col>
@@ -21,12 +21,11 @@ const Frame4 = (zone, index) =>{
               {SubcomponentImage(zone.image_right)}
             </Col>
         </Row>
-        <Row className='d-flex justify-content-center '>
+        <Row className='d-flex justify-content-center mt-5'>
           <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
           <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
         </Row>
-
-      {/* </Container> */}
+      </Container>
     </div>
     )
   }
@@ -38,14 +37,14 @@ const Frame4 = (zone, index) =>{
           <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
           <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
         </Row>
-        <Row className='d-flex justify-content-between align-items-center'>
-          <Col xs={3}>
+        <Row className='d-flex justify-content-around align-items-center'>
+          <Col >
             {SubcomponentImage(zone.image_left)}
           </Col>
-          <Col xs={3}>
+          <Col >
             {SubcomponentImage(zone.image_middle)}
           </Col>
-          <Col xs={3}>
+          <Col>
             {SubcomponentImage(zone.image_right)}
           </Col>
         </Row>

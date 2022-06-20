@@ -16,12 +16,13 @@ const ScaleCoinImg = (props)=>{
   return(
     <>
         <img
-          src={`http://localhost:1337${coin_obverse_url}`}
+          src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url}`}
           alt={coin_obverse_alt}
           className='sclae_front'
+          
         />
         <img
-          src={`http://localhost:1337${coin_reverse_url}`}
+          src={`${process.env.REACT_APP_strapiURL}${coin_reverse_url}`}
           alt={coin_reverse_alt}
           className='scale_back'
         />
@@ -35,8 +36,6 @@ function ScaleInOut (props){
   let scaleIn = props.childNodes[0]
   let scaleOut = props.childNodes[1]
   // let scaleIn = props
-
-  console.log(getComputedStyle(scaleIn).display)
 
   if(getComputedStyle(scaleIn).display === 'block'){
     scaleIn.style.opacity = '0.0'
@@ -88,9 +87,9 @@ function ScaleInOut (props){
   // }
 }
 
-const Frame8 = (props) =>{
+const ScaleFrame = (props) =>{
   let zone = props.zone
-  console.log(zone)
+//   console.log(zone)
   if (zone.head.updown_switch){
     return(
       <div 
@@ -126,24 +125,34 @@ const Frame8 = (props) =>{
         <Row className='d-flex justify-content-center mb-5 '>
           <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
         </Row>
-        <Row className='d-flex justify-content-between align-items-center row-light-blue-background' style={{height:'288px'}}>
-          <Col xs={3} className='scale-coin-out-div d-flex justify-content-end'>
-            <ScaleCoinImg coin = {zone.scale_coin_right}/>
+        <Row 
+            className='d-flex row-light-blue-background'
+        />
+        <Row 
+            className='d-flex justify-content-around align-items-center row-scare-content'
+        >
+          <Col xs={3} className='d-flex justify-content-center'>
+            <ScaleCoinImg coin = {zone.scale_coin_left}/>
           </Col>
-          <Col className='scale-coin-out-div '>
+          <Col 
+            className='d-flex align-items-center'
+            style={{height:'183px', zIndex:-3}}
+
+          >
             <div 
                 dangerouslySetInnerHTML={createMarkup(zone.text_front)} 
-                className='text-center sclae_front_text'
+                className='text-center sclae_front_text story-text'
               />
               <div 
                 dangerouslySetInnerHTML={createMarkup(zone.text_back)} 
-                className='text-center scale_back_text'
+                className='text-center scale_back_text story-text'
               />          
             </Col>
-          <Col xs={3} className='scale-coin-out-div'>
+          <Col xs={3} className='d-flex justify-content-center'>
             <ScaleCoinImg coin = {zone.scale_coin_right}/>
           </Col>
         </Row>
+
         
         <Row>
           <Col className='d-flex align-items-center justify-content-center '>
@@ -152,14 +161,12 @@ const Frame8 = (props) =>{
               onClick={(e)=> {
                 // console.log(e)
                 // console.log(e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes)
-                let dom = e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes
+                let dom = e.target.parentElement.parentElement.parentElement.childNodes[2].childNodes
                 console.log(dom)
                   // console.log('includes black') // then return compare scale
                   ScaleInOut(dom[0])
                   ScaleInOut(dom[1])
                   ScaleInOut(dom[2])
-
-
 
                 // Find dom parent element for compare scale and reset scale
                 // let dom = e.target.parentElement.parentElement.nextSibling.childNodes[0].childNodes;
@@ -196,4 +203,4 @@ const Frame8 = (props) =>{
 
   }
 
-  export default Frame8
+  export default ScaleFrame
