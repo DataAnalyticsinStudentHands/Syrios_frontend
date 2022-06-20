@@ -6,6 +6,19 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 
+
+
+function FindIndexInArray(arr, item) {
+  if (arr == null || arr.constructor !== Array) return -1;
+  let arr_len = arr.length;
+  for (let i = 0; i < arr_len; i++) {
+    if (arr[i] === item) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 const CoinSortDropDown = (props) => {
   const [show, set_show] = useState(false);
   const [selection, set_selection] = useState(props.state);
@@ -66,21 +79,44 @@ const CoinSortDropDown = (props) => {
     </div>
   );
 }
+const arrangement_selections = ['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid'];
+const arrangement_selections_query_relation = [0, 1, 2, 3, 4, 6, 18];
+const sort_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
+const sort_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
+const then_by_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
+const then_by_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
+const filter_selections = ['None', 'Including', 'Excluding'];
+const filter_selections_query_relation = [null, true, false];
+const with_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
+const with_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
+const of_kind_selections = ['None', 'God', 'Ruler', 'Female', 'Idea', 'Animal', 'Object', 'Nature', 'War/Weapon', 'Letter', 'Building', 'Other'];
 
+function QueryBuilder(arrangement_selection, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, page) {
+  let arrangement_selection_query = arrangement_selections_query_relation[FindIndexInArray(arrangement_selections, arrangement_selection)];
+  let sort_selection_query = sort_selections_query_relation[FindIndexInArray(sort_selections, sort_selection)];
+  let then_by_selection_query = then_by_selections_query_relation[FindIndexInArray(then_by_selections, then_by_selection)];
+  let filter_selection_query = filter_selections_query_relation[FindIndexInArray(filter_selections, filter_selection)];
+  let with_selection_query = with_selections_query_relation[FindIndexInArray(with_selections, with_selection)];
+  // let of_kind_selections_query = FindIndexInArray(of_kind_selections, of_kind_selection); Gotta change this a bit
+  
+  let query = {
+    pagination: {
+      page: page,
+      pageSize: arrangement_selection_query,
+    }
+  };
 
+  if (sort_selection_query !== sort_selections_query_relation[0]) {
+    query = {
+      ...query,
+      sort: [sort_selection_query],
+    };
+  }
+
+  return qs.stringify(query);
+}
 
 const CoinSort = () => {
-  const arrangement_selections = ['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid'];
-  const arrangement_selections_query_relation = [0, 1, 2, 3, 4, 6, 18];
-  const sort_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-  const sort_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
-  const then_by_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-  const then_by_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
-  const filter_selections = ['None', 'Including', 'Excluding'];
-  const filter_selections_query_relation = [null, true, false];
-  const with_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-  const with_selections_query_relation = ['', 'from_date:asc', 'material:asc', 'issuing_authority:asc', 'governing_power:asc', 'diameter:asc'];
-  const of_kind_selections = ['None', 'God', 'Ruler', 'Female', 'Idea', 'Animal', 'Object', 'Nature', 'War/Weapon', 'Letter', 'Building', 'Other'];
   const [is_loading, set_is_loading] = useState(true);
 
   const [arrangement_selection, set_arrangement_selection] = useState(arrangement_selections[0]);
@@ -97,13 +133,33 @@ const CoinSort = () => {
   const [rotate_all, set_rotate_all] = useState(false);
 
   /* Pagination variables */
-  let page = 1, page_size = 0;
+  let page = 1;
+  useEffect(() => {
+    const query = QueryBuilder(arrangement_selection, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, page);
+    console.log(`/api/coins?${query}`);
+    axios.get(process.env.REACT_APP_strapiURL + `/api/coins?${query}`)
+      .then((res, err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(res);
+        }
+      });
+  }, [arrangement_selection, sort_selection, then_by_selection, with_selection, of_kind_selection, scale_all, rotate_all]);
+
+  const [coin_sort_title, set_coin_sort_title] = useState(undefined);
   useEffect(() => {
     axios.get(process.env.REACT_APP_strapiURL + '/api/coin-sort')
       .then((res, err) => {
-        set_is_loading(false);
+        if (err) {
+          console.error(err);
+        } else {
+          let attri = res.data.data.attributes;
+          set_coin_sort_title(attri.title);
+          set_is_loading(false);
+        }
       });
-  }, [arrangement_selection, sort_selection, then_by_selection, with_selection, of_kind_selection, scale_all, rotate_all]);
+  });
 
   if (is_loading) {
     return (
@@ -118,6 +174,9 @@ const CoinSort = () => {
     <div id='coin-sort-wrapper'>
       <div className='navbar-spacer' />
       <div id='coin-sort-spacer' />
+      <div className='story-h2 text-center'>
+        {coin_sort_title}
+      </div>
       <div id='coin-sort-options'>
         <CoinSortDropDown title='Arrange:' selections={arrangement_selections} state={arrangement_selection} set_state={set_arrangement_selection}/>
         <div className='coin-sort-menu-vr'>
