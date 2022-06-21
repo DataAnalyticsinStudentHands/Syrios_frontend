@@ -6,7 +6,6 @@ import { HeadComponent,  } from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup.js';
 
 const FadeButton = (props)=>{
-  console.log(props)
   let buttonOptin = []
 
   for (let i=0; i<props.options.length; i++){
@@ -41,7 +40,6 @@ const FadeButton = (props)=>{
   }
 }
 const FadeBody = (props)=>{
-  // console.log(props.coin)
   let coin_left = props.coin.coin_left.data.attributes
 
   let sourUrl_left = coin_left.source_image
@@ -108,7 +106,7 @@ const FadeBack = (props)=>{
   for(let body = 1; body<props.bodys.length; body++){
     fadeBack.push(
       <div className='fade-back'key={body}>
-        <div className='d-flex justify-content-between 'style={{height:'464px'}}>
+        <div className='d-flex justify-content-around'style={{height:'464px'}}>
         <FadeBody coin = {props.bodys[body]} />
         </div>
       </div>
@@ -123,7 +121,6 @@ const FadeBack = (props)=>{
 }
 
 function toShow (dom,index, length) {
-  // console.log(index)
   if (length == 2){
     let Option0 = dom.childNodes[0]
     let Option1 = dom.childNodes[1]
@@ -167,7 +164,7 @@ function toShow (dom,index, length) {
       break;
   
       default:
-        console.log('Nope something is wrong')
+        console.log('Only take 2 or 4 options')
     }
   }
   if (length == 4 ){
@@ -267,7 +264,7 @@ function toShow (dom,index, length) {
       break;
   
       default:
-        console.log('Nope something is wrong')
+        console.log('Only take 2 or 4 options')
     }
   }
   
@@ -275,7 +272,6 @@ function toShow (dom,index, length) {
 
 const FadeFrame = (props) =>{
   let zone = props.zone
-  // console.log(zone)
   if (zone.head.updown_switch){
     return(
       <div 
@@ -316,33 +312,7 @@ const FadeFrame = (props) =>{
 
           <FadeBack bodys={zone.fades}/>
           <FadeButton options = {zone.fades} />
-          {/* <Row className='justify-content-center fade-button-row'>
-            <Col  xs={2} className="text-center">
-              <button 
-                className='fade-frame-button'
-                onClick={(e)=>{
-                  let dom = e.target.parentElement.parentElement.parentElement
-                  toShow(dom,0)
-                }}  
-              >
-                {zone.fades[0].topic}
-              </button>
-            </Col>
-            <Col xs={2} className="text-center">
-              <button 
-                className='fade-frame-button '
-                onClick={(e)=>{
-                  let dom = e.target.parentElement.parentElement.parentElement
-                  toShow(dom,1)
-                }} 
-              >
-                {zone.fades[1].topic}
-              </button>
-            </Col>
-          </Row> */}
-        </Container>
-
-       
+        </Container>       
       </Container>
     </div>
     )
