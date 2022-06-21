@@ -368,6 +368,27 @@
   top: 47px;
   margin: 0% 5% !important;
 }
+
+.fade-front{
+  display: block;
+  opacity: 1;
+  transition: 0.3s;
+}
+.fade-back{
+  display: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+.fade-2button-row{
+  position: relative;
+  bottom: 30px;
+
+}
+.fade-4button-row{
+  position: relative;
+  bottom: 530px;
+
+}
 .interactive-frame1-image-outer-div {
   position: relative;
   top: 0;

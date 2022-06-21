@@ -6,7 +6,6 @@ import { HeadComponent,  } from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup.js';
 
 const FlipCoinImage = (props)=>{
-  console.log(props.coin)
   let sourUrl = props.coin.coin.data.attributes.source_image
   let coin_obverse_url = props.coin.coin.data.attributes.obverse_file.data.attributes.url
   let coin_obverse_alt = props.coin.coin.data.attributes.obverse_file.data.attributes.alternativeText
