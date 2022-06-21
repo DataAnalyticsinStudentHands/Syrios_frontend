@@ -19,7 +19,6 @@ const ScaleCoinImg = (props)=>{
           src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url}`}
           alt={coin_obverse_alt}
           className='sclae_front'
-          
         />
         <img
           src={`${process.env.REACT_APP_strapiURL}${coin_reverse_url}`}
@@ -30,12 +29,9 @@ const ScaleCoinImg = (props)=>{
   )
 }
 
-
 function ScaleInOut (props){
-  // console.log(props.childNodes)
   let scaleIn = props.childNodes[0]
   let scaleOut = props.childNodes[1]
-  // let scaleIn = props
 
   if(getComputedStyle(scaleIn).display === 'block'){
     scaleIn.style.opacity = '0.0'
@@ -73,18 +69,6 @@ function ScaleInOut (props){
       });
     }, 400);
   }
-  // console.log(scaleOut)
-
-  // if(scaleIn.style.display === 'block'){
-  //   console.log('scaleIn display is block')
-  //   setTimeout(()=>{
-  //     scaleIn.style.display = 'none'
-  //     scaleOut.style.display='block'
-  //   },400)
-  // }
-  // else{
-  //   console.log('nope')
-  // }
 }
 
 const ScaleFrame = (props) =>{
@@ -102,7 +86,6 @@ const ScaleFrame = (props) =>{
       >
       <Container>
         <Row className='d-flex justify-content-around align-items-center'>
-          {/* <ImagesComponent images = {zone.images} /> */}
         </Row>
         <Row className='d-flex justify-content-center mt-5'>
           <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
@@ -137,7 +120,6 @@ const ScaleFrame = (props) =>{
           <Col 
             className='d-flex align-items-center'
             style={{height:'183px', zIndex:-3}}
-
           >
             <div 
                 dangerouslySetInnerHTML={createMarkup(zone.text_front)} 
@@ -163,18 +145,9 @@ const ScaleFrame = (props) =>{
                 // console.log(e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes)
                 let dom = e.target.parentElement.parentElement.parentElement.childNodes[2].childNodes
                 console.log(dom)
-                  // console.log('includes black') // then return compare scale
                   ScaleInOut(dom[0])
                   ScaleInOut(dom[1])
                   ScaleInOut(dom[2])
-
-                // Find dom parent element for compare scale and reset scale
-                // let dom = e.target.parentElement.parentElement.nextSibling.childNodes[0].childNodes;
-                // if (window.getComputedStyle(dom[0]).display.includes('block')) { // if compare scale is block
-                //   FadeThenSwitchCompAndReset(dom[0]); // then return compare scale
-                // } else {
-                //   FadeThenSwitchCompAndReset(dom[1]); // else return reset scale
-                // }
               }}
             >
               &#xe834;</i>

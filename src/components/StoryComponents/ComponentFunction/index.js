@@ -193,6 +193,26 @@ export const ImagesComponent = (props)=>{
       return;
     })
   }
+  else if (props.images.length==3){
+    props.images.forEach((image)=>{
+      imageJsx.push(
+        <Col key={image.id} xs={3}>
+          <ImageComponent image={image}/>
+        </Col>
+      );
+      return;
+    })
+  }
+  else if (props.images.length==1){
+    props.images.forEach((image)=>{
+      imageJsx.push(
+        <Col key={image.id} xs={6}>
+          <ImageComponent image={image}/>
+        </Col>
+      );
+      return;
+    })
+  }
   else{
     props.images.forEach((image)=>{
       imageJsx.push(
@@ -205,13 +225,11 @@ export const ImagesComponent = (props)=>{
   }
 
   return (
-    <div>
       <Container>
-        <Row className='d-flex justify-content-center align-items-center'>
+        <Row className='d-flex justify-content-around align-items-end'>
           {imageJsx}
         </Row>
       </Container>
-    </div>
   );
 }
 // export const MainText = (main_text) =>{

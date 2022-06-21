@@ -8,6 +8,7 @@ import ImageText from 'src/components/StoryComponents/StoryFrames/ImageText'
 import ImageTextImage from 'src/components/StoryComponents/StoryFrames/ImageTextImage'
 import ImageTextText from 'src/components/StoryComponents/StoryFrames/ImageTextText'
 import ScaleFrame from 'src/components/StoryComponents/StoryFrames/ScaleFrame'
+import FlipFrame from 'src/components/StoryComponents/StoryFrames/FlipFrame'
 
 const SwitchComponent = (zone, index) => {
     switch (zone.__component) {
@@ -29,6 +30,8 @@ const SwitchComponent = (zone, index) => {
         return <ImageTextText zone={zone} key={`story_comp_${index}`}/>
       case 'frame.scale-frame':
         return <ScaleFrame zone={zone} key={`story_comp_${index}`}/>
+        case 'frame.flip-frame':
+          return <FlipFrame zone={zone} key={`story_comp_${index}`}/>
       default:
         console.error(`Error: Unrecognized component '${zone.__component}'`);
     }
