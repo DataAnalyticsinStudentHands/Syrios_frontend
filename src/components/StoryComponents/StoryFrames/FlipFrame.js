@@ -70,7 +70,6 @@ function FlipCoin (dom){
 
 const FlipFrame = (props) =>{
   let zone = props.zone
-  // console.log(zone)
   if (zone.head.updown_switch){
     return(
       <div 

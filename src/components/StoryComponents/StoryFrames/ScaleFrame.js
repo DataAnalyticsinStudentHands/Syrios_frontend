@@ -141,10 +141,7 @@ const ScaleFrame = (props) =>{
             <i 
               className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
               onClick={(e)=> {
-                // console.log(e)
-                // console.log(e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes)
                 let dom = e.target.parentElement.parentElement.parentElement.childNodes[2].childNodes
-                console.log(dom)
                   ScaleInOut(dom[0])
                   ScaleInOut(dom[1])
                   ScaleInOut(dom[2])
@@ -161,10 +158,10 @@ const ScaleFrame = (props) =>{
               // FadeThenSwitchCompAndReset(e.target)
               }
             }>
-            <p className='orange-text interactive-frame1-compare-scale'>
+            <p className='icon-caption interactive-frame1-compare-scale'>
               Compare Scale
             </p>
-            <p className='orange-text interactive-frame1-reset-scale'>
+            <p className='icon-caption interactive-frame1-reset-scale'>
               Reset Scale
             </p>
           </Col>

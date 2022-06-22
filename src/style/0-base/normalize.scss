@@ -66,6 +66,8 @@ main { /* 1 */
   display: block;
 }
 
+
+
 /**
  * Add the correct margin in IE 8.
  */
@@ -106,6 +108,7 @@ pre {
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
+  text-decoration: none !important;
 }
 
 /**
@@ -125,7 +128,8 @@ abbr[title] {
 
 b,
 strong {
-  font-weight: inherit;
+  font-weight: bold !important;
+  color:#78a878
 }
 
 /**
@@ -134,7 +138,9 @@ strong {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: bold !important;
+  color:#78a878
+
 }
 
 /**
@@ -171,7 +177,7 @@ mark {
  */
 
 small {
-  font-size: 80%;
+  font-size: 80% !important;
 }
 
 /**
@@ -181,7 +187,7 @@ small {
 
 sub,
 sup {
-  font-size: 75%;
+  // font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
@@ -192,7 +198,7 @@ sub {
 }
 
 sup {
-  top: -0.5em;
+  top: -0.25em !important;
 }
 
 /* Embedded content
@@ -448,3 +454,9 @@ template {
 [hidden] {
   display: none;
 }
+
+// p {
+//   a {
+//     color
+//   }
+// }

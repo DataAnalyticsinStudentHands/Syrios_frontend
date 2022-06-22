@@ -18,7 +18,7 @@ const Images = (props) =>{
         }}
       >
       <Container>
-        <Row className='d-flex justify-content-between align-items-center'>
+        <Row >
           <ImagesComponent images = {zone.images} />
         </Row>
         <Row className='d-flex justify-content-center mt-5'>

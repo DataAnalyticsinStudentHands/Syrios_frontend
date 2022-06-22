@@ -2,7 +2,7 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col} from "react-bootstrap"
 
-import { HeadComponent,  } from "../ComponentFunction/index";
+import { HeadComponent} from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup.js';
 
 const FadeButton = (props)=>{
@@ -40,31 +40,45 @@ const FadeButton = (props)=>{
   }
 }
 const FadeBody = (props)=>{
+  // console.log(props)
   let coin_left = props.coin.coin_left.data.attributes
-
   let sourUrl_left = coin_left.source_image
-  let coin_obverse_url_left = coin_left.obverse_file.data.attributes.url
-  let coin_obverse_alt_left = coin_left.obverse_file.data.attributes.alternativeText
+  let coin_left_url = undefined
+  let coin_left_alt = undefined
+  if(props.coin.left_coin_obverse_or_reverse){
+    coin_left_url = coin_left.reverse_file.data.attributes.url
+    coin_left_alt = coin_left.reverse_file.data.attributes.alternativeText
+  }
+  else{
+    coin_left_url = coin_left.obverse_file.data.attributes.url
+    coin_left_alt = coin_left.obverse_file.data.attributes.alternativeText
+  }
 
   let coin_right = props.coin.coin_right.data.attributes
-
   let sourUrl_right = coin_right.source_image
-  let coin_obverse_url_right = coin_right.obverse_file.data.attributes.url
-  let coin_obverse_alt_right = coin_right.obverse_file.data.attributes.alternativeText
-
+  let coin_right_url = undefined
+  let coin_right_alt = undefined
+  if(props.coin.right_coin_obverse_or_reverse){
+    coin_right_url = coin_right.reverse_file.data.attributes.url
+    coin_right_alt = coin_right.reverse_file.data.attributes.alternativeText
+  }
+  else{
+    coin_right_url = coin_right.obverse_file.data.attributes.url
+    coin_right_alt = coin_right.obverse_file.data.attributes.alternativeText
+  }
   return(
     <>      
-      <Col xs={3} className='light-blue-background px-3' >
+      <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`} >
         <Row>
           <a href={`${sourUrl_left}`} className={`text-center`}>
             <img 
-              src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url_left}`} 
-              alt={coin_obverse_alt_left}
+              src={`${process.env.REACT_APP_strapiURL}${coin_left_url}`} 
+              alt={coin_left_alt}
               style={{width:"290px", marginTop:"20px"}}
             />
           </a>
         </Row>
-        <Row>
+        <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
             <div 
               dangerouslySetInnerHTML={createMarkup(props.coin.caption_left)} 
               className={`story-caption text-center`}
@@ -79,17 +93,17 @@ const FadeBody = (props)=>{
           />
           
       </Col>
-      <Col xs={3} className='light-blue-background px-3'>
+      <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`}>
         <Row>
           <a href={`${sourUrl_right}`} className={`text-center`}>
             <img 
-              src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url_right}`} 
-              alt={coin_obverse_alt_right}
+              src={`${process.env.REACT_APP_strapiURL}${coin_right_url}`} 
+              alt={coin_right_alt}
               style={{width:"290px", marginTop:"20px"}}
             />
           </a>
         </Row>
-        <Row>
+        <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
             <div 
               dangerouslySetInnerHTML={createMarkup(props.coin.caption_right)} 
               className={`story-caption text-center`}
@@ -282,7 +296,15 @@ const FadeFrame = (props) =>{
         }}
       >
       <Container>
-
+        <Container >
+          <div className='fade-front'>
+            <div className='d-flex justify-content-between ' style={{height:'464px'}}>
+                <FadeBody coin = {zone.fades[0]}/>
+            </div>
+          </div>
+          <FadeBack bodys={zone.fades}/>
+          <FadeButton options = {zone.fades} />
+        </Container>  
         <Row className='d-flex justify-content-center mt-5'>
           <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
         </Row>

@@ -31,95 +31,47 @@
   letter-spacing: $syrios-character-spacing-0;
   color: #737271;
 
-  & p {
-    & strong{
-      font-style: $syrios-font-style-italic;
-      font-weight: $syrios-font-weight-600;
-      color: #183848;
-    }
-  }
 }
-.story-caption-orange {
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-15;
-  line-height: $syrios-line-spacing-20;
-  letter-spacing: $syrios-character-spacing--50;
-  color: #a86818;
 
-  // & p {
-  //   & strong{
-  //     font-style: $syrios-font-style-italic;
-  //     font-weight: $syrios-font-weight-600;
-  //     color: #183848;
-  //   }
-  // }
+.story-icon{
+  font-family: $syrios-font-family-syrios-entypo-subset;
+  color: #7899a8;
 }
-// .story-caption-keyword {
-//   font-family: $syrios-font-family-garamond-premier-pro;
-//   font-style: $syrios-font-style-italic;
-//   font-weight: $syrios-font-weight-600;
-//   font-size: $syrios-font-size-15;
-//   line-height: $syrios-line-spacing-20;
-//   letter-spacing: $syrios-character-spacing-0;
-//   color: #183848;
+// .story-text-external-link-icon {
+//   font-family: $syrios-font-family-syrios-entypo-subset;
+//   color: #7899a8;
 // }
-.story-text-external-link-icon {
-  font-family: $syrios-font-family-syrios-entypo-subset;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-normal;
-  font-size: $syrios-font-size-22;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: #7899a8;
-}
-.story-text-definition-icon {
-  font-family: $syrios-font-family-syrios-entypo-subset;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: #7899a8;
-}
-// .story-text-keyword {
-//   font-family: $syrios-garamond-premier-pro-caption;
-//   font-style: $syrios-font-style-italic;
-//   font-weight: $syrios-font-weight-bold;
+// .story-text-definition-icon {
+//   font-family: $syrios-font-family-syrios-entypo-subset;
+//   color: #7899a8;
+// }
+// .story-caption-external-link-icon {
+//   font-family: $syrios-font-family-syrios-entypo-subset;
+//   color: #7899a8;
+// }
+
+// .story-text-footnote-link {
+//   color: #7899a8;
+// }
+// .story-text-link {
+//   font-family: $syrios-garamond-premier-pro;
+//   font-style: $syrios-font-style-normal;
+//   font-weight: $syrios-font-weight-regular;
 //   font-size: $syrios-font-size-25;
 //   line-height: $syrios-line-spacing-30;
 //   letter-spacing: $syrios-character-spacing-0;
 //   color: #183848;
+//   text-decoration: $syrios-decoration-underline;
 // }
-.story-text-footnote-link {
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-25;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: #7899a8;
-}
-.story-text-link {
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-25;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: #183848;
-  text-decoration: $syrios-decoration-underline;
-}
-.story-bullets {
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-20;
-  letter-spacing: $syrios-character-spacing-0;
-  color: #737271;
-}
+// .story-bullets {
+//   font-family: $syrios-garamond-premier-pro;
+//   font-style: $syrios-font-style-normal;
+//   font-weight: $syrios-font-weight-regular;
+//   font-size: $syrios-font-size-20;
+//   line-height: $syrios-line-spacing-20;
+//   letter-spacing: $syrios-character-spacing-0;
+//   color: #737271;
+// }
 .story-text {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
@@ -131,13 +83,9 @@
   & p {
     & strong{
       font-family: $syrios-garamond-premier-pro-caption;
-      font-style: $syrios-font-style-italic;
-      font-weight: $syrios-font-weight-bold;
-      font-size: $syrios-font-size-25;
-      line-height: $syrios-line-spacing-30;
-      letter-spacing: $syrios-character-spacing-0;
-      color: #183848;
+      // font-style: $syrios-font-style-italic;
     }
+
   }
 }
 .story-h1 {
@@ -157,17 +105,6 @@
   line-height: $syrios-line-spacing-75;
   letter-spacing: $syrios-character-spacing-0;
   color: #a85828;
-
-  & p{
-    & strong{
-      font-style: $syrios-font-style-italic;
-      font-weight: $syrios-font-weight-bold;
-      font-size: $syrios-font-size-70;
-      line-height: $syrios-line-spacing-75;
-      letter-spacing: $syrios-character-spacing-0;
-      color: #D8A048;
-    }
-  }
 }
 // .story-h2-keyword {
 //   font-family: $syrios-font-family-garamondpremrpro-ltdisp;
@@ -186,18 +123,6 @@
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
   color: #737271;
-
-  & p {
-    & strong{
-      font-family: $syrios-garamond-premier-pro;
-      font-style: $syrios-font-style-italic;
-      font-weight: $syrios-font-weight-semi-bold;
-      font-size: $syrios-font-size-40;
-      line-height: $syrios-line-spacing-45;
-      letter-spacing: $syrios-character-spacing-0;
-      color: #183848;
-    }
-  }
 }
 
 .story-h3-blue {
@@ -208,13 +133,6 @@
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
-
-  & p {
-    & strong{
-      font-style: $syrios-font-style-italic;
-      font-weight: $syrios-font-weight-semi-bold;
-    }
-  }
 }
 
 // .story-h3-keyword {
@@ -270,6 +188,7 @@
 
     & strong {
       font-weight: $syrios-font-weight-bold;
+      color: #486678;
     }
     & em {
       font-style: italic;
@@ -325,4 +244,14 @@
   line-height: $syrios-line-spacing-30;
   letter-spacing: $syrios-character-spacing-0;
   color: #ffffff;
+}
+
+.icon-caption{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: $syrios-font-size-15;
+  line-height: $syrios-line-spacing-20;
+  letter-spacing: $syrios-character-spacing--50;
+  color: #a86818;
 }
