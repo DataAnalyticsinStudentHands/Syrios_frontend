@@ -255,6 +255,10 @@ story-download-text (dark blue text)
   -webkit-transform: rotate(135deg);
 }
 
+.coin-sort-grid-cell-flip-box {
+  cursor: pointer;
+}
+
 #coin-sort-pagination-left {
   width: 0; 
   height: 0; 
@@ -293,21 +297,21 @@ story-download-text (dark blue text)
 #coin-sort-grid-6x3-cell-17 { grid-area: 3 / 5 / 4 / 6; }
 #coin-sort-grid-6x3-cell-18 { grid-area: 3 / 6 / 4 / 7; } 
 
-#coin-sort-grid-6x3-arrangement {
-  font-size: 12px !important;
-}
-
-#coin-sort-grid-6x3-arrangement div i.coin-info-icon-rotate {
-  bottom: -5px !important;
-  right: -0px !important;
-}
-
-#coin-sort-grid-6x3-arrangement div i.coin-info-scale-icon {
-  bottom: -5px !important;
-  left: -15px !important;
-}
-
-#coin-sort-grid-6x3-arrangement div i {
+#coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div {
+  font-size: 12px !important;                                                                  
+}                                                                                              
+                                                                                               
+#coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
+  bottom: -5px !important;                                                                     
+  right: -0px !important;                                                                      
+}                                                                                              
+                                                                                               
+#coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
+  bottom: -5px !important;                                                                     
+  left: -15px !important;                                                                      
+}                                                                                              
+                                                                                               
+#coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }
 
@@ -330,21 +334,21 @@ story-download-text (dark blue text)
 #coin-sort-grid-3x2-cell-5 { grid-area: 2 / 2 / 3 / 3; }
 #coin-sort-grid-3x2-cell-6 { grid-area: 2 / 3 / 3 / 4; }
 
-#coin-sort-grid-3x2-arrangement {
-  font-size: 22px !important;
-}
-
-#coin-sort-grid-3x2-arrangement div i.coin-info-icon-rotate {
-  bottom: -5px !important;
-  right: 10px !important;
-}
-
-#coin-sort-grid-3x2-arrangement div i.coin-info-scale-icon {
-  bottom: -5px !important;
-  left: -5px !important;
-}
-
-#coin-sort-grid-3x2-arrangement div i {
+#coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div {
+  font-size: 22px !important;                                                                  
+}                                                                                              
+                                                                                               
+#coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
+  bottom: -5px !important;                                                                     
+  right: 10px !important;                                                                      
+}                                                                                              
+                                                                                               
+#coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
+  bottom: -5px !important;                                                                     
+  left: -5px !important;                                                                       
+}                                                                                              
+                                                                                               
+#coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }
 
@@ -365,21 +369,21 @@ story-download-text (dark blue text)
 .coin-sort-grid-2x2-cell-3 { grid-area: 2 / 1 / 3 / 2; }
 .coin-sort-grid-2x2-cell-4 { grid-area: 2 / 2 / 3 / 3; } 
 
-#coin-sort-grid-2x2-arrangement {
-  font-size: 22px !important;
-}
-
-#coin-sort-grid-2x2-arrangement div i.coin-info-icon-rotate {
-  bottom: -5px !important;
-  right: 80px !important;
-}
-
-#coin-sort-grid-2x2-arrangement div i.coin-info-scale-icon {
-  bottom: -5px !important;
-  left: 60px !important;
-}
-
-#coin-sort-grid-2x2-arrangement div i {
+#coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div {
+  font-size: 22px !important;                                                                  
+}                                                                                              
+                                                                                               
+#coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
+  bottom: -5px !important;                                                                     
+  right: 80px !important;                                                                      
+}                                                                                              
+                                                                                               
+#coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
+  bottom: -5px !important;                                                                     
+  left: 60px !important;                                                                       
+}                                                                                              
+                                                                                               
+#coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }
 
@@ -399,21 +403,21 @@ story-download-text (dark blue text)
 #coin-sort-grid-3x1-cell-2 { grid-area: 1 / 2 / 2 / 3; }
 #coin-sort-grid-3x1-cell-3 { grid-area: 1 / 3 / 2 / 4; }
 
-#coin-sort-grid-3x1-arrangement {
-  font-size: 22px !important;
-}
-
-#coin-sort-grid-3x1-arrangement div i.coin-info-icon-rotate {
-  bottom: -5px !important;
-  right: 20px !important;
-}
-
-#coin-sort-grid-3x1-arrangement div i.coin-info-scale-icon {
-  bottom: -5px !important;
-  left: 0px !important;
-}
-
-#coin-sort-grid-3x1-arrangement div i {
+#coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div {
+  font-size: 22px !important;                                                                  
+}                                                                                              
+                                                                                               
+#coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
+  bottom: -5px !important;                                                                     
+  right: 20px !important;                                                                      
+}                                                                                              
+                                                                                               
+#coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
+  bottom: -5px !important;                                                                     
+  left: 0px !important;                                                                        
+}                                                                                              
+                                                                                               
+#coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }
 
@@ -432,21 +436,21 @@ story-download-text (dark blue text)
 #coin-sort-grid-2x1-cell-1 { grid-area: 1 / 1 / 2 / 2; }
 #coin-sort-grid-2x1-cell-2 { grid-area: 1 / 2 / 2 / 3; } 
 
-#coin-sort-grid-2x1-arrangement {
-  font-size: 22px !important;
-}
-
-#coin-sort-grid-2x1-arrangement div i.coin-info-icon-rotate {
-  bottom: -5px !important;
-  right: 80px !important;
-}
-
-#coin-sort-grid-2x1-arrangement div i.coin-info-scale-icon {
-  bottom: -5px !important;
-  left: 60px !important;
-}
-
-#coin-sort-grid-2x1-arrangement div i {
+#coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div {
+  font-size: 22px !important;                                                                  
+}                                                                                              
+                                                                                               
+#coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
+  bottom: -5px !important;                                                                     
+  right: 80px !important;                                                                      
+}                                                                                              
+                                                                                               
+#coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
+  bottom: -5px !important;                                                                     
+  left: 60px !important;                                                                       
+}                                                                                              
+                                                                                               
+#coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }
 
@@ -464,20 +468,20 @@ story-download-text (dark blue text)
 
 #coins-sort-grid-1x1-cell-1 { grid-area: 1 / 1 / 2 / 2; }
 
-#coin-sort-grid-1x1-arrangement {
+#coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div {
   font-size: 35px !important;
 }
 
-#coin-sort-grid-1x1-arrangement div i.coin-info-icon-rotate {
+#coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
   bottom: 40px !important;
   right: 120px !important;
 }
 
-#coin-sort-grid-1x1-arrangement div i.coin-info-scale-icon {
+#coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
   bottom: 40px !important;
   left: 100px !important;
 }
 
-#coin-sort-grid-1x1-arrangement div i {
+#coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }

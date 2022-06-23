@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import WhitePopUp from 'src/utils/WhitePopUp.js';
 
 export function StringifyTypeCategory(type_category) {
+  if (type_category?.length === 0)
+    return;
   let stringified_list = `${type_category[0].type_category}`;
   for (let i = 1; i < type_category.length; i++) {
     stringified_list += `, ${type_category[i].type_category}`;
@@ -71,11 +73,11 @@ export function CoinIdIntoTitle(coin_id) {
 }
 
 export function IfEmptyReturnNotApplicable(str) {
-  return (str == null || str.length === 0) ? "N/A" : str;
+  return (str?.length === 0) ? "N/A" : str;
 }
 
 export function IfEmptyReturnNone(str) {
-  return (str == null || str.length === 0) ? "None" : str;
+  return (str?.length === 0) ? "None" : str;
 }
 
 export function IfUrlHrefElseString(str) {

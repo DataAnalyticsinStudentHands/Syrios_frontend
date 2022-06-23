@@ -520,7 +520,7 @@ const Timeline = () => {
 
   // Coin info setup here. 
   const [show_coin_info, set_show_coin_info] = useState(false);
-  const coin_info_popup_close_handler = (e) => { // This is used to show / remove popup on certain conditions
+  const CoinInfoPopupCloseHandler = (e) => { // This is used to show / remove popup on certain conditions
     set_show_coin_info(e);
   };
   const [coin_meta_data, set_coin_meta_data] = useState(default_coin_data);
@@ -536,7 +536,7 @@ const Timeline = () => {
 
   // Event info setup here.
   const [show_event_info, set_show_event_info] = useState(false);
-  const event_info_popup_close_handler = (e) => {
+  const EventInfoPopupCloseHandler = (e) => {
     set_show_event_info(e);
   };
 
@@ -623,12 +623,12 @@ const Timeline = () => {
         {timeline_events_and_coins}
       </Svg>
       <CoinInfo 
-        onClose={coin_info_popup_close_handler}
+        onClose={CoinInfoPopupCloseHandler}
         show={show_coin_info}
         coinMetaData={coin_meta_data}
       />
       <EventInfo
-        onClose={event_info_popup_close_handler}
+        onClose={EventInfoPopupCloseHandler}
         show={show_event_info}
         eventMetaData={event_meta_data}
       />
