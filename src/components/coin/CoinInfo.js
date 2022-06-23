@@ -139,7 +139,7 @@ const References = (props) => {
     );
 }
 
-export function CoinScaleAndFlip(props) {
+function CoinScaleAndFlip(props) {
   const [coin_rotation, set_coin_rotation] = useState('rotateY(0deg)');
   const [img_height, set_img_height] = useState('100%');
   const [dotted_circle_height, set_dotted_circle_height] = useState('0%');

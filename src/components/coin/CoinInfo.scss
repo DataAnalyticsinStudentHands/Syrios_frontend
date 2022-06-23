@@ -145,7 +145,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(calc(var(--coin-info-coin-image-translate-x) + 7%), calc(var(--coin-info-coin-image-translate-y) + 2%));
+  transform: translate(var(--coin-info-coin-image-translate-x), var(--coin-info-coin-image-translate-y));
   max-width: 100%;
   max-height: 70%;
   transition: 0.5s;
