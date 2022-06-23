@@ -20,7 +20,7 @@ const Stories = () => {
 						stories_jsx.push(
 							<Col key={`${index}`}>
 								<Link to={`/StoryReader?id=${e.id}`}>
-									<div className='select-story-div'>
+									<div className='select-story-div text-center'>
 										<img
 											src={`${process.env.REACT_APP_strapiURL}${e.attributes.image.data.attributes.url}`}
                       						alt='Story_Image'
@@ -62,7 +62,7 @@ const Stories = () => {
 	return (
 		<>
 			<div id='stories-page' className='d-flex align-items-center'>
-				<Container >
+				<Container>
 					<Row container='justify-content-md-center'>
 						<Col>
 							<p className='story-h1 text-center'>
@@ -108,6 +108,7 @@ const Stories = () => {
 						{stories}
 					</Row>
 				</Container>
+
 			</div>
       <Footer />
 		</>

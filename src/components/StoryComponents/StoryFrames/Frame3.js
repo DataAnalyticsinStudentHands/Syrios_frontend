@@ -10,8 +10,10 @@ const Frame3 = (zone, index) => {
     return(
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
-          {SubcomponentImageWithDynamicSizing(zone.images)}
-          <Row className='d-flex justify-content-center'>
+          <Row className="d-flex justify-content-between">
+            {SubcomponentImageWithDynamicSizing(zone.images)}
+          </Row>
+          <Row className='d-flex justify-content-center' >
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>
@@ -23,7 +25,7 @@ const Frame3 = (zone, index) => {
     return(
       <div key={`story_comp_${index}`} className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
         <Container>
-          <Row className='d-flex justify-content-center'>
+          <Row className='d-flex justify-content-between'>
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
             <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
           </Row>

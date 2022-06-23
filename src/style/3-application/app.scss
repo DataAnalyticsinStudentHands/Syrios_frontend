@@ -12,16 +12,15 @@ html {
   background: url('../../assets/background.jpg'); 
 }
 
-a {
-  color:$syrios-color-487848;
-  text-decoration: none;
-
-  &:hover{
-    color:$syrios-color-184818;
-  }
-}
+// a {
+//   color:$syrios-color-487848;
+//   // text-decoration: none;
+//   &:hover{
+//     color:$syrios-color-184818;
+//   }
+// }
 em {
-  font-family: $syrios-font-family-garamondpremrpro-ltdisp;
+  font-style: $syrios-font-style-italic;
 }
 // need clean up later
 
@@ -49,13 +48,13 @@ em {
   object-fit: cover;
 }
 
-.bland-style {
-  text-decoration: none !important;
-  background: transparent !important;
-  box-shadow: 0px 0px 0px transparent !important;
-  border: solid transparent !important;
-  text-shadow: 0px 0px 0px transparent !important;
-}
+// .bland-style {
+//   text-decoration: none !important;
+//   background: transparent !important;
+//   box-shadow: 0px 0px 0px transparent !important;
+//   border: solid transparent !important;
+//   text-shadow: 0px 0px 0px transparent !important;
+// }
 
 .center-div {
   position: absolute;
@@ -111,6 +110,6 @@ em {
 // }
 
 
-li p {
-  white-space: nowrap;
-}
+// li p {
+//   white-space: nowrap;
+// }

@@ -88,7 +88,7 @@ const About = () => {
                 key={`acknowledgements_${index}`}
               >
                 <Col>
-                  <div dangerouslySetInnerHTML={createMarkup(e.text)} className='text-center about-acknowlegments gray-text'/>
+                  <div dangerouslySetInnerHTML={createMarkup(e.text)} className='text-center story-text'/>
                 </Col>
               </Row>
             );

@@ -5,7 +5,6 @@ import {
 	Routes,
 } from 'react-router-dom';
 import "./style/styles.scss";
-
 import Navbar from 'src/components/Navbar.js';
 import LandingPage from 'src/pages/LandingPage.js';
 import Timeline from 'src/pages/Toolbox/Timeline.js';

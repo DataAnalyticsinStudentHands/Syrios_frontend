@@ -1,28 +1,27 @@
 /* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
-import { SubcomponentImage, textComponent } from "../ComponentFunction/index";
+import { HeadComponent, TextComponent, ImageComponent } from "../ComponentFunction/index";
 
-import createMarkup from 'src/utils/Markup.js';
 
-const Frame6 = (zone, index) =>{
+const ImageText = (props) =>{
   let grid = {
-    "half": 2,
-    "third": 3,
-    "quarter": 4,
-    "two":1.5,
-    "three":1.333333,
-  };
+    "half": 6,
+    "third": 4,
+    "quarter": 3,
 
+  };
+let zone= props.zone
+// let index= props.index
     let frame_body = undefined
     if (zone.left_right_switch){
       frame_body=(
         <>
-          <Col xs={(12/grid[zone.grid])-1}>
-            {textComponent(zone.text6)}
+          <Col xs={`${grid[zone.grid_option]}`}>
+            <TextComponent text = {zone.it_text}/>
           </Col>
-          <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
-            {SubcomponentImage(zone.image6)}
+          <Col >
+            <ImageComponent image = {zone.it_image}/>
           </Col>
         </>
       )
@@ -30,11 +29,11 @@ const Frame6 = (zone, index) =>{
     else{
       frame_body=(
         <>
-          <Col xs={(12/grid[zone.grid])*(grid[zone.grid]-1)-1}>
-            {SubcomponentImage(zone.image6)}
+          <Col xs={`${grid[zone.grid_option]}`}>
+          <ImageComponent image = {zone.it_image}/>
           </Col>
-          <Col xs={(12/grid[zone.grid])-1} >
-            {textComponent(zone.text6)}
+          <Col >
+          <TextComponent text = {zone.it_text}/>
           </Col>
         </>
       )
@@ -43,7 +42,7 @@ const Frame6 = (zone, index) =>{
     if (zone.head.updown_switch){
       return(
         <div 
-          key={`story_comp_${index}`} 
+          // key={`story_comp_${index}`} 
           className='section' 
           style={{ 
             backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
@@ -55,8 +54,7 @@ const Frame6 = (zone, index) =>{
             {frame_body}
           </Row>
           <Row className='d-flex justify-content-center mt-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
+          <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
           </Row>
   
         </Container>
@@ -66,7 +64,7 @@ const Frame6 = (zone, index) =>{
     else{
       return(
         <div 
-          key={`story_comp_${index}`} 
+          // key={`story_comp_${index}`} 
           className='section' 
           style={{ 
             backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
@@ -75,8 +73,7 @@ const Frame6 = (zone, index) =>{
         >
         <Container>
           <Row className='d-flex justify-content-center mb-5'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='story-h2 text-center'/>
-            <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='story-text text-center'/>
+          <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
             {frame_body}
@@ -87,4 +84,4 @@ const Frame6 = (zone, index) =>{
     }
 
   }
-  export default Frame6
+  export default ImageText
