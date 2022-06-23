@@ -6,7 +6,6 @@ import { HeadComponent,  } from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup.js';
 
 const ScaleCoinImg = (props)=>{
-  // console.log(props.coin)
   let coin_obverse_url = props.coin.coin.data.attributes.obverse_file.data.attributes.url
   let coin_obverse_alt = props.coin.coin.data.attributes.obverse_file.data.attributes.alternativeText
 
@@ -73,11 +72,9 @@ function ScaleInOut (props){
 
 const ScaleFrame = (props) =>{
   let zone = props.zone
-//   console.log(zone)
   if (zone.head.updown_switch){
     return(
       <div 
-        // key={`story_comp_${index}`} 
         className='section' 
         style={{ 
           backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
@@ -97,7 +94,6 @@ const ScaleFrame = (props) =>{
   else{
     return(
       <div 
-        // key={`story_comp_${index}`} 
         className='section' 
         style={{ 
           backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
@@ -166,6 +162,7 @@ const ScaleFrame = (props) =>{
             </p>
           </Col>
         </Row>
+
       </Container>
     </div>
     )

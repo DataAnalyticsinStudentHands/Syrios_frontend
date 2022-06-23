@@ -10,6 +10,7 @@ import ImageTextText from 'src/components/StoryComponents/StoryFrames/ImageTextT
 import ScaleFrame from 'src/components/StoryComponents/StoryFrames/ScaleFrame'
 import FlipFrame from 'src/components/StoryComponents/StoryFrames/FlipFrame'
 import FadeFrame from 'src/components/StoryComponents/StoryFrames/FadeFrame'
+import CompareFrame from 'src/components/StoryComponents/StoryFrames/CompareFrame'
 
 
 const SwitchComponent = (zone, index) => {
@@ -36,12 +37,11 @@ const SwitchComponent = (zone, index) => {
         return <FlipFrame zone={zone} key={`story_comp_${index}`}/>
       case 'frame.values-frame':
         return <FadeFrame zone={zone} key={`story_comp_${index}`}/>
+        case 'frame.coin-compare':
+          return <CompareFrame zone={zone} key={`story_comp_${index}`}/>
       default:
         console.error(`Error: Unrecognized component '${zone.__component}'`);
     }
   }
   
-
-  
-
 export default SwitchComponent
