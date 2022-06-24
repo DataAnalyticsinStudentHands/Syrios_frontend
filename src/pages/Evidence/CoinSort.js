@@ -101,17 +101,6 @@ const of_kind_size_query_relation = [
   {gte: null, lte: null},
 ];
 
-function FindIndexInArray(arr, item) {
-  if (arr?.constructor !== Array) return -1;
-  let arr_len = arr.length;
-  for (let i = 0; i < arr_len; i++) {
-    if (arr[i] === item) {
-      return i;
-    }
-  }
-  return -1;
-}
-
 const CoinSortDropDown = (props) => {
   const [show, set_show] = useState(false);
 
@@ -169,7 +158,7 @@ const CoinSortDropDown = (props) => {
 
 function QueryBuilder(arrangement_selection, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, page) {
   let arrangement_selection_query = arrangement_selections_query_relation[arrangement_selections.indexOf(arrangement_selection)];
-  let sort_selection_query = sort_selections_query_relation[sort_selections.indexOf(sort_selections)];
+  let sort_selection_query = sort_selections_query_relation[sort_selections.indexOf(sort_selection)];
   let then_by_selection_query = then_by_selections_query_relation[then_by_selections.indexOf(then_by_selection)];
   let filter_selection_query = filter_selections_query_relation[filter_selections.indexOf(filter_selection)];
   let with_selection_query = with_selections_query_relation[with_selections.indexOf(with_selection)];
@@ -206,8 +195,8 @@ function QueryBuilder(arrangement_selection, sort_selection, then_by_selection, 
     }
   };
 
-  if (sort_selection_query !== sort_selections_query_relation[0]) {
-    if (then_by_selection_query !== then_by_selections_query_relation[0]) {
+  if (sort_selection_query != null && sort_selection_query !== sort_selections_query_relation[0]) {
+    if (then_by_selection_query != null && then_by_selection_query !== then_by_selections_query_relation[0]) {
       query = {
         ...query,
         sort: [sort_selection_query, then_by_selection_query],
@@ -544,7 +533,7 @@ const CoinSort = () => {
       set_page(0);
     }
     if (paginate_left) {
-      if (page - 1 <= 0) set_page(max_page != null ? max_page : 0);
+      if (page - 1 <= 0) set_page(max_page ?? 0);
       else set_page(page - 1);
     } else {
       if (page === max_page) set_page(0);
@@ -568,9 +557,10 @@ const CoinSort = () => {
           } else {
             set_coins(res.data.data);
             set_max_page(res.data.meta.pagination.pageCount);
+            if (page > max_page && max_page !== 0) set_page(max_page);
           }
         });
-    }   }, [arrangement_selection, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, page]);
+    }   }, [arrangement_selection, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, page, max_page]);
 
   useEffect(() => {
     set_of_kind_selections(() => {
