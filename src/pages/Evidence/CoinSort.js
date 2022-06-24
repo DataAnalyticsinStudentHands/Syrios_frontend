@@ -103,6 +103,19 @@ const of_kind_size_query_relation = [
   {gte: null, lte: null},
 ];
 
+const MainText = (props) => {
+  return (
+    <div id='coin-sort-main-text-wrapper'>
+      <div id='coin-sort-main-text'>
+        <div id='coin-sort-main-text-title'>
+          {props.content?.title}
+        </div>
+        <div id='coin-sort-main-text' dangerouslySetInnerHTML={Markup(props.content?.text)}/>
+      </div>
+    </div>
+  );
+}
+
 const ToolTipsBoxJSX = (props) => {
   if (props?.toolTips?.title == null) return <div></div>;
   let jsx = undefined;
@@ -666,30 +679,30 @@ const CoinGrid = (props) => {
     default:
       console.error('No', props.arrangement_selection, 'grid arrangement.');
   }
-  return (
-    <>
-      <div id='coin-sort-grid-arrangement-wrapper'>
-        <i className='coin-sort-pagination-arrow left' onClick={() => {props.goLeft()}} />
-        {jsx}
-        <i className='coin-sort-pagination-arrow right' onClick={() => {props.goRight()}} />
-      </div>
-      <CoinGridProgressBar maxPage={props.maxPage} currentPagination={props.currentPagination} setPagination={props.setPagination} />
-    </>
 
-  );
-}
-
-const TutorialText = (props) => {
-  return (
-    <div id='coin-sort-tutorial-text-wrapper'>
-      <div id='coin-sort-tutorial-text'>
-        <div id='coin-sort-tutorial-text-title'>
-          {props.title}
+  if (props.coins?.length === 0) {
+    return (
+      <>
+        <div id='coin-sort-spacer' />
+        <div id='coin-sort-spacer' />
+        <div id='coin-sort-spacer' />
+        <div id='coin-sort-spacer' />
+        <MainText content={props.emptyQueryContent} />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div id='coin-sort-grid-arrangement-wrapper'>
+          <i className='coin-sort-pagination-arrow left' onClick={() => {props.goLeft()}} />
+          {jsx}
+          <i className='coin-sort-pagination-arrow right' onClick={() => {props.goRight()}} />
         </div>
-        <div id='coin-sort-tutorial-text' dangerouslySetInnerHTML={Markup(props.tutorialText)}/>
-      </div>
-    </div>
-  );
+        <CoinGridProgressBar maxPage={props.maxPage} currentPagination={props.currentPagination} setPagination={props.setPagination} />
+      </>
+
+    );
+  }
 }
 
 const CoinSort = () => {
@@ -780,8 +793,8 @@ const CoinSort = () => {
   }, [with_selection]);
 
   const [coin_sort_title, set_coin_sort_title] = useState(undefined);
-  const [tutorial_text_title, set_tutorial_text_title] = useState(undefined);
-  const [tutorial_text, set_tutorial_text] = useState(undefined);
+  const [tutorial_content, set_tutorial_content] = useState(undefined);
+  const [empty_query_content, set_empty_query_content] = useState(undefined);
   const [arrangement_tool_tips, set_arrangement_tool_tips] = useState(undefined);
   const [sort_tool_tips, set_sort_tool_tips] = useState(undefined);
   const [filter_tool_tips, set_filter_tool_tips] = useState(undefined);
@@ -794,8 +807,8 @@ const CoinSort = () => {
           } else {
             let attri = res.data.data.attributes;
             set_coin_sort_title(attri.title);
-            set_tutorial_text_title(attri.tutorial_text_title);
-            set_tutorial_text(attri.tutorial_text);
+            set_tutorial_content(attri.main_text);
+            set_empty_query_content(attri.no_result_from_query_text);
             set_arrangement_tool_tips(attri.arrangement_tips);
             set_sort_tool_tips(attri.sorting_tips);
             set_filter_tool_tips(attri.filtering_tips);
@@ -933,7 +946,7 @@ const CoinSort = () => {
       {(() => {
         if (page !== 0) {
           return (
-            <CoinGrid coins={coins} arrangementSelection={arrangement_selection} rotateAll={rotate_all} scaleAll={scale_all} goRight={() => {PaginateCoins(false)}} goLeft={() => {PaginateCoins(true)}} setPagination={set_page} currentPagination={page} maxPage={max_page}/>
+            <CoinGrid coins={coins} arrangementSelection={arrangement_selection} rotateAll={rotate_all} scaleAll={scale_all} goRight={() => {PaginateCoins(false)}} goLeft={() => {PaginateCoins(true)}} setPagination={set_page} currentPagination={page} maxPage={max_page} emptyQueryContent={empty_query_content} />
           )
         } else {
           return (
@@ -942,7 +955,7 @@ const CoinSort = () => {
               <div id='coin-sort-spacer' />
               <div id='coin-sort-spacer' />
               <div id='coin-sort-spacer' />
-              <TutorialText title={tutorial_text_title} tutorialText={tutorial_text} />
+              <MainText content={tutorial_content} />
             </>
           )
         }

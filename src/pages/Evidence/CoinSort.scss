@@ -273,13 +273,13 @@ story-download-text (dark blue text)
 
 
 // ********************** TUTORIAL TEXT CSS ********************** //
-#coin-sort-tutorial-text-wrapper {
+#coin-sort-main-text-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#coin-sort-tutorial-text {
+#coin-sort-main-text {
   width: 800px;
   max-width: 95%;
   display: flex;
@@ -287,7 +287,7 @@ story-download-text (dark blue text)
   flex-direction: column;
 }
 
-#coin-sort-tutorial-text-title {
+#coin-sort-main-text-title {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-light;
@@ -295,7 +295,7 @@ story-download-text (dark blue text)
   color: #1a3847;
 }
 
-#coin-sort-tutorial-text ol li {
+#coin-sort-main-text ol li {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-light;
@@ -304,7 +304,7 @@ story-download-text (dark blue text)
   font-size: 22px;
 }
 
-#coin-sort-tutorial-text ol li::marker {
+#coin-sort-main-text ol li::marker {
   color: #a85828;
 }
 
