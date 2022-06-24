@@ -5,6 +5,7 @@ import qs from 'qs';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
+import WhitePopUp from 'src/utils/WhitePopUp.js';
 import CoinInfo, { CoinAlt } from 'src/components/coin/CoinInfo.js';
 import Markup from 'src/utils/Markup.js';
 
@@ -102,8 +103,121 @@ const of_kind_size_query_relation = [
   {gte: null, lte: null},
 ];
 
+const ToolTipsBoxJSX = (props) => {
+  if (props?.toolTips?.title == null) return <div></div>;
+  let jsx = undefined;
+  const toolTips = props.toolTips;
+  if (toolTips?.grid_1x1 != null && 
+    toolTips?.grid_2x1 != null && 
+    toolTips?.grid_3x1 != null && 
+    toolTips?.grid_2x2 != null && 
+    toolTips?.grid_3x2 != null && 
+    toolTips?.grid_6x3 != null) { // Arrangment
+    jsx = (
+      <div className='coin-sort-tool-tips'>
+        <div className='coin-sort-tool-tips-title'>
+          {toolTips.title}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>1 x 1 Grid:</strong> {toolTips.grid_1x1}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>2 x 1 Grid:</strong> {toolTips.grid_2x1}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>3 x 1 Grid:</strong> {toolTips.grid_3x1}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>2 x 2 Grid:</strong> {toolTips.grid_2x2}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>3 x 2 Grid:</strong> {toolTips.grid_3x2}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>6 x 3 Grid:</strong> {toolTips.grid_6x3}
+        </div>
+      </div>
+    );
+  } else if (toolTips?.sub_title != null &&
+    toolTips?.minting_date != null &&
+    toolTips?.material != null &&
+    toolTips?.issuing_authority != null &&
+    toolTips?.governing_power != null &&
+    toolTips?.size != null) { // Sorting
+    jsx = (
+      <div className='coin-sort-tool-tips'>
+        <div className='coin-sort-tool-tips-title'>
+          {toolTips.title}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          {toolTips.sub_title}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Minting Date:</strong> {toolTips.minting_date}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Material:</strong> {toolTips.material}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Issuing Authority:</strong> {toolTips.issuing_authority}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Governing Power:</strong> {toolTips.governing_power}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Size:</strong> {toolTips.size}
+        </div>
+      </div>
+    );
+  } else if (toolTips?.sub_title != null &&
+    toolTips?.minting_date != null &&
+    toolTips?.material != null &&
+    toolTips?.issuing_authority != null &&
+    toolTips?.governing_power != null &&
+    toolTips?.type != null) { // Filtering
+    jsx = (
+      <div className='coin-sort-tool-tips'>
+        <div className='coin-sort-tool-tips-title'>
+          {toolTips.title}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          {toolTips.sub_title}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Minting Date:</strong> {toolTips.minting_date}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Material:</strong> {toolTips.material}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Issuing Authority:</strong> {toolTips.issuing_authority}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Governing Power:</strong> {toolTips.governing_power}
+        </div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{color: '#183848'}}>Type:</strong> {toolTips.type}
+        </div>
+      </div>
+    );
+
+  } else {
+    console.err('Tool tip with this set of objects is not setup:', toolTips);
+  }
+  const CloseHandler = (e) => {
+    props.onClose(false);
+  };
+
+  return (
+    <WhitePopUp show={props.show} onClose={CloseHandler}>
+      {jsx}
+    </WhitePopUp>
+  );
+}
+
 const CoinSortDropDown = (props) => {
   const [show, set_show] = useState(false);
+  const [show_tool_tips, set_show_tool_tips] = useState(false);
 
   const CloseHandler = (e) => {
     set_show(false);
@@ -123,7 +237,11 @@ const CoinSortDropDown = (props) => {
     zIndex: show ? 1000 : -1000,
   };
   let selection_jsx = props.selections.map((e, index) => (
-    <div key={`coin_sort_dropdown_${e + index}`} className='coin-sort-dropdown-item' onClick={Select} data-selection={e}>
+    <div 
+      key={`coin_sort_dropdown_${e + index}`} 
+      className='coin-sort-dropdown-item' 
+      onClick={Select} 
+      data-selection={e}>
       <p data-selection={e} className='coin-sort-dropdown-item-text'>
         {e} { index === 0 &&
         <i className='coin-sort-dropdown-arrow' style={{position: 'absolute', right: '0', marginRight: '20px'}}/>
@@ -136,7 +254,18 @@ const CoinSortDropDown = (props) => {
   return (
     <div className='coin-sort-option'>
       <p className='coin-sort-dropdown-title-text'>
-        {props.title}
+        {props.title}{(() => {
+          if (props.toolTips != null) { 
+            return (<i 
+              className='demo-icon icon-info coin-sort-info-icon'
+              onClick={() => {
+                set_show_tool_tips(!show_tool_tips);
+              }}>&#xe817;</i>
+            );
+          } else {
+            return <></>;
+          }
+        })()}
       </p>
       <div className='coin-sort-dropdown-outermost-div'>
         <div className='coin-sort-dropdown-bar' onClick={OpenHandler}>
@@ -152,7 +281,31 @@ const CoinSortDropDown = (props) => {
             </div>
           </div>
         </OutsideClickHandler>
+        {(() => {
+          if (props.clearTitle != null && props.showClear) {
+            return (
+              <div 
+                className='coin-sort-clear-button' 
+                onClick={props.clear}>
+                <i className="demo-icon icon-warning">&#xe82c;</i>{props.clearTitle}
+              </div>
+            );
+          } else {
+            return <></>;
+          }
+        })()}
       </div>
+      {(() => {
+        if (props.toolTips) { 
+          return <ToolTipsBoxJSX
+            show={show_tool_tips}
+            onClose={(e) => {set_show_tool_tips(e);}} 
+            toolTips={props.toolTips}
+          />;
+        } else {
+          return <></>;
+        }
+      })()}
     </div>
   );
 }
@@ -303,7 +456,7 @@ const CoinScaleAndFlip = (props) => {
   const [dotted_circle_height, set_dotted_circle_height] = useState('0%');
   const [is_img_scaled, set_is_img_scaled] = useState(false);
   const [size_diameter_jsx, set_size_diameter_jsx] = useState('0');
-  
+
   const [show_coin_info, set_show_coin_info] = useState(false);
   const CoinInfoPopupCloseHandler = (e) => { // This is used to show / remove popup on certain conditions
     set_show_coin_info(e);
@@ -539,13 +692,6 @@ const TutorialText = (props) => {
   );
 }
 
-function ToolTipsBoxJSX(tool_tips) {
-  return (
-    <div>
-    </div>
-  );
-}
-
 const CoinSort = () => {
   const [is_loading, set_is_loading] = useState(true);
 
@@ -650,13 +796,42 @@ const CoinSort = () => {
             set_coin_sort_title(attri.title);
             set_tutorial_text_title(attri.tutorial_text_title);
             set_tutorial_text(attri.tutorial_text);
-            set_arrangement_tool_tips(ToolTipsBoxJSX(attri.arrangement_tips));
-            set_sort_tool_tips(ToolTipsBoxJSX(attri.sorting_tips));
-            set_filter_tool_tips(ToolTipsBoxJSX(attri.filtering_tips));
+            set_arrangement_tool_tips(attri.arrangement_tips);
+            set_sort_tool_tips(attri.sorting_tips);
+            set_filter_tool_tips(attri.filtering_tips);
             set_is_loading(false);
           }
         });
   });
+
+  const [show_arrangement_clear_button, set_show_arrangement_clear_button] = useState(false);
+  useEffect(() => {
+    if (arrangement_selection !== arrangement_selections[0]) {
+      set_show_arrangement_clear_button(true);
+    } else {
+      set_show_arrangement_clear_button(false);
+    }
+  }, [arrangement_selection]);
+  const [show_sort_clear_button, set_show_sort_clear_button] = useState(false);
+  useEffect(() => {
+    if (sort_selection !== sort_selections[0] || 
+      then_by_selection !== then_by_selections[0]) {
+      set_show_sort_clear_button(true);
+    } else {
+      set_show_sort_clear_button(false);
+    }
+
+  }, [sort_selection, then_by_selection]);
+  const [show_filter_clear_button, set_show_filter_clear_button] = useState(false);
+  useEffect(() => {
+    if (filter_selection !== filter_selections[0] || 
+      with_selection !== with_selections[0] ||
+      of_kind_selection !== of_kind_selections[0]) {
+      set_show_filter_clear_button(true);
+    } else {
+      set_show_filter_clear_button(false);
+    }
+  }, [filter_selection, with_selection, of_kind_selection]);
 
   if (is_loading) {
     return (
@@ -676,18 +851,72 @@ const CoinSort = () => {
       </div>
       <div id='coin-sort-options-wrapper'>
         <div id='coin-sort-options'>
-          <CoinSortDropDown title='Arrange:' selections={arrangement_selections} state={arrangement_selection} setState={set_arrangement_selection} toolTips={arrangement_tool_tips}/>
+          <CoinSortDropDown
+            title='Arrange:'
+            selections={arrangement_selections}
+            state={arrangement_selection}
+            setState={set_arrangement_selection}
+            toolTips={arrangement_tool_tips}
+            showClear={show_arrangement_clear_button}
+            clearTitle='Clear Table'
+            clear={() => {
+              set_arrangement_selection(arrangement_selections[0]);
+              set_show_arrangement_clear_button(false);
+            }}
+          />
           <div className='coin-sort-menu-vr'>
             <div className='coin-sort-menu-vr-content'/>
           </div>
-          <CoinSortDropDown title='Sort:' selections={sort_selections} state={sort_selection} setState={set_sort_selection} toolTips={sort_tool_tips}/>
-          <CoinSortDropDown title='Then by:' selections={then_by_selections} state={then_by_selection} setState={set_then_by_selection} />
+          <CoinSortDropDown
+            title='Sort:'
+            selections={sort_selections}
+            state={sort_selection}
+            setState={set_sort_selection}
+            toolTips={sort_tool_tips}
+            showClear={show_sort_clear_button}
+            clearTitle='Clear Sort'
+            clear={() => {
+              set_sort_selection(sort_selections[0]);
+              set_then_by_selection(then_by_selections[0]);
+              set_show_sort_clear_button(false);
+            }}
+          />
+          <CoinSortDropDown
+            title='Then by:'
+            selections={then_by_selections}
+            state={then_by_selection}
+            setState={set_then_by_selection}
+          />
           <div className='coin-sort-menu-vr'>
             <div className='coin-sort-menu-vr-content'/>
           </div>
-          <CoinSortDropDown title='Filter:' selections={filter_selections} state={filter_selection} setState={set_filter_selection} toolTips={filter_tool_tips}/>
-          <CoinSortDropDown title='With:' selections={with_selections} state={with_selection} setState={set_with_selection} />
-          <CoinSortDropDown title='Of Kind:' selections={of_kind_selections} state={of_kind_selection} setState={set_of_kind_selection} />
+          <CoinSortDropDown
+            title='Filter:'
+            selections={filter_selections}
+            state={filter_selection}
+            setState={set_filter_selection}
+            toolTips={filter_tool_tips}
+            showClear={show_filter_clear_button}
+            clearTitle='Clear Filter'
+            clear={() => {
+              set_filter_selection(filter_selections[0]);
+              set_with_selection(with_selections[0]);
+              set_of_kind_selection(of_kind_selections[0]);
+              set_show_filter_clear_button(false);
+            }}
+          />
+          <CoinSortDropDown
+            title='With:'
+            selections={with_selections}
+            state={with_selection}
+            setState={set_with_selection}
+          />
+          <CoinSortDropDown
+            title='Of Kind:'
+            selections={of_kind_selections}
+            state={of_kind_selection}
+            setState={set_of_kind_selection}
+          />
           <div className='coin-sort-menu-vr'>
             <div className='coin-sort-menu-vr-content'/>
           </div>

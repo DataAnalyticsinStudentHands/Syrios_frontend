@@ -99,7 +99,7 @@ story-download-text (dark blue text)
   margin-right: 5px;
 }
 
-/* COIN SORT DROPDOWN */
+/*********************** COIN SORT DROPDOWN **************************/
 .coin-sort-dropdown-outermost-div {
   position: relative;
 }
@@ -112,6 +112,17 @@ story-download-text (dark blue text)
 
   margin-bottom: 0px;
   font-size: 13px;
+}
+
+.coin-sort-info-icon {
+  color: #7899A8;
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+
+.coin-sort-info-icon:hover {
+  color: #183848;
 }
 
 .coin-sort-dropdown-bar {
@@ -218,6 +229,47 @@ story-download-text (dark blue text)
   margin-right: 15px;
 }
 
+.coin-sort-clear-button {
+  margin-top: -10px;
+
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-normal;
+  color: #a85828;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.coin-sort-clear-button:hover {
+  color: #5b2f16;
+}
+
+// ********************** TOOL TIPS CSS ********************** //
+.coin-sort-tool-tips {
+  padding: 0px 40px 0px 40px;
+  margin: -20px 0px 0px 0px;
+
+  font-size: 24px;
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  line-height: $syrios-line-spacing-30;
+}
+
+.coin-sort-tool-tips-title {
+  text-align: center;
+  color: #a85828;
+  margin-bottom: 60px;
+}
+
+.coin-sort-tool-tips-text {
+  text-align: start;
+  color: #183848;
+
+  margin-bottom: 30px;
+}
 
 
 // ********************** TUTORIAL TEXT CSS ********************** //
