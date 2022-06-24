@@ -427,6 +427,24 @@ const CoinScaleAndFlip = (props) => {
     </div>
   );
 }
+
+const CoinGridProgressBar = (props) => {
+  return (
+    <div id='coin-sort-grid-progress-bar-wrapper'>
+      <div id='coin-sort-grid-progress-bar'>
+        <div id='coin-sort-grid-progress-bar-progress-status' style={{width: `${(props.currentPagination / props.maxPage) * 100}%`}}>
+        </div>
+        <div id='coin-sor-grid-progress-bar-on-click-hover' onClick={(e) => {
+          let DOMRect = e.target.getBoundingClientRect(); 
+          let mouse_x_relative_to_DOM_pos = e.clientX - DOMRect.x;
+          let mouse_x_as_percent_of_DOM_width = mouse_x_relative_to_DOM_pos / DOMRect.width;
+          props.setPagination(Math.round(mouse_x_as_percent_of_DOM_width * props.maxPage));
+        }}/>
+      </div>
+    </div>
+  );
+}
+
 // This will have 6 different layout options
 // 1 x 1
 // 2 x 1
@@ -492,14 +510,17 @@ const CoinGrid = (props) => {
       );
       break;
     default:
-      console.error('No', props.arrangement_selection, 'grid arrangment.');
+      console.error('No', props.arrangement_selection, 'grid arrangement.');
   }
   return (
-    <div id='coin-sort-grid-arrangment-wrapper'>
-      <i className='coin-sort-pagination-arrow left' onClick={() => {props.goLeft()}} />
-      {jsx}
-      <i className='coin-sort-pagination-arrow right' onClick={() => {props.goRight()}} />
-    </div>
+    <>
+      <div id='coin-sort-grid-arrangement-wrapper'>
+        <i className='coin-sort-pagination-arrow left' onClick={() => {props.goLeft()}} />
+        {jsx}
+        <i className='coin-sort-pagination-arrow right' onClick={() => {props.goRight()}} />
+      </div>
+      <CoinGridProgressBar maxPage={props.maxPage} currentPagination={props.currentPagination} setPagination={props.setPagination} />
+    </>
 
   );
 }
