@@ -6,6 +6,7 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import CoinInfo, { CoinAlt } from 'src/components/coin/CoinInfo.js';
+import Markup from 'src/utils/Markup.js';
 
 
 
@@ -436,7 +437,7 @@ const CoinGridProgressBar = (props) => {
         </div>
         <div id='coin-sor-grid-progress-bar-on-click-hover' onClick={(e) => {
           let DOMRect = e.target.getBoundingClientRect(); 
-          let mouse_x_relative_to_DOM_pos = e.clientX - DOMRect.x;
+          let mouse_x_relative_to_DOM_pos = e.clientX - DOMRect.left;
           let mouse_x_as_percent_of_DOM_width = mouse_x_relative_to_DOM_pos / DOMRect.width;
           props.setPagination(Math.round(mouse_x_as_percent_of_DOM_width * props.maxPage));
         }}/>
@@ -525,6 +526,25 @@ const CoinGrid = (props) => {
   );
 }
 
+const TutorialText = (props) => {
+  return (
+    <div id='coin-sort-tutorial-text-wrapper'>
+      <div id='coin-sort-tutorial-text'>
+        <div id='coin-sort-tutorial-text-title'>
+          {props.title}
+        </div>
+        <div id='coin-sort-tutorial-text' dangerouslySetInnerHTML={Markup(props.tutorialText)}/>
+      </div>
+    </div>
+  );
+}
+
+function ToolTipsBoxJSX(tool_tips) {
+  return (
+    <div>
+    </div>
+  );
+}
 
 const CoinSort = () => {
   const [is_loading, set_is_loading] = useState(true);
@@ -579,6 +599,8 @@ const CoinSort = () => {
             set_coins(res.data.data);
             set_max_page(res.data.meta.pagination.pageCount);
             if (page > max_page && max_page !== 0) set_page(max_page);
+            set_rotate_all(false);
+            set_scale_all(false);
           }
         });
     }   }, [arrangement_selection, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, page, max_page]);
@@ -612,17 +634,28 @@ const CoinSort = () => {
   }, [with_selection]);
 
   const [coin_sort_title, set_coin_sort_title] = useState(undefined);
+  const [tutorial_text_title, set_tutorial_text_title] = useState(undefined);
+  const [tutorial_text, set_tutorial_text] = useState(undefined);
+  const [arrangement_tool_tips, set_arrangement_tool_tips] = useState(undefined);
+  const [sort_tool_tips, set_sort_tool_tips] = useState(undefined);
+  const [filter_tool_tips, set_filter_tool_tips] = useState(undefined);
   useEffect(() => {
-    axios.get(process.env.REACT_APP_strapiURL + '/api/coin-sort')
-      .then((res, err) => {
-        if (err) {
-          console.error(err);
-        } else {
-          let attri = res.data.data.attributes;
-          set_coin_sort_title(attri.title);
-          set_is_loading(false);
-        }
-      });
+    if (is_loading)
+      axios.get(process.env.REACT_APP_strapiURL + '/api/coin-sort')
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+          } else {
+            let attri = res.data.data.attributes;
+            set_coin_sort_title(attri.title);
+            set_tutorial_text_title(attri.tutorial_text_title);
+            set_tutorial_text(attri.tutorial_text);
+            set_arrangement_tool_tips(ToolTipsBoxJSX(attri.arrangement_tips));
+            set_sort_tool_tips(ToolTipsBoxJSX(attri.sorting_tips));
+            set_filter_tool_tips(ToolTipsBoxJSX(attri.filtering_tips));
+            set_is_loading(false);
+          }
+        });
   });
 
   if (is_loading) {
@@ -643,16 +676,16 @@ const CoinSort = () => {
       </div>
       <div id='coin-sort-options-wrapper'>
         <div id='coin-sort-options'>
-          <CoinSortDropDown title='Arrange:' selections={arrangement_selections} state={arrangement_selection} setState={set_arrangement_selection} />
+          <CoinSortDropDown title='Arrange:' selections={arrangement_selections} state={arrangement_selection} setState={set_arrangement_selection} toolTips={arrangement_tool_tips}/>
           <div className='coin-sort-menu-vr'>
             <div className='coin-sort-menu-vr-content'/>
           </div>
-          <CoinSortDropDown title='Sort:' selections={sort_selections} state={sort_selection} setState={set_sort_selection} />
+          <CoinSortDropDown title='Sort:' selections={sort_selections} state={sort_selection} setState={set_sort_selection} toolTips={sort_tool_tips}/>
           <CoinSortDropDown title='Then by:' selections={then_by_selections} state={then_by_selection} setState={set_then_by_selection} />
           <div className='coin-sort-menu-vr'>
             <div className='coin-sort-menu-vr-content'/>
           </div>
-          <CoinSortDropDown title='Filter:' selections={filter_selections} state={filter_selection} setState={set_filter_selection} />
+          <CoinSortDropDown title='Filter:' selections={filter_selections} state={filter_selection} setState={set_filter_selection} toolTips={filter_tool_tips}/>
           <CoinSortDropDown title='With:' selections={with_selections} state={with_selection} setState={set_with_selection} />
           <CoinSortDropDown title='Of Kind:' selections={of_kind_selections} state={of_kind_selection} setState={set_of_kind_selection} />
           <div className='coin-sort-menu-vr'>
@@ -675,7 +708,13 @@ const CoinSort = () => {
           )
         } else {
           return (
-            <div>tutorial text</div>
+            <>
+              <div id='coin-sort-spacer' />
+              <div id='coin-sort-spacer' />
+              <div id='coin-sort-spacer' />
+              <div id='coin-sort-spacer' />
+              <TutorialText title={tutorial_text_title} tutorialText={tutorial_text} />
+            </>
           )
         }
       })()}
