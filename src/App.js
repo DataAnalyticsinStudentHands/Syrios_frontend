@@ -4,6 +4,7 @@ import {
 	Route,
 	Routes,
 } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style/styles.scss";
 import Navbar from 'src/components/Navbar.js';
 import LandingPage from 'src/pages/LandingPage.js';
@@ -25,14 +26,6 @@ function App() {
 		<div id='App' 
 			style={{ backgroundImage: `url(${background})`}}
 		>
-			{// Link is used to download the bootstrap css
-			}
-			<link
-				rel="stylesheet"
-				href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-				integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-				crossOrigin="anonymous"
-			/>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter basename='/dev'>
 				<Navbar />

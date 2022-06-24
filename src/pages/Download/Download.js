@@ -125,13 +125,13 @@ function Download(){
             </Col>
             <Col xs={4}>
               <Container className='d-flex flex-column align-items-center mx-5'>
-                <Row className='text-center story-download-text px-5'>
-                    <b><small>Please provide your your name and email address in the form below to start the download.</small></b>
+                <Row className='text-center story-download-text px-4'>
+                    <b>Please provide your your name and email address in the form below to start the download.</b>
                 </Row>
                 <Row className='light-blue-background my-2 d-flex justify-content-center' >
                   <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                     <div className='form-group mt-3'>
-                      <label className='gray-text' htmlFor='fullName'>Full Name</label>
+                      <label className='' htmlFor='fullName'>Full Name</label>
                       <br/>
                       <input 
                         id = "fullName"
@@ -144,7 +144,7 @@ function Download(){
                       {formik.touched.fullName && formik.errors.fullName ? <p className='gray-text'>{formik.errors.fullName}</p>: null}
                     </div>
                     <div className='form-group mt-4'>
-                      <label className='gray-text' htmlFor='email'>Email Address</label>
+                      <label className='' htmlFor='email'>Email Address</label>
                       <br/>
                       <input 
                         type='email'

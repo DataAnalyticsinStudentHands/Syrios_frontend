@@ -9,7 +9,6 @@ const ImageText = (props) =>{
     "half": 6,
     "third": 4,
     "quarter": 3,
-
   };
 let zone= props.zone
 // let index= props.index
