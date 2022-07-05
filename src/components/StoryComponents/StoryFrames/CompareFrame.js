@@ -68,6 +68,9 @@ const CompareCoin = (props)=>{
 
 const CompareFrame = (props)=>{
     let zone = props.zone
+    // let fullpageApi = props.fullpageApi
+    // let state = props.state
+
     let grid = {
         "half": 6,
         "third": 4,
@@ -142,6 +145,11 @@ const CompareFrame = (props)=>{
             <Row className='d-flex justify-content-center mb-5 '>
               <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
             </Row>
+            {/* <Row>
+              <button
+                onClick={()=>fullpageApi.moveTo(state.sectionCount)}
+              > Click Me!!!!</button>
+            </Row> */}
             <CompareBody/>
           </Container>
         </div>

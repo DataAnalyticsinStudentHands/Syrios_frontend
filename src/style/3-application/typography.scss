@@ -91,9 +91,9 @@
 .story-h1 {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-light;
+  font-weight: 300;
   font-size: $syrios-font-size-140;
-  line-height: $syrios-line-spacing-75;
+  // line-height: $syrios-line-spacing-75;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
 }
@@ -224,10 +224,54 @@
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-normal;
-  font-size: $syrios-font-size-15;
+  font-size: 16px;
   line-height: $syrios-line-spacing-15;
   letter-spacing: $syrios-character-spacing--10;
   color: #183848;
+
+  & a {
+    color: #183848;
+  }
+
+  // & ul {
+  //   list-style: none;
+  //   padding: 0;
+  //   & li{
+  //     padding-left: 1.3em;
+  //     font-family: $syrios-garamond-premier-pro-caption;
+  //     font-style: $syrios-font-style-normal;
+  //     font-weight: $syrios-font-weight-normal;
+  //     font-size: $syrios-font-size-15;
+  //     line-height: $syrios-line-spacing-15;
+  //     letter-spacing: $syrios-character-spacing--10;
+  //     color: #183848;
+  //   }
+  //   & li::before{
+  //     content: '\e818';
+  //     display: inline-block;
+  //     margin-left: -1.3em; /* same as padding-left set on li */
+  //     width: 1.3em; /* same as padding-left set on li */
+  //     font-family: $syrios-font-family-syrios-entypo-subset;
+  //     color: #b9ccd7;
+  //     font-size: $syrios-font-size-20;
+  //   }
+
+  // }
+  // & ol{
+  //   list-style: none;
+  //   // counter-reset: item;
+  //   & li{
+  //     // counter-increment: item;
+  //     margin-bottom: 5px;
+  //   }
+  //   & li::before{
+  //     // margin-right: 10px;
+  //     content: counter(item);
+  //     width: 1.2em;
+  //     text-align: center;
+  //     display: inline-block;
+  //   }
+  // }
 }
 .references-h3 {
   font-family: $syrios-garamond-premier-pro;
@@ -247,4 +291,24 @@
   line-height: $syrios-line-spacing-20;
   letter-spacing: $syrios-character-spacing--50;
   color: #a86818;
+}
+
+.footer-text {
+  text-align: center;
+  opacity: 1;
+  transition: 0.5s;
+  
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  font-size: $syrios-font-size-14;
+  line-height: $syrios-line-spacing-17;
+  letter-spacing: $syrios-character-spacing--80;
+  color: $syrios-color-ffffff;
+  text-transform: $syrios-text-transform-uppercase;
+}
+
+.footer-text:hover {
+  color: #b8ccd8 !important;
+  cursor: pointer;
 }

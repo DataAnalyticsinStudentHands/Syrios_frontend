@@ -13,32 +13,32 @@ import FadeFrame from 'src/components/StoryComponents/StoryFrames/FadeFrame'
 import CompareFrame from 'src/components/StoryComponents/StoryFrames/CompareFrame'
 
 
-const SwitchComponent = (zone, index) => {
+const SwitchComponent = (zone, index,fullpageApi, state) => {
     switch (zone.__component) {
       case 'frame.title':
-        return <Title zone={zone} key={`story_comp_${index}`}/>
+        return <Title zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi}/>
       case 'frame.end':
-        return <EndFrame zone={zone} key={`story_comp_${index}`}/>
+        return <EndFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.1':
-        return <Frame1 zone={zone} key={`story_comp_${index}`}/>
+        return <Frame1 zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.images':
-        return <Images zone={zone} key={`story_comp_${index}`}/>
+        return <Images zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.text-text':
-        return <TextText zone={zone} key={`story_comp_${index}`}/>
+        return <TextText zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.image-text':
-        return <ImageText zone={zone} key={`story_comp_${index}`}/>
+        return <ImageText zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.image-text-image':
-        return <ImageTextImage zone={zone} key={`story_comp_${index}`}/>
+        return <ImageTextImage zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.image-text-text':
-        return <ImageTextText zone={zone} key={`story_comp_${index}`}/>
+        return <ImageTextText zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.scale-frame':
-        return <ScaleFrame zone={zone} key={`story_comp_${index}`}/>
+        return <ScaleFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       case 'frame.flip-frame':
-        return <FlipFrame zone={zone} key={`story_comp_${index}`}/>
+        return <FlipFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi}/>
       case 'frame.values-frame':
-        return <FadeFrame zone={zone} key={`story_comp_${index}`}/>
+        return <FadeFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
         case 'frame.coin-compare':
-          return <CompareFrame zone={zone} key={`story_comp_${index}`}/>
+          return <CompareFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state}/>
       default:
         console.error(`Error: Unrecognized component '${zone.__component}'`);
     }

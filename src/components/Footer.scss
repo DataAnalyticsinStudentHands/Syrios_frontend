@@ -12,201 +12,186 @@ color: #183848;
   opacity: 1;
 
   z-index: 99998;
-}
 
-#footer-logo {
-  position: absolute;
-  left: 3px;
-  margin: 0;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-#footer-links {
-  right: 10px;
-  position: absolute;
-  margin: 0;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 30em;
-}
-
-/* sets width of footer links whenever the size gets to a certain size to make it more responsive */
-@media only screen and (max-width: 767px) {
+  #footer-logo {
+    position: absolute;
+    left: 3px;
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
   #footer-links {
-    width: 13em;
+    right: 10px;
+    height: 60px;
+    // position: absolute;
+    // margin: 0;
+    // top: 50%;
+    // -ms-transform: translateY(-50%);
+    // transform: translateY(-50%);
+    // width: 30em;
   }
-}
-
-/* All text for footer should be this format */
-.footer-text {
-  color: #ffffff !important;
-  text-align: center;
-  font-size: 14px;
-  letter-spacing: 0px;
-  opacity: 1;
-  transition: 0.5s;
   
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-14;
-  line-height: $syrios-line-spacing-17;
-  letter-spacing: $syrios-character-spacing--80;
-  color: $syrios-color-ffffff;
-  text-transform: $syrios-text-transform-uppercase;
-}
+  /* sets width of footer links whenever the size gets to a certain size to make it more responsive */
 
-.footer-text:hover {
-  color: #b8ccd8 !important;
-  cursor: pointer;
-}
+  
+  /* All text for footer should be this format */
 
-#credits-and-references {
-  width: 100%;
-  height: 0vh;
-  position: absolute;
-  bottom: 70px;
-  background: url('../assets/credits&references.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  button{
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #183848;
+    align-items: center;
+  }
+  
 
-  transition: 0.3s;
-  z-index: -1000000000;
-}
-
-#credits-and-references-x-icon {
-  position: absolute;
-  right: -30px;
-  top: -15px;
-  font-size: 80px;
-  color: white;
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-#credits-and-references-x-icon:hover {
-  color: #183848;
-}
-
-#credits-and-references-lists {
-  height: 100%;
-  width: 80%;
-  overflow-y: hidden;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: 20px;
-  letter-spacing: $syrios-character-spacing-0;
-}
-
-.credits-and-references-list-items p {
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-25;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-183848;
-  font-size: 16px;
-}
-
-.credits-and-references-list-items p a {
-  color: #183848;
-  white-space: normal;
-  width: 100%;
-  height: auto;
-  word-wrap: break-word;
-  transition: 0.3s;
- 
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: 16px;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-183848;
-}
-
-.credits-and-references-list-items p a:hover {
-  color: #486678 !important;
-}
-
-.credits-and-references-list[title]::before {
-  align-content: start;
-  content: attr(title);
-  /* then add some nice styling as needed, eg: */
-  display: block;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-@media only screen and (max-width: 767px) {
+  
+  #credits-and-references-x-icon {
+    position: absolute;
+    right: -30px;
+    top: -15px;
+    font-size: 80px;
+    color: white;
+    cursor: pointer;
+  
+    transition: 0.3s;
+  }
+  
+  #credits-and-references-x-icon:hover {
+    color: #183848;
+  }
+  
+  #credits-and-references-lists {
+    height: 100%;
+    width: 80%;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  
+    font-family: $syrios-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-regular;
+    font-size: 20px;
+    letter-spacing: $syrios-character-spacing-0;
+  }
+  
+  .credits-and-references-list-items p {
+    font-family: $syrios-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-regular;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+    font-size: 16px;
+  }
+  
+  .credits-and-references-list-items p a {
+    color: #183848;
+    white-space: normal;
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    transition: 0.3s;
+   
+    font-family: $syrios-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-regular;
+    font-size: 16px;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+  }
+  
+  .credits-and-references-list-items p a:hover {
+    color: #486678 !important;
+  }
+  
   .credits-and-references-list[title]::before {
-    font-size: 1em;
+    align-content: start;
+    content: attr(title);
+    /* then add some nice styling as needed, eg: */
+    display: block;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2em;
   }
-
-  .list-items p {
-    font-size: 0.5em;
-  }
-}
-
-.credits-and-references-list {
-  width: 90% !important;
-  counter-reset: item;
-  height: 95%;
-  margin: 1em;
-  overflow: hidden;
-}
-
-.credits-and-references-list-item {
-  display: block;
-  margin-bottom: 0.5em;
-  margin-left: 2em;
-  font-size: 0.8em;
- 
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-25;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-183848;
-}
-
-.credits-and-references-list-item::before {
-  display: inline-block;
-  content: "[" counter(item) "]";
-  counter-increment: item;
-  width: 2em;
-  margin-left: -2em;
   
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-25;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-183848;
+  @media only screen and (max-width: 767px) {
+    .credits-and-references-list[title]::before {
+      font-size: 1em;
+    }
+  
+    .list-items p {
+      font-size: 0.5em;
+    }
+  }
+  
+  .credits-and-references-list {
+    width: 90% !important;
+    counter-reset: item;
+    height: 95%;
+    margin: 1em;
+    overflow: hidden;
+  }
+  
+  .credits-and-references-list-item {
+    display: block;
+    margin-bottom: 0.5em;
+    margin-left: 2em;
+    font-size: 0.8em;
+   
+    font-family: $syrios-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-regular;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+  }
+  
+  .credits-and-references-list-item::before {
+    display: inline-block;
+    content: "[" counter(item) "]";
+    counter-increment: item;
+    width: 2em;
+    margin-left: -2em;
+    
+    font-family: $syrios-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-regular;
+    font-size: $syrios-font-size-25;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing-0;
+    color: $syrios-color-183848;
+  }
+  
+  .credits-and-references-list-item-href {
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  
+  .credits-and-references-list-item-href:hover {
+    color: #173847;
+  }
 }
 
-.credits-and-references-list-item-href {
-  text-decoration: none;
-  transition: 0.2s;
-}
 
-.credits-and-references-list-item-href:hover {
-  color: #173847;
+.credits-and-references {
+  // width: 100%;
+  // position: absolute;
+  // bottom: 70px;
+  background: url('../assets/credits&references.jpg') !important;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // overflow-y: hidden;
+  // overflow-x: hidden;
+
+  // transition: 0.3s;
+  // z-index: 99999;
 }

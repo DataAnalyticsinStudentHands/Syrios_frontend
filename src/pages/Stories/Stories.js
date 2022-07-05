@@ -61,14 +61,14 @@ const Stories = () => {
 
 	return (
 		<>
-			<div id='stories-page' className='d-flex align-items-center'>
+			<div id='stories-page' 
+			// className='d-flex align-items-center'
+			>
 				<Container>
-					<Row container='justify-content-md-center'>
-						<Col>
-							<p className='story-h1 text-center'>
-								Discover Coin Stories
-							</p>
-						</Col>
+					<Row container='mt-5'>
+						<p className='story-h1 text-center'>
+							Discover Coin Stories
+						</p>
 					</Row>
 					<Row container='justify-content-md-center' className='d-flex justify-content-center mt-5'>
 						<Col xs={6} sm={3}>
@@ -108,9 +108,10 @@ const Stories = () => {
 						{stories}
 					</Row>
 				</Container>
-
 			</div>
-      <Footer />
+      <Footer 
+	//   references={storyReference} imageReference={storyImageSouce}
+	  />
 		</>
 	)
 }

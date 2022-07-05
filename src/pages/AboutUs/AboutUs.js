@@ -5,6 +5,8 @@ import {Container,Row, Col} from 'react-bootstrap';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 
+
+
 function createMarkup(textTran){
   return {__html: textTran};
 }
@@ -57,6 +59,8 @@ const About = () => {
   const [project_directors, set_project_directors] = useState(undefined)
   const [past_student_research_assistants, set_past_student_research_assistants]= useState(undefined)
 
+
+
   useEffect(() => {
     if(is_loading) {
       // axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
@@ -99,6 +103,7 @@ const About = () => {
         })
     }
   });
+
 
   if (is_loading) { // is_loading is true, show loading page, else show real page
     return (

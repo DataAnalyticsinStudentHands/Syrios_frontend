@@ -9,34 +9,44 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 import createMarkup from 'src/utils/Markup.js';
 
+import downloadRequest from 'src/api/download';
+import zoteroRequest from 'src/api/zotero';
+
 function Download(){
-  const [is_loading, set_is_loading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [submitButton, setSubmitButton] = useState(false)
   const [show, setShow] = useState(false)
 
-  const [title, set_title] = useState(undefined);
-  const [text, set_text] = useState(undefined);
-  const [image, set_image] = useState(undefined);
-  const [coinData, setCoinData] = useState(undefined)
+  const [downloadPageData, setDownloadPageData] = useState([])
+  const [storyReference, setStoryReference] = useState([])
 
-  const [emailSubject, setEmailSubject] = useState(undefined);
-  const [emailTo, setEmailTo] = useState(undefined);
 
-  useEffect(()=>{
-    if(is_loading){
-      axios.get(process.env.REACT_APP_strapiURL + '/api/download')
-        .then((res)=>{
-          set_title(res.data.data.attributes.title);
-          set_text(res.data.data.attributes.text);
-          set_image(res.data.data.attributes.image);
-          setCoinData(res.data.data.attributes.coinData.data.attributes.url)
-          setEmailSubject(res.data.data.attributes.emailSubject);
-          setEmailTo(res.data.data.attributes.emailTo);
-          set_is_loading(false);
-        });
+
+  useEffect(() => {
+    async function fetchData(){
+      const result = await downloadRequest.downloadFind();
+      console.log(result.data.data.attributes)
+
+      const restltData = result.data.data.attributes
+
+      let itemkeys = []
+      restltData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
+      let bibArr = []
+      for (const itemkey of itemkeys){
+        const data = await zoteroRequest.getOneItemBib(itemkey)
+        bibArr.push(data.data)
+      }
+  
+      bibArr = bibArr.sort()
+      console.log(bibArr)
+      setStoryReference(bibArr)
+
+      setDownloadPageData(result.data.data.attributes)
+      setIsLoading(false)
     }
-  });
+    fetchData()
+  },[]);
 
   const formik = useFormik({
     initialValues:{
@@ -54,8 +64,8 @@ function Download(){
       .required('* Email is required'),
     }),
     onSubmit: (values,{resetForm})=>{
-      values.emailSubject=emailSubject
-      values.emailTo=emailTo
+      values.emailSubject=downloadPageData.emailSubject
+      values.emailTo=downloadPageData.emailTo
       axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
         .then(resetForm())
         .then(setSubmitButton(true))
@@ -63,13 +73,13 @@ function Download(){
         .catch(err =>{console.error(err)})
 
       saveAs(
-        `${process.env.REACT_APP_strapiURL}${coinData}`,
+        `${process.env.REACT_APP_strapiURL}${downloadPageData.coinData.data.attributes.url}`,
         'AntiochCoins.zip'
       )
     }
   })
 
-  if (is_loading) {
+  if (isLoading) {
     return(
       <>
         <LoadingPage />
@@ -105,21 +115,21 @@ function Download(){
                   <Col xs={9} className=''>
                     <Row className='story-h4'>
                       <div>
-                          {title}
+                      {downloadPageData.title}
                       </div>
                     </Row>
                     <Row className='story-caption'>
                       {/* {subText} */}
-                      <div dangerouslySetInnerHTML={createMarkup(text)} />
+                      <div dangerouslySetInnerHTML={createMarkup(downloadPageData.text)} />
                     </Row>
                   </Col>
                 </Row>
 
                 <Row className=''>
                   <img
-                    alt={image.alternativeText === undefined ? 'img' : image.alternativeText}
+                    alt={downloadPageData.image.data.attributes.alternativeText}
                     className='frame-image'
-                    src={`${process.env.REACT_APP_strapiURL}${image.data.attributes.url}`}
+                    src={`${process.env.REACT_APP_strapiURL}${downloadPageData.image.data.attributes.url}`}
                   />
                 </Row>
             </Col>
@@ -169,7 +179,9 @@ function Download(){
           </Row>
         </Container>
       </div>
-      <Footer />
+      <Footer 
+      	references={storyReference}
+      />
     </>
   );
 }

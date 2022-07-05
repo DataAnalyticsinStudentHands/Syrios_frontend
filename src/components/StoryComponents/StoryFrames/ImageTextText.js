@@ -6,8 +6,6 @@ import createMarkup from 'src/utils/Markup.js';
 
 const ImageTextText = (props) =>{
   let zone = props.zone
-
-    console.log(zone)
     let grid = {
       "half": 6,
       "third": 4,
@@ -53,15 +51,15 @@ const ImageTextText = (props) =>{
     if (zone.head.updown_switch){
       return(
         <div className='section' style={{backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`, backgroundBlendMode:'multiply'}}>
-        <Container>
-          <Row className='d-flex justify-content-between align-items-center'>
-            {frame_body}
-          </Row>
-          <Row className='d-flex justify-content-center mt-5'>
-            <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-          </Row>
-        </Container>
-      </div>
+          <Container>
+            <Row className='d-flex justify-content-between align-items-center'>
+              {frame_body}
+            </Row>
+            <Row className='d-flex justify-content-center mt-5'>
+              <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+            </Row>
+          </Container>
+        </div>
       )
     }
     else{
@@ -78,6 +76,5 @@ const ImageTextText = (props) =>{
       </div>
       )
     }
-
   }
   export default ImageTextText

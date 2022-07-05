@@ -16,39 +16,27 @@ import HistoriansToolboxBgPic from 'src/assets/pages/LandingPageAssets/Historian
 import HowToReadBgPic from 'src/assets/pages/LandingPageAssets/HowToRead.jpg';
 import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
 import createMarkup from 'src/utils/Markup.js';
-
+import landingRequest from 'src/api/landing';
 
 function LandingPage() {
-  const [loading, set_loading] = useState(true);
-  const [video_link, setVideoLink] = useState(undefined);
-  const [short_description, setShortDescription] = useState(undefined);
-  const [landing_paragraph, set_landing_paragraph] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+  const [landingData, setLandingData] = useState([])
 
   useEffect(() => {
-    if (loading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/api/landing-page')
-        .then((res, err) => {
-          if (err) {
-            console.error(err);
-            set_loading(false);
-            return;
-          }
-          // This is where the landing page is defined via strapi
-          let data = res.data.data.attributes;
-          setVideoLink(data.video_link);
-          setShortDescription(data.title);
-          set_landing_paragraph(data.text);
-          set_loading(false);
-        });
-      }
-    });
+    async function fectchData(){
+      const result = await landingRequest.landingdFind()
+      setLandingData(result.data.data.attributes)
+      setIsLoading(false)
+    }
+    fectchData()
+    },[]);
 
 
   // Render components here
   //
   // if loading is true, then display loading page
   // else display page with navbar and footer
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         <LoadingPage />
@@ -68,7 +56,7 @@ function LandingPage() {
               {/* <div className='orange-text' style={{fontSize: '4em'}}> */}
               <div className='story-h2 text-center'>
                 <ReactMarkdown>
-                  {short_description}
+                  {landingData.title}
                 </ReactMarkdown>
               </div>
             </Col>
@@ -82,7 +70,7 @@ function LandingPage() {
                     width='100%'
                     // width='930px'
                     // height='523px'
-                    url={video_link} />
+                    url={landingData.video_link} />
                 </div>
               </div>
             </Col>
@@ -156,7 +144,7 @@ function LandingPage() {
           <Row className='justify-content-md-center mt-5'>
             <Col>
                 <div 
-                  dangerouslySetInnerHTML={createMarkup(landing_paragraph)} 
+                  dangerouslySetInnerHTML={createMarkup(landingData.text)} 
                   className='landing-text' 
                 />
             </Col>

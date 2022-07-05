@@ -33,8 +33,7 @@ const End_Frame = (props) => {
             </Col>
             <Col className="d-flex justify-content-around align-items-center">
               <Link to='/'>
-                <button	
-                  className='story-end-frame-button'>
+                <button	className='story-end-frame-button'>
                   Explore Coins
                 </button>
               </Link>
