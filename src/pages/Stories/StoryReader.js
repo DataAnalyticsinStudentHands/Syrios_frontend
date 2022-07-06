@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ const StoryReader = () => {
 
   useEffect(()=>{
     async function fetchData(){
-      if(isLoading === false) setIsLoading(true);
+      // if(isLoading === false) setIsLoading(true);
       const result = await storyRequest.storyFindOne(storyId)
       createImageReference(result.data.data.attributes)
       createZoteroReference(result.data.data.attributes)
@@ -114,21 +115,9 @@ const StoryReader = () => {
       if ( a.right_holder > b.right_holder ){return 1;}
       return 0;
     }
-    // Deduplication
-    function unique(arr, key) {
-      if (!arr) return arr
-      if (key === undefined) return [...new Set(arr)]
-      const map = {
-          'string': e => e[key],
-          'function': e => key(e),
-      }
-      const fn = map[typeof key]
-      const obj = arr.reduce((o,e) => (o[fn(e)]=e, o), {})
-      return Object.values(obj)
-    }
 
     imgRef = imgRef.sort(compare)
-    imgRef = unique(imgRef,'right_holder')
+    imgRef = [...new Map(imgRef.map(item =>[item['right_holder'], item])).values()];// Deduplication
     imgRef = imgRef.filter(function(obj){return obj.right_holder!=='NA'}) //delete NA value
     setStoryImageSouce(imgRef)
   }

@@ -15,7 +15,6 @@ const Stories = () => {
 
 	useEffect(() => {
 		const fetchData = async ()=>{
-			if(isLoading === false) setIsLoading(true);
 			const result = await storyRequest.storyFind()
 			setStories(result.data.data)
 			setIsLoading(false)

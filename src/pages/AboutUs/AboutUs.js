@@ -15,8 +15,8 @@ const About = () => {
 
   useEffect(() => {
     async function fetchData (){
-      if(isLoading === false) setIsLoading(true);
       const result = await aboutUsRequest.aboutUsFind()
+      console.log(result.data.data.attributes)
       setAboutUsData(result.data.data.attributes)
       setIsLoading(false)
     }
@@ -115,18 +115,48 @@ const About = () => {
           <Row className='light-blue-background p-5'>
             <Col 
               dangerouslySetInnerHTML={createMarkup(aboutUsData.past_student_research_assistants)} 
-              className='story-text text-center' />
+              className='story-text' />
           </Row>
 
           {/* <Row style={{ marginTop: '100px', marginBottom: '40px' }}> */}
-          <Row className='my-5'>
-            <Col className='story-h2 my-5 text-center'>
-                Acknowlegments
+          <Row className='my-5'><Col className='story-h2 my-5 text-center'>Acknowlegments</Col></Row>
+          <Row>
+            <Col>
+              <Row dangerouslySetInnerHTML={createMarkup(aboutUsData.acknowledgment_left)} className='story-text'/>
+              <Row className='my-3'>
+                {aboutUsData.acknowledgment_left_link.length === 0 ?(<></>):(
+                  <>
+                    {aboutUsData.acknowledgment_left_link.map((o)=>{
+                      return(
+                        <>
+                          {o.link ?(<Col xs={12} className='story-text'><a href={`${o.link}`}>{o.name}</a></Col>)
+                          :(<Col xs={12} className='d-flex story-text'>{o.name}</Col>)}
+                        </>
+                      )
+                    })}
+                  </>
+                )}
+              </Row>
+            </Col>
+
+            <Col>
+              <Row dangerouslySetInnerHTML={createMarkup(aboutUsData.acknowledgment_right)} className='story-text' />
+              <Row className='my-3'>
+              {aboutUsData.acknowledgment_right_link.length === 0 ?(<></>):(
+                  <>
+                    {aboutUsData.acknowledgment_right_link.map((o)=>{
+                      return(
+                        <>
+                          {o.link ?(<Col xs={12} className='story-text'><a href={`${o.link}`}>{o.name}</a></Col>)
+                          :(<Col xs={12} className='d-flex story-text'>{o.name}</Col>)}
+                        </>
+                      )
+                    })}
+                  </>
+                )}
+              </Row>
             </Col>
           </Row>
-          {/* {acknowledgements} */}
-          {/* {aboutUsData.acknowledgements.map((pd, index)=>{return(<>{TeamJsx(pd, index)}</>)})} */}
-
         </Container>
       </div>
       <Footer />
