@@ -13,7 +13,7 @@ import FadeFrame from 'src/components/StoryComponents/StoryFrames/FadeFrame'
 import CompareFrame from 'src/components/StoryComponents/StoryFrames/CompareFrame'
 
 
-const SwitchComponent = (zone, index,fullpageApi, state) => {
+const StoryComponent = (zone, index,fullpageApi, state) => {
     switch (zone.__component) {
       case 'frame.title':
         return <Title zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi}/>
@@ -44,4 +44,4 @@ const SwitchComponent = (zone, index,fullpageApi, state) => {
     }
   }
   
-export default SwitchComponent
+export default StoryComponent

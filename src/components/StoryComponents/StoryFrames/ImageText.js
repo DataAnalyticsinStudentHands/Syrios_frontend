@@ -10,77 +10,56 @@ const ImageText = (props) =>{
     "third": 4,
     "quarter": 3,
   };
-let zone= props.zone
-// let index= props.index
-    let frame_body = undefined
-    if (zone.left_right_switch){
-      frame_body=(
-        <>
-          <Col xs={`${grid[zone.grid_option]}`}>
-            <TextComponent text = {zone.it_text}/>
-          </Col>
-          <Col >
-            <ImageComponent image = {zone.it_image}/>
-          </Col>
-        </>
-      )
-    }
-    else{
-      frame_body=(
-        <>
-          <Col xs={`${grid[zone.grid_option]}`}>
-          <ImageComponent image = {zone.it_image}/>
-          </Col>
-          <Col >
-          <TextComponent text = {zone.it_text}/>
-          </Col>
-        </>
-      )
-    }
+  let zone= props.zone
+  return(
+    <div 
+      className='section' 
+      style={{ 
+        backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
+        backgroundBlendMode:'multiply'
+      }}
+    >
+      {zone.head.updown_switch ?(
+      <Container>
+        <Row className='d-flex justify-content-between align-items-center'>
+          {zone.left_right_switch ?(
+          <>
+            <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.it_text}/></Col>
+            <Col><ImageComponent image = {zone.it_image}/></Col>
+          </>
+          ):(
+          <>
+            <Col xs={`${grid[zone.grid_option]}`}><ImageComponent image = {zone.it_image}/></Col>
+            <Col><TextComponent text = {zone.it_text}/></Col>
+          </>
+          )}
+      </Row>
+        <Row className='d-flex justify-content-center mt-5'>
+        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+        </Row>
+      </Container>
+      ):(        
+      <Container>
+        <Row className='d-flex justify-content-center mb-5'>
+        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+        </Row>
+        <Row className='d-flex justify-content-around align-items-center'>
+          {zone.left_right_switch ?(
+            <>
+              <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.it_text}/></Col>
+              <Col><ImageComponent image = {zone.it_image}/></Col>
+            </>
+          ):(
+            <>
+              <Col xs={`${grid[zone.grid_option]}`}><ImageComponent image = {zone.it_image}/></Col>
+              <Col><TextComponent text = {zone.it_text}/></Col>
+            </>
+          )}
+          </Row>
+      </Container>)}
 
-    if (zone.head.updown_switch){
-      return(
-        <div 
-          // key={`story_comp_${index}`} 
-          className='section' 
-          style={{ 
-            backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-            backgroundBlendMode:'multiply'
-          }}
-        >
-        <Container>
-          <Row className='d-flex justify-content-between align-items-center'>
-            {frame_body}
-          </Row>
-          <Row className='d-flex justify-content-center mt-5'>
-          <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-          </Row>
-  
-        </Container>
-      </div>
-      )
-    }
-    else{
-      return(
-        <div 
-          // key={`story_comp_${index}`} 
-          className='section' 
-          style={{ 
-            backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-            backgroundBlendMode:'multiply'
-          }}
-        >
-        <Container>
-          <Row className='d-flex justify-content-center mb-5'>
-          <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-          </Row>
-          <Row className='d-flex justify-content-around align-items-center'>
-            {frame_body}
-          </Row>
-        </Container>
-      </div>
-      )
-    }
+  </div>
+  )
 
   }
   export default ImageText

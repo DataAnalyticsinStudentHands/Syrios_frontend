@@ -68,93 +68,77 @@ const CompareCoin = (props)=>{
 
 const CompareFrame = (props)=>{
     let zone = props.zone
-    // let fullpageApi = props.fullpageApi
-    // let state = props.state
-
     let grid = {
         "half": 6,
         "third": 4,
         "quarter": 3,
       };
-    const CompareBody = ()=>{
-        if(zone.cc_text.text === '' && zone.cc_text.caption === ''){
-            return(
+  return(
+    <div className='section' 
+      style={{ 
+        backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
+        backgroundBlendMode:'multiply'
+      }}
+    >
+      {zone.head.updown_switch?(
+        <Container>
+          {zone.cc_text.text === '' && zone.cc_text.caption === '' ?(
             <Row className='d-flex justify-content-center align-items-center'>
-                <Col xs={`${grid[zone.grid_option]}`} className='d-flex justify-content-center'>
-                    <CompareCoin coin={zone.cc_coin}/>
-                </Col>
+              <Col xs={`${grid[zone.grid_option]}`} className='d-flex justify-content-center'>
+                  <CompareCoin coin={zone.cc_coin}/>
+              </Col>
             </Row>
-            )
-        }
-        else{
-            if(zone.left_right_switch){    
-                    return(
-                        <Row className='d-flex justify-content-center align-items-center'>
-                            <Col xs={`${grid[zone.grid_option]}`}>
-                                <TextComponent text = {zone.cc_text}/>
-                            </Col>
-                            <Col  className='d-flex justify-content-center'>
-                                <CompareCoin coin={zone.cc_coin}/>
-                            </Col>
-                        </Row>
-                    )        
-                }
-                else{
-                    return(
-                        <Row className='d-flex justify-content-center align-items-center'>
-                        <Col className='d-flex justify-content-center'>
-                            <CompareCoin coin={zone.cc_coin}/>
-                        </Col>
-                        <Col xs={`${grid[zone.grid_option]}`}>
-                            <TextComponent text = {zone.cc_text}/>
-                        </Col>
-                    </Row>
-                    )
-                }
-            }
-        }
+          ):(
+            <>
+              {zone.left_right_switch ? (
+                <Row className='d-flex justify-content-center align-items-center'>
+                  <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.cc_text}/></Col>
+                  <Col className='d-flex justify-content-center'><CompareCoin coin={zone.cc_coin}/></Col>
+                </Row>
+              ):(
+                <Row className='d-flex justify-content-center align-items-center'>
+                  <Col className='d-flex justify-content-center'><CompareCoin coin={zone.cc_coin}/></Col>
+                  <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.cc_text}/></Col>
+                </Row>
+              )}
+            </>
 
-    if (zone.head.updown_switch){
-        return(
-          <div 
-            className='section' 
-            style={{ 
-              backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-              backgroundBlendMode:'multiply'
-            }}
-          >
-          <Container>
-            <CompareBody/>
-            <Row className='d-flex justify-content-center mt-5'>
-              <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+          )}                
+          <Row className='d-flex justify-content-center mt-5'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+        </Container>
+      ):(
+        <Container>
+          <Row className='d-flex justify-content-center mb-5 '><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          {zone.cc_text.text === '' && zone.cc_text.caption === '' ?(
+            <Row className='d-flex justify-content-center align-items-center'>
+              <Col xs={`${grid[zone.grid_option]}`} className='d-flex justify-content-center'>
+                  <CompareCoin coin={zone.cc_coin}/>
+              </Col>
             </Row>
-          </Container>
-        </div>
-        )
-      }
-      else{
-        return(
-          <div 
-            className='section' 
-            style={{ 
-              backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-              backgroundBlendMode:'multiply'
-            }}
-          >
-          <Container>
-            <Row className='d-flex justify-content-center mb-5 '>
-              <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-            </Row>
-            {/* <Row>
-              <button
-                onClick={()=>fullpageApi.moveTo(state.sectionCount)}
-              > Click Me!!!!</button>
-            </Row> */}
-            <CompareBody/>
-          </Container>
-        </div>
-        )
-      }
+          ):(
+            <>
+              {zone.left_right_switch ? (
+                <Row className='d-flex justify-content-center align-items-center'>
+                  <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.cc_text}/></Col>
+                  <Col className='d-flex justify-content-center'><CompareCoin coin={zone.cc_coin}/></Col>
+                </Row>
+              ):(
+                <Row className='d-flex justify-content-center align-items-center'>
+                  <Col className='d-flex justify-content-center'><CompareCoin coin={zone.cc_coin}/></Col>
+                  <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.cc_text}/></Col>
+                </Row>
+              )}
+            </>
+          )}              
+        </Container>
+      )}
+    </div>
+  )
 }
 
 export default CompareFrame
+// {/* <Row>
+//   <button
+//     onClick={()=>fullpageApi.moveTo(state.sectionCount)}
+//   > Click Me!!!!</button>
+// </Row> */}

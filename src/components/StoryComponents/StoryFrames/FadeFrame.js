@@ -24,21 +24,9 @@ const FadeButton = (props)=>{
     )
   }
 
-  if(props.options.length == 2){
-    return(
-      <Row className='justify-content-center fade-2button-row'>
-        {buttonOptin}
-      </Row>
-    )
-  }
-  if (props.options.length == 4){
-    return(
-      <Row className='justify-content-around fade-4button-row'>
-        {buttonOptin}
-      </Row>
-    )
-  }
-}
+  if(props.options.length == 2) return(<Row className='justify-content-center fade-2button-row'>{buttonOptin}</Row>)
+  if(props.options.length == 4) return(<Row className='justify-content-around fade-4button-row'>{buttonOptin}</Row>)}
+
 const FadeBody = (props)=>{
   // console.log(props)
   let coin_left = props.coin.coin_left.data.attributes
@@ -126,7 +114,6 @@ const FadeBack = (props)=>{
       </div>
     )
   }
-
   return(
     <>
     {fadeBack}
@@ -286,7 +273,6 @@ function toShow (dom,index, length) {
 
 const FadeFrame = (props) =>{
   let zone = props.zone
-  if (zone.head.updown_switch){
     return(
       <div 
         className='section' 
@@ -295,51 +281,37 @@ const FadeFrame = (props) =>{
           backgroundBlendMode:'multiply'
         }}
       >
-      <Container>
-        <Container >
-          <div className='fade-front'>
-            <div className='d-flex justify-content-between ' style={{height:'464px'}}>
-                <FadeBody coin = {zone.fades[0]}/>
+      {zone.head.updown_switch?(
+        <Container>
+          <Container >
+            <div className='fade-front'>
+              <div className='d-flex justify-content-between ' style={{height:'464px'}}>
+                  <FadeBody coin = {zone.fades[0]}/>
+              </div>
             </div>
-          </div>
-          <FadeBack bodys={zone.fades}/>
-          <FadeButton options = {zone.fades} />
-        </Container>  
-        <Row className='d-flex justify-content-center mt-5'>
-          <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-        </Row>
-      </Container>
+            <FadeBack bodys={zone.fades}/>
+            <FadeButton options = {zone.fades} />
+          </Container>  
+          <Row className='d-flex justify-content-center mt-5'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+        </Container>
+      ):(
+        <Container>
+          <Row className='d-flex justify-content-center' style={{marginBottom:"90px"}}>
+            <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+          </Row>
+          <Container >
+            <div className='fade-front'>
+              <div className='d-flex justify-content-between ' style={{height:'464px'}}>
+                  <FadeBody coin = {zone.fades[0]}/>
+              </div>
+            </div>
+            <FadeBack bodys={zone.fades}/>
+            <FadeButton options = {zone.fades} />
+          </Container>       
+        </Container>
+      )}
     </div>
     )
-  }
-  else{
-    return(
-      <div 
-        className='section' 
-        style={{ 
-          backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-          backgroundBlendMode:'multiply'
-        }}
-      >
-      <Container>
-        <Row className='d-flex justify-content-center' style={{marginBottom:"90px"}}>
-          <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-        </Row>
-        <Container >
-          <div className='fade-front'>
-            <div className='d-flex justify-content-between ' style={{height:'464px'}}>
-                <FadeBody coin = {zone.fades[0]}/>
-            </div>
-          </div>
-
-          <FadeBack bodys={zone.fades}/>
-          <FadeButton options = {zone.fades} />
-        </Container>       
-      </Container>
-    </div>
-    )
-  }
-
   }
 
   export default FadeFrame

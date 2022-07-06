@@ -1,64 +1,29 @@
+/* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import storyRequest from 'src/api/story';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 
-
 const Stories = () => {
-	const [loading, set_loading] = useState(true);
-	const [stories, set_stories] = useState(undefined)
+	const [isLoading, setIsLoading] = useState(true);
+	const [stories, setStories] = useState(undefined)
+
+	const [storyReference, setStoryReference] = useState([])
+	const [storyImageSouce, setStoryImageSouce]= useState([])
+
 	useEffect(() => {
-		if (loading) {
-			axios.get(process.env.REACT_APP_strapiURL + '/api/stories') // Call stories objects to get story info so we can sort our informatoin around
-				.then((res) => {
-					let data = res.data.data;
-					let stories_jsx = [];
-					data.forEach((e, index) => {
-						stories_jsx.push(
-							<Col key={`${index}`}>
-								<Link to={`/StoryReader?id=${e.id}`}>
-									<div className='select-story-div text-center'>
-										<img
-											src={`${process.env.REACT_APP_strapiURL}${e.attributes.image.data.attributes.url}`}
-                      						alt='Story_Image'
-											height='100%'
-										/>
-										<p className='select-story-text text-center'>
-											{e.attributes.name}
-										</p>
-									</div>
-								</Link>
-							</Col>
-						)
-					});
+		const fetchData = async ()=>{
+			if(isLoading === false) setIsLoading(true);
+			const result = await storyRequest.storyFind()
+			setStories(result.data.data)
+			setIsLoading(false)
+		}
+		fetchData().catch(console.error);
+	},[]);
 
-					let page_jsx = [];
-					stories_jsx.forEach((e, index) => {
-						page_jsx.push(
-							<Col key={`story_${index}`}>
-							{/* <Col key={`${e.key}`}> */}
-								{e}
-							</Col>
-						);
-					});
-					set_stories(page_jsx)
-					set_loading(false);
-				});
-			}
-		});
-
-	if (loading) {
-		return (
-			<>
-				<LoadingPage />
-				<Footer />
-			</>
-		);
-	}
-
+	if (isLoading)return (<><LoadingPage /><Footer /></>);
 	return (
 		<>
 			<div id='stories-page' 
@@ -70,7 +35,7 @@ const Stories = () => {
 							Discover Coin Stories
 						</p>
 					</Row>
-					<Row container='justify-content-md-center' className='d-flex justify-content-center mt-5'>
+					<Row className='d-flex justify-content-center'>
 						<Col xs={6} sm={3}>
 							<button
 								className='story-button blue-text'
@@ -104,15 +69,30 @@ const Stories = () => {
 							</button>
 						</Col>
 					</Row>
-					<Row style={{ marginTop: '80px', marginBottom: '100px'}}>
-						{stories}
+					<Row style={{ marginTop: '80px', marginBottom: '100px'}} className='d-flex ju'>
+						{stories.map((story)=>{
+							return(
+							<Col key={`${story.id}`}>
+								<Link to={`/StoryReader?id=${story.id}`}>
+									<div className='select-story-div text-center'>
+										<img
+											src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
+                      						alt='Story_Image'
+											height='100%'
+										/>
+										<p className='select-story-text text-center'>
+											{story.attributes.name}
+										</p>
+									</div>
+								</Link>
+							</Col>
+							)
+						})}
 					</Row>
 				</Container>
 			</div>
-      <Footer 
-	//   references={storyReference} imageReference={storyImageSouce}
-	  />
-		</>
+      <Footer references={storyReference} imageReference={storyImageSouce}/>
+	</>
 	)
 }
 
