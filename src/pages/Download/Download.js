@@ -20,33 +20,29 @@ function Download(){
 
   const [downloadPageData, setDownloadPageData] = useState([])
   const [storyReference, setStoryReference] = useState([])
-
-
+  const [storyImageSouce]= useState([])
 
   useEffect(() => {
     async function fetchData(){
       const result = await downloadRequest.downloadFind();
-      console.log(result.data.data.attributes)
-
-      const restltData = result.data.data.attributes
-
-      let itemkeys = []
-      restltData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
-      let bibArr = []
-      for (const itemkey of itemkeys){
-        const data = await zoteroRequest.getOneItemBib(itemkey)
-        bibArr.push(data.data)
-      }
-  
-      bibArr = bibArr.sort()
-      console.log(bibArr)
-      setStoryReference(bibArr)
-
+      createZoteroReference(result.data.data.attributes)
       setDownloadPageData(result.data.data.attributes)
       setIsLoading(false)
     }
     fetchData()
   },[]);
+
+  async function createZoteroReference(resultData){
+    let itemkeys = []
+    resultData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
+    let bibArr = []
+    for (const itemkey of itemkeys){
+      const data = await zoteroRequest.getOneItemBib(itemkey)
+      bibArr.push(data.data)
+    }
+    bibArr = bibArr.sort()
+    setStoryReference(bibArr)
+  }
 
   const formik = useFormik({
     initialValues:{
@@ -181,6 +177,7 @@ function Download(){
       </div>
       <Footer 
       	references={storyReference}
+        imageReference={storyImageSouce}
       />
     </>
   );
