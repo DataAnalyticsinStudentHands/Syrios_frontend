@@ -201,29 +201,26 @@ const Glossary = () =>{
                                 })}
                             </ListGroup>
                         </Tab>
-                        {/* {alphabetGroup.map((alphabet)=>{
+                        {alphabetGroup.map((alphabet)=>{
                             return(
                                 <Tab eventKey={alphabet} title={alphabet}>
-                                {glossaryAllData.map((item)=>{
-                                    return(
-                                        <>
-                                            <ListGroup>
-
+                                    <ListGroup as='ul'>
+                                    {glossaryAllData.map((item)=>{
+                                        return(<>
                                             {item.attributes.alphabet_group === key ? (<>
                                                 {item.attributes.glossaries.data.length ===0 ?(<>
                                                     </>):(<>
-                                                            
-                                                        
                                                         <ListGroup.Item as='li' eventKey={`${item.attributes.alphabet}-${item.id}`} key={`${item.attributes.alphabet}-${item.id}`}>
                                                             <Row >
                                                                 <Col xs={2} className="glossary-alphabet d-flex justify-content-center align-items-center">{item.attributes.alphabet}</Col>
                                                                 <Col xs={6}>
                                                                     <Row className='glossary-term'>
-                                                                        {item.attributes.glossaries.data ? (
-                                                                        <>
+                                                                        {item.attributes.glossaries.data ? (<>
                                                                             {item.attributes.glossaries.data.map((item)=>{
                                                                                 return(
-                                                                                    <Col xs={3} key={`${item.attributes.term}`}>{item.attributes.term}</Col>
+                                                                                    <Col xs={3} key={`${item.attributes.term}`}>
+                                                                                        <button onClick={()=>handleModal(item)}>{item.attributes.term}</button>
+                                                                                    </Col>
                                                                                 )
                                                                             })}
                                                                         </>):(<></>)}
@@ -233,12 +230,12 @@ const Glossary = () =>{
                                                         </ListGroup.Item>
                                                     </>)}
                                             </>):(<></>)}
-                                            </ListGroup>
                                         </>)
-                                })}
+                                    })}
+                                    </ListGroup>
                                 </Tab>
                             )
-                        })} */}
+                        })}
                     </Tabs>
 
                     </Row>
