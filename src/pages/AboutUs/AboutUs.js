@@ -1,111 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {Container,Row, Col} from 'react-bootstrap';
 
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
-
-
+import aboutUsRequest from 'src/api/about-us';
 
 function createMarkup(textTran){
   return {__html: textTran};
 }
 
-const TeamJsx = (e, index) => { // This function is used to display profile picture, and detail of what the person contributed to the project
-  // The detail for the person's information needs some "special" love for it to work. New lines don't work well, so each new line will be a new row
-  // Return profile information
-  return (
-    <Row key={`ProjectDirectors_${index}`}>
-      {/* profile picture */}
-      <Col xs={3}>
-        <div className='about-member-pictures-outline'>
-          <div className='about-member-pictures'>
-            <img
-              src={`${process.env.REACT_APP_strapiURL}${e.picture.data.attributes.url}`}
-              alt={e.name}/>
-          </div>
-        </div>
-      </Col>
-      {/* profile information */}
-      <Col className='light-blue-background'>
-        <Container style={{margin: '20px' }}>
-          <Row>
-            {/* name and alias */}
-            <Col className='story-h3'>
-              {e.name}
-            </Col>
-          </Row>
-          <Row>
-            {/* their role */}
-            <Col className='story-text'>
-              {e.role}
-            </Col>
-          </Row>
-          {/* This is the paragraph below. This is the only way to enforce a newline character by making a new row */}                      
-          {/* {detailJsxArr} */}
-          <div dangerouslySetInnerHTML={createMarkup(e.detail)} className='story-text text-left'/>
-        </Container>
-      </Col>
-    </Row>
-  );
-}
-
 const About = () => {
-  const [is_loading, set_is_loading] = useState(true);
-  const [description, set_description] = useState(undefined)
-  const [acknowledgements, set_acknowledgements] = useState(undefined)
-  const [digital_media_and_content_team, set_digital_media_and_content_team] = useState(undefined)
-  const [logo, set_logo] = useState(undefined)
-  const [project_directors, set_project_directors] = useState(undefined)
-  const [past_student_research_assistants, set_past_student_research_assistants]= useState(undefined)
-
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [aboutUsData, setAboutUsData] = useState([])
 
   useEffect(() => {
-    if(is_loading) {
-      // axios.get(`${process.env.REACT_APP_strapiURL}/about-us`)
-      axios.get(`${process.env.REACT_APP_strapiURL}/api/about-us`)
-        .then((res) => {
-          let data = res.data.data.attributes
-
-          set_description(data.description)
-          set_logo(data.logo)
-          set_past_student_research_assistants(data.past_student_research_assistants)
-
-          let project_directors_jsx_arr = [];
-          data.project_directors.forEach((e, index) => {
-            project_directors_jsx_arr.push(TeamJsx(e, index));
-          });
-          set_project_directors(project_directors_jsx_arr)
-
-          let digital_media_and_content_teamJsxArr = [];
-          data.media_content_team.forEach((e, index) => {
-            digital_media_and_content_teamJsxArr.push(TeamJsx(e, index));
-          });
-          set_digital_media_and_content_team(digital_media_and_content_teamJsxArr)
-
-          let acknowledgements_jsx_arr = []
-          data.acknowledgements.forEach((e,index) => {
-            acknowledgements_jsx_arr.push(
-              <Row 
-                className='row-decrease-to-paragraph-size' 
-                key={`acknowledgements_${index}`}
-              >
-                <Col>
-                  <div dangerouslySetInnerHTML={createMarkup(e.text)} className='text-center story-text'/>
-                </Col>
-              </Row>
-            );
-          })
-          set_acknowledgements(acknowledgements_jsx_arr)
-          set_is_loading(false);
-
-        })
+    async function fetchData (){
+      const result = await aboutUsRequest.aboutUsFind()
+      // console.log(result.data.data.attributes)
+      setAboutUsData(result.data.data.attributes)
+      setIsLoading(false)
     }
-  });
+    fetchData().catch(console.error);
+  },[]);
 
 
-  if (is_loading) { // is_loading is true, show loading page, else show real page
+  if (isLoading) { 
     return (
       <>
         <LoadingPage />
@@ -117,72 +36,106 @@ const About = () => {
     <>
       <div id='about'>
         <Container>
-          <Row className='my-5'>
-            <Col>
-              <p className='story-h1 text-center'>
-                About the Syrios Project
-              </p>
-            </Col>
-          </Row>
+          <Row className='my-5'><Col className='story-h1 text-center'>About the Syrios Project</Col></Row>
           <Row className='align-items-center'>
-            <Col sm={3}>
-              <img
-                alt='logo'
-                width='90%'
-                src={process.env.REACT_APP_strapiURL+logo.data.attributes.url}/>
-            </Col>
-            <Col>
-              <div dangerouslySetInnerHTML={createMarkup(description)} className='story-text'/>
-            </Col>
+            <Col sm={3}><img alt='logo' width='90%' src={process.env.REACT_APP_strapiURL+aboutUsData.logo.data.attributes.url}/></Col>
+            <Col dangerouslySetInnerHTML={createMarkup(aboutUsData.description)} className='story-text'/>
           </Row>
         </Container>
         <Container>
-          <Row className='mt-5'>
-            <Col>
-              <p className='story-h1 text-center'>
-                Meet the Team
-              </p>
-            </Col>
-          </Row>
+          <Row className='my-5'><Col className=' story-h1 text-center'>Meet the Team</Col></Row>
+          {aboutUsData.project_directors.length === 0 ?(<></>):(
+          <>
+            <Row className='my-5'><Col className='story-h2 text-center'>Project Directors</Col></Row>
+            {aboutUsData.project_directors.map((director)=>{
+              return(
+                <Row key={`ProjectDirectors_${director.id}`}>
+                  <Col xs={3} className='d-flex align-items-center'>
+                    <div className='about-member-pictures-outline'>
+                      <div className='about-member-pictures'>
+                        <img
+                          src={`${process.env.REACT_APP_strapiURL}${director.picture.data.attributes.url}`}
+                          alt={director.name}/>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col className='light-blue-background p-5'>
+                    <Row className='story-h3 mb-3'><Col>{director.name}</Col></Row>
+                    <Row className='story-text mb-3'><Col>{director.role}</Col></Row>
+                    <Row dangerouslySetInnerHTML={createMarkup(director.detail)} className='story-text text-left'/>
+                  </Col>
+                </Row>
+              )
+            })}
+          </>)}
+          
+          {aboutUsData.media_content_team.length === 0 ? (<></>):(<>
+            <Row className='my-5'> <Col className='story-h2 my-5 text-center about-digital-team'>Digital Team and Media Directors</Col></Row>
+            {aboutUsData.media_content_team.map((team)=>{
+              return(
+                <Row key={`media_content_team_${team.id}`}>
+                  <Col xs={3} className='d-flex align-items-center'>
+                    <div className='about-member-pictures-outline'>
+                      <div className='about-member-pictures'>
+                        <img
+                          src={`${process.env.REACT_APP_strapiURL}${team.picture.data.attributes.url}`}
+                          alt={team.name}/>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col className='light-blue-background p-5'>
+                    <Row className='story-h3 mb-3'><Col>{team.name}</Col></Row>
+                    <Row className='story-text mb-3'><Col>{team.role}</Col></Row>
+                    <Row dangerouslySetInnerHTML={createMarkup(team.detail)} className='story-text text-left'/>
+                  </Col>
+                </Row>
+              )
+            })}
+          </>)}
 
-          <Row className='mb-5'>
-            <Col>
-              <p className='story-h2 text-center'>
-                Project Directors
-              </p>
-            </Col>
-          </Row>
-          {project_directors}
+          {aboutUsData.past_student_research_assistants.length===0 ?(<></>):(<>
+              <Row className='my-5'><Col className='story-h3 my-5 text-center'>Past Student Research Assistants</Col></Row>
+              <Row className='light-blue-background p-5'>
+                {aboutUsData.past_student_research_assistants.map((student)=>{
+                  return(
+                    <Col xs={12} key={`student_${student.id}`}
+                    dangerouslySetInnerHTML={createMarkup(student.student)} 
+                    className='story-text mb-3' />
+                  )
+                })}
+              </Row>
+          </>)}
 
-          <Row className='my-5'> 
+          {/* <Row style={{ marginTop: '100px', marginBottom: '40px' }}> */}
+          <Row className='my-5'><Col className='story-h2 my-5 text-center'>Acknowlegments</Col></Row>
+          <Row>
             <Col>
-              <p className='story-h2 text-center about-digital-team'>
-                Digital Team and Media Directors
-              </p>
+              {aboutUsData.acknowledgment_left ? (<>
+                <Row dangerouslySetInnerHTML={createMarkup(aboutUsData.acknowledgment_left)} className='story-text'/>
+              </>):(<></>)}
+              <Row className='my-3'>
+                {aboutUsData.acknowledgment_left_link.length === 0 ?(<></>):(<>
+                  {aboutUsData.acknowledgment_left_link.map((o)=>{
+                    return(<>
+                        {o.link ?(<Col xs={12} key={`link_left_${o.id}`} className='story-text'><a href={`${o.link}`}>{o.name}</a></Col>)
+                        :(<Col xs={12} key={`link_left_${o.id}`} className='d-flex story-text'>{o.name}</Col>)}
+                      </>)})}
+                </>)}
+              </Row>
             </Col>
-          </Row>
-          {digital_media_and_content_team}
-          <Row style={{ marginTop: '200px', marginBottom: '50px' }}>
             <Col>
-              <p className='story-h3 text-center' >
-                Past Student Research Assistants
-              </p>
+              <Row dangerouslySetInnerHTML={createMarkup(aboutUsData.acknowledgment_right)} className='story-text' />
+              <Row className='my-3'>
+                {aboutUsData.acknowledgment_right_link.length === 0 ?(<></>):(<>
+                    {aboutUsData.acknowledgment_right_link.map((o)=>{
+                      return(<>
+                        {o.link ?(<Col xs={12} key={`link_right_${o.id}`} className='story-text'><a href={`${o.link}`}>{o.name}</a></Col>)
+                        :(<Col xs={12} key={`link_right_${o.id}`} className='d-flex story-text'>{o.name}</Col>)}
+                    </>)})}
+                  </>)}
+              </Row>
             </Col>
           </Row>
-          <Row className='light-blue-background'>
-            <Col style={{ margin: '20px', marginBottom: '15px' }}>
-              <div dangerouslySetInnerHTML={createMarkup(past_student_research_assistants)} className='gray-text caption-text text-center'/>
-            </Col>
-          </Row>
-
-          <Row style={{ marginTop: '100px', marginBottom: '40px' }}>
-            <Col>
-              <p className='story-h2 text-center' >
-                Acknowlegments
-              </p>
-            </Col>
-          </Row>
-          {acknowledgements}
         </Container>
       </div>
       <Footer />

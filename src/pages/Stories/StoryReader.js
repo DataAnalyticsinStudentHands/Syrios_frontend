@@ -1,51 +1,41 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Footer from 'src/components/Footer.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
-import SwitchComponent from 'src/pages/Stories/StoryComponents.js';
+import StoryComponent from './StoryComponents';
 
 import storyRequest from 'src/api/story';
 import zoteroRequest from 'src/api/zotero';
 
 const StoryReader = () => {
-  // const [credits_and_references, set_credits_and_references] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
-  // const [story_zone, set_story_zone] = useState(undefined)
-
-  const [storyFrame, setStoryFrame] = useState([])
-  const [storyAnchors, setStoryAnchors]=useState([])
-  const [storyReference, setStoryReference] = useState([])
-  const [storyImageSouce, setStoryImageSouce]= useState([])
 
   const Get_id = () => {
     return new URLSearchParams(useLocation().search).get('id');
   }
   const storyId = Get_id();
+  const [isLoading, setIsLoading] = useState(true);
+  const [storyFrame, setStoryFrame] = useState([])
+  const [storyAnchors, setStoryAnchors]=useState([])
+  const [storyReference, setStoryReference] = useState([])
+  const [storyImageSouce, setStoryImageSouce]= useState([])
 
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     axios.get(`${process.env.REACT_APP_strapiURL}/api/stories/${storyId}`)
-  //     // axios.get(`http://localhost:1337/api/stories/${storyId}`)
-  //       .then((res) => {
-  //         console.log(res.data.data)
-  //         let zone = res.data.data.attributes.zone
-  //         set_credits_and_references(res.data.data.attributes.credits_and_references);
-  //         set_story_zone(zone);
-  //         // ChangeCreditsAndReferences(res.data.data.attributes.credits_and_references);
-  //         setIsLoading(false);
-  //       }
-  //       );
-  //   }
-  // }
-  // );
-  const fetchData = async ()=>{
-    if(isLoading === false) setIsLoading(true);
-    const result = await storyRequest.storyFindOne(storyId)
+  useEffect(()=>{
+    async function fetchData(){
+      // if(isLoading === false) setIsLoading(true);
+      const result = await storyRequest.storyFindOne(storyId)
+      createImageReference(result.data.data.attributes)
+      createZoteroReference(result.data.data.attributes)
+      createAnchors(result.data.data.attributes)
+      setStoryFrame(result.data.data.attributes.zone)
+      setIsLoading(false)
+    }
+    fetchData().catch(console.error);
+  },[])
 
-    let resultData = result.data.data.attributes
-
+  async function createImageReference(resultData){
     let imgRef=[]
     resultData.zone.forEach((frame)=>{
       //coin-compare
@@ -119,26 +109,20 @@ const StoryReader = () => {
         imgRef.push(ref1,ref2)
       }
     })
+    //sort the array
     function compare(a,b){
       if ( a.right_holder < b.right_holder ){return -1;}
       if ( a.right_holder > b.right_holder ){return 1;}
       return 0;
     }
-    function unique(arr, key) {
-      if (!arr) return arr
-      if (key === undefined) return [...new Set(arr)]
-      const map = {
-          'string': e => e[key],
-          'function': e => key(e),
-      }
-      const fn = map[typeof key]
-      const obj = arr.reduce((o,e) => (o[fn(e)]=e, o), {})
-      return Object.values(obj)
-  }
-    imgRef = imgRef.sort(compare)
-    imgRef = unique(imgRef,'right_holder')
-    setStoryImageSouce(imgRef)
 
+    imgRef = imgRef.sort(compare)
+    imgRef = [...new Map(imgRef.map(item =>[item['right_holder'], item])).values()];// Deduplication
+    imgRef = imgRef.filter(function(obj){return obj.right_holder!=='NA'}) //delete NA value
+    setStoryImageSouce(imgRef)
+  }
+
+  async function createZoteroReference(resultData){
     let itemkeys = []
     resultData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
     let bibArr = []
@@ -146,7 +130,6 @@ const StoryReader = () => {
       const data = await zoteroRequest.getOneItemBib(itemkey)
       bibArr.push(data.data)
     }
-
     bibArr = bibArr.sort()
     setStoryReference(bibArr)
 
@@ -164,37 +147,26 @@ const StoryReader = () => {
     //     return 0;
     // }
     // zoteroReference = zoteroReference.sort(compare)
-    // console.log(zoteroReference)
     // setStoryReference(zoteroReference)
+  }
 
-
+  async function createAnchors(resultData){
     let arrAnchros = []
     for (let i=0; i<resultData.zone.length;i++){
       let title = resultData.name.replace(/\s/g, '')
       arrAnchros.push(title+'-slides-' +i)
     }
     setStoryAnchors(arrAnchros)
-
-    setStoryFrame(resultData.zone)
-    setIsLoading(false)
   }
-
-  useEffect(()=>{
-    fetchData().catch(console.error);
-  },[])
 
   // Render
-  if (isLoading) {
-    return (
+  if (isLoading) return (
       <>
         <LoadingPage />
-        <Footer
-          references={storyReference}
-          imageReference={storyImageSouce}
-        />
+        <Footer />
       </>
     );
-  }
+  
 
   return (
     <>
@@ -209,11 +181,7 @@ const StoryReader = () => {
         render={({state, fullpageApi}) => {
           // console.log("render prop change", state, fullpageApi);
           let storyJSX = [];
-          for (let i = 0; i < storyFrame.length; i++) {
-            storyJSX.push(
-              SwitchComponent(storyFrame[i], i,fullpageApi, state)
-              );
-          }
+          storyFrame.forEach((story,i)=>{storyJSX.push(StoryComponent(story,i,fullpageApi, state))})
           return (
             <ReactFullpage.Wrapper>
                {storyJSX}
@@ -224,8 +192,6 @@ const StoryReader = () => {
       <Footer
         references={storyReference}
         imageReference={storyImageSouce}
-        // hasCreditsAndReferences={true}
-        // creditsAndReferences={credits_and_references}
       />
     </>
   );
