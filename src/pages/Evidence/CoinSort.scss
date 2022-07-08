@@ -3,6 +3,8 @@ story-h2 (Big Orange Text)
 story-h3 (Gray Text)
 story-download-text (dark blue text)
  */
+
+$tooSmallForPileScreenSize: 85em;
 #coin-sort-wrapper {
   position: relative;
 }
@@ -12,13 +14,23 @@ story-download-text (dark blue text)
   height: 1em;
 }
 
+#coin-sort-title {
+  position: relative;
+  z-index: 50;
+
+  pointer-events: none;
+}
+
 /* COIN SORT MENU */
 
 #coin-sort-options-wrapper {
+  position: relative;
   display: flex;
+  pointer-events: none;
 }
 
 #coin-sort-options {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   max-width: 97%;
@@ -31,6 +43,8 @@ story-download-text (dark blue text)
 
   background-color: white;
   border-radius: 5px;
+  
+  pointer-events: auto;
 }
 
 .coin-sort-menu-vr {
@@ -71,7 +85,7 @@ story-download-text (dark blue text)
 
 .coin-sort-options-icon {
   color: #7899A8;
-  font-size: 40px;
+  font-size: 3.5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,6 +94,8 @@ story-download-text (dark blue text)
 }
 
 .coin-sort-options-icon-text {
+  position: relative;
+  top: -10px;
   color: #7899A8;
   display: flex;
   justify-content: center;
@@ -91,6 +107,7 @@ story-download-text (dark blue text)
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-regular;
   color: #7899A8;
+  font-size: 1.2em;
 }
 
 .coin-sort-option {
@@ -111,7 +128,7 @@ story-download-text (dark blue text)
   color: $syrios-color-737271;
 
   margin-bottom: 0px;
-  font-size: 13px;
+  font-size: 1.2em;
 }
 
 .coin-sort-info-icon {
@@ -135,7 +152,7 @@ story-download-text (dark blue text)
   border-radius: 5px;
   cursor: pointer;
 
-  font-size: 14px;
+  font-size: 1.1em;
 
   align-items: center;
 
@@ -147,7 +164,7 @@ story-download-text (dark blue text)
 }
 
 .coin-sort-dropdow-bar-text {
-  font-size: 16px;
+  font-size: 1.4em;
   margin: 5px;
 
   font-family: $syrios-garamond-premier-pro;
@@ -214,7 +231,7 @@ story-download-text (dark blue text)
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-normal;
-  font-size: $syrios-font-size-15;
+  font-size: 1.4em;
   line-height: $syrios-line-spacing-15;
   letter-spacing: $syrios-character-spacing--10;
   color: $syrios-color-183848;
@@ -251,7 +268,7 @@ story-download-text (dark blue text)
   padding: 0px 40px 0px 40px;
   margin: -20px 0px 0px 0px;
 
-  font-size: 24px;
+  font-size: 1.8em;
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-medium;
@@ -274,9 +291,12 @@ story-download-text (dark blue text)
 
 // ********************** TUTORIAL TEXT CSS ********************** //
 #coin-sort-main-text-wrapper {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
 }
 
 #coin-sort-main-text {
@@ -285,13 +305,15 @@ story-download-text (dark blue text)
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  pointer-events: auto;
 }
 
 #coin-sort-main-text-title {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-light;
-  font-size: 50px;
+  font-size: 4em;
   color: #1a3847;
 }
 
@@ -301,7 +323,7 @@ story-download-text (dark blue text)
   font-weight: $syrios-font-weight-light;
   letter-spacing: $syrios-character-spacing-0;
   color:#696969;
-  font-size: 22px;
+  font-size: 2em;
 }
 
 #coin-sort-main-text ol li::marker {
@@ -427,17 +449,17 @@ story-download-text (dark blue text)
 #coin-sort-grid-6x3-cell-18 { grid-area: 3 / 6 / 4 / 7; } 
 
 #coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div {
-  font-size: 12px !important;                                                                  
+  font-size: 1em !important;                                                                  
 }                                                                                              
                                                                                                
 #coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
   bottom: -5px !important;                                                                     
-  right: -0px !important;                                                                      
+  right: -5px !important;                                                                      
 }                                                                                              
                                                                                                
 #coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-scale-icon {
   bottom: -5px !important;                                                                     
-  left: -15px !important;                                                                      
+  left: -20px !important;                                                                      
 }                                                                                              
                                                                                                
 #coin-sort-grid-6x3-arrangement div div.coin-sort-grid-cell-icons-div i {
@@ -464,7 +486,7 @@ story-download-text (dark blue text)
 #coin-sort-grid-3x2-cell-6 { grid-area: 2 / 3 / 3 / 4; }
 
 #coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div {
-  font-size: 22px !important;                                                                  
+  font-size: 1.375em !important;                                                                  
 }                                                                                              
                                                                                                
 #coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
@@ -478,7 +500,7 @@ story-download-text (dark blue text)
 }                                                                                              
                                                                                                
 #coin-sort-grid-3x2-arrangement div div.coin-sort-grid-cell-icons-div i {
-  font-size: 2em !important;
+  font-size: 2.2em !important;
 }
 
 #coin-sort-grid-2x2-arrangement {
@@ -499,7 +521,7 @@ story-download-text (dark blue text)
 .coin-sort-grid-2x2-cell-4 { grid-area: 2 / 2 / 3 / 3; } 
 
 #coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div {
-  font-size: 22px !important;                                                                  
+  font-size: 1.375em !important;                                                                  
 }                                                                                              
                                                                                                
 #coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
@@ -513,7 +535,7 @@ story-download-text (dark blue text)
 }                                                                                              
                                                                                                
 #coin-sort-grid-2x2-arrangement div div.coin-sort-grid-cell-icons-div i {
-  font-size: 2em !important;
+  font-size: 2.2em !important;
 }
 
 #coin-sort-grid-3x1-arrangement {
@@ -533,7 +555,7 @@ story-download-text (dark blue text)
 #coin-sort-grid-3x1-cell-3 { grid-area: 1 / 3 / 2 / 4; }
 
 #coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div {
-  font-size: 22px !important;                                                                  
+  font-size: 1.375em !important;                                                                  
 }                                                                                              
                                                                                                
 #coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
@@ -547,7 +569,7 @@ story-download-text (dark blue text)
 }                                                                                              
                                                                                                
 #coin-sort-grid-3x1-arrangement div div.coin-sort-grid-cell-icons-div i {
-  font-size: 2em !important;
+  font-size: 2.5em !important;
 }
 
 #coin-sort-grid-2x1-arrangement {
@@ -566,7 +588,7 @@ story-download-text (dark blue text)
 #coin-sort-grid-2x1-cell-2 { grid-area: 1 / 2 / 2 / 3; } 
 
 #coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div {
-  font-size: 22px !important;                                                                  
+  font-size: 1.5em !important;                                                                  
 }                                                                                              
                                                                                                
 #coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
@@ -580,13 +602,13 @@ story-download-text (dark blue text)
 }                                                                                              
                                                                                                
 #coin-sort-grid-2x1-arrangement div div.coin-sort-grid-cell-icons-div i {
-  font-size: 2em !important;
+  font-size: 2.5em !important;
 }
 
 #coin-sort-grid-1x1-arrangement {
   width: 800px;
   max-width: 85%;
-  aspect-ratio: 16 / 14;
+  aspect-ratio: 16 / 11;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -598,7 +620,7 @@ story-download-text (dark blue text)
 #coins-sort-grid-1x1-cell-1 { grid-area: 1 / 1 / 2 / 2; }
 
 #coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div {
-  font-size: 35px !important;
+  font-size: 2.188em !important;
 }
 
 #coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div i.coin-info-icon-rotate {
@@ -613,4 +635,41 @@ story-download-text (dark blue text)
 
 #coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
+}
+
+/****************** COIN SORT PILE ******************/
+.coin-sort-pile-wrapper {
+  position: fixed;
+  top: $footerHeight;
+  display: flex;
+  height: calc(100vh - 3 * $footerHeight + 30px);
+  width: 100vw;
+
+  flex-grow: 1;
+}
+
+.coin-sort-pile {
+  position: relative;
+}
+
+@media only screen and (max-width: $tooSmallForPileScreenSize) {
+  .coin-sort-pile {
+    display: none;
+  }
+
+  .coin-sort-wrapper {
+    display: block;
+  }
+}
+
+.coin-sort-pile-coin {
+  position: absolute;
+}
+
+.coin-sort-pile-coin-image {
+  position: relative;
+  object-fit: cover;
+  width: 40px;
+
+  cursor: pointer;
 }

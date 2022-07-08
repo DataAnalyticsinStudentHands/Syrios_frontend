@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
 
@@ -103,6 +103,117 @@ const of_kind_size_query_relation = [
   {gte: null, lte: null},
 ];
 
+const CoinPile = (props) => {
+  const [has_fetched_coins, set_has_fetched_coins] = useState(false);
+  const [coins, set_coins] = useState(undefined);
+
+  useEffect(() => {
+    if (!has_fetched_coins) {
+      axios.get(process.env.REACT_APP_strapiURL + `/api/coins?${qs.stringify({
+        pagination: {
+          page: 0,
+          pageSize: 0,
+        }
+      })}`) 
+        .then(async (res, err) => {
+          if (err) {
+            console.error(err);
+          } else {
+            const size = res.data?.meta?.pagination?.pageCount;
+
+            if (size != null) {
+              let query = qs.stringify({
+                populate: [
+                  'obverse_file',
+                ],
+                pagination: {
+                  page: 1,
+                  pageSize: size,
+                }
+              });
+
+              let res = await axios.get(`${process.env.REACT_APP_strapiURL}/api/coins?${query}`);
+              if (Array.isArray(res?.data?.data)) {
+                let data = res.data.data.filter((coin) => {
+                  return coin?.attributes?.obverse_file?.data?.attributes?.formats?.thumbnail?.url;
+                }).map((coin) => {
+                  let y = Math.random();
+                  const CoinSortGraphingFormula = (x) => {
+                    return -4 * Math.pow(x - 0.5, 4) + 1.5 * Math.pow(x - 0.5, 2) + .17;
+                  };
+                  let x = Math.random() * CoinSortGraphingFormula(y);
+
+                  if (coin.id % 2 === 0) {
+                    x = 1 - x;
+                  }                  
+                  return {
+                    id: coin.id, 
+                    thumbnail_img_url: coin.attributes.obverse_file.data.attributes.formats.thumbnail.url,
+                    small_img_url: coin.attributes.obverse_file.data.attributes.url,
+                    alt: coin.alt ?? 'coin_image_missing_alt',
+                    x: x,
+                    y: y,
+                  };
+                }).filter((coin) => {
+                  return coin.id != null && coin?.thumbnail_img_url != null && coin?.small_img_url != null;
+                });
+                set_coins(data);
+              }
+            } else {
+              console.error("Unable to fetch 'pageCount' from coins api");
+            }
+          }
+        });
+      set_has_fetched_coins(false);
+    }
+  }, [has_fetched_coins]);
+
+  const Coin = (props) => {
+    let x = props.x * props.dimensions.width;
+    let y = props.y * props.dimensions.height;
+
+    if (x > props.dimensions.width - 40) x -= 40;
+    if (y > props.dimensions.width - 40) y -= 40;
+    return (
+      <div className='coin-sort-pile-coin' style={{top: `${y}px`, left: `${x}px`}}>
+        <img 
+          className='coin-sort-pile-coin-image'
+          src={process.env.REACT_APP_strapiURL+props.thumbnail_img_url} 
+          alt={props.thumbnail_img_url}
+        />
+      </div>
+    );
+  };
+
+  const coin_wrapper_ref = useRef();
+  const [dimensions, set_dimensions] = useState({width: 0, height: 0});
+  useEffect(() => {
+    const HandleResize = () => {
+      set_dimensions({width: coin_wrapper_ref?.current?.clientWidth ?? 0, height: coin_wrapper_ref?.current?.clientHeight ?? 0});
+    }
+    window.addEventListener("resize", HandleResize);
+  }, []);
+
+  useEffect(() => {
+    set_dimensions({width: coin_wrapper_ref?.current?.clientWidth ?? 0, height: coin_wrapper_ref?.current?.clientHeight ?? 0});
+  }, [coin_wrapper_ref]);
+
+  return (
+    <div className='coin-sort-pile-wrapper' ref={coin_wrapper_ref}>
+      <div className='coin-sort-pile'>
+        {coins?.map((coin) => (<Coin 
+          key={coin.id} 
+          thumbnail_img_url={coin.thumbnail_img_url} 
+          small_img_url={coin.small_img_url} 
+          alt={coin.alt} 
+          dimensions={dimensions} 
+          x={coin.x} 
+          y={coin.y} 
+        />))}
+      </div>
+    </div>
+  );
+}
 const MainText = (props) => {
   return (
     <div id='coin-sort-main-text-wrapper'>
@@ -217,7 +328,7 @@ const ToolTipsBoxJSX = (props) => {
   } else {
     console.err('Tool tip with this set of objects is not setup:', toolTips);
   }
-  const CloseHandler = (e) => {
+  const CloseHandler = () => {
     props.onClose(false);
   };
 
@@ -232,11 +343,11 @@ const CoinSortDropDown = (props) => {
   const [show, set_show] = useState(false);
   const [show_tool_tips, set_show_tool_tips] = useState(false);
 
-  const CloseHandler = (e) => {
+  const CloseHandler = () => {
     set_show(false);
   }
 
-  const OpenHandler = (e) => {
+  const OpenHandler = () => {
     set_show(true);
   }
 
@@ -596,10 +707,19 @@ const CoinScaleAndFlip = (props) => {
 }
 
 const CoinGridProgressBar = (props) => {
+  const GetWidth = (current_page, max_page) => {
+    let width = (current_page / max_page) * 100;
+
+    return width > 2 ? width : 2;
+  };
+  const [progress_bar_width, set_progress_bar_width] = useState(GetWidth(props.currentPagination, props.maxPage));
+  useEffect(() => {
+    set_progress_bar_width(GetWidth(props.currentPagination, props.maxPage));
+  }, [props.currentPagination, props.maxPage]);
   return (
     <div id='coin-sort-grid-progress-bar-wrapper'>
       <div id='coin-sort-grid-progress-bar'>
-        <div id='coin-sort-grid-progress-bar-progress-status' style={{width: `${(props.currentPagination / props.maxPage) * 100}%`}}>
+        <div id='coin-sort-grid-progress-bar-progress-status' style={{width: `${progress_bar_width}%`}}>
         </div>
         <div id='coin-sor-grid-progress-bar-on-click-hover' onClick={(e) => {
           let DOMRect = e.target.getBoundingClientRect(); 
@@ -844,7 +964,7 @@ const CoinSort = () => {
     } else {
       set_show_filter_clear_button(false);
     }
-  }, [filter_selection, with_selection, of_kind_selection]);
+  }, [filter_selection, with_selection, of_kind_selection, of_kind_selections]);
 
   if (is_loading) {
     return (
@@ -859,9 +979,10 @@ const CoinSort = () => {
     <div id='coin-sort-wrapper'>
       <div className='navbar-spacer' />
       <div id='coin-sort-spacer' />
-      <div className='story-h2 text-center'>
+      <div id='coin-sort-title' className='story-h2 text-center'>
         {coin_sort_title}
       </div>
+      <CoinPile />
       <div id='coin-sort-options-wrapper'>
         <div id='coin-sort-options'>
           <CoinSortDropDown
@@ -960,8 +1081,8 @@ const CoinSort = () => {
           )
         }
       })()}
+      <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} /> {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
       <Footer />
-      <div style={{zIndex: -500, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} /> {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
     </div>
   );
 }
