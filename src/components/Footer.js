@@ -84,7 +84,7 @@ const Footer = ({references,imageReference}) => {
                     return(
                       <Row key={index}>
                         <Col xs={1} className="story-icon my-2" style={{color:'#b9ccd7', fontSize:'20px'}} >&#xe818;</Col>
-                        <Col xs={11} className='my-2'><a href={ref.source_image}>{ref.right_holder}</a></Col>
+                        <Col xs={11} className='my-2'><a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}</a></Col>
                       </Row>
                     )})}
                 </Row>

@@ -18,7 +18,7 @@ const FlipCoinImage = (props)=>{
         <div className='flip-box-inner'>
           <div className='flip-box-front justify-content-center align-items-center'>
             <Row>
-              <a href={`${sourUrl}`}>
+              <a href={`${sourUrl}`} target="_blank" rel="noopener noreferrer">
                 <img 
                   src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url}`} 
                   alt={coin_obverse_alt}
@@ -36,7 +36,7 @@ const FlipCoinImage = (props)=>{
           </div>
           <div className='flip-box-back'>
             <Row>
-              <a href={`${sourUrl}`}>
+              <a href={`${sourUrl}`} target="_blank" rel="noopener noreferrer">
                 <img 
                   src={`${process.env.REACT_APP_strapiURL}${coin_reverse_url}`} 
                   alt={coin_reverse_alt}

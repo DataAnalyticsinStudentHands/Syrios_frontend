@@ -68,7 +68,7 @@ const Stories = () => {
 							</button>
 						</Col>
 					</Row>
-					<Row style={{ marginTop: '80px', marginBottom: '100px'}} className='d-flex ju'>
+					<Row style={{ marginTop: '80px', marginBottom: '100px'}} className='d-flex justify-content-center'>
 						{stories.map((story)=>{
 							return(
 							<Col key={`${story.id}`}>

@@ -58,7 +58,7 @@ const FadeBody = (props)=>{
     <>      
       <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`} >
         <Row>
-          <a href={`${sourUrl_left}`} className={`text-center`}>
+          <a href={`${sourUrl_left}`} target="_blank" rel="noopener noreferrer" className={`text-center`}>
             <img 
               src={`${process.env.REACT_APP_strapiURL}${coin_left_url}`} 
               alt={coin_left_alt}
@@ -83,7 +83,7 @@ const FadeBody = (props)=>{
       </Col>
       <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`}>
         <Row>
-          <a href={`${sourUrl_right}`} className={`text-center`}>
+          <a href={`${sourUrl_right}`} target="_blank" rel="noopener noreferrer" className={`text-center`}>
             <img 
               src={`${process.env.REACT_APP_strapiURL}${coin_right_url}`} 
               alt={coin_right_alt}

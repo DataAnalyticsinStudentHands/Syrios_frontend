@@ -171,7 +171,7 @@ const StoryReader = () => {
   return (
     <>
       <ReactFullpage
-        licenseKey = 'i getted a license'
+        licenseKey = 'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'
         navigation = {true}
         anchors={storyAnchors}
         autoScrolling = {true}

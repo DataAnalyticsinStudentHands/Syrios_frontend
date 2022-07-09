@@ -36,19 +36,20 @@
   /* background-blend-mode: multiply; */
 }
 
-// .story-button {
-//   background: #ffffff 0% 0% no-repeat padding-box;
-//   border: 1px solid #7899a8;
-//   border-radius: 15px !important;
-//   opacity: 1;
-//   width: 250px;
-//   transition: 0.5s;
-// }
+.story-button {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #7899a8;
+  border-radius: 15px !important;
+  opacity: 1;
+  width: 250px;
+  height: 30px;
+  transition: 0.5s;
+}
 
-// .story-button:hover {
-//   color: #ffffff;
-//   background: #7899a8 0% 0% no-repeat padding-box;
-// }
+.story-button:hover {
+  color: #ffffff;
+  background: #7899a8 0% 0% no-repeat padding-box;
+}
 
 /******************** THIS IS FOR THE STORIES ****************/
 #fp-nav ul li a span,

@@ -86,7 +86,7 @@ export const ImageComponent =(props)=>{
             className={`${image.caption_or_both? component_background[image.background_color]:""}`}
           >
             <Row className={`justify-content-center align-items-center`}>
-              <a href={`${image.coin.data.attributes.source_image}`} className="text-center">
+              <a href={`${image.coin.data.attributes.source_image}`} target="_blank" rel="noopener noreferrer" className="text-center">
                 <img
                   src={`${process.env.REACT_APP_strapiURL}${image.coin.data.attributes.obverse_file.data.attributes.url}`}            
                   alt={image.coin.data.attributes.obverse_file.data.alternativeText === undefined ? 'img' : image.coin.data.attributes.obverse_file.data.alternativeText}
@@ -111,7 +111,7 @@ export const ImageComponent =(props)=>{
           className={` ${image.caption_or_both? component_background[image.background_color]:""}`}
         >
           <Row className='justify-content-center align-items-center'>
-            <a href={`${image.coin.data.attributes.source_image}`} className="text-center">
+            <a href={`${image.coin.data.attributes.source_image}`} target="_blank" rel="noopener noreferrer" className="text-center">
               <img
                 src={`${process.env.REACT_APP_strapiURL}${image.coin.data.attributes.reverse_file.data.attributes.url}`}            
                 alt={image.coin.data.attributes.obverse_file.data.alternativeText === undefined ? 'img' : image.coin.data.attributes.reverse_file.data.alternativeText}
@@ -138,7 +138,7 @@ export const ImageComponent =(props)=>{
         className={`${image.caption_or_both? component_background[image.background_color]:""}`}
       >
         <Row className='d-flex justify-content-center align-items-center'>
-          <a href={`${image.additional_link}`} className="text-center">
+          <a href={`${image.additional_link}`} target="_blank" rel="noopener noreferrer" className="text-center">
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
               alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
@@ -296,47 +296,47 @@ export const ImagesComponent = (props)=>{
 //   )
 // }
 
-export const SubCapBlueBg = (text)=>{
-  if(text.light_blue_background){
-    return (
-      <Container className='light-blue-background' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center'/>
-        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
-      </Container>
-    )
-  }
-  else if(text.light_yellow_background){
-    return (
-      <Container className='light-yellow-background' style={{padding: '20px', paddingTop: '20px'}}>
-        <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center '/>
-        <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center '/>
-      </Container>
-    )
-  }    
-  else{
-    if (text.caption == "" || text.caption == null){
-      return(
-        <Container style={{padding: '20px', paddingTop: '20px'}}>
-          <div dangerouslySetInnerHTML={createMarkup(text.text)} className='story-h3-blue text-center '/>
-        </Container>
-      )
+// export const SubCapBlueBg = (text)=>{
+//   if(text.light_blue_background){
+//     return (
+//       <Container className='light-blue-background' style={{padding: '20px', paddingTop: '20px'}}>
+//         <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center'/>
+//         <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
+//       </Container>
+//     )
+//   }
+//   else if(text.light_yellow_background){
+//     return (
+//       <Container className='light-yellow-background' style={{padding: '20px', paddingTop: '20px'}}>
+//         <Row dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center '/>
+//         <Row dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center '/>
+//       </Container>
+//     )
+//   }    
+//   else{
+//     if (text.caption == "" || text.caption == null){
+//       return(
+//         <Container style={{padding: '20px', paddingTop: '20px'}}>
+//           <div dangerouslySetInnerHTML={createMarkup(text.text)} className='story-h3-blue text-center '/>
+//         </Container>
+//       )
 
-    }
-    if (text.text == "" || text.text == null){
-      return(
-        <Container style={{padding: '20px', paddingTop: '20px'}}>
-          <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='story-text text-center '/>
-        </Container>
-      )
+//     }
+//     if (text.text == "" || text.text == null){
+//       return(
+//         <Container style={{padding: '20px', paddingTop: '20px'}}>
+//           <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='story-text text-center '/>
+//         </Container>
+//       )
 
-    }
-    return(
-      <Container style={{padding: '20px', paddingTop: '20px'}}>
-        <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
-      </Container>
-    )
-  }
-}
+//     }
+//     return(
+//       <Container style={{padding: '20px', paddingTop: '20px'}}>
+//         <div dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
+//       </Container>
+//     )
+//   }
+// }
 
 export const textComponent = (props)=>{
   let text = props.text
