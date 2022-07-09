@@ -73,6 +73,7 @@ const CompareFrame = (props)=>{
         "third": 4,
         "quarter": 3,
       };
+    
   return(
     <div className='section' 
       style={{ 
@@ -129,16 +130,16 @@ const CompareFrame = (props)=>{
                 </Row>
               )}
             </>
-          )}              
+          )}
+
         </Container>
       )}
+          <button
+            onClick={()=>props.fullpageApi.moveTo(1)}
+            className='back-to-top '
+          > BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button>  
     </div>
   )
 }
 
 export default CompareFrame
-// {/* <Row>
-//   <button
-//     onClick={()=>fullpageApi.moveTo(state.sectionCount)}
-//   > Click Me!!!!</button>
-// </Row> */}

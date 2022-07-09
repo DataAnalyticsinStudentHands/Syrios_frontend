@@ -51,6 +51,9 @@
   background: #7899a8 0% 0% no-repeat padding-box;
 }
 
+
+
+
 /******************** THIS IS FOR THE STORIES ****************/
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {
@@ -74,6 +77,38 @@
   background-position: 50% 50%, 50% 50% !important;
   padding: 0px;
   /* background-blend-mode: multiply; */
+
+  & .back-to-top{
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
+    font-family: $syrios-garamond-premier-pro-caption;
+    font-weight: $syrios-font-weight-medium;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2px;
+
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #7899A8;
+
+    &:hover{
+      color: #183848
+    }
+
+
+    
+  }
+}
+.back-to-top-icon{
+  font-family: $syrios-font-family-syrios-entypo-subset;
+  color: #FFFFFF;
+  background-color:  #D8A048;
+  border-radius: 50%;
+
+  &:hover{
+    background-color: #A86818;
+  }
 }
 .blande-image img:first-child {
   position: absolute;

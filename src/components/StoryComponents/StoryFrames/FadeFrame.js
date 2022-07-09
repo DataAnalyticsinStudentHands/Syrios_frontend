@@ -310,6 +310,10 @@ const FadeFrame = (props) =>{
           </Container>       
         </Container>
       )}
+          <button
+            onClick={()=>props.fullpageApi.moveTo(1)}
+            className='back-to-top '
+          > BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button>  
     </div>
     )
   }
