@@ -68,23 +68,25 @@ const Stories = () => {
 							</button>
 						</Col>
 					</Row>
-					<Row style={{ marginTop: '80px', marginBottom: '100px'}} className='d-flex justify-content-center'>
+					<Row style={{ marginTop: '80px', marginBottom: '100px'}} >
 						{stories.map((story)=>{
 							return(
-							<Col key={`${story.id}`}>
-								<Link to={`/StoryReader?id=${story.id}`}>
-									<div className='select-story-div text-center'>
-										<img
-											src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
-                      						alt='Story_Image'
-											height='100%'
-										/>
-										<p className='select-story-text text-center'>
-											{story.attributes.name}
-										</p>
-									</div>
-								</Link>
-							</Col>
+								<Col key={`${story.id}`}>
+									{story.id === 1 ?(<></>):(
+										<Link to={`/StoryReader?id=${story.id}`}>
+											<div className='select-story-div text-center'>
+												<img
+													src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
+													alt='Story_Image'
+													height='100%'
+												/>
+												<p className='select-story-text text-center'>
+													{story.attributes.name}
+												</p>
+											</div>
+										</Link>
+									)}
+								</Col>
 							)
 						})}
 					</Row>

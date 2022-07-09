@@ -76,7 +76,7 @@ function LandingPage() {
                   {/* How to Read a Coin */}
                   <Col>
                     <div className='bg-white landing-button-size'>
-                      <Link to='/HowToReadACoin'>
+                      <Link to='/StoryReader?id=1'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
                           <div className='on-hover-dim'>
                             <p className='landing-buttons-text'>
