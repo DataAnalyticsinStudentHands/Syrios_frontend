@@ -10,7 +10,6 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 
 function GlossaryModal(props){
-    console.log(props.term)
     if(props.term.attributes){
         const term = props.term.attributes
         return(

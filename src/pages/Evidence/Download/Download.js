@@ -12,6 +12,26 @@ import createMarkup from 'src/utils/Markup.js';
 import downloadRequest from 'src/api/download';
 import zoteroRequest from 'src/api/zotero';
 
+// import createDOMPurify from 'dompurify'
+// import { JSDOM } from 'jsdom'
+
+// const window = (new JSDOM('')).window
+// const DOMPurify = createDOMPurify(window)
+// const rawHTML = `
+// <div class="dropdown">
+//   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+//     Dropdown
+//     <span class="caret"></span>
+//   </button>
+//   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+//   </ul>
+// </div>
+// `
+
 function Download(){
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,6 +41,11 @@ function Download(){
   const [downloadPageData, setDownloadPageData] = useState([])
   const [storyReference, setStoryReference] = useState([])
   const [storyImageSouce]= useState([])
+
+  const [isBottomOpen, setIsBottomOpen] = useState(false)
+  const toggleBottom = () => {
+    setIsBottomOpen((prev) => !prev)
+  }
 
   useEffect(() => {
     async function fetchData(){
@@ -98,6 +123,9 @@ function Download(){
               Download the Data
             </p>
           </Row>
+          {/* <Row>
+            <button className='reference-tag' onClick={toggleBottom}> Click me!</button>
+          </Row> */}
           <Row className='d-flex justify-content-between align-items-center'>
             <Col xs={8}>
                 {/* left */}
@@ -111,12 +139,13 @@ function Download(){
                   <Col xs={9} className=''>
                     <Row className='story-h4'>
                       <div>
-                      {downloadPageData.title}
+                        {downloadPageData.title}
                       </div>
                     </Row>
                     <Row className='story-caption'>
                       {/* {subText} */}
                       <div dangerouslySetInnerHTML={createMarkup(downloadPageData.text)} />
+                      {/* { <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(rawHTML) }} /> } */}
                     </Row>
                   </Col>
                 </Row>
@@ -178,6 +207,8 @@ function Download(){
       <Footer 
       	references={storyReference}
         imageReference={storyImageSouce}
+        toggleBottom={toggleBottom}
+        isBottomOpen={isBottomOpen}
       />
     </>
   );

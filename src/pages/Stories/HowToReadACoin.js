@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import Footer from 'src/components/Footer.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
-import StoryComponent from './StoryComponents';
-
+import StoryComponent from 'src/pages/Stories/StoryComponents.js';
 import storyRequest from 'src/api/story';
 import zoteroRequest from 'src/api/zotero';
 
-const StoryReader = () => {
-
-  const Get_id = () => {
-    return new URLSearchParams(useLocation().search).get('id');
-  }
-  let storyId = Get_id();
+const HowToReadACoin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [storyFrame, setStoryFrame] = useState([])
   const [storyAnchors, setStoryAnchors]=useState([])
@@ -26,7 +19,7 @@ const StoryReader = () => {
   useEffect(()=>{
     async function fetchData(){
       // if(isLoading === false) setIsLoading(true);
-      const result = await storyRequest.storyFindOne(storyId)
+      const result = await storyRequest.storyFindOne('1')
       createImageReference(result.data.data.attributes)
       createZoteroReference(result.data.data.attributes)
       createAnchors(result.data.data.attributes)
@@ -205,4 +198,4 @@ const StoryReader = () => {
   );
 }
 
-export default StoryReader;
+export default HowToReadACoin;

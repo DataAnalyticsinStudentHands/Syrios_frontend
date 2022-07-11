@@ -76,7 +76,7 @@ function LandingPage() {
                   {/* How to Read a Coin */}
                   <Col>
                     <div className='bg-white landing-button-size'>
-                      <Link to='/StoryReader?id=1'>
+                      <Link to='/HowToReadACoin'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
                           <div className='on-hover-dim'>
                             <p className='landing-buttons-text'>
@@ -106,7 +106,7 @@ function LandingPage() {
                   {/* Explore the Evidence */}
                   <Col>
                     <div className='bg-white landing-button-size'>
-                      <Link to='/Evidence/ExploreTheEvidence'>
+                      <Link to='/Evidence'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
                           <div className='on-hover-dim'>
                             <p className='landing-buttons-text'>
@@ -120,7 +120,7 @@ function LandingPage() {
                   {/* Open the Historian's Toolbox */}
                   <Col>
                     <div className='bg-white landing-button-size'>
-                      <Link to='/'>
+                      <Link to='/Toolbox'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
                           <div className='on-hover-dim'>
                             <p className='landing-buttons-text'>

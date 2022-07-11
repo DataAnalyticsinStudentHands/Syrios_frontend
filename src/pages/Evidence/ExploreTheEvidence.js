@@ -17,15 +17,15 @@ const ExploreTheEvidence = () => {
   const [title, set_title] = useState(undefined)
 
   const [sort_coins_image, set_sort_coins_image] = useState(undefined)
-  const [sort_coins_title, set_sort_coins_title] =useState(undefined)
+  // const [sort_coins_title, set_sort_coins_title] =useState(undefined)
   const [sort_coins_caption, set_sort_coins_caption] = useState(undefined)
 
   const [map_coins_image, set_map_coins_image] = useState(undefined)
-  const [map_coins_title, set_map_coins_title] =useState(undefined)
+  // const [map_coins_title, set_map_coins_title] =useState(undefined)
   const [map_coins_caption, set_map_coins_caption] = useState(undefined)
 
   const [coin_timeline_image, set_coin_timeline_image] = useState(undefined)
-  const [coin_timeline_title, set_coin_timeline_title] =useState(undefined)
+  // const [coin_timeline_title, set_coin_timeline_title] =useState(undefined)
   const [coin_timeline_caption, set_coin_timeline_caption] = useState(undefined)
 
   const [download_dataset_title, set_download_dataset_title] = useState(undefined)
@@ -42,15 +42,15 @@ const ExploreTheEvidence = () => {
             set_title(data.title)
 
             set_sort_coins_image(data.sort.image.data.attributes)
-            set_sort_coins_title(data.sort.title)
+            // set_sort_coins_title(data.sort.title)
             set_sort_coins_caption(data.sort.caption)
 
             set_map_coins_image(data.map.image.data.attributes)
-            set_map_coins_title(data.map.title)
+            // set_map_coins_title(data.map.title)
             set_map_coins_caption(data.map.caption)
 
             set_coin_timeline_image(data.timeline.image.data.attributes)
-            set_coin_timeline_title(data.timeline.title)
+            // set_coin_timeline_title(data.timeline.title)
             set_coin_timeline_caption(data.timeline.caption)
 
             set_download_dataset_title(data.download_title)
@@ -92,7 +92,8 @@ const ExploreTheEvidence = () => {
                   style={{width:'300px'}}
                   />
                 <p className='story-h4 explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
-                  {sort_coins_title}
+                  {/* {sort_coins_title} */}
+                  SORT COINS
                 </p>
                 <ReactMarkdown className='story-caption explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
                   {sort_coins_caption}
@@ -101,14 +102,15 @@ const ExploreTheEvidence = () => {
             </Col>
             {/* MAP COINS */}
             <Col xs={4}>
-              <Link to='/'>
+              <Link to='/Evidence/MapCoins'>
                 <img
                   alt={map_coins_image.alternativeText !== undefined ? map_coins_image.alternativeText : 'missing alt'}
                   src={process.env.REACT_APP_strapiURL+map_coins_image.url}
                   className="bg-white p-2 explore-the-evidence-image"
                 />
                 <p className='story-h4 explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
-                  {map_coins_title}
+                  {/* {map_coins_title} */}
+                  MAP COINS
                 </p>
                 <ReactMarkdown className='story-caption explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
                   {map_coins_caption}
@@ -117,14 +119,15 @@ const ExploreTheEvidence = () => {
             </Col>
             {/* COIN TIMELINE */}
             <Col xs={4}>
-              <Link to='/Toolbox/Timeline'>
+              <Link to='/Evidence/CoinCatalogy'>
                 <img
                   alt={coin_timeline_image.alternativeText !== undefined ? coin_timeline_image.alternativeText : 'missing alt'}
                   src={process.env.REACT_APP_strapiURL+coin_timeline_image.url}
                   className="bg-white p-2 explore-the-evidence-image"
                   />
                 <p className='story-h4 explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
-                  {coin_timeline_title}
+                  {/* {coin_timeline_title} */}
+                  Coin Catalogy
                 </p>
                 <ReactMarkdown className='story-caption explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
                   {coin_timeline_caption}
@@ -140,12 +143,12 @@ const ExploreTheEvidence = () => {
           {/* Download Dataset */}
           <Row>
             <Col id='explore-the-evidence-icon-download-div'>
-              <Link to='/Download'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
+              <Link to='/Evidence/Download'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
                 <i id='explore-the-evidence-icon-download' className='demo-icon icon-donwload'>&#xe810;</i>
               </Link>
             </Col>
             <Col id='explore-the-evidence-text-div' className='d-flex align-items-center justify-content-start'>
-              <Link to='/Download'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
+              <Link to='/Evidence/Download'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
                 <p className='story-h4 explore-the-evidence-title-text explore-the-evidence-download-dataset-text-width-fix'>
                   {download_dataset_title}
                 </p>

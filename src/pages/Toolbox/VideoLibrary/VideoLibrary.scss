@@ -1,0 +1,8 @@
+#video-library{
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    top: $footerHeight + 70px;
+    bottom: $footerHeight;
+}    

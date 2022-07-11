@@ -1,0 +1,19 @@
+#map-coins{
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    top: $footerHeight + 70px;
+    bottom: $footerHeight;
+
+
+}    
+.map-image{
+    opacity:0.5;
+    width: 80%;
+
+    &:hover{
+        opacity:1;
+
+      }
+}

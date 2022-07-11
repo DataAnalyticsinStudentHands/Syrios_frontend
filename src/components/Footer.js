@@ -10,15 +10,15 @@ import createMarkup from 'src/utils/Markup.js';
 // import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
-const Footer = ({references,imageReference}) => {
+const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
   // console.log('this is refer',references)
   // console.log('this is img src', imageReference)
 
-  const [isBottomOpen, setIsBottomOpen] = useState(false)
+  // const [isBottomOpen, setIsBottomOpen] = useState(false)
 
-  const toggleBottom = () => {
-    setIsBottomOpen((prev) => !prev)
-  }
+  // const toggleBottom = () => {
+  //   setIsBottomOpen((prev) => !prev)
+  // }
 
   let referenceLength = 10
   if(references || imageReference){
