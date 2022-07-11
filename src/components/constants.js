@@ -1,7 +1,7 @@
 export const colors = {
   roman: '#B85828',
   persina:'#78a878',
-  greek: '#Fd8b848',
+  greek: '#d8b848',
   syrios:'#737271',
   political:'#486678',
   military:'#313029',
@@ -25,8 +25,6 @@ export const colors = {
       return this.military;
     if (text.includes('cultural'))
       return this.cultural;
-    if (text.includes('economic'))
-      return this.economic;
     if (text.includes('economic'))
       return this.economic;
     if (text.includes('eastern'))
