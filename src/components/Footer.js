@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import {
-  Row,
-  Col,
-} from 'react-bootstrap';
+import React from 'react';
+import {Row,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -72,6 +69,11 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
           size={`${referenceLength}px`}
           zIndex={100}
         >
+          <Row>
+            <Col>
+              <button className='x-button' onClick={toggleBottom}> &#xe839;</button>
+            </Col>
+          </Row>
           <Row className='' style={{marginLeft:'175px'}}>
             {imageReference.length ===0 ?(<></>):(
             <>

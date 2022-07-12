@@ -6,43 +6,15 @@
   width: 100%;
   top: $footerHeight;
   bottom: $footerHeight;
+
+  .image-icon{
+    font-size:120px;
+    border-style: double;
+    border-color:#7899a8;
+    border-radius: 50%;
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    color: rgba(255,255,255,1);
+    background-color: #7899a8;
+}
 }
 
-.explore-the-evidence-title-text {
-  margin-top: 20px;
-}
-
-.explore-the-evidence-caption-text {
-  margin-top: -20px;
-}
-
-.explore-the-evidence-text-width-fix {
-  width: 300px;
-}
-
-.explore-the-evidence-download-dataset-text-width-fix {
-  width: 500px;
-}
-
-#explore-the-evidence-icon-download {
-  font-size: 15em;
-  color: #7899A8;
-}
-
-#download-dataset-img {
-  filter: invert(66%) sepia(8%) saturate(1053%) hue-rotate(154deg) brightness(88%) contrast(89%);
-}
-
-#explore-the-evidence-text-div {
-  margin-left: -400px;
-}
- 
-#explore-the-evidence-icon-download-div {
-  margin-left: 100px;
-}
-
-.explore-the-evidence-image{
-  width: 300px;
-  border-style: double;
-  border-color: $syrios-color-737271;
-}

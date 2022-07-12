@@ -194,4 +194,15 @@ color: #183848;
 
   // transition: 0.3s;
   // z-index: 99999;
+  .x-button{
+    position: absolute;
+    right: 30px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    margin-top:20px;
+
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    color: #FFFFFF;
+  }
 }

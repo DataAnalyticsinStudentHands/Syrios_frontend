@@ -4,65 +4,27 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
-
+import evidenceRequest from 'src/api/evidence';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
+import createMarkup from 'src/utils/Markup';
 
 const ExploreTheEvidence = () => {
-  const [is_loading, set_is_loading] = useState(true);
 
-  const [title, set_title] = useState(undefined)
-
-  const [sort_coins_image, set_sort_coins_image] = useState(undefined)
-  // const [sort_coins_title, set_sort_coins_title] =useState(undefined)
-  const [sort_coins_caption, set_sort_coins_caption] = useState(undefined)
-
-  const [map_coins_image, set_map_coins_image] = useState(undefined)
-  // const [map_coins_title, set_map_coins_title] =useState(undefined)
-  const [map_coins_caption, set_map_coins_caption] = useState(undefined)
-
-  const [coin_timeline_image, set_coin_timeline_image] = useState(undefined)
-  // const [coin_timeline_title, set_coin_timeline_title] =useState(undefined)
-  const [coin_timeline_caption, set_coin_timeline_caption] = useState(undefined)
-
-  const [download_dataset_title, set_download_dataset_title] = useState(undefined)
-  const [downlaod_dataset_caption, set_download_dataset_caption] =useState(undefined)
+  const [isLoading, setIsLoading] = useState(true);
+  const [evidenceData, setEvidenceData] = useState([])
 
   useEffect(() => {
-    if (is_loading) {
-      axios.get(process.env.REACT_APP_strapiURL+'/api/explore-the-evidence')
-        .then((res, error) => {
-          if (error) {
-            console.error(error);
-          } else {
-            let data = res.data.data.attributes
-            set_title(data.title)
-
-            set_sort_coins_image(data.sort.image.data.attributes)
-            // set_sort_coins_title(data.sort.title)
-            set_sort_coins_caption(data.sort.caption)
-
-            set_map_coins_image(data.map.image.data.attributes)
-            // set_map_coins_title(data.map.title)
-            set_map_coins_caption(data.map.caption)
-
-            set_coin_timeline_image(data.timeline.image.data.attributes)
-            // set_coin_timeline_title(data.timeline.title)
-            set_coin_timeline_caption(data.timeline.caption)
-
-            set_download_dataset_title(data.download_title)
-            set_download_dataset_caption(data.download_caption)
-
-            set_is_loading(false);
-          }
-        });
+    async function fetchData(){
+      const result = await evidenceRequest.evidenceFind()
+      setEvidenceData(result.data.data.attributes)
+      setIsLoading(false)
     }
-  });
+    fetchData()
+  },[]);
 
-  if (is_loading) {
+  if (isLoading) {
     return (
       <>
         <LoadingPage />
@@ -75,87 +37,62 @@ const ExploreTheEvidence = () => {
     <>
       <div id='explore-the-evidence' className='d-flex align-items-center'>
         <Container>
-          <Row>
-            <Col>
-              <p className='text-center story-h1'>
-                {title}
-              </p>
-            </Col>
-          </Row>
-          <Row className='mt-5'>
+          <Row><Col><p className='story-h1 text-center'>Explore the Evidence</p></Col></Row>
+          <Row className='mt-5 d-flex justify-content-around'>
             {/* SORT COINS */}
-            <Col xs={4}>
+            <Col xs={4} style={{width:'290px'}}>
               <Link to='/Evidence/CoinSort'>
+                {evidenceData.coin_sort.image.data ? (
                 <img
-                  alt={sort_coins_image.alternativeText !== undefined ? sort_coins_image.alternativeText : 'missing alt'}
-                  src={process.env.REACT_APP_strapiURL+sort_coins_image.url}
-                  style={{width:'300px'}}
-                  />
-                <p className='story-h4 explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
-                  {/* {sort_coins_title} */}
-                  SORT COINS
-                </p>
-                <ReactMarkdown className='story-caption explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
-                  {sort_coins_caption}
-                </ReactMarkdown>
+                  alt={'missing alt'}
+                  src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_sort.image.data.attributes.url}`}
+                  style={{height:'188px'}}
+                />
+                ):(<b className='image-icon text-center'>&#xe80b;</b>)}
               </Link>
+                <p className='story-h4 mt-4'>SORT COINS</p>
+                <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_sort.caption)} />
             </Col>
             {/* MAP COINS */}
-            <Col xs={4}>
+            <Col xs={4} style={{width:'290px'}}>
               <Link to='/Evidence/MapCoins'>
+              {evidenceData.coin_sort.image.data ? (
                 <img
-                  alt={map_coins_image.alternativeText !== undefined ? map_coins_image.alternativeText : 'missing alt'}
-                  src={process.env.REACT_APP_strapiURL+map_coins_image.url}
-                  className="bg-white p-2 explore-the-evidence-image"
+                  alt={'missing alt'}
+                  src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_map.image.data.attributes.url}`}
+                  style={{height:'188px'}}
                 />
-                <p className='story-h4 explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
-                  {/* {map_coins_title} */}
-                  MAP COINS
-                </p>
-                <ReactMarkdown className='story-caption explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
-                  {map_coins_caption}
-                </ReactMarkdown>
+                ):(<b className='image-icon text-center'>&#xe81b;</b>)}
               </Link>
+                <p className='story-h4 mt-4'>MAP COINS</p>
+                <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_map.caption)} />
             </Col>
             {/* COIN TIMELINE */}
-            <Col xs={4}>
+            <Col xs={4} style={{width:'290px'}}>
               <Link to='/Evidence/CoinCatalogy'>
-                <img
-                  alt={coin_timeline_image.alternativeText !== undefined ? coin_timeline_image.alternativeText : 'missing alt'}
-                  src={process.env.REACT_APP_strapiURL+coin_timeline_image.url}
-                  className="bg-white p-2 explore-the-evidence-image"
+                {evidenceData.coin_catalog.image.data ?(
+                  <img
+                    alt={'missing alt'}
+                    src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_catalog.image.data.attributes.url}`}
+                    style={{height:'188px'}}
                   />
-                <p className='story-h4 explore-the-evidence-text-width-fix explore-the-evidence-title-text'>
-                  {/* {coin_timeline_title} */}
-                  Coin Catalogy
-                </p>
-                <ReactMarkdown className='story-caption explore-the-evidence-text-width-fix explore-the-evidence-caption-text'>
-                  {coin_timeline_caption}
-                </ReactMarkdown>
+                ):(<b className='image-icon text-center'>&#xe811;</b>)}
               </Link>
+                <p className='story-h4 mt-4'>Coin Catalogy</p>
+                <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_catalog.caption)} />
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <hr />
-            </Col>
-          </Row>
-          {/* Download Dataset */}
-          <Row>
-            <Col id='explore-the-evidence-icon-download-div'>
+          <Row><Col><hr /></Col></Row>
+          <Row className='d-flex align-items-center justify-content-center'>
+            <Col xs={2}>
               <Link to='/Evidence/Download'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
-                <i id='explore-the-evidence-icon-download' className='demo-icon icon-donwload'>&#xe810;</i>
+                <b className='story-icon ' style={{fontSize:'200px'}}>&#xe810;</b>
               </Link>
             </Col>
-            <Col id='explore-the-evidence-text-div' className='d-flex align-items-center justify-content-start'>
-              <Link to='/Evidence/Download'>{/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
-                <p className='story-h4 explore-the-evidence-title-text explore-the-evidence-download-dataset-text-width-fix'>
-                  {download_dataset_title}
-                </p>
-                <ReactMarkdown className='story-caption explore-the-evidence-caption-text explore-the-evidence-download-dataset-text-width-fix'>
-                  {downlaod_dataset_caption}
-                </ReactMarkdown>
-              </Link>
+            <Col xs={4}>
+              <p className='story-h4'>Download Data</p>
+              {evidenceData.download.caption?(
+              <p className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.download.caption)} />):(<></>)}
             </Col>
           </Row>
         </Container>
