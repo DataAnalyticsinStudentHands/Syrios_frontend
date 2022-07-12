@@ -12,26 +12,6 @@ import createMarkup from 'src/utils/Markup.js';
 import downloadRequest from 'src/api/download';
 import zoteroRequest from 'src/api/zotero';
 
-// import createDOMPurify from 'dompurify'
-// import { JSDOM } from 'jsdom'
-
-// const window = (new JSDOM('')).window
-// const DOMPurify = createDOMPurify(window)
-// const rawHTML = `
-// <div class="dropdown">
-//   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-//     Dropdown
-//     <span class="caret"></span>
-//   </button>
-//   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-//     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-//   </ul>
-// </div>
-// `
-
 function Download(){
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,10 +23,17 @@ function Download(){
   const [storyImageSouce]= useState([])
 
   const [isBottomOpen, setIsBottomOpen] = useState(false)
+
   const toggleBottom = () => {
     setIsBottomOpen((prev) => !prev)
   }
-
+  const clickHandler =(e)=> {
+    // console.log(e)
+    const el = e.target.closest("button.reference-tag");
+    if (el && e.currentTarget.contains(el)) {
+      toggleBottom()
+    }
+}
   useEffect(() => {
     async function fetchData(){
       const result = await downloadRequest.downloadFind();
@@ -123,17 +110,12 @@ function Download(){
               Download the Data
             </p>
           </Row>
-          {/* <Row>
-            <button className='reference-tag' onClick={toggleBottom}> Click me!</button>
-          </Row> */}
           <Row className='d-flex justify-content-between align-items-center'>
             <Col xs={8}>
                 {/* left */}
                 <Row className='d-flex justify-content-between align-items-top'>
                   <Col xs={2} className=''>
-                    <i
-                      className='demo-icon icon-coin-scale download-icon'
-                    >
+                    <i className='demo-icon icon-coin-scale download-icon'>
                       &#xe810;</i>
                   </Col>
                   <Col xs={9} className=''>
@@ -143,9 +125,7 @@ function Download(){
                       </div>
                     </Row>
                     <Row className='story-caption'>
-                      {/* {subText} */}
-                      <div dangerouslySetInnerHTML={createMarkup(downloadPageData.text)} />
-                      {/* { <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(rawHTML) }} /> } */}
+                      <div onClick={clickHandler} dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
                     </Row>
                   </Col>
                 </Row>

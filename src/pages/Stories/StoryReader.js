@@ -36,8 +36,12 @@ const StoryReader = () => {
     fetchData().catch(console.error);
   },[])
 
-  const toggleBottom = () => {
-    setIsBottomOpen((prev) => !prev)
+  const toggleBottom = (e) => {
+    // console.log(e)
+    const el = e.target.closest("button.reference-tag");
+    if (el && e.currentTarget.contains(el)) {
+      setIsBottomOpen((prev) => !prev)
+    }
   }
 
   async function createImageReference(resultData){
@@ -176,7 +180,7 @@ const StoryReader = () => {
   return (
     <>
       <ReactFullpage
-        licenseKey = 'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'
+        licenseKey = {'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
         navigation = {true}
         navigationPosition={`right`}
         anchors={storyAnchors}

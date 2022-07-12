@@ -68,6 +68,7 @@ const FadeBody = (props)=>{
         </Row>
         <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
             <div 
+              onClick={props.toggleBottom}
               dangerouslySetInnerHTML={createMarkup(props.coin.caption_left)} 
               className={`story-caption text-center`}
               style={{ marginTop:"20px"}}
@@ -76,6 +77,7 @@ const FadeBody = (props)=>{
       </Col>
       <Col xs={3} className="align-self-center">
           <div 
+            onClick={props.toggleBottom}
             dangerouslySetInnerHTML={createMarkup(props.coin.caption)} 
             className={`story-text text-center`}
           />
@@ -93,6 +95,7 @@ const FadeBody = (props)=>{
         </Row>
         <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
             <div 
+              onClick={props.toggleBottom}
               dangerouslySetInnerHTML={createMarkup(props.coin.caption_right)} 
               className={`story-caption text-center`}
               style={{marginTop:"20px"}}
@@ -109,7 +112,7 @@ const FadeBack = (props)=>{
     fadeBack.push(
       <div className='fade-back'key={body}>
         <div className='d-flex justify-content-around'style={{height:'464px'}}>
-        <FadeBody coin = {props.bodys[body]} />
+          <FadeBody toggleBottom={props.toggleBottom} coin = {props.bodys[body]} />
         </div>
       </div>
     )
@@ -286,10 +289,10 @@ const FadeFrame = (props) =>{
           <Container >
             <div className='fade-front'>
               <div className='d-flex justify-content-between ' style={{height:'464px'}}>
-                  <FadeBody coin = {zone.fades[0]}/>
+                  <FadeBody toggleBottom={props.toggleBottom} coin = {zone.fades[0]}/>
               </div>
             </div>
-            <FadeBack bodys={zone.fades}/>
+            <FadeBack toggleBottom={props.toggleBottom} bodys={zone.fades}/>
             <FadeButton options = {zone.fades} />
           </Container>  
           <Row className='d-flex justify-content-center mt-5'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
@@ -302,10 +305,10 @@ const FadeFrame = (props) =>{
           <Container >
             <div className='fade-front'>
               <div className='d-flex justify-content-between ' style={{height:'464px'}}>
-                  <FadeBody coin = {zone.fades[0]}/>
+                  <FadeBody toggleBottom={props.toggleBottom} coin = {zone.fades[0]}/>
               </div>
             </div>
-            <FadeBack bodys={zone.fades}/>
+            <FadeBack toggleBottom={props.toggleBottom} bodys={zone.fades}/>
             <FadeButton options = {zone.fades} />
           </Container>       
         </Container>

@@ -169,7 +169,7 @@ const HowToReadACoin = () => {
   return (
     <>
       <ReactFullpage
-        licenseKey = 'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'
+        licenseKey = {'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
         navigation = {true}
         navigationPosition={`right`}
         anchors={storyAnchors}

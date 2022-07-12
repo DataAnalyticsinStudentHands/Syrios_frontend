@@ -24,35 +24,35 @@ const ImageText = (props) =>{
         <Row className='d-flex justify-content-between align-items-center'>
           {zone.left_right_switch ?(
           <>
-            <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.it_text}/></Col>
-            <Col><ImageComponent image = {zone.it_image}/></Col>
+            <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
+            <Col><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
           </>
           ):(
           <>
-            <Col xs={`${grid[zone.grid_option]}`}><ImageComponent image = {zone.it_image}/></Col>
-            <Col><TextComponent text = {zone.it_text}/></Col>
+            <Col xs={`${grid[zone.grid_option]}`}><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
+            <Col><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
           </>
           )}
       </Row>
         <Row className='d-flex justify-content-center mt-5'>
-        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+        <HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
         </Row>
       </Container>
       ):(        
       <Container>
         <Row className='d-flex justify-content-center mb-5'>
-        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+        <HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
         </Row>
         <Row className='d-flex justify-content-around align-items-center'>
           {zone.left_right_switch ?(
             <>
-              <Col xs={`${grid[zone.grid_option]}`}><TextComponent text = {zone.it_text}/></Col>
-              <Col><ImageComponent image = {zone.it_image}/></Col>
+              <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
+              <Col><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
             </>
           ):(
             <>
-              <Col xs={`${grid[zone.grid_option]}`}><ImageComponent image = {zone.it_image}/></Col>
-              <Col><TextComponent text = {zone.it_text}/></Col>
+              <Col xs={`${grid[zone.grid_option]}`}><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
+              <Col><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
             </>
           )}
           </Row>

@@ -1,7 +1,5 @@
 import Title from 'src/components/StoryComponents/StoryFrames/Title';
 import EndFrame from 'src/components/StoryComponents/StoryFrames/EndFrame';
-// import Frame1 from 'src/components/StoryComponents/StoryFrames/Frame1';
-
 import Images from 'src/components/StoryComponents/StoryFrames/Images'
 import TextText from 'src/components/StoryComponents/StoryFrames/TextText'
 import ImageText from 'src/components/StoryComponents/StoryFrames/ImageText'

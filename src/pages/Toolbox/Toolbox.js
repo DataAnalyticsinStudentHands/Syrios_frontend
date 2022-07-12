@@ -31,7 +31,7 @@ const Toolbox = ()=>{
             <Container>
                 <Row className='mb-5'>
                     <p className='story-h1 text-center'>
-                        Historyian's Tool Box
+                        Historian's Tool Box
                     </p>
                 </Row>
                 <Row className='mt-5 d-flex justify-content-around'>
