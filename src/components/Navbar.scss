@@ -85,14 +85,14 @@
 
 /* All text for navbar should be this format */
 .navbar-text {
-	text-align: center;
+	// text-align: center;
 	opacity: 1;
-  transition: 0.3s;
+  	transition: 0.3s;
   
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-14;
+  font-size: 16px;
   line-height: $syrios-line-spacing-17;
   letter-spacing: $syrios-character-spacing--80;
   color: $syrios-color-ffffff;
