@@ -69,7 +69,7 @@ const ExploreTheEvidence = () => {
             </Col>
             {/* COIN TIMELINE */}
             <Col xs={4} style={{width:'290px'}}>
-              <Link to='/Evidence/CoinCatalogy'>
+              <Link to='/Evidence/CoinCatalog'>
                 {evidenceData.coin_catalog.image.data ?(
                   <img
                     alt={'missing alt'}
@@ -78,7 +78,7 @@ const ExploreTheEvidence = () => {
                   />
                 ):(<b className='image-icon text-center'>&#xe811;</b>)}
               </Link>
-                <p className='story-h4 mt-4'>Coin Catalogy</p>
+                <p className='story-h4 mt-4'>Coin Catalog</p>
                 <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_catalog.caption)} />
             </Col>
           </Row>

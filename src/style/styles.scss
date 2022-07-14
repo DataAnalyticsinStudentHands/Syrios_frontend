@@ -21,7 +21,7 @@
 @import '../pages/Evidence/CoinSort.scss';
 @import '../pages/Evidence/Download/Download.scss';
 @import '../pages/Evidence/MapCoins/MapCoins.scss';
-@import '../pages/Evidence/CoinCatalogy/CoinCatalogy.scss';
+@import '../pages/Evidence/CoinCatalogy/CoinCatalog.scss';
 
 @import '../pages/Resources/Research/Research.scss';
 @import '../pages/Resources/TeachingResources/TeachingResources.scss';
@@ -33,5 +33,7 @@
 @import '../components/coin/CoinFlip.scss';
 @import '../components/coin/CoinInfo.scss';
 @import '../components/event/Event.scss';
+@import '../components/404.scss';
+
 //utils
 @import '../utils/WhitePopUp.scss'

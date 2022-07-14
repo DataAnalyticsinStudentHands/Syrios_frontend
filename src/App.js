@@ -16,7 +16,7 @@ import StoryReader from 'src/pages/Stories/StoryReader.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort.js';
 import MapCoins from './pages/Evidence/MapCoins/MapCoins';
-import CoinCatalogy from './pages/Evidence/CoinCatalogy/CoinCatalogy';
+import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
 import Download from 'src/pages/Evidence/Download/Download.js';
 
 import Toolbox from './pages/Toolbox/Toolbox';
@@ -30,6 +30,8 @@ import TeachingResources from './pages/Resources/TeachingResources/TeachingResou
 
 import GlossaryWrapper from './components/glossaryWrapper/glossary-wrapper';
 import GlossaryTerm from './pages/Toolbox/Glossary/GlossaryTerm';
+
+import ErrorPage from './components/404';
 
 function App() {
 	return (
@@ -51,7 +53,7 @@ function App() {
 
 					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 					<Route path='/Evidence/MapCoins' element={<MapCoins />} />
-					<Route path='/Evidence/CoinCatalogy' element={<CoinCatalogy />} />
+					<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
 					<Route path='/Evidence/Download' element={<Download />} />
 
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
@@ -67,6 +69,8 @@ function App() {
 
 					<Route path='/ContactUs' element={<ContactUs />} />
 					<Route path='/About' element={<AboutUs />} />
+
+					<Route path='/*' element={<ErrorPage />} />
 
 				</Routes>
 			</BrowserRouter>

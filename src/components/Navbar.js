@@ -33,7 +33,7 @@ function BootstrapNavbar() {
           <NavDropdown title='EVIDENCE' className='NavDropdown'>
             <NavDropdown.Item href='/dev/Evidence/CoinSort' className='navbar-text'>Coins in a Pile</NavDropdown.Item>
             <NavDropdown.Item href='/dev/Evidence/MapCoins' className='navbar-text'>Coins on a Map</NavDropdown.Item>
-            <NavDropdown.Item href='/dev/Evidence/CoinCatalogy' className='navbar-text'>Coins in a Catalog</NavDropdown.Item>
+            <NavDropdown.Item href='/dev/Evidence/CoinCatalog' className='navbar-text'>Coins in a Catalog</NavDropdown.Item>
             <NavDropdown.Item href='/dev/Evidence/Download' className='navbar-text'>Coins as Data</NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title='TOOL BOX' className='NavDropdown'>			
