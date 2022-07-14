@@ -14,7 +14,6 @@ const GlossaryTerm = () =>{
         async function fetchData(){
             if(term){
                 const results = await glossaryRequest.glossaryFindByTerm(term)
-                console.log(results.data[0])                
                 setTermData(results.data[0])
                 setIsLoading(false)
             }
