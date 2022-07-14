@@ -57,9 +57,9 @@ function App() {
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 					<Route path='/Toolbox/Timeline' element={<Timeline />} />
 					
-					<Route path='/Toolbox/Glossary' element={<GlossaryWrapper/>}>
-						<Route path=':group' element={<Glossary />} />
-						<Route path='term/:term' element={<GlossaryTerm />} />
+					<Route element={<GlossaryWrapper/>}>
+						<Route path='/Toolbox/Glossary/:group' element={<Glossary />} />
+						<Route path='/Toolbox/Glossary/term/:term' element={<GlossaryTerm />} />
 					</Route>
 
 					<Route path='/Resources/Research' element={<Research />} />

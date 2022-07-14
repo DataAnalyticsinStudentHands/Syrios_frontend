@@ -43,7 +43,6 @@ const Glossary = () =>{
                     alp['data'] = data.data
                     contentList.push(alp)
                 }
-                console.log(contentList)
                 setGlossaryData(contentList)
                 setIsLoading(false)
 
@@ -53,7 +52,11 @@ const Glossary = () =>{
     },[group])
 
 
-    if(isLoading)return(<LoadingPage/>)
+    if(isLoading)return(
+		<div id="glossary-loading">
+			<div className="loader"/>
+		</div>
+    )
     return(
             <div id='glossary-group' className=''>
                 <ListGroup as='ul'>

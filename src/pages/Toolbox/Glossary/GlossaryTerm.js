@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
-import LoadingPage from 'src/components/LoadingPage.js';
 import glossaryRequest from 'src/api/glossary';
 import createMarkup from 'src/utils/Markup';
 import { Link, useParams } from "react-router-dom";
@@ -21,7 +20,11 @@ const GlossaryTerm = () =>{
         fetchData()
     },[term])
 
-    if(isLoading)return(<LoadingPage/>)
+    if(isLoading)return(
+        <div id="glossary-loading">
+            <div className="loader"/>
+        </div>
+    )
     return(
         <div id='glossary-term' >
             <div className='glossary-term'>{termData.term}
