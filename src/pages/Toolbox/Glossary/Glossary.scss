@@ -8,17 +8,53 @@ $footerHeight:70px;
     // width: 100%;
     // margin-top: 170px;
     // margin-bottom: 70px;
+
     z-index: 0;
-    padding-top: 70px;
+    padding-top: $footerHeight+ 70px;
     padding-bottom: 140px;
 
     .glossary-icon{
         color: #7899a8;
         font-size: 125px;
     }
-    .search-icon{
-        color: #7899a8;
-        font-size: 30px;
+
+    .search{
+        position: relative;
+        color: #aaa;
+        font-size: 16px;
+        button{
+            background-color: rgba(0,0,0,0);
+        }
+
+        input{
+            width: 250px;
+            height: 40px;
+            background: #fcfcfc;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+
+            font-family: $syrios-garamond-premier-pro;
+        }
+        & input {
+            text-indent: 32px;
+        }
+
+        .search-span{
+            
+            color: #7899a8;
+            position: absolute;
+            // top: 10px;
+            left: 200px;
+        }
+        .search-icon{
+            font-family: $syrios-font-family-syrios-entypo-subset;
+            font-style: $syrios-font-style-normal;
+            color: #7899a8;
+        }
+    }
+    .search-filter{
+        width: 250px;
     }
     .list-group-item.active{
         background-color: #FFFFFF;
@@ -43,86 +79,31 @@ $footerHeight:70px;
 
 
 
-    // #glossary-tabs-tab-All {
-    //     background-color: $syrios-color-f8e8b8;
-    //     width: 50%;
-    //     display: flex;
-    //     justify-content: center;
-    //     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    //     width: 100px;
 
-    //     & button:active{
-    //         background-color: #ffff !important;
-    //     }
-    //     & :hover{
-    //         background-color: #ffff;
-    //     }
-    // }
-
-    // ul{
-    //     li{
-    //         button{
-    //             background-color: $syrios-color-f8e8b8;
-    //             width: 50%;
-    //             display: flex;
-    //             justify-content: center;
-    //             clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    //             width: 100px;
-
-    //             &:hover{
-    //                 background-color: white;
-    //             }
-    //         }
-    //     }
-    // }
     .nav-tabs{
         .nav-item {
-            button{
+            a{
                 background-color: #f8e8b8;
                 display: flex;
                 justify-content: center;
                 clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
                 width: 125px;
-                color:#7899a8;
+                color:#737271;
+                font-size: 18px;
     
                 &:hover{
                     background-color: white;
                 }
+                &:active{
+                    background-color: white;
+
+                }
+
     
             }
         }
     }
-    .tab-container{
-        background-color: white;
-    }
-
-    .glossary-alphabet{
-        font-family: $syrios-garamond-premier-pro;
-        font-style: $syrios-font-style-normal;
-        font-weight: $syrios-font-weight-bold;
-        font-size: 36px;
-        line-height: $syrios-line-spacing-30;
-        letter-spacing: $syrios-character-spacing-0;
-        color: $syrios-color-486678;
-    }
-    .glossary-term{
-        font-family: $syrios-garamond-premier-pro;
-        font-style: $syrios-font-style-italic;
-        font-weight: $syrios-font-weight-regular;
-        font-size: 28px;
-        line-height: $syrios-line-spacing-30;
-        letter-spacing: $syrios-character-spacing-0;
-        color: $syrios-color-78a878;
-    }
-    .glossary-term-button{
-        font-family: $syrios-garamond-premier-pro;
-        font-style: $syrios-font-style-italic;
-        font-weight: $syrios-font-weight-regular;
-        font-size: 28px;
-        line-height: $syrios-line-spacing-30;
-        letter-spacing: $syrios-character-spacing-0;
-        color: $syrios-color-78a878;
-    }
+        
 
     
     // #glossary-tabs-tab-home{
@@ -167,4 +148,88 @@ $footerHeight:70px;
         color: #a85828;
     }
 
+}
+#glossary-group{
+    .glossary-alphabet{
+        font-family: $syrios-garamond-premier-pro;
+        font-style: $syrios-font-style-normal;
+        font-weight: $syrios-font-weight-bold;
+        font-size: 36px;
+        line-height: $syrios-line-spacing-30;
+        letter-spacing: $syrios-character-spacing-0;
+        color: $syrios-color-486678;
+    }
+    .glossary-term{
+        a{
+            font-family: $syrios-garamond-premier-pro;
+            font-style: $syrios-font-style-italic;
+            font-weight: $syrios-font-weight-regular;
+            font-size: 28px;
+            line-height: $syrios-line-spacing-30;
+            letter-spacing: $syrios-character-spacing-0;
+            color: #78a878;
+
+            & :hover{
+                color: #487848;
+                font-weight: bold;
+            }
+        }
+
+    }
+
+    .glossary-term-button{
+        font-family: $syrios-garamond-premier-pro;
+        font-style: $syrios-font-style-italic;
+        font-weight: $syrios-font-weight-regular;
+        font-size: 28px;
+        line-height: $syrios-line-spacing-30;
+        letter-spacing: $syrios-character-spacing-0;
+        color: $syrios-color-78a878;
+    }
+}
+
+#glossary-term{
+    background-color: white;
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    padding-left: 25%;
+    padding-right: 25%;
+
+    .glossary-term{
+        font-size: 48px;
+        font-weight: bold;
+        color:#486678
+    }
+    .glossary-basic{
+        font-size: 24px;
+        color:#737271
+    }
+    .glossary-title{
+        color: #b85828;
+        font-size: 32px;
+    }
+    .glossary-body{
+        color:#737271;
+        font-size:24px
+
+    }
+    .glossary-related-word{
+        a{
+            color: #78a878;
+            font-size: 28px;
+        }
+
+    }
+    .glossary-context-icon{
+        font-family: $syrios-font-family-syrios-entypo-subset;
+        color: #7899a8;
+        // font-size: 32px;
+
+        & .media-play{
+            border-style: double;
+            border-color: #7899a8;
+            border-radius: 50%;
+        }
+    }
 }

@@ -28,6 +28,8 @@ import Glossary from './pages/Toolbox/Glossary/Glossary.js';
 import Research from './pages/Resources/Research/Research';
 import TeachingResources from './pages/Resources/TeachingResources/TeachingResources';
 
+import GlossaryWrapper from './components/glossaryWrapper/glossary-wrapper';
+import GlossaryTerm from './pages/Toolbox/Glossary/GlossaryTerm';
 
 function App() {
 	return (
@@ -54,7 +56,11 @@ function App() {
 
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 					<Route path='/Toolbox/Timeline' element={<Timeline />} />
-					<Route path='/Toolbox/Glossary' element={<Glossary />} />
+					
+					<Route path='/Toolbox/Glossary' element={<GlossaryWrapper/>}>
+						<Route path=':group' element={<Glossary />} />
+						<Route path='term/:term' element={<GlossaryTerm />} />
+					</Route>
 
 					<Route path='/Resources/Research' element={<Research />} />
 					<Route path='/Resources/TeachingResources' element={<TeachingResources />} />

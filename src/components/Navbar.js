@@ -40,7 +40,7 @@ function BootstrapNavbar() {
             <NavDropdown.Item><Link to='/HowToReadACoin' className='navbar-text'>How to Read a coin</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/Toolbox/VideoLibrary' className='navbar-text'>Video library</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to='/Toolbox/Timeline' className='navbar-text'>Timeline</Link></NavDropdown.Item>
-            <NavDropdown.Item><Link to='/Toolbox/Glossary' className='navbar-text'>Glossary</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to='/Toolbox/Glossary/all' className='navbar-text'>Glossary</Link></NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title='RESOURCES' className='NavDropdown'>							
             <NavDropdown.Item><Link to='/Resources/TeachingResources' className='navbar-text'>Teaching Resources</Link></NavDropdown.Item>
