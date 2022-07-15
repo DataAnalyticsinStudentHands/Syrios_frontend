@@ -15,7 +15,7 @@ const End_Frame = (props) => {
         backgroundBlendMode:'multiply'}}>
         <Container className='d-flex justify-content-center align-items-center my-5'>
           <div id='end-frame-text'>
-            <div dangerouslySetInnerHTML={createMarkup(zone.text)} className='story-h3 text-center '/>
+            <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.text)} className='story-h3 text-center '/>
           </div>
         </Container>
         <Container className='d-flex justify-content-center align-items-center'>
@@ -39,6 +39,10 @@ const End_Frame = (props) => {
               </Link>
             </Col>
         </Container>
+        <button
+            onClick={()=>props.fullpageApi.moveTo(1)}
+            className='back-to-top '
+          > BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button>  
       </div>
     );
   }

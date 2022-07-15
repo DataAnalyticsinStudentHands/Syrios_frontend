@@ -94,3 +94,26 @@
     background: #7899a8 0% 0% no-repeat padding-box;
   }
 }
+
+.reference-tag{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-italic;
+  font-weight: $syrios-font-weight-bold;
+
+  background-color: transparent;
+  border: none;
+  color:#78a878;
+
+  & sup{
+    color: #7899a8;
+    font-style: $syrios-font-style-normal;
+    &:hover{
+      color:#486678
+    }
+
+  }
+
+  &:hover{
+    color:#487848
+  }
+}

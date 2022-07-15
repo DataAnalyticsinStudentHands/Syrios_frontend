@@ -25,73 +25,44 @@ const Stories = () => {
 	if (isLoading)return (<><LoadingPage /><Footer /></>);
 	return (
 		<>
-			<div id='stories-page' 
-			// className='d-flex align-items-center'
-			>
-				<Container>
-					<Row container='mt-5'>
-						<p className='story-h1 text-center'>
-							Discover Coin Stories
-						</p>
-					</Row>
-					<Row className='d-flex justify-content-center'>
-						<Col xs={6} sm={3}>
-							<button
-								className='story-button blue-text'
-								onClick={() => {
-								}}>
-								By City Name
-							</button>
-						</Col>
-						<Col xs={6} sm={3}>
-							<button
-								className='story-button blue-text'
-								onClick={() => {
-								}}>
-								By Political Standing
-							</button>
-						</Col>
-						<Col xs={6} sm={3}>
-							<button
-								className='story-button blue-text'
-								onClick={() => {
-								}}>
-								By Economic System
-							</button>
-						</Col>
-						<Col xs={6} sm={3}>
-							<button 
-								className='story-button blue-text'
-								onClick={() => {
-								}}>
-								By Socio-culture Perspective
-							</button>
-						</Col>
-					</Row>
-					<Row style={{ marginTop: '80px', marginBottom: '100px'}} className='d-flex ju'>
-						{stories.map((story)=>{
-							return(
+		<div id='stories-page' 
+		// className='d-flex align-items-center'
+		>
+			<Container>
+				<Row container='mt-5'>
+					<p className='story-h1 text-center'>
+						Discover Coin Stories
+					</p>
+				</Row>
+				<Row className='d-flex justify-content-center'>
+					
+				</Row>
+				<Row style={{ marginTop: '80px', marginBottom: '100px'}} >
+					{stories.map((story)=>{
+						return(
 							<Col key={`${story.id}`}>
-								<Link to={`/StoryReader?id=${story.id}`}>
-									<div className='select-story-div text-center'>
-										<img
-											src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
-                      						alt='Story_Image'
-											height='100%'
-										/>
-										<p className='select-story-text text-center'>
-											{story.attributes.name}
-										</p>
-									</div>
-								</Link>
+								{story.id === 1 ?(<></>):(
+									<Link to={`/StoryReader?id=${story.id}`}>
+										<div className='select-story-div text-center'>
+											<img
+												src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
+												alt='Story_Image'
+												height='100%'
+											/>
+											<p className='select-story-text text-center'>
+												{story.attributes.name}
+											</p>
+										</div>
+									</Link>
+								)}
 							</Col>
-							)
-						})}
-					</Row>
-				</Container>
-			</div>
-      <Footer references={storyReference} imageReference={storyImageSouce}/>
-	</>
+						)
+					})}
+				</Row>
+			</Container>
+		</div>
+        <Footer references={storyReference} imageReference={storyImageSouce}/>
+		</>
 	)
 }
 

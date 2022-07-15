@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import {
-  Row,
-  Col,
-} from 'react-bootstrap';
+import React from 'react';
+import {Row,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -10,15 +7,15 @@ import createMarkup from 'src/utils/Markup.js';
 // import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
-const Footer = ({references,imageReference}) => {
+const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
   // console.log('this is refer',references)
   // console.log('this is img src', imageReference)
 
-  const [isBottomOpen, setIsBottomOpen] = useState(false)
+  // const [isBottomOpen, setIsBottomOpen] = useState(false)
 
-  const toggleBottom = () => {
-    setIsBottomOpen((prev) => !prev)
-  }
+  // const toggleBottom = () => {
+  //   setIsBottomOpen((prev) => !prev)
+  // }
 
   let referenceLength = 10
   if(references || imageReference){
@@ -72,6 +69,11 @@ const Footer = ({references,imageReference}) => {
           size={`${referenceLength}px`}
           zIndex={100}
         >
+          <Row>
+            <Col>
+              <button className='x-button' onClick={toggleBottom}> &#xe839;</button>
+            </Col>
+          </Row>
           <Row className='' style={{marginLeft:'175px'}}>
             {imageReference.length ===0 ?(<></>):(
             <>
@@ -84,7 +86,7 @@ const Footer = ({references,imageReference}) => {
                     return(
                       <Row key={index}>
                         <Col xs={1} className="story-icon my-2" style={{color:'#b9ccd7', fontSize:'20px'}} >&#xe818;</Col>
-                        <Col xs={11} className='my-2'><a href={ref.source_image}>{ref.right_holder}</a></Col>
+                        <Col xs={11} className='my-2'><a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}</a></Col>
                       </Row>
                     )})}
                 </Row>

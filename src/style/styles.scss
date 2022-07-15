@@ -7,16 +7,30 @@
 
 //pages
 @import '../pages/LandingPage.scss';
-@import '../pages/Download/Download.scss';
-@import '../pages/Toolbox/Glossary.scss';
 @import '../pages/ContactUs/ContactUs.scss';
 @import '../pages/AboutUs/AboutUs.scss';
-@import '../pages/Evidence/ExploreTheEvidence.scss';
+
 @import '../pages/Stories/Stories.scss';
-@import '../pages//Toolbox/Timeline.scss';
+
+@import '../pages/Toolbox/Toolbox.scss';
+@import '../pages/Toolbox/Glossary/Glossary.scss';
+@import '../pages//Toolbox/Timeline/Timeline.scss';
+@import '../pages/Toolbox/VideoLibrary/VideoLibrary.scss';
+
+@import '../pages/Evidence/ExploreTheEvidence.scss';
 @import '../pages/Evidence/CoinSort.scss';
+<<<<<<< HEAD
 @import '../pages/Evidence/CoinSortCoinGrid.scss';
 @import '../pages/Evidence/CoinSortExtraFunctions.scss';
+=======
+@import '../pages/Evidence/Download/Download.scss';
+@import '../pages/Evidence/MapCoins/MapCoins.scss';
+@import '../pages/Evidence/CoinCatalogy/CoinCatalog.scss';
+
+@import '../pages/Resources/Research/Research.scss';
+@import '../pages/Resources/TeachingResources/TeachingResources.scss';
+
+>>>>>>> 33278db5a659d6d0e73dc1f7e5b050cf81537cec
 //components
 @import '../components/LoadingPage.scss';
 @import '../components/Footer.scss';
@@ -24,5 +38,7 @@
 @import '../components/coin/CoinFlip.scss';
 @import '../components/coin/CoinInfo.scss';
 @import '../components/event/Event.scss';
+@import '../components/404.scss';
+
 //utils
 @import '../utils/WhitePopUp.scss'

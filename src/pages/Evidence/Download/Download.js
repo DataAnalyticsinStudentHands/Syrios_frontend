@@ -22,6 +22,18 @@ function Download(){
   const [storyReference, setStoryReference] = useState([])
   const [storyImageSouce]= useState([])
 
+  const [isBottomOpen, setIsBottomOpen] = useState(false)
+
+  const toggleBottom = () => {
+    setIsBottomOpen((prev) => !prev)
+  }
+  const clickHandler =(e)=> {
+    // console.log(e)
+    const el = e.target.closest("button.reference-tag");
+    if (el && e.currentTarget.contains(el)) {
+      toggleBottom()
+    }
+}
   useEffect(() => {
     async function fetchData(){
       const result = await downloadRequest.downloadFind();
@@ -103,20 +115,17 @@ function Download(){
                 {/* left */}
                 <Row className='d-flex justify-content-between align-items-top'>
                   <Col xs={2} className=''>
-                    <i
-                      className='demo-icon icon-coin-scale download-icon'
-                    >
+                    <i className='demo-icon icon-coin-scale download-icon'>
                       &#xe810;</i>
                   </Col>
                   <Col xs={9} className=''>
                     <Row className='story-h4'>
                       <div>
-                      {downloadPageData.title}
+                        {downloadPageData.title}
                       </div>
                     </Row>
                     <Row className='story-caption'>
-                      {/* {subText} */}
-                      <div dangerouslySetInnerHTML={createMarkup(downloadPageData.text)} />
+                      <div onClick={clickHandler} dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
                     </Row>
                   </Col>
                 </Row>
@@ -178,6 +187,8 @@ function Download(){
       <Footer 
       	references={storyReference}
         imageReference={storyImageSouce}
+        toggleBottom={toggleBottom}
+        isBottomOpen={isBottomOpen}
       />
     </>
   );

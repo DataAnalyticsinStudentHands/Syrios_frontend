@@ -1,0 +1,11 @@
+#error-page{
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    top: 70px;
+    bottom: $footerHeight;
+
+
+}    
+

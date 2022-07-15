@@ -21,67 +21,67 @@ const ImageTextText = (props) =>{
           <Container>
             <Col xs={`${grid[zone.grid_option]}`}>
               <Row className=''>
-                <div dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
+                <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
               </Row>
               <Row className=''>
-                <TextComponent text = {zone.itt_texts}/>
+                <TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/>
               </Row>
             </Col>
             <Col>
-              <ImageComponent image={zone.itt_image}/>
+              <ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/>
             </Col>
           </Container>
         ):(
           <Container>
             <Col xs={`${grid[zone.grid_option]}`} >
-              <ImageComponent image={zone.itt_image}/>
+              <ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/>
             </Col>
             <Col className=''>
               <Row  className='py-5'>
-                <div dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
+                <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
               </Row>
               <Row className=' py-5'>
-              <TextComponent text = {zone.itt_texts}/>
+              <TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/>
               </Row>
             </Col>
           </Container>
         )}
       </Row>
       <Row className='d-flex justify-content-center mt-5'>
-        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+        <HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
       </Row>
     </Container>
     ):(
       <Container>
       <Row className='d-flex justify-content-center mb-5'>
-        <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+        <HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
       </Row>
       <Row className='d-flex justify-content-around align-items-center'>
       {zone.left_right_switch? (
           <Container>
             <Col xs={`${grid[zone.grid_option]}`}>
               <Row className=''>
-                <div dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
+                <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
               </Row>
               <Row className=''>
-                <TextComponent text = {zone.itt_texts}/>
+                <TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/>
               </Row>
             </Col>
             <Col>
-              <ImageComponent image={zone.itt_image}/>
+              <ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/>
             </Col>
           </Container>
         ):(
           <Container>
             <Col xs={`${grid[zone.grid_option]}`} >
-              <ImageComponent image={zone.itt_image}/>
+              <ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/>
             </Col>
             <Col className=''>
               <Row  className='py-5'>
-                <div dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
+                <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/>
               </Row>
               <Row className=' py-5'>
-              <TextComponent text = {zone.itt_texts}/>
+              <TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/>
               </Row>
             </Col>
           </Container>
@@ -89,7 +89,10 @@ const ImageTextText = (props) =>{
       </Row>
     </Container>
     )}
-
+          <button
+            onClick={()=>props.fullpageApi.moveTo(1)}
+            className='back-to-top '
+          > BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button>  
   </div>
   )
 }

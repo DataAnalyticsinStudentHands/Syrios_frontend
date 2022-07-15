@@ -19,7 +19,6 @@ function loadtags(tags) { // Split every tag into individual components with del
   tags.split(',').forEach((e) => {
     jsxArr.push(tag(e.trim()));
   });
-
   return jsxArr;
 }
 
@@ -32,14 +31,6 @@ const EventInfo = (props) => {
     <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div id='event-info'>
         <div id='event-info-inner-div'>
-          {/* tags */}
-          <p id='event-tags-title'>
-            INFLUENCES ON ANTIOCH:
-          </p>
-          <div id='event-tags'>
-            {loadtags(props.eventMetaData.tags)}
-          </div>
-
           {/* title */}
           <div id='event-title'>
             <p>
@@ -48,12 +39,32 @@ const EventInfo = (props) => {
           </div>
 
           {/* description */}
-          <div id='event-description' className='dark-blue-text'>
+          <div id='event-description'>
             <div dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
           </div>
 
+          {/* tags */}
+          {/* <p id='event-tags-title'>
+            INFLUENCES ON ANTIOCH:
+          </p> */}
+
+          {/* <div id='event-tags'>
+            {loadtags(props.eventMetaData.tags)}
+          </div> */}
+
+          <div id='light-green-background'>
+            <div id='event-connections'>
+              <p id='event-connections-text' className='gray-text'>
+                TAGS
+              </p>
+              <div id='event-tags' className='my-3'>
+                {loadtags(props.eventMetaData.tags)}
+              </div>
+            </div>
+          </div>
+
           {/* Cultural connections */}
-          <div id='event-connections-background'>
+          {/* <div id='event-connections-background'>
             <div id='event-connections'>
               <p id='event-connections-text' className='gray-text'>
                 CULTURAL CONNECTIONS:
@@ -62,7 +73,8 @@ const EventInfo = (props) => {
                 {props.eventMetaData.type_category}
               </p>
             </div>
-          </div>
+          </div> */}
+        
         </div>
       </div>
     </WhitePopUp>

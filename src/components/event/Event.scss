@@ -37,7 +37,7 @@
   display: flex;
   gap: 15px;
 
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
 }
 
 .tag {
@@ -66,22 +66,22 @@
 #event-title {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
+  font-weight: $syrios-font-weight-600;
   font-size: $syrios-font-size-40;
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-737271;
-  font-size: 30px;
+  color: #183848;
+  font-size: 32px;
 }
 
 #event-description {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
+  font-weight: $syrios-font-weight-500;
   font-size: $syrios-font-size-40;
   letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-737271;
-  font-size: 14px;
+  color: #183848;
+  font-size: 20px;
 }
 
 #event-description > div > p > a {
@@ -90,13 +90,13 @@
   font-weight: $syrios-font-weight-semi-bold;
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-486678;
+  color: #78a878;
 
   transition: 0.3s;
 }
 
 #event-description > div > p > a:hover {
-  color: #7899A8;
+  color: #487848;
 }
 
 #event-connections-background {
@@ -118,13 +118,13 @@
 #event-connections-text {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
+  font-weight: $syrios-font-weight-semi-bold;
   font-size: $syrios-font-size-20;
   line-height: $syrios-line-spacing-20;
   letter-spacing: $syrios-character-spacing-0;
   color: $syrios-color-737271;
   margin-bottom: 0px;
-  font-size:14px;
+  font-size:16px;
 }
 
 #event-connections-list {

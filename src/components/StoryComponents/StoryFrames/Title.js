@@ -39,7 +39,7 @@ const Title = (props) => {
 
             {/* {caption} */}
             <Row className='mt-5 '>
-              <div dangerouslySetInnerHTML={createMarkup(zone.caption)} className='story-h3 text-center'/>
+              <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.caption)} className='story-h3 text-center'/>
             </Row>
         </Container>
 

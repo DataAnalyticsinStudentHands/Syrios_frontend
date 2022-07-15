@@ -18,22 +18,26 @@ const Images = (props) =>{
         {zone.head.updown_switch ?(
           <Container>
             <Row >
-              <ImagesComponent images = {zone.images} />
+              <ImagesComponent toggleBottom={props.toggleBottom} images = {zone.images} />
             </Row>
             <Row className='d-flex justify-content-center mt-5'>
-              <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+              <HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
             </Row>
           </Container>
         ):(
           <Container>
             <Row className='d-flex justify-content-center mb-5'>
-              <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
+              <HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
             </Row>
             <Row>
-              <ImagesComponent images = {zone.images} />
+              <ImagesComponent toggleBottom={props.toggleBottom} images = {zone.images} />
             </Row>
           </Container>
         )}
+                  <button
+            onClick={()=>props.fullpageApi.moveTo(1)}
+            className='back-to-top '
+          > BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button>  
     </div>
     )
   // }

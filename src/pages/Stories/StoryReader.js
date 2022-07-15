@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -15,12 +14,14 @@ const StoryReader = () => {
   const Get_id = () => {
     return new URLSearchParams(useLocation().search).get('id');
   }
-  const storyId = Get_id();
+  let storyId = Get_id();
   const [isLoading, setIsLoading] = useState(true);
   const [storyFrame, setStoryFrame] = useState([])
   const [storyAnchors, setStoryAnchors]=useState([])
   const [storyReference, setStoryReference] = useState([])
   const [storyImageSouce, setStoryImageSouce]= useState([])
+  const [isBottomOpen, setIsBottomOpen] = useState(false)
+
 
   useEffect(()=>{
     async function fetchData(){
@@ -34,6 +35,14 @@ const StoryReader = () => {
     }
     fetchData().catch(console.error);
   },[])
+
+  const toggleBottom = (e) => {
+    // console.log(e)
+    const el = e.target.closest("button.reference-tag");
+    if (el && e.currentTarget.contains(el)) {
+      setIsBottomOpen((prev) => !prev)
+    }
+  }
 
   async function createImageReference(resultData){
     let imgRef=[]
@@ -171,8 +180,9 @@ const StoryReader = () => {
   return (
     <>
       <ReactFullpage
-        licenseKey = 'i getted a license'
+        licenseKey = {'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
         navigation = {true}
+        navigationPosition={`right`}
         anchors={storyAnchors}
         autoScrolling = {true}
         // onLeave={(origin, destination, direction) => {
@@ -181,7 +191,7 @@ const StoryReader = () => {
         render={({state, fullpageApi}) => {
           // console.log("render prop change", state, fullpageApi);
           let storyJSX = [];
-          storyFrame.forEach((story,i)=>{storyJSX.push(StoryComponent(story,i,fullpageApi, state))})
+          storyFrame.forEach((story,i)=>{storyJSX.push(StoryComponent(story,i,fullpageApi, state,toggleBottom))})
           return (
             <ReactFullpage.Wrapper>
                {storyJSX}
@@ -192,6 +202,8 @@ const StoryReader = () => {
       <Footer
         references={storyReference}
         imageReference={storyImageSouce}
+        toggleBottom={toggleBottom}
+        isBottomOpen={isBottomOpen}
       />
     </>
   );

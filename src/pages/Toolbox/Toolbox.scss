@@ -1,0 +1,20 @@
+#tool-box{
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    top: $footerHeight + 70px;
+    bottom: $footerHeight;
+
+    .image-icon{
+        font-size:120px;
+        border-style: double;
+        border-color:#7899a8;
+        border-radius: 50%;
+        font-family: $syrios-font-family-syrios-entypo-subset;
+        color: rgba(255,255,255,1);
+        background-color: #7899a8;
+    }
+
+}    
+
