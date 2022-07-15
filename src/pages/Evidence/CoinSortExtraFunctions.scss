@@ -1,0 +1,107 @@
+// ********************** TUTORIAL TEXT CSS ********************** //
+#coin-sort-main-text-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+#coin-sort-main-text {
+  width: 800px;
+  max-width: 95%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  pointer-events: auto;
+}
+
+#coin-sort-main-text-title {
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-light;
+  font-size: 4em;
+  color: #1a3847;
+}
+
+#coin-sort-main-text ol li {
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-light;
+  letter-spacing: $syrios-character-spacing-0;
+  color:#696969;
+  font-size: 2em;
+}
+
+#coin-sort-main-text ol li::marker {
+  color: #a85828;
+}
+
+// ********************** TOOL TIPS CSS ********************** //
+.coin-sort-tool-tips {
+  padding: 0px 40px 0px 40px;
+  margin: -20px 0px 0px 0px;
+
+  font-size: 1.8em;
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  line-height: $syrios-line-spacing-30;
+}
+
+.coin-sort-tool-tips-title {
+  text-align: center;
+  color: #a85828;
+  margin-bottom: 60px;
+}
+
+.coin-sort-tool-tips-text {
+  text-align: start;
+  color: #183848;
+
+  margin-bottom: 30px;
+}
+
+
+// ********************** TUTORIAL TEXT CSS ********************** //
+#coin-sort-main-text-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+#coin-sort-main-text {
+  width: 800px;
+  max-width: 95%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  pointer-events: auto;
+}
+
+#coin-sort-main-text-title {
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-light;
+  font-size: 4em;
+  color: #1a3847;
+}
+
+#coin-sort-main-text ol li {
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-light;
+  letter-spacing: $syrios-character-spacing-0;
+  color:#696969;
+  font-size: 2em;
+}
+
+#coin-sort-main-text ol li::marker {
+  color: #a85828;
+}
