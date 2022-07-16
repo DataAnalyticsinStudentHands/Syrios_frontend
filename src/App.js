@@ -14,7 +14,7 @@ import StoryReader from 'src/pages/Stories/StoryReader.js';
 
 
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
-import CoinSort from 'src/pages/Evidence/CoinSort.js';
+import CoinSort from 'src/pages/Evidence/CoinSort/CoinSort.js';
 import MapCoins from './pages/Evidence/MapCoins/MapCoins';
 import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
 import Download from 'src/pages/Evidence/Download/Download.js';
