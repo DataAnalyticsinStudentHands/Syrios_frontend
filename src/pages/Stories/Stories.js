@@ -35,7 +35,12 @@ const Stories = () => {
 					</p>
 				</Row>
 				<Row className='d-flex justify-content-center'>
-					
+					<p className='story-text'>
+					Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.
+					<br/>
+					<br/>
+					Click on a coin to learn more about the politics, economy, and society of ancient Syria.
+					</p>
 				</Row>
 				<Row style={{ marginTop: '80px', marginBottom: '100px'}} >
 					{stories.map((story)=>{

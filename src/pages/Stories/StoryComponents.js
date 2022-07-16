@@ -14,27 +14,27 @@ import CompareFrame from 'src/components/StoryComponents/StoryFrames/CompareFram
 const StoryComponent = (zone, index,fullpageApi, state,toggleBottom) => {
     switch (zone.__component) {
       case 'frame.title':
-        return <Title zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} toggleBottom={toggleBottom}/>
+        return <Title zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} toggleBottom={toggleBottom}/>
       case 'frame.end':
-        return <EndFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <EndFrame zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.images':
-        return <Images zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <Images zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.text-text':
-        return <TextText zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <TextText zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.image-text':
-        return <ImageText zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <ImageText zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.image-text-image':
-        return <ImageTextImage zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <ImageTextImage zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.image-text-text':
-        return <ImageTextText zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <ImageTextText zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.scale-frame':
-        return <ScaleFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <ScaleFrame zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.flip-frame':
-        return <FlipFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} toggleBottom={toggleBottom}/>
+        return <FlipFrame zone={zone} key={`story_comp_${index}`} index={index}  fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       case 'frame.values-frame':
-        return <FadeFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+        return <FadeFrame zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
         case 'frame.coin-compare':
-          return <CompareFrame zone={zone} key={`story_comp_${index}`} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
+          return <CompareFrame zone={zone} key={`story_comp_${index}`} index={index} fullpageApi={fullpageApi} state={state} toggleBottom={toggleBottom}/>
       default:
         console.error(`Error: Unrecognized component '${zone.__component}'`);
     }

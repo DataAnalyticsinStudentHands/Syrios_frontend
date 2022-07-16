@@ -28,7 +28,7 @@ import Glossary from './pages/Toolbox/Glossary/Glossary.js';
 import Research from './pages/Resources/Research/Research';
 import TeachingResources from './pages/Resources/TeachingResources/TeachingResources';
 
-import GlossaryWrapper from './components/glossaryWrapper/glossary-wrapper';
+import GlossaryWrapper from './pages/Toolbox/Glossary/glossary-wrapper';
 import GlossaryTerm from './pages/Toolbox/Glossary/GlossaryTerm';
 
 import ErrorPage from './components/404';

@@ -85,7 +85,7 @@ const CompareFrame = (props)=>{
           {zone.cc_text.text === '' && zone.cc_text.caption === '' ?(
             <Row className='d-flex justify-content-center align-items-center'>
               <Col xs={`${grid[zone.grid_option]}`} className='d-flex justify-content-center'>
-                  <CompareCoin toggleBottom={props.toggleBottom} coin={zone.cc_coin}/>
+                  <CompareCoin coin={zone.cc_coin}/>
               </Col>
             </Row>
           ):(
@@ -93,11 +93,11 @@ const CompareFrame = (props)=>{
               {zone.left_right_switch ? (
                 <Row className='d-flex justify-content-center align-items-center'>
                   <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.cc_text}/></Col>
-                  <Col className='d-flex justify-content-center'><CompareCoin toggleBottom={props.toggleBottom} coin={zone.cc_coin}/></Col>
+                  <Col className='d-flex justify-content-center'><CompareCoin  coin={zone.cc_coin}/></Col>
                 </Row>
               ):(
                 <Row className='d-flex justify-content-center align-items-center'>
-                  <Col className='d-flex justify-content-center'><CompareCoin toggleBottom={props.toggleBottom} coin={zone.cc_coin}/></Col>
+                  <Col className='d-flex justify-content-center'><CompareCoin  coin={zone.cc_coin}/></Col>
                   <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.cc_text}/></Col>
                 </Row>
               )}
@@ -112,7 +112,7 @@ const CompareFrame = (props)=>{
           {zone.cc_text.text === '' && zone.cc_text.caption === '' ?(
             <Row className='d-flex justify-content-center align-items-center'>
               <Col xs={`${grid[zone.grid_option]}`} className='d-flex justify-content-center'>
-                  <CompareCoin toggleBottom={props.toggleBottom} coin={zone.cc_coin}/>
+                  <CompareCoin coin={zone.cc_coin}/>
               </Col>
             </Row>
           ):(
@@ -120,11 +120,11 @@ const CompareFrame = (props)=>{
               {zone.left_right_switch ? (
                 <Row className='d-flex justify-content-center align-items-center'>
                   <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.cc_text}/></Col>
-                  <Col className='d-flex justify-content-center'><CompareCoin toggleBottom={props.toggleBottom} coin={zone.cc_coin}/></Col>
+                  <Col className='d-flex justify-content-center'><CompareCoin  coin={zone.cc_coin}/></Col>
                 </Row>
               ):(
                 <Row className='d-flex justify-content-center align-items-center'>
-                  <Col className='d-flex justify-content-center'><CompareCoin toggleBottom={props.toggleBottom} coin={zone.cc_coin}/></Col>
+                  <Col className='d-flex justify-content-center'><CompareCoin coin={zone.cc_coin}/></Col>
                   <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.cc_text}/></Col>
                 </Row>
               )}
@@ -133,10 +133,7 @@ const CompareFrame = (props)=>{
 
         </Container>
       )}
-          <button
-            onClick={()=>props.fullpageApi.moveTo(1)}
-            className='back-to-top '
-          > BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button>  
+        {props.index === 0 ? (<></>):(<button onClick={()=>props.fullpageApi.moveTo(1)} className='back-to-top'> BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button> )}
     </div>
   )
 }
