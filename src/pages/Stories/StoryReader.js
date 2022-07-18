@@ -37,7 +37,6 @@ const StoryReader = () => {
   },[])
 
   const toggleBottom = (e) => {
-    // console.log(e)
     const el = e.target.closest("button.reference-tag");
     if (el && e.currentTarget.contains(el)) {
       setIsBottomOpen((prev) => !prev)

@@ -29,8 +29,11 @@ const HowToReadACoin = () => {
     fetchData().catch(console.error);
   },[])
 
-  const toggleBottom = () => {
-    setIsBottomOpen((prev) => !prev)
+  const toggleBottom = (e) => {
+    const el = e.target.closest("button.reference-tag");
+    if (el && e.currentTarget.contains(el)) {
+      setIsBottomOpen((prev) => !prev)
+    }
   }
 
   async function createImageReference(resultData){
