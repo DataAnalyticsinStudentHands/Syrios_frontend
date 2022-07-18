@@ -123,17 +123,20 @@ const Coin = (props) => {
   return (
     <div 
       className='coin-sort-pile-coin' 
-      style={{top: `${y}px`, left: `${x}px`}} 
+      style={{top: `${y}px`, left: `${x}px`, transition: '0.3s'}} 
       onDrag={Drag}>
       <img 
         className='coin-sort-pile-coin-image'
         src={process.env.REACT_APP_strapiURL+props.coinMetaData.attributes.obverse_file.data.attributes.formats.thumbnail.url} 
         alt={props.coinMetaData.attributes.obverse_file.data.attributes.alternativeText}
+        style={{transition: '0.1s'}}
         width={width}
       />
     </div>
   );
-}; const DefaultCoinPileGraphingStategy = (coin) => {
+}; 
+
+function DefaultCoinPileGraphingStategy(coin) {
   let y = Math.random();
   const CoinSortGraphingFormula = (x) => {
     return -4 * Math.pow(x - 0.5, 4) + 1.5 * Math.pow(x - 0.5, 2) + .2;
@@ -150,25 +153,25 @@ const Coin = (props) => {
 }
 
 // Randomly selects numbers from a Gaussian distribution between (0, 1)
-function randn_bm() {
+function RandnBm() {
   let u = 0, v = 0;
   while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
   while(v === 0) v = Math.random();
   let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
   num = num / 10.0 + 0.5; // Translate to 0 -> 1
-  if (num > 1 || num < 0) return randn_bm() // resample between 0 and 1
+  if (num > 1 || num < 0) return RandnBm() // resample between 0 and 1
   return num
 }
 
 // This function adds deviation to make the original value a little messier
-const GaussianDeviationOnValue = (val, deviation) => {
+function GaussianDeviationOnValue(val, deviation) {
   let min = val - deviation;
   let max = val + deviation;
-  return randn_bm() * (max - min) + min;
+  return RandnBm() * (max - min) + min;
 }
 
 // This evenly distrubutes the pile locations along the left, bottom, and right side of the CoinPile div.
-const CoinPileLocations = (arr_length) => {
+function CoinPileLocations(arr_length) {
   const deviation = .1;
   const bottom_start_point = .1;
   const bottom_end_point = 1;
@@ -221,150 +224,158 @@ function SimplyMappedCoin(coin, index) {
   };
 }
 
+function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection) {
+  if (!Array.isArray(coins)) return null;
+  // perform default positioning
+  let coins_pos = new Map(coins.map((coin, index) => [coin.id, {
+    index: index,
+    ...DefaultCoinPileGraphingStategy(coin),
+    display: true,
+  }]));
+
+  // peform sorting
+  if (sort_selection !== sort_selections[0]) {
+    let tmp_coins = coins.map((coin, index) => (SimplyMappedCoin(coin, index)));
+    // Setup what kind of query we are using. 
+    // It'll be either Minting date, material, governing_power, issuing_authority, or size.
+    // minting date, and size are bracket types. the other are match types.
+    let key = undefined;
+    let query_selection = undefined;
+    let is_match_type = true;
+    switch (sort_selection) {
+      case sort_selections[1]: // Minting Date
+        key = 'from_date';
+        query_selection = of_kind_from_date_query_relation;
+        is_match_type = false;
+        break;
+      case sort_selections[2]: // Material
+        key = 'material';
+        query_selection = of_kind_material_selections;
+        is_match_type = true;
+        break;
+      case sort_selections[3]: // Issuing Authority
+        key = 'issuing_authority';
+        query_selection = of_kind_issuing_authority_selections;
+        is_match_type = true;
+        break;
+      case sort_selections[4]: // Governing Power
+        key = 'governing_power';
+        query_selection = of_kind_governing_power_selections;
+        is_match_type = true;
+        break;
+      case sort_selections[5]: // Size
+        key = 'size';
+        query_selection = of_kind_size_query_relation;
+        is_match_type = false;
+        break;
+      default:
+        console.error("No sort selection option", sort_selection);
+    }
+    // Make the coin piles. Order doesn't matter.
+    let coin_piles = [];
+    for (let index = 0; index < query_selection.length; index++) {
+      let query = query_selection[index];
+      if (index === 0) continue; // Skip piling default case
+
+      let coin_pile = [];
+      for (let i = 0; i < tmp_coins.length; i++) { // Find the correct pile to put the coin in
+        if (is_match_type && tmp_coins[i][key]?.toLowerCase().includes(query.toLowerCase())) {
+          coin_pile.push(tmp_coins[i]);
+        } else if (tmp_coins[i][key] >= query.gte && 
+          tmp_coins[i][key] <= query.lte) {
+          coin_pile.push(tmp_coins[i]);
+        }             
+      }
+      coin_piles.push(coin_pile);
+    };
+    coin_piles = coin_piles.filter((arr) => (arr.length !== 0));
+
+    // set the sorted coins.
+    let new_coin_pos = new Map();
+    let pile_locations = CoinPileLocations(coin_piles.length);
+    const coin_deviation_in_pile = .15;
+    for (let i = 0; i < pile_locations.length; i++) {
+      let more_mapped_coins = coin_piles[i].map((coin) => ([
+        coin.id,
+        {
+          index: coin.props_index,
+          x: GaussianDeviationOnValue(pile_locations[i].x, coin_deviation_in_pile),
+          y: GaussianDeviationOnValue(pile_locations[i].y, coin_deviation_in_pile),
+          display: true,
+        }
+      ]));
+      new_coin_pos = new Map([...new_coin_pos, ...more_mapped_coins]);
+    }
+
+    coins_pos = new_coin_pos;
+  } 
+
+  // perform filtering
+  if (filter_selection !== filter_selections[0] && with_selection !== with_selections[0]) { // Selected none, do nothing
+    let filter_include = filter_selections_query_relation[filter_selections.findIndex((str) => str === filter_selection)];
+    // Setup what kind of query we are using. 
+    // It'll be either Minting date, material, governing_power, issuing_authority, or size.
+    // minting date, and size are bracket types. the other are match types.
+    let coin_key = undefined;
+    let query = undefined;
+    switch (with_selection) {
+      case with_selections[1]: // Minting Date
+        coin_key = 'from_date';
+        query = of_kind_from_date_query_relation[of_kind_from_date_selections.findIndex((e) => e === of_kind_selection)];
+        break;
+      case with_selections[2]: // Material
+        coin_key = 'material';
+        break;
+      case with_selections[3]: // Issuing Authority
+        coin_key = 'issuing_authority';
+        break;
+      case with_selections[4]: // Governing Power
+        coin_key = 'governing_power';
+        break;
+      case with_selections[5]: // Size
+        coin_key = 'size';
+        query = of_kind_size_query_relation[of_kind_size_selections.findIndex((e) => e === of_kind_selection)];
+        break;
+      default:
+        console.error("No sort selection option", with_selection);
+    }
+
+    // We will get the coins that we want to filter out and set their display to false
+    let new_coins_pos = (
+      coins_pos == null ? null : new Map(Array.from(coins_pos).map((coin_pos) => {
+        let coin = SimplyMappedCoin(coins[coin_pos[1].index], coin_pos[1].index);
+        let does_include = filter_include;
+        // idgaf anymore. Just if it crashes, don't include them to be shown
+        try {
+          if (query == null) {
+            does_include = coin[coin_key]?.toLowerCase()?.includes(of_kind_selection.toLowerCase()) ?? filter_include;
+          } else {
+            does_include = coin[coin_key] >= query.gte && coin[coin_key] <= query.gte;
+          }
+        } catch (err) {}
+
+        if ((filter_include && !does_include) || (!filter_include && does_include)) {
+          coin_pos[1].display = false;
+        } else { 
+          coin_pos[1].display = true;
+        }
+        return coin_pos;
+      }))
+    );
+
+    coins_pos = new_coins_pos;
+  }
+  
+  return coins_pos;
+}
+
 // This is the coins scattering techniques.
 const CoinPile = (props) => {
   const coin_wrapper_ref = useRef();
   const [coins_pos, set_coins_pos] = useState(undefined);
-  useEffect(() => {
-    if (Array.isArray(props.coins)) {
-      if (props.sortSelection === sort_selections[0]) {
-        set_coins_pos(new Map(props.coins.map((coin, index) => [coin.id, {
-          index: index,
-          ...DefaultCoinPileGraphingStategy(coin)
-        }])));
-      }
-
-      if (props.sortSelection !== sort_selections[0]) {
-        let tmp_coins = props.coins.map((coin, index) => (SimplyMappedCoin(coin, index)));
-        ;
-        // Setup what kind of query we are using. 
-        // It'll be either Minting date, material, governing_power, issuing_authority, or size.
-        // minting date, and size are bracket types. the other are match types.
-        let key = undefined;
-        let query_selection = undefined;
-        let is_match_type = true;
-        switch (props.sortSelection) {
-          case sort_selections[1]: // Minting Date
-            key = 'from_date';
-            query_selection = of_kind_from_date_query_relation;
-            is_match_type = false;
-            break;
-          case sort_selections[2]: // Material
-            key = 'material';
-            query_selection = of_kind_material_selections;
-            is_match_type = true;
-            break;
-          case sort_selections[3]: // Issuing Authority
-            key = 'issuing_authority';
-            query_selection = of_kind_issuing_authority_selections;
-            is_match_type = true;
-            break;
-          case sort_selections[4]: // Governing Power
-            key = 'governing_power';
-            query_selection = of_kind_governing_power_selections;
-            is_match_type = true;
-            break;
-          case sort_selections[5]: // Size
-            key = 'size';
-            query_selection = of_kind_size_query_relation;
-            is_match_type = false;
-            break;
-          default:
-            console.error("No sort selection option", props.sortSelection);
-        }
-        // Make the coin piles. Order doesn't matter.
-        let coin_piles = [];
-        for (let index = 0; index < query_selection.length; index++) {
-          let query = query_selection[index];
-          if (index === 0) continue; // Skip piling default case
-
-          let coin_pile = [];
-          for (let i = 0; i < tmp_coins.length; i++) { // Find the correct pile to put the coin in
-            if (is_match_type && tmp_coins[i][key]?.toLowerCase().includes(query.toLowerCase())) {
-              coin_pile.push(tmp_coins[i]);
-            } else if (tmp_coins[i][key] >= query.gte && 
-              tmp_coins[i][key] <= query.lte) {
-              coin_pile.push(tmp_coins[i]);
-            }             
-          }
-          coin_piles.push(coin_pile);
-        };
-        coin_piles = coin_piles.filter((arr) => (arr.length !== 0));
-
-        // set the sorted coins.
-        let new_coin_pos = new Map();
-        let pile_locations = CoinPileLocations(coin_piles.length);
-        const coin_deviation_in_pile = .15;
-        for (let i = 0; i < pile_locations.length; i++) {
-          let more_mapped_coins = coin_piles[i].map((coin, index) => ([
-            coin.id, 
-            {
-              index: index,
-              x: GaussianDeviationOnValue(pile_locations[i].x, coin_deviation_in_pile),
-              y: GaussianDeviationOnValue(pile_locations[i].y, coin_deviation_in_pile),
-            }
-          ]));
-          new_coin_pos = new Map([...new_coin_pos, ...more_mapped_coins]);
-        }
-        set_coins_pos(new_coin_pos);
-      } 
-    }
-  }, [props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.ofKindSelection, props.withSelection]);
 
   useEffect(() => {
-    if (props.filterSelection !== filter_selections[0] && props.withSelection !== with_selections[0]) { // Selected none, do nothing
-      let filter_include = filter_selections_query_relation[filter_selections.findIndex((str) => str === props.filterSelection)];
-      // Setup what kind of query we are using. 
-      // It'll be either Minting date, material, governing_power, issuing_authority, or size.
-      // minting date, and size are bracket types. the other are match types.
-      let key = undefined;
-      let query = undefined;
-      switch (props.withSelection) {
-        case with_selections[1]: // Minting Date
-          key = 'from_date';
-          query = of_kind_from_date_query_relation[of_kind_from_date_selections.findIndex((e) => e === props.ofKindSelection)];
-          break;
-        case with_selections[2]: // Material
-          key = 'material';
-          break;
-        case with_selections[3]: // Issuing Authority
-          key = 'issuing_authority';
-          break;
-        case with_selections[4]: // Governing Power
-          key = 'governing_power';
-          break;
-        case with_selections[5]: // Size
-          key = 'size';
-          query = of_kind_size_query_relation[of_kind_size_selections.findIndex((e) => e === props.ofKindSelection)];
-          break;
-        default:
-          console.error("No sort selection option", props.withSelection);
-      }
-
-      // We will get the coins that we want to filter out and set their display to false
-      set_coins_pos(
-        coins_pos == null ? null : new Map(Array.from(coins_pos).map((coin_pos) => {
-          let coin = SimplyMappedCoin(props.coins[coin_pos[1].index], coin_pos[1].index);
-          let does_include = false;
-          // idgaf anymore. Just if it crashes, don't include them to be shown
-          try {
-            if (query == null) {
-              does_include = coin[key]?.toLowerCase()?.includes(props.ofKindSelection.toLowerCase()) ?? false;
-            } else {
-              does_include = coin[key] >= query.gte && coin[key] <= query.gte;
-            }
-          } catch (err) {}
-          if ((filter_include && !does_include) || (!filter_include && does_include)) {
-            coin_pos[1].display = false;
-          } else { 
-            coin_pos[1].display = true;
-          }
-          return {
-            ...coin_pos,
-          };
-        }))
-      );
-    }
+    set_coins_pos(ComputeCoinPos(props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection));
   }, [props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection]);
 
   const [dimensions, set_dimensions] = useState({width: 0, height: 0});
