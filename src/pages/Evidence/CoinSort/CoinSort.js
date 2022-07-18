@@ -102,18 +102,19 @@ const of_kind_size_query_relation = [
   {gte: null, lte: null},
 ];
 
+// This displays the individual coins on the screen.
 const Coin = (props) => {
   const thumbnail_scale = 2;
   let x = props.x * props.dimensions.width;
   let y = props.y * props.dimensions.height;
-  let width = props.coinMetaData.attributes.diameter * thumbnail_scale;
+  let width = props.coinMetaData.attributes.diameter * thumbnail_scale; // This is how we get the differently sized coins showing up properly
 
   if ((x + width) > props.dimensions.width) x = props.dimensions.width - width;
   if ((y + width) > props.dimensions.height) y = props.dimensions.height - width;
   if (x < 0) x = 0;
   if (y < 0) y = 0;
 
-  if (!props.display) {
+  if (!props.display) { // If display is false, send to shadow realm
     x = -10000;
     y = -10000;
   }
@@ -138,6 +139,9 @@ const Coin = (props) => {
   );
 }; 
 
+// Default coin pile strategy gets a random y, and plots it with a random x as long as the x is within the integral of and non-negative:
+// -4 * (x - 0.5)^4 + 1.5 * (x - 0.5)^2 + .2
+// You can plot that in desmos.
 function DefaultCoinPileGraphingStategy(coin) {
   let y = Math.random();
   const CoinSortGraphingFormula = (x) => {
@@ -165,7 +169,7 @@ function RandnBm() {
   return num
 }
 
-// This function adds deviation to make the original value a little messier
+// This function adds Gaussian deviation to make the original value a little messier
 function GaussianDeviationOnValue(val, deviation) {
   let min = val - deviation;
   let max = val + deviation;
@@ -179,6 +183,9 @@ function CoinPileLocations(arr_length) {
   const bottom_end_point = 1;
   const side_start_point = .1;
   const side_end_point = .8;
+
+  // Get the number of piles we need per side.
+  // Left and Right side must have the same number of piles.
   let num_piles_bottom = 0, num_piles_on_sides = 0;
   if (arr_length % 3 === 0) {
     num_piles_on_sides = arr_length / 3;
@@ -199,10 +206,13 @@ function CoinPileLocations(arr_length) {
     num_piles_on_sides = 0;
   }
 
+  // This goes left to right plotting evenly spaced points
   let bottom_points = [];
   for (let i = bottom_start_point; i < bottom_end_point && num_piles_bottom !== 0; i += (bottom_end_point - bottom_start_point) / num_piles_bottom) {
     bottom_points.push({x: i, y: GaussianDeviationOnValue(.8, deviation)});
   }
+
+  // This goes top to bottom plotting evenly spaced points
   let left_side_points = [];
   let right_side_points = [];
   for (let i = side_start_point; i < side_end_point && num_piles_on_sides !== 0; i += (side_end_point - side_start_point) / num_piles_on_sides) {
@@ -214,6 +224,7 @@ function CoinPileLocations(arr_length) {
   return left_side_points.concat(bottom_points).concat(right_side_points);
 }
 
+// This function converts the data we recieve from strapi into a more easily parsed data format
 function SimplyMappedCoin(coin, index) {
   return {
     props_index: index,
@@ -226,6 +237,13 @@ function SimplyMappedCoin(coin, index) {
   };
 }
 
+// This is the function the plots EVERY coin and sticks together all the pile logic. 
+//
+// The first this it does is setup default positioning. This is so coins_pos is insured to be defined for filtration.
+//
+// The next thing done is sorting the coins into different piles. 
+//
+// The last thing done is filtering the coins based on the coin sort options
 function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection) {
   if (!Array.isArray(coins)) return null;
   // perform default positioning
@@ -238,6 +256,8 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
   // peform sorting
   if (sort_selection !== sort_selections[0]) {
     let tmp_coins = coins.map((coin, index) => (SimplyMappedCoin(coin, index)));
+
+    // ********* SORT BY ********** //
     // Setup what kind of query we are using. 
     // It'll be either Minting date, material, governing_power, issuing_authority, or size.
     // minting date, and size are bracket types. the other are match types.
@@ -273,7 +293,8 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
       default:
         console.error("No sort selection option", sort_selection);
     }
-    // Make the coin piles. Order doesn't matter.
+
+    // Make the coin piles.
     let coin_piles = [];
     for (let index = 0; index < query_selection.length; index++) {
       let query = query_selection[index];
@@ -290,43 +311,44 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
       }
       coin_piles.push(coin_pile);
     };
-    coin_piles = coin_piles.filter((arr) => (arr.length !== 0));
-    let pile_locations = CoinPileLocations(coin_piles.length);
+    coin_piles = coin_piles.filter((arr) => (arr.length !== 0)); // We have our coins per coin pile
+    let pile_locations = CoinPileLocations(coin_piles.length); // We have our coin pile locations 
     
-    // then by sort
-    key = undefined;
-    query_selection = undefined;
-    is_match_type = true;
-    switch (then_by_selection) {
-      case then_by_selections[1]: // Minting Date
-        key = 'from_date';
-        query_selection = of_kind_from_date_query_relation;
-        is_match_type = false;
-        break;
-      case then_by_selections[2]: // Material
-        key = 'material';
-        query_selection = of_kind_material_selections;
-        is_match_type = true;
-        break;
-      case then_by_selections[3]: // Issuing Authority
-        key = 'issuing_authority';
-        query_selection = of_kind_issuing_authority_selections;
-        is_match_type = true;
-        break;
-      case then_by_selections[4]: // Governing Power
-        key = 'governing_power';
-        query_selection = of_kind_governing_power_selections;
-        is_match_type = true;
-        break;
-      case then_by_selections[5]: // Size
-        key = 'size';
-        query_selection = of_kind_size_query_relation;
-        is_match_type = false;
-        break;
-      default:
-        console.error("No sort selection option", sort_selection);
-    }
+    // ********** THEN BY SORTING ********** //
     if (then_by_selection !== then_by_selections[0]) {
+      key = undefined;
+      query_selection = undefined;
+      is_match_type = true;
+      switch (then_by_selection) {
+        case then_by_selections[1]: // Minting Date
+          key = 'from_date';
+          query_selection = of_kind_from_date_query_relation;
+          is_match_type = false;
+          break;
+        case then_by_selections[2]: // Material
+          key = 'material';
+          query_selection = of_kind_material_selections;
+          is_match_type = true;
+          break;
+        case then_by_selections[3]: // Issuing Authority
+          key = 'issuing_authority';
+          query_selection = of_kind_issuing_authority_selections;
+          is_match_type = true;
+          break;
+        case then_by_selections[4]: // Governing Power
+          key = 'governing_power';
+          query_selection = of_kind_governing_power_selections;
+          is_match_type = true;
+          break;
+        case then_by_selections[5]: // Size
+          key = 'size';
+          query_selection = of_kind_size_query_relation;
+          is_match_type = false;
+          break;
+        default:
+          console.error("No sort selection option", sort_selection);
+      }
+
       let new_pile_locations = [];
       let new_coin_piles = [];
       for (let i = 0; i < pile_locations.length; i++) {
@@ -348,13 +370,13 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
           then_by_new_coin_piles.push(new_coin_pile);
         }
 
-        const distance_from_center = .1;
+        const distance_from_center = .040;
         let center = pile_locations[i];
         let degrees_between_pile = 360 / then_by_new_coin_piles.length;
         for (let j = 0; j < then_by_new_coin_piles.length; j++) {
           new_pile_locations.push({
             x: distance_from_center * Math.cos(degrees_between_pile * j) + center.x,
-            y: -1 * distance_from_center * Math.sin(degrees_between_pile * j) + center.y,
+            y: distance_from_center * Math.sin(degrees_between_pile * j) + center.y,
           });
         }
 
@@ -419,7 +441,7 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
       coins_pos == null ? null : new Map(Array.from(coins_pos).map((coin_pos) => {
         let coin = SimplyMappedCoin(coins[coin_pos[1].index], coin_pos[1].index);
         let does_include = filter_include;
-        // idgaf anymore. Just if it crashes, don't include them to be shown
+        // If it crashes, don't include them to be shown
         try {
           if (query == null) {
             does_include = coin[coin_key]?.toLowerCase()?.includes(of_kind_selection.toLowerCase()) ?? filter_include;
@@ -448,10 +470,12 @@ const CoinPile = (props) => {
   const coin_wrapper_ref = useRef();
   const [coins_pos, set_coins_pos] = useState(undefined);
 
+  // Update coins_pos with ComputeCoinPos
   useEffect(() => {
     set_coins_pos(ComputeCoinPos(props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection));
   }, [props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection]);
 
+  // Update dimensions on screen resize. Very expensive, so setting dimensions only once is better
   const [dimensions, set_dimensions] = useState({width: 0, height: 0});
   useEffect(() => {
     const HandleResize = () => {
@@ -460,6 +484,7 @@ const CoinPile = (props) => {
     window.addEventListener("resize", HandleResize);
   }, []);
 
+  // This sets the dimensions to be the same as the ref
   useEffect(() => {
     set_dimensions({width: coin_wrapper_ref?.current?.clientWidth ?? 0, height: coin_wrapper_ref?.current?.clientHeight ?? 0});
   }, [coin_wrapper_ref]);
@@ -482,6 +507,7 @@ const CoinPile = (props) => {
   );
 }
 
+// This holds the title, help icon, and the dropdown inside the coin sort options toolbox
 const CoinSortDropDown = (props) => {
   const [show, set_show] = useState(false);
   const [show_tool_tips, set_show_tool_tips] = useState(false);
@@ -503,6 +529,8 @@ const CoinSortDropDown = (props) => {
     opacity: show ? 1 : 0,
     zIndex: show ? 1000 : -1000,
   };
+
+  // This is the list of items available.
   let selection_jsx = props.selections.map((e, index) => (
     <div 
       key={`coin_sort_dropdown_${e + index}`} 
@@ -579,18 +607,21 @@ const CoinSortDropDown = (props) => {
 const CoinSort = () => {
   const [is_loading, set_is_loading] = useState(true);
 
+  // coins are all of the coins with their type_category, obverse_file, and governing_power relations
   const [coins, set_coins] = useState(undefined);
   const [has_fetched_coins, set_has_fetched_coins] = useState(false);
 
+  // This is for the coin grid. Need to put the logic here because the scale all and rotate all buttons are in the coin sort options.
   const [scale_all, set_scale_all] = useState(false);
   const [rotate_all, set_rotate_all] = useState(false);
+  // Need to make the buttons dissappear and reappear if coin grid is active
   const [show_scale_and_rotate, set_show_scale_and_rotate] = useState(false);
   const ShowScaleAndRotate = (is_show) => { set_show_scale_and_rotate(is_show); }
 
+  // gets the currently dragged coin id
   const [dragged_coin_id, set_dragged_coin_id] = useState(undefined);
   const SetDraggedCoinId = (coin_id) => { set_dragged_coin_id(coin_id) };
 
-  const [arrangement_selection, set_arrangement_selection] = useState(arrangement_selections[0]);
   const [sort_selection, set_sort_selection] = useState(sort_selections[0]);
   const [then_by_selection, set_then_by_selection] = useState(then_by_selections[0]);
   const [filter_selection, set_filter_selection] = useState(filter_selections[0]);
