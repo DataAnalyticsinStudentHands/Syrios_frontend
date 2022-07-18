@@ -27,7 +27,6 @@ const Glossary = () =>{
                     alp['data'] = data.data
                     contentList.push(alp)
                 }
-                // console.log(contentList)
                 setGlossaryData(contentList)
                 setIsLoading(false)
             }

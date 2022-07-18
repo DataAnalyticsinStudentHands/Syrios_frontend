@@ -19,11 +19,20 @@ $footerHeight:70px;
     }
 
     .search{
-        position: relative;
+        position: absolute;
         color: #aaa;
         font-size: 16px;
-        button{
-            background-color: rgba(0,0,0,0);
+        z-index: 199;
+
+        .search-list-group{
+            width: 250px;
+            .glossary-term-a{
+                font-size: 20px;
+            
+                &:hover{
+                    color: #183848;
+                }
+            }
         }
 
         input{
@@ -35,23 +44,22 @@ $footerHeight:70px;
             box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
 
             font-family: $syrios-garamond-premier-pro;
+            font-size: 20px;
         }
         & input {
             text-indent: 32px;
         }
-
-        .search-span{
-            
-            color: #7899a8;
+        .search-icon{
             position: absolute;
             // top: 10px;
-            left: 200px;
-        }
-        .search-icon{
+            left: 210px;
+
             font-family: $syrios-font-family-syrios-entypo-subset;
             font-style: $syrios-font-style-normal;
             color: #7899a8;
+            font-size: 28px;
         }
+
     }
     .search-filter{
         width: 250px;
@@ -130,7 +138,7 @@ $footerHeight:70px;
 #glossary-loading{
     position:fixed;
 
-	top: 70px;
+	top: 210px;
 	left: 0px;
 	width: 100%;
 	height: 100%;
@@ -182,6 +190,8 @@ $footerHeight:70px;
 
 }
 #glossary-group{
+    margin-bottom: 140px;
+
     .glossary-alphabet{
         font-family: $syrios-garamond-premier-pro;
         font-style: $syrios-font-style-normal;
@@ -222,9 +232,10 @@ $footerHeight:70px;
 
 #glossary-term{
     background-color: white;
+    margin-bottom: 140px;
+
     padding-top: 70px;
     padding-bottom: 70px;
-
     padding-left: 25%;
     padding-right: 25%;
 

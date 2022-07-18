@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 import { Container, Row, Col } from "react-bootstrap"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function createMarkup(textTran){
   return {__html: textTran};
