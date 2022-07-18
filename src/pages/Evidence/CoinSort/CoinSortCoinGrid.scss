@@ -1,86 +1,59 @@
-// ********************** GRID ARRANGMENT CSS ********************** //
-#coin-sort-grid-progress-bar-wrapper {
+#coin-sort-drag-coin-box-outer-div {
+  position: relative;
+  margin-top: 2em;
+  pointer-events: none;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-#coin-sor-grid-progress-bar-on-click-hover {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  height: 100%;
+// ********************** DRAG COIN ON ME ********************** //
+.coin-sort-drag-coin-box {
+  pointer-events: auto;
+  border: 2px dashed rgb(119, 153, 168);
+  background-color: rgba(119, 153, 168, 0.36);
+  width: 28%;
+  height: 20vh;
 
-  z-index: 100;
+  color: #7899A8;
 
-  cursor: pointer;
-}
-
-#coin-sort-grid-progress-bar {
   position: relative;
-  width: 600px;
-  height: 20px;
-  max-width: 70%;
-
-  background-color: #b9cad2;
-  border-radius: 15px;
-  opacity: .9;
-  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#coin-sort-grid-progress-bar-progress-status {
+.coin-sort-drag-coin-box:hover {
+  background-color: rgba(119, 153, 168, 0.74);
+  color: white;
+
+  pointer-events: none;
+}
+
+.coin-sort-drag-coin-box-text {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: 1.4em;
+}
+
+.coin-sort-drag-coin-box-hover-element {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
-
-  background-color: #7899A8;
-
-  transition: 0.3s;
 }
 
+
+// ********************** GRID ARRANGMENT CSS ********************** //
 #coin-sort-grid-arrangement-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.coin-sort-pagination-arrow {
-  border: solid #7899A8;
-  border-width: 0 5px 5px 0;
-  display: inline-block;
-  padding: 22px;
-  transition: 0.3s;
-
-  cursor: pointer;
-}
-
-.coin-sort-pagination-arrow:hover {
-  border: solid #183848;
-  border-width: 0 5px 5px 0;
-  display: inline-block;
-  padding: 22px;
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-}
-
 .coin-sort-grid-cell-flip-box {
   cursor: pointer;
-}
-
-#coin-sort-pagination-left {
-  width: 0; 
-  height: 0; 
-  border-top: 60px solid transparent;
-  border-bottom: 60px solid transparent; 
-  border-right: 60px solid blue; 
 }
 
 #coin-sort-grid-6x3-arrangement {
@@ -301,4 +274,3 @@
 #coin-sort-grid-1x1-arrangement div div.coin-sort-grid-cell-icons-div i {
   font-size: 2em !important;
 }
-

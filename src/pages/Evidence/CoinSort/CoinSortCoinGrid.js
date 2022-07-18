@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import qs from 'qs';
+import axios from 'axios';
+
 import CoinInfo, { CoinAlt } from 'src/components/coin/CoinInfo.js';
 
 export const CoinScaleAndFlip = (props) => {
@@ -131,6 +134,35 @@ export const CoinScaleAndFlip = (props) => {
   );
 }
 
+const DropBox = (props) => {
+  const [on_drag_style, set_on_drag_style] = useState(undefined);
+  return (
+    <div 
+      className='coin-sort-drag-coin-box' 
+      style={on_drag_style}
+    >
+      <p className='coin-sort-drag-coin-box-text'>
+        DRAG COIN HERE
+      </p>
+      <div className='coin-sort-drag-coin-box-hover-element'
+        onDrop={() => {
+          console.log('end');
+        }}
+        onDragEnter={() => {
+          props.onDragEnter();
+          set_on_drag_style({
+            backgroundColor: 'rgba(119, 153, 168, 0.74)',
+            color: 'white',
+          });
+        }}
+        onDragLeave={() => {
+          set_on_drag_style({});
+        }}
+      />
+    </div>
+  );
+}
+
 // This will have 6 different layout options
 // 1 x 1
 // 2 x 1
@@ -139,6 +171,118 @@ export const CoinScaleAndFlip = (props) => {
 // 3 x 2
 // 6 x 3
 export const CoinGrid = (props) => {
-  return <div/>;
+  const [coin_ids, set_coin_ids] = useState([]);
+  const AddCoin = () => {
+    if (props.coinToAdd != null && !coin_ids.includes(props.coinToAdd)) 
+      set_coin_ids([...coin_ids, props.coinToAdd]);
+  };
+
+  const [coins, set_coins] = useState([]);
+
+  useEffect(() => {
+    props.showScaleAndRotate(coin_ids.length !== 0);
+  }, [props, coin_ids]);
+
+  useEffect(() => {
+    if (coin_ids.length !== 0) {
+      axios.get(process.env.REACT_APP_strapiURL + `/api/coins?${qs.stringify({
+        filters: {
+          id: {
+            $in: coin_ids,
+          }
+        }
+      })}`).then((res, err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          set_coins(res.data.data);
+        }
+      });
+    }
+  }, [coin_ids]);
+
+  return (
+    <div id='coin-sort-drag-coin-box-outer-div'>
+      {(() => {
+        if (coins.length === 0) {
+          return <DropBox onDragEnter={AddCoin} />;
+        } else {
+          const FetchCoinsJSXarr = (css_id) => { 
+            let jsx = coins.map((coin, index) => (
+              <CoinScaleAndFlip id={`${css_id}${index+1}`} className={`${css_id}styling`} key={index} coinMetaData={coin.attributes} rotate={props.rotateAll} scale={props.scaleAll}/>
+            ));
+
+            if (coins.length < 18) {
+              jsx.push(
+                <div id={`${css_id}${jsx.length+1}`} className={`${css_id}styling`} key={jsx.length+1} style={{ height: '100%', width: '100%'}}>
+                  <DropBox onDragEnter={AddCoin}/>
+                </div>
+            );
+            }
+            return jsx;
+          }
+          let jsx = undefined;
+          switch (coins.length) {
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+              jsx = (   
+                <div id='coin-sort-grid-6x3-arrangement'>
+                  {FetchCoinsJSXarr('coin-sort-grid-6x3-cell-')}
+                </div>
+              );
+              break;
+            case 4:
+            case 5:
+              jsx = (
+                <div id='coin-sort-grid-3x2-arrangement'>
+                  {FetchCoinsJSXarr('coin-sort-grid-3x2-cell-')}
+                </div>
+              );
+              break;
+            case 3:
+              jsx = (
+                <div id='coin-sort-grid-2x2-arrangement'>
+                  {FetchCoinsJSXarr('coin-sort-grid-2x2-cell-')}
+                </div>
+              );
+              break;
+            case 2:
+              jsx = (
+                <div id='coin-sort-grid-3x1-arrangement'>
+                  {FetchCoinsJSXarr('coin-sort-grid-3x1-cell-')}
+                </div>
+              );
+              break;
+            case 1:
+              jsx = (
+                <div id='coin-sort-grid-2x1-arrangement'>
+                  {FetchCoinsJSXarr('coin-sort-grid-2x1-cell-')}
+                </div>
+              );
+              break;
+            default:
+              console.error('No', coins.length, 'grid arrangement.');
+          }
+
+          return (
+            <div id='coin-sort-grid-arrangement-wrapper'>
+              {jsx}
+            </div>
+          );
+        }
+      })()}
+    </div>
+  );
 }
 

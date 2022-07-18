@@ -6,6 +6,7 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import { ToolTipsBoxJSX } from './CoinSortExtraFunctions.js';
+import { CoinGrid } from './CoinSortCoinGrid.js';
 
 
 
@@ -118,8 +119,9 @@ const Coin = (props) => {
   }
 
   const Drag = () => {
-    props.setDraggedCoinId(props.coinId);
+    props.setDraggedCoinId(props.id);
   };
+
   return (
     <div 
       className='coin-sort-pile-coin' 
@@ -284,16 +286,88 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
         } else if (tmp_coins[i][key] >= query.gte && 
           tmp_coins[i][key] <= query.lte) {
           coin_pile.push(tmp_coins[i]);
-        }             
+        }
       }
       coin_piles.push(coin_pile);
     };
     coin_piles = coin_piles.filter((arr) => (arr.length !== 0));
+    let pile_locations = CoinPileLocations(coin_piles.length);
+    
+    // then by sort
+    key = undefined;
+    query_selection = undefined;
+    is_match_type = true;
+    switch (then_by_selection) {
+      case then_by_selections[1]: // Minting Date
+        key = 'from_date';
+        query_selection = of_kind_from_date_query_relation;
+        is_match_type = false;
+        break;
+      case then_by_selections[2]: // Material
+        key = 'material';
+        query_selection = of_kind_material_selections;
+        is_match_type = true;
+        break;
+      case then_by_selections[3]: // Issuing Authority
+        key = 'issuing_authority';
+        query_selection = of_kind_issuing_authority_selections;
+        is_match_type = true;
+        break;
+      case then_by_selections[4]: // Governing Power
+        key = 'governing_power';
+        query_selection = of_kind_governing_power_selections;
+        is_match_type = true;
+        break;
+      case then_by_selections[5]: // Size
+        key = 'size';
+        query_selection = of_kind_size_query_relation;
+        is_match_type = false;
+        break;
+      default:
+        console.error("No sort selection option", sort_selection);
+    }
+    if (then_by_selection !== then_by_selections[0]) {
+      let new_pile_locations = [];
+      let new_coin_piles = [];
+      for (let i = 0; i < pile_locations.length; i++) {
+        let sort_by_coin_pile = coin_piles[i];
+        let then_by_new_coin_piles = [];
+        for (let j = 0; j < query_selection.length; j++) {
+          if (j === 0) continue; // skip default case.
+          let query = query_selection[j];
+          let new_coin_pile = [];
+          for (let k = 0; k < sort_by_coin_pile.length; k++) {
+            let coin = sort_by_coin_pile[k];
+            if (is_match_type && coin[key]?.toLowerCase().includes(query.toLowerCase())) {
+              new_coin_pile.push(coin);
+            } else if (coin[key] >= query.gte && 
+              coin[key] <= query.lte) {
+              new_coin_pile.push(coin);
+            }
+          }
+          then_by_new_coin_piles.push(new_coin_pile);
+        }
+
+        const distance_from_center = .1;
+        let center = pile_locations[i];
+        let degrees_between_pile = 360 / then_by_new_coin_piles.length;
+        for (let j = 0; j < then_by_new_coin_piles.length; j++) {
+          new_pile_locations.push({
+            x: distance_from_center * Math.cos(degrees_between_pile * j) + center.x,
+            y: -1 * distance_from_center * Math.sin(degrees_between_pile * j) + center.y,
+          });
+        }
+
+        new_coin_piles.push(then_by_new_coin_piles);
+      }
+
+      coin_piles = new_coin_piles.flat();
+      pile_locations = new_pile_locations.flat();
+    }
 
     // set the sorted coins.
     let new_coin_pos = new Map();
-    let pile_locations = CoinPileLocations(coin_piles.length);
-    const coin_deviation_in_pile = .15;
+    const coin_deviation_in_pile = then_by_selection === then_by_selections[0] ? .15 : .075; // If then by is selected, make the deviation smaller
     for (let i = 0; i < pile_locations.length; i++) {
       let more_mapped_coins = coin_piles[i].map((coin) => ([
         coin.id,
@@ -394,6 +468,7 @@ const CoinPile = (props) => {
     <div className='coin-sort-pile-wrapper' ref={coin_wrapper_ref}>
       <div className='coin-sort-pile'>
         {props.coins?.map((coin) => (<Coin 
+          id={coin.id}
           key={coin.id} 
           coinMetaData={coin}
           dimensions={dimensions} 
@@ -507,9 +582,10 @@ const CoinSort = () => {
   const [coins, set_coins] = useState(undefined);
   const [has_fetched_coins, set_has_fetched_coins] = useState(false);
 
-  /*
   const [scale_all, set_scale_all] = useState(false);
-  const [rotate_all, set_rotate_all] = useState(false); */
+  const [rotate_all, set_rotate_all] = useState(false);
+  const [show_scale_and_rotate, set_show_scale_and_rotate] = useState(false);
+  const ShowScaleAndRotate = (is_show) => { set_show_scale_and_rotate(is_show); }
 
   const [dragged_coin_id, set_dragged_coin_id] = useState(undefined);
   const SetDraggedCoinId = (coin_id) => { set_dragged_coin_id(coin_id) };
@@ -647,9 +723,6 @@ const CoinSort = () => {
     <div id='coin-sort-wrapper'>
       <div className='navbar-spacer' />
       <div id='coin-sort-spacer' />
-      <div id='coin-sort-title' className='story-h2 text-center'>
-        {coin_sort_title}
-      </div>
       {/* CoinPile (fixed position) */}
       <CoinPile 
         coins={coins} 
@@ -660,6 +733,9 @@ const CoinSort = () => {
         withSelection={with_selection}
         ofKindSelection={of_kind_selection}
       />
+      <div id='coin-sort-title' className='story-h2 text-center'>
+        {coin_sort_title}
+      </div>
       {/* Coin sort options */}
       <div id='coin-sort-options-wrapper'>
         <div id='coin-sort-options'>
@@ -713,8 +789,33 @@ const CoinSort = () => {
             state={of_kind_selection}
             setState={set_of_kind_selection}
           />
+          {(() => {
+            if (show_scale_and_rotate) {
+              return (
+              <>
+                <div className='coin-sort-menu-vr'>
+                  <div className='coin-sort-menu-vr-content'/>
+                </div>
+                <div className='coin-sort-options-icons-div' onClick={() => {set_scale_all(!scale_all);}}>
+                  <i className='demo-icon icon-coin-scale coin-sort-options-icon'>&#xe834;</i>
+                  <p className='blue-text coin-sort-options-icon-text'>SCALE</p>
+                </div>
+                <div className='coin-sort-options-icons-div' onClick={() => {set_rotate_all(!rotate_all);}}>
+                  <i className='demo-icon icon-coin-rotate coin-sort-options-icon'>&#xe833;</i>
+                  <p className='blue-text coin-sort-options-icon-text'>FLIP</p>
+                </div>
+              </>
+              );
+            }
+          })()}
         </div>
       </div>
+      <CoinGrid
+        coinToAdd={dragged_coin_id}
+        rotateAll={rotate_all}
+        scaleAll={scale_all}
+        showScaleAndRotate={ShowScaleAndRotate}
+      />
       {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
       <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} />       <Footer />
     </div>
