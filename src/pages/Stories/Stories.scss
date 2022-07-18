@@ -1,11 +1,17 @@
+
 #stories-page{
   position: fixed;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  margin-top: 170px;
-  margin-bottom: 70px;
+  padding-top: 170px;
+  padding-bottom: 70px;
+  background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_8ad28273d7.png?updated_at=2022-07-18T15:09:55.400Z');
+  mix-blend-mode: multiply;
+  background-size: cover; 
+  background-repeat: no-repeat; 
 }
+
 .select-story-div {
   width: 190px;
   height: 164px;
@@ -17,8 +23,6 @@
     height: 195px;
   }
 }
-
-
 
 .select-story-text {
   font-size: 15px;

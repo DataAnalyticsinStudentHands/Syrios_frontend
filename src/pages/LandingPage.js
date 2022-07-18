@@ -41,14 +41,13 @@ function LandingPage() {
   }
 
   return (
-    <div>
+    <>
       <div id='landing-page' className='d-flex align-items-center'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <Container style={{height: '640px', paddingTop: '1em'}}>
           <Row container='justify-content-md-center'>
             {/* This is the title text in orage */}
             <Col>
-              {/* <div className='orange-text' style={{fontSize: '4em'}}> */}
               <div className='story-h2 text-center'>
                 <ReactMarkdown>
                   {landingData.title}
@@ -147,7 +146,7 @@ function LandingPage() {
         </Container>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
