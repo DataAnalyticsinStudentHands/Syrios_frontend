@@ -72,14 +72,11 @@ function Download(){
       .required('* Email is required'),
     }),
     onSubmit: (values,{resetForm})=>{
-      values.emailSubject=downloadPageData.emailSubject
-      values.emailTo=downloadPageData.emailTo
-      axios.post(process.env.REACT_APP_strapiURL + '/api/download', values)
+      axios.post(`${process.env.REACT_APP_strapiURL} /api/download`, values)
         .then(resetForm())
         .then(setSubmitButton(true))
         .then(setShow(true))
         .catch(err =>{console.error(err)})
-
       saveAs(
         `${process.env.REACT_APP_strapiURL}${downloadPageData.coinData.data.attributes.url}`,
         'AntiochCoins.zip'

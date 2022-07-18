@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom';
 import storyRequest from 'src/api/story';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
-
 const Stories = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [stories, setStories] = useState(undefined)
 
-	const [storyReference, setStoryReference] = useState([])
-	const [storyImageSouce, setStoryImageSouce]= useState([])
+	// const [storyReference, setStoryReference] = useState([])
+	// const [storyImageSouce, setStoryImageSouce]= useState([])
 
 	useEffect(() => {
 		const fetchData = async ()=>{
@@ -66,7 +65,9 @@ const Stories = () => {
 				</Row>
 			</Container>
 		</div>
-        <Footer references={storyReference} imageReference={storyImageSouce}/>
+        {/* <Footer references={storyReference} imageReference={storyImageSouce}/> */}
+		<Footer/>
+
 		</>
 	)
 }
