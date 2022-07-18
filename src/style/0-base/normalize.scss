@@ -113,7 +113,11 @@ a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
   text-decoration: none !important;
-  color: #486678;
+  color: #78a878;
+
+  &:hover{
+    color: #487848;
+  }
 }
 
 /**
@@ -131,9 +135,8 @@ abbr[title] {
  * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
  */
 
-b,
-strong {
-  font-weight: bold !important;
+b, strong, em {
+  // font-weight: bold !important;
   color:#78a878
 }
 
@@ -141,12 +144,11 @@ strong {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-b,
-strong {
-  font-weight: bold !important;
-  color:#78a878
+// b, strong {
+//   font-weight: bold !important;
+//   color:#78a878
 
-}
+// }
 
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -196,7 +198,7 @@ sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
-  color:#7899A8
+  color:#78a878
 }
 
 sub {

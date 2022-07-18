@@ -47,11 +47,11 @@ function BootstrapNavbar() {
             <NavDropdown.Item href='/dev/Resources/Research' className='navbar-text'>Research</NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <Form style={{width: '145px', marginRight: '10px'}}>
+        {/* <Form style={{width: '145px', marginRight: '10px'}}>
           <Form.Group className='mb-1' controlId='searchbar'>
             <Form.Control size='sm'  type='search' placeholder='search' />
           </Form.Group>
-        </Form>
+        </Form> */}
       </Navbar.Collapse>
     </Navbar>
   );

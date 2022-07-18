@@ -37,6 +37,7 @@
   font-style: $syrios-font-style-normal;
   font-family: $syrios-font-family-syrios-entypo-subset;
   color: #7899a8;
+  letter-spacing: -0.2em;
 }
 // .story-text-external-link-icon {
 //   font-family: $syrios-font-family-syrios-entypo-subset;
@@ -180,18 +181,6 @@
   line-height: $syrios-line-spacing-30;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
-
-  & p {
-    font-weight: $syrios-font-weight-medium;
-
-    & strong {
-      font-weight: $syrios-font-weight-bold;
-      color: #486678;
-    }
-    & em {
-      font-style: italic;
-    }
-  }
 }
 
 .select-story-text {

@@ -103,17 +103,21 @@
   background-color: transparent;
   border: none;
   color:#78a878;
-
-  & sup{
-    color: #7899a8;
-    font-style: $syrios-font-style-normal;
-    &:hover{
-      color:#486678
-    }
-
-  }
-
   &:hover{
     color:#487848
+  }
+  
+  & sup{
+    color: #78a878;
+    font-style: $syrios-font-style-normal;
+    &:hover{color:#487848}
+  }
+}
+.glossary-tag{
+  color: #78a878;
+  text-decoration: none;
+
+  &:hover{
+    color: #487848;
   }
 }

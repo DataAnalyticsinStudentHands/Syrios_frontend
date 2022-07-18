@@ -607,9 +607,7 @@ const Timeline = () => {
   return (
     <div id='Timeline'>
       <div className='d-flex align-items-center justify-content-center' style={{position: 'relative', top: '8em'}}>
-        <p className='timeline-main-text text-center' style={{fontSize:'3em'}}>
-          TIMELINE
-        </p>
+        <p className='timeline-main-text text-center' style={{fontSize:'3em'}}>TIMELINE</p>
       </div>
       <div className='d-flex align-items-center justify-content-center timeline-description-text text-center' style={{position: 'relative', top: '6em', fontStyle:'italic'}}>
         <div dangerouslySetInnerHTML={createMarkup(timeline_description)} />
