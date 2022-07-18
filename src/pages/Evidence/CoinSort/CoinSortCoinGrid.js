@@ -91,45 +91,47 @@ export const CoinScaleAndFlip = (props) => {
     );
 
   return (
-    <div className='coin-image-box coin-sort-grid-cell-image-box'>
-      <div className='coin-info-dotted-circle' style={{height: dotted_circle_height}}/>
-      <div className='coin-info-image-diameter-box coin-info-dark-text' style={{fontSize: size_diameter_jsx}}>
-        {props.coinMetaData.diameter == null ? 'N/A' : `${props.coinMetaData.diameter}mm`}
-      </div>
-      <div className='flip-box coin-sort-grid-cell-flip-box' onClick={() => {set_show_coin_info(true)}}>
-        <div className='flip-box-inner' style={{ transform: coin_rotation }}>
-          <div className='flip-box-front'>
-            <img
-              alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
-              className='coin-info-image-flip coin-info-image-flip-front'
-              src={process.env.REACT_APP_strapiURL + props.coinMetaData.obverse_file.data.attributes.url}
-              height={img_height}
-            />
-          </div>
-          <div className='flip-box-back'>
-            <img
-              alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
-              className='coin-info-image-flip coin-info-image-flip-back'
-              src={process.env.REACT_APP_strapiURL + props.coinMetaData.reverse_file.data.attributes.url}
-              height={img_height}
-            />
+    <div id={props.id} className={props.className}>
+      <div className='coin-image-box coin-sort-grid-cell-image-box'>
+        <div className='coin-info-dotted-circle' style={{height: dotted_circle_height}}/>
+        <div className='coin-info-image-diameter-box coin-info-dark-text' style={{fontSize: size_diameter_jsx}}>
+          {props.coinMetaData.diameter == null ? 'N/A' : `${props.coinMetaData.diameter}mm`}
+        </div>
+        <div className='flip-box coin-sort-grid-cell-flip-box' onClick={() => {set_show_coin_info(true)}}>
+          <div className='flip-box-inner' style={{ transform: coin_rotation }}>
+            <div className='flip-box-front'>
+              <img
+                alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
+                className='coin-info-image-flip coin-info-image-flip-front'
+                src={process.env.REACT_APP_strapiURL + props.coinMetaData.obverse_file.data.attributes.url}
+                height={img_height}
+              />
+            </div>
+            <div className='flip-box-back'>
+              <img
+                alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
+                className='coin-info-image-flip coin-info-image-flip-back'
+                src={process.env.REACT_APP_strapiURL + props.coinMetaData.reverse_file.data.attributes.url}
+                height={img_height}
+              />
+            </div>
           </div>
         </div>
+        {/*** Scale and Rotate button. MUST be rendered after coin image ***/}
+        <div className='coin-sort-grid-cell-icons-div'>
+          <i
+            className='demo-icon coin-info-icon-rotate'
+            onClick={RotateCoin}>
+            &#xe833;
+          </i>   
+          <i
+            className='demo-icon coin-info-scale-icon'
+            onClick={ScaleCoin}>
+            &#xe834;
+          </i>
+        </div>
+        <CoinInfo onClose={CoinInfoPopupCloseHandler} show={show_coin_info} coinMetaData={props.coinMetaData} />
       </div>
-      {/*** Scale and Rotate button. MUST be rendered after coin image ***/}
-      <div className='coin-sort-grid-cell-icons-div'>
-        <i
-          className='demo-icon coin-info-icon-rotate'
-          onClick={RotateCoin}>
-          &#xe833;
-        </i>   
-        <i
-          className='demo-icon coin-info-scale-icon'
-          onClick={ScaleCoin}>
-          &#xe834;
-        </i>
-      </div>
-      <CoinInfo onClose={CoinInfoPopupCloseHandler} show={show_coin_info} coinMetaData={props.coinMetaData} />
     </div>
   );
 }
@@ -205,7 +207,11 @@ export const CoinGrid = (props) => {
     <div id='coin-sort-drag-coin-box-outer-div'>
       {(() => {
         if (coins.length === 0) {
-          return <DropBox onDragEnter={AddCoin} />;
+          return (
+            <div id='coin-sort-drag-box-full'>
+              <DropBox onDragEnter={AddCoin}/>
+            </div>
+          );
         } else {
           const FetchCoinsJSXarr = (css_id) => { 
             let jsx = coins.map((coin, index) => (
@@ -214,8 +220,10 @@ export const CoinGrid = (props) => {
 
             if (coins.length < 18) {
               jsx.push(
-                <div id={`${css_id}${jsx.length+1}`} className={`${css_id}styling`} key={jsx.length+1} style={{ height: '100%', width: '100%'}}>
-                  <DropBox onDragEnter={AddCoin}/>
+                <div id={`${css_id}${jsx.length+1}`} className={`${css_id}styling`} key={jsx.length+1}>
+                  <div className='coin-sort-drag-box-in-coin-grid'>
+                    <DropBox onDragEnter={AddCoin}/>
+                  </div>
                 </div>
             );
             }
@@ -285,4 +293,3 @@ export const CoinGrid = (props) => {
     </div>
   );
 }
-

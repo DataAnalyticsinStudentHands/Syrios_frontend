@@ -7,12 +7,20 @@
 }
 
 // ********************** DRAG COIN ON ME ********************** //
+#coin-sort-drag-box-full {
+  width: 28%;
+  height: 20vh;
+
+  display: flex;
+  justify-content: center;
+}
+
 .coin-sort-drag-coin-box {
   pointer-events: auto;
   border: 2px dashed rgb(119, 153, 168);
   background-color: rgba(119, 153, 168, 0.36);
-  width: 28%;
-  height: 20vh;
+  width: 100%;
+  height: 100%;
 
   color: #7899A8;
 
@@ -34,6 +42,8 @@
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-regular;
   font-size: 1.4em;
+
+  text-align: center;
 }
 
 .coin-sort-drag-coin-box-hover-element {
@@ -44,6 +54,11 @@
   height: 100%;
 }
 
+.coin-sort-drag-box-in-coin-grid {
+  width: 100%;
+  height: 100%;
+  font-size: .7em;
+}
 
 // ********************** GRID ARRANGMENT CSS ********************** //
 #coin-sort-grid-arrangement-wrapper {
