@@ -123,6 +123,14 @@ export const CoinScaleAndFlip = (props) => {
         </div>
         {/*** Scale and Rotate button. MUST be rendered after coin image ***/}
         <div className='coin-sort-grid-cell-icons-div'>
+          <i 
+            className='demo-icon icon-x-thin coin-info-icon-x'
+            onClick={() => {
+              props.removeCoin(props.coinId)
+            }}
+          >
+          &#xe839;
+          </i>
           <i
             className='demo-icon coin-info-icon-rotate'
             onClick={RotateCoin}>
@@ -181,6 +189,14 @@ export const CoinGrid = (props) => {
       set_coin_ids([...coin_ids, props.coinToAdd]);
   };
 
+  const RemoveCoin = (coin_id) => {
+    let new_coin_ids = JSON.parse(JSON.stringify(coin_ids));
+    let remove_value_at_index = new_coin_ids.findIndex((e) => e === coin_id);
+    new_coin_ids.splice(remove_value_at_index, 1);
+    if (remove_value_at_index !== -1)
+      set_coin_ids(new_coin_ids);
+  };
+
   const [coins, set_coins] = useState([]);
 
   useEffect(() => {
@@ -208,7 +224,7 @@ export const CoinGrid = (props) => {
   return (
     <div id='coin-sort-drag-coin-box-outer-div'>
       {(() => {
-        if (coins.length === 0) { // Draw the big drag box
+        if (coin_ids.length === 0) { // Draw the big drag box
           return (
             <div id='coin-sort-drag-box-full'>
               <DropBox onDragEnter={AddCoin}/>
@@ -222,8 +238,10 @@ export const CoinGrid = (props) => {
                 className={`${css_id}styling`} 
                 key={index}
                 coinMetaData={coin.attributes}
+                coinId={coin.id}
                 rotate={props.rotateAll}
                 scale={props.scaleAll}
+                removeCoin={RemoveCoin}
               />
             ));
 
@@ -242,22 +260,22 @@ export const CoinGrid = (props) => {
 
           // Set arrangement
           const { length } = coins;
-          let size = "";
+          let size = '';
 
           if (length === 1)
-            size = "2x1";
+            size = '2x1';
           else if (length === 2)
-            size = "3x1";
+            size = '3x1';
           else if (length === 3)
-            size = "2x2";
+            size = '2x2';
           else if (length === 4 || length === 5)
-            size = "3x2";
+            size = '3x2';
           else if (length < 19)
-            size = "6x3";
+            size = '6x3';
           else
-            console.error("No Coin arrangment with", length, "coins");
+            console.error('No Coin arrangment with', length, 'coins');
 
-          if (size === "")
+          if (size === '')
             return;
 
           // Display grid and coins + DropBox if applicable
