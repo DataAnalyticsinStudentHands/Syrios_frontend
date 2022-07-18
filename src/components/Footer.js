@@ -37,12 +37,10 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
            <Col xs={2} className='d-flex align-items-center justify-content-end'>
             {(imageReference || references) &&( imageReference.length!==0 ||references.length!==0) ?(
             <>
-              <button 
-                className='footer-text'
+              <button className='footer-text reference-tag'
                 onClick={toggleBottom}
-                >
+              >
                 CREDITS & REFERENCES <b className="story-icon" style={{color:'#ffffff'}} >&#xe80b;</b>
-
               </button>
             </>):(<></>)}
           </Col>
@@ -71,7 +69,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
         >
           <Row>
             <Col>
-              <button className='x-button' onClick={toggleBottom}> &#xe839;</button>
+              <button className='x-button reference-tag' onClick={toggleBottom}> &#xe839;</button>
             </Col>
           </Row>
           <Row className='' style={{marginLeft:'175px'}}>
