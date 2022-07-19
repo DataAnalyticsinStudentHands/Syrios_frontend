@@ -24,6 +24,7 @@
     "react-native-svg": "^12.1.1",
     "react-native-web": "^0.17.5",
     "react-player": "^2.9.0",
+    "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
     "sass": "^1.52.3",
