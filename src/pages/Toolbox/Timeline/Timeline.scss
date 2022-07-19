@@ -29,3 +29,19 @@
   letter-spacing: $syrios-character-spacing-0;
   color: $syrios-color-737271;
 }
+
+.event-tooltip{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: 18px;
+  line-height: $syrios-line-spacing-45;
+  letter-spacing: 1px;
+  color:#737271;
+
+
+}
+.tooltip-inner{
+  padding:0.25rem 2rem;
+  // background-color: rgba(0,0,0,0.9);
+}

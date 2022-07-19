@@ -2,9 +2,7 @@ import {
   Navbar,
   Nav,
   NavDropdown,
-  Form,
 } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 
 import logo from 'src/assets/logoWhiteText.svg';
 
@@ -26,12 +24,12 @@ function BootstrapNavbar() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='ms-auto navbar-text'>
+        <Nav className='ms-auto' style={{marginRight:'100px'}}>
           { /* I hate this, but I can't figure out why Nav.Link won't work */ }
           {/* Because Nav is from Bootstrap and Link is from react!!!!!!! */}
             <Nav.Link href='/dev/Stories' className='navbar-text'>STORIES</Nav.Link>
           <NavDropdown title='EVIDENCE' className='NavDropdown'>
-            <NavDropdown.Item href='/dev/Evidence/CoinSort' className='navbar-text'>Coins in a Pile</NavDropdown.Item>
+            <NavDropdown.Item href='/dev/Evidence/CoinSort' className='navbar-text '>Coins in a Pile</NavDropdown.Item>
             <NavDropdown.Item href='/dev/Evidence/MapCoins' className='navbar-text'>Coins on a Map</NavDropdown.Item>
             <NavDropdown.Item href='/dev/Evidence/CoinCatalog' className='navbar-text'>Coins in a Catalog</NavDropdown.Item>
             <NavDropdown.Item href='/dev/Evidence/Download' className='navbar-text'>Coins as Data</NavDropdown.Item>

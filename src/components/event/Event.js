@@ -26,8 +26,9 @@ const EventInfo = (props) => {
   const CloseHandler = (e) => {
     props.onClose(false);
   };
-
+  
   return (
+
     <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div id='event-info'>
         <div id='event-info-inner-div'>

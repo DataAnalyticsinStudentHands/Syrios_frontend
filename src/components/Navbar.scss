@@ -47,11 +47,11 @@
 /* editing the dropdown menu and items for navbar */
 .dropdown-menu {
 	background: url("../assets/dropdown.png");
-	min-width: 290px !important;
+	min-width: 240px !important;
 	right: 0px !important;
 	top: 3.0em !important;
 	border-radius: 0px 0px 15px 15px !important;
-	font: CormorantGaramond-SemiBold !important;
+	font-family:  $syrios-font-family-garamond-premier-pro;
 }
 
 .dropdown .dropdown-menu {
@@ -65,6 +65,7 @@
     display: block;
     overflow: hidden;
     opacity: 0;
+	margin-top: 8px;
 }
 
 .dropdown.show .dropdown-menu { /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
@@ -76,12 +77,13 @@
 	margin: 15px auto 15px auto;
 	padding: .25rem 2rem !important;
 	transition: 0.3s;
+
+	&:hover {
+		background: none !important;
+		color: #183848 !important;
+	}
 }
 
-.dropdown-item:hover {
-	background: none !important;
-	color: #183848 !important;
-}
 
 /* All text for navbar should be this format */
 .navbar-text {
@@ -97,10 +99,12 @@
   letter-spacing: $syrios-character-spacing--80;
   color: $syrios-color-ffffff;
   text-transform: $syrios-text-transform-uppercase;
-}
 
-.navbar-text:hover {
+  &:hover {
 	color: #B8CCD8 !important;
 	cursor: pointer;
-  transition: 0.3s;
+  	transition: 0.3s;
 }
+}
+
+

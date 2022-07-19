@@ -15,6 +15,8 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
 import EventInfo from 'src/components/event/Event.js';
 import { colors } from 'src/components/constants.js';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
@@ -484,10 +486,21 @@ function LoadTimelineInfo(obj) {
         event_info_arr.push(e.event);
         let size_of_event = 2.3;
 
+        const renderTooltip = (props) => (
+          <Tooltip className="event-tooltip" {...props}>
+            {e.event.data.attributes.title}
+          </Tooltip>
+        );
+
         jsx_arr.push(
+          <OverlayTrigger
+          placement="right"
+          delay={{ show: 0, hide: 5000000 }}
+          overlay={renderTooltip}
+          key={`event${e.event.data.id}`}
+        >
           <Rect
             id={e.event.data.id}
-            key={`event${e.event.data.id}`}
             className='event'
             x={e.x - size_of_event / 2}
             y={e.y + Math.abs(view_box_min_height) + y_offset - size_of_event / 2}
@@ -497,6 +510,7 @@ function LoadTimelineInfo(obj) {
             stroke='black'
             strokeWidth='0.1'
             onClick={update_event_info}/>
+            </OverlayTrigger>
         );
         break;
       default:
@@ -524,6 +538,7 @@ const Timeline = () => {
     set_show_coin_info(e);
   };
   const [coin_meta_data, set_coin_meta_data] = useState(default_coin_data);
+
   const update_coin_info = (img_dom_obj) => { // This is a function that is passed to the image comp per coin image and is called each time to update coin info if on click
     let id = parseInt(img_dom_obj.target.id);
 
@@ -533,6 +548,7 @@ const Timeline = () => {
     })[0]);
     set_show_coin_info(true);
   };
+
 
   // Event info setup here.
   const [show_event_info, set_show_event_info] = useState(false);
