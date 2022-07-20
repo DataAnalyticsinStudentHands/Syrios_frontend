@@ -68,12 +68,16 @@ const Glossary = () =>{
                                             <Col xs={2} className="glossary-alphabet d-flex justify-content-center align-items-center">
                                                 {alphabet.alphabet}
                                             </Col>
-                                            <Col xs={6}>
+                                            <Col xs={8}>
                                                 <Row className='glossary-term'>
                                                     {alphabet.data.map((item)=>{
                                                         return(
                                                             <Col xs={3} key={`${item.id}`}>
+                                                                {item.foreign ? (
+                                                                <Link className='glossary-term-a' style={{fontStyle:"italic"}} to={`/Toolbox/Glossary/term/${item.term}`}>{item.term}</Link>
+                                                                ):(
                                                                 <Link className='glossary-term-a' to={`/Toolbox/Glossary/term/${item.term}`}>{item.term}</Link>
+                                                                )}
                                                             </Col>
                                                         )
                                                     })}

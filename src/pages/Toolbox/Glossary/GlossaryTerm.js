@@ -30,9 +30,9 @@ const GlossaryTerm = () =>{
             <div className='glossary-term'>{termData.term}
                 <br/>
                 <p className='glossary-basic'>
-                    <span> {termData.type} </span> <span>&nbsp;|&nbsp;</span> 
-                    <span> {termData.syllabication} </span> <span>&nbsp;|&nbsp;</span> 
-                    <span> {termData.sounds_like} </span> 
+                    <span> {termData.type} </span>
+                    {termData.syllabication ? (<>  <span>&nbsp;|&nbsp;</span> <span> {termData.syllabication} </span></>):(<></>)}
+                    {termData.sounds_like ? (<>  <span>&nbsp;|&nbsp;</span> <span> {termData.syllabication} </span></>):(<></>)}
                 </p>
             </div>
             <br/>
@@ -61,10 +61,8 @@ const GlossaryTerm = () =>{
                 </>
             )}
 
-            {termData.context? (
-            <>
+            {termData.context? (<>
                 {termData.context.length === 0 ? (<></>):(
-                <>
                 <div className='glossary-title'>See Word in Context 
                     <br/>
                     <div className='glossary-body glossary-context-icon'>
@@ -72,8 +70,7 @@ const GlossaryTerm = () =>{
                         <span> &#xe81a;</span> */}
                         <div dangerouslySetInnerHTML={createMarkup(termData.context)}/>
                     </div>
-                </div>
-            </>)}
+                </div>)}
             </>):(<></>)}
 
         </div>

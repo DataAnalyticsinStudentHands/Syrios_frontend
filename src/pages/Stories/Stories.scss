@@ -4,19 +4,23 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  padding-top: 170px;
+  padding-top: 140px;
   padding-bottom: 70px;
   background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png?updated_at=2022-07-18T15:54:23.632Z');
   mix-blend-mode: multiply;
   background-size: cover; 
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
+
+  @media screen and (max-height: 900px) {
+    padding-top: 105px;
+  }
+
 }
 
 .select-story-div {
   width: 190px;
   height: 164px;
   transition: 0.5s;
-  
 
   &:hover{
     width: 220px;
@@ -28,7 +32,6 @@
   font-size: 15px;
   margin: 11px;
   margin-bottom: -5px !important;
-
 }
 
 #stories-page {
@@ -36,26 +39,30 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   height: 100%;
-  // background: url(src/assets/background.jpg);
-  /* background-blend-mode: multiply; */
 }
 
-.story-button {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #7899a8;
-  border-radius: 15px !important;
-  opacity: 1;
-  width: 250px;
-  height: 30px;
-  transition: 0.5s;
+// .story-button {
+//   background: #ffffff 0% 0% no-repeat padding-box;
+//   border: 1px solid #7899a8;
+//   border-radius: 15px !important;
+//   opacity: 1;
+//   width: 250px;
+//   height: 30px;
+//   transition: 0.5s;
+// }
+
+// .story-button:hover {
+//   color: #ffffff;
+//   background: #7899a8 0% 0% no-repeat padding-box;
+// }
+
+.story-image-size{
+  width: 75%;
+
+  @media screen and (max-height: 900px) {
+    width: 52.5% ;
+  }  
 }
-
-.story-button:hover {
-  color: #ffffff;
-  background: #7899a8 0% 0% no-repeat padding-box;
-}
-
-
 
 
 /******************** THIS IS FOR THE STORIES ****************/
@@ -65,13 +72,13 @@
   transition: 0.5s;
 }
 
-@media only screen and (max-width: 767px) {
-  #fp-nav ul li a span,
-  .fp-slidesNav ul li a span {
-    background: rgba(0, 0, 0, 0) !important;
-    transition: 0.5s;
-  }
-}
+// @media only screen and (max-width: 767px) {
+//   #fp-nav ul li a span,
+//   .fp-slidesNav ul li a span {
+//     background: rgba(0, 0, 0, 0) !important;
+//     transition: 0.5s;
+//   }
+// }
 
 /* This is soooo ghetto, but it works. This is how background images scale properly with fullpage.js */
 
@@ -91,7 +98,6 @@
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 2px;
-
     border: none;
     background-color: rgba(255, 255, 255, 0);
     color: #7899A8;
@@ -99,9 +105,6 @@
     &:hover{
       color: #183848
     }
-
-
-    
   }
 }
 .back-to-top-icon{
@@ -118,254 +121,8 @@
   position: absolute;
   mix-blend-mode: multiply;
 }
-/**** General classes ****/
-
-// .title-text {
-//   font-size: 76px;
-// }
-// .sub-title-text {
-//   font-size: 20px;
-// }
-// .caption-title-text {
-//   font-size: 30px;
-// }
-
-// .main-text {
-//   font-size: 40px;
-// }
-// .big-sub-text {
-//   font-size: 32px;
-// }
-// .sub-text {
-//   font-size: 24px;
-// }
-// .caption-text {
-//   font-size: 18px;
-//   margin: 11px;
-//   margin-bottom: -5px !important;
-// }
-
-.frame-image {
-  margin-bottom: 10px;
-}
-
-@media only screen and (max-width: 767px) {
-  .main-text {
-    font-size: 28px;
-  }
-  .big-sub-text {
-    font-size: 24px;
-  }
-  .sub-text {
-    font-size: 20px;
-  }
-
-  .caption-text {
-    font-size: 16px;
-    margin: 11px;
-    margin-bottom: -5px !important;
-  }
-
-  .frame-image {
-    margin-bottom: 10px;
-  }
-}
-
-.half-image-size {
-  -webkit-transform: scale(0.5); /* Saf3.1+, Chrome */
-  -moz-transform: scale(0.5); /* FF3.5+ */
-  -ms-transform: scale(0.5); /* IE9 */
-  -o-transform: scale(0.5); /* Opera 10.5+ */
-  transform: scale(0.5);
-}
-
-@media only screen and (max-width: 767px) {
-  .half-image-size {
-    -webkit-transform: scale(0.25); /* Saf3.1+, Chrome */
-    -moz-transform: scale(0.25); /* FF3.5+ */
-    -ms-transform: scale(0.25); /* IE9 */
-    -o-transform: scale(0.25); /* Opera 10.25+ */
-    transform: scale(0.25);
-  }
-
-  .frame-image {
-    width: 80% !important;
-  }
-
-  .main-text {
-    width: max(90%);
-    font-size: 25px;
-  }
-  .big-sub-text {
-    font-size: 18px;
-  }
-  .sub-text {
-    font-size: 12px;
-  }
-
-  .caption-text {
-    font-size: 8px;
-  }
-}
-
-/**** Title Frame ****/
-
-#title-image {
-  width: 300px;
-}
-
-@media only screen and (max-width: 767px) {
-  #title-image {
-    width: 150px !important;
-  }
-}
-
-/**** End Frame ****/
-
-.end-frame-button-width {
-  width: 270px;
-  /* margin: 70px; */
-}
-
-@media only screen and (max-width: 767px) {
-  .end-frame-button-width {
-    width: 100px;
-    height: auto;
-    /* margin: 10px; */
-  }
-}
-
-/* *** Frame1 ****/
-
-/**** Frame2 ****/
-
-#frame2-image {
-  width: 700px;
-}
-
-@media only screen and (max-width: 767px) {
-  #frame2-image {
-    width: 350px !important;
-  }
-}
-
-/**** Frame5 ****/
-
-#frame5-image {
-  width: 300px;
-}
-
-@media only screen and (max-width: 767px) {
-  #frame5-image {
-    width: 150px !important;
-  }
-}
-
-/**** Frame6 ****/
-
-#frame6-image {
-  width: 400px;
-}
-
-@media only screen and (max-width: 767px) {
-  #frame6-image {
-    width: 200px !important;
-  }
-}
-
-/**** Frame7 ****/
-
-#frame7-image {
-  width: 800px;
-}
-#frame7-text-bottom {
-  width: 1200px;
-}
-
-@media only screen and (max-width: 767px) {
-  #frame7-image {
-    width: 400px !important;
-  }
-  #frame7-text-bottom {
-    width: 400px;
-  }
-}
-
-/**** Frame8 ****/
-#frame8-image-title {
-  width: 1200px;
-}
-#frame8-image {
-  width: 300px;
-}
-
-@media only screen and (max-width: 767px) {
-  #frame8-image-title {
-    width: 600px;
-  }
-  #frame8-image {
-    width: 200px !important;
-  }
-}
-
-/**** Frame9 ****/
-
-#frame9-image {
-  width: 300px;
-}
-#frame9-image-middle {
-  width: 250px;
-}
-@media only screen and (max-width: 767px) {
-  #frame9-image {
-    width: 150px;
-  }
-  #frame9-image-middle {
-    width: 125px;
-  }
-}
-/**** interactive-frame2 ****/
-#interactive-frame2 {
-  width: 200px;
-}
-@media only screen and (max-width: 767px) {
-  #interactive-frame2 {
-    width: 100px;
-  }
-}
-
-/**** interactive-frame4 ****/
-#interactive-frame4-image-S {
-  width: 120px;
-}
-#interactive-frame4-image-M {
-  width: 150px;
-}
-#interactive-frame4-image-L {
-  width: 200px;
-}
-@media only screen and (max-width: 767px) {
-  #interactive-frame4-image-S {
-    width: 40px;
-  }
-  #interactive-frame4-image-M {
-    width: 60px;
-  }
-  #interactive-frame4-image-L {
-    width: 100px;
-  }
-}
-
-/**** End Frame ****/
-#are-you-ready-text {
-  font-size: 76px;
-}
 
 
-.end-frame-button-width {
-  width: 270px;
-  margin: 70px;
-}
 
 /**** Interactive_Frame1 ****/
 .sclae_front{
@@ -431,84 +188,6 @@
   bottom: 530px;
 
 }
-.interactive-frame1-image-outer-div {
-  position: relative;
-  top: 0;
-  left: 0;
-  transition: 0.3s;
-}
-
-.interactive-frame1-image-front-left {
-  max-height: 180px;
-  display: block;
-  opacity: 1;
-  transition: 0.3s;
-}
-
-.interactive-frame1-image-back-left {
-  display: none;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.interactive-frame1-image-front-right {
-  max-height: 180px;
-  display: block;
-  opacity: 1;
-  transition: 0.3s;
-}
-
-.interactive-frame1-image-back-right {
-  max-height: 180px;
-  display: none;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.interactive-frame1-text-front {
-  position: relative;
-  /* top: 10px; */
-  display: block;
-  opacity: 1;
-  transition: 0.3s;
-}
-
-.interactive-frame1-text-back {
-  position: relative;
-  /* top: 10px; */
-  display: none;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.interactive-frame1-scale-icon {
-  margin-top: 10px;
-  font-size: 80px;
-  color: #7899a8;
-  cursor: pointer;
-}
-
-.interactive-frame1-compare-scale {
-  display: block;
-  opacity: 1;
-  margin-top: -10px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 12px;
-}
-
-.interactive-frame1-reset-scale {
-  display: none;
-  opacity: 0;
-  margin-top: -10px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: 0.3s;
-}
-
-.interactive-frame1-light-blue-sizing {
-  width: auto;
-}
 
 .interactive-frame {
   display: none;
@@ -548,23 +227,4 @@
   .interactive-frame1-image-back-right {
     left: -70px !important;
   }
-}
-
-#coin-info-rotate-button {
-  position: absolute;
-  bottom: 7px;
-  right: 13%;
-  cursor: pointer;
-  font-size: 30px;
-  color: #7899a8;
-  z-index: 1000;
-}
-
-.interactive-frame5-scale-icon {
-  /* margin-top: 30px; */
-  font-size: 50px;
-  color: #7899a8;
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
 }

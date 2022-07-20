@@ -2,8 +2,7 @@ $footerHeight: 70px;
 
 :root {
   font-family: $syrios-font-family-garamond-premier-pro;
-  font-size: $syrios-font-size-15;
-  // --mainFonts: "syrios-entypo-subset", $syrios-font-family-garamond-premier-pro, EB Garamond, Georgia, serif, FreeSerif;
+  font-size: 8px;
 }
 
 html {
@@ -11,17 +10,10 @@ html {
   position: relative;
   background: url('../../assets/background.jpg'); 
 }
-// a {
-//   color:$syrios-color-487848;
-//   // text-decoration: none;
-//   &:hover{
-//     color:$syrios-color-184818;
-//   }
-// }
+
 em {
   font-style: $syrios-font-style-italic;
 }
-// need clean up later
 
 .info-icon {
   cursor: pointer;
@@ -47,13 +39,6 @@ em {
   object-fit: cover;
 }
 
-// .bland-style {
-//   text-decoration: none !important;
-//   background: transparent !important;
-//   box-shadow: 0px 0px 0px transparent !important;
-//   border: solid transparent !important;
-//   text-shadow: 0px 0px 0px transparent !important;
-// }
 
 .center-div {
   position: absolute;
@@ -63,52 +48,4 @@ em {
   transform: translateY(-50%);
 }
 
-// .orange-text {
-//   font-family: var(--mainFonts);
-//   color: #a85828;
-// }
-// .green-text{
-//   font-family: var(--mainFonts);
-//   color: #184818;
-// }
 
-// .black-text {
-//   font-family: var(--mainFonts);
-//   color: #000000;
-// }
-
-// .dark-text {
-//   font-family: var(--mainFonts);
-//   color: #313029;
-// }
-
-// .blue-text {
-//   font-family: var(--mainFonts);
-//   color: #486678;
-// }
-
-// .dark-blue-text {
-//   font-family: var(--mainFonts);
-//   color: #173847;
-// }
-
-// .gray-text {
-//   font-family: var(--mainFonts);
-//   color: #737271;
-// }
-
-// .white-text {
-//   font-family: var(--mainFonts);
-//   color: #ffffff;
-// }
-
-// .bold-white-text {
-//   font-family: var(--mainFonts);
-//   color: #ffffff;
-//   font-weight: bold;
-// }
-
-
-// li p {
-//   white-space: nowrap;
-// }

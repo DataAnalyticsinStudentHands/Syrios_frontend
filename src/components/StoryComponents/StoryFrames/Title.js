@@ -24,21 +24,21 @@ const Title = (props) => {
               />
             </Row>
             {/* {title} */}
-            <Row className='mt-5'>
+            <Row className='mt-3'>
               <ReactMarkdown className='story-h1  text-center'>
                 {zone.title}
               </ReactMarkdown>
             </Row>
 
             {/* {subtitle} */}
-            <Row className='mb-5'>
+            <Row className='mb-3'>
               <ReactMarkdown className='story-h4 text-center'>
                 {zone.subtitle}
               </ReactMarkdown>
             </Row>
 
             {/* {caption} */}
-            <Row className='mt-5 '>
+            <Row className='mt-3 '>
               <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.caption)} className='story-h3 text-center'/>
             </Row>
         </Container>

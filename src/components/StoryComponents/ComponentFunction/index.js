@@ -55,24 +55,24 @@ export const TextComponent = (props)=>{
 export const ImageComponent =(props)=>{
 
   let image = props.image
-  let image_sizes = {
-    "Smallest": "25%",
-    "Smaller": "50%",
-    "Small": "75%",
-    "Regular": "100%",
-    "Big": "125%",
-    "Bigger": "150%",
-    "Bigest": "175%",
-  };
-  let caption_padding = {
-    "Smallest": "20px 37% 0%",
-    "Smaller": "20px 25% 0%",
-    "Small": "20px 15% 0%",
-    "Regular": "20px 5% 0%",
-    "Big": "",
-    "Bigger": "",
-    "Bigest": "",
-  };
+  // let image_sizes = {
+  //   "Smallest": "25%",
+  //   "Smaller": "50%",
+  //   "Small": "75%",
+  //   "Regular": "100%",
+  //   "Big": "125%",
+  //   "Bigger": "150%",
+  //   "Bigest": "175%",
+  // };
+  // let caption_padding = {
+  //   "Smallest": "20px 37% 0%",
+  //   "Smaller": "20px 25% 0%",
+  //   "Small": "20px 15% 0%",
+  //   "Regular": "20px 5% 0%",
+  //   "Big": "",
+  //   "Bigger": "",
+  //   "Bigest": "",
+  // };
   let component_background = {
     "null":'',
     "light-blue-background":"light-blue-background",
@@ -82,24 +82,21 @@ export const ImageComponent =(props)=>{
   if((image.image.data === null)){
     if(image.reverse_or_obverse){
         return(
-          <Col 
-            className={`${image.caption_or_both? component_background[image.background_color]:""}`}
-          >
+          <Col className={`${image.caption_or_both? component_background[image.background_color]:""}`}>
             <Row className={`justify-content-center align-items-center`}>
               <a href={`${image.coin.data.attributes.source_image}`} target="_blank" rel="noopener noreferrer" className="text-center">
                 <img
                   src={`${process.env.REACT_APP_strapiURL}${image.coin.data.attributes.obverse_file.data.attributes.url}`}            
                   alt={image.coin.data.attributes.obverse_file.data.alternativeText === undefined ? 'img' : image.coin.data.attributes.obverse_file.data.alternativeText}
-                  style={{width:image_sizes[image.size]}}
-                  className="mb-1"
+                  className="mb-1 story-image-size"
                 />
               </a>
             </Row>
             <Row className={`justify-content-center align-items-center`} >
               <div 
                 onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-                className={`story-caption text-center ${image.caption_or_both? "":component_background[image.background_color]}`}
-                style={{padding: caption_padding[image.size]}}
+                className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
+                // style={{padding: caption_padding[image.size]}}
                 />
             </Row>
           </Col>
@@ -107,24 +104,21 @@ export const ImageComponent =(props)=>{
     }
     else{
       return(
-        <Col 
-          className={` ${image.caption_or_both? component_background[image.background_color]:""}`}
-        >
+        <Col className={` ${image.caption_or_both? component_background[image.background_color]:""}`}>
           <Row className='justify-content-center align-items-center'>
             <a href={`${image.coin.data.attributes.source_image}`} target="_blank" rel="noopener noreferrer" className="text-center">
               <img
                 src={`${process.env.REACT_APP_strapiURL}${image.coin.data.attributes.reverse_file.data.attributes.url}`}            
                 alt={image.coin.data.attributes.obverse_file.data.alternativeText === undefined ? 'img' : image.coin.data.attributes.reverse_file.data.alternativeText}
-                style={{width:image_sizes[image.size]}}
-                className="mb-1"
+                className="mb-1 story-image-size"
               />
             </a>
           </Row>
           <Row className='justify-content-center align-items-center'>
               <div 
                 onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-                className={`story-caption text-center ${image.caption_or_both? "":component_background[image.background_color]}`}
-                style={{padding: caption_padding[image.size]}}
+                className={`story-caption text-center mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
+                // style={{padding: "2e"}}
               />
           </Row>
         </Col>
@@ -132,26 +126,23 @@ export const ImageComponent =(props)=>{
     }
   }
   else{
-    if(IsEmptyOrWhiteSpace(image.additional_link)){
+    if(image.additional_link === null){
       return(
         <Col 
-        className={`${image.caption_or_both? component_background[image.background_color]:""}`}
-      >
+        className={`${image.caption_or_both? component_background[image.background_color]:""}`}>
         <Row className='d-flex justify-content-center align-items-center'>
-          <a href={`${image.additional_link}`} target="_blank" rel="noopener noreferrer" className="text-center">
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
               alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-              style={{width:image_sizes[image.size]}}
-              className="mb-1"
+              // style={{width:image_sizes[image.size]}}
+              className="mb-1 story-image-size"
             />
-          </a>
         </Row>
         <Row className={`d-flex justify-content-center align-items-center`} >
           <div 
             onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-            className={`story-caption text-center ${image.caption_or_both? "":component_background[image.background_color]}`}
-            style={{padding: caption_padding[image.size]}}
+            className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
+            // style={{padding: caption_padding[image.size]}}
           />
         </Row>
       </Col>
@@ -161,18 +152,20 @@ export const ImageComponent =(props)=>{
       return(
         <Col className={`${image.caption_or_both? component_background[image.background_color]:""}`}>
           <Row className='d-flex justify-content-center align-items-center'>
+            <a href={`${image.additional_link}`} target="_blank" rel="noopener noreferrer" className="text-center">
               <img
                 src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
                 alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-                style={{width:image_sizes[image.size]}}
-                className="mb-1"
+                // style={{width:image_sizes[image.size]}}
+                className="mb-1 story-image-size"
               />
+            </a>
           </Row>
           <Row className={`d-flex justify-content-center align-items-center`} >
             <div 
               onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-              className={`story-caption text-center ${image.caption_or_both? "":component_background[image.background_color]}`}
-              style={{padding: caption_padding[image.size]}}
+              className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
+              // style={{padding: caption_padding[image.size]}}
             />
           </Row>
         </Col>
@@ -196,7 +189,7 @@ export const ImagesComponent = (props)=>{
   else if (props.images.length==3){
     props.images.forEach((image)=>{
       imageJsx.push(
-        <Col key={image.id} xs={3}>
+        <Col key={image.id} xs={4}>
           <ImageComponent toggleBottom={props.toggleBottom} image={image}/>
         </Col>
       );
@@ -206,7 +199,7 @@ export const ImagesComponent = (props)=>{
   else if (props.images.length==1){
     props.images.forEach((image)=>{
       imageJsx.push(
-        <Col key={image.id} xs={6}>
+        <Col key={image.id} xs={12}>
           <ImageComponent toggleBottom={props.toggleBottom} image={image}/>
         </Col>
       );

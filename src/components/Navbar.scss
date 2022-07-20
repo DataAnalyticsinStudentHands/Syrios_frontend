@@ -17,40 +17,36 @@
 
 /* General navbar styling */
 .navbar-dark .navbar-nav .nav-link {
-	color: white !important;
-	margin: 0px 15px 0px 15px !important;
+	color: white;
+	margin: 0px 1em ;
+
+	&:hover{
+		color: #B8CCD8 ;
+	}
 }
 
-.navbar-dark:hover .navbar-nav:hover .nav-link:hover {
-	color: #B8CCD8 !important;
-}
 
 .navbar-brand {
 	transition: 0.5s;
-}
-
-.navbar-brand:hover {
-	box-shadow: 0px 0px 60px #24201659;
-	transition: 0.5s;
-}
-
-/* For mobile. Changing how the toggler looks */
-.navbar-toggler {
-	border: none !important;
-}
-
-@media only screen and (max-width: 767px) {
-	.navbar-collapse {
-		background: #7899A8 !important;
+	&:hover{
+		box-shadow: 0px 0px 60px #24201659;
+		transition: 0.5s;
 	}
 }
+
+// @media only screen and (max-width: 767px) {
+// 	.navbar-collapse {
+// 		background: #7899A8 !important;
+// 	}
+// }
 /* editing the dropdown menu and items for navbar */
 .dropdown-menu {
 	background: url("../assets/dropdown.png");
-	min-width: 240px !important;
-	right: 0px !important;
-	top: 3.0em !important;
-	border-radius: 0px 0px 15px 15px !important;
+	background-size: cover;
+	min-width: 240px;
+	// right: 0px !important;
+	// top: 70px ;
+	border-radius: 0px 0px 15px 15px;
 	font-family:  $syrios-font-family-garamond-premier-pro;
 }
 
@@ -65,7 +61,7 @@
     display: block;
     overflow: hidden;
     opacity: 0;
-	margin-top: 8px;
+	margin-top: 18px;
 }
 
 .dropdown.show .dropdown-menu { /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
@@ -73,38 +69,19 @@
     opacity: 1;
 }
 .dropdown-item {
-	color: white !important;
-	margin: 15px auto 15px auto;
-	padding: .25rem 2rem !important;
+	color: white ;
+	margin: 2em auto;
+	padding: .25rem 2rem ;
 	transition: 0.3s;
 
 	&:hover {
-		background: none !important;
-		color: #183848 !important;
+		background: none;
+		color: #183848;
 	}
 }
 
 
 /* All text for navbar should be this format */
-.navbar-text {
-	// text-align: center;
-	opacity: 1;
-  	transition: 0.3s;
-  
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: 16px;
-  line-height: $syrios-line-spacing-17;
-  letter-spacing: $syrios-character-spacing--80;
-  color: $syrios-color-ffffff;
-  text-transform: $syrios-text-transform-uppercase;
 
-  &:hover {
-	color: #B8CCD8 !important;
-	cursor: pointer;
-  	transition: 0.3s;
-}
-}
 
 

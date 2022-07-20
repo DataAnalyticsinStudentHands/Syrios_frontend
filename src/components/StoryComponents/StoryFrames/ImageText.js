@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col } from "react-bootstrap"
 import { HeadComponent, TextComponent, ImageComponent } from "../ComponentFunction/index";
@@ -12,9 +11,7 @@ const ImageText = (props) =>{
   };
   let zone= props.zone
   return(
-    <div 
-      className='section' 
-      style={{ 
+    <div className='section' style={{ 
         backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
         backgroundBlendMode:'multiply'
       }}
@@ -47,7 +44,7 @@ const ImageText = (props) =>{
           {zone.left_right_switch ?(
             <>
               <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
-              <Col><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
+              <Col ><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
             </>
           ):(
             <>

@@ -49,7 +49,7 @@ const About = () => {
             <Row className='my-5'><Col className='story-h2 text-center'>Project Directors</Col></Row>
             {aboutUsData.project_directors.map((director)=>{
               return(
-                <Row key={`ProjectDirectors_${director.id}`}>
+                <Row key={`ProjectDirectors_${director.id}`} className='my-5'>
                   <Col xs={3} className='d-flex align-items-center'>
                     <div className='about-member-pictures-outline'>
                       <div className='about-member-pictures'>
@@ -73,7 +73,7 @@ const About = () => {
             <Row className='my-5'> <Col className='story-h2 my-5 text-center about-digital-team'>Digital Team and Media Directors</Col></Row>
             {aboutUsData.media_content_team.map((team)=>{
               return(
-                <Row key={`media_content_team_${team.id}`}>
+                <Row key={`media_content_team_${team.id}`} className='my-5'>
                   <Col xs={3} className='d-flex align-items-center'>
                     <div className='about-member-pictures-outline'>
                       <div className='about-member-pictures'>

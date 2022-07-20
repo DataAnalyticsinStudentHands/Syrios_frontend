@@ -34,7 +34,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
        </a>
          <Row id='footer-links' className='d-flex justify-content-end align-items-center mx-5'>
            {/* CREDITS & REFERENCES */}
-           <Col xs={2} className='d-flex align-items-center justify-content-end'>
+           <Col xs={2} className='d-flex align-items-center justify-content-end mx-5'>
             {(imageReference || references) &&( imageReference.length!==0 ||references.length!==0) ?(
             <>
               <button className='footer-text reference-tag'
@@ -45,13 +45,13 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
             </>):(<></>)}
           </Col>
           {/* ABOUT US */}
-          <Col xs={1} className='d-flex align-items-center justify-content-end'>
+          <Col xs={1} className='d-flex align-items-center justify-content-end mx-5'>
             <Link to='/About' className='footer-text'>
                 ABOUT US
             </Link>
           </Col>
           {/* CONTACT US */}
-          <Col xs={1} className='d-flex align-items-center justify-content-end'>
+          <Col xs={1} className='d-flex align-items-center justify-content-end mx-5'>
             <Link to='/ContactUs' className='footer-text'>
                 CONTACT US
             </Link>
@@ -77,34 +77,30 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
             <>
               <Col xs={4}>
                 <Row style={{marginTop:'45px'}}>
-                  <Col className='references-h3'>Coin Images Courtesy of:</Col>
+                  <Col className='references-h3 mb-3'>Coin Images Courtesy of:</Col>
                 </Row>
-                <Row className='d-flex references-text mt-3'>
                   {imageReference.map((ref,index)=>{
                     return(
-                      <Row key={index}>
+                      <Row key={index} className='d-flex references-text mt-3'>
                         <Col xs={1} className="story-icon my-2" style={{color:'#b9ccd7', fontSize:'20px'}} >&#xe818;</Col>
                         <Col xs={11} className='my-2'><a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}</a></Col>
                       </Row>
                     )})}
-                </Row>
               </Col>
             </>)}
             {references.length ===0 ?(<></>):(
             <>
               <Col xs={6}>
               <Row style={{marginTop:'45px'}}>
-                <Col className='references-h3 mx-4'>To read more, check these out:</Col>
+                <Col className='references-h3 mx-4 mb-3'>To read more, check these out:</Col>
               </Row>
-              <Row className='d-flex references-text mt-3 '>
-                  {references.map((ref,index)=>{
-                    return(
-                      <Row key={index}>
-                      <Col xs={1} className='d-flex justify-content-end mt-1 references-text-ordered-list-number' >[{index+1}]</Col>
+                {references.map((ref,index)=>{
+                  return(
+                    <Row key={index} className='d-flex references-text mt-3'>
+                      <Col xs={1} className='d-flex justify-content-end mt-1' >[{index+1}]</Col>
                       <Col xs={11} className='d-flex justify-content-start'  dangerouslySetInnerHTML={createMarkup(ref)}/>
                     </Row>
-                    )})}
-              </Row>
+                  )})}
             </Col>
             </>)}
           </Row>

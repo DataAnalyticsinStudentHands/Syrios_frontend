@@ -24,6 +24,13 @@
     color: #ffffff;
     background: #7899a8 0% 0% no-repeat padding-box;
   }
+
+  @media screen and (max-width: 1440px) {
+    width:  450px * 0.75 ;
+    height: 60px * 0.75;
+    font-size: $syrios-font-size-30 *0.75;
+
+  }  
 }
 
 .story-frame14-button{

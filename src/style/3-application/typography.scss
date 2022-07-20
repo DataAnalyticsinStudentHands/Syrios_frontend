@@ -1,7 +1,29 @@
 /* Character Styles */
 // @import '../0-base/_base-dir.scss';
+@use "sass:math";
+
 @import '../1-themes/_themes-dir.scss'; //color font
 // @import '../2-foundations/_foundations-dir.scss'; //spacing
+
+
+.landing-buttons-text {
+	text-align: center;
+	text-decoration: none !important;
+  
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-semi-bold;
+  font-size: $syrios-font-size-32;
+  line-height: $syrios-line-spacing-30;
+  letter-spacing: $syrios-character-spacing-0;
+  color: $syrios-color-ffffff;
+
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-30 * 0.75 ;
+    line-height: $syrios-line-spacing-30 * 0.75;
+
+  }
+}
 
 .quote-text {
   font-family: $syrios-garamond-premier-pro-caption;
@@ -11,6 +33,12 @@
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
+
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-40 * 0.75 ;
+    line-height: $syrios-line-spacing-45 * 0.75;
+
+  }
 }
 .quote-credit {
   font-family: $syrios-font-family-garamond-premier-pro;
@@ -20,17 +48,28 @@
   line-height: $syrios-line-spacing-30;
   letter-spacing: $syrios-character-spacing--05;
   color: #737271;
+
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-20 * 0.75 ;
+    line-height: $syrios-line-spacing-30 * 0.75;
+
+  }
+
 }
 
 .story-caption {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-regular;
-  font-size: 18px;
+  font-size: $syrios-font-size-18;
   line-height: $syrios-line-spacing-20;
   letter-spacing: $syrios-character-spacing-0;
   color: #737271;
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-18 * 0.75 ;
+    line-height: $syrios-line-spacing-20 * 0.75;
 
+  }
 }
 
 .story-icon{
@@ -39,88 +78,82 @@
   color: #7899a8;
   letter-spacing: -0.2em;
 }
-// .story-text-external-link-icon {
-//   font-family: $syrios-font-family-syrios-entypo-subset;
-//   color: #7899a8;
-// }
-// .story-text-definition-icon {
-//   font-family: $syrios-font-family-syrios-entypo-subset;
-//   color: #7899a8;
-// }
-// .story-caption-external-link-icon {
-//   font-family: $syrios-font-family-syrios-entypo-subset;
-//   color: #7899a8;
-// }
 
-// .story-text-footnote-link {
-//   color: #7899a8;
-// }
-// .story-text-link {
-//   font-family: $syrios-garamond-premier-pro;
-//   font-style: $syrios-font-style-normal;
-//   font-weight: $syrios-font-weight-regular;
-//   font-size: $syrios-font-size-25;
-//   line-height: $syrios-line-spacing-30;
-//   letter-spacing: $syrios-character-spacing-0;
-//   color: #183848;
-//   text-decoration: $syrios-decoration-underline;
-// }
-// .story-bullets {
-//   font-family: $syrios-garamond-premier-pro;
-//   font-style: $syrios-font-style-normal;
-//   font-weight: $syrios-font-weight-regular;
-//   font-size: $syrios-font-size-20;
-//   line-height: $syrios-line-spacing-20;
-//   letter-spacing: $syrios-character-spacing-0;
-//   color: #737271;
-// }
+.scale-icon{
+  position:fixed;
+  z-index: 3;
+  font-size: 12em;
+  cursor: pointer;
+}
+.scale-text{
+  position:fixed;
+  z-index: 3;
+  margin-top: 15em;
+
+  .scale-text-front{
+    display: block;
+    opacity: 1;
+    transition: 0.3s;
+  }
+  .scale-text-back{
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+  }
+}
+
 .story-text {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-25;
+  font-size: $syrios-font-size-24;
   line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
+  letter-spacing: $syrios-character-spacing--05;
   color: #737271;
   & p {
-    & strong{
-      font-family: $syrios-garamond-premier-pro-caption;
-      // font-style: $syrios-font-style-italic;
-    }
-
+    & strong{font-family: $syrios-garamond-premier-pro-caption;}
   }
   a{
     color: #183848;
     text-decoration: $syrios-decoration-underline !important;
+  }
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-24 * 0.75 ;
+    line-height: $syrios-line-spacing-30 * 0.75;
+
   }
 }
 .story-h1 {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
   font-weight: 300;
-  font-size: $syrios-font-size-140;
+  font-size: $syrios-font-size-144;
   // line-height: $syrios-line-spacing-75;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
+
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-144 * 0.75 ;
+  }
+
+ 
 }
+
 .story-h2 {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-light;
-  font-size: $syrios-font-size-70;
-  line-height: $syrios-line-spacing-75;
+  font-size: $syrios-font-size-64;
+  line-height: 1em;
   letter-spacing: $syrios-character-spacing-0;
   color: #a85828;
+
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-64 * 0.75 ;
+    line-height: 1em * 0.75;
+  }
 }
-// .story-h2-keyword {
-//   font-family: $syrios-font-family-garamondpremrpro-ltdisp;
-//   font-style: $syrios-font-style-italic;
-//   font-weight: $syrios-font-weight-bold;
-//   font-size: $syrios-font-size-70;
-//   line-height: $syrios-line-spacing-75;
-//   letter-spacing: $syrios-character-spacing-0;
-//   color: #a85828;
-// }
+
 .story-h3 {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
@@ -129,6 +162,12 @@
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
   color: #737271;
+
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-40 * 0.75 ;
+    line-height: $syrios-line-spacing-45 * 0.75;
+
+  }
 }
 
 .story-h3-blue {
@@ -139,17 +178,12 @@
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-40 * 0.75 ;
+    line-height: $syrios-line-spacing-45 * 0.75;
+  }
 }
 
-// .story-h3-keyword {
-//   font-family: $syrios-garamond-premier-pro;
-//   font-style: $syrios-font-style-italic;
-//   font-weight: $syrios-font-weight-semi-bold;
-//   font-size: $syrios-font-size-40;
-//   line-height: $syrios-line-spacing-45;
-//   letter-spacing: $syrios-character-spacing-0;
-//   color: #183848;
-// }
 .story-h4 {
   font-family: $syrios-garamond-premier-pro-subhead;
   font-style: $syrios-font-style-normal;
@@ -159,132 +193,128 @@
   letter-spacing: $syrios-character-spacing-0;
   color: #a86818;
   text-transform: $syrios-text-transform-uppercase;
+
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-20 * 0.75 ;
+    line-height: $syrios-line-spacing-25 * 0.75;
+
+  }
 }
 
 
 
-.story-nav-text {
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-14;
-  line-height: $syrios-line-spacing-17;
-  letter-spacing: $syrios-character-spacing--80;
-  color: #ffffff;
-  text-transform: $syrios-text-transform-uppercase;
-}
+// .story-nav-text {
+//   font-family: $syrios-garamond-premier-pro-caption;
+//   font-style: $syrios-font-style-normal;
+//   font-weight: $syrios-font-weight-medium;
+//   font-size: $syrios-font-size-14;
+//   line-height: $syrios-line-spacing-17;
+//   letter-spacing: $syrios-character-spacing--80;
+//   color: #ffffff;
+//   text-transform: $syrios-text-transform-uppercase;
+
+// }
 
 .landing-text{
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
-  font-size: $syrios-font-size-23;
+  font-size: $syrios-font-size-24;
   line-height: $syrios-line-spacing-30;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-24 * 0.75 ;
+    line-height: $syrios-line-spacing-30 * 0.75;
+
+  }
 }
 
 .select-story-text {
   font-family: $syrios-garamond-premier-pro-subhead;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-15;
+  font-size: $syrios-font-size-16;
   line-height: $syrios-line-spacing-25;
   letter-spacing: $syrios-character-spacing--20;
   color: #a86818;
   margin: 11px;
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-24 * 0.75 ;
+    letter-spacing: $syrios-character-spacing--20 * 0.75 ;
+    line-height: $syrios-line-spacing-25 * 0.75;
+
+  }
 }
 
 
 // References
-.references-text-icon {
-  font-family: $syrios-font-family-syrios-entypo-subset;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-15;
-  letter-spacing: $syrios-character-spacing--20;
-  color: #b9ccd7;
-}
-.references-text-ordered-list-number {
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-bold;
-  font-size: $syrios-font-size-15;
-  line-height: $syrios-line-spacing-15;
-  letter-spacing: $syrios-character-spacing--10;
-  color: #1a3847;
-}
+
+// .references-text-ordered-list-number {
+//   font-family: $syrios-garamond-premier-pro-caption;
+//   font-style: $syrios-font-style-normal;
+//   font-weight: $syrios-font-weight-bold;
+//   font-size: $syrios-font-size-16;
+//   line-height: $syrios-line-spacing-15;
+//   letter-spacing: $syrios-character-spacing--10;
+//   color: #1a3847;
+
+//   @media screen and (max-width: 1440px) {
+//     font-size:  $syrios-font-size-16 * 0.75 ;
+//     line-height: $syrios-line-spacing-15 * 0.75;
+//     letter-spacing: $syrios-character-spacing--10 * 0.75 ;
+//   }
+  
+// }
 .references-text {
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-normal;
-  font-size: 16px;
+  font-size: $syrios-font-size-18;
   line-height: $syrios-line-spacing-15;
   letter-spacing: $syrios-character-spacing--10;
   color: #183848;
 
   & a {
     color: #183848;
+    &:hover{
+      color:#183848
+    }
   }
 
-  // & ul {
-  //   list-style: none;
-  //   padding: 0;
-  //   & li{
-  //     padding-left: 1.3em;
-  //     font-family: $syrios-garamond-premier-pro-caption;
-  //     font-style: $syrios-font-style-normal;
-  //     font-weight: $syrios-font-weight-normal;
-  //     font-size: $syrios-font-size-15;
-  //     line-height: $syrios-line-spacing-15;
-  //     letter-spacing: $syrios-character-spacing--10;
-  //     color: #183848;
-  //   }
-  //   & li::before{
-  //     content: '\e818';
-  //     display: inline-block;
-  //     margin-left: -1.3em; /* same as padding-left set on li */
-  //     width: 1.3em; /* same as padding-left set on li */
-  //     font-family: $syrios-font-family-syrios-entypo-subset;
-  //     color: #b9ccd7;
-  //     font-size: $syrios-font-size-20;
-  //   }
-
-  // }
-  // & ol{
-  //   list-style: none;
-  //   // counter-reset: item;
-  //   & li{
-  //     // counter-increment: item;
-  //     margin-bottom: 5px;
-  //   }
-  //   & li::before{
-  //     // margin-right: 10px;
-  //     content: counter(item);
-  //     width: 1.2em;
-  //     text-align: center;
-  //     display: inline-block;
-  //   }
-  // }
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-18 * 0.75 ;
+    line-height: $syrios-line-spacing-15 * 0.75;
+    letter-spacing: $syrios-character-spacing--10 * 0.75 ;
+  }
 }
 .references-h3 {
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-25;
+  font-size: $syrios-font-size-32;
   line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
   color: #ffffff;
+
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-32 * 0.75 ;
+    line-height: $syrios-line-spacing-30 * 0.75;
+  }  
 }
 
 .icon-caption{
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-15;
+  font-size: $syrios-font-size-20;
   line-height: $syrios-line-spacing-20;
   letter-spacing: $syrios-character-spacing--50;
   color: #a86818;
+
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-20 * 0.75 ;
+    line-height: $syrios-line-spacing-20 * 0.75;
+    letter-spacing: $syrios-character-spacing--50 * 0.75 ;
+  }  
 }
 
 .footer-text {
@@ -295,14 +325,48 @@
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-14;
+  font-size: $syrios-font-size-18;
   line-height: $syrios-line-spacing-17;
   letter-spacing: $syrios-character-spacing--80;
   color: $syrios-color-ffffff;
   text-transform: $syrios-text-transform-uppercase;
+  &:hover {
+    color: #b8ccd8;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1440px) {
+    font-size: $syrios-font-size-18 * 0.75;
+    line-height: $syrios-line-spacing-17 * 0.75;
+    letter-spacing: $syrios-character-spacing--80 * 0.75;
+  }  
 }
 
-.footer-text:hover {
-  color: #b8ccd8 !important;
-  cursor: pointer;
+
+
+
+.navbar-text {
+	// text-align: center;
+	opacity: 1;
+  transition: 0.3s;
+  
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  font-size: $syrios-font-size-18;
+  line-height: $syrios-line-spacing-17;
+  letter-spacing: $syrios-character-spacing--80;
+  color: $syrios-color-ffffff;
+  text-transform: $syrios-text-transform-uppercase;
+
+  &:hover {
+    color: #B8CCD8;
+    cursor: pointer;
+      transition: 0.3s;
+  }
+  @media screen and (max-width: 1440px) {
+    font-size:  $syrios-font-size-18 * 0.75 ;
+    line-height: $syrios-line-spacing-17 * 0.75;
+    letter-spacing: $syrios-character-spacing--80 * 0.75;
+  }  
 }

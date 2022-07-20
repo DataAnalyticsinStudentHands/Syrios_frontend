@@ -130,7 +130,7 @@ function Download(){
                 <Row className=''>
                   <img
                     alt={downloadPageData.image.data.attributes.alternativeText}
-                    className='frame-image'
+                    className=''
                     src={`${process.env.REACT_APP_strapiURL}${downloadPageData.image.data.attributes.url}`}
                   />
                 </Row>

@@ -44,94 +44,71 @@ function LandingPage() {
     <>
       <div id='landing-page' className='d-flex align-items-center'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
-        <Container style={{height: '640px', paddingTop: '1em'}}>
+        <Container>
           <Row container='justify-content-md-center'>
             {/* This is the title text in orage */}
             <Col>
-              <div className='story-h2 text-center'>
-                <ReactMarkdown>
+                <ReactMarkdown className='story-h2 text-center mb-5'>
                   {landingData.title}
                 </ReactMarkdown>
-              </div>
             </Col>
           </Row>
-          <Row container='justify-content-md-center'>
+          <Row container='d-flex justify-content-around mt-5'>
             {/* This is the video */}
-            <Col>
-              <div id='landing-video'>
-                <div id='landing-video-size'>
+            <Col xs={12} sm={7} md={8} id='landing-video'>
                   <ReactPlayer 
                     width='100%'
+                    height="100%"
                     // width='930px'
                     // height='523px'
                     url={landingData.video_link} />
-                </div>
-              </div>
             </Col>
-            <Col>
-              {/* Introduced a new container for the 4 buttons that way I can easily split the 4 buttons and have them spaced from eachother well*/}
-              <Container style={{position: 'relative', left: '-20px', top: '-5px'}}>
-                <Row>
+            <Col xs={12} sm={5} md={4}>
+                <Row className='d-flex justify-content-around align-items-center'>
                   {/* How to Read a Coin */}
-                  <Col>
-                    <div className='bg-white landing-button-size'>
+                  <Col xs={5} className='bg-white landing-button-size d-flex justify-content-around mb-3'>
                       <Link to='/HowToReadACoin'>
-                        <div className='landing-button-img' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
-                          <div className='on-hover-dim'>
-                            <p className='landing-buttons-text'>
+                        <div className='landing-button-img ' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
+                          <div className='on-hover-dim landing-buttons-text m-1'>
                               How to Read a Coin
-                            </p>
                           </div>
                         </div>
                       </Link>
-                    </div>
                   </Col>
                   {/* Discover Stories from Coins */}
-                  <Col>
-                    <div className='bg-white landing-button-size'>
+                  <Col xs={5} className='bg-white landing-button-size d-flex justify-content-around mb-3'>
                       <Link to='/Stories'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
-                          <div className='on-hover-dim'>
-                            <p className='landing-buttons-text'>
+                          <div className='on-hover-dim landing-buttons-text m-1'>
                               Discover Stories from Coins
-                            </p>
                           </div>
                         </div>
                       </Link>
-                    </div>
                   </Col>
                 </Row>
-                <Row>
+                <Row className='d-flex justify-content-around align-items-center mt-3'>
                   {/* Explore the Evidence */}
-                  <Col>
-                    <div className='bg-white landing-button-size'>
+                  <Col xs={5} className='bg-white landing-button-size d-flex justify-content-around mt-3'>
                       <Link to='/Evidence'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
-                          <div className='on-hover-dim'>
-                            <p className='landing-buttons-text'>
+                          <div className='on-hover-dim landing-buttons-text m-1'>
                               Explore the Evidence
-                            </p>
                           </div>
                         </div>
                       </Link>
-                    </div>
                   </Col>
                   {/* Open the Historian's Toolbox */}
-                  <Col>
-                    <div className='bg-white landing-button-size'>
+                  <Col xs={5} className='bg-white landing-button-size d-flex justify-content-around mt-3'>
                       <Link to='/Toolbox'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
-                          <div className='on-hover-dim'>
-                            <p className='landing-buttons-text'>
+                          <div className='on-hover-dim landing-buttons-text m-1'>
                               Open the Historian's Toolbox
-                            </p>
                           </div>
                         </div>
                       </Link>
-                    </div>
                   </Col>
                 </Row>
-              </Container>
+              {/* </Container> */}
             </Col>
           </Row>
           {/* Landing paragraph */}

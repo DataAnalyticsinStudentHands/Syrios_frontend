@@ -141,24 +141,24 @@ const ScaleFrame = (props) =>{
             </Row>
             <Row>
               <Col className='d-flex align-items-center justify-content-center '>
-                <i className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
+                <i className='story-icon scale-icon'
                   onClick={(e)=> {
                     let dom = e.target.parentElement.parentElement.parentElement.childNodes[2].childNodes
                       ScaleInOut(dom[0])
                       ScaleInOut(dom[1])
                       ScaleInOut(dom[2])
+                      ScaleInOut(e.target.nextSibling)
+                      ScaleInOut(e.target.nextSibling)
                   }}
                 >&#xe834;</i>
-              </Col>
-            </Row>
-            <Row>
-              <Col className='d-flex align-items-center justify-content-center'>
-                <p className='icon-caption interactive-frame1-compare-scale'>
-                  Compare Scale
-                </p>
-                <p className='icon-caption interactive-frame1-reset-scale'>
-                  Reset Scale
-                </p>
+                <div className='scale-text'>
+                  <p className='icon-caption text-center scale-text-front'>
+                    Compare Scale
+                  </p>
+                  <p className='icon-caption text-center scale-text-back'>
+                    Reset Scale
+                  </p>
+                </div>
               </Col>
             </Row>
         </Container>

@@ -12,13 +12,13 @@
 
 #landing-video {
 	background: white;
-	padding: .4em 1.1em .4em 1.2em;
+	padding: 1em;
 	box-shadow: 0px 0px 20px #24201659;
 }
 
-#landing-video-size {
-	width: 780px;
-}
+// #landing-video-size {
+// 	width: 780px;
+// }
 
 // @media only screen and (max-width: 767px) and (min-width: 580px) {
 // 	#landing-video-size {
@@ -46,38 +46,25 @@
 // 	}
 // }
 
-.landing-buttons-text {
-	text-align: center;
-	font-size: 1.2em;
-	text-decoration: none !important;
-	color: white;
-  margin: 10px;
-  
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-25;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-ffffff;
-}
+
 
 .landing-button-size {
 	position: relative;
-	top: 0px;
-	left: 0px;
+	// top: 0px;
+	// left: 0px;
 	height: 170px;
 	width: 190px;
-	margin: 10px 0px 10px 0px;
+	padding: 1em;
 }
 
 .landing-button-img {
 	position: relative;
-	top: 7%;
-	margin: 0px 7% 7% 7%;
-	height: 86%;
-	background-repeat: no-repeat !important;
-	background-size: 100% !important
+	// top: 7%;
+	// margin: .4em 1.1em .4em 1.2em;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover
+	
 }
 
 .on-hover-dim {
@@ -85,11 +72,10 @@
 	justify-content: center; /* align horizontal */
 	align-items: center; /* align vertical */
 	width: 100%;
-	height: 95%;
+	height: 100%;
 	transition: 0.3s;
 	background: rgba(0,0,0,0);
-}
-
-.on-hover-dim:hover {
-	background: rgba(0,0,0,0.5);
+	&:hover{
+		background: rgba(0,0,0,0.5);
+	}
 }
