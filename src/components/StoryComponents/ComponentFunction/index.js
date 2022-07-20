@@ -95,8 +95,7 @@ export const ImageComponent =(props)=>{
             <Row className={`justify-content-center align-items-center`} >
               <div 
                 onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-                className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-                // style={{padding: caption_padding[image.size]}}
+                className={`story-caption text-center story-image-size  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
                 />
             </Row>
           </Col>
@@ -117,7 +116,7 @@ export const ImageComponent =(props)=>{
           <Row className='justify-content-center align-items-center'>
               <div 
                 onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-                className={`story-caption text-center mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
+                className={`story-caption text-center story-image-size mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
                 // style={{padding: "2e"}}
               />
           </Row>
@@ -134,15 +133,13 @@ export const ImageComponent =(props)=>{
             <img
               src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
               alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-              // style={{width:image_sizes[image.size]}}
               className="mb-1 story-image-size"
             />
         </Row>
         <Row className={`d-flex justify-content-center align-items-center`} >
           <div 
             onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-            className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-            // style={{padding: caption_padding[image.size]}}
+            className={`story-caption text-center story-image-size  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
           />
         </Row>
       </Col>
@@ -156,7 +153,6 @@ export const ImageComponent =(props)=>{
               <img
                 src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
                 alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-                // style={{width:image_sizes[image.size]}}
                 className="mb-1 story-image-size"
               />
             </a>
@@ -164,8 +160,7 @@ export const ImageComponent =(props)=>{
           <Row className={`d-flex justify-content-center align-items-center`} >
             <div 
               onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
-              className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-              // style={{padding: caption_padding[image.size]}}
+              className={`story-caption text-center story-image-size mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
             />
           </Row>
         </Col>
@@ -199,7 +194,7 @@ export const ImagesComponent = (props)=>{
   else if (props.images.length==1){
     props.images.forEach((image)=>{
       imageJsx.push(
-        <Col key={image.id} xs={12}>
+        <Col key={image.id} xs={6}>
           <ImageComponent toggleBottom={props.toggleBottom} image={image}/>
         </Col>
       );

@@ -288,7 +288,7 @@ const FadeFrame = (props) =>{
         <Container>
           <Container >
             <div className='fade-front'>
-              <div className='d-flex justify-content-between ' style={{height:'464px'}}>
+              <div className='d-flex justify-content-between ' style={{height:'400px'}}>
                   <FadeBody toggleBottom={props.toggleBottom} coin = {zone.fades[0]}/>
               </div>
             </div>
@@ -299,12 +299,12 @@ const FadeFrame = (props) =>{
         </Container>
       ):(
         <Container>
-          <Row className='d-flex justify-content-center' style={{marginBottom:"90px"}}>
+          <Row className='d-flex justify-content-center'>
             <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
           </Row>
           <Container >
             <div className='fade-front'>
-              <div className='d-flex justify-content-between ' style={{height:'464px'}}>
+              <div className='d-flex justify-content-between ' style={{height:'400px'}}>
                   <FadeBody toggleBottom={props.toggleBottom} coin = {zone.fades[0]}/>
               </div>
             </div>

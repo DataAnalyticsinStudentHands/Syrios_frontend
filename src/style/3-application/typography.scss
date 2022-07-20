@@ -150,7 +150,7 @@
 
   @media screen and (max-width: 1440px) {
     font-size:  $syrios-font-size-64 * 0.75 ;
-    line-height: 1em * 0.75;
+    // line-height: 1em * 0.75;
   }
 }
 
@@ -160,7 +160,6 @@
   font-weight: $syrios-font-weight-regular;
   font-size: $syrios-font-size-40;
   line-height: $syrios-line-spacing-45;
-  letter-spacing: $syrios-character-spacing-0;
   color: #737271;
 
   @media screen and (max-width: 1440px) {
