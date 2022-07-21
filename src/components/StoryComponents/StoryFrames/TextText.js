@@ -1,9 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap"
-import backGround from 'src/assets/background.jpg';
 import { HeadComponent, TextComponent } from "../ComponentFunction/index";
 
 const TextText = (props) => {
   let zone = props.zone
+  console.log(zone)
   const TextTxtBody = ()=>{
     if ((zone.tt_text_left.text === '' || zone.tt_text_left.text === null) && (zone.tt_text_left.caption === '' || zone.tt_text_left.caption === null)){
       return(
@@ -36,15 +36,8 @@ const TextText = (props) => {
       )
     }
   }
-
       return(
-        <div 
-          className='section' 
-          style={{ 
-            backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-            backgroundBlendMode:'multiply',
-          }}
-        >
+        <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
         {zone.head.updown_switch ?(
         <Container>
           <TextTxtBody/>

@@ -8,8 +8,9 @@
   padding-bottom: 70px;
   background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png?updated_at=2022-07-18T15:54:23.632Z');
   mix-blend-mode: multiply;
-  background-size: cover; 
+  background-size: contain; 
   background-repeat: no-repeat;
+  background-position: right bottom;
 
   @media screen and (max-height: 900px) {
     padding-top: 105px;
@@ -34,11 +35,13 @@
   margin-bottom: -5px !important;
 }
 
-#stories-page {
-  position: fixed;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  height: 100%;
+.stories-background{
+  // mix-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  background-blend-mode: lighten;
+
 }
 
 // .story-button {
@@ -83,9 +86,8 @@
 /* This is soooo ghetto, but it works. This is how background images scale properly with fullpage.js */
 
 .section {
-  background-size: cover, auto !important;
-  background-repeat: no-repeat, repeat !important;
-  background-position: 50% 50%, 50% 50% !important;
+  // background-size: cover, auto !important;
+  // background-position: 50% 50%, 50% 50% !important;
   padding: 0px;
   /* background-blend-mode: multiply; */
 

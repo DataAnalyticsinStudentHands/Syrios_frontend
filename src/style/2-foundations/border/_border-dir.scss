@@ -1,3 +1,13 @@
 @import "./syrios-border.scss";
 @import "./functions.scss";
 @import "./mixins.scss";
+
+
+.red-box{
+    background-color: white;
+    border-style:solid;
+    border-color: #B85828;
+    border-width: 7.5px;
+    border-radius: 2em;
+    padding: 1em;
+}

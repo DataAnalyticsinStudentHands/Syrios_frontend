@@ -2,20 +2,18 @@
 $footerHeight:70px;
 
 #glossary-page{
-    // position: fixed;
-    // overflow-y: scroll;
-    // -webkit-overflow-scrolling: touch;
-    // width: 100%;
-    // margin-top: 170px;
-    // margin-bottom: 70px;
-
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     z-index: 0;
-    padding-top: $footerHeight+ 70px;
-    // padding-bottom: 140px;
+    padding-top: 140px;
+    padding-bottom: 70px;
+
 
     .glossary-icon{
         color: #7899a8;
         font-size: 125px;
+        @media screen and (max-width: 1440px) {font-size: 125px * 0.75 ;}
+
     }
 
     .search{
@@ -28,14 +26,14 @@ $footerHeight:70px;
             width: 250px;
             .glossary-term-a{
                 font-size: 20px;
-            
-                &:hover{
-                    color: #183848;
-                }
+                &:hover{color: #487848;}
+                @media screen and (max-width: 1440px) {font-size: 20px * 0.75 ;}
             }
+            @media screen and (max-width: 1440px) {width: 250px * 0.75 ;}
         }
 
         input{
+            color: #737271;
             width: 250px;
             height: 40px;
             background: #fcfcfc;
@@ -45,15 +43,13 @@ $footerHeight:70px;
 
             font-family: $syrios-garamond-premier-pro;
             font-size: 20px;
+
         }
-        & input {
-            text-indent: 32px;
-        }
+        & input {text-indent: 32px;}
         .search-icon{
             position: absolute;
             // top: 10px;
             left: 210px;
-
             font-family: $syrios-font-family-syrios-entypo-subset;
             font-style: $syrios-font-style-normal;
             color: #7899a8;
@@ -83,10 +79,6 @@ $footerHeight:70px;
         letter-spacing: $syrios-character-spacing-0;
         color: $syrios-color-78a878;
       }
-    
-
-
-
 
     .nav-tabs{
         .nav-item {
@@ -97,17 +89,15 @@ $footerHeight:70px;
                 clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
                 width: 125px;
                 color:#737271;
-                font-size: 18px;
-    
+                font-size: 20px;
                 &:hover{
                     background-color: white;
                 }
-                &:active{
-                    background-color: white;
-
+                @media screen and (max-width: 1440px) {
+                    width: 125px * 0.75 ;
+                    font-size:20px *0.75
                 }
-
-    
+  
             }
         }
     }
@@ -196,38 +186,33 @@ $footerHeight:70px;
         font-family: $syrios-garamond-premier-pro;
         font-style: $syrios-font-style-normal;
         font-weight: $syrios-font-weight-bold;
-        font-size: 36px;
+        font-size: $syrios-font-size-40;
         line-height: $syrios-line-spacing-30;
-        letter-spacing: $syrios-character-spacing-0;
         color: $syrios-color-486678;
+          @media screen and (max-width: 1440px) {
+            font-size: $syrios-font-size-40 * 0.75 ;
+            line-height: $syrios-line-spacing-30 * 0.75;
+        }
     }
     .glossary-term{
         a{
             font-family: $syrios-garamond-premier-pro;
             // font-style: $syrios-font-style-italic;
             font-weight: $syrios-font-weight-regular;
-            font-size: 28px;
+            font-size: $syrios-font-size-28;
             line-height: $syrios-line-spacing-30;
-            letter-spacing: $syrios-character-spacing-0;
             color: #78a878;
-
             & :hover{
                 color: #487848;
                 font-weight: bold;
             }
+            @media screen and (max-width: 1440px) {
+                font-size: $syrios-font-size-28 * 0.75 ;
+                line-height: $syrios-line-spacing-30 * 0.75;
+            }
         }
-
     }
 
-    .glossary-term-button{
-        font-family: $syrios-garamond-premier-pro;
-        font-style: $syrios-font-style-italic;
-        font-weight: $syrios-font-weight-regular;
-        font-size: 28px;
-        line-height: $syrios-line-spacing-30;
-        letter-spacing: $syrios-character-spacing-0;
-        color: $syrios-color-78a878;
-    }
 }
 
 #glossary-term{
@@ -242,25 +227,33 @@ $footerHeight:70px;
     .glossary-term{
         font-size: 48px;
         font-weight: bold;
-        color:#486678
+        color:#486678;
+
+        @media screen and (max-width: 1440px) {font-size: 48px * 0.75 ;}
     }
     .glossary-basic{
         font-size: 24px;
-        color:#737271
+        color:#737271;
+        @media screen and (max-width: 1440px) {font-size: 24px * 0.75 ;}
+
     }
     .glossary-title{
         color: #b85828;
         font-size: 32px;
+        @media screen and (max-width: 1440px) {font-size: 32px * 0.75 ;}
+
     }
     .glossary-body{
         color:#737271;
-        font-size:24px
-
+        font-size:24px;
+        @media screen and (max-width: 1440px) {font-size: 24px * 0.75 ;}
     }
     .glossary-related-word{
         a{
             color: #78a878;
             font-size: 28px;
+            @media screen and (max-width: 1440px) {font-size: 28px * 0.75 ;}
+
         }
 
     }

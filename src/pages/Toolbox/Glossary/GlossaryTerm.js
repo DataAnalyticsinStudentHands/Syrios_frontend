@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
 import glossaryRequest from 'src/api/glossary';
 import createMarkup from 'src/utils/Markup';
@@ -32,7 +31,7 @@ const GlossaryTerm = () =>{
                 <p className='glossary-basic'>
                     <span> {termData.type} </span>
                     {termData.syllabication ? (<>  <span>&nbsp;|&nbsp;</span> <span> {termData.syllabication} </span></>):(<></>)}
-                    {termData.sounds_like ? (<>  <span>&nbsp;|&nbsp;</span> <span> {termData.syllabication} </span></>):(<></>)}
+                    {termData.sounds_like ? (<>  <span>&nbsp;|&nbsp;</span> <span> {termData.sounds_like} </span></>):(<></>)}
                 </p>
             </div>
             <br/>

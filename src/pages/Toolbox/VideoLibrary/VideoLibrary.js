@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Footer from 'src/components/Footer';
 import { Container,Row,Col} from 'react-bootstrap';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player';
 import VideoLibraryRequest from 'src/api/video-library';
 import LoadingPage from 'src/components/LoadingPage';
 import createMarkup from 'src/utils/Markup';

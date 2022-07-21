@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { Container, Row, Col, Alert} from 'react-bootstrap';
+import { Container, Row, Col, Alert, Form} from 'react-bootstrap';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
@@ -28,7 +28,6 @@ function Download(){
     setIsBottomOpen((prev) => !prev)
   }
   const clickHandler =(e)=> {
-    // console.log(e)
     const el = e.target.closest("button.reference-tag");
     if (el && e.currentTarget.contains(el)) {
       toggleBottom()
@@ -107,23 +106,14 @@ function Download(){
               Download the Data
             </p>
           </Row>
-          <Row className='d-flex justify-content-between align-items-center'>
+          <Row className='d-flex justify-content-around align-items-center'>
             <Col xs={8}>
                 {/* left */}
-                <Row className='d-flex justify-content-between align-items-top'>
-                  <Col xs={2} className=''>
-                    <i className='demo-icon icon-coin-scale download-icon'>
-                      &#xe810;</i>
-                  </Col>
-                  <Col xs={9} className=''>
-                    <Row className='story-h4'>
-                      <div>
-                        {downloadPageData.title}
-                      </div>
-                    </Row>
-                    <Row className='story-caption'>
-                      <div onClick={clickHandler} dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
-                    </Row>
+                <Row className='d-flex justify-content-around'>
+                  <Col xs={3} className='text-center story-icon download-icon'>&#xe810;</Col>
+                  <Col xs={9}>
+                      <p className='story-h4'>{downloadPageData.title}</p>
+                      <div className='story-caption' onClick={clickHandler} dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
                   </Col>
                 </Row>
 
@@ -137,15 +127,14 @@ function Download(){
             </Col>
             <Col xs={4}>
               <Container className='d-flex flex-column align-items-center mx-5'>
-                <Row className='text-center story-download-text px-4'>
+                <Row className='text-center story-download-text my-5' style={{width:"80%"}}>
                     <b>Please provide your your name and email address in the form below to start the download.</b>
                 </Row>
                 <Row className='light-blue-background my-2 d-flex justify-content-center' >
-                  <form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
-                    <div className='form-group mt-3'>
-                      <label className='' htmlFor='fullName'>Full Name</label>
-                      <br/>
-                      <input 
+                  <Form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
+                    <Form.Group className='mt-3'>
+                      <Form.Label className='mb-3' htmlFor='fullName'>Full Name</Form.Label>
+                      <Form.Control 
                         id = "fullName"
                         type='text'
                         onChange={formik.handleChange}
@@ -153,12 +142,11 @@ function Download(){
                         value = {formik.values.fullName}
                         className='form-control'
                       />
-                      {formik.touched.fullName && formik.errors.fullName ? <p className='gray-text'>{formik.errors.fullName}</p>: null}
-                    </div>
-                    <div className='form-group mt-4'>
-                      <label className='' htmlFor='email'>Email Address</label>
-                      <br/>
-                      <input 
+                      {formik.touched.fullName && formik.errors.fullName ? <div className="error-message">{formik.errors.fullName}</div>: null}
+                    </Form.Group>
+                    <Form.Group className='mt-4'>
+                      <Form.Label className='mb-3' htmlFor='email'>Email Address</Form.Label>
+                      <Form.Control 
                         type='email'
                         id='email'
                         onChange={formik.handleChange}
@@ -166,15 +154,12 @@ function Download(){
                         value = {formik.values.email}
                         className='form-control'
                       />
-                      {formik.touched.email && formik.errors.email ? <p className='gray-text'>{formik.errors.email}</p>: null}
-                    </div>
-
-                    <div className='text-center my-4'>
-                      <button type='submit' className='download-button' disabled={!formik.isValid || submitButton}>
+                      {formik.touched.email && formik.errors.email ? <div className="error-message">{formik.errors.email}</div>: null}
+                    </Form.Group>
+                      <button type='submit' className='download-button my-5' disabled={!formik.isValid || submitButton}>
                         Download Data
                       </button>
-                    </div>
-                  </form>
+                  </Form>
                 </Row>
               </Container>
             </Col>

@@ -4,13 +4,12 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  top: $footerHeight;
-  bottom: $footerHeight;
+  padding-top: 140px;
+  padding-bottom: 70px;
 
 
   .download-icon {
-    font-size: 129px;
-    color: #7899a8;
+    font-size: 14em;
   }
   #download-sub-title {
     font-size: large;
@@ -38,12 +37,27 @@
     font-family: var(--mainFonts);
   
   }
+  .form-label{
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-size: $syrios-font-size-16 ;
+    font-style: $syrios-font-style-normal;
+
+
+  }
   .form-control{
-    font-family: var(--mainFonts);
+    font-size: 2em;
+    border: 1px solid #D8D6D4;
+    border-radius: 1px;
+    font-family: $syrios-font-family-garamond-premier-pro;
+    color: #737271;
+    padding: 0.375rem 2rem;
+
   }
-  .download-input{
-    filter: drop-shadow(0px -2px 4px #d8d6d4);
+  .error-message{
+    font-size: 1.5em;
+    color: red;
   }
+
   .story-download-text b {
     line-height: $syrios-line-spacing-20;
     font-family: $syrios-font-family-garamond-premier-pro;
@@ -52,9 +66,7 @@
     font-size: $syrios-font-size-16;
     color: #183848;
   }
-  .donwload-from-label{
-    
-  }
+
 }
 
 

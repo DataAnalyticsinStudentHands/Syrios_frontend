@@ -39,18 +39,6 @@ function ContactUs(){
           .required('*Message required'),
       }),
     onSubmit: (values,{resetForm})=>{
-
-        // const data = {
-        //     "data":{
-        //         "name":values.name,
-        //         "email":values.email,
-        //         "phone":values.phone,
-        //         "message":values.writtenMessage
-        //     }
-        // }
-        // axios.post(process.env.REACT_APP_strapiURL + '/api/contact-user-infos', data)
-        // values.emailSubject=emailSubject
-        // values.emailTo=emailTo
         axios.post(process.env.REACT_APP_strapiURL + '/api/contact-us', values)
             .then(resetForm())
             .then(setSubmitButton(true))
@@ -58,15 +46,6 @@ function ContactUs(){
             .catch(err =>{console.error(err)})
     }
   })
-
-  // if (is_loading) {
-  //   return(
-  //     <>
-  //       <LoadingPage />
-  //       <Footer />
-  //     </>
-  //   );
-  // }
 
   return(
     <>

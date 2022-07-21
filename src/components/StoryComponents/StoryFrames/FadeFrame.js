@@ -1,5 +1,4 @@
 /* eslint-disable eqeqeq */
-import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col} from "react-bootstrap"
 
 import { HeadComponent} from "../ComponentFunction/index";
@@ -277,13 +276,7 @@ function toShow (dom,index, length) {
 const FadeFrame = (props) =>{
   let zone = props.zone
     return(
-      <div 
-        className='section' 
-        style={{ 
-          backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-          backgroundBlendMode:'multiply'
-        }}
-      >
+      <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
       {zone.head.updown_switch?(
         <Container>
           <Container >
@@ -299,9 +292,7 @@ const FadeFrame = (props) =>{
         </Container>
       ):(
         <Container>
-          <Row className='d-flex justify-content-center'>
-            <HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/>
-          </Row>
+          <Row className='d-flex justify-content-center'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
           <Container >
             <div className='fade-front'>
               <div className='d-flex justify-content-between ' style={{height:'400px'}}>

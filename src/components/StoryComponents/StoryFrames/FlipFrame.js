@@ -1,7 +1,4 @@
-/* eslint-disable eqeqeq */
-import backGround from 'src/assets/background.jpg';
 import { Container, Row, Col} from "react-bootstrap"
-
 import { HeadComponent,  } from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup.js';
 
@@ -68,12 +65,7 @@ function FlipCoin (dom){
 const FlipFrame = (props) =>{
   let zone = props.zone
     return(
-      <div className='section' 
-        style={{ 
-          backgroundImage: zone.background.data == null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url}),url(${backGround})`,
-          backgroundBlendMode:'multiply'
-        }}
-      >
+      <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
         {zone.head.updown_switch ? (
         <Container>
           <Row style={{height:'464px'}} className="d-flex justify-content-between">
