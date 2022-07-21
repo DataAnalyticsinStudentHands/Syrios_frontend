@@ -110,13 +110,7 @@
   line-height: $syrios-line-spacing-30;
   letter-spacing: $syrios-character-spacing--05;
   color: #737271;
-  & p {
-    & strong{font-family: $syrios-garamond-premier-pro-caption;}
-  }
-  a{
-    color: #183848;
-    text-decoration: $syrios-decoration-underline !important;
-  }
+
   @media screen and (max-width: 1440px) {
     font-size: $syrios-font-size-24 * 0.75 ;
     line-height: $syrios-line-spacing-30 * 0.75;
