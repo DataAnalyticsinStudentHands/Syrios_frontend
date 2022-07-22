@@ -11,6 +11,9 @@ html {
   background: url('../../assets/background.jpg'); 
 }
 
+.container{
+  max-width: 80vmax;
+}
 em {
   font-style: $syrios-font-style-italic;
 }

@@ -28,7 +28,7 @@ const Stories = () => {
 		// className='d-flex align-items-center'
 		>
 			<Container>
-				<Row container='mt-5'><p className='story-h1 text-center'>Discover Coin Stories</p></Row>
+				<p className='story-h1 text-center'>Discover Coin Stories</p>
 				<Row className='d-flex justify-content-center text-center'>
 					<Col xs={10}>
 					<p className='story-text'>

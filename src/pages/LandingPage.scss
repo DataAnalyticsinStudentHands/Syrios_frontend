@@ -4,8 +4,9 @@
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 	width: 100%;
-	top: $footerHeight;
-	bottom: $footerHeight;
+	height: 100%;
+	padding-top: 7.5vmax;
+	padding-bottom: 3.75vmax;
 	// background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg);
 	background:url('../assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg')
 }
@@ -14,47 +15,19 @@
 	background: white;
 	padding: 1em;
 	box-shadow: 0px 0px 20px #24201659;
+	width: 48.4375vmax;
+	height: 27.24vmax;
+
 }
-
-// #landing-video-size {
-// 	width: 780px;
-// }
-
-// @media only screen and (max-width: 767px) and (min-width: 580px) {
-// 	#landing-video-size {
-// 		width: 30em !important;
-// 	}
-// }
-
-// @media only screen and (max-width: 579px) and (min-width: 372px) {
-// 	#landing-video-size {
-// 		width: 25em !important;
-// 	}
-
-// 	#landing-video {
-// 		padding: .4em 1.1em .4em 5%;
-// 	}
-// }
-
-// @media only screen and (max-width: 372px) {
-// 	#landing-video-size {
-// 		width: 15em !important;
-// 	}
-
-// 	#landing-video {
-// 		padding: .4em 1.1em .4em 5%;
-// 	}
-// }
-
-
 
 .landing-button-size {
 	position: relative;
 	// top: 0px;
 	// left: 0px;
-	height: 170px;
-	width: 190px;
+	height: 12.76vmax;
+	width: 15.1vmax;
 	padding: 1em;
+	margin: 1.25em;
 }
 
 .landing-button-img {
@@ -63,7 +36,8 @@
 	// margin: .4em 1.1em .4em 1.2em;
 	height: 100%;
 	background-repeat: no-repeat;
-	background-size: cover
+	background-size: cover;
+	background-position:center
 	
 }
 
