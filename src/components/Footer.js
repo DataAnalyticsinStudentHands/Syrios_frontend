@@ -29,7 +29,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
        <a id='footer-logo' href='https://www.neh.gov/'>
          <img
            src={NEH}
-           height='60px'
+           style= {{height:"3.125vmax"}}
            alt='NEH Logo'/>
        </a>
          <Row id='footer-links' className='d-flex justify-content-end align-items-center mx-5'>

@@ -15,16 +15,16 @@ function BootstrapNavbar() {
           <img 
             src={logo} 
             alt='SyriosLogoLight'
-            width='146px'
             style={{
               position: 'relative',
-              left: '10px'
+              left: '0.5vmax',
+              height:"3.125vmax"
             }}/>
         </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='ms-auto'  style={{marginRight:'100px'}}>
+        <Nav className='ms-auto'  style={{marginRight:'5.2vmax'}}>
           { /* I hate this, but I can't figure out why Nav.Link won't work */ }
           {/* Because Nav is from Bootstrap and Link is from react!!!!!!! */}
             <Nav.Link href='/dev/Stories' className='navbar-text d-flex align-items-center'>STORIES</Nav.Link>

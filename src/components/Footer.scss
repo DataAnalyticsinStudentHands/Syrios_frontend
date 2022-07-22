@@ -8,14 +8,14 @@ color: #183848;
   background: #183848;
   bottom: 0px;
   width: 100%;
-  height: 70px;
+  height:  3.75vmax;
   opacity: 1;
 
   z-index: 99998;
 
   #footer-logo {
     position: absolute;
-    left: 3px;
+    left: 0.5vmax;
     margin: 0;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -23,8 +23,7 @@ color: #183848;
   }
   
   #footer-links {
-    right: 10px;
-    height: 60px;
+    height: 3.125vmax;
 
     // position: absolute;
     // margin: 0;
@@ -52,9 +51,9 @@ color: #183848;
   
   #credits-and-references-x-icon {
     position: absolute;
-    right: -30px;
-    top: -15px;
-    font-size: 80px;
+    right: -1.667vmax;
+    top: -0.833vmax;
+    font-size: 5vmax;
     color: white;
     cursor: pointer;
   
@@ -78,7 +77,7 @@ color: #183848;
     font-family: $syrios-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-regular;
-    font-size: 20px;
+    font-size: $syrios-font-size-20;
     letter-spacing: $syrios-character-spacing-0;
   }
   
@@ -90,7 +89,7 @@ color: #183848;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing-0;
     color: $syrios-color-183848;
-    font-size: 16px;
+    font-size: $syrios-font-size-16;
   }
   
   .credits-and-references-list-items p a {

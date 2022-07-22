@@ -2,13 +2,13 @@
 
 .navbar-spacer {
   width: 100%;
-  height: $footerHeight;
+  height: 3.75vmax;
 }
 
 #navbar {
 	position: fixed;
 	width: 100%;
-	height: $footerHeight;
+	height: 3.75vmax;
 	background: #183848 0% 0% no-repeat padding-box;
 	box-shadow: 0px 0px 60px #24201659;
 	opacity: 1;
@@ -43,7 +43,7 @@
 .dropdown-menu {
 	background: url("../assets/dropdown.png");
 	background-size: cover;
-	min-width: 240px;
+	min-width: 12.5vmax;
 	// right: 0px !important;
 	// top: 70px ;
 	border-radius: 0px 0px 15px 15px;
@@ -57,15 +57,16 @@
     -o-transition: all 0.5s;
     transition: all 0.5s;
 
+	top:0;
     max-height: 0;
     display: block;
     overflow: hidden;
     opacity: 0;
-	margin-top: 18px;
+	margin-top: 2.6vmax;
 }
 
 .dropdown.show .dropdown-menu { /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
-    max-height: 300px;
+    max-height: 15.625vmax;
     opacity: 1;
 }
 .dropdown-item {
