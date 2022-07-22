@@ -6,23 +6,18 @@ import createMarkup from 'src/utils/Markup.js';
 
 const FadeButton = (props)=>{
   let buttonOptin = []
-
   for (let i=0; i<props.options.length; i++){
     buttonOptin.push(
       <Col xs={2} className="text-center" key={i}>
-      <button 
-        className='fade-frame-button '
+      <button className='fade-frame-button '
         onClick={(e)=>{
           let dom = e.target.parentElement.parentElement.parentElement
           toShow(dom,i,props.options.length)
-        }} 
-      >
-        {props.options[i].topic}
+        }}> {props.options[i].topic}
       </button>
     </Col>
     )
   }
-
   if(props.options.length == 2) return(<Row className='justify-content-center fade-2button-row'>{buttonOptin}</Row>)
   if(props.options.length == 4) return(<Row className='justify-content-around fade-4button-row'>{buttonOptin}</Row>)}
 
@@ -55,23 +50,21 @@ const FadeBody = (props)=>{
   }
   return(
     <>      
-      <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`} >
+      <Col xs={3} className={`px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`} >
         <Row>
           <a href={`${sourUrl_left}`} target="_blank" rel="noopener noreferrer" className={`text-center`}>
             <img 
               src={`${process.env.REACT_APP_strapiURL}${coin_left_url}`} 
               alt={coin_left_alt}
-              style={{width:"290px", marginTop:"20px"}}
-            />
+              style={{width:"15vmax", marginTop:"20px"}}/>
           </a>
         </Row>
-        <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
+        <Row className={`px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
             <div 
               onClick={props.toggleBottom}
               dangerouslySetInnerHTML={createMarkup(props.coin.caption_left)} 
               className={`story-caption text-center`}
-              style={{ marginTop:"20px"}}
-            />
+              style={{ marginTop:"20px"}}/>
         </Row>
       </Col>
       <Col xs={3} className="align-self-center">
@@ -80,7 +73,6 @@ const FadeBody = (props)=>{
             dangerouslySetInnerHTML={createMarkup(props.coin.caption)} 
             className={`story-text text-center`}
           />
-          
       </Col>
       <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`}>
         <Row>
@@ -88,7 +80,7 @@ const FadeBody = (props)=>{
             <img 
               src={`${process.env.REACT_APP_strapiURL}${coin_right_url}`} 
               alt={coin_right_alt}
-              style={{width:"290px", marginTop:"20px"}}
+              style={{width:"15vmax", marginTop:"20px"}}
             />
           </a>
         </Row>
@@ -110,17 +102,13 @@ const FadeBack = (props)=>{
   for(let body = 1; body<props.bodys.length; body++){
     fadeBack.push(
       <div className='fade-back'key={body}>
-        <div className='d-flex justify-content-around'style={{height:'464px'}}>
+        <div className='d-flex justify-content-around'style={{height:'22vmax'}}>
           <FadeBody toggleBottom={props.toggleBottom} coin = {props.bodys[body]} />
         </div>
       </div>
     )
   }
-  return(
-    <>
-    {fadeBack}
-    </>
-  )
+  return(<>{fadeBack}</>)
 }
 
 function toShow (dom,index, length) {
@@ -281,7 +269,7 @@ const FadeFrame = (props) =>{
         <Container>
           <Container >
             <div className='fade-front'>
-              <div className='d-flex justify-content-between ' style={{height:'400px'}}>
+              <div className='d-flex justify-content-between ' style={{height:'22vmax'}}>
                   <FadeBody toggleBottom={props.toggleBottom} coin = {zone.fades[0]}/>
               </div>
             </div>
@@ -292,10 +280,10 @@ const FadeFrame = (props) =>{
         </Container>
       ):(
         <Container>
-          <Row className='d-flex justify-content-center'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
-          <Container >
+          <Row className='d-flex justify-content-center mb-5'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          <Container className="pt-5">
             <div className='fade-front'>
-              <div className='d-flex justify-content-between ' style={{height:'400px'}}>
+              <div className='d-flex justify-content-between ' style={{height:'22vmax'}}>
                   <FadeBody toggleBottom={props.toggleBottom} coin = {zone.fades[0]}/>
               </div>
             </div>

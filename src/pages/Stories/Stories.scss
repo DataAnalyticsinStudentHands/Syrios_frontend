@@ -4,35 +4,28 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  padding-top: 140px;
-  padding-bottom: 70px;
+  height: 100%;
+  padding-top: 7.5vmax;
+  padding-bottom: 3.75vmax;
   background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png?updated_at=2022-07-18T15:54:23.632Z');
   mix-blend-mode: multiply;
-  background-size: contain; 
+  background-size: cover; 
   background-repeat: no-repeat;
   background-position: right bottom;
 
-  @media screen and (max-height: 900px) {
-    padding-top: 105px;
-  }
+  // @media screen and (max-height: 900px) {
+  //   padding-top: 105px;
+  // }
 
 }
 
 .select-story-div {
-  width: 190px;
-  height: 164px;
+  // position:relative;
+  width: 10vmax;
   transition: 0.5s;
-
   &:hover{
-    width: 220px;
-    height: 195px;
+    width: 12vmax;
   }
-}
-
-.select-story-text {
-  font-size: 15px;
-  margin: 11px;
-  margin-bottom: -5px !important;
 }
 
 .stories-background{
@@ -43,30 +36,6 @@
   background-blend-mode: lighten;
 
 }
-
-// .story-button {
-//   background: #ffffff 0% 0% no-repeat padding-box;
-//   border: 1px solid #7899a8;
-//   border-radius: 15px !important;
-//   opacity: 1;
-//   width: 250px;
-//   height: 30px;
-//   transition: 0.5s;
-// }
-
-// .story-button:hover {
-//   color: #ffffff;
-//   background: #7899a8 0% 0% no-repeat padding-box;
-// }
-
-.story-image-size{
-  width: 75%;
-
-  @media screen and (max-height: 900px) {
-    width: 52.5% ;
-  }  
-}
-
 
 /******************** THIS IS FOR THE STORIES ****************/
 #fp-nav ul li a span,
@@ -128,19 +97,19 @@
 
 /**** Interactive_Frame1 ****/
 .sclae_front{
-  height: 288px;
+  height: 15vmax;
   display: block;
   opacity: 1;
   transition: 0.3s;
   position: relative;
 }
 .scale_back{
-  height: 148px;
+  height: 7.5vmax;
   display: none;
   opacity: 0;
   transition: 0.3s;
   position: relative;
-  top: 47px;
+  top: 2.5vmax;
 }
 .sclae_front_text{
   display: block;
@@ -152,21 +121,21 @@
   opacity: 0;
   transition: 0.3s;
   position: relative;
-  top: 47px;
+  top: 2.5vmax;
   
 }
 .row-scare-content{
   position: relative;
-  height: 188px;
-  bottom: 188px;
+  height: 10vmax;
+  bottom: 10vmax;
   z-index: 99;
 }
 .row-light-blue-background {
   background-color: rgba(184,204,216,0.5);
   border-radius: 15px;
   position: relative;
-  height: 188px;
-  top: 47px;
+  height: 10vmax;
+  top: 2.5vmax;
   margin: 0% 5% !important;
 }
 
@@ -182,13 +151,12 @@
 }
 .fade-2button-row{
   position: relative;
-  bottom: 30px;
+  bottom: 1.5625vmax;
 
 }
 .fade-4button-row{
   position: relative;
-  bottom: 530px;
-
+  bottom: 24vmax;
 }
 
 .interactive-frame {
@@ -203,30 +171,4 @@
 }
 #interactive-frame1 {
   width: 180px;
-}
-@media only screen and (max-width: 767px) {
-  #interactive-frame1 {
-    width: 90px;
-  }
-  .interactive-frame1-light-blue-sizing {
-    position: relative;
-    left: 5% !important;
-    width: 95%;
-  }
-
-  .interactive-frame1-compare-scale {
-    margin-top: -5px;
-  }
-
-  .interactive-frame1-reset-scale {
-    margin-top: -5px;
-  }
-
-  .interactive-frame1-image-back-left {
-    left: -70px !important;
-  }
-
-  .interactive-frame1-image-back-right {
-    left: -70px !important;
-  }
 }

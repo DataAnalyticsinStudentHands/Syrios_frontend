@@ -28,11 +28,7 @@ const Stories = () => {
 		// className='d-flex align-items-center'
 		>
 			<Container>
-				<Row container='mt-5'>
-					<p className='story-h1 text-center'>
-						Discover Coin Stories
-					</p>
-				</Row>
+				<Row container='mt-5'><p className='story-h1 text-center'>Discover Coin Stories</p></Row>
 				<Row className='d-flex justify-content-center text-center'>
 					<Col xs={10}>
 					<p className='story-text'>
@@ -44,22 +40,27 @@ const Stories = () => {
 					</Col>
 
 				</Row>
-				<Row style={{ marginTop: '80px', marginBottom: '100px'}} >
+				<Row 
+					style={{ marginTop: '2vmax'}} 
+					className="d-flex py-5 align-items-end ">
 					{stories.map((story)=>{
 						return(
-							<Col key={`${story.id}`}>
+							<Col key={`${story.id}`} >
 								{story.id === 1 ?(<></>):(
 									<Link to={`/StoryReader?id=${story.id}`}>
-										<div className='select-story-div text-center'>
+										<div className='select-story-div '>
 											<img
 												src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
 												alt='Story_Image'
-												height='100%'
+												width={"100%"}
+												className ="text-center"
 											/>
-											<p className='select-story-text text-center'>
+											<p className=' text-center select-story-text'>
 												{story.attributes.name}
 											</p>
+
 										</div>
+
 									</Link>
 								)}
 							</Col>

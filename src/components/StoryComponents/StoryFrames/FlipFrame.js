@@ -19,7 +19,7 @@ const FlipCoinImage = (props)=>{
                 <img 
                   src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url}`} 
                   alt={coin_obverse_alt}
-                  style={{width:"290px"}}
+                  style={{width:"15vmax"}}
                 />
               </a>
             </Row>
@@ -38,7 +38,7 @@ const FlipCoinImage = (props)=>{
                 <img 
                   src={`${process.env.REACT_APP_strapiURL}${coin_reverse_url}`} 
                   alt={coin_reverse_alt}
-                  style={{width:"290px"}}
+                  style={{width:"15vmax"}}
                 />
               </a>
             </Row>
@@ -68,14 +68,14 @@ const FlipFrame = (props) =>{
       <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
         {zone.head.updown_switch ? (
         <Container>
-          <Row style={{height:'464px'}} className="d-flex justify-content-between">
+          <Row style={{height:'22vmax'}} className="d-flex justify-content-between">
             <Col xs={3} className='light-blue-background d-flex justify-content-center align-items-center'><FlipCoinImage toggleBottom={props.toggleBottom} coin = {zone.flip_coin_left}/></Col>
             <Col xs={3} className="d-flex align-items-start flex-column">
               <Row className='mb-auto'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.text_top)} className='story-text text-center'/></Row>
               <Row className='align-self-center' >
                 <Col>
                   <i 
-                    className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
+                    className='story-icon flip-icon'
                     onClick={(e)=> {
                       let dom = e.target.parentElement.parentElement.parentElement.parentElement;
                       let coin_left = dom.childNodes[0].childNodes[0].childNodes[0]
@@ -95,22 +95,20 @@ const FlipFrame = (props) =>{
         ):(
           <Container>
           <Row className='d-flex justify-content-center mb-5 '><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
-          <Row style={{height:'464px'}} className="d-flex justify-content-between">
+          <Row style={{height:'22vmax'}} className="d-flex justify-content-between">
             <Col xs={3} className='light-blue-background d-flex justify-content-center align-items-center'><FlipCoinImage toggleBottom={props.toggleBottom} coin = {zone.flip_coin_left}/></Col>
             <Col xs={3} className="d-flex align-items-start flex-column">
               <Row className='mb-auto story-text text-center' onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.text_top)}/>
-              <Row className='align-self-center' >
+              <Row className='align-self-center text-center' >
                 <Col>
-                  <i 
-                    className='demo-icon icon-coin-scale interactive-frame1-scale-icon'
+                  <i className='story-icon flip-icon'
                     onClick={(e)=> {
                       let dom = e.target.parentElement.parentElement.parentElement.parentElement;
                       let coin_left = dom.childNodes[0].childNodes[0].childNodes[0]
                       let coin_right = dom.childNodes[2].childNodes[0].childNodes[0]
                       FlipCoin(coin_left)
                       FlipCoin(coin_right)
-                    }}>
-                    &#xe833;</i>
+                    }}>&#xe833;</i>
                 </Col>
               </Row>
               <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.text_down)} className='story-text text-center mt-auto'></Row>

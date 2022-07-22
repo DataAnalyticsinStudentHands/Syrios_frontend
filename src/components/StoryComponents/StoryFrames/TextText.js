@@ -3,35 +3,26 @@ import { HeadComponent, TextComponent } from "../ComponentFunction/index";
 
 const TextText = (props) => {
   let zone = props.zone
-  console.log(zone)
   const TextTxtBody = ()=>{
     if ((zone.tt_text_left.text === '' || zone.tt_text_left.text === null) && (zone.tt_text_left.caption === '' || zone.tt_text_left.caption === null)){
       return(
         <Row className="d-flex justify-content-around align-items-center">
-          <Col xs={6}>
-            <TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_right}/>
-          </Col>
+          <Col xs={6}><TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_right}/></Col>
         </Row>
       )
     }
     else if((zone.tt_text_right.text === '' || zone.tt_text_right.text === null) && (zone.tt_text_right.caption === '' || zone.tt_text_right.caption === null)){
       return(
         <Row className="d-flex justify-content-around align-items-center">
-          <Col xs={6}>
-            <TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_left}/>
-          </Col>
+          <Col xs={6}><TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_left}/></Col>
         </Row>
       )
     }
     else{
       return(
         <Row className="d-flex justify-content-around align-items-center">
-          <Col xs={5}>
-            <TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_left}/>
-          </Col>
-          <Col xs={5}>
-            <TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_right}/>
-          </Col>
+          <Col xs={5}><TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_left}/></Col>
+          <Col xs={5}><TextComponent toggleBottom={props.toggleBottom} text = {zone.tt_text_right}/></Col>
         </Row>
       )
     }

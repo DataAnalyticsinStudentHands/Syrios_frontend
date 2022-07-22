@@ -10,24 +10,6 @@ const CompareCoin = (props)=>{
     let coin_reverse_url = props.coin.coin.data.attributes.reverse_file.data.attributes.url
     let coin_reverse_alt = props.coin.coin.data.attributes.reverse_file.data.attributes.alternativeText
 
-    let image_sizes = {
-        "Smallest": "25%",
-        "Smaller": "50%",
-        "Small": "75%",
-        "Regular": "100%",
-        "Big": "125%",
-        "Bigger": "150%",
-        "Bigest": "175%",
-      };
-      let caption_padding = {
-        "Smallest": "20px 37% 0%",
-        "Smaller": "20px 25% 0%",
-        "Small": "20px 15% 0%",
-        "Regular": "20px 5% 0%",
-        "Big": "",
-        "Bigger": "",
-        "Bigest": "",
-      };
     return(
       <Col>
         <Row className={`justify-content-center align-items-center`}>
@@ -35,20 +17,17 @@ const CompareCoin = (props)=>{
                 {...props}
                 itemOne={
                     <ReactCompareSliderImage
-                    src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url}`}
-                    alt={coin_obverse_alt}
-                    />
-                }
+                      src={`${process.env.REACT_APP_strapiURL}${coin_obverse_url}`}
+                      alt={coin_obverse_alt}
+                    />}
                 itemTwo={
                     <ReactCompareSliderImage
-                    src={`${process.env.REACT_APP_strapiURL}${coin_reverse_url}`}
-                    alt={coin_reverse_alt}
-                    />
-                    }
-                    // portrait
+                      src={`${process.env.REACT_APP_strapiURL}${coin_reverse_url}`}
+                      alt={coin_reverse_alt}
+                    />}
                 style={{
                     display: "flex",
-                    width:image_sizes[props.coin.size],
+                    width:"25vmax"
                 }}
                 />
         </Row>
@@ -57,7 +36,7 @@ const CompareCoin = (props)=>{
               onClick={props.toggleBottom}
               dangerouslySetInnerHTML={createMarkup(props.coin.coin_caption)} 
               className={`story-caption text-center ${props.coin.caption_background? "light-blue-background":""}`}
-              style={{padding: caption_padding[props.coin.size]}}
+              style={{width:"26vmax"}}
             />
         </Row>
 

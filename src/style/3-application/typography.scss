@@ -82,7 +82,14 @@
 .scale-icon{
   position:fixed;
   z-index: 3;
-  font-size: 12em;
+  font-size: 5vmax;
+  cursor: pointer;
+}
+
+.flip-icon{
+  // position:fixed;
+  // z-index: 3;
+  font-size: 5vmax;
   cursor: pointer;
 }
 .scale-text{

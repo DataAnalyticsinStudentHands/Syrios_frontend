@@ -12,7 +12,8 @@ const Title = (props) => {
                 <img
                   src={`${process.env.REACT_APP_strapiURL}${zone.image.data.attributes.url}`}
                   alt={zone.image.data.attributes.alternativeText == null ? 'image' : zone.image.data.attributes.alalternativeText}
-                  className='story-image-size'/>
+                  style={{width:"20vmax"}}
+                  />
               </Col>
             </Row>
             {/* {title} */}

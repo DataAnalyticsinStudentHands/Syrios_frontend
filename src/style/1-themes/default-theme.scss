@@ -86,21 +86,35 @@ $syrios-font-weight-black: 900;
 
 $syrios-font-weight-normal: normal;
 
-$syrios-font-size-14: 1.75em;
-// $syrios-font-size-15: 15px;c
-$syrios-font-size-16: 2em;
-$syrios-font-size-18: 2.25em;
-$syrios-font-size-20: 2.5em;
-$syrios-font-size-22: 2.75em;
-$syrios-font-size-24: 3em;
-$syrios-font-size-26: 3.25em;
-$syrios-font-size-28: 3.5em;
-$syrios-font-size-30: 3.75em;
-$syrios-font-size-32: 4em;
-$syrios-font-size-36: 4.5em;
-$syrios-font-size-40: 5em;
-$syrios-font-size-64: 8em;
-$syrios-font-size-144: 18em;
+// $syrios-font-size-14: 1.75em;
+// $syrios-font-size-16: 2em;
+// $syrios-font-size-18: 2.25em;
+// $syrios-font-size-20: 2.5em;
+// $syrios-font-size-22: 2.75em;
+// $syrios-font-size-24: 3em;
+// $syrios-font-size-26: 3.25em;
+// $syrios-font-size-28: 3.5em;
+// $syrios-font-size-30: 3.75em;
+// $syrios-font-size-32: 4em;
+// $syrios-font-size-36: 4.5em;
+// $syrios-font-size-40: 5em;
+// $syrios-font-size-64: 8em;
+// $syrios-font-size-144: 18em;
+
+$syrios-font-size-14: 0.792vmax;
+$syrios-font-size-16: 0.833vmax;
+$syrios-font-size-18: 0.938vmax;
+$syrios-font-size-20: 1.024vmax;
+$syrios-font-size-22: 1.146vmax;
+$syrios-font-size-24: 1.25vmax;
+$syrios-font-size-26: 1.354vmax;
+$syrios-font-size-28: 1.458vmax;
+$syrios-font-size-30: 1.563vmax;
+$syrios-font-size-32: 1.667vmax;
+$syrios-font-size-36: 1.875vmax;
+$syrios-font-size-40: 2.083vmax;
+$syrios-font-size-64: 3.333vmax;
+$syrios-font-size-144: 7.5vmax;
 
 $syrios-character-spacing-0: 0px;
 $syrios-character-spacing--05: -0.05px;

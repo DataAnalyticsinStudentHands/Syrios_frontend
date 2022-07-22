@@ -8,11 +8,6 @@ import SearchBar from "./GlossarySearchBox";
 function GlossaryWrapper(){
     const alphabetGroup = ["ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"];
     const {group, term} = useParams()
-    // console.log(
-    //     "DEF".indexOf(term.charAt(0).toUpperCase())
-    //     )
-
-
     return(
         <div id='glossary-page'>
             <Container>
@@ -24,12 +19,8 @@ function GlossaryWrapper(){
                     <SearchBar/>
                     <Nav variant="tabs" defaultActiveKey="/All" className="d-flex justify-content-center" style={{marginTop:"125px"}}>
                         <Nav.Item><Nav.Link href="/dev/Toolbox/Glossary/all" eventKey="All" style={{backgroundColor: group ==="all" ? "white":"" }}>All</Nav.Link></Nav.Item>
-                        {group ? (<>
-                            {alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Nav.Link href={`/dev/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: group === alphabet ? "white":""}} eventKey={alphabet}>{alphabet}</Nav.Link></Nav.Item>)})}
-                        </>):(<></>)}
-                        {term ? (<>
-                            {alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Nav.Link href={`/dev/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: alphabet.indexOf(term.charAt(0).toUpperCase()) !==-1 ? "white":""}} eventKey={alphabet}>{alphabet}</Nav.Link></Nav.Item>)})}
-                        </>):(<></>)}
+                        {group ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Nav.Link href={`/dev/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: group === alphabet ? "white":""}} eventKey={alphabet}>{alphabet}</Nav.Link></Nav.Item>)})}</>):(<></>)}
+                        {term ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Nav.Link href={`/dev/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: alphabet.indexOf(term.charAt(0).toUpperCase()) !==-1 ? "white":""}} eventKey={alphabet}>{alphabet}</Nav.Link></Nav.Item>)})}</>):(<></>)}
                     </Nav>
                     <Outlet/>
                 </Container>
