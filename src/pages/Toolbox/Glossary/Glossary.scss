@@ -5,60 +5,54 @@ $footerHeight:70px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     z-index: 0;
-    padding-top: 140px;
-    padding-bottom: 70px;
-
-
+    padding-top: 7.5vmax;
+    padding-bottom: 3.75vmax;
     .glossary-icon{
         color: #7899a8;
-        font-size: 125px;
-        @media screen and (max-width: 1440px) {font-size: 125px * 0.75 ;}
-
+        font-size: 6.5vmax;
     }
 
     .search{
         position: absolute;
         color: #aaa;
-        font-size: 16px;
+        font-size: $syrios-font-size-16;
         z-index: 199;
 
         .search-list-group{
-            width: 250px;
+            width: 13vmax;
             .glossary-term-a{
-                font-size: 20px;
+                font-size: $syrios-font-size-20;
                 &:hover{color: #487848;}
-                @media screen and (max-width: 1440px) {font-size: 20px * 0.75 ;}
             }
-            @media screen and (max-width: 1440px) {width: 250px * 0.75 ;}
         }
 
         input{
             color: #737271;
-            width: 250px;
-            height: 40px;
+            width: 13vmax;
+            height: 2.083vmax;
             background: #fcfcfc;
             border: 1px solid #aaa;
             border-radius: 5px;
             box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
 
             font-family: $syrios-garamond-premier-pro;
-            font-size: 20px;
+            font-size: 1.024vmax;
 
         }
-        & input {text-indent: 32px;}
+        & input {text-indent: $syrios-font-size-32;}
         .search-icon{
             position: absolute;
             // top: 10px;
-            left: 210px;
+            left: 10.9375vmax;
             font-family: $syrios-font-family-syrios-entypo-subset;
             font-style: $syrios-font-style-normal;
             color: #7899a8;
-            font-size: 28px;
+            font-size: $syrios-font-size-28;
         }
 
     }
     .search-filter{
-        width: 250px;
+        width: 13vmax;
     }
     .list-group-item.active{
         background-color: #FFFFFF;
@@ -74,7 +68,7 @@ $footerHeight:70px;
         font-family: $syrios-garamond-premier-pro;
         font-style: $syrios-font-style-italic;
         font-weight: $syrios-font-weight-regular;
-        font-size: 28px;
+        font-size: $syrios-font-size-28;
         line-height: $syrios-line-spacing-30;
         letter-spacing: $syrios-character-spacing-0;
         color: $syrios-color-78a878;
@@ -87,17 +81,12 @@ $footerHeight:70px;
                 display: flex;
                 justify-content: center;
                 clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-                width: 125px;
+                width: 6.5vmax;
                 color:#737271;
-                font-size: 20px;
+                font-size:$syrios-font-size-20;
                 &:hover{
                     background-color: white;
-                }
-                @media screen and (max-width: 1440px) {
-                    width: 125px * 0.75 ;
-                    font-size:20px *0.75
-                }
-  
+                }  
             }
         }
     }
@@ -128,7 +117,7 @@ $footerHeight:70px;
 #glossary-loading{
     position:fixed;
 
-	top: 210px;
+	top: 11vmax;
 	left: 0px;
 	width: 100%;
 	height: 100%;
@@ -144,11 +133,11 @@ $footerHeight:70px;
         -ms-transform: translate(-50%,-50%);
         transform: translate(-50%,-50%);
     
-      border: 16px solid #f3f3f3; /* Light grey */
-      border-top: 16px solid #3498db; /* Blue */
+      border: 0.833vmax solid #f3f3f3; /* Light grey */
+      border-top: 0.833vmax solid #3498db; /* Blue */
       border-radius: 50%;
-      width: 100px;
-      height: 100px;
+      width: 5.5vmax;
+      height: 5.5vmax;
       animation: spin 2s linear infinite;
     }
     @keyframes spin {
@@ -180,7 +169,7 @@ $footerHeight:70px;
 
 // }
 #glossary-group{
-    margin-bottom: 140px;
+    margin-bottom: 7.5vmax;
 
     .glossary-alphabet{
         font-family: $syrios-garamond-premier-pro;
@@ -189,10 +178,6 @@ $footerHeight:70px;
         font-size: $syrios-font-size-40;
         line-height: $syrios-line-spacing-30;
         color: $syrios-color-486678;
-          @media screen and (max-width: 1440px) {
-            font-size: $syrios-font-size-40 * 0.75 ;
-            line-height: $syrios-line-spacing-30 * 0.75;
-        }
     }
     .glossary-term{
         a{
@@ -206,10 +191,6 @@ $footerHeight:70px;
                 color: #487848;
                 font-weight: bold;
             }
-            @media screen and (max-width: 1440px) {
-                font-size: $syrios-font-size-28 * 0.75 ;
-                line-height: $syrios-line-spacing-30 * 0.75;
-            }
         }
     }
 
@@ -217,7 +198,7 @@ $footerHeight:70px;
 
 #glossary-term{
     background-color: white;
-    margin-bottom: 140px;
+    margin-bottom: 70px;
 
     padding-top: 70px;
     padding-bottom: 70px;
@@ -225,42 +206,32 @@ $footerHeight:70px;
     padding-right: 25%;
 
     .glossary-term{
-        font-size: 48px;
+        font-size: $syrios-font-size-48;
         font-weight: bold;
         color:#486678;
-
-        @media screen and (max-width: 1440px) {font-size: 48px * 0.75 ;}
     }
     .glossary-basic{
-        font-size: 24px;
+        font-size: $syrios-font-size-24;
         color:#737271;
-        @media screen and (max-width: 1440px) {font-size: 24px * 0.75 ;}
-
     }
     .glossary-title{
         color: #b85828;
-        font-size: 32px;
-        @media screen and (max-width: 1440px) {font-size: 32px * 0.75 ;}
-
+        font-size: $syrios-font-size-32;
     }
     .glossary-body{
         color:#737271;
-        font-size:24px;
-        @media screen and (max-width: 1440px) {font-size: 24px * 0.75 ;}
+        font-size: $syrios-font-size-24;
     }
     .glossary-related-word{
         a{
             color: #78a878;
-            font-size: 28px;
-            @media screen and (max-width: 1440px) {font-size: 28px * 0.75 ;}
-
+            font-size: $syrios-font-size-28;
         }
 
     }
     .glossary-context-icon{
         font-family: $syrios-font-family-syrios-entypo-subset;
         color: #7899a8;
-        // font-size: 32px;
 
         & .media-play{
             border-style: double;
