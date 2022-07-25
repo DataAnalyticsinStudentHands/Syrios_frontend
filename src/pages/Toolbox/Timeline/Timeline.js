@@ -495,7 +495,7 @@ function LoadTimelineInfo(obj) {
         jsx_arr.push(
           <OverlayTrigger
           placement="right"
-          delay={{ show: 0, hide: 5000000 }}
+          delay={{ show: 0, hide: 200 }}
           overlay={renderTooltip}
           key={`event${e.event.data.id}`}
         >

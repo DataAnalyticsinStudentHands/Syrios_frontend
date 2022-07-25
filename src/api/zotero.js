@@ -4,7 +4,7 @@ const baseURL = 'https://api.zotero.org'
 
 const zoteroRequest = {
     getAllitems: async()=>{
-        return await axios(`${baseURL}/groups/4721497/items`,{
+        return await axios(`${baseURL}/groups/4740395/items`,{
             method:'GET',
             headers: {
                 'Zotero-API-Version': '3',
@@ -14,7 +14,7 @@ const zoteroRequest = {
         })
     },
     getItemsTop: async()=>{
-        return await axios(`${baseURL}/groups/4721497/items/top`,{
+        return await axios(`${baseURL}/groups/4740395/items/top`,{
             method:'GET',
             headers: {
                 'Zotero-API-Version': '3',
@@ -24,7 +24,7 @@ const zoteroRequest = {
         })
     },
     getOneItem: async(itemKey)=>{
-        return await axios(`${baseURL}/groups/4721497/items/${itemKey}`,{
+        return await axios(`${baseURL}/groups/4740395/items/${itemKey}`,{
             method:'GET',
             headers: {
                 'Zotero-API-Version': '3',
@@ -33,7 +33,7 @@ const zoteroRequest = {
         })
     },
     getOneItemBib: async(itemKey)=>{
-        return await axios(`${baseURL}/groups/4721497/items/${itemKey}`,{
+        return await axios(`${baseURL}/groups/4740395/items/${itemKey}`,{
             method:'GET',
             headers: {
                 'Zotero-API-Version': '3',
@@ -45,7 +45,7 @@ const zoteroRequest = {
         })
     },
     getOneItemChildren: async(itemKey)=>{
-        return await axios(`${baseURL}/groups/4721497/items/${itemKey}/children`,{
+        return await axios(`${baseURL}/groups/4740395/items/${itemKey}/children`,{
             method:'GET',
             headers: {
                 'Zotero-API-Version': '3',

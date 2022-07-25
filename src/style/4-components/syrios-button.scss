@@ -95,14 +95,101 @@
     &:hover{color:#487848}
   }
 }
-.glossary-tag{
-  color: #78a878;
-  text-decoration: none;
+.glossary-tag{  
+    color: #78a878;
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
 
-  &:hover{
-    color: #487848;
+  &[data-title]:hover::after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+
   }
+  &[data-title]:after {
+    content: attr(data-title);
+    background-color: rgb(0,0,0,0.8);
+    color: #fff;
+    font-size: $syrios-font-size-16;
+    position: absolute;
+    padding: 1em;
+    border-radius: 6px;
+
+    font-family: $syrios-font-family-garamond-premier-pro;
+    font-style: $syrios-font-style-normal;
+    font-weight: $syrios-font-weight-regular;
+    line-height: $syrios-line-spacing-30;
+    letter-spacing: $syrios-character-spacing--05;
+
+    // width: 20vmax; 
+    top: 100%;
+    left: 50%;
+    // margin-left: -10vmax;
+    white-space: nowrap;
+    opacity: 0;
+    z-index: 99999;
+    visibility: hidden;
+
+
+  }
+  [data-title] {
+      position: relative;
+  }
+
+  // .glossary-tooltip-text {
+
+  //   font-family: $syrios-font-family-garamond-premier-pro;
+  //   font-style: $syrios-font-style-normal;
+  //   font-weight: $syrios-font-weight-regular;
+  //   font-size: $syrios-font-size-16;
+  //   line-height: $syrios-line-spacing-30;
+  //   letter-spacing: $syrios-character-spacing--05;
+
+  //   visibility: hidden;
+  //   width: 20vmax; 
+  //   background-color: rgb(0,0,0,0.8);
+  //   color: #fff;
+  //   text-align: left;
+  //   border-radius: 6px;
+  //   padding: 1em;
+
+  //   top: 100%;
+  //   left: 50%;
+  //   margin-left: -10vmax;
+  
+  //   /* Position the tooltip */
+  //   position: absolute;
+  //   z-index: 1;
+
+  //   transition: 0.5s;
+
+  //   &:before{
+  //     content:'';
+  //     display:block;
+  //     // width:0;
+  //     // height:0;
+  //     position:absolute;
+      
+  //     border-left: 8px solid transparent;
+  //     border-right: 8px solid transparent; 
+  //     border-bottom:8px solid rgb(0,0,0,0.8);
+  //     top:-8px;
+  //     left:50%;
+      
+  //   }
+
+  // }
+  // &:hover{
+  //   color:#487848;
+
+  //   .glossary-tooltip-text{
+  //     visibility: visible;
+
+  //   }
+  // }
 }
+
 .external-tag{
   text-decoration:solid;
 

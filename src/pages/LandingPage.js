@@ -55,7 +55,7 @@ function LandingPage() {
           </Row>
           <Row className='d-flex justify-content-around mt-5'>
             {/* This is the video */}
-            <Col xs={8} id='landing-video'>
+            <Col xs={12} sm={8} id='landing-video'>
                   <ReactPlayer 
                     // width='48.4375vmax'
                     width="100%"
@@ -64,10 +64,10 @@ function LandingPage() {
                     // height='523px'
                     url={landingData.video_link} />
             </Col>
-            <Col xs={4}>
+            <Col xs={12} sm={4}>
                 <Row className='align-items-center'>
                   {/* How to Read a Coin */}
-                  <Col className='bg-white landing-button-size'>
+                  <Col  className='bg-white landing-button-size'>
                       <Link to='/HowToReadACoin'>
                         <div className='landing-button-img ' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
                           <div className='on-hover-dim landing-buttons-text m-1'>
@@ -77,7 +77,7 @@ function LandingPage() {
                       </Link>
                   </Col>
                   {/* Discover Stories from Coins */}
-                  <Col className='bg-white landing-button-size'>
+                  <Col  className='bg-white landing-button-size'>
                       <Link to='/Stories'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
                           <div className='on-hover-dim landing-buttons-text m-1'>
@@ -89,7 +89,7 @@ function LandingPage() {
                 </Row>
                 <Row className=' align-items-center'>
                   {/* Explore the Evidence */}
-                  <Col className='bg-white landing-button-size'>
+                  <Col  className='bg-white landing-button-size'>
                       <Link to='/Evidence'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
                           <div className='on-hover-dim landing-buttons-text m-1'>

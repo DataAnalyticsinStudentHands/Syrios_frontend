@@ -30,15 +30,14 @@ const Stories = () => {
 			<Container>
 				<p className='story-h1 text-center'>Discover Coin Stories</p>
 				<Row className='d-flex justify-content-center text-center'>
-					<Col xs={10}>
+					<Col xs={11}>
 					<p className='story-text'>
-					Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.
-					<br/>
-					<br/>
-					Click on a coin to learn more about the politics, economy, and society of ancient Syria.
+						Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.
+						<br/>
+						<br/>
+						Click on a coin to learn more about the politics, economy, and society of ancient Syria.
 					</p>
 					</Col>
-
 				</Row>
 				<Row 
 					style={{ marginTop: '2vmax'}} 
@@ -60,7 +59,6 @@ const Stories = () => {
 											</p>
 
 										</div>
-
 									</Link>
 								)}
 							</Col>

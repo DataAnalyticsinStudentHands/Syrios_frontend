@@ -17,10 +17,10 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
   //   setIsBottomOpen((prev) => !prev)
   // }
 
-  let referenceLength = 10
+  let referenceLength = 1
   if(references || imageReference){
     referenceLength = Math.max(referenceLength,references.length,imageReference.length )
-    referenceLength = 175 + referenceLength *30
+    referenceLength = 28 + Math.max(referenceLength,references.length,imageReference.length )
   }
   return (
     <>
@@ -64,7 +64,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
           onClose={toggleBottom}
           direction='bottom'
           className='credits-and-references'
-          size={`${referenceLength}px`}
+          size={`${referenceLength}vmax`}
           zIndex={100}
         >
           <Row>
@@ -82,8 +82,10 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
                   {imageReference.map((ref,index)=>{
                     return(
                       <Row key={index} className='d-flex references-text mt-3'>
-                        <Col xs={1} className="story-icon my-2" style={{color:'#b9ccd7', fontSize:'20px'}} >&#xe818;</Col>
-                        <Col xs={11} className='my-2'><a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}</a></Col>
+                        <Col className='my-3 '>
+                          <a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}</a>
+                          <span className='story-icon mx-3' style={{color:'#b9ccd7', fontSize:'20px'}}> &#xe818;</span>
+                        </Col>
                       </Row>
                     )})}
               </Col>
