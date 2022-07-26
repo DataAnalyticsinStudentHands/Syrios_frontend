@@ -56,7 +56,7 @@ const FadeBody = (props)=>{
             <img 
               src={`${process.env.REACT_APP_strapiURL}${coin_left_url}`} 
               alt={coin_left_alt}
-              style={{width:"15vmax", marginTop:"20px"}}/>
+              style={{height:"15vmax", marginTop:"20px"}}/>
           </a>
         </Row>
         <Row className={`px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
@@ -80,11 +80,11 @@ const FadeBody = (props)=>{
             <img 
               src={`${process.env.REACT_APP_strapiURL}${coin_right_url}`} 
               alt={coin_right_alt}
-              style={{width:"15vmax", marginTop:"20px"}}
+              style={{height:"15vmax", marginTop:"20px"}}
             />
           </a>
         </Row>
-        <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'}`}>
+        <Row className={` px-3 ${props.coin.caption_or_all? '':'light-blue-background'} `}>
             <div 
               onClick={props.toggleBottom}
               dangerouslySetInnerHTML={createMarkup(props.coin.caption_right)} 

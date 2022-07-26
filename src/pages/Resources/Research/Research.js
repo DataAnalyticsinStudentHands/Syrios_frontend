@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 import { Container, Row, Col} from 'react-bootstrap';
-
-import referenceRequest from 'src/api/reference';
 import zoteroRequest from 'src/api/zotero';
 import createMarkup from 'src/utils/Markup';
 const Research = ()=>{
@@ -12,17 +10,8 @@ const Research = ()=>{
 
     useEffect(()=>{
         async function fetchData (){
-            const result = await referenceRequest.referenceFind()
-            let itemKeys = []
-            result.data.data.forEach((itemkey)=>{
-                itemKeys.push(itemkey.attributes.item_key)
-            })
-            let bibArr = []
-            for (const itemkey of itemKeys){
-                const data = await zoteroRequest.getOneItemBib(itemkey)
-                bibArr.push(data.data)
-              }
-            setReferencesData(bibArr)
+            const result = await zoteroRequest.getAllitems()
+            setReferencesData(result.data)
             setIsLoading(false)
         }
         fetchData()
@@ -46,11 +35,20 @@ const Research = ()=>{
                 </Row>
                 {referencesData.length===0?(<></>):(
                     <>
-                    {referencesData.map((ref,index)=>{
+                    {referencesData.map((bib)=>{
                     return(
-                        <Row key={index} className='story-text my-3 justify-content-center'>
-                            <Col xs={10} className='d-flex justify-content-start'  dangerouslySetInnerHTML={createMarkup(ref)}/>
-                        </Row>
+                        <Row key={bib.version} className='story-text my-3 justify-content-center'>
+                        {bib.bib.split("http")[1] ? (
+                            <Col xs={10} >
+                                <a 
+                                    href={`http${bib.bib.split("http")[1].split(".</div>")[0]}`} 
+                                    dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}
+                                    target="_blank" rel="noopener noreferrer"/>
+                            </Col>
+                            ):(
+                            <Col xs={10} dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}/>
+                        )}
+                        </Row >
                     )})}
                     </>
                 )}

@@ -9,8 +9,11 @@ const zoteroRequest = {
             headers: {
                 'Zotero-API-Version': '3',
                 'Zotero-API-Key':'QtlUSBKdwlVRuIJzNaCbi9VD'
-
             },
+            params:{
+                "include":"bib",
+                "sort":"creator"
+            }
         })
     },
     getItemsTop: async()=>{

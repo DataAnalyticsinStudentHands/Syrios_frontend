@@ -99,8 +99,7 @@
     color: #78a878;
     position: relative;
     display: inline-block;
-    margin-top: 20px;
-
+    
   &[data-title]:hover::after {
     opacity: 1;
     transition: all 0.1s ease 0.5s;
@@ -116,6 +115,7 @@
     padding: 1em;
     border-radius: 6px;
 
+    // word-break:normal;
     font-family: $syrios-font-family-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-regular;

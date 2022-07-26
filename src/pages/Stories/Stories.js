@@ -39,29 +39,30 @@ const Stories = () => {
 					</p>
 					</Col>
 				</Row>
-				<Row 
-					style={{ marginTop: '2vmax'}} 
-					className="d-flex py-5 align-items-end ">
+				<Row style={{ marginTop: '2vmax'}} className="py-5 align-items-end ">
 					{stories.map((story)=>{
 						return(
-							<Col key={`${story.id}`} >
-								{story.id === 1 ?(<></>):(
+							<>
+							{story.id === 1 ?(<></>):(
+								<Col key={`${story.id}`} >
 									<Link to={`/StoryReader?id=${story.id}`}>
 										<div className='select-story-div '>
 											<img
 												src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
 												alt='Story_Image'
 												width={"100%"}
+												// style={{height:"11vmax"}}
 												className ="text-center"
 											/>
 											<p className=' text-center select-story-text'>
 												{story.attributes.name}
 											</p>
-
 										</div>
 									</Link>
-								)}
-							</Col>
+								</Col>
+							)}
+							</>
+
 						)
 					})}
 				</Row>

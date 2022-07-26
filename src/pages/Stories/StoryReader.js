@@ -140,22 +140,6 @@ const StoryReader = () => {
     }
     bibArr = bibArr.sort()
     setStoryReference(bibArr)
-
-    // let itemkeys = []
-    // resultData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
-    // let zoteroReference = []
-    // for (const itemkey of itemkeys){
-    //   const data = await zoteroRequest.getOneItem(itemkey)
-    //   zoteroReference.push(data.data)
-    // }
-    //   //order Bib by last name
-    //   function compare(a,b){
-    //     if ( a.data.creators[0].lastName < b.data.creators[0].lastName ){return -1;}
-    //     if ( a.data.creators[0].lastName > b.data.creators[0].lastName ){return 1;}
-    //     return 0;
-    // }
-    // zoteroReference = zoteroReference.sort(compare)
-    // setStoryReference(zoteroReference)
   }
 
   async function createAnchors(resultData){

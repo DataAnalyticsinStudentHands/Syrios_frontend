@@ -17,10 +17,9 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
   //   setIsBottomOpen((prev) => !prev)
   // }
 
-  let referenceLength = 1
+  let referenceLength = 10
   if(references || imageReference){
-    referenceLength = Math.max(referenceLength,references.length,imageReference.length )
-    referenceLength = 28 + Math.max(referenceLength,references.length,imageReference.length )
+    referenceLength = 20+ Math.max(referenceLength,references.length,imageReference.length )*1
   }
   return (
     <>
@@ -64,8 +63,9 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
           onClose={toggleBottom}
           direction='bottom'
           className='credits-and-references'
-          size={`${referenceLength}vmax`}
+          // height={`${referenceLength}vmax`}
           zIndex={100}
+          style={{height:`${referenceLength}vmax`}}
         >
           <Row>
             <Col>
@@ -92,7 +92,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
             </>)}
             {references.length ===0 ?(<></>):(
             <>
-              <Col xs={6}>
+              <Col xs={7}>
               <Row style={{marginTop:'45px'}}>
                 <Col className='references-h3 mx-4 mb-3'>To read more, check these out:</Col>
               </Row>
@@ -100,7 +100,18 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
                   return(
                     <Row key={index} className='d-flex references-text mt-3'>
                       <Col xs={1} className='d-flex justify-content-end mt-1' >[{index+1}]</Col>
-                      <Col xs={11} className='d-flex justify-content-start'  dangerouslySetInnerHTML={createMarkup(ref)}/>
+                      {/* <Col xs={11} className='d-flex justify-content-start'  dangerouslySetInnerHTML={createMarkup(ref)}/> */}
+                      {ref.split("http")[1] ? (
+                            <Col xs={11} >
+                                <a 
+                                  href={`http${ref.split("http")[1].split(".</div>")[0]}`} 
+                                  dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}
+                                  target="_blank" rel="noopener noreferrer"
+                                />
+                            </Col>
+                            ):(
+                            <Col xs={11} dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}/>
+                        )}
                     </Row>
                   )})}
             </Col>
