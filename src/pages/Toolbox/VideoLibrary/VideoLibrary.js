@@ -43,6 +43,7 @@ const VideoLibrary = ()=>{
     useEffect(()=>{
         async function fetchData(){
             const result = await VideoLibraryRequest.videoFind()
+            console.log(result.data.data)
             setVideoData(result.data.data)
             setIsLoading(false)
         }
@@ -53,6 +54,7 @@ const VideoLibrary = ()=>{
         setUrl(url)
         setIsOpen((prev) => !prev)
     }
+    
     if(isLoading) return(<><LoadingPage /><Footer /></>)
     return(
         <div id='video-library' >
@@ -66,15 +68,25 @@ const VideoLibrary = ()=>{
                     {videoData.length === 0? (<></>):(<>
                         {videoData.map((video)=>{
                             return(
-                                <Col key={video.id} xs={4} style={{width:'420px' }} className="mt-5">
-                                    <ReactPlayer 
-                                        url={video.attributes.video_url}
-                                        light={true}
-                                        width="100%" 
-                                        height="240px"
-                                        onClick={()=>handleOpenModal(video.attributes.video_url)}/>
-                                    <p className='story-h4 mt-4'>{video.attributes.video_title}</p>
-                                    <p className='story-caption' dangerouslySetInnerHTML={createMarkup(video.attributes.video_description)}/>
+                                <Col key={video.id} xs={3} className="mt-5 text-center">
+
+                                    {video.attributes.video_thumbnail.data? (
+                                        <img 
+                                            src={`${process.env.REACT_APP_strapiURL}${video.attributes.video_thumbnail.data.attributes.url}`} 
+                                            alt={video.attributes.video_thumbnail.data.attributes.alternativeText} 
+                                            onClick={()=>handleOpenModal(video.attributes.video_url)}
+                                            style={{cursor:"pointer", height:"15vmax"}}
+                                        />
+                                    ):(
+                                        <b className='image-icon text-center' 
+                                            style={{cursor:"pointer", fontSize:"10vmax"}} 
+                                            onClick={()=>handleOpenModal(video.attributes.video_url)}>&#xe81f;
+                                        </b>
+                                    )}
+
+                                    <p className='story-h4 mt-4'>{video.attributes.video_title || ""}</p>
+                                    <p className='story-caption' dangerouslySetInnerHTML={createMarkup(video.attributes.video_description || "")}/>
+                                    
                                 </Col>
                             )})}
                     </>)}
