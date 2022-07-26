@@ -10,50 +10,21 @@ import Footer from 'src/components/Footer';
 import createMarkup from 'src/utils/Markup.js';
 
 import downloadRequest from 'src/api/download';
-import zoteroRequest from 'src/api/zotero';
 
 function Download(){
   const [isLoading, setIsLoading] = useState(true);
-
   const [submitButton, setSubmitButton] = useState(false)
   const [show, setShow] = useState(false)
-
   const [downloadPageData, setDownloadPageData] = useState([])
-  const [storyReference, setStoryReference] = useState([])
-  const [storyImageSouce]= useState([])
 
-  const [isBottomOpen, setIsBottomOpen] = useState(false)
-
-  const toggleBottom = () => {
-    setIsBottomOpen((prev) => !prev)
-  }
-  const clickHandler =(e)=> {
-    const el = e.target.closest("button.reference-tag");
-    if (el && e.currentTarget.contains(el)) {
-      toggleBottom()
-    }
-}
   useEffect(() => {
     async function fetchData(){
       const result = await downloadRequest.downloadFind();
-      createZoteroReference(result.data.data.attributes)
       setDownloadPageData(result.data.data.attributes)
       setIsLoading(false)
     }
     fetchData()
   },[]);
-
-  async function createZoteroReference(resultData){
-    let itemkeys = []
-    resultData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
-    let bibArr = []
-    for (const itemkey of itemkeys){
-      const data = await zoteroRequest.getOneItemBib(itemkey)
-      bibArr.push(data.data)
-    }
-    bibArr = bibArr.sort()
-    setStoryReference(bibArr)
-  }
 
   const formik = useFormik({
     initialValues:{
@@ -94,7 +65,7 @@ function Download(){
 
   return(
     <>
-      <div id='download-page' className='d-flex align-items-center'>
+      <div id='download-page'>
         <Container className='my-5'>
           <Row>
               <Alert className='green-text' show={show} variant="success" onClose={() => setShow(false)} dismissible>
@@ -103,7 +74,7 @@ function Download(){
           </Row>
           <Row className='mb-5'>
             <p className='story-h1 text-center'>
-              Download the Data
+              Download the Data              
             </p>
           </Row>
           <Row className='d-flex justify-content-around align-items-center'>
@@ -112,16 +83,18 @@ function Download(){
                 <Row className='d-flex justify-content-around'>
                   <Col xs={3} className='text-center story-icon download-icon'>&#xe810;</Col>
                   <Col xs={9}>
-                      <p className='story-h4'>{downloadPageData.title}</p>
-                      <div className='story-caption' onClick={clickHandler} dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
+                      <p className='story-h4'>
+                        {/* {downloadPageData.title} */}DOWNLOAD THE DATASET
+                      </p>
+                      <div className='story-caption' dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
                   </Col>
                 </Row>
 
                 <Row className=''>
                   <img
-                    alt={downloadPageData.image.data.attributes.alternativeText}
+                    alt={'Download'}
                     className=''
-                    src={`${process.env.REACT_APP_strapiURL}${downloadPageData.image.data.attributes.url}`}
+                    src={`${process.env.REACT_APP_strapiURL}/uploads/Image_47_89dc6433d0.png?updated_at=2022-04-14T13:41:55.091Z`}
                   />
                 </Row>
             </Col>
@@ -166,12 +139,7 @@ function Download(){
           </Row>
         </Container>
       </div>
-      <Footer 
-      	references={storyReference}
-        imageReference={storyImageSouce}
-        toggleBottom={toggleBottom}
-        isBottomOpen={isBottomOpen}
-      />
+      <Footer/>
     </>
   );
 }

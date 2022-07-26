@@ -110,23 +110,21 @@
     content: attr(data-title);
     background-color: rgb(0,0,0,0.8);
     color: #fff;
-    font-size: $syrios-font-size-16;
     position: absolute;
     padding: 1em;
     border-radius: 6px;
 
-    // word-break:normal;
+    font-size: $syrios-font-size-16;
     font-family: $syrios-font-family-garamond-premier-pro;
     font-style: $syrios-font-style-normal;
     font-weight: $syrios-font-weight-regular;
     line-height: $syrios-line-spacing-30;
     letter-spacing: $syrios-character-spacing--05;
 
-    // width: 20vmax; 
+    width: 20vmax; 
     top: 100%;
     left: 50%;
-    // margin-left: -10vmax;
-    white-space: nowrap;
+    margin-left: -10vmax;
     opacity: 0;
     z-index: 99999;
     visibility: hidden;
