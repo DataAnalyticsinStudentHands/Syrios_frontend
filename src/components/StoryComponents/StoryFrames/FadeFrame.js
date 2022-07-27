@@ -276,11 +276,11 @@ const FadeFrame = (props) =>{
             <FadeBack toggleBottom={props.toggleBottom} bodys={zone.fades}/>
             <FadeButton options = {zone.fades} />
           </Container>  
-          <Row className='d-flex justify-content-center mt-5'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
         </Container>
       ):(
         <Container>
-          <Row className='d-flex justify-content-center mb-5'><HeadComponent storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
           <Container className="pt-5">
             <div className='fade-front'>
               <div className='d-flex justify-content-between ' style={{height:'22vmax'}}>
