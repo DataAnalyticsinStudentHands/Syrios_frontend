@@ -9,14 +9,13 @@ const FadeButton = (props)=>{
 
   buttonOptin.push(
     <Col xs={2} className="text-center" key={0}>
+      {/* only one className for the button */}
     <button className='fade-frame-button-active'
       onClick={(e)=>{
-        
         let dom = e.target.parentElement.parentElement.parentElement
         toShow(dom,0,props.options.length)
         let btnsdom = e.target.parentElement.parentElement
         handleBtns(btnsdom,0,props.options.length)
-
       }}> {props.options[0].topic}
     </button>
   </Col>
@@ -128,63 +127,16 @@ const FadeBack = (props)=>{
   return(<>{fadeBack}</>)
 }
 function handleBtns (dom,index, length){
-
-  if(length==2){
-    let Option0 = dom.childNodes[0].childNodes[0]
-    let Option1 = dom.childNodes[1].childNodes[0]
-    switch(index){
-      case 0 :
-        Option0.className="fade-frame-button-active"
-        Option1.className="fade-frame-button"
-      break;
-      case 1:
-        Option0.className="fade-frame-button"
-        Option1.className="fade-frame-button-active"
-        break;
-        default:
-      }
-  }
-  if(length==4){
-    let Option0 = dom.childNodes[0].childNodes[0]
-    let Option1 = dom.childNodes[1].childNodes[0]
-    let Option2 = dom.childNodes[2].childNodes[0]
-    let Option3 = dom.childNodes[3].childNodes[0]
-
-    switch(index){
-      case 0 :
-        Option0.className="fade-frame-button-active"
-        Option1.className="fade-frame-button"
-        Option2.className="fade-frame-button"
-        Option3.className="fade-frame-button"
-      break;
-      case 1:
-        Option0.className="fade-frame-button"
-        Option1.className="fade-frame-button-active"
-        Option2.className="fade-frame-button"
-        Option3.className="fade-frame-button"
-        break;
-      case 2 :
-        Option0.className="fade-frame-button"
-        Option1.className="fade-frame-button"
-        Option2.className="fade-frame-button-active"
-        Option3.className="fade-frame-button"
-      break;
-      case 3:
-        Option0.className="fade-frame-button"
-        Option1.className="fade-frame-button"
-        Option2.className="fade-frame-button"
-        Option3.className="fade-frame-button-active"
-        break;
-      default:
-      }
-  }
+    for(let i = 0; i<length; i++){
+      i === index ? dom.childNodes[i].childNodes[0].className="fade-frame-button-active" : dom.childNodes[i].childNodes[0].className="fade-frame-button"
+    }
 }
 
 function toShow (dom,index, length) {
   if (length == 2){
     let Option0 = dom.childNodes[0]
     let Option1 = dom.childNodes[1]
-  
+
     switch(index){
       case 0:
         Option1.style.opacity = '0.0'
