@@ -57,6 +57,28 @@
   }
 }
 
+.fade-frame-button-active{
+  background: #7899a8 0% 0% no-repeat padding-box;
+  border: 1px solid #7899a8;
+  border-radius: 15px;
+  opacity: 1;
+  width: 8.333vmax;
+  height: 1.5625vmax;
+  transition: 0.5s;
+
+  font-family: $syrios-garamond-premier-pro-caption;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-medium;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-25;
+  letter-spacing: $syrios-character-spacing--20;
+  color: #ffffff;
+
+  &:hover{
+    color: #ffffff;
+    background: #7899a8 0% 0% no-repeat padding-box;
+  }
+}
 .fade-frame-button{
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #7899a8;
@@ -72,9 +94,13 @@
   font-size: $syrios-font-size-20;
   line-height: $syrios-line-spacing-25;
   letter-spacing: $syrios-character-spacing--20;
-  color: $syrios-color-7899a8;
+  color: #7899a8;
 
-  &:hover {
+  &:hover{
+    color: #ffffff;
+    background: #7899a8 0% 0% no-repeat padding-box;
+  }
+  &:visited{
     color: #ffffff;
     background: #7899a8 0% 0% no-repeat padding-box;
   }
