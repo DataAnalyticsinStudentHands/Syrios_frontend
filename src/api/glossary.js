@@ -1,29 +1,26 @@
 import axios from "axios";
-
+import qs from "qs";
 const glossaryRequest = {
     glossaryFindLocal: async()=>{
-        return await axios( 'http://localhost:1337/api/glossaries',{
+        let query = qs.stringify({
+            pagination: {
+              page: 1,
+              pageSize: 2147483647,
+            }
+          });
+        return await axios( `http://localhost:1337/api/glossaries?${query}`,{
             method:'GET',
         })
     },
 
     glossaryFind: ()=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/glossaries`,{
-            method:'GET',
-        })
-    },
-    glossaryTagFind: ()=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/glossary-tags`,{
-            method:'GET',
-        })
-    },
-    glossaryFindOne: (id)=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/glossaries/${id}`,{
-            method:'GET',
-        })
-    },
-    glossaryTagFindOne: (id)=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/glossary-tags/${id}`,{
+        let query = qs.stringify({
+            pagination: {
+              page: 1,
+              pageSize: 2147483647,
+            }
+          });
+        return axios(`${process.env.REACT_APP_strapiURL}/api/glossaries?${query}`,{
             method:'GET',
         })
     },

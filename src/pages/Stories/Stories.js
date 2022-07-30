@@ -12,10 +12,27 @@ const Stories = () => {
 	// const [storyReference, setStoryReference] = useState([])
 	// const [storyImageSouce, setStoryImageSouce]= useState([])
 
+	async function filterOutZotero(item){
+		console.log(item.id)
+		if (item.id === 1){
+			return true
+		}
+		return false
+	}
+
 	useEffect(() => {
 		const fetchData = async ()=>{
 			const result = await storyRequest.storyFind()
-			setStories(result.data.data)
+
+			function filterOutZotero(item){
+				// console.log(item.id)
+				if (item.id !== 1){
+					return true
+				}
+				return false
+			}
+
+			setStories(result.data.data.filter(filterOutZotero))
 			setIsLoading(false)
 		}
 		fetchData().catch(console.error);
@@ -42,27 +59,22 @@ const Stories = () => {
 				<Row style={{ marginTop: '2vmax'}} className="py-5 align-items-end ">
 					{stories.map((story)=>{
 						return(
-							<>
-							{story.id === 1 ?(<></>):(
-								<Col key={`${story.id}`} >
-									<Link to={`/StoryReader?id=${story.id}`}>
-										<div className='select-story-div '>
-											<img
-												src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
-												alt='Story_Image'
-												width={"100%"}
-												// style={{height:"11vmax"}}
-												className ="text-center"
-											/>
-											<p className=' text-center select-story-text'>
-												{story.attributes.name}
-											</p>
-										</div>
-									</Link>
-								</Col>
-							)}
-							</>
-
+							<Col key={`StoryReader-${story.id}`} >
+								<Link to={`/StoryReader?id=${story.id}`}>
+									<div className='select-story-div '>
+										<img
+											src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
+											alt='Story_Image'
+											width={"100%"}
+											// style={{height:"11vmax"}}
+											className ="text-center"
+										/>
+										<p className=' text-center select-story-text'>
+											{story.attributes.name}
+										</p>
+									</div>
+								</Link>
+							</Col>
 						)
 					})}
 				</Row>

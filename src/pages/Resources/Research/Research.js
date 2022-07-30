@@ -37,7 +37,7 @@ const Research = ()=>{
                     <>
                     {referencesData.map((bib)=>{
                     return(
-                        <Row key={bib.version} className='story-text my-3 justify-content-center'>
+                        <Row key={bib.version} className='story-text-bigger my-5 justify-content-center'>
                         {bib.bib.split("http")[1] ? (
                             <Col xs={10} >
                                 <a 
@@ -45,9 +45,7 @@ const Research = ()=>{
                                     dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}
                                     target="_blank" rel="noopener noreferrer"/>
                             </Col>
-                            ):(
-                            <Col xs={10} dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}/>
-                        )}
+                            ):(<Col xs={10} dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}/>)}
                         </Row >
                     )})}
                     </>

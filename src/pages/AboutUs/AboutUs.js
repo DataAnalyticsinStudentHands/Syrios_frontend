@@ -38,8 +38,8 @@ const About = () => {
         <Container>
           <Row className='my-5'><Col className='story-h1 text-center'>About Us</Col></Row>
           <Row className='align-items-center'>
-            <Col sm={3}><img alt='logo' width='90%' src={process.env.REACT_APP_strapiURL+aboutUsData.logo.data.attributes.url}/></Col>
-            <Col dangerouslySetInnerHTML={createMarkup(aboutUsData.description)} className='story-text'/>
+            <Col sm={3}><img alt='logo' width='50%' src={process.env.REACT_APP_strapiURL+aboutUsData.logo.data.attributes.url}/></Col>
+            <Col dangerouslySetInnerHTML={createMarkup(aboutUsData.description)} className='story-text-bigger'/>
           </Row>
         </Container>
         <Container>

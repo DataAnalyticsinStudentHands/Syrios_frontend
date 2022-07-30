@@ -123,6 +123,21 @@
   //   line-height: $syrios-line-spacing-30 * 0.75;
   // }
 }
+
+.story-text-bigger {
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-regular;
+  font-size: 1.5vmax;
+  line-height: 2.25vmax;
+  color: #737271;
+
+  // @media screen and (max-width: 1440px) {
+  //   font-size: $syrios-font-size-24 * 0.75 ;
+  //   line-height: $syrios-line-spacing-30 * 0.75;
+  // }
+}
+
 .story-h1 {
   font-family: $syrios-garamond-premier-pro-display;
   font-style: $syrios-font-style-normal;
