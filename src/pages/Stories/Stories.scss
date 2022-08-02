@@ -3,19 +3,14 @@
   position: fixed;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  /* Take full size */
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  
   padding-top: 7.5vmax;
   padding-bottom: 3.75vmax;
-  background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png?updated_at=2022-07-18T15:54:23.632Z');
+  background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png?updated_at=2022-07-18T15:54:23.632Z') center center / cover no-repeat;
   mix-blend-mode: multiply;
-  background-size: cover; 
-  background-repeat: no-repeat;
-  background-position: right bottom;
-
-  // @media screen and (max-height: 900px) {
-  //   padding-top: 105px;
-  // }
 
 }
 
