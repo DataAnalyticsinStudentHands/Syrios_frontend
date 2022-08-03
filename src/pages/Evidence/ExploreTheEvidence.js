@@ -50,7 +50,7 @@ const ExploreTheEvidence = () => {
                 />
                 ):(<b className='image-icon text-center'>&#xe80b;</b>)}
               </Link>
-                <p className='story-h4 mt-4'>SORT COINS</p>
+                <h4 className='mt-4'>SORT COINS</h4>
                 <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_sort.caption)} />
             </Col>
             {/* MAP COINS */}
@@ -64,7 +64,7 @@ const ExploreTheEvidence = () => {
                 />
                 ):(<b className='image-icon text-center'>&#xe81b;</b>)}
               </Link>
-                <p className='story-h4 mt-4'>MAP COINS</p>
+                <h4 className='mt-4'>MAP COINS</h4>
                 <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_map.caption)} />
             </Col>
             {/* COIN TIMELINE */}
@@ -78,7 +78,7 @@ const ExploreTheEvidence = () => {
                   />
                 ):(<b className='image-icon text-center'>&#xe811;</b>)}
               </Link>
-                <p className='story-h4 mt-4'>Coin Catalog</p>
+                <h4 className='mt-4'>Coin Catalog</h4>
                 <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_catalog.caption)} />
             </Col>
           </Row>
@@ -90,7 +90,7 @@ const ExploreTheEvidence = () => {
               </Link>
             </Col>
             <Col xs={4}>
-              <p className='story-h4'>Download Data</p>
+              <h4>Download Data</h4>
               {evidenceData.download.caption?(
               <p className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.download.caption)} />):(<></>)}
             </Col>

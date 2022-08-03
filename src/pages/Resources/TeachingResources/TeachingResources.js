@@ -13,9 +13,9 @@ const TeachingResources = ()=>{
                 </Row>
                 <Row className='d-flex justify-content-center'>
                     <Col xs={10} className='  text-center my-5 pb-5 red-box'>
-                        <p className='story-h3 my-5 pb-5'>
+                        <h3 className='my-5 pb-5'>
                             The Teaching Resources Functionality is still under development.
-                        </p>
+                        </h3>
 
                         <p className='story-text my-5'>
 

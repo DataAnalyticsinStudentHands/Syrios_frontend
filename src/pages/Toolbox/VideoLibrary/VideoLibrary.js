@@ -59,8 +59,8 @@ const VideoLibrary = ()=>{
     return(
         <div id='video-library' >
             <Container>
-                <p className='story-h1 text-center'>Video Library</p>
-                <p className='story-h2 text-center'>Do we need sub title</p>
+                <h1 className='story-h1 text-center'>Video Library</h1>
+                <h2 className='story-h2 text-center'>Do we need sub title</h2>
                 <p className='story-text text-center'>or caption?</p>
                 <Player open={isOpen} toggleModal={handleOpenModal} url={url} />
 
@@ -84,7 +84,7 @@ const VideoLibrary = ()=>{
                                         </b>
                                     )}
 
-                                    <p className='story-h4 mt-4'>{video.attributes.video_title || ""}</p>
+                                    <h4 className='mt-4'>{video.attributes.video_title || ""}</h4>
                                     <p className='story-caption' dangerouslySetInnerHTML={createMarkup(video.attributes.video_description || "")}/>
                                     
                                 </Col>

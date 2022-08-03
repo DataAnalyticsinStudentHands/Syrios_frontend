@@ -45,7 +45,7 @@ const Stories = () => {
 		// className='d-flex align-items-center'
 		>
 			<Container>
-				<p className='story-h1 text-center'>Discover Coin Stories</p>
+				<h1 className='text-center'>Discover Coin Stories</h1>
 				<Row className='d-flex justify-content-center text-center'>
 					<Col xs={11}>
 					<p className='story-text'>

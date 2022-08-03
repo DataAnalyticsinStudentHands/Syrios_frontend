@@ -4,23 +4,13 @@ import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import createMarkup from 'src/utils/Markup.js';
-// import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 
 const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
-  // console.log('this is refer',references)
-  // console.log('this is img src', imageReference)
 
-  // const [isBottomOpen, setIsBottomOpen] = useState(false)
+  let eleheight = document.getElementById("credits-and-references")?.clientHeight
+  let footerheight = document.getElementById("footer")?.clientHeight
 
-  // const toggleBottom = () => {
-  //   setIsBottomOpen((prev) => !prev)
-  // }
-
-  let referenceLength = 10
-  if(references || imageReference){
-    referenceLength = 20+ Math.max(referenceLength,references.length,imageReference.length )*1
-  }
   return (
     <>
      <div id='footer'>
@@ -65,14 +55,14 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
           className='credits-and-references'
           // height={`${referenceLength}vmax`}
           zIndex={100}
-          style={{height:`${referenceLength}vmax`}}
+          style={{height:`${eleheight + footerheight * 2}px`}}
         >
           <Row>
             <Col>
               <button className='x-button reference-tag' onClick={toggleBottom}> &#xe839;</button>
             </Col>
           </Row>
-          <Row className='' style={{marginLeft:'175px'}}>
+          <Row id='credits-and-references' style={{marginLeft:'175px'}}>
             {imageReference.length ===0 ?(<></>):(
             <>
               <Col xs={4}>
@@ -84,7 +74,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
                       <Row key={index} className='d-flex references-text mt-3'>
                         <Col className='my-3 '>
                           <a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}</a>
-                          <span className='story-icon mx-3' style={{color:'#b9ccd7', fontSize:'20px'}}> &#xe818;</span>
+                          <span className='story-icon' style={{color:'#b9ccd7', fontSize:'20px'}}> &#xe818;</span>
                         </Col>
                       </Row>
                     )})}
@@ -93,7 +83,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
             {references.length ===0 ?(<></>):(
             <>
               <Col xs={7}>
-              <Row style={{marginTop:'45px'}}>
+              <Row  style={{marginTop:'45px'}}>
                 <Col className='references-h3 mx-4 mb-3'>To read more, check these out:</Col>
               </Row>
                 {references.map((ref,index)=>{

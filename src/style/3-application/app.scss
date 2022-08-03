@@ -14,6 +14,42 @@ html {
 .container{
   max-width: 80vmax;
 }
+
+h1{
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: 300;
+  font-size: $syrios-font-size-144;
+  // line-height: $syrios-line-spacing-75;
+  letter-spacing: $syrios-character-spacing-0;
+  color: #486678;
+}
+h2{
+  font-family: $syrios-garamond-premier-pro-display;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-light;
+  font-size: $syrios-font-size-64;
+  line-height: 1em;
+  color: #a85828;
+}
+
+h3{
+  font-size: $syrios-font-size-40;
+  line-height: $syrios-line-spacing-45;
+  color: #737271;
+}
+
+h4{
+  font-family: $syrios-garamond-premier-pro-subhead;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-semi-bold;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-25;
+  letter-spacing: $syrios-character-spacing-0;
+  color: #a86818;
+  text-transform: $syrios-text-transform-uppercase;
+}
+
 em {
   font-style: $syrios-font-style-italic;
 }

@@ -45,14 +45,14 @@ function LandingPage() {
       <div id='landing-page'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <Container>
-          <Row>
-            {/* This is the title text in orage */}
+          {/* <Row>
             <Col>
                 <ReactMarkdown className='story-h2 text-center mb-5'>
                   {landingData.title}
                 </ReactMarkdown>
             </Col>
-          </Row>
+          </Row> */}
+          <h2 className='text-center'>{landingData.title}</h2>
           <Row className='d-flex justify-content-around mt-5'>
             {/* This is the video */}
             <Col xs={12} sm={8} id='landing-video'>

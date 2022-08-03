@@ -160,6 +160,7 @@
   line-height: 1em;
   letter-spacing: $syrios-character-spacing-0;
   color: #a85828;
+  text-align: center;
 
   // @media screen and (max-width: 1440px) {
   //   font-size:  $syrios-font-size-64 * 0.75 ;
@@ -189,10 +190,6 @@
   line-height: $syrios-line-spacing-45;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
-  // @media screen and (max-width: 1440px) {
-  //   font-size:  $syrios-font-size-40 * 0.75 ;
-  //   line-height: $syrios-line-spacing-45 * 0.75;
-  // }
 }
 
 .story-h4 {
@@ -205,11 +202,6 @@
   color: #a86818;
   text-transform: $syrios-text-transform-uppercase;
 
-  // @media screen and (max-width: 1440px) {
-  //   font-size:  $syrios-font-size-20 * 0.75 ;
-  //   line-height: $syrios-line-spacing-25 * 0.75;
-
-  // }
 }
 
 
@@ -285,12 +277,14 @@
   letter-spacing: $syrios-character-spacing--10;
   color: #183848;
 
-  & a {
+   a {
     color: #183848;
-    &:hover{
-      color:#183848
-    }
   }
+  // a[target='_blank']:after {
+
+  //   color: #b9ccd7 !important;
+
+  // }
 
   // @media screen and (max-width: 1440px) {
   //   font-size:  $syrios-font-size-18 * 0.75 ;
