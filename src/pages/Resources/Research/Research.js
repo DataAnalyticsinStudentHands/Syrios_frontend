@@ -27,15 +27,12 @@ const Research = ()=>{
 
     return(
         <div id='research' >
+            <h1 className='text-center'>Bibliography</h1>
             <Container>
-                <Row className='mb-5'>
-                    <p className='story-h1 text-center'>
-                        Bibliography
-                    </p>
-                </Row>
+
                 {referencesData.length===0?(<></>):(
-                    <>
-                    {referencesData.map((bib)=>{
+                    
+                    referencesData.map((bib)=>{
                     return(
                         <Row key={bib.version} className='story-text-bigger my-5 justify-content-center'>
                         {bib.bib.split("http")[1] ? (
@@ -47,8 +44,8 @@ const Research = ()=>{
                             </Col>
                             ):(<Col xs={10} dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}/>)}
                         </Row >
-                    )})}
-                    </>
+                    )})
+                    
                 )}
             </Container>
             <Footer/>

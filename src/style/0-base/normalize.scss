@@ -114,26 +114,25 @@ a {
   -webkit-text-decoration-skip: objects; /* 2 */
   text-decoration: none;
   color: #78a878;
-
   &:hover{
     color: #487848;
   }
 
 }
 
-a[target='_blank']:after {
-  content: '\e818';
-  font-family: $syrios-font-family-syrios-entypo-subset;
-  color: #7899a8;
-  :hover{
-    color:#183848
-  }
-}
+// a[target='_blank']:after {
+//   content: '\e818';
+//   font-family: $syrios-font-family-syrios-entypo-subset;
+//   color: #7899a8;
+//   :hover{
+//     color:#183848
+//   }
+// }
+
 // a[class='glossary-tag']:after {
 //   content: '\e817';
 //   font-family: $syrios-font-family-syrios-entypo-subset;
 //   color: #7899a8;
-
 //   :hover{
 //     color: #183848;
 //   }

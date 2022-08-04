@@ -34,6 +34,8 @@
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
 
+
+
   // @media screen and (max-width: 1440px) {
   //   font-size: $syrios-font-size-40 * 0.75 ;
   //   line-height: $syrios-line-spacing-45 * 0.75;
@@ -49,12 +51,14 @@
   letter-spacing: $syrios-character-spacing--05;
   color: #737271;
 
-  // @media screen and (max-width: 1440px) {
-  //   font-size: $syrios-font-size-20 * 0.75 ;
-  //   line-height: $syrios-line-spacing-30 * 0.75;
-
-  // }
-
+  a[target='_blank']:after {
+    content: '\e818';
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    color: #7899a8;
+    :hover{
+      color:#183848
+    }
+  }
 }
 
 .story-caption {
@@ -65,11 +69,15 @@
   line-height: $syrios-line-spacing-20;
   letter-spacing: $syrios-character-spacing-0;
   color: #737271;
-  // @media screen and (max-width: 1440px) {
-  //   font-size: $syrios-font-size-18 * 0.75 ;
-  //   line-height: $syrios-line-spacing-20 * 0.75;
 
-  // }
+  a[target='_blank']:after {
+    content: '\e818';
+    font-family: $syrios-font-family-syrios-entypo-subset;
+    color: #7899a8;
+    :hover{
+      color:#183848
+    }
+  }
 }
 
 .story-icon{
@@ -147,9 +155,6 @@
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
 
-  // @media screen and (max-width: 1440px) {
-  //   font-size: $syrios-font-size-144 * 0.75 ;
-  // }
 }
 
 .story-h2 {
@@ -161,11 +166,6 @@
   letter-spacing: $syrios-character-spacing-0;
   color: #a85828;
   text-align: center;
-
-  // @media screen and (max-width: 1440px) {
-  //   font-size:  $syrios-font-size-64 * 0.75 ;
-  //   // line-height: 1em * 0.75;
-  // }
 }
 
 .story-h3 {
@@ -175,11 +175,6 @@
   font-size: $syrios-font-size-40;
   line-height: $syrios-line-spacing-45;
   color: #737271;
-
-  // @media screen and (max-width: 1440px) {
-  //   font-size:  $syrios-font-size-40 * 0.75 ;
-  //   line-height: $syrios-line-spacing-45 * 0.75;
-  // }
 }
 
 .story-h3-blue {
@@ -225,11 +220,6 @@
   line-height: $syrios-line-spacing-30;
   letter-spacing: $syrios-character-spacing-0;
   color: #486678;
-  // @media screen and (max-width: 1440px) {
-  //   font-size:  $syrios-font-size-24 * 0.75 ;
-  //   line-height: $syrios-line-spacing-30 * 0.75;
-
-  // }
 }
 
 .select-story-text {
@@ -241,12 +231,6 @@
   letter-spacing: $syrios-character-spacing--20;
   color: #a86818;
   margin: 11px;
-  // @media screen and (max-width: 1440px) {
-  //   font-size:  $syrios-font-size-24 * 0.75 ;
-  //   letter-spacing: $syrios-character-spacing--20 * 0.75 ;
-  //   line-height: $syrios-line-spacing-25 * 0.75;
-
-  // }
 }
 
 

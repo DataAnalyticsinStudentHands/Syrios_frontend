@@ -168,7 +168,7 @@ export function SetupTimelineBackground(obj) {
     let y_dates_mod_50 = [];
     res.data.forEach((e) => {
       e = e.attributes;
-      if (e.y_date % 100 === 0) {
+      if (e.y_date % 50 === 0) {
         y_dates_mod_50.push(e.y_date);
       }
     });

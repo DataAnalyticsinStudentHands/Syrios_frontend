@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Svg from 'react-native-svg';
 import axios from 'axios';
 
-import { createMarkup } from 'src/utils/Markup.js';
+// import { createMarkup } from 'src/utils/Markup.js';
 import Footer from 'src/components/Footer.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
@@ -187,7 +187,7 @@ const Timeline = () => {
   const [view_box_min_height, set_view_box_min_height] = useState(0);
   const [view_box_total_height, set_view_box_total_height] = useState(0);
   const [timeline_background, set_timeline_background] = useState(undefined); // This is just the background colors, with the dotted lines and numbering on the right hand side
-  const [timeline_description, set_timeline_description] = useState(undefined); // This is the description at the top of the page
+  // const [timeline_description, set_timeline_description] = useState(undefined); // This is the description at the top of the page
   const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
   // These are the view box dimensions
   
@@ -256,7 +256,7 @@ const Timeline = () => {
           if (err) {
             console.error(err);
           } else {
-            set_timeline_description(res.data.data.attributes.text);
+            // set_timeline_description(res.data.data.attributes.text);
 
             var timeline_info_interval = setInterval(function() {
               if (!timeline_background_is_loading) {
@@ -298,11 +298,20 @@ const Timeline = () => {
   return (
         <div id='Timeline-page'>
           <div className='d-flex align-items-center justify-content-center' >
-            <p className='text-center story-h1' >TIMELINE</p>
+            <p className='text-center story-h1' >COINS IN TIME</p>
           </div>
-          <div className='d-flex align-items-center justify-content-center text-center story-text'>
-            <div dangerouslySetInnerHTML={createMarkup(timeline_description)} />
+          <div className='align-items-center justify-content-center' style={{marginLeft:"5%", marginRight:"5%"}} >
+            {/* <p className='text-center story-text' dangerouslySetInnerHTML={createMarkup(timeline_description)} /> */}
+            <h3 className='text-center'>Ancient coins were not minted in a vacuum, but were intricately tied to the political, economic, and socio-cultural systems of their issuing city and the broader empires of which they were a part. This timeline visualizes how the coins minted at Antioch intersected with the people and powers surrounding their production. </h3>
+            <p className='story-text text-center mt-5' >
+              <em>Scroll down to explore the changing balance of eastern and western imperial power laying claim to Syria,as well as the events and coins created within this environment.</em>
+            </p>
+            <p className='story-text text-center'>
+              <em>Click on the boxes and coins to learn more.</em>
+            </p>
           </div>
+          
+
           <div className='timeline-legend' style={{top:scall}}>
             <Row>
               <Col className="d-flex align-items-center"><img src={`${CoinLegend}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Coin </span></Col>
