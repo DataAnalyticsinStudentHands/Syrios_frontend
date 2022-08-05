@@ -6,19 +6,28 @@ import { colors } from 'src/components/constants.js';
 
 function tag(text) {
   return (
-    <div key={text.toUpperCase()} className='tag' style={{ backgroundColor: colors.find_color(text) }}>
+    <div key={Math.random()} className='tag' style={{ backgroundColor: colors.find_color(text) }}>
       <p className='tag-text'>
-        {text.toUpperCase()}
+        {text}
       </p>
     </div>
   );
 };
 
-function loadtags(tags) { // Split every tag into individual components with delimiter ',' and push the resultant jsx to array
+function loadtags(tag1,tag2) { // Split every tag into individual components with delimiter ',' and push the resultant jsx to array
   let jsxArr = [];
-  tags.split(',').forEach((e) => {
-    jsxArr.push(tag(e.trim()));
-  });
+  if (tag1){
+    tag1.forEach((e)=>{
+      if(e.subcategory1 !== null){
+        jsxArr.push(tag(e.subcategory1));
+      }
+    })
+  }
+  if (tag2){
+    tag2.forEach((e)=>{
+      jsxArr.push(tag(e.subcategory2));
+    })
+  }
   return jsxArr;
 }
 
@@ -39,19 +48,8 @@ const EventInfo = (props) => {
             </p>
           </div>
 
-          {/* description */}
-          <div id='event-description'>
-            <div dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
-          </div>
+          <div id='event-description' dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
 
-          {/* tags */}
-          {/* <p id='event-tags-title'>
-            INFLUENCES ON ANTIOCH:
-          </p> */}
-
-          {/* <div id='event-tags'>
-            {loadtags(props.eventMetaData.tags)}
-          </div> */}
 
           <div id='light-green-background'>
             <div id='event-connections'>
@@ -59,22 +57,10 @@ const EventInfo = (props) => {
                 TAGS
               </p>
               <div id='event-tags' className='my-3'>
-                {loadtags(props.eventMetaData.tags)}
+                {loadtags(props.eventMetaData.tag_subcategory1,props.eventMetaData.tag_subcategory2)}
               </div>
             </div>
           </div>
-
-          {/* Cultural connections */}
-          {/* <div id='event-connections-background'>
-            <div id='event-connections'>
-              <p id='event-connections-text' className='gray-text'>
-                CULTURAL CONNECTIONS:
-              </p>
-              <p id='event-connections-list' className='blue-text type-category'>
-                {props.eventMetaData.type_category}
-              </p>
-            </div>
-          </div> */}
         
         </div>
       </div>

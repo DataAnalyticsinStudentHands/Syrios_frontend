@@ -7,15 +7,7 @@ import Footer from 'src/components/Footer.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
 import EventInfo from 'src/components/event/Event.js';
-import { Row,Col } from 'react-bootstrap';
-
-import CoinLegend from './floatingIcon/Coin_Legend.png'
-import EventLegend from './floatingIcon/Event_Legend.png'
-import Roman from "./floatingIcon/Roman.png"
-import Eastern from "./floatingIcon/Eastern.png"
-import Greekhellenistic from "./floatingIcon/Greekhellenistic.png"
-import Syrian from "./floatingIcon/Syrian.png"
-import Antioch from "./floatingIcon/Antioch.png"
+// import { Row,Col } from 'react-bootstrap';
 
 import { SetupTimelineBackground } from './TimeLineBackground';
 import { LoadTimelineInfo } from './TimeLineInfo';
@@ -191,7 +183,7 @@ const Timeline = () => {
   const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
   // These are the view box dimensions
   
-  const [scall, setScall] = useState(550)
+  // const [scall, setScall] = useState(550)
 
   const y_offset = 5;
 
@@ -201,7 +193,6 @@ const Timeline = () => {
     set_show_coin_info(e);
   };
   const [coin_meta_data, set_coin_meta_data] = useState(default_coin_data);
-
   const update_coin_info = (img_dom_obj) => { // This is a function that is passed to the image comp per coin image and is called each time to update coin info if on click
     let id = parseInt(img_dom_obj.target.id);
 
@@ -218,12 +209,13 @@ const Timeline = () => {
   const EventInfoPopupCloseHandler = (e) => {
     set_show_event_info(e);
   };
-
   const [event_meta_data, set_event_meta_data] = useState(default_event_data);
   const update_event_info = (event_dom_obj) => {
+    // console.log("event_dom_obj:",event_dom_obj)
     let id = parseInt(event_dom_obj.target.id);
 
     // update event meta data
+    // console.log("Events",events)
     set_event_meta_data(events.filter(e => {
       return e.data.id === id;
     })[0].data.attributes);
@@ -261,7 +253,7 @@ const Timeline = () => {
             var timeline_info_interval = setInterval(function() {
               if (!timeline_background_is_loading) {
                 clearInterval(timeline_info_interval); // WHT IS THIS???
-
+                // console.log(view_box_min_height)
                 let tmp = LoadTimelineInfo({res, y_offset, view_box_min_height, coins, events, update_coin_info, update_event_info});
                 set_timeline_events_and_coins(tmp.jsx_arr);
                 coins = tmp.coin_info_arr;
@@ -275,16 +267,16 @@ const Timeline = () => {
     }
   });
 
-  useEffect(() => {
-    const handleScroll = event => {
-      if(window.scrollY <= 400){
-        setScall(550-window.scrollY)
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = event => {
+  //     if(window.scrollY <= 400){
+  //       setScall(550-window.scrollY)
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-  }, []);
+  // }, []);
 
   if (timeline_info_is_loading && timeline_background_is_loading) {
     return (
@@ -312,7 +304,7 @@ const Timeline = () => {
           </div>
           
 
-          <div className='timeline-legend' style={{top:scall}}>
+          {/* <div className='timeline-legend' style={{top:scall}}>
             <Row>
               <Col className="d-flex align-items-center"><img src={`${CoinLegend}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Coin </span></Col>
             </Row>
@@ -334,7 +326,7 @@ const Timeline = () => {
             <Row>
               <Col className="d-flex align-items-center"><img src={`${Antioch}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Antioch </span></Col>
             </Row>
-          </div>
+          </div> */}
           <Svg
             height='100%'
             width='100%'

@@ -46,25 +46,25 @@ export const colors = {
 
   default:'#71797E',
   find_color: function(text) {
-    text = text.toLowerCase();
-    if (text.includes('roman'))
-      return this.ColorB85828; //b85828
-    if (text.includes('greek' || 'seleucid' || 'ptolemaic' || 'alexander' || 'attalid'))
-      return this.Colord8b848;
-    if (text.includes('persina' || "parthian" || "hasmonean" || "armenian" || "sasanian" || "herodian" || "nabataean"))
-      return this.Color78a878;
-    if (text.includes('emesene' || 'commagenian'||'syrian' || 'palmyrene'))
-      return this.Color737271;
-    if (text.includes('political'))
-      return this.Color486678;
-    if (text.includes('military'))
-      return this.Color313029;
-    if (text.includes('cultural'))
-      return this.Colord88858;
-    if (text.includes('economic'))
-      return this.Colord8a048;
-    if (text.includes('eastern'))
-      return this.Color7FA87F;
-    return this.default;
+      text = text.toLowerCase();
+      if (text.includes('roman'))
+        return this.ColorB85828; //b85828
+      if (text.includes('greek' || 'seleucid' || 'ptolemaic' || 'alexander' || 'attalid'))
+        return this.Colord8b848;
+      if (text.includes('persina' || "parthian" || "hasmonean" || "armenian" || "sasanian" || "herodian" || "nabataean"))
+        return this.Color78a878;
+      if (text.includes('emesene' || 'commagenian'||'syrian' || 'palmyrene'))
+        return this.Color737271;
+      if (text.includes('political'))
+        return this.Color486678;
+      if (text.includes('military'))
+        return this.Color313029;
+      if (text.includes('cultural'))
+        return this.Colord88858;
+      if (text.includes('economic'))
+        return this.Colord8a048;
+      if (text.includes('eastern'))
+        return this.Color7FA87F;
+      return this.default;
   }
 };
