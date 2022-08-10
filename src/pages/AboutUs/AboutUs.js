@@ -41,6 +41,17 @@ const About = () => {
     <>
       <div id='aboutus-page'>
         <h1 className='text-center'>About Us</h1>
+        <div className='aboutus-des my-5 py-5'>
+          <div className='aboutus-logo'>
+            <img
+              src={`${process.env.REACT_APP_strapiURL}${aboutUsData.logo.data.attributes.url}`}
+              alt="logoside.png"
+              width="100%"
+            />
+          </div>
+          <div className='aboutus-description story-text-bigger' dangerouslySetInnerHTML={createMarkup(aboutUsData?.description)}/>
+
+        </div>
         <div className='aboutus-project_director my-5'>
           <h2 className='my-5 py-5 text-center'>Project Directors</h2>
           {aboutUsData?.project_directors?.map((director)=>{
@@ -88,7 +99,7 @@ const About = () => {
                         src={ `${process.env.REACT_APP_strapiURL}${s.picture.data.attributes.url}`}            
                         alt={s.picture.data.attributes.alternativeText ?? ""}
                         // width={"100px"}
-                        width="80%"
+                        width="100%"
                         className="aboutus-avatar"
                       />
                     </Col>

@@ -7,12 +7,27 @@
   margin-left: 10%;
 
 }
+.aboutus-des{
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.aboutus-logo{
+  width: 20%;
+  align-items: center;
+
+}
+.aboutus-description{
+  width: 70%;
+}
 
 .aboutus-project_director{
   // font-size: calc(16px + 1vw);
   // display: flex;
   width: 90%;  
 }
+
 
 .aboutus-avatar{
   border-radius: 50%;
