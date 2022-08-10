@@ -1,49 +1,106 @@
 
-#about {
+#aboutus-page {
   z-index: 0;
   padding-top: 10em;
   padding-bottom: 10em;
+  width: 90%;
+  margin-left: 10%;
+
 }
 
+.aboutus-project_director{
+  // font-size: calc(16px + 1vw);
+  // display: flex;
+  width: 90%;  
+}
 
-.about-member-pictures {
-  margin-left: 10px;
-  margin-top: 10px;
-  width: 200px;
-  height: 200px;
+.aboutus-avatar{
   border-radius: 50%;
-  overflow: hidden;
+  padding: 0.75vmax;
   background-color: white;
-}
+  // width: 100%;
 
-.about-member-pictures img {
+}
+.aboutus-avatar__image{
+  border-radius: 50%;
   height: 100%;
 }
-
-.about-member-pictures-outline {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+.aboutTable {
+  font-size: calc(16px + 1vw);
+  display: flex;
+  width: 90%;
+  // margin: 2em auto;
+  // margin-left: 10%;
 }
 
-#about-digital-team {
-  margin-top: 100px;
-  font-size: 5em;
+.aboutTable_tabs {
+  width: 30%;
 }
 
-.row-decrease-to-paragraph-size {
-  margin-bottom: -1em;
+.aboutTable_tab {
+  width: 100%;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #737271;
+  clip-path: polygon(10% 0%,100% 0,100% 100%, 10% 100%, 0% 90%, 0% 10%);
+  background-color: #ffffff;
 }
 
-// .about-acknowlegments p a {
-//   text-decoration: underline !important;
-//   color: #486678;
-//   transition: 0.2s;
-// }
-
-.about-acknowlegments p a:hover {
-  color: rgba(184, 204, 216);
+.aboutTable_tab:hover {
+  background-color: rgba(184,204,216,0.5);
+  cursor: pointer;
 }
+
+.aboutTable_tab--active {
+  background-color: rgba(184,204,216,0.5);
+  pointer-events: none;
+}
+
+.aboutTable_entries { 
+  width: 70%;
+  max-height: 20em;
+  flex-direction: row;
+  padding-top: 0.2em;
+  overflow-y: scroll;
+  background-color: rgba(184,204,216,0.5);
+}
+
+.aboutTable_entries > * {
+  padding-left: 0.4em;
+}
+
+.aboutTable_entry {
+  display: flex;
+  align-items: center;
+}
+
+.aboutTable-student_leads {
+  padding: .5em;
+  display: flex;
+  align-items: center;
+}
+.aboutTable-collaborators {
+  // padding: .5em;
+  display: flex;
+  align-items: center;
+}
+.aboutTable-humanities_advisors {
+  padding: .5em;
+  display: flex;
+  align-items: center;
+}
+.aboutTable-grants_funding {
+  // padding: .5em;
+  display: flex;
+  align-items: center;
+
+  span{
+    margin-left: 1em;
+  }
+  a{
+    text-decoration:underline
+  }
+}
+
