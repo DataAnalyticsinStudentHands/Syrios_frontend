@@ -3,6 +3,13 @@ import glossaryRequest from 'src/api/glossary';
 import createMarkup from 'src/utils/Markup';
 import { Link, useParams } from "react-router-dom";
 
+import CoinSortIcon from "./res/CoinSort.svg"
+import MapIcon from "./res/Map.svg"
+import StoryIcon from "./res/Stories.svg"
+import TimelineIcon from "./res/Timeline.svg"
+import VideoIcon from "./res/Video.svg"
+
+
 const GlossaryTerm = () =>{
     const [isLoading, setIsLoading] = useState(true)
     const [termData, setTermData]=useState([])
@@ -59,19 +66,37 @@ const GlossaryTerm = () =>{
                     <br/>
                 </>
             )}
-
-            {termData.context? (<>
-                {termData.context.length === 0 ? (<></>):(
-                <div className='glossary-title'>See Word in Context 
-                    <br/>
-                    <div className='glossary-body glossary-context-icon'>
-                        {/* <span className='media-play text-center'> &#xe81f;</span>
-                        <span> &#xe81a;</span> */}
-                        <div dangerouslySetInnerHTML={createMarkup(termData.context)}/>
-                    </div>
-                </div>)}
-            </>):(<></>)}
-
+            
+            <div className='glossary-title'>See Word in Context 
+                <br/>
+                <div className='glossary-body glossary-context'>
+                    <span style={{marginRight:"1.5vmax"}}>
+                        <Link to='/Toolbox/VideoLibrary'>
+                        <img src={`${VideoIcon}`} alt="VideoIcon" height="25vmax"/>  
+                        </Link>
+                    </span>
+                    <span style={{marginRight:"1.5vmax"}}>
+                        <Link to='/Evidence/MapCoins'>
+                        <img src={`${MapIcon}`} alt="MapIcon" height="25vmax"/>  
+                        </Link>
+                    </span>
+                    <span style={{marginRight:"1.5vmax"}}>
+                        <Link to='/Stories'>
+                        <img src={`${StoryIcon}`} alt="StoryIcon" height="25vmax"/> 
+                        </Link>
+                    </span>
+                    <span style={{marginRight:"1.5vmax"}}>
+                        <Link to='/Toolbox/Timeline'>
+                        <img src={`${TimelineIcon}`} alt="TimelineIcon" height="25vmax"/>  
+                        </Link>
+                    </span>
+                    <span style={{marginRight:"1.5vmax"}}>
+                        <Link to='/Evidence/CoinSort'>
+                        <img src={`${CoinSortIcon}`} alt="CoinSortIcon" height="25vmax"/>  
+                        </Link>
+                    </span>
+                </div>
+            </div>
         </div>
     )
 }
