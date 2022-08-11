@@ -46,7 +46,7 @@ export function LoadTimelineInfo(obj) {
       return (
         <Image
           id={e.id}
-          key={`coin_image_${e.id}${coin_pair}`}
+          key={`coin_image_${e.id}_${coin_pair}_${Math.random()}`}
           className='coin-image'
           x={e.x - coin_size / 2}
           y={e.y + Math.abs(view_box_min_height) + y_offset - coin_size / 2}
@@ -65,9 +65,11 @@ export function LoadTimelineInfo(obj) {
         case 'timeline-objects.connected-coins':
           jsx_arr.push(
             <Path
-              d={`M${e.coin_a_x} ${e.coin_a_y+Math.abs(view_box_min_height)+y_offset} S${e.coin_a_x} ${e.coin_b_y+Math.abs(view_box_min_height)+y_offset} ${e.coin_b_x} ${e.coin_b_y+Math.abs(view_box_min_height)+y_offset}`}
+              d={`M${e.coin_a_x} ${e.coin_a_y+Math.abs(view_box_min_height)+y_offset} 
+                  S${e.coin_a_x} ${e.coin_b_y+Math.abs(view_box_min_height)+y_offset} ${e.coin_b_x} ${e.coin_b_y+Math.abs(view_box_min_height)+y_offset}`}
               key={`path_${e.id}`}
               stroke='#173847'
+              strokeDasharray={e.strokeline === 'dash' ? "2":""}
               fill='none'
               strokeWidth={coin_stroke_width*2}
             />

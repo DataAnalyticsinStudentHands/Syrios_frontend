@@ -40,10 +40,9 @@ export const colors = {
   Color737271:'#737271',
   Color486678:'#486678',
   Color313029:'#313029',
-  Colord88858:'d88858',
+  Colord88858:'#d88858',
   Colord8a048:'#d8a048',
   Color7FA87F:'#7FA87F',
-
   default:'#71797E',
   find_color: function(text) {
       text = text.toLowerCase();
@@ -68,3 +67,18 @@ export const colors = {
       return this.default;
   }
 };
+export const mintColor = {
+  find_color:function(text){
+    text = text.toLowerCase();
+    if(text.includes("antioch"))
+      return "#f4f2f0";
+    if(text.includes("syria"))
+      return "#737271";
+    if(text.includes("roman"))
+      return "#b85828";
+    if(text.includes("greek" || "Hellenistic"))
+      return "#987818";
+    if(text.includes("eastern"))
+      return "#184818";
+  }
+}

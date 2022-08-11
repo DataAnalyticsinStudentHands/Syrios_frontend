@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import Svg from 'react-native-svg';
+import Svg, { Text } from 'react-native-svg';
 import axios from 'axios';
 
-// import { createMarkup } from 'src/utils/Markup.js';
 import Footer from 'src/components/Footer.js';
 import LoadingPage from 'src/components/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
-import EventInfo from 'src/components/event/Event.js';
-// import { Row,Col } from 'react-bootstrap';
+import EventInfo from 'src/pages/Toolbox/Timeline/event/Event.js';
 
 import { SetupTimelineBackground } from './TimeLineBackground';
 import { LoadTimelineInfo } from './TimeLineInfo';
@@ -183,7 +181,6 @@ const Timeline = () => {
   const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
   // These are the view box dimensions
   
-  // const [scall, setScall] = useState(550)
 
   const y_offset = 5;
 
@@ -248,7 +245,6 @@ const Timeline = () => {
           if (err) {
             console.error(err);
           } else {
-            // set_timeline_description(res.data.data.attributes.text);
 
             var timeline_info_interval = setInterval(function() {
               if (!timeline_background_is_loading) {
@@ -267,16 +263,38 @@ const Timeline = () => {
     }
   });
 
+  // const [scall, setScall] = useState(0)
+  // const [topDistance, setTopDistance]= useState(undefined)
   // useEffect(() => {
+
+  //   const ele = document.getElementsByTagName("line")[0]
+  //   if(ele){
+  //   const rect = ele.getBoundingClientRect();
+  //   console.log(rect)
+    
+  //   // top = rect.top + document.body.scrollTop;
+  //   setTopDistance(rect.top)
+  //   }
+
+  // }, [timeline_background]);
+  // useEffect(()=>{
   //   const handleScroll = event => {
-  //     if(window.scrollY <= 400){
-  //       setScall(550-window.scrollY)
+  //     if(window.scrollY <= topDistance){
+  //       setScall(topDistance-window.scrollY)
   //     }
-  //   };
+  // };
 
-  //   window.addEventListener('scroll', handleScroll);
+  // window.addEventListener('scroll', handleScroll);
+  // },[topDistance])
 
-  // }, []);
+
+
+  // document.addEventListener("DOMContentLoaded", function(){
+  //   let ele = document.getElementsByTagName("line")[0]
+  //   const rect = ele.getBoundingClientRect();
+  //   const top = rect.top + document.body.scrollTop;
+  //   console.log(top)
+  // });
 
   if (timeline_info_is_loading && timeline_background_is_loading) {
     return (
@@ -304,34 +322,60 @@ const Timeline = () => {
           </div>
           
 
-          {/* <div className='timeline-legend' style={{top:scall}}>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${CoinLegend}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Coin </span></Col>
-            </Row>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${EventLegend}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Event </span></Col>
-            </Row>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${Roman}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Roman </span></Col>
-            </Row>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${Eastern}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Greek/Hellenistic </span></Col>
-            </Row>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${Greekhellenistic}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Eastern </span></Col>
-            </Row>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${Syrian}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Syrian </span></Col>
-            </Row>
-            <Row>
-              <Col className="d-flex align-items-center"><img src={`${Antioch}`} alt="" width="50px"/> <span className="story-h3-blue mx-5"> Antioch </span></Col>
-            </Row>
+          {/* <div className='timeline-legend'>
+              <div>
+                <img src={CoinSortIcon} alt="test" width={"50vmax"}/><span className='story-text'>Coin Sort</span>
+              </div>
+              <div>
+                <img src={CoinSortIcon} alt="test" width={"50vmax"}/><span className='story-text'>Coin Sort</span>
+              </div>
           </div> */}
+
+          {/* <Svg
+              height='100%'
+              width='100%'
+              viewBox={`0 0 100 100`}
+              style={{position: 'fixed', zIndex:"1"}}>
+
+              <Rect x="0" y="10" 
+              width="100%" height="10" 
+              stroke="black" fill="transparent" strokeWidth="1"/>
+
+              <circle cx={0} cy={0} r={1}
+                stroke="red" fill="transparent" strokeWidth="10"/>
+              <circle cx={100} cy={100} r={1}
+                stroke="red" fill="transparent" strokeWidth="10"/>
+                
+           </Svg> */}
+
+            {/* <Svg
+              width='100%'
+              height='100%'
+              style={{position: 'fixed', zIndex:"1"}}
+              viewBox={'0 0 100 100'}
+            >
+              <Rect x="0" y="20" 
+                width="10" height="10" 
+                stroke="black" fill="transparent" strokeWidth="1"/>
+              <Text x="0" y="20">x:0 y:20</Text>
+
+              <Rect x="150" y="20" 
+                width="10" height="10" 
+                stroke="black" fill="transparent" strokeWidth="1"/>
+
+              <circle cx={0} cy={10} r={1}
+                stroke="red" fill="transparent" strokeWidth="10"/>
+            </Svg> */}
+
           <Svg
             height='100%'
             width='100%'
             viewBox={`0 0 100 ${view_box_total_height}`}
-            style={{position: 'relative', top: '5em'}}>
+            style={{position: 'relative',}}>
+              <Text x='12' y='4.5' style={{fontSize:"3", fontWeight:"300"}}>WEST</Text>
+              <Text x='40' y='4.5' style={{fontSize:"3", fontWeight:"300"}}>ANTIOCH</Text>
+              <Text x='80' y='4.5' style={{fontSize:"3", fontWeight:"300"}}>EAST</Text>
+
             {timeline_background}
             {timeline_events_and_coins}
           </Svg>

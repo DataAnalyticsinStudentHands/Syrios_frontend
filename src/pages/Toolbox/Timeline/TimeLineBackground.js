@@ -4,7 +4,7 @@ import {
     Line,
     Rect,
   } from 'react-native-svg';
-import { colors } from 'src/components/constants.js';
+import { colors } from 'src/pages/Toolbox/Timeline/constants.js';
 
 export function SetupTimelineBackground(obj) {
     let res = obj.res.data;
@@ -154,7 +154,7 @@ export function SetupTimelineBackground(obj) {
       <Rect
         key='timeline_double_white'
         x='33'
-        y={`${y_offset+200}`}
+        y={`${y_offset+150}`}
         width='33'
         height={view_box_height}
         stroke='black'

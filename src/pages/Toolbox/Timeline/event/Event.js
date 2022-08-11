@@ -2,11 +2,11 @@ import React from 'react';
 
 import { createMarkup } from 'src/utils/Markup.js';
 import WhitePopUp from 'src/utils/WhitePopUp.js';
-import { colors } from 'src/components/constants.js';
+import { colors } from 'src/pages/Toolbox/Timeline/constants.js';
 
 function tag(text) {
   return (
-    <div key={Math.random()} className='tag' style={{ backgroundColor: colors.find_color(text) }}>
+    <div key={Math.random()} className='event-tag' style={{ backgroundColor: colors.find_color(text) }}>
       <p className='tag-text'>
         {text}
       </p>
