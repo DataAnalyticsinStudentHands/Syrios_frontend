@@ -30,9 +30,9 @@ const Toolbox = ()=>{
         <div id='tool-box' >
             <Container>
                 <Row className='mb-5'>
-                    <p className='story-h1 text-center'>
+                    <h1 className='text-center'>
                         Historian's Tool Box
-                    </p>
+                    </h1>
                 </Row>
                 <Row className='mt-5 d-flex justify-content-around'>
                     <Col xs={4} style={{width:'290px', height:'308px'}}>
@@ -46,45 +46,30 @@ const Toolbox = ()=>{
                             ):(<b className='image-icon text-center'>&#xe832;</b>)}
                         </Link>
                         <div >
-                            <p className='story-h4 mt-4'>How To Read A Coin</p>
+                            <h4 className='mt-4'>How To Read A Coin</h4>
                             <div className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.read_coin.caption)} />
                         </div>
                     </Col>
                     <Col xs={4} style={{width:'290px'}}>
                         <Link to='/Toolbox/VideoLibrary'>
-                            {toolboxData.video_library.image.data ? (
+                            {toolboxData.video_library?.image.data ? (
                                 <img
                                     alt={'missing alt'}
-                                    src={`${process.env.REACT_APP_strapiURL}${toolboxData.video_library.image.data.attributes.url}`}
+                                    src={`${process.env.REACT_APP_strapiURL}${toolboxData.video_library?.image.data.attributes.url}`}
                                     style={{
                                         height:'188px'
                                     }}/>
                             ):(<b className='image-icon text-center'>&#xe81f;</b>)}
                         </Link>
-                            <p className='story-h4 mt-4'>Video Library</p>
-                            <div className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library.caption)} />
+                            <h4 className='mt-4'>Video Library</h4>
+                            <div className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} />
                     </Col>
-                    <Col xs={4} style={{width:'290px'}}>
-                        <Link to='/Toolbox/Timeline'>
-                            {toolboxData.timeline.image.data ? (
-                                <img
-                                    alt={'missing alt'}
-                                    src={`${process.env.REACT_APP_strapiURL}${toolboxData.timeline.image.data.attributes.url}`}
-                                    style={{height:'188px', borderStyle:'double', borderColor:'#737271'}}
-                                    className="bg-white p-2"
-                                />
-                            ):(<b className='image-icon text-center'>&#xe81b;</b>)}
-                        </Link>
-                        <div className='align-items-end'>
-                            <p className='story-h4 mt-4'>Timeline</p>
-                            <div className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.timeline.caption)} />
-                        </div>
-                    </Col>
+
                 </Row>
                 <Row><Col><hr /></Col></Row>
                 <Row className='d-flex align-items-center justify-content-center'>
                     <Col xs={2} className="text-center">
-                        <Link to='/Toolbox/Glossary'>
+                        <Link to='/Toolbox/Glossary/all'>
                         <b className='story-icon ' style={{fontSize:'200px'}}>&#xe817;</b>
                         </Link>
                     </Col>

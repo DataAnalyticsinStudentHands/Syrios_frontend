@@ -69,22 +69,44 @@ const ExploreTheEvidence = () => {
             </Col>
             {/* COIN TIMELINE */}
             <Col xs={4} style={{width:'290px'}}>
+                <Link to='/Evidence/Timeline'>
+                    {evidenceData.timeline?.image.data ? (
+                        <img
+                            alt={'missing alt'}
+                            src={`${process.env.REACT_APP_strapiURL}${evidenceData.timeline?.image.data.attributes.url}`}
+                            style={{height:'188px', borderStyle:'double', borderColor:'#737271'}}
+                            className="bg-white p-2"
+                        />
+                    ):(<b className='image-icon text-center'>&#xe81b;</b>)}
+                </Link>
+                <div className='align-items-end'>
+                    <h4 className='mt-4'>Timeline</h4>
+                    {evidenceData.timeline?.caption ? 
+                    (<div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.timeline?.caption)} />):(<div className='story-caption'>Travel through time, and follow the journey of these coins for yourself. Find the connections between empires and cultures, and the key events that shaped history.</div>)}
+                </div>
+            </Col>
+          </Row>
+          <Row><Col><hr /></Col></Row>
+          <Row className='d-flex align-items-center justify-content-center'>
+
+          <Col xs={2} className='text-center'>
               <Link to='/Evidence/CoinCatalog'>
                 {evidenceData.coin_catalog.image.data ?(
                   <img
                     alt={'missing alt'}
                     src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_catalog.image.data.attributes.url}`}
                     style={{height:'188px'}}
+                    
                   />
                 ):(<b className='image-icon text-center'>&#xe811;</b>)}
               </Link>
+          </Col>
+          <Col xs={4}>
                 <h4 className='mt-4'>Coin Catalog</h4>
                 <div className='story-caption' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_catalog.caption)} />
             </Col>
-          </Row>
-          <Row><Col><hr /></Col></Row>
-          <Row className='d-flex align-items-center justify-content-center'>
-            <Col xs={2}>
+
+            <Col xs={2} className='text-center'>
               <Link to='/Evidence/Download'> {/* I had to split the links because if I made it one big link, it was messing with the row and column math bootstrap was doing */}
                 <b className='story-icon ' style={{fontSize:'200px'}}>&#xe810;</b>
               </Link>

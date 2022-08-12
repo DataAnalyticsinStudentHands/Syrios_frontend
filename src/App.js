@@ -53,12 +53,12 @@ function App() {
 
 					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 					<Route path='/Evidence/MapCoins' element={<MapCoins />} />
+					<Route path='/Evidence/Timeline' element={<Timeline />} />
+
 					<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
 					<Route path='/Evidence/Download' element={<Download />} />
 
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
-					<Route path='/Toolbox/Timeline' element={<Timeline />} />
-					
 					<Route element={<GlossaryWrapper/>}>
 						<Route path='/Toolbox/Glossary/:group' element={<Glossary />} />
 						<Route path='/Toolbox/Glossary/term/:term' element={<GlossaryTerm />} />

@@ -59,12 +59,12 @@ const VideoLibrary = ()=>{
     return(
         <div id='video-library' >
             <Container>
-                <h1 className='story-h1 text-center'>Video Library</h1>
-                <h2 className='story-h2 text-center'>Do we need sub title</h2>
-                <p className='story-text text-center'>or caption?</p>
-                <Player open={isOpen} toggleModal={handleOpenModal} url={url} />
+                <h1 className='text-center'>Video Library</h1>
+                <h2 className='text-center mt-5 pt-5'>Coming Soon ...</h2>
 
-                <Row className='d-flex justify-content-around '>
+                {/* <Player open={isOpen} toggleModal={handleOpenModal} url={url} /> */}
+
+                {/* <Row className='d-flex justify-content-around '>
                     {videoData.length === 0? (<></>):(<>
                         {videoData.map((video)=>{
                             return(
@@ -90,7 +90,7 @@ const VideoLibrary = ()=>{
                                 </Col>
                             )})}
                     </>)}
-                </Row>
+                </Row> */}
             </Container>
             <Footer/>
         </div>
