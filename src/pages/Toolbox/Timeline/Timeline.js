@@ -9,6 +9,7 @@ import EventInfo from 'src/pages/Toolbox/Timeline/event/Event.js';
 
 import { SetupTimelineBackground } from './TimeLineBackground';
 import { LoadTimelineInfo } from './TimeLineInfo';
+import timelinekey from './res/timelinekey.png'
 
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
@@ -319,6 +320,9 @@ const Timeline = () => {
             <p className='story-text text-center'>
               <em>Click on the boxes and coins to learn more.</em>
             </p>
+          </div>
+          <div>
+            <img src={timelinekey} alt="" style={{width:"80%", marginLeft:"10%"}}/>
           </div>
           
 
