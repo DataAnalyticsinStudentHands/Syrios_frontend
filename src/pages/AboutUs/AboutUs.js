@@ -65,10 +65,10 @@ const About = () => {
                       className="aboutus-avatar"
                     />
                 </Col>
-                <Col xs={8} className='light-blue-background p-5'>
+                <Col xs={8} className='story-text light-blue-background p-5'>
                   <h3 className='mb-3'>{director.name}</h3>
-                  <p className='story-text mb-3'>{director.role}</p>
-                  <p dangerouslySetInnerHTML={createMarkup(director.detail)} className='story-text text-left'/>
+                  <em>{director.role}</em>
+                  <p dangerouslySetInnerHTML={createMarkup(director.detail)} className='story-text text-left mt-3'/>
                 </Col>
               </Row>
             )
@@ -95,13 +95,13 @@ const About = () => {
                 return(
                   <Row className='aboutTable-student_leads' key={s.id}>
                     <Col xs={3} className="d-flex justify-content-center">
-                      <img 
-                        src={ `${process.env.REACT_APP_strapiURL}${s.picture.data.attributes.url}`}            
-                        alt={s.picture.data.attributes.alternativeText ?? ""}
-                        // width={"100px"}
-                        width="100%"
-                        className="aboutus-avatar"
-                      />
+                          <img 
+                          src={ `${process.env.REACT_APP_strapiURL}${s.picture.data?.attributes.url}`}            
+                          alt={s.picture.data?.attributes.alternativeText ?? ""}
+                          // width={"100px"}
+                          width="100%"
+                          className="aboutus-avatar"
+                        />                      
                     </Col>
 
                     <Col xs={8} className="story-text">

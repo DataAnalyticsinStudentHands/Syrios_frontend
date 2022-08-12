@@ -72,7 +72,7 @@ const GlossaryTerm = () =>{
                 <div className='glossary-body glossary-context'>
                     <span style={{marginRight:"1.5vmax"}}>
                         <Link to='/Toolbox/VideoLibrary'>
-                        <img src={`${VideoIcon}`} alt="VideoIcon" height="25vmax"/>  
+                        <img src={`${VideoIcon}`} alt="VideoIcon" height="25vmax"/>
                         </Link>
                     </span>
                     <span style={{marginRight:"1.5vmax"}}>
