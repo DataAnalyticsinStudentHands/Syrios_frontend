@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 import { Container, Row, Col, Nav} from 'react-bootstrap';
 import Footer from "../../../components/Footer";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import SearchBar from "./GlossarySearchBox";
 function GlossaryWrapper(){
     const alphabetGroup = ["ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"];
@@ -18,9 +18,9 @@ function GlossaryWrapper(){
                     </Row>
                     <SearchBar/>
                     <Nav variant="tabs" defaultActiveKey="/All" className="d-flex justify-content-center" style={{marginTop:"125px"}}>
-                        <Nav.Item><Nav.Link href="/dev/Toolbox/Glossary/all" eventKey="All" style={{backgroundColor: group ==="all" ? "white":"" }}>All</Nav.Link></Nav.Item>
-                        {group ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Nav.Link href={`/dev/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: group === alphabet ? "white":""}} eventKey={alphabet}>{alphabet}</Nav.Link></Nav.Item>)})}</>):(<></>)}
-                        {term ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Nav.Link href={`/dev/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: alphabet.indexOf(term.charAt(0).toUpperCase()) !==-1 ? "white":""}} eventKey={alphabet}>{alphabet}</Nav.Link></Nav.Item>)})}</>):(<></>)}
+                        <Nav.Item><Link to="/Toolbox/Glossary/all" eventkey="All" style={{backgroundColor: group ==="all" ? "white":"" }}>All</Link></Nav.Item>
+                        {group ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Link to={`/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: group === alphabet ? "white":""}} eventkey={alphabet}>{alphabet}</Link></Nav.Item>)})}</>):(<></>)}
+                        {term ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Link to={`/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: alphabet.indexOf(term.charAt(0).toUpperCase()) !==-1 ? "white":""}} eventkey={alphabet}>{alphabet}</Link></Nav.Item>)})}</>):(<></>)}
                     </Nav>
                     <Outlet/>
                 </Container>

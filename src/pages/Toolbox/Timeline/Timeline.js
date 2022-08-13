@@ -315,7 +315,7 @@ const Timeline = () => {
             {/* <p className='text-center story-text' dangerouslySetInnerHTML={createMarkup(timeline_description)} /> */}
             <h3 className='text-center'>Ancient coins were not minted in a vacuum, but were intricately tied to the political, economic, and socio-cultural systems of their issuing city and the broader empires of which they were a part. This timeline visualizes how the coins minted at Antioch intersected with the people and powers surrounding their production. </h3>
             <p className='story-text text-center mt-5' >
-              <em>Scroll down to explore the changing balance of eastern and western imperial power laying claim to Syria,as well as the events and coins created within this environment.</em>
+              <em>Scroll down to explore the changing balance of eastern and western imperial power laying claim to Syria, as well as the events and coins created within this environment.</em>
             </p>
             <p className='story-text text-center'>
               <em>Click on the boxes and coins to learn more.</em>
