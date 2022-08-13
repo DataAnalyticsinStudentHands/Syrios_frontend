@@ -303,7 +303,7 @@ const CoinInfo = (props) => {
           <div className='coin-info-reference-text  text-center'>SOURCE IMAGE: 
             <span style={{marginLeft:"0.25em"}} className='coin-info-reference-content'>
               {props.coinMetaData.source_image ?(<>
-                <a href={props.coinMetaData.source_image}>{props.coinMetaData.source_image} </a>
+                <a href={props.coinMetaData.source_image} target="_blank" rel="noopener noreferrer">{props.coinMetaData.source_image} </a>
               </>) : (<></>)}
             </span>
           </div>
