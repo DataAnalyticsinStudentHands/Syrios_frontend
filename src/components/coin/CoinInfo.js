@@ -262,7 +262,7 @@ const CoinInfo = (props) => {
     <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div className='coin-info'>
         {/*** coin image ***/}
-        <div className='coin-info-title text-center mb-5'>{`${props.coinMetaData.coin_title}`}</div>
+        <div className='coin-info-title text-center mb-5'>{props.coinMetaData.issuing_authority} {props.coinMetaData.mint} {props.coinMetaData.material}</div>
         <div className="coin-info-subtitle text-center my-3 mb-5">{props.coinMetaData.date_range}</div>
 
         <div className='coin-info-basic mb-3'>
