@@ -33,44 +33,98 @@
 }
 
 .coin-info {
-  max-width: 70em;
-  min-width: 30em;
-  width: 80vw;
+  width: 50vmax;
+  height: 800px;
+  // width: 80vw;
 
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: repeat(2, 1fr);
+  // display: grid;
+  // grid-template-columns: 1fr 2fr;
+  // grid-template-rows: 1fr 2fr 5fr 1fr;
+  
 }
-
-.coin-info-dark-text {
+.coin-info-title{
+  font-family: $syrios-garamond-premier-pro;
+  font-size: $syrios-font-size-36 ;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-600;
+  line-height: $syrios-line-spacing-30;
+  color: $syrios-color-183848;
+}
+.coin-info-subtitle{
+  font-family: $syrios-garamond-premier-pro;
+  font-size: $syrios-font-size-28 ;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-600;
+  line-height: $syrios-line-spacing-30;
+  color: $syrios-color-183848;
+}
+.coin-info-basic{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.coin-info-detail{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.coin-info-basic-text{
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
+  font-weight: $syrios-font-weight-400;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
+  color: $syrios-color-737271;
+}
+.coin-info-basic-content{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-600;
+  font-size: $syrios-font-size-20;
+  line-height: $syrios-line-spacing-20;
   color: $syrios-color-183848;
 }
 
-.coin-info-dark-text > a {
-  color: #7899A8;
-}
-
-.coin-info-dark-text > a:hover {
-  color: #183848;
-}
-
-.coin-info-small-gray-text {
+.coin-info-detail-text{
   font-family: $syrios-garamond-premier-pro;
   font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-20;
+  font-weight: $syrios-font-weight-400;
+  font-size: $syrios-font-size-22;
   line-height: $syrios-line-spacing-20;
-  letter-spacing: $syrios-character-spacing-0;
   color: $syrios-color-737271;
 }
+.coin-info-detail-content{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-600;
+  font-size: $syrios-font-size-22;
+  line-height: $syrios-line-spacing-20;
+  color: $syrios-color-183848;
+}
+
+.coin-info-reference-text{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-400;
+  font-size: $syrios-font-size-18;
+  line-height: $syrios-line-spacing-20;
+  color: $syrios-color-737271;
+}
+.coin-info-reference-content{
+  font-family: $syrios-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-600;
+  font-size: $syrios-font-size-16;
+  line-height: $syrios-line-spacing-20;
+  color: $syrios-color-183848;
+}
+
+
+
+
 
 /*** COIN INFO IMAGE SECTION ***/
 .coin-info-image {
+  height: 20vmax;
+  display: grid;
   grid-area: 1 / 1 / 2 / 2;
 }
 
@@ -82,12 +136,12 @@
 
 .coin-info-icon-rotate {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  margin: 15px;
+  bottom: 10%;
+  right: 10%;
+  // margin: 15px;
 
   color: #7899A8;
-  font-size: 2.5em;
+  font-size: $syrios-font-size-48;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -98,12 +152,12 @@
 
 .coin-info-scale-icon {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  margin: 15px;
+  bottom: 10%;
+  left: 10%;
+  // margin: 15px;
 
   color: #7899A8;
-  font-size: 2.5em;
+  font-size: $syrios-font-size-48;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -169,79 +223,79 @@
 }
 
 /*** COIN INFO DETAILS SECTION ***/
-.coin-info-details-background {
-  grid-area: 1 / 2 / 2 / 3; 
-}
+// .coin-info-details-background {
+//   grid-area: 1 / 2 / 2 / 3; 
+// }
 
-.coin-info-details {
-  margin: 10px;
+// .coin-info-details {
+//   margin: 10px;
 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px; 
-}
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-template-rows: repeat(7, 1fr);
+//   grid-column-gap: 0px;
+//   grid-row-gap: 0px; 
+// }
 
-.coin-info-small-gray-text {
-  font-size: 0.8em;
-}
+// .coin-info-small-gray-text {
+//   font-size: 0.8em;
+// }
 
-.coin-info-title { grid-area: 1 / 1 / 2 / 4; }
-/* column 1 */
-.coin-info-ancient-territory { grid-area: 2 / 1 / 3 / 2; }
-.coin-info-modern-country { grid-area: 3 / 1 / 4 / 2; }
-.coin-info-issuing-authority { grid-area: 4 / 1 / 5 / 2; }
-.coin-info-governing-power { grid-area: 5 / 1 / 6 / 2; }
-.coin-info-language { grid-area: 6 / 1 / 7 / 2; }
-/* column 2 */
-.coin-info-mint { grid-area: 2 / 2 / 3 / 3; }
-.coin-info-mint-modern-name { grid-area: 3 / 2 / 4 / 3; }
-.coin-info-material { grid-area: 4 / 2 / 5 / 3; }
-.coin-info-denomination { grid-area: 5 / 2 / 6 / 3; }
-.coin-info-diameter { grid-area: 6 / 2 / 7 / 3; }
-/* column 3 */
-.coin-info-date-range { grid-area: 2 / 3 / 3 / 4; }
-.coin-info-latitude { grid-area: 3 / 3 / 4 / 4; }
-.coin-info-longitude { grid-area: 4 / 3 / 5 / 4; }
-.coin-info-categories { grid-area: 5 / 3 / 7 / 4; } 
+// .coin-info-title { grid-area: 1 / 1 / 2 / 4; }
+// /* column 1 */
+// .coin-info-ancient-territory { grid-area: 2 / 1 / 3 / 2; }
+// .coin-info-modern-country { grid-area: 3 / 1 / 4 / 2; }
+// .coin-info-issuing-authority { grid-area: 4 / 1 / 5 / 2; }
+// .coin-info-governing-power { grid-area: 5 / 1 / 6 / 2; }
+// .coin-info-language { grid-area: 6 / 1 / 7 / 2; }
+// /* column 2 */
+// .coin-info-mint { grid-area: 2 / 2 / 3 / 3; }
+// .coin-info-mint-modern-name { grid-area: 3 / 2 / 4 / 3; }
+// .coin-info-material { grid-area: 4 / 2 / 5 / 3; }
+// .coin-info-denomination { grid-area: 5 / 2 / 6 / 3; }
+// .coin-info-diameter { grid-area: 6 / 2 / 7 / 3; }
+// /* column 3 */
+// .coin-info-date-range { grid-area: 2 / 3 / 3 / 4; }
+// .coin-info-latitude { grid-area: 3 / 3 / 4 / 4; }
+// .coin-info-longitude { grid-area: 4 / 3 / 5 / 4; }
+// .coin-info-categories { grid-area: 5 / 3 / 7 / 4; } 
 
-/*** COIN INFO TYPES SECTION ***/
-.coin-info-types {
-  grid-area: 2 / 1 / 3 / 2;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
+// /*** COIN INFO TYPES SECTION ***/
+// .coin-info-types {
+//   grid-area: 2 / 1 / 3 / 2;
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   grid-template-rows: repeat(4, 1fr);
+//   grid-column-gap: 0px;
+//   grid-row-gap: 0px;
+// }
 
-.coin-info-obverse-type { grid-area: 1 / 1 / 2 / 2; }
-.coin-info-obverse-legend { grid-area: 2 / 1 / 3 / 2; }
-.coin-info-reverse-type { grid-area: 3 / 1 / 4 / 2; }
-.coin-info-reverse-legend { grid-area: 4 / 1 / 5 / 2; }
+// .coin-info-obverse-type { grid-area: 1 / 1 / 2 / 2; }
+// .coin-info-obverse-legend { grid-area: 2 / 1 / 3 / 2; }
+// .coin-info-reverse-type { grid-area: 3 / 1 / 4 / 2; }
+// .coin-info-reverse-legend { grid-area: 4 / 1 / 5 / 2; }
 
-/*** COIN INFO SOURCE MATERIALS AND REFERENCES SECTION ***/
-.coin-info-source-material-background {
-  background-color: rgba(240, 224, 192, 0.5);
-  grid-area: 2 / 2 / 3 / 3;
-}
+// /*** COIN INFO SOURCE MATERIALS AND REFERENCES SECTION ***/
+// .coin-info-source-material-background {
+//   background-color: rgba(240, 224, 192, 0.5);
+//   grid-area: 2 / 2 / 3 / 3;
+// }
 
-.coin-info-source-material {
-  margin: 10px;
+// .coin-info-source-material {
+//   margin: 10px;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   grid-template-rows: repeat(4, 1fr);
+//   grid-column-gap: 0px;
+//   grid-row-gap: 0px;
+// }
 
-.coin-info-source-image { grid-area: 1 / 1 / 2 / 2; }
-.coin-info-rights-holder { grid-area: 2 / 1 / 3 / 2; }
-.coin-info-wikidata { grid-area: 3 / 1 / 4 / 2; }
-.coin-info-mint-nomisma-uri { grid-area: 4 / 1 / 5 / 2; }
-.coin-info-obverse-nomisma-uri { grid-area: 1 / 2 / 2 / 3; }
-.coin-info-reverse-nomisma-uri { grid-area: 2 / 2 / 3 / 3; }
-.coin-info-ref-1 { grid-area: 3 / 2 / 4 / 3; }
-.coin-info-ref-2 { grid-area: 4 / 2 / 5 / 3; }
+// .coin-info-source-image { grid-area: 1 / 1 / 2 / 2; }
+// .coin-info-rights-holder { grid-area: 2 / 1 / 3 / 2; }
+// .coin-info-wikidata { grid-area: 3 / 1 / 4 / 2; }
+// .coin-info-mint-nomisma-uri { grid-area: 4 / 1 / 5 / 2; }
+// .coin-info-obverse-nomisma-uri { grid-area: 1 / 2 / 2 / 3; }
+// .coin-info-reverse-nomisma-uri { grid-area: 2 / 2 / 3 / 3; }
+// .coin-info-ref-1 { grid-area: 3 / 2 / 4 / 3; }
+// .coin-info-ref-2 { grid-area: 4 / 2 / 5 / 3; }
