@@ -38,31 +38,30 @@ const FadeButton = (props)=>{
   if(props.options.length == 4) return(<Row className='justify-content-around fade-4button-row'>{buttonOptin}</Row>)}
 
 const FadeBody = (props)=>{
-  // console.log(props)
   let coin_left = props.coin.coin_left.data.attributes
   let sourUrl_left = coin_left.source_image
-  let coin_left_url = undefined
-  let coin_left_alt = undefined
+  let coin_left_url, coin_left_alt = undefined
+  // let coin_left_alt = undefined
   if(props.coin.left_coin_obverse_or_reverse){
-    coin_left_url = coin_left.reverse_file.data.attributes.url
-    coin_left_alt = coin_left.reverse_file.data.attributes.alternativeText
+    coin_left_url = coin_left.reverse_file.data.attributes?.url
+    coin_left_alt = coin_left.reverse_file.data.attributes?.alternativeText
   }
   else{
-    coin_left_url = coin_left.obverse_file.data.attributes.url
-    coin_left_alt = coin_left.obverse_file.data.attributes.alternativeText
+    coin_left_url = coin_left.obverse_file.data.attributes?.url
+    coin_left_alt = coin_left.obverse_file.data.attributes?.alternativeText
   }
 
   let coin_right = props.coin.coin_right.data.attributes
   let sourUrl_right = coin_right.source_image
-  let coin_right_url = undefined
-  let coin_right_alt = undefined
+  let coin_right_url , coin_right_alt = undefined
+  // let coin_right_alt = undefined
   if(props.coin.right_coin_obverse_or_reverse){
-    coin_right_url = coin_right.reverse_file.data.attributes.url
-    coin_right_alt = coin_right.reverse_file.data.attributes.alternativeText
+    coin_right_url = coin_right.reverse_file.data.attributes?.url
+    coin_right_alt = coin_right.reverse_file.data.attributes?.alternativeText
   }
   else{
-    coin_right_url = coin_right.obverse_file.data.attributes.url
-    coin_right_alt = coin_right.obverse_file.data.attributes.alternativeText
+    coin_right_url = coin_right.obverse_file.data.attributes?.url
+    coin_right_alt = coin_right.obverse_file.data.attributes?.alternativeText
   }
   return(
     <>      
@@ -126,11 +125,7 @@ const FadeBack = (props)=>{
   }
   return(<>{fadeBack}</>)
 }
-function handleBtns (dom,index, length){
-    for(let i = 0; i<length; i++){
-      i === index ? dom.childNodes[i].childNodes[0].className="fade-frame-button-active" : dom.childNodes[i].childNodes[0].className="fade-frame-button"
-    }
-}
+function handleBtns (dom,index, length){for(let i = 0; i<length; i++){i === index ? dom.childNodes[i].childNodes[0].className="fade-frame-button-active" : dom.childNodes[i].childNodes[0].className="fade-frame-button"}}
 
 function toShow (dom,index, length) {
   if (length == 2){

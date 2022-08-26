@@ -12,9 +12,9 @@ function GlossaryWrapper(){
         <div id='glossary-page'>
             <Container>
                     <p className='story-h1 text-center'>Glossary</p>
-                    <Row className='d-flex justify-content-between align-items-center'>
+                    <Row className='d-flex justify-content-between align-items-top'>
                         <Col xs={2}><i className='demo-icon glossary-icon'>&#xe817;</i></Col>
-                        <Col xs={10} className='story-text'>Explorethisglossary to learn about terms related to coins, the ancient world, historical investigation, and archaeology. Begin by searching for a term, selecting a category, or clicking through the tabs. </Col>
+                        <Col xs={10} className='story-text text-center'>Explore this glossary to learn about terms related to coins, the ancient world, historical investigation, and archaeology. Begin by searching for a term, selecting a category, or clicking through the tabs.</Col>
                     </Row>
                     <SearchBar/>
                     <Nav variant="tabs" defaultActiveKey="/All" className="d-flex justify-content-center" style={{marginTop:"125px"}}>

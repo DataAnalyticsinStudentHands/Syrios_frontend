@@ -1,11 +1,11 @@
 
 #explore-the-evidence {
-  position: fixed;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  top: $footerHeight;
-  bottom: $footerHeight;
+	height: 100%;
+	padding-top: 7.5vmax;
+	padding-bottom: 7.5vmax;
 
   .image-icon{
     font-size:120px;
@@ -15,6 +15,6 @@
     font-family: $syrios-font-family-syrios-entypo-subset;
     color: rgba(255,255,255,1);
     background-color: #7899a8;
-}
+  }
 }
 

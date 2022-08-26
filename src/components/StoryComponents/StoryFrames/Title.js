@@ -1,5 +1,5 @@
 import { Container, Row,Col } from "react-bootstrap"
-import ReactMarkdown from 'react-markdown';
+// import ReactMarkdown from 'react-markdown';
 
 import createMarkup from 'src/utils/Markup.js';
 const Title = (props) => {
@@ -17,13 +17,12 @@ const Title = (props) => {
               </Col>
             </Row>
             {/* {title} */}
-            <Row className='mt-3'><ReactMarkdown className='story-h1 text-center'>{zone.title}</ReactMarkdown></Row>
-
+            <h1 className='text-center'> {zone.title} </h1>
             {/* {subtitle} */}
-            <Row className='mb-3'><ReactMarkdown className='story-h4 text-center'>{zone.subtitle}</ReactMarkdown></Row>
+            <h4 className='text-center'> {zone.subtitle} </h4>
 
             {/* {caption} */}
-            <Row className='mt-3 '><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.caption)} className='story-h3 text-center'/></Row>
+            <div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.caption)} className='story-h3 text-center'/>
         </Container>
         {props.index === 0 ? (<></>):(<button onClick={()=>props.fullpageApi.moveTo(1)} className='back-to-top'> BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button> )}
       </div>

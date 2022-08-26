@@ -29,46 +29,118 @@ const Toolbox = ()=>{
     return(
         <div id='tool-box' >
             <Container>
-                <Row className='mb-5'>
-                    <h1 className='text-center'>
-                        Historian's Tool Box
-                    </h1>
-                </Row>
-                <Row className='mt-5 d-flex justify-content-around'>
-                    <Col xs={4} style={{width:'290px', height:'308px'}}>
+                <h1 className='text-center'>The Historian's Tool Box</h1>
+                <div className='align-items-center justify-content-center' style={{marginLeft:"5%", marginRight:"5%"}} >
+                    <h3 className='text-center my-5 pb-5'>Scholars have many resources available to help them understand both the past and present. 
+                        Discover the vocabulary, practices, and the larger historical issues at play when conducting
+                        research on coins, Syria, and ancient history.
+                    </h3>
+                </div>
+                <Row className='my-5 d-flex py-5 justify-content-around'>
+                    <Col xs={3}>
                         <Link to='/HowToReadACoin'>
-                            {toolboxData.read_coin.image.data ? (
+                            <div className='text-center'>
                                 <img
                                     alt={'missing alt'}
                                     src={`${process.env.REACT_APP_strapiURL}${toolboxData.read_coin.image.data.attributes.url}`}
-                                    style={{height:'188px'}}
+                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
+                                    className="bg-white p-2"
                                 />
-                            ):(<b className='image-icon text-center'>&#xe832;</b>)}
+                            </div>
                         </Link>
-                        <div >
-                            <h4 className='mt-4'>How To Read A Coin</h4>
-                            <div className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.read_coin.caption)} />
+                            <h4 className='mt-5 text-center'>How To Read A Coin</h4>
+                            <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.read_coin.caption)} />
+                    </Col>
+                    <Col xs={3}>
+                        {/* <Link to='/Toolbox/VideoLibrary'> */}
+                            <div className='text-center'>
+                                <img
+                                    alt={'missing alt'}
+                                    src={`${process.env.REACT_APP_strapiURL}/uploads/3_D_Coins_74ece64c4b.png`}
+                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
+                                    className="bg-white p-2"
+                                />
+                            </div>
+
+                        {/* </Link> */}
+                        <h4 className='mt-5 text-center'>COIN IN 3D</h4>
+                        {/* <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} /> */}
+                        <div className='story-caption text-center'>
+                            Examine a Syrian coin as a three-
+                            dimensional object in a virtual space. 
+                            Notice the union of images and text on a
+                            single artifact.</div>
+                    </Col>
+
+                    <Col xs={3}>
+                        <Link to='/Toolbox/Glossary/all'>
+                            <div className='text-center'>
+                                <img
+                                    alt={'missing alt'}
+                                    src={`${process.env.REACT_APP_strapiURL}/uploads/glossary2_0e2a776a1e.png`}
+                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
+                                    className="bg-white p-2"
+                                />
+                            </div>
+
+                        </Link>
+                        <h4 className='mt-5 text-center'>GLOSSARY</h4>
+                        {/* <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} /> */}
+                        <div className='story-caption text-center'>
+                        Explore the vocabulary related to coins,
+                        the ancient world, historical 
+                        investigation, and archaeology.
                         </div>
                     </Col>
-                    <Col xs={4} style={{width:'290px'}}>
+
+
+                </Row>
+                <hr />
+                <Row className='d-flex align-items-center justify-content-around my-5 py-5'>
+
+                <Col xs={3}>
+                    <Link to='/Toolbox/Research'>
+                        <div className='text-center'>
+                            <img
+                                alt={'missing alt'}
+                                src={`${process.env.REACT_APP_strapiURL}/uploads/research_426c0859b4.png`}
+                                style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
+                                className="bg-white p-2"
+                            />
+                        </div>
+                    </Link>
+                    <h4 className='mt-5 text-center'>Research</h4>
+                    {/* <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} /> */}
+                    <div className='story-caption text-center'>
+                    Watch short informational videos on a
+                    wide range of topics related to the study of
+                    coins, the ethics of coin collecting, Syrian 
+                    cultural heritage, and more.
+                    </div>
+                </Col>
+
+                <Col xs={3}>
                         <Link to='/Toolbox/VideoLibrary'>
-                            {toolboxData.video_library?.image.data ? (
+                            <div className='text-center'>
                                 <img
                                     alt={'missing alt'}
                                     src={`${process.env.REACT_APP_strapiURL}${toolboxData.video_library?.image.data.attributes.url}`}
-                                    style={{
-                                        height:'188px'
-                                    }}/>
-                            ):(<b className='image-icon text-center'>&#xe81f;</b>)}
+                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
+                                    className="bg-white p-2"
+                                />
+                            </div>
                         </Link>
-                            <h4 className='mt-4'>Video Library</h4>
-                            <div className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} />
+                        <h4 className='mt-5 text-center'>Video Library</h4>
+                        {/* <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} /> */}
+                        <div className='story-caption text-center'>
+                        Watch short informational videos on a
+                        wide range of topics related to the study of
+                        coins, the ethics of coin collecting, Syrian 
+                        cultural heritage, and more.
+                        </div>
                     </Col>
 
-                </Row>
-                <Row><Col><hr /></Col></Row>
-                <Row className='d-flex align-items-center justify-content-center'>
-                    <Col xs={2} className="text-center">
+                    {/* <Col xs={2} className="text-center">
                         <Link to='/Toolbox/Glossary/all'>
                         <b className='story-icon ' style={{fontSize:'200px'}}>&#xe817;</b>
                         </Link>
@@ -77,7 +149,7 @@ const Toolbox = ()=>{
                         <p className='story-h4'>Glossary</p>
                         {toolboxData.glossary.caption?(
                         <p className='story-caption' dangerouslySetInnerHTML={createMarkup(toolboxData.glossary.caption)} />):(<></>)}
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
             <Footer/>

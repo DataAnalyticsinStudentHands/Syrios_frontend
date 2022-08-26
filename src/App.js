@@ -25,7 +25,7 @@ import VideoLibrary from './pages/Toolbox/VideoLibrary/VideoLibrary';
 import Timeline from 'src/pages/Toolbox/Timeline/Timeline.js';
 import Glossary from './pages/Toolbox/Glossary/Glossary.js';
 
-import Research from './pages/Resources/Research/Research';
+import Research from './pages/Toolbox/Research/Research';
 import TeachingResources from './pages/Resources/TeachingResources/TeachingResources';
 
 import GlossaryWrapper from './pages/Toolbox/Glossary/glossary-wrapper';
@@ -59,12 +59,13 @@ function App() {
 					<Route path='/Evidence/Download' element={<Download />} />
 
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
+					<Route path='/Toolbox/Research' element={<Research />} />
+
 					<Route element={<GlossaryWrapper/>}>
 						<Route path='/Toolbox/Glossary/:group' element={<Glossary />} />
 						<Route path='/Toolbox/Glossary/term/:term' element={<GlossaryTerm />} />
 					</Route>
 
-					<Route path='/Resources/Research' element={<Research />} />
 					<Route path='/Resources/TeachingResources' element={<TeachingResources />} />
 
 					<Route path='/ContactUs' element={<ContactUs />} />

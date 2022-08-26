@@ -12,7 +12,8 @@ const zoteroRequest = {
             },
             params:{
                 "include":"bib",
-                "sort":"creator"
+                "sort":"creator",
+                "limit":"1000"
             }
         })
     },

@@ -59,16 +59,16 @@ const VideoLibrary = ()=>{
     return(
         <div id='video-library' >
             <Container>
-                <h1 className='text-center'>Video Library</h1>
-                <h2 className='text-center mt-5 pt-5'>Coming Soon ...</h2>
+                <h1 className='text-center mb-5 pb-5'>Video Library</h1>
+                {/* <h2 className='text-center mt-5 pt-5'>Coming Soon ...</h2> */}
 
-                {/* <Player open={isOpen} toggleModal={handleOpenModal} url={url} /> */}
+                <Player open={isOpen} toggleModal={handleOpenModal} url={url} />
 
-                {/* <Row className='d-flex justify-content-around '>
+                <Row className='d-flex justify-content-around '>
                     {videoData.length === 0? (<></>):(<>
                         {videoData.map((video)=>{
                             return(
-                                <Col key={video.id} xs={3} className="mt-5 text-center">
+                                <Col key={video.id} xs={3} className="mt-5 pt-5 text-center">
 
                                     {video.attributes.video_thumbnail.data? (
                                         <img 
@@ -90,7 +90,7 @@ const VideoLibrary = ()=>{
                                 </Col>
                             )})}
                     </>)}
-                </Row> */}
+                </Row>
             </Container>
             <Footer/>
         </div>

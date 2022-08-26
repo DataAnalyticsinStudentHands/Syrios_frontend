@@ -74,7 +74,7 @@ const ScaleFrame = (props) =>{
             <Row className='d-flex row-light-blue-background'/>
             <Row className='d-flex justify-content-around align-items-center row-scare-content'>
               <Col xs={3} className='d-flex justify-content-center'><ScaleCoinImg coin = {zone.scale_coin_left}/></Col>
-              <Col className='d-flex align-items-center' style={{height:'183px', zIndex:-3}}>
+              <Col className='d-flex align-items-center justify-content-center' style={{height:'183px', zIndex:-3}}>
                 <div 
                   onClick={props.toggleBottom}
                   dangerouslySetInnerHTML={createMarkup(zone.text_front)} 
@@ -116,7 +116,7 @@ const ScaleFrame = (props) =>{
             <Row className='d-flex row-light-blue-background'/>
             <Row className='d-flex justify-content-around align-items-center row-scare-content'>
               <Col xs={3} className='d-flex justify-content-center'><ScaleCoinImg coin = {zone.scale_coin_left}/></Col>
-              <Col className='d-flex align-items-center' style={{height:'183px', zIndex:-3}}>
+              <Col className='d-flex align-items-center justify-content-center' style={{height:'183px', zIndex:-3}}>
                 <div 
                   onClick={props.toggleBottom}
                   dangerouslySetInnerHTML={createMarkup(zone.text_front)} 

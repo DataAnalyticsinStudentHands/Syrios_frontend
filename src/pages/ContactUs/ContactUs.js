@@ -57,21 +57,17 @@ function ContactUs(){
                     Thanks for contacting us, we will get back to you soon!
                 </Alert>
             </Row>
-          <Row>
-            <p className='story-h1 text-center'>
-              Contact Us
-            </p>
-          </Row>
           <Row className='d-flex justify-content-between'>
             <Col xs={3}>
                 <img
                     alt={"contact"}
-                    src={`${process.env.REACT_APP_strapiURL}/uploads/contact_img_15bbe778f3.png?`}
-                    width='100%'
+                    src={`${process.env.REACT_APP_strapiURL}/uploads/logoside_5b293d0769.png?`}
+                    height='100%'
                 />
             </Col>
             <Col xs={9}>
-                <Form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
+              <h1 className='text-center mb-5 yb-5'>Contact Us</h1>
+                <Form className='mx-2 px-5' onSubmit={formik.handleSubmit}>
                     <Form.Group className='my-5'>
                         <Form.Label className='story-text' htmlFor='name'>Name</Form.Label>
                         <Form.Control 
@@ -109,7 +105,7 @@ function ContactUs(){
                         <Form.Label className='story-text'>Message</Form.Label>
                         <Form.Control
                             as="textarea"
-                            rows={5}
+                            rows={8}
                             name="writtenMessage"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
