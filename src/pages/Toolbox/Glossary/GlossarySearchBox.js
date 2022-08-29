@@ -24,7 +24,7 @@ const SearchBar = () => {
 
     
     return(
-        <div className="search my-5" >
+        <div className="search my-5 py-5" style={{marginLeft:"32.5%"}}>
         <b className="search-icon ">&#xe827;</b>
           <input
             id="glossary-input"

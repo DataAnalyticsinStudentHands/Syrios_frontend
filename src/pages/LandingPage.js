@@ -45,8 +45,10 @@ function LandingPage() {
       <div id='landing-page'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <Container>
-          <p className='story-text text-center mb-5 pb-5' style={{color:"#184818",fontWeight:"600", width:"60%", marginLeft:"20%"}}>Welcome to the prototype exhibit of SYRIOS, a digital humanities project of the University of Houston. This live site is not the finished exhibit, but rather an ongoing experiment exploring the intersection of historical material, usability/user-experience research, and web technology. 
-We welcome your feedback as we continue to develop new content, data, and digital interfaces for the study of ancient Syria and coins.</p>
+          <p className='story-text text-center landing-green-paragraph'>
+            Welcome to the prototype exhibit of SYRIOS, a digital humanities project of the University of Houston. This live site is not the finished exhibit, but rather an ongoing experiment exploring the intersection of historical material, usability/user-experience research, and web technology. 
+            We welcome your feedback as we continue to develop new content, data, and digital interfaces for the study of ancient Syria and coins.
+          </p>
           <h2 className='text-center'>{landingData.title}</h2>
           <Row className='d-flex justify-content-around mt-5'>
             {/* This is the video */}
