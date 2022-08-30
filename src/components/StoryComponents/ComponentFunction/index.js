@@ -55,6 +55,16 @@ export const TextComponent = (props)=>{
 export const ImageComponent =(props)=>{
   // console.log(props.imageWidth)
   let image = props.image
+  let image_size = {
+    "Smallest":"12.5%",
+    "Smaller":"25%",
+    "Small":"37.5%",
+    "Regular":"50%",
+    "Big":"62.5%",
+    "Bigger":"75%",
+    "Biggest":"87.5%",
+    "Full":"100%"
+  }
   let component_background = {"null":'',"light-blue-background":"light-blue-background","light-yellow-background":"light-yellow-background",};
   // Coin Data
   if((image.image.data === null)){
@@ -65,7 +75,7 @@ export const ImageComponent =(props)=>{
             <img
               src={ `${process.env.REACT_APP_strapiURL}${image.reverse_or_obverse ? image.coin.data.attributes.obverse_file.data.attributes.url : image.coin.data.attributes.reverse_file.data.attributes.url}`}            
               alt={image.coin.data.attributes.obverse_file.data.alternativeText === undefined ? 'img' : image.coin.data.attributes.obverse_file.data.alternativeText}
-              className="mb-1" style={{width: "20vmax"}}
+              className="mb-1" style={{width: image_size[props.image.size]}}
             />
           </a>
         </Row>
@@ -73,7 +83,7 @@ export const ImageComponent =(props)=>{
           <div 
             onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
             className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-            style={{width:"20vmax"}}
+            style={{width:image_size[props.image.size]}}
             />
         </Row>
       </Col>
@@ -86,19 +96,19 @@ export const ImageComponent =(props)=>{
         <Row className='d-flex justify-content-center align-items-center'>
           {image.additional_link === null ? (
             <img src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`} alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-              className="mb-1" style={{width: props.imageWidth ? props.imageWidth : "20vmax"}}/>
+              className="mb-1" style={{width: image_size[props.image.size]}}/>
           ):(
             <a href={`${image.additional_link}`} target="_blank" rel="noopener noreferrer" className="text-center">
               <img src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
                 alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-                className="mb-1" style={{width: props.imageWidth ? props.imageWidth : "20vmax"}}/></a>
+                className="mb-1" style={{width: image_size[props.image.size]}}/></a>
           )}
         </Row>
         <Row className={`d-flex justify-content-center align-items-center`} >
           <div 
             onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
             className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-            style={{width: props.imageWidth ? props.imageWidth : "20vmax"}}
+            style={{width: image_size[props.image.size]}}
             />
         </Row>
       </Col>
@@ -109,21 +119,21 @@ export const ImageComponent =(props)=>{
 
 export const ImagesComponent = (props)=>{
   let imageJsx = []
-  if(props.images.length==6){
+  if(props.images.length === 6 || props.images.length === 5){
     props.images.forEach((image)=>{
       imageJsx.push(<Col key={image.id} xs={4}><ImageComponent toggleBottom={props.toggleBottom} image={image} /></Col>);
       return;
     })
   }
-  else if (props.images.length==3){
+  else if (props.images.length === 3){
     props.images.forEach((image)=>{
-      imageJsx.push(<Col key={image.id} xs={4}><ImageComponent toggleBottom={props.toggleBottom} image={image}/></Col>);
+      imageJsx.push(<Col key={image.id} xs={3}><ImageComponent toggleBottom={props.toggleBottom} image={image}/></Col>);
       return;
     })
   }
-  else if (props.images.length==1){
+  else if (props.images.length === 1){
     props.images.forEach((image)=>{
-      imageJsx.push(<Col key={image.id} xs={8}><ImageComponent toggleBottom={props.toggleBottom} image={image} imageWidth={"40vmax"}/></Col>);
+      imageJsx.push(<Col key={image.id} xs={8}><ImageComponent toggleBottom={props.toggleBottom} image={image}/></Col>);
       return;
     })
   }
