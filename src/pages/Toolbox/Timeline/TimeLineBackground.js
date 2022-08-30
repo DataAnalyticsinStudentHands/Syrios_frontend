@@ -123,7 +123,7 @@ export function SetupTimelineBackground(obj) {
         <Path
           d={start_end_key_pair_svg_values[i][0].join("") + start_end_key_pair_svg_values[i][1].reverse().join("")}
           stroke='none'
-          fill={colors.find_color(start_end_key_pairs[i][0])}
+          fill={colors(start_end_key_pairs[i][0])}
           key={`timeline_${jsx_arr.length}`}
           style={{
             opacity: '0.6'

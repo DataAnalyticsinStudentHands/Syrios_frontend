@@ -324,53 +324,6 @@ const Timeline = () => {
           <div>
             <img src={timelinekey} alt="" style={{width:"80%", marginLeft:"10%"}}/>
           </div>
-          
-
-          {/* <div className='timeline-legend'>
-              <div>
-                <img src={CoinSortIcon} alt="test" width={"50vmax"}/><span className='story-text'>Coin Sort</span>
-              </div>
-              <div>
-                <img src={CoinSortIcon} alt="test" width={"50vmax"}/><span className='story-text'>Coin Sort</span>
-              </div>
-          </div> */}
-
-          {/* <Svg
-              height='100%'
-              width='100%'
-              viewBox={`0 0 100 100`}
-              style={{position: 'fixed', zIndex:"1"}}>
-
-              <Rect x="0" y="10" 
-              width="100%" height="10" 
-              stroke="black" fill="transparent" strokeWidth="1"/>
-
-              <circle cx={0} cy={0} r={1}
-                stroke="red" fill="transparent" strokeWidth="10"/>
-              <circle cx={100} cy={100} r={1}
-                stroke="red" fill="transparent" strokeWidth="10"/>
-                
-           </Svg> */}
-
-            {/* <Svg
-              width='100%'
-              height='100%'
-              style={{position: 'fixed', zIndex:"1"}}
-              viewBox={'0 0 100 100'}
-            >
-              <Rect x="0" y="20" 
-                width="10" height="10" 
-                stroke="black" fill="transparent" strokeWidth="1"/>
-              <Text x="0" y="20">x:0 y:20</Text>
-
-              <Rect x="150" y="20" 
-                width="10" height="10" 
-                stroke="black" fill="transparent" strokeWidth="1"/>
-
-              <circle cx={0} cy={10} r={1}
-                stroke="red" fill="transparent" strokeWidth="10"/>
-            </Svg> */}
-
           <Svg
             height='100%'
             width='100%'
