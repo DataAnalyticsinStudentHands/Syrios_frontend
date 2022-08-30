@@ -52,13 +52,16 @@ const ExploreTheEvidence = () => {
           </div>
           <Row className='my-5 d-flex py-5 justify-content-around'>
             {/* SORT COINS */}
-            <Col xs={3}>
+            <Col xs={3} >
               <Link to='/Evidence/CoinSort'>
                   <div className='text-center'>
                     <img
                       alt={'missing alt'}
                       src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_sort.image.data.attributes.url}`}
-                      style={{height:"12vmax"}}
+                      style={{
+                        // borderStyle:'double', borderColor:'#737271', 
+                        height:"12vmax"}}
+                      className="bg-white p-3"
                     />
                   </div>
               </Link>
@@ -73,8 +76,10 @@ const ExploreTheEvidence = () => {
                 <img
                   alt={'missing alt'}
                   src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_map.image.data.attributes.url}`}
-                  style={{borderStyle:'double', borderColor:'#737271', height:"12vmax"}}
-                  className="bg-white p-2"
+                  style={{
+                    // borderStyle:'double', borderColor:'#737271', 
+                    height:"12vmax"}}
+                  className="bg-white p-3"
                   />
                 </div>
                 ):(<b className='image-icon text-center'>&#xe81b;</b>)}
@@ -83,15 +88,17 @@ const ExploreTheEvidence = () => {
                 <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_map.caption)} />
             </Col>
             {/* COIN TIMELINE */}
-            <Col xs={3} >
+            <Col xs={3}>
                 <Link to='/Evidence/Timeline'>
                     {evidenceData.timeline?.image.data ? (
                       <div className="text-center">
                         <img
                             alt={'missing alt'}
                             src={`${process.env.REACT_APP_strapiURL}${evidenceData.timeline?.image.data.attributes.url}`}
-                            style={{borderStyle:'double', borderColor:'#737271', height:"12vmax"}}
-                            className="bg-white p-2"/>
+                            style={{
+                              // borderStyle:'double', borderColor:'#737271', 
+                              height:"12vmax"}}
+                            className="bg-white p-3 "/>
                       </div>
 
                     ):(<b className='image-icon text-center'>&#xe81b;</b>)}
@@ -112,8 +119,10 @@ const ExploreTheEvidence = () => {
                     <img
                         alt={'missing alt'}
                         src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_catalog.image.data.attributes.url}`}
-                        style={{borderStyle:'double', borderColor:'#737271', height:"12vmax"}}
-                        className="bg-white p-2"/>
+                        style={{
+                          // borderStyle:'double', borderColor:'#737271', 
+                          height:"12vmax"}}
+                        className="bg-white p-3"/>
                   </div>
                 </Link>
                 <div className='align-items-end'>
@@ -128,8 +137,10 @@ const ExploreTheEvidence = () => {
                     <img
                         alt={'missing alt'}
                         src={`${process.env.REACT_APP_strapiURL}${evidenceData.download.image.data.attributes.url}`}
-                        style={{borderStyle:'double', borderColor:'#737271', height:"12vmax"}}
-                        className="bg-white p-2"/>
+                        style={{
+                          // borderStyle:'double', borderColor:'#737271',
+                          height:"12vmax"}}
+                        className="bg-white p-3"/>
                   </div>
                 </Link>
                 <div className='align-items-end'>

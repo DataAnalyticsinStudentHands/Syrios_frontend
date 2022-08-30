@@ -67,17 +67,17 @@ function LandingPage() {
                   <Col  className='bg-white landing-button-size'>
                       <Link to='/HowToReadACoin'>
                         <div className='landing-button-img ' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text m-1'>
+                          <div className='on-hover-dim landing-buttons-text p-3'>
                               How to Read a Coin
                           </div>
                         </div>
                       </Link>
                   </Col>
                   {/* Discover Stories from Coins */}
-                  <Col  className='bg-white landing-button-size'>
+                  <Col className='bg-white landing-button-size'>
                       <Link to='/Stories'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text m-1'>
+                          <div className='on-hover-dim landing-buttons-text p-3'>
                               Discover Stories from Coins
                           </div>
                         </div>
@@ -86,10 +86,10 @@ function LandingPage() {
                 </Row>
                 <Row className=' align-items-center'>
                   {/* Explore the Evidence */}
-                  <Col  className='bg-white landing-button-size'>
+                  <Col className='bg-white landing-button-size'>
                       <Link to='/Evidence'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text m-1'>
+                          <div className='on-hover-dim landing-buttons-text p-3'>
                               Explore the Evidence
                           </div>
                         </div>
@@ -99,7 +99,7 @@ function LandingPage() {
                   <Col className='bg-white landing-button-size '>
                       <Link to='/Toolbox'>
                         <div className='landing-button-img' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text m-1'>
+                          <div className='on-hover-dim landing-buttons-text p-3'>
                               Open the Historian's Toolbox
                           </div>
                         </div>

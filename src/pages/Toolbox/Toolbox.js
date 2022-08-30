@@ -43,8 +43,10 @@ const Toolbox = ()=>{
                                 <img
                                     alt={'missing alt'}
                                     src={`${process.env.REACT_APP_strapiURL}${toolboxData.read_coin.image.data.attributes.url}`}
-                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
-                                    className="bg-white p-2"
+                                    style={{
+                                        // borderStyle:'double', borderColor:'#737271', 
+                                        height:"15vmax"}}
+                                    className="bg-white p-3"
                                 />
                             </div>
                         </Link>
@@ -57,8 +59,10 @@ const Toolbox = ()=>{
                                 <img
                                     alt={'missing alt'}
                                     src={`${process.env.REACT_APP_strapiURL}/uploads/3_D_Coins_74ece64c4b.png`}
-                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
-                                    className="bg-white p-2"
+                                    style={{
+                                        // borderStyle:'double', borderColor:'#737271', 
+                                        height:"15vmax"}}
+                                    className="bg-white p-3"
                                 />
                             </div>
 
@@ -78,8 +82,10 @@ const Toolbox = ()=>{
                                 <img
                                     alt={'missing alt'}
                                     src={`${process.env.REACT_APP_strapiURL}/uploads/glossary2_0e2a776a1e.png`}
-                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
-                                    className="bg-white p-2"
+                                    style={{
+                                        // borderStyle:'double', borderColor:'#737271', 
+                                        height:"15vmax"}}
+                                    className="bg-white p-3"
                                 />
                             </div>
 
@@ -104,8 +110,10 @@ const Toolbox = ()=>{
                             <img
                                 alt={'missing alt'}
                                 src={`${process.env.REACT_APP_strapiURL}/uploads/research_426c0859b4.png`}
-                                style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
-                                className="bg-white p-2"
+                                style={{
+                                    // borderStyle:'double', borderColor:'#737271', 
+                                    height:"15vmax"}}
+                                className="bg-white p-3"
                             />
                         </div>
                     </Link>
@@ -125,8 +133,10 @@ const Toolbox = ()=>{
                                 <img
                                     alt={'missing alt'}
                                     src={`${process.env.REACT_APP_strapiURL}${toolboxData.video_library?.image.data.attributes.url}`}
-                                    style={{borderStyle:'double', borderColor:'#737271', height:"15vmax"}}
-                                    className="bg-white p-2"
+                                    style={{
+                                        // borderStyle:'double', borderColor:'#737271', 
+                                        height:"15vmax"}}
+                                    className="bg-white p-3"
                                 />
                             </div>
                         </Link>
