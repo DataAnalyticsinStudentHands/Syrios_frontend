@@ -1,76 +1,98 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
-import qs from 'qs';
 
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
-import OutsideClickHandler from 'src/utils/OutsideClickHandler.js';
-import { ToolTipsBoxJSX } from './CoinSortExtraFunctions.js';
+
 import { CoinGrid } from './CoinSortCoinGrid.js';
+import CoinSortDropDown from './CoinSortDropDown.js';
 
+import {
+  DefaultCoinPileGraphingStategy, 
+  GaussianDeviationOnValue, 
+  SimplyMappedCoin,
+  CoinPileLocations
+} from './CoinUtils.js';
 
-
+import coinSortRequest from 'src/api/coin-sort'
 // Praise be god to the next maintaner. 
 // You have been blessed
 
 // This is a set of constant values that relate to enumerations and data inside of strapi.
 // You can't fetch enumerations so you must do it this way.
 // Keep in mind, if you change the coins enumeration, it will also break this
-const arrangement_selections = ['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid'];
-const arrangement_selections_query_relation = [0, 1, 2, 3, 4, 6, 18];
+// const arrangement_selections = ['None', '1 x 1 Grid', '2 x 1 Grid', '3 x 1 Grid', '2 x 2 Grid', '3 x 2 Grid', '6 x 3 Grid'];
+// const arrangement_selections_query_relation = [0, 1, 2, 3, 4, 6, 18];
 const sort_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-const sort_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
+// const sort_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
 const then_by_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-const then_by_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
+// const then_by_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
 const filter_selections = ['None', 'Including', 'Excluding'];
 const filter_selections_query_relation = [null, true, false];
 const with_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
-const with_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
+// const with_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
 const of_kind_no_selections = ['None'];
+
+// const of_kind_from_date_selections = [
+// 'None',
+// 'past - 450 B.C.E',
+// '450 B.C.E - 350 B.C.E',
+// '350 B.C.E - 250 B.C.E',
+// '250 B.C.E - 150 B.C.E',
+// '150 B.C.E - 50 B.C.E',
+// '50 B.C.E - 50 C.E.',
+// '50 C.E - 150 C.E',
+// '150 C.E - 250 C.E',
+// '250 C.E - 350 C.E',
+// '350 C.E - 450 C.E',
+// '450 C.E - present',
+// ];
+
 const of_kind_from_date_selections = [
-'None',
-'past - 450 B.C.E',
-'450 B.C.E - 350 B.C.E',
-'350 B.C.E - 250 B.C.E',
-'250 B.C.E - 150 B.C.E',
-'150 B.C.E - 50 B.C.E',
-'50 B.C.E - 50 C.E.',
-'50 C.E - 150 C.E',
-'150 C.E - 250 C.E',
-'250 C.E - 350 C.E',
-'350 C.E - 450 C.E',
-'450 C.E - present',
-];
+  'None',
+  'before - 500 B.C.E',
+  '500 B.C.E - 401 B.C.E',
+  '400 B.C.E - 301 B.C.E',
+  '300 B.C.E - 201 B.C.E',
+  '200 B.C.E - 101 B.C.E',
+  '100 B.C.E - 1 B.C.E',
+  '1 C.E - 99 C.E',
+  '100 C.E - 199 C.E',
+  '200 C.E - 299 C.E',
+  '300 C.E - 399 C.E',
+  '400 C.E - present',
+  ];
+
+// const of_kind_from_date_query_relation = [
+//   {gte: -2147483648, lte: 2147483647},
+//   {gte: -2147483648, lte: -450},
+//   {gte: -450, lte: -350},
+//   {gte: -350, lte: -250},
+//   {gte: -250, lte: -150},
+//   {gte: -150, lte: -50},
+//   {gte: -50, lte: 50},
+//   {gte: 50, lte: 150},
+//   {gte: 150, lte: 250},
+//   {gte: 250, lte: 350},
+//   {gte: 350, lte: 450},
+//   {gte: 450, lte: 2147483647},
+// ];
+
 const of_kind_from_date_query_relation = [
   {gte: -2147483648, lte: 2147483647},
-  {gte: -2147483648, lte: -450},
-  {gte: -450, lte: -350},
-  {gte: -350, lte: -250},
-  {gte: -250, lte: -150},
-  {gte: -150, lte: -50},
-  {gte: -50, lte: 50},
-  {gte: 50, lte: 150},
-  {gte: 150, lte: 250},
-  {gte: 250, lte: 350},
-  {gte: 350, lte: 450},
-  {gte: 450, lte: 2147483647},
+  {gte: -2147483648, lte: -500},
+  {gte: -500, lte: -401},
+  {gte: -400, lte: -301},
+  {gte: -300, lte: -201},
+  {gte: -200, lte: -101},
+  {gte: 1, lte: 99},
+  {gte: 100, lte: 199},
+  {gte: 200, lte: 299},
+  {gte: 300, lte: 399},
+  {gte: 400, lte: 2147483647},
 ];
-const of_kind_material_selections = [
-  'None',
-  'Gold',
-  'Silver',
-  'Bronze',
-  'Orichalcum',
-  'Uncertain',
-];
-const of_kind_issuing_authority_selections = [
-  'None',
-  'Royal',
-  'Imperial',
-  'Provincial',
-  'Civic',
-  'Uncertain',
-];
+const of_kind_material_selections = ['None','Gold','Silver','Bronze','Orichalcum','Uncertain'];
+const of_kind_issuing_authority_selections = ['None','Royal','Imperial','Provincial','Civic','Uncertain',];
 const of_kind_governing_power_selections = [];
 (async () => {
   const { data } = await axios.get(`${process.env.REACT_APP_strapiURL}/api/governing-powers`);
@@ -108,7 +130,6 @@ const Coin = (props) => {
   let x = props.x * props.dimensions.width;
   let y = props.y * props.dimensions.height;
   let width = props.coinMetaData.attributes.diameter * thumbnail_scale; // This is how we get the differently sized coins showing up properly
-
   if ((x + width) > props.dimensions.width) x = props.dimensions.width - width;
   if ((y + width) > props.dimensions.height) y = props.dimensions.height - width;
   if (x < 0) x = 0;
@@ -119,133 +140,41 @@ const Coin = (props) => {
     y = -10000;
   }
 
+  // const handleClick = () => {
+  //   console.log("This coin is CLicked")
+  //   props.setDraggedCoinId(props.id);
+  // };
+
   const Drag = () => {
+    // console.log("This coin is Gragged")
     props.setDraggedCoinId(props.id);
   };
 
   return (
     <div 
       className='coin-sort-pile-coin' 
-      style={{top: `${y}px`, left: `${x}px`, transition: '0.3s'}} 
-      onDrag={Drag}>
-      <img 
+      style={{top: `${y}px`, left: `${x}px`}} 
+      onDrag={Drag}
+      >
+      <img
+        id={`coin-sort-${props.id}`}
         className='coin-sort-pile-coin-image'
         src={process.env.REACT_APP_strapiURL+props.coinMetaData.attributes.obverse_file.data.attributes.formats.thumbnail.url} 
         alt={props.coinMetaData.attributes.obverse_file.data.attributes.alternativeText}
-        style={{transition: '0.1s'}}
         width={width}
       />
     </div>
   );
 }; 
 
-// Default coin pile strategy gets a random y, and plots it with a random x as long as the x is within the integral of and non-negative:
-// -4 * (x - 0.5)^4 + 1.5 * (x - 0.5)^2 + .2
-// You can plot that in desmos.
-function DefaultCoinPileGraphingStategy(coin) {
-  let y = Math.random();
-  const CoinSortGraphingFormula = (x) => {
-    return -4 * Math.pow(x - 0.5, 4) + 1.5 * Math.pow(x - 0.5, 2) + .2;
-  };
-  let x = Math.random() * CoinSortGraphingFormula(y);
-
-  if (coin.id % 2 === 0) {
-    x = 1 - x;
-  } 
-  return {
-    x: x,
-    y: y,
-  };
-}
-
-// Randomly selects numbers from a Gaussian distribution between (0, 1)
-function RandnBm() {
-  let u = 0, v = 0;
-  while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
-  while(v === 0) v = Math.random();
-  let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
-  num = num / 10.0 + 0.5; // Translate to 0 -> 1
-  if (num > 1 || num < 0) return RandnBm() // resample between 0 and 1
-  return num
-}
-
-// This function adds Gaussian deviation to make the original value a little messier
-function GaussianDeviationOnValue(val, deviation) {
-  let min = val - deviation;
-  let max = val + deviation;
-  return RandnBm() * (max - min) + min;
-}
-
-// This evenly distrubutes the pile locations along the left, bottom, and right side of the CoinPile div.
-function CoinPileLocations(arr_length) {
-  const deviation = .1;
-  const bottom_start_point = .1;
-  const bottom_end_point = 1;
-  const side_start_point = .1;
-  const side_end_point = .8;
-
-  // Get the number of piles we need per side.
-  // Left and Right side must have the same number of piles.
-  let num_piles_bottom = 0, num_piles_on_sides = 0;
-  if (arr_length % 3 === 0) {
-    num_piles_on_sides = arr_length / 3;
-    num_piles_bottom = arr_length / 3;
-  } else if (arr_length % 3 === 1) {
-    num_piles_on_sides = Math.floor(arr_length / 3);
-    num_piles_bottom = Math.ceil(arr_length / 3);
-  } else {
-    num_piles_bottom = Math.ceil(arr_length / 3) + 1;
-    num_piles_on_sides = Math.floor(arr_length / 3);
-  }
-
-  if (arr_length === 2) {
-    num_piles_bottom = 0;
-    num_piles_on_sides = 1;
-  } else if (arr_length === 1) {
-    num_piles_bottom = 1;
-    num_piles_on_sides = 0;
-  }
-
-  // This goes left to right plotting evenly spaced points
-  let bottom_points = [];
-  for (let i = bottom_start_point; i < bottom_end_point && num_piles_bottom !== 0; i += (bottom_end_point - bottom_start_point) / num_piles_bottom) {
-    bottom_points.push({x: i, y: GaussianDeviationOnValue(.8, deviation)});
-  }
-
-  // This goes top to bottom plotting evenly spaced points
-  let left_side_points = [];
-  let right_side_points = [];
-  for (let i = side_start_point; i < side_end_point && num_piles_on_sides !== 0; i += (side_end_point - side_start_point) / num_piles_on_sides) {
-    left_side_points.push({ x: GaussianDeviationOnValue(.15, deviation), y: i });
-    right_side_points.push({ x: GaussianDeviationOnValue(.95, deviation), y: i });
-  }
-  right_side_points = right_side_points.reverse();
-
-  return left_side_points.concat(bottom_points).concat(right_side_points);
-}
-
-// This function converts the data we recieve from strapi into a more easily parsed data format
-function SimplyMappedCoin(coin, index) {
-  return {
-    props_index: index,
-    id: coin.id,
-    from_date: coin.attributes.from_date,
-    material: coin.attributes.material,
-    issuing_authority: coin.attributes.issuing_authority,
-    governing_power: coin.attributes.governing_power?.data?.attributes?.governing_power, // for some reason, it be bugging with governing_power. The ?. operator fixes it
-    size: coin.attributes.diameter
-  };
-}
 
 // This is the function the plots EVERY coin and sticks together all the pile logic. 
-//
 // The first this it does is setup default positioning. This is so coins_pos is insured to be defined for filtration.
-//
 // The next thing done is sorting the coins into different piles. 
-//
 // The last thing done is filtering the coins based on the coin sort options
 function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection) {
   if (!Array.isArray(coins)) return null;
+
   // perform default positioning
   let coins_pos = new Map(coins.map((coin, index) => [coin.id, {
     index: index,
@@ -468,11 +397,20 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
 // This is the coins scattering techniques.
 const CoinPile = (props) => {
   const coin_wrapper_ref = useRef();
-  const [coins_pos, set_coins_pos] = useState(undefined);
 
   // Update coins_pos with ComputeCoinPos
+  const [coins_pos, set_coins_pos] = useState(undefined);
   useEffect(() => {
-    set_coins_pos(ComputeCoinPos(props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection));
+    set_coins_pos(
+      ComputeCoinPos(
+        props.coins, 
+        props.sortSelection, 
+        props.thenBySelection, 
+        props.filterSelection, 
+        props.withSelection, 
+        props.ofKindSelection
+      )
+    );
   }, [props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection]);
 
   // Update dimensions on screen resize. Very expensive, so setting dimensions only once is better
@@ -492,118 +430,25 @@ const CoinPile = (props) => {
   return (
     <div className='coin-sort-pile-wrapper' ref={coin_wrapper_ref}>
       <div className='coin-sort-pile'>
-        {props.coins?.map((coin) => (<Coin 
-          id={coin.id}
-          key={coin.id} 
-          coinMetaData={coin}
-          dimensions={dimensions} 
-          display={coins_pos?.get(coin.id)?.display ?? true}
-          x={coins_pos?.get(coin.id)?.x} 
-          y={coins_pos?.get(coin.id)?.y} 
-          setDraggedCoinId={props.setDraggedCoinId}
-        />))}
+        {props.coins?.map((coin) => (
+          <Coin 
+            id={coin.id}
+            key={coin.id} 
+            coinMetaData={coin}
+            dimensions={dimensions} 
+            display={coins_pos?.get(coin.id)?.display ?? true}
+            x={coins_pos?.get(coin.id)?.x} 
+            y={coins_pos?.get(coin.id)?.y} 
+            setDraggedCoinId={props.setDraggedCoinId}
+          />))
+        }
       </div>
     </div>
   );
 }
 
 // This holds the title, help icon, and the dropdown inside the coin sort options toolbox
-const CoinSortDropDown = (props) => {
-  const [show, set_show] = useState(false);
-  const [show_tool_tips, set_show_tool_tips] = useState(false);
 
-  const CloseHandler = () => {
-    set_show(false);
-  }
-
-  const OpenHandler = () => {
-    set_show(true);
-  }
-
-  const Select = (e) => {
-    set_show(false);
-    props.setState(e.target.dataset.selection);
-  }
-
-  let display_styling = {
-    opacity: show ? 1 : 0,
-    zIndex: show ? 1000 : -1000,
-  };
-
-  // This is the list of items available.
-  let selection_jsx = props.selections.map((e, index) => (
-    <div 
-      key={`coin_sort_dropdown_${e + index}`} 
-      className='coin-sort-dropdown-item' 
-      onClick={Select} 
-      data-selection={e}>
-      <p data-selection={e} className='coin-sort-dropdown-item-text'>
-        {e} { index === 0 &&
-        <i className='coin-sort-dropdown-arrow' style={{position: 'absolute', right: '0', marginRight: '20px'}}/>
-        }
-      </p>
-      <hr data-selection={e} className='coin-sort-dropdown-item-line-spacer' />
-    </div>
-  ));
-
-  return (
-    <div className='coin-sort-option'>
-      <p className='coin-sort-dropdown-title-text'>
-        {props.title}{(() => {
-          if (props.toolTips != null) { 
-            return (<i 
-              className='demo-icon icon-info coin-sort-info-icon'
-              onClick={() => {
-                set_show_tool_tips(!show_tool_tips);
-              }}>&#xe817;</i>
-            );
-          } else {
-            return <></>;
-          }
-        })()}
-      </p>
-      <div className='coin-sort-dropdown-outermost-div'>
-        <div className='coin-sort-dropdown-bar' onClick={OpenHandler}>
-          <p className='coin-sort-dropdow-bar-text blue-text'>
-            {props.state}
-          </p>
-          <i className='coin-sort-dropdown-arrow'/>
-        </div>
-        <OutsideClickHandler show={show} onOutsideClick={CloseHandler}>
-          <div className='coin-sort-dropdown' style={display_styling}>
-            <div className='coin-sort-dropdown-items'>
-              {selection_jsx}
-            </div>
-          </div>
-        </OutsideClickHandler>
-        {(() => {
-          if (props.clearTitle != null && props.showClear) {
-            return (
-              <div 
-                className='coin-sort-clear-button' 
-                onClick={props.clear}>
-                <i className="demo-icon icon-warning">&#xe82c;</i>{props.clearTitle}
-              </div>
-            );
-          } else {
-            return <></>;
-          }
-        })()}
-      </div>
-      {(() => {
-        if (props.toolTips) { 
-          return <ToolTipsBoxJSX
-            show={show_tool_tips}
-            onClose={(e) => {set_show_tool_tips(e);}} 
-            toolTips={props.toolTips}
-          />;
-        } else {
-          return <></>;
-        }
-      })()}
-    </div>
-  );
-}
 const CoinSort = () => {
   const [is_loading, set_is_loading] = useState(true);
 
@@ -622,41 +467,26 @@ const CoinSort = () => {
   const [dragged_coin_id, set_dragged_coin_id] = useState(undefined);
   const SetDraggedCoinId = (coin_id) => { set_dragged_coin_id(coin_id) };
 
+  // const [sortCoinID, setSortCoinID] = useState("")
+
   const [sort_selection, set_sort_selection] = useState(sort_selections[0]);
   const [then_by_selection, set_then_by_selection] = useState(then_by_selections[0]);
   const [filter_selection, set_filter_selection] = useState(filter_selections[0]);
   const [with_selection, set_with_selection] = useState(with_selections[0]);
   const [of_kind_selection, set_of_kind_selection] = useState(of_kind_no_selections[0]);
-
+  
   const [of_kind_selections, set_of_kind_selections] = useState(of_kind_no_selections);
 
   // Fetch ALL the coins and ALL their data.
   useEffect(() => {
-    const FetchCoins = async () => { // Yay, async await
-      let query = qs.stringify({
-        populate: [
-          'obverse_file',
-          'governing_power',
-          'type_category',
-        ],
-        pagination: {
-          page: 1,
-          pageSize: 2147483647,
-        }
-      });
-
-      let res = await axios.get(`${process.env.REACT_APP_strapiURL}/api/coins?${query}`);
+    const FetchCoins = async () => {
+      let res = await coinSortRequest.coinFectAll()
       if (Array.isArray(res?.data?.data)) {
-        let data = res.data.data.filter((coin) => {
-          return coin?.attributes?.obverse_file?.data?.attributes?.formats?.thumbnail?.url != null;
-        });
+        let data = res.data.data.filter((coin) => {return coin?.attributes?.obverse_file?.data?.attributes?.formats?.thumbnail?.url != null;});
         set_coins(data);
-        set_has_fetched_coins(true);
-      } else {
-        console.error("Cannot parse result!\n", res);
-      }
+        set_has_fetched_coins(true);} 
+      else {console.error("Cannot parse result!\n", res);}
     }
-
     if (!has_fetched_coins) {
       FetchCoins();
     }
@@ -692,37 +522,21 @@ const CoinSort = () => {
     });
   }, [with_selection]);
 
-  // Set preliminary information about the tools on the page. Like the title, tool tips, etc...
-  const [coin_sort_title, set_coin_sort_title] = useState(undefined);
-  const [tutorial_content, set_tutorial_content] = useState(undefined);
-  const [empty_query_content, set_empty_query_content] = useState(undefined);
-  const [arrangement_tool_tips, set_arrangement_tool_tips] = useState(undefined);
-  const [sort_tool_tips, set_sort_tool_tips] = useState(undefined);
-  const [filter_tool_tips, set_filter_tool_tips] = useState(undefined);
+  const [coinSortData, setCoinSortData] = useState([])
   useEffect(() => {
-    if (is_loading)
-      axios.get(process.env.REACT_APP_strapiURL + '/api/coin-sort')
-        .then((res, err) => {
-          if (err) {
-            console.error(err);
-          } else {
-            let attri = res.data.data.attributes;
-            set_coin_sort_title(attri.title);
-            set_tutorial_content(attri.main_text);
-            set_empty_query_content(attri.no_result_from_query_text);
-            set_arrangement_tool_tips(attri.arrangement_tips);
-            set_sort_tool_tips(attri.sorting_tips);
-            set_filter_tool_tips(attri.filtering_tips);
-            set_is_loading(false);
-          }
-        });
+    async function fectCoinSortData(){
+      let result = await coinSortRequest.coinSortFind()
+      setCoinSortData(result.data.data.attributes)
+      set_is_loading(false);
+    }
+
+    fectCoinSortData()
   });
 
   // Useeffect that listens to changes on then_by_selection, and sort_selection, and displays the clear button if either then_by or sort_by have non-default content 
   const [show_sort_clear_button, set_show_sort_clear_button] = useState(false);
   useEffect(() => {
-    if (sort_selection !== sort_selections[0] || 
-      then_by_selection !== then_by_selections[0]) {
+    if (sort_selection !== sort_selections[0] || then_by_selection !== then_by_selections[0]) {
       set_show_sort_clear_button(true);
     } else {
       set_show_sort_clear_button(false);
@@ -732,15 +546,49 @@ const CoinSort = () => {
   // Useeffect that listens to changes on of_kind_selection, filter_selection, and with_selection, and displays the clear button if either of_kind_selection, filter_selection, or with_selection have non-default content 
   const [show_filter_clear_button, set_show_filter_clear_button] = useState(false);
   useEffect(() => {
-    if (filter_selection !== filter_selections[0] || 
-      with_selection !== with_selections[0] ||
-      of_kind_selection !== of_kind_selections[0]) {
+    if (filter_selection !== filter_selections[0] || with_selection !== with_selections[0] || of_kind_selection !== of_kind_selections[0]) {
       set_show_filter_clear_button(true);
     } else {
       set_show_filter_clear_button(false);
     }
   }, [filter_selection, with_selection, of_kind_selection, of_kind_selections]);
 
+
+  // useEffect(() => {
+  //     let x = 0;
+  //     let y = 0;
+  //     const mouseDownHandler = function (e) {
+  //       if(e.path[0].className === "coin-sort-pile-coin-image" || e.path[0].className ==="test-draggable"){
+  //         // Get the current mouse position
+  //         x = e.clientX;
+  //         y = e.clientY;
+  //         // Attach the listeners to `document`
+  //         document.addEventListener('mousemove', mouseMoveHandler);
+  //         document.addEventListener('mouseup', mouseUpHandler);
+  //       }
+  //     };
+  //     const mouseMoveHandler = function (e) {
+  //         // How far the mouse has been moved
+  //         const dx = e.clientX - x;
+  //         const dy = e.clientY - y;
+  //         // Set the position of element
+  //         e.target.style.top = `${e.target.offsetTop + dy}px`;
+  //         e.target.style.left = `${e.target.offsetLeft + dx}px`;
+  //         e.target.style.zIndex = `2`;
+  //         // Reassign the position of mouse
+  //         x = e.clientX;
+  //         y = e.clientY;
+  //     };
+  //     const mouseUpHandler = function () {
+  //         // Remove the handlers of `mousemove` and `mouseup`
+  //         document.removeEventListener('mousemove', mouseMoveHandler);
+  //         document.removeEventListener('mouseup', mouseUpHandler);
+  //     };
+  //     window.addEventListener('mousedown', mouseDownHandler);
+  // }, []);
+
+
+// console.log(dragged_coin_id)
   if (is_loading) {
     return (
       <>
@@ -764,8 +612,8 @@ const CoinSort = () => {
         withSelection={with_selection}
         ofKindSelection={of_kind_selection}
       />
-      <div id='coin-sort-title' className='story-h2 text-center'>
-        {coin_sort_title}
+      <div id='coin-sort-title' className='story-h1 text-center'>
+        Coins in a Pile
       </div>
       {/* Coin sort options */}
       <div id='coin-sort-options-wrapper'>
@@ -775,7 +623,7 @@ const CoinSort = () => {
             selections={sort_selections}
             state={sort_selection}
             setState={set_sort_selection}
-            toolTips={sort_tool_tips}
+            toolTips={coinSortData.sort_tool_tips}
             showClear={show_sort_clear_button}
             clearTitle='Clear Sort'
             clear={() => {
@@ -798,7 +646,7 @@ const CoinSort = () => {
             selections={filter_selections}
             state={filter_selection}
             setState={set_filter_selection}
-            toolTips={filter_tool_tips}
+            toolTips={coinSortData.filter_tool_tips}
             showClear={show_filter_clear_button}
             clearTitle='Clear Filter'
             clear={() => {
@@ -836,9 +684,9 @@ const CoinSort = () => {
                   <p className='blue-text coin-sort-options-icon-text'>FLIP</p>
                 </div>
               </>
-              );
-            }
-          })()}
+              );}
+          })
+          ()}
         </div>
       </div>
       <CoinGrid
@@ -848,7 +696,8 @@ const CoinSort = () => {
         showScaleAndRotate={ShowScaleAndRotate}
       />
       {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
-      <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} />       <Footer />
+      <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} />       
+      <Footer />
     </div>
   );
 }

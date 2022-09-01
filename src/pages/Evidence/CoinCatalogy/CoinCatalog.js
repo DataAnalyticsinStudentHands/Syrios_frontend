@@ -5,7 +5,7 @@ import Footer from 'src/components/Footer';
 const CoinCatalog = ()=>{
     return(
         <div id='coin-catalog' >
-                <h1 className='story-h1 text-center'>Coin Catalog</h1>
+                <h1 className='story-h1 text-center'>Coins in a Catalog</h1>
                 <h2 className='text-center'>Coming Soon ...</h2>
             <Footer/>
         </div>
