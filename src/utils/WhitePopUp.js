@@ -26,10 +26,10 @@ const WhitePopUp = (props) => {
       <div className='translucent-white-background' style={display_style}/>
       <OutsideClickHandler onOutsideClick={CloseHandler}>
         <div className='snow-white-background' style={display_style}> 
-          <i
+          <div
             className='demo-icon icon-x-medium white-pop-up-x-icon'
             onClick={CloseHandler}>
-            &#xe838;</i>
+            &#xe838;</div>
           <div className='white-pop-up-inner-padding'>
             {props.children}
           </div>

@@ -45,17 +45,15 @@ const Stories = () => {
 		// className='d-flex align-items-center'
 		>
 			<Container>
-				<h1 className='text-center'>Discover Coin Stories</h1>
-				<Row className='d-flex justify-content-center text-center'>
-					<Col xs={11}>
-					<p className='story-text'>
+				<center>
+					<h1>Discover Coin Stories</h1>
+					<h3 className='my-5'>
 						Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.
-						<br/>
-						<br/>
-						Click on a coin to learn more about the politics, economy, and society of ancient Syria.
-					</p>
-					</Col>
-				</Row>
+					</h3>
+					<div className='story-text my-5'>
+						<em>Click on a coin to learn more about the politics, economy, and society of ancient Syria.</em>
+					</div>
+				</center>
 				<Row style={{ marginTop: '2vmax'}} className="py-5 align-items-end ">
 					{stories.map((story)=>{
 						return(

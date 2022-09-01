@@ -37,19 +37,22 @@ const ExploreTheEvidence = () => {
     <>
       <div id='explore-the-evidence' className='d-flex align-items-center'>
         <Container>
-          <h1 className='text-center'>Explore the Evidence</h1>
-          <div className='align-items-center justify-content-center' style={{marginLeft:"5%", marginRight:"5%"}} >
-            {/* <p className='text-center story-text' dangerouslySetInnerHTML={createMarkup(timeline_description)} /> */}
-            <h3 className='text-center my-5'>Coins can be studied as pieces of art, historical artifacts, and as 
-            objects that once moved through the hands of different 
-            individuals and communities. Most importantly, coins were 
-            produced and used within a context of people, systems, space, and 
-            time.</h3>
-            <p className='story-text text-center my-5' >
-              <em>Select one of the interfaces below to begin exploring the coin evidence 
-              and your own historical applications of the material.</em>
-            </p>
-          </div>
+          <center>
+            <h1>Explore the Evidence</h1>
+            <div className='px-5 mx-5'>
+              <h3 className='my-5'>
+                Coins can be studied as pieces of art, historical artifacts, and as 
+                objects that once moved through the hands of different 
+                individuals and communities. Most importantly, coins were 
+                produced and used within a context of people, systems, space, and 
+                time.
+              </h3>
+              <div className='story-text my-5' >
+                <em>Select one of the interfaces below to begin exploring the coin evidence 
+                and your own historical applications of the material.</em>
+              </div>
+            </div>
+          </center>
           <Row className='my-5 d-flex py-5 justify-content-around'>
             {/* SORT COINS */}
             <Col xs={3} >

@@ -6,15 +6,13 @@
 	height: 100%;
 	padding-top: 7.5vmax;
 	padding-bottom: 7.5vmax;
-
-  .image-icon{
-    font-size:120px;
-    border-style: double;
-    border-color:#7899a8;
-    border-radius: 50%;
-    font-family: $syrios-font-family-syrios-entypo-subset;
-    color: rgba(255,255,255,1);
-    background-color: #7899a8;
-  }
 }
-
+.image-icon{
+  font-size:120px;
+  border-style: double;
+  border-color:#7899a8;
+  border-radius: 50%;
+  font-family: $syrios-font-family-syrios-entypo-subset;
+  color: rgba(255,255,255,1);
+  background-color: #7899a8;
+}

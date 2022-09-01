@@ -309,12 +309,12 @@ const Timeline = () => {
   return (
         <div id='Timeline-page'>
           <div className='d-flex align-items-center justify-content-center' >
-            <p className='text-center story-h1' >COINS IN TIME</p>
+            <p className='text-center story-h1' >Coins in Time</p>
           </div>
-          <div className='align-items-center justify-content-center' style={{marginLeft:"5%", marginRight:"5%"}} >
+          <div className='mx-5 px-5' >
             {/* <p className='text-center story-text' dangerouslySetInnerHTML={createMarkup(timeline_description)} /> */}
             <h3 className='text-center'>Ancient coins were not minted in a vacuum, but were intricately tied to the political, economic, and socio-cultural systems of their issuing city and the broader empires of which they were a part. This timeline visualizes how the coins minted at Antioch intersected with the people and powers surrounding their production. </h3>
-            <p className='story-text text-center mt-5' >
+            <p className='story-text text-center my-5' >
               <em>Scroll down to explore the changing balance of eastern and western imperial power laying claim to Syria, as well as the events and coins created within this environment.</em>
             </p>
             <p className='story-text text-center'>
@@ -322,7 +322,7 @@ const Timeline = () => {
             </p>
           </div>
           <div>
-            <img src={timelinekey} alt="" style={{width:"80%", marginLeft:"10%"}}/>
+            <img src={timelinekey} alt="" style={{width:"70%", marginLeft:"15%"}}/>
           </div>
           <Svg
             height='100%'

@@ -65,31 +65,30 @@ function Download(){
 
   return(
     <>
+
       <div id='download-page'>
-        <Container className='my-5'>
           <Row>
-              <Alert className='green-text' show={show} variant="success" onClose={() => setShow(false)} dismissible>
+              <Alert className='download-alert green-text story-text text-center'  show={show} variant="success" onClose={() => setShow(false)} dismissible>
                   Data is downloading ...
               </Alert>
           </Row>
-          <Row className='mb-5'>
-            <p className='story-h1 text-center'>
-              Download the Data              
-            </p>
-          </Row>
+        <Container className='my-5'>
+
+          <center>
+          <h1>Download the Data</h1>
+          </center>
           <Row className='d-flex justify-content-around align-items-center'>
             <Col xs={8}>
                 {/* left */}
                 <Row className='d-flex justify-content-around'>
                   <Col xs={3} className='text-center story-icon download-icon'>&#xe810;</Col>
                   <Col xs={9}>
-                      <p className='story-h4'>
-                        {/* {downloadPageData.title} */}DOWNLOAD THE DATASET
-                      </p>
-                      <div className='story-caption' dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
+                      {/* <h2>
+                        DOWNLOAD THE DATASET
+                      </h2> */}
+                      <div className='story-text' dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
                   </Col>
                 </Row>
-
                 <Row className=''>
                   <img
                     alt={'Download'}

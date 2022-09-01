@@ -1,11 +1,9 @@
 #teaching-resources{
-    position: fixed;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     width: 100%;
-    top: $footerHeight + 70px;
-    bottom: $footerHeight;
-
-
+	height: 100%;
+	padding-top: 7.5vmax;
+	padding-bottom: 7.5vmax;
 }    
 

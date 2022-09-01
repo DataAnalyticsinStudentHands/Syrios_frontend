@@ -4,9 +4,10 @@ $footerHeight:70px;
 #glossary-page{
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    z-index: 0;
-    padding-top: 7.5vmax;
-    padding-bottom: 3.75vmax;
+    width: 100%;
+	height: 100%;
+	padding-top: 7.5vmax;
+	padding-bottom: 7.5vmax;
 
     .search{
         position: absolute;
