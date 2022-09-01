@@ -49,7 +49,30 @@ function ContactUs(){
 
   return(
     <>
+    <div className='feedbackicon'>
+      <a href="https://universityofhouston.iad1.qualtrics.com/jfe/form/SV_e8xJud3C0FsmNz8?jfefe=new"
+      target="_blank" rel="noopener noreferrer">
+
+      <svg 
+        width="100%"
+        viewBox="0 0 100 100">
+        <circle cx="75" cy="30" r="70" fill="#987818"/>
+        <text x="42" y="25" fill="white" className='feedbacktext' font-size="10pt">   
+          Give us
+        </text>
+        <text x="40" y="45" fill="white" className='feedbacktext' font-size="10pt">   
+          Usability
+        </text>
+        <text x="38" y="65" fill="white" className='feedbacktext' font-size="10pt">   
+          Feedback!
+        </text>
+      </svg>
+      </a>
+
+    </div>
+
       <div id='contactus-page'>
+
 
         <Container>
             <Row>
@@ -58,11 +81,11 @@ function ContactUs(){
                 </Alert>
             </Row>
           <Row className='d-flex justify-content-between'>
-            <Col xs={3}>
+            <Col xs={3} className=" d-flex align-items-center justify-content-center">
                 <img
                     alt={"contact"}
                     src={`${process.env.REACT_APP_strapiURL}/uploads/logoside_5b293d0769.png?`}
-                    height='100%'
+                    height='85%'
                 />
             </Col>
             <Col xs={9}>

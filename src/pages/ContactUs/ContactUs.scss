@@ -19,4 +19,13 @@
       font-size: 1.5em;
       color: red;
     }
+
+  }
+  .feedbackicon{
+    position:absolute;
+    margin-top: 3.75vmax;
+    margin-left: 90%;
+  }
+  .feedbacktext{
+    font-family: $syrios-garamond-premier-pro-caption;
   }
