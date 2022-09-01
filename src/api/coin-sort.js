@@ -14,9 +14,7 @@ const coinSortRequest = {
             ],
             pagination: {
               page: 1,
-              // pageSize: 2147483647,
-              pageSize: 10,
-
+              pageSize: 2147483647,
             }
           });
 
