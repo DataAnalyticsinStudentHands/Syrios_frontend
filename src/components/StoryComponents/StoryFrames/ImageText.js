@@ -11,9 +11,9 @@ const ImageText = (props) =>{
         <Row className='d-flex justify-content-between align-items-center'>
           {zone.left_right_switch ?(<>
             <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
-            <Col><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image} imageWidth={"30vmax"}/></Col>
+            <Col><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
           </>):(<>
-            <Col xs={`${grid[zone.grid_option]}`}><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image} imageWidth={"30vmax"}/></Col>
+            <Col xs={`${grid[zone.grid_option]}`}><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image} /></Col>
             <Col><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
           </>)}
         </Row>
@@ -25,9 +25,9 @@ const ImageText = (props) =>{
         <Row className='d-flex justify-content-around align-items-center'>
           {zone.left_right_switch ?(<>
               <Col xs={`${grid[zone.grid_option]}`}><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
-              <Col ><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image} imageWidth={"30vmax"}/></Col>
+              <Col ><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
             </>):(<>
-              <Col xs={`${grid[zone.grid_option]}`}><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image} imageWidth={"30vmax"}/></Col>
+              <Col xs={`${grid[zone.grid_option]}`}><ImageComponent toggleBottom={props.toggleBottom} image = {zone.it_image}/></Col>
               <Col><TextComponent toggleBottom={props.toggleBottom} text = {zone.it_text}/></Col>
             </>)}
         </Row>

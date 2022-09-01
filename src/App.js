@@ -24,9 +24,9 @@ import HowToReadACoin from 'src/pages/Stories/HowToReadACoin.js';
 import VideoLibrary from './pages/Toolbox/VideoLibrary/VideoLibrary';
 import Timeline from 'src/pages/Toolbox/Timeline/Timeline.js';
 import Glossary from './pages/Toolbox/Glossary/Glossary.js';
-
+import Coin3D from './pages/Toolbox/Coin3D/Coin3D';
 import Research from './pages/Toolbox/Research/Research';
-import TeachingResources from './pages/Resources/TeachingResources/TeachingResources';
+// import TeachingResources from './pages/Resources/TeachingResources/TeachingResources';
 
 import GlossaryWrapper from './pages/Toolbox/Glossary/glossary-wrapper';
 import GlossaryTerm from './pages/Toolbox/Glossary/GlossaryTerm';
@@ -47,27 +47,23 @@ function App() {
 					<Route path='/Stories' element={<Stories />} />
 					<Route path='/Evidence' element={<ExploreTheEvidence />} /> 
 					<Route path='/Toolbox' element={<Toolbox />} />
-
 					
 					<Route path='/StoryReader' element={<StoryReader />} />
 
 					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 					<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 					<Route path='/Evidence/Timeline' element={<Timeline />} />
-
 					<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
 					<Route path='/Evidence/Download' element={<Download />} />
 
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 					<Route path='/Toolbox/Research' element={<Research />} />
-
+					<Route path='/Toolbox/Coin3D' element={<Coin3D />} />
 					<Route element={<GlossaryWrapper/>}>
 						<Route path='/Toolbox/Glossary/:group' element={<Glossary />} />
 						<Route path='/Toolbox/Glossary/term/:term' element={<GlossaryTerm />} />
 					</Route>
-
-					<Route path='/Resources/TeachingResources' element={<TeachingResources />} />
-
+					{/* <Route path='/Resources/TeachingResources' element={<TeachingResources />} /> */}
 					<Route path='/ContactUs' element={<ContactUs />} />
 					<Route path='/About' element={<AboutUs />} />
 

@@ -54,7 +54,7 @@ const Toolbox = ()=>{
                             <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.read_coin.caption)} />
                     </Col>
                     <Col xs={3}>
-                        {/* <Link to='/Toolbox/VideoLibrary'> */}
+                        <Link to='/Toolbox/Coin3D'>
                             <div className='text-center'>
                                 <img
                                     alt={'missing alt'}
@@ -66,7 +66,7 @@ const Toolbox = ()=>{
                                 />
                             </div>
 
-                        {/* </Link> */}
+                        </Link>
                         <h4 className='mt-5 text-center'>COIN IN 3D</h4>
                         {/* <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(toolboxData.video_library?.caption)} /> */}
                         <div className='story-caption text-center'>

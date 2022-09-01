@@ -47,7 +47,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
           </Col>
         </Row>
     </div>
-      {(imageReference || references) &&( imageReference.length!==0 ||references.length!==0) ?(<>
+      {(imageReference || references) &&( imageReference.length!==0 ||references.length!==0) ? (<>
         <Drawer
           open={isBottomOpen}
           onClose={toggleBottom}

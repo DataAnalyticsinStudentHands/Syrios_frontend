@@ -48,7 +48,6 @@ export const TextComponent = (props)=>{
         </Container>
       )
     }
-  
 }
 
 
