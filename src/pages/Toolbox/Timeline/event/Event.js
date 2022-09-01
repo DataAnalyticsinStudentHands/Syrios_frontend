@@ -7,7 +7,7 @@ import { colors } from 'src/pages/Toolbox/Timeline/constants.js';
 
 function tag(text) {
   return (
-    <div key={Math.random()} className='event-tag' style={{ backgroundColor: colors.find_color(text) }}>
+    <div key={Math.random()} className='event-tag' style={{ backgroundColor: colors(text)}}>
       <p className='tag-text'>
         {text}
       </p>
@@ -50,7 +50,6 @@ const EventInfo = (props) => {
           </div>
 
           <div id='event-description' dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
-
 
           <div id='light-green-background'>
             <div id='event-connections'>
