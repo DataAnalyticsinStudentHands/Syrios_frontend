@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 // import ReactMarkdown from 'react-markdown';
 import {Container,Row,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import FeedBackicon from 'src/components/FeedBackIcon';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
 import EvidenceBgPic from 'src/assets/pages/LandingPageAssets/Evidence.jpg';
@@ -42,6 +42,7 @@ function LandingPage() {
 
   return (
     <>
+    <FeedBackicon url="default"/>
       <div id='landing-page'>
         {/* Container is centered due to the above div classes. Container holds ALL of the information */}
         <center>
