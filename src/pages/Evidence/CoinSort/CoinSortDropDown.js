@@ -41,7 +41,7 @@ export default function CoinSortDropDown(props){
     ));
   
     return (
-      <div className='coin-sort-option'>
+      <div className='coin-sort-option mx-3'>
         <p className='coin-sort-dropdown-title-text'>
           {props.title}{(() => {
             if (props.toolTips != null) { 
