@@ -599,106 +599,154 @@ const CoinSort = () => {
   }
 
   return (
-    <div id='coin-sort-wrapper'>
-      <div className='navbar-spacer' />
-      <div id='coin-sort-spacer' />
-      {/* CoinPile (fixed position) */}
-      <CoinPile 
-        coins={coins} 
-        setDraggedCoinId={SetDraggedCoinId} 
-        sortSelection={sort_selection}
-        thenBySelection={then_by_selection}
-        filterSelection={filter_selection}
-        withSelection={with_selection}
-        ofKindSelection={of_kind_selection}
-      />
-      <div id='coin-sort-title' className='story-h1 text-center'>
-        Coins in a Pile
+    <>
+      <div className='feedbackicon'>
+        <a href="https://universityofhouston.iad1.qualtrics.com/jfe/form/SV_42h2oKFIZHcBeaq"
+        target="_blank" rel="noopener noreferrer">
+          <svg width="100%" viewBox="0 0 286 427" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_0_1)">
+            <circle cx="213.5" cy="189.5" r="209.5" fill="#987818"/>
+            </g>
+            <text x="103.5" y="169.5" fill="white" className='feedbacktext'>   
+              Give us
+            </text>
+            <text x="93.5" y="229.5" fill="white" className='feedbacktext'>   
+              Usability
+            </text>
+            <text x="83.5" y="289.5" fill="white" className='feedbacktext'>   
+              Feedback!
+            </text>        
+            <defs>
+              <filter id="filter0_d_0_1" x="0" y="0" width="427" height="427" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dy="4"/>
+                <feGaussianBlur stdDeviation="2"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+              </filter>
+            </defs>
+          </svg>
+        </a>
       </div>
-      {/* Coin sort options */}
-      <div id='coin-sort-options-wrapper'>
-        <div id='coin-sort-options'>
-          <CoinSortDropDown
-            title='Sort:'
-            selections={sort_selections}
-            state={sort_selection}
-            setState={set_sort_selection}
-            toolTips={coinSortData.sort_tool_tips}
-            showClear={show_sort_clear_button}
-            clearTitle='Clear Sort'
-            clear={() => {
-              set_sort_selection(sort_selections[0]);
-              set_then_by_selection(then_by_selections[0]);
-              set_show_sort_clear_button(false);
-            }}
+
+      <div id='coin-pile-page'>
+        <center>
+          <h1>Coins in a Pile</h1>
+          <h3 className='mb-5 pb-5'>Explore the SYRIOS Collection</h3>
+        </center>
+        <div style={{width:"50%", marginLeft:"25%"}}>
+          <ol>
+            <li className='story-text mb-5'>Drag coins from the pile on the edges into this center area to study them more closely.</li>
+            <li className='story-text mb-5'>Click on a coin to see complete details.</li>
+            <li className='story-text mb-5'>Use the tools, above, to arrange, sort, and filter the coins to identify the patterns and discover the hidden stories that connect them to each other and to us.</li>
+          </ol>
+        </div>
+        <div id='coin-sort-wrapper'>
+          <div className='navbar-spacer' />
+          {/* <div id='coin-sort-spacer' /> */}
+          {/* CoinPile (fixed position) */}
+          <CoinPile 
+            coins={coins} 
+            setDraggedCoinId={SetDraggedCoinId} 
+            sortSelection={sort_selection}
+            thenBySelection={then_by_selection}
+            filterSelection={filter_selection}
+            withSelection={with_selection}
+            ofKindSelection={of_kind_selection}
           />
-          <CoinSortDropDown
-            title='Then by:'
-            selections={then_by_selections}
-            state={then_by_selection}
-            setState={set_then_by_selection}
-          />
-          <div className='coin-sort-menu-vr'>
-            <div className='coin-sort-menu-vr-content'/>
+          {/* <div id='coin-sort-title' className='story-h1 text-center'>
+            Coins in a Pile
+          </div> */}
+          {/* Coin sort options */}
+          <div id='coin-sort-options-wrapper'>
+            <div id='coin-sort-options'>
+              <CoinSortDropDown
+                title='Sort:'
+                selections={sort_selections}
+                state={sort_selection}
+                setState={set_sort_selection}
+                toolTips={coinSortData.sort_tool_tips}
+                showClear={show_sort_clear_button}
+                clearTitle='Clear Sort'
+                clear={() => {
+                  set_sort_selection(sort_selections[0]);
+                  set_then_by_selection(then_by_selections[0]);
+                  set_show_sort_clear_button(false);
+                }}
+              />
+              <CoinSortDropDown
+                title='Then by:'
+                selections={then_by_selections}
+                state={then_by_selection}
+                setState={set_then_by_selection}
+              />
+              <div className='coin-sort-menu-vr'>
+                <div className='coin-sort-menu-vr-content'/>
+              </div>
+              <CoinSortDropDown
+                title='Filter:'
+                selections={filter_selections}
+                state={filter_selection}
+                setState={set_filter_selection}
+                toolTips={coinSortData.filter_tool_tips}
+                showClear={show_filter_clear_button}
+                clearTitle='Clear Filter'
+                clear={() => {
+                  set_filter_selection(filter_selections[0]);
+                  set_with_selection(with_selections[0]);
+                  set_of_kind_selection(of_kind_selections[0]);
+                  set_show_filter_clear_button(false);
+                }}
+              />
+              <CoinSortDropDown
+                title='With:'
+                selections={with_selections}
+                state={with_selection}
+                setState={set_with_selection}
+              />
+              <CoinSortDropDown
+                title='Of Kind:'
+                selections={of_kind_selections}
+                state={of_kind_selection}
+                setState={set_of_kind_selection}
+              />
+              {(() => {
+                if (show_scale_and_rotate) {
+                  return (
+                  <>
+                    <div className='coin-sort-menu-vr'>
+                      <div className='coin-sort-menu-vr-content'/>
+                    </div>
+                    <div className='coin-sort-options-icons-div' onClick={() => {set_scale_all(!scale_all);}}>
+                      <i className='demo-icon icon-coin-scale coin-sort-options-icon'>&#xe834;</i>
+                      <p className='blue-text coin-sort-options-icon-text'>SCALE</p>
+                    </div>
+                    <div className='coin-sort-options-icons-div' onClick={() => {set_rotate_all(!rotate_all);}}>
+                      <i className='demo-icon icon-coin-rotate coin-sort-options-icon'>&#xe833;</i>
+                      <p className='blue-text coin-sort-options-icon-text'>FLIP</p>
+                    </div>
+                  </>
+                  );}
+              })
+              ()}
+            </div>
           </div>
-          <CoinSortDropDown
-            title='Filter:'
-            selections={filter_selections}
-            state={filter_selection}
-            setState={set_filter_selection}
-            toolTips={coinSortData.filter_tool_tips}
-            showClear={show_filter_clear_button}
-            clearTitle='Clear Filter'
-            clear={() => {
-              set_filter_selection(filter_selections[0]);
-              set_with_selection(with_selections[0]);
-              set_of_kind_selection(of_kind_selections[0]);
-              set_show_filter_clear_button(false);
-            }}
+          <CoinGrid
+            coinToAdd={dragged_coin_id}
+            rotateAll={rotate_all}
+            scaleAll={scale_all}
+            showScaleAndRotate={ShowScaleAndRotate}
           />
-          <CoinSortDropDown
-            title='With:'
-            selections={with_selections}
-            state={with_selection}
-            setState={set_with_selection}
-          />
-          <CoinSortDropDown
-            title='Of Kind:'
-            selections={of_kind_selections}
-            state={of_kind_selection}
-            setState={set_of_kind_selection}
-          />
-          {(() => {
-            if (show_scale_and_rotate) {
-              return (
-              <>
-                <div className='coin-sort-menu-vr'>
-                  <div className='coin-sort-menu-vr-content'/>
-                </div>
-                <div className='coin-sort-options-icons-div' onClick={() => {set_scale_all(!scale_all);}}>
-                  <i className='demo-icon icon-coin-scale coin-sort-options-icon'>&#xe834;</i>
-                  <p className='blue-text coin-sort-options-icon-text'>SCALE</p>
-                </div>
-                <div className='coin-sort-options-icons-div' onClick={() => {set_rotate_all(!rotate_all);}}>
-                  <i className='demo-icon icon-coin-rotate coin-sort-options-icon'>&#xe833;</i>
-                  <p className='blue-text coin-sort-options-icon-text'>FLIP</p>
-                </div>
-              </>
-              );}
-          })
-          ()}
+          {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
+          <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} />       
+          <Footer/>
         </div>
       </div>
-      <CoinGrid
-        coinToAdd={dragged_coin_id}
-        rotateAll={rotate_all}
-        scaleAll={scale_all}
-        showScaleAndRotate={ShowScaleAndRotate}
-      />
-      {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
-      <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} />       
-      <Footer />
-    </div>
+
+    </>
   );
 }
 

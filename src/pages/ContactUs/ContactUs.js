@@ -50,7 +50,7 @@ function ContactUs(){
   return(
     <>
     <div className='feedbackicon'>
-      <a href="https://universityofhouston.iad1.qualtrics.com/jfe/form/SV_e8xJud3C0FsmNz8?jfefe=new"
+      <a href="https://universityofhouston.iad1.qualtrics.com/jfe/form/SV_e8xJud3C0FsmNz8"
       target="_blank" rel="noopener noreferrer">
       <svg width="100%" viewBox="0 0 286 427" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_0_1)">
