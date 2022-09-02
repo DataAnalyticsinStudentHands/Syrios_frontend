@@ -309,7 +309,7 @@ const Timeline = () => {
 
   return (
     <>
-      <FeedBackicon formfor='timeline'/>
+      <FeedBackicon formfor='timeline' color='#487848'/>
         <div id='Timeline-page'>
           <div className='d-flex align-items-center justify-content-center' >
             <p className='text-center story-h1' >Coins in Time</p>
