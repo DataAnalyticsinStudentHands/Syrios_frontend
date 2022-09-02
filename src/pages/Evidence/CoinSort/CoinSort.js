@@ -641,7 +641,7 @@ const CoinSort = () => {
           <ol>
             <li className='story-text mb-5'>Drag coins from the pile on the edges into this center area to study them more closely.</li>
             <li className='story-text mb-5'>Click on a coin to see complete details.</li>
-            <li className='story-text mb-5'>Use the tools, above, to arrange, sort, and filter the coins to identify the patterns and discover the hidden stories that connect them to each other and to us.</li>
+            <li className='story-text mb-5'>Use the tools, below, to arrange, sort, and filter the coins to identify the patterns and discover the hidden stories that connect them to each other and to us.</li>
           </ol>
         </div>
         <div id='coin-sort-wrapper'>
