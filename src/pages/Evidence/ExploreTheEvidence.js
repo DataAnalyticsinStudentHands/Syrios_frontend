@@ -117,7 +117,7 @@ const ExploreTheEvidence = () => {
           <Row className='d-flex justify-content-around my-5 py-5'>
 
           <Col xs={4} >
-                <Link to='/Evidence/Timeline'>
+                <Link to='/Evidence/CoinCatalog'>
                   <div className="text-center">
                     <img
                         alt={'missing alt'}
