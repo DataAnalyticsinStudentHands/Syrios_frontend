@@ -2,14 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {
   Container,
   Row,
-  Col
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import evidenceRequest from 'src/api/evidence';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
-import createMarkup from 'src/utils/Markup';
-
+import { WhiteBGDesign } from '../Toolbox/Toolbox';
 const ExploreTheEvidence = () => {
 
   const [isLoading, setIsLoading] = useState(true);
@@ -55,103 +52,49 @@ const ExploreTheEvidence = () => {
           </center>
           <Row className='my-5 d-flex py-5 justify-content-around'>
             {/* SORT COINS */}
-            <Col xs={3} >
-              <Link to='/Evidence/CoinSort'>
-                  <div className='text-center'>
-                    <img
-                      alt={'missing alt'}
-                      src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_sort.image.data.attributes.url}`}
-                      style={{
-                        // borderStyle:'double', borderColor:'#737271', 
-                        height:"12vmax"}}
-                      className="bg-white p-3"
-                    />
-                  </div>
-              </Link>
-                <h4 className='mt-5 text-center'>COINS IN A PILE</h4>
-                <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_sort.caption)} />
-            </Col>
-            {/* MAP COINS */}
-            <Col xs={3} >
-              <Link to='/Evidence/MapCoins'>
-              {evidenceData.coin_sort.image.data ? (
-                <div className="text-center">
-                <img
-                  alt={'missing alt'}
-                  src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_map.image.data.attributes.url}`}
-                  style={{
-                    // borderStyle:'double', borderColor:'#737271', 
-                    height:"12vmax"}}
-                  className="bg-white p-3"
-                  />
-                </div>
-                ):(<b className='image-icon text-center'>&#xe81b;</b>)}
-              </Link>
-                <h4 className='mt-5 text-center'>COINS ON A MAP</h4>
-                <div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(evidenceData.coin_map.caption)} />
-            </Col>
-            {/* COIN TIMELINE */}
-            <Col xs={3}>
-                <Link to='/Evidence/Timeline'>
-                    {evidenceData.timeline?.image.data ? (
-                      <div className="text-center">
-                        <img
-                            alt={'missing alt'}
-                            src={`${process.env.REACT_APP_strapiURL}${evidenceData.timeline?.image.data.attributes.url}`}
-                            style={{
-                              // borderStyle:'double', borderColor:'#737271', 
-                              height:"12vmax"}}
-                            className="bg-white p-3 "/>
-                      </div>
-
-                    ):(<b className='image-icon text-center'>&#xe81b;</b>)}
-                </Link>
-                <div className='align-items-end'>
-                    <h4 className='mt-5 text-center'>COINS IN TIME</h4>
-                    {evidenceData.timeline?.caption ? 
-                    (<div className='story-caption text-center' dangerouslySetInnerHTML={createMarkup(evidenceData.timeline?.caption)} />):(<div className='story-caption'>Travel through time, and follow the journey of these coins for yourself. Find the connections between empires and cultures, and the key events that shaped history.</div>)}
-                </div>
-            </Col>
+            <WhiteBGDesign
+                link='/Evidence/CoinSort'
+                imageSrc={evidenceData.coin_sort.image.data.attributes.url}
+                title="COINS IN A PILE" 
+                subtext={evidenceData.coin_sort.caption}
+                height="12vmax"
+                width="20vmax"
+            />
+            <WhiteBGDesign
+                link='/Evidence/MapCoins'
+                imageSrc={evidenceData.coin_map.image.data.attributes.url}
+                title="COINS ON A MAP" 
+                subtext={evidenceData.coin_map.caption}
+                height="12vmax"
+                width="20vmax"
+            />
+            <WhiteBGDesign
+                link='/Evidence/Timeline'
+                imageSrc={evidenceData.timeline.image.data.attributes.url}
+                title="COINS IN TIME" 
+                subtext={evidenceData.timeline.caption}
+                height="12vmax"
+                width="20vmax"
+            />
           </Row>
           <hr />
           <Row className='d-flex justify-content-around my-5 py-5'>
-
-          <Col xs={4} >
-                <Link to='/Evidence/CoinCatalog'>
-                  <div className="text-center">
-                    <img
-                        alt={'missing alt'}
-                        src={`${process.env.REACT_APP_strapiURL}${evidenceData.coin_catalog.image.data.attributes.url}`}
-                        style={{
-                          // borderStyle:'double', borderColor:'#737271', 
-                          height:"12vmax"}}
-                        className="bg-white p-3"/>
-                  </div>
-                </Link>
-                <div className='align-items-end'>
-                    <h4 className='mt-5 text-center'>Coin Catalog</h4>
-                    <div className='story-caption text-center' style={{width:"80%", marginLeft:"10%"}} dangerouslySetInnerHTML={createMarkup(evidenceData.coin_catalog.caption)} />
-                </div>
-            </Col>
-
-            <Col xs={4} >
-                <Link to='/Evidence/Download'>
-                  <div className="text-center">
-                    <img
-                        alt={'missing alt'}
-                        src={`${process.env.REACT_APP_strapiURL}${evidenceData.download.image.data.attributes.url}`}
-                        style={{
-                          // borderStyle:'double', borderColor:'#737271',
-                          height:"12vmax"}}
-                        className="bg-white p-3"/>
-                  </div>
-                </Link>
-                <div className='align-items-end'>
-                    <h4 className='mt-5 text-center '>Coin AS DATA</h4>
-                    <div className='story-caption text-center'style={{width:"80%", marginLeft:"10%"}} dangerouslySetInnerHTML={createMarkup(evidenceData.download.caption)} />
-                </div>
-            </Col>
-
+            <WhiteBGDesign
+                  link='/Evidence/CoinCatalog'
+                  imageSrc={evidenceData.coin_catalog.image.data.attributes.url}
+                  title="Coin Catalog" 
+                  subtext={evidenceData.coin_catalog.caption}
+                  height="12vmax"
+                  width="20vmax"
+              />
+            <WhiteBGDesign
+                  link='/Evidence/Download'
+                  imageSrc={evidenceData.download.image.data.attributes.url}
+                  title="Coin AS DATA" 
+                  subtext={evidenceData.download.caption}
+                  height="12vmax"
+                  width="20vmax"
+              />
           </Row>
         </Container>
       </div>
