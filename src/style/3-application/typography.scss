@@ -342,11 +342,11 @@
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-18;
+  font-size: $syrios-font-size-20;
   line-height: $syrios-line-spacing-17;
-  letter-spacing: $syrios-character-spacing--80;
-  color: $syrios-color-ffffff;
-  text-transform: $syrios-text-transform-uppercase;
+  // letter-spacing: $syrios-character-spacing--80;
+  color: #ffffff;
+  // text-transform: $syrios-text-transform-uppercase;
 
   &:hover {
     color: #B8CCD8;
