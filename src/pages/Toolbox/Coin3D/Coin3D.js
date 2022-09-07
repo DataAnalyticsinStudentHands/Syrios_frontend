@@ -5,6 +5,11 @@ const Coin3D = ()=>{
         <div id='coin3d-page'>
             <center>
                 <h1>Coin in 3D</h1>
+                <h3>This is a 3D model from a copy of a silver tetradrachm minted at Antioch for King Tigranes II of Armenia.</h3>
+                <p className='story-text text-center my-5'>
+                    <em>Please feel free to rotate the 3D coin and zoom in for close-up views of the annotations and details.
+                    </em>
+                </p>
                 <div className='sketchfab-embed-wrapper my-5 py-5'>
                     <iframe 
                             title="Eastern King's Coin" 
