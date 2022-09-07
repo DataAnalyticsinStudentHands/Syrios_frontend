@@ -35,8 +35,8 @@
 .coin-info {
   width: 50vmax;
   max-height: 70vh;
+  overflow-y: scroll;
   // width: 80vw;
-
   // display: grid;
   // grid-template-columns: 1fr 2fr;
   // grid-template-rows: 1fr 2fr 5fr 1fr;

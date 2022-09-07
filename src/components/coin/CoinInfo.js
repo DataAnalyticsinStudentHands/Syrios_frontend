@@ -108,39 +108,39 @@ export function CoinAlt(coin) {
   return (coin.alternativeText == null || coin.alternativeText.length === 0) ? "coin_image" : coin.alternativeText;
 }
 
-const References = (props) => {
-  if ((props.coinMetaData.ref1 == null || props.coinMetaData.ref1.length === 0) && 
-    (props.coinMetaData.ref2 == null || props.coinMetaData.ref1.length === 0)) 
-    return <div></div>;
+// const References = (props) => {
+//   if ((props.coinMetaData.ref1 == null || props.coinMetaData.ref1.length === 0) && 
+//     (props.coinMetaData.ref2 == null || props.coinMetaData.ref1.length === 0)) 
+//     return <div></div>;
 
-  if (props.coinMetaData.ref1 == null || props.coinMetaData.ref1.length === 0)
-    return (
-      <div className='coin-info-ref-1'>
-        <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
-        <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
-      </div>
-    );
-  else if (props.coinMetaData.ref2 == null || props.coinMetaData.ref2.length === 0)
-    return (
-      <div className='coin-info-ref-1'>
-        <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
-        <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
-      </div>
-    );
-  else 
-    return (
-      <>
-        <div className='coin-info-ref-1'>
-          <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
-          <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
-        </div>
-        <div className='coin-info-ref-2'>
-          <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
-          <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
-        </div>
-      </>
-    );
-}
+//   if (props.coinMetaData.ref1 == null || props.coinMetaData.ref1.length === 0)
+//     return (
+//       <div className='coin-info-ref-1'>
+//         <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+//         <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
+//       </div>
+//     );
+//   else if (props.coinMetaData.ref2 == null || props.coinMetaData.ref2.length === 0)
+//     return (
+//       <div className='coin-info-ref-1'>
+//         <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+//         <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
+//       </div>
+//     );
+//   else 
+//     return (
+//       <>
+//         <div className='coin-info-ref-1'>
+//           <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+//           <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref1)}</span>
+//         </div>
+//         <div className='coin-info-ref-2'>
+//           <span className='coin-info-small-gray-text'>REFERENCE:<br /></span>
+//           <span className='coin-info-dark-text'>{IfUrlHrefElseString(props.coinMetaData.ref2)}</span>
+//         </div>
+//       </>
+//     );
+// }
 
 function CoinScaleAndFlip(props) {
   const [coin_rotation, set_coin_rotation] = useState('rotateY(0deg)');
