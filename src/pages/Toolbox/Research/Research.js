@@ -49,9 +49,9 @@ Antiquity. Although Antioch's prominence is famous, Kristina M. Neumann newly ex
 the gradations of imperial power and local agency mediated within its walls through a 
 comprehensive study of the coins minted there and excavated throughout the Mediterranean 
 and Middle East. Patterns revealed through digital mapping and Exploratory Data Analysis 
-serve as a signi"cant index of spatial politics and the policies of the different authorities 
+serve as a significant index of spatial politics and the policies of the different authorities 
 making use of the city. Evaluating the coins against other historical material reveals that 
-Antioch's status was not "xed, nor the people passive pawns for external powers. Instead, as 
+Antioch's status was not fixed, nor the people passive pawns for external powers. Instead, as 
 imperial governments capitalized upon Antioch's location and amenities, the citizens 
 developed in their own distinct identities and agency. Antioch of the Antiochians must 
 therefore be elevated from traditional narratives and static characterizations, being studied 
