@@ -69,13 +69,13 @@ const VideoLibrary = ()=>{
                         {videoData.map((video)=>{
                             return(
                                 <Col key={video.id} xs={3} className="mt-5 pt-5 text-center">
-
                                     {video.attributes.video_thumbnail.data? (
                                         <img 
                                             src={`${process.env.REACT_APP_strapiURL}${video.attributes.video_thumbnail.data.attributes.url}`} 
                                             alt={video.attributes.video_thumbnail.data.attributes.alternativeText} 
                                             onClick={()=>handleOpenModal(video.attributes.video_url)}
-                                            style={{cursor:"pointer", height:"15vmax"}}
+                                            style={{cursor:"pointer", width:"20vmax",height:"15vmax"}}
+                                            className="bg-white p-3"
                                         />
                                     ):(
                                         <b className='image-icon text-center' 
