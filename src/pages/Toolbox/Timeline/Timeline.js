@@ -312,7 +312,7 @@ const Timeline = () => {
       <FeedBackicon formfor='timeline' color='#487848'/>
         <div id='Timeline-page'>
           <div className='d-flex align-items-center justify-content-center' >
-            <p className='text-center story-h1' >Coins in Time</p>
+            <h1 className='text-center' >Coins in Time</h1>
           </div>
           <div className='mx-5 px-5' >
             {/* <p className='text-center story-text' dangerouslySetInnerHTML={createMarkup(timeline_description)} /> */}
