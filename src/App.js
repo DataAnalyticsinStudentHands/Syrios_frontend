@@ -39,7 +39,7 @@ function App() {
 			style={{ backgroundImage: `url(${background})`}}
 		>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
-			<BrowserRouter basename='/dev'>
+			<BrowserRouter>
 				<Navbar />
 				<Routes>
 					<Route exact path='/' element={<LandingPage />} />
