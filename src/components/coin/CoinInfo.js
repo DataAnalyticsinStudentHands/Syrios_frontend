@@ -144,14 +144,12 @@ export function CoinAlt(coin) {
 
 function CoinScaleAndFlip(props) {
   const [coin_rotation, set_coin_rotation] = useState('rotateY(0deg)');
-  const [img_height, set_img_height] = useState('100%');
   const [dotted_circle_height, set_dotted_circle_height] = useState('0%');
   const [is_img_scaled, set_is_img_scaled] = useState(false);
   const [size_diameter_jsx, set_size_diameter_jsx] = useState('0');
 
   const ResetCoin = () => {
     set_coin_rotation('rotateY(0deg)');
-    set_img_height('100%');
     set_dotted_circle_height('0%');
     set_is_img_scaled(false);
   };
@@ -170,7 +168,6 @@ function CoinScaleAndFlip(props) {
   const ScaleCoin = () => {
     if (is_img_scaled) {
       set_dotted_circle_height('0%');
-      set_img_height('100%');
     } else {
       set_dotted_circle_height('80%');
 
@@ -184,8 +181,6 @@ function CoinScaleAndFlip(props) {
       if (height_of_coin_percent == null || height_of_coin_percent === 0) {
         height_of_coin_percent = 5;
       }
-
-      set_img_height(`${height_of_coin_percent}%`);
     }
     
     set_is_img_scaled(!is_img_scaled);
@@ -221,8 +216,6 @@ function CoinScaleAndFlip(props) {
               alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
               className='coin-info-image-flip coin-info-image-flip-front'
               src={process.env.REACT_APP_strapiURL + props.coinMetaData.obverse_file.data.attributes.url}
-              // height={img_height}
-              // width="100%"
             />
           </div>
           <div className='flip-box-back'>
@@ -230,8 +223,6 @@ function CoinScaleAndFlip(props) {
               alt={CoinAlt(props.coinMetaData.obverse_file.data.attributes)}
               className='coin-info-image-flip coin-info-image-flip-back'
               src={process.env.REACT_APP_strapiURL + props.coinMetaData.reverse_file.data.attributes.url}
-              // height={img_height}
-              // width={img_height}
             />
           </div>
         </div>
