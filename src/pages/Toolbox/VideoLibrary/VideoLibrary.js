@@ -62,6 +62,8 @@ const VideoLibrary = ()=>{
                 <h1 className='text-center mb-5 pb-5'>Video Library</h1>
                 {/* <h2 className='text-center mt-5 pt-5'>Coming Soon ...</h2> */}
 
+                <h3 className='text-center'>Watch short informational videos on a wide range of topics related to the study of coins, the ethics of coin collecting, Syrian cultural heritage, and more.</h3>
+                
                 <Player open={isOpen} toggleModal={handleOpenModal} url={url} />
 
                 <Row className='d-flex justify-content-around '>
