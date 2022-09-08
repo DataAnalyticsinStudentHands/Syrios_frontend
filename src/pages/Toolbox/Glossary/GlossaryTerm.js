@@ -86,7 +86,7 @@ const GlossaryTerm = () =>{
                         </Link>
                     </span>
                     <span style={{marginRight:"1.5vmax"}}>
-                        <Link to='/Toolbox/Timeline'>
+                        <Link to='/Evidence/Timeline'>
                         <img src={`${TimelineIcon}`} alt="TimelineIcon" height="25vmax"/>  
                         </Link>
                     </span>
