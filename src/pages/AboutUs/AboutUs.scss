@@ -8,7 +8,8 @@
 	padding-bottom: 7.5vmax;
 }
 .aboutus-des{
-  width: 90%;
+  width: 80%;
+  margin-left: 10%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -23,9 +24,8 @@
 }
 
 .aboutus-project_director{
-  // font-size: calc(16px + 1vw);
-  // display: flex;
-  width: 90%;  
+  width: 80%;
+  margin-left: 10%;
 }
 
 
@@ -33,7 +33,7 @@
   border-radius: 50%;
   padding: 0.75vmax;
   background-color: white;
-  // width: 100%;
+  width: 80%;
 
 }
 .aboutus-avatar__image{
@@ -43,9 +43,8 @@
 .aboutTable {
   font-size: calc(16px + 1vw);
   display: flex;
-  width: 90%;
-  // margin: 2em auto;
-  // margin-left: 10%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .aboutTable_tabs {

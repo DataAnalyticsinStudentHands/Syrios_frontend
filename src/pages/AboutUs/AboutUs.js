@@ -52,16 +52,15 @@ const About = () => {
           <div className='aboutus-description story-text-bigger' dangerouslySetInnerHTML={createMarkup(aboutUsData?.description)}/>
 
         </div>
-        <div className='aboutus-project_director my-5'>
+        <div className='aboutus-project_director my-5 py-5'>
           <h2 className='my-5 py-5 text-center'>Project Directors</h2>
           {aboutUsData?.project_directors?.map((director)=>{
             return(
-              <Row key={`ProjectDirectors_${director.id}`} className='my-5 d-flex justify-content-around'>
+              <Row key={`ProjectDirectors_${director.id}`} className='my-5 py-5 d-flex justify-content-cnter'>
                 <Col xs={3} className=''>
                     <img
                       src={`${process.env.REACT_APP_strapiURL}${director.picture.data.attributes.url}`}
                       alt={director.name}
-                      width="100%"
                       className="aboutus-avatar"
                     />
                 </Col>
