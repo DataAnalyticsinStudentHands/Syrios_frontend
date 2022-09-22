@@ -4,6 +4,7 @@ import LoadingPage from 'src/components/LoadingPage.js';
 import coin3DRequest from 'src/api/coin-3d';
 import { useEffect, useState } from 'react';
 import createMarkup from 'src/utils/Markup';
+import PageTitleComponent from 'src/components/constant/pageTitleText';
 const Coin3D = ()=>{
     const [isLoading, setIsLoading] = useState(true);
     const [coin3D, setCoin3D] = useState([])
@@ -19,10 +20,12 @@ const Coin3D = ()=>{
     if (isLoading)return (<><LoadingPage /><Footer /></>);
     return(
         <div id='coin3d-page'>
+                <PageTitleComponent
+                    title={coin3D.title}
+                    text={coin3D.text}
+                    subtext={coin3D.sub_text}
+                />
             <center>
-                <h1>{coin3D.title}</h1>
-                <h3 className='my-5' dangerouslySetInnerHTML={createMarkup(coin3D.text)}/>
-				<div className='story-text my-5' dangerouslySetInnerHTML={createMarkup(coin3D.sub_text)}/>
                 <div className='sketchfab-embed-wrapper my-5 py-5'>
                     <iframe 
                         title="Eastern King's Coin" 

@@ -6,6 +6,7 @@ import storyRequest from 'src/api/story';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
 import createMarkup from 'src/utils/Markup';
+import PageTitleComponent from 'src/components/constant/pageTitleText';
 
 const Stories = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -16,6 +17,7 @@ const Stories = () => {
 		const fetchData = async ()=>{
 			const result = await storyRequest.storyFind()
 			const textresult = await storyRequest.storyHomeFind()
+			console.log(textresult)
 			setStoryContent(textresult.data.data.attributes)
 			function filterOutZotero(item){
 				if (item.id !== 1){
@@ -34,12 +36,17 @@ const Stories = () => {
 		<>
 		<div id='stories-page'>
 			<Container>
-				<center>
+				{/* <center> */}
 					{/* <h1>Discover Coin Stories</h1> */}
-					<h1>{storyContent.head}</h1>
+					{/* <h1>{storyContent.head}</h1>
 					<h3 className='my-5' dangerouslySetInnerHTML={createMarkup(storyContent.text)}/>
 					<div className='story-text my-5' dangerouslySetInnerHTML={createMarkup(storyContent.sub_text)}/>
-				</center>
+				</center> */}
+                <PageTitleComponent
+                    title={storyContent.head}
+                    text={storyContent.text}
+                    subtext={storyContent.sub_text}
+                />
 				<Row style={{ marginTop: '2vmax'}} className="py-5 align-items-end ">
 					{stories.map((story)=>{
 						return(

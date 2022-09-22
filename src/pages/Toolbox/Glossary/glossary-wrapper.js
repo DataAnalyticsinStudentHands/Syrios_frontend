@@ -5,18 +5,34 @@ import Footer from "../../../components/Footer";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SearchBar from "./GlossarySearchBox";
+import { useState,useEffect } from "react";
+import glossaryRequest from "src/api/glossary";
+import LoadingPage from "src/components/LoadingPage";
+import PageTitleComponent from "src/components/constant/pageTitleText";
 function GlossaryWrapper(){
     const alphabetGroup = ["ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"];
-    const {group, term} = useParams()
+    const {group, term} = useParams();
+    const [isLoading, setIsLoading] = useState(true);
+    const [glossary, setGlossary] = useState([])
+    useEffect(()=>{
+		const fetchData = async ()=>{
+			const result = await glossaryRequest.glossaryHomeFind()
+            console.log(result.data.data.attributes)
+			setGlossary(result.data.data.attributes)
+			setIsLoading(false)
+		}
+		fetchData().catch(console.error);
+    },[])
+	if (isLoading)return (<><LoadingPage /><Footer /></>);
     return(
         <div id='glossary-page'>
             <Container>
-                <h1 className='text-center'>Glossary<sup className='story-icon'>&#xe817;</sup></h1>
-                <h3 className='text-center'>Explore this glossary to learn about terms related to coins, the ancient world, historical investigation, and archaeology. Begin by searching for a term, selecting a category, or clicking through the tabs.</h3>
-                {/* <Row className='d-flex justify-content-between align-items-top'>
-                    <Col xs={2}><i className='demo-icon glossary-icon'>&#xe817;</i></Col>
-                    <Col xs={10} className='story-text text-center'>Explore this glossary to learn about terms related to coins, the ancient world, historical investigation, and archaeology. Begin by searching for a term, selecting a category, or clicking through the tabs.</Col>
-                </Row> */}
+                <PageTitleComponent
+                    title={glossary.title}
+                    text={glossary.text}
+                    subtext={glossary.subtext}
+                    icon={ <sup className='story-icon'>&#xe817;</sup>}
+                />
                 <SearchBar/>
                 <Nav variant="tabs" defaultActiveKey="/All" className="d-flex justify-content-center" style={{marginTop:"7.5vmax"}}>
                     <Nav.Item><Link to="/Toolbox/Glossary/all" eventkey="All" style={{backgroundColor: group ==="all" ? "white":"" }}>All</Link></Nav.Item>
