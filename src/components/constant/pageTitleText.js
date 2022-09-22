@@ -1,6 +1,5 @@
 import createMarkup from "src/utils/Markup"
 function PageTitleComponent(props){
-    console.log(props)
     return(
         <center>
             <h1>{props.title}{props.icon}</h1>
