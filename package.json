@@ -2,7 +2,6 @@
   "name": "syriosfrontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/dev",
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.19",
     "@testing-library/jest-dom": "^5.14.1",
