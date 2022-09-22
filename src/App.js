@@ -36,7 +36,8 @@ import ErrorPage from './components/404';
 function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
-			<BrowserRouter basename='/dev'>
+      { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
+			<BrowserRouter>
 				<Navbar />
 				<Routes>
 					<Route exact path='/' element={<LandingPage />} />
