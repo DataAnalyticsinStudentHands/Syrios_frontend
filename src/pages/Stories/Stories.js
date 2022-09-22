@@ -5,33 +5,25 @@ import { Link } from 'react-router-dom';
 import storyRequest from 'src/api/story';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer';
+import createMarkup from 'src/utils/Markup';
+import PageTitleComponent from 'src/components/constant/pageTitleText';
+
 const Stories = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [stories, setStories] = useState(undefined)
-
-	// const [storyReference, setStoryReference] = useState([])
-	// const [storyImageSouce, setStoryImageSouce]= useState([])
-
-	async function filterOutZotero(item){
-		console.log(item.id)
-		if (item.id === 1){
-			return true
-		}
-		return false
-	}
+	const [storyContent, setStoryContent] = useState([])
 
 	useEffect(() => {
 		const fetchData = async ()=>{
 			const result = await storyRequest.storyFind()
-
+			const textresult = await storyRequest.storyHomeFind()
+			setStoryContent(textresult.data.data.attributes)
 			function filterOutZotero(item){
-				// console.log(item.id)
 				if (item.id !== 1){
 					return true
 				}
 				return false
 			}
-
 			setStories(result.data.data.filter(filterOutZotero))
 			setIsLoading(false)
 		}
@@ -41,19 +33,13 @@ const Stories = () => {
 	if (isLoading)return (<><LoadingPage /><Footer /></>);
 	return (
 		<>
-		<div id='stories-page' 
-		// className='d-flex align-items-center'
-		>
+		<div id='stories-page'>
 			<Container>
-				<center>
-					<h1>Discover Coin Stories</h1>
-					<h3 className='my-5'>
-						Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.
-					</h3>
-					<div className='story-text my-5'>
-						<em>Click on a coin to learn more about the politics, economy, and society of ancient Syria.</em>
-					</div>
-				</center>
+                <PageTitleComponent
+                    title={storyContent.head}
+                    text={storyContent.text}
+                    subtext={storyContent.sub_text}
+                />
 				<Row style={{ marginTop: '2vmax'}} className="py-5 align-items-end ">
 					{stories.map((story)=>{
 						return(
@@ -78,9 +64,7 @@ const Stories = () => {
 				</Row>
 			</Container>
 		</div>
-        {/* <Footer references={storyReference} imageReference={storyImageSouce}/> */}
 		<Footer/>
-
 		</>
 	)
 }

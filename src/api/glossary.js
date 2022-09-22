@@ -12,6 +12,11 @@ const glossaryRequest = {
             method:'GET',
         })
     },
+    glossaryHomeFind: ()=>{
+        return axios(`${process.env.REACT_APP_strapiURL}/api/glossary-home`,{
+            method:'GET',
+        })
+    },
 
     glossaryFind: ()=>{
         let query = qs.stringify({
