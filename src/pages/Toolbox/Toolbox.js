@@ -1,31 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
 import toolboxRequest from 'src/api/toolbox';
 import LoadingPage from 'src/components/LoadingPage';
 import Footer from 'src/components/Footer';
 import { Container, Row, Col} from 'react-bootstrap';
-import createMarkup from 'src/utils/Markup';
-export const WhiteBGDesign = (props)=>{
-    return(
-        <Col xs={3}>
-            <center>
-                <Link to={props.link}>
-                    <img
-                        alt={'missing alt'}
-                        src={`${process.env.REACT_APP_strapiURL}${props.imageSrc}`}
-                        style={{
-                            height:props.height??"auto",
-                            width:props.width??"auto"
-                        }}
-                        className="bg-white p-3"
-                    />
-                </Link>
-                <h4 className='mt-5'>{props.title}</h4>
-                <p className='story-caption' dangerouslySetInnerHTML={createMarkup(props.subtext)} />
-            </center>
-        </Col>
-    )
-}
+import { WhiteBGDesign } from 'src/components/constant/WhiteBGDesign';
+import PageTitleComponent from 'src/components/constant/pageTitleText';
 const Toolbox = ()=>{
 
     const [isLoading, setIsLoading] = useState(true)
@@ -50,66 +29,65 @@ const Toolbox = ()=>{
     return(
         <div id='tool-box' >
             <Container>
-                <h1 className='text-center'>The Historian's Tool Box</h1>
-                <div className='align-items-center justify-content-center' style={{marginLeft:"5%", marginRight:"5%"}} >
-                    <h3 className='text-center my-5 pb-5'>Scholars have many resources available to help them understand both the past and present. 
-                        Discover the vocabulary, practices, and the larger historical issues at play when conducting
-                        research on coins, Syria, and ancient history.
-                    </h3>
-                </div>
+                <PageTitleComponent
+                    title={toolboxData.title}
+                    text={toolboxData.text}
+                    subtext={toolboxData.subtext}
+                />
                 <Row className='my-5 d-flex py-5 justify-content-around'>
+                <Col xs={3}>
                     <WhiteBGDesign
-                        link='/HowToReadACoin'
-                        imageSrc={toolboxData.read_coin.image.data.attributes.url} 
-                        title="How To Read A Coin" 
-                        subtext={toolboxData.read_coin.caption}
+                        link={toolboxData.image_icons[0].url_path}
+                        imageSrc={toolboxData.image_icons[0].image.data.attributes.url}
+                        title={toolboxData.image_icons[0].title}
+                        subtext={toolboxData.image_icons[0].subtext}
                         height="15vmax"
                         width="15vmax"
                     />
+                </Col>
+                <Col xs={3}>
                     <WhiteBGDesign
-                        link='/Toolbox/Coin3D'
-                        imageSrc='/uploads/3_D_Coins_74ece64c4b.png' 
-                        title="COIN IN 3D" 
+                        link={toolboxData.image_icons[1].url_path}
+                        imageSrc={toolboxData.image_icons[1].image.data.attributes.url}
+                        title={toolboxData.image_icons[1].title}
+                        subtext={toolboxData.image_icons[1].subtext}
                         height="15vmax"
                         width="15vmax"
-                        subtext='Examine a Syrian coin as a three-dimensional object in a virtual space. 
-                        Notice the union of images and text on a
-                        single artifact.'
                     />
+                </Col>
+                <Col xs={3}>
                     <WhiteBGDesign
-                        link='/Toolbox/Glossary/all'
-                        imageSrc='/uploads/glossary2_0e2a776a1e.png' 
-                        title="GLOSSARY" 
+                        link={toolboxData.image_icons[2].url_path}
+                        imageSrc={toolboxData.image_icons[2].image.data.attributes.url}
+                        title={toolboxData.image_icons[2].title}
+                        subtext={toolboxData.image_icons[2].subtext}
                         height="15vmax"
                         width="15vmax"
-                        subtext='Explore the vocabulary related to coins,
-                        the ancient world, historical 
-                        investigation, and archaeology.'
                     />
+                </Col>
                 </Row>
                 <hr />
                 <Row className='d-flex align-items-center justify-content-around my-5 py-5'>
+                <Col xs={3}>
                     <WhiteBGDesign
-                        link='/Toolbox/Research'
-                        imageSrc='/uploads/research_426c0859b4.png' 
-                        title="Research"
-                        height="15vmax"
-                        width="15vmax" 
-                        subtext='Dive into the scholarly research supporting 
-                        SYRIOS and the broader fields of ancient
-                        history, archaeology, and numismatics.'
-                    />
-                    <WhiteBGDesign
-                        link='/Toolbox/VideoLibrary'
-                        imageSrc={toolboxData.video_library?.image.data.attributes.url}
-                        title="Video Library" 
+                        link={toolboxData.image_icons[3].url_path}
+                        imageSrc={toolboxData.image_icons[3].image.data.attributes.url}
+                        title={toolboxData.image_icons[3].title}
+                        subtext={toolboxData.image_icons[3].subtext}
                         height="15vmax"
                         width="15vmax"
-                        subtext='Watch short informational videos on a
-                        wide range of topics related to the study of
-                        coins, the ethics of coin collecting, Syrian 
-                        cultural heritage, and more.'
                     />
+                </Col>
+                <Col xs={3}>
+                    <WhiteBGDesign
+                        link={toolboxData.image_icons[4].url_path}
+                        imageSrc={toolboxData.image_icons[4].image.data.attributes.url}
+                        title={toolboxData.image_icons[4].title}
+                        subtext={toolboxData.image_icons[4].subtext}
+                        height="15vmax"
+                        width="15vmax"
+                    />
+                </Col>
                 </Row>
             </Container>
             <Footer/>

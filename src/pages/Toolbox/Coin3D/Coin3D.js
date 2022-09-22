@@ -31,12 +31,15 @@ const Coin3D = ()=>{
                         title="Eastern King's Coin" 
                         width="720"
                         height="540"
-                        frameborder="0" 
-                        allowfullscreen 
+                        frameBorder="0" 
+                        allowFullScreen 
                         mozallowfullscreen="true" 
                         webkitallowfullscreen="true" 
                         allow="autoplay; fullscreen; xr-spatial-tracking" 
-                        xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share 
+                        xr-spatial-tracking="true" 
+                        execution-while-out-of-viewport="true" 
+                        execution-while-not-rendered="true" 
+                        web-share="true" 
                         src="https://sketchfab.com/models/033a5ed32de347e1be254042555ad0c4/embed"
                     /> 
                 </div>
