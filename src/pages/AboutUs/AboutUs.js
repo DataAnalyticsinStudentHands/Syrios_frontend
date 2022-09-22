@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Row, Col} from 'react-bootstrap';
-
 import Footer from 'src/components/Footer.js';
 import aboutUsRequest from 'src/api/about-us';
 import LoadingPage from 'src/components/LoadingPage';
-
-// import AboutUsTable from './AboutUsTable';
-
 function createMarkup(textTran){
   return {__html: textTran};
 }
@@ -35,8 +31,6 @@ const About = () => {
   },[]);
 
 	if (isLoading)return (<><LoadingPage /><Footer /></>);
-
-
   return (
     <>
       <div id='aboutus-page'>

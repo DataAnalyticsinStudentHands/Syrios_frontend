@@ -6,12 +6,23 @@ import { Link } from 'react-router-dom';
 import FeedBackicon from 'src/components/FeedBackIcon';
 import LoadingPage from 'src/components/LoadingPage.js';
 import Footer from 'src/components/Footer.js';
-import EvidenceBgPic from 'src/assets/pages/LandingPageAssets/Evidence.jpg';
-import HistoriansToolboxBgPic from 'src/assets/pages/LandingPageAssets/HistoriansToolbox.jpg';
-import HowToReadBgPic from 'src/assets/pages/LandingPageAssets/HowToRead.jpg';
-import StoriesBgPic from 'src/assets/pages/LandingPageAssets/Stories.jpg';
+
 import createMarkup from 'src/utils/Markup.js';
 import landingRequest from 'src/api/landing';
+
+function ImageIcon(props){
+  return(
+    <Col className='bg-white landing-button-size'>
+        <Link to={props.link}>
+          <div className='landing-button-img ' style={{ backgroundImage: `url(${process.env.REACT_APP_strapiURL}${props.imageSrc})` }}>
+            <div className='on-hover-dim landing-buttons-text p-3'>
+                {props.text}
+            </div>
+          </div>
+        </Link>
+    </Col>
+  )
+}
 
 function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -68,50 +79,18 @@ function LandingPage() {
             </Col>
             <Col xs={12} sm={4}>
                 <Row className='align-items-center'>
-                  {/* How to Read a Coin */}
-                  <Col  className='bg-white landing-button-size'>
-                      <Link to='/HowToReadACoin'>
-                        <div className='landing-button-img ' style={{ backgroundImage: `url(${HowToReadBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text p-3'>
-                              How to Read a Coin
-                          </div>
-                        </div>
-                      </Link>
-                  </Col>
-                  {/* Discover Stories from Coins */}
-                  <Col className='bg-white landing-button-size'>
-                      <Link to='/Stories'>
-                        <div className='landing-button-img' style={{ backgroundImage: `url(${StoriesBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text p-3'>
-                              Discover Stories from Coins
-                          </div>
-                        </div>
-                      </Link>
-                  </Col>
+                  {landingData.image_icons.map((icon)=>{
+                    return(
+                      <ImageIcon
+                        key={`landing-image-icon-${icon.id}`}
+                        id={icon.id}
+                        link={icon.url_path}
+                        imageSrc={icon.image.data.attributes.url}
+                        text={icon.title}
+                      />
+                    )
+                  })}
                 </Row>
-                <Row className=' align-items-center'>
-                  {/* Explore the Evidence */}
-                  <Col className='bg-white landing-button-size'>
-                      <Link to='/Evidence'>
-                        <div className='landing-button-img' style={{ backgroundImage: `url(${EvidenceBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text p-3'>
-                              Explore the Evidence
-                          </div>
-                        </div>
-                      </Link>
-                  </Col>
-                  {/* Open the Historian's Toolbox */}
-                  <Col className='bg-white landing-button-size '>
-                      <Link to='/Toolbox'>
-                        <div className='landing-button-img' style={{ backgroundImage: `url(${HistoriansToolboxBgPic})` }}>
-                          <div className='on-hover-dim landing-buttons-text p-3'>
-                              Open the Historian's Toolbox
-                          </div>
-                        </div>
-                      </Link>
-                  </Col>
-                </Row>
-              {/* </Container> */}
             </Col>
           </Row>
           {/* Landing paragraph */}

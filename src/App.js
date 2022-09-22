@@ -35,10 +35,7 @@ import ErrorPage from './components/404';
 
 function App() {
 	return (
-		<div id='App' 
-			style={{ backgroundImage: `url(${background})`}}
-		>
-      { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
+		<div id='App' style={{ backgroundImage: `url(${background})`}}>
 			<BrowserRouter basename='/dev'>
 				<Navbar />
 				<Routes>
@@ -47,15 +44,12 @@ function App() {
 					<Route path='/Stories' element={<Stories />} />
 					<Route path='/Evidence' element={<ExploreTheEvidence />} /> 
 					<Route path='/Toolbox' element={<Toolbox />} />
-					
 					<Route path='/StoryReader' element={<StoryReader />} />
-
 					<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 					<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 					<Route path='/Evidence/Timeline' element={<Timeline />} />
 					<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
 					<Route path='/Evidence/Download' element={<Download />} />
-
 					<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 					<Route path='/Toolbox/Research' element={<Research />} />
 					<Route path='/Toolbox/Coin3D' element={<Coin3D />} />
@@ -68,7 +62,6 @@ function App() {
 					<Route path='/About' element={<AboutUs />} />
 
 					<Route path='/*' element={<ErrorPage />} />
-
 				</Routes>
 			</BrowserRouter>
 		</div>
