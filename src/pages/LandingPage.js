@@ -12,7 +12,7 @@ import landingRequest from 'src/api/landing';
 
 function ImageIcon(props){
   return(
-    <Col className='bg-white landing-button-size'>
+    <div className='bg-white landing-button-size'>
         <Link to={props.link}>
           <div className='landing-button-img ' style={{ backgroundImage: `url(${process.env.REACT_APP_strapiURL}${props.imageSrc})` }}>
             <div className='on-hover-dim landing-buttons-text p-3'>
@@ -20,7 +20,7 @@ function ImageIcon(props){
             </div>
           </div>
         </Link>
-    </Col>
+    </div>
   )
 }
 
@@ -78,16 +78,17 @@ function LandingPage() {
                     url={landingData.video_link} />
             </Col>
             <Col xs={12} sm={4}>
-                <Row className='align-items-center'>
+                <Row className='align-items-center justify-content-around'>
                   {landingData.image_icons.map((icon)=>{
                     return(
-                      <ImageIcon
-                        key={`landing-image-icon-${icon.id}`}
-                        id={icon.id}
-                        link={icon.url_path}
-                        imageSrc={icon.image.data.attributes.url}
-                        text={icon.title}
-                      />
+                      <Col xs={5} key={`landing-image-icon-${icon.id}`}>
+                        <ImageIcon
+                          id={icon.id}
+                          link={icon.url_path}
+                          imageSrc={icon.image.data.attributes.url}
+                          text={icon.title}
+                        />
+                      </Col>
                     )
                   })}
                 </Row>

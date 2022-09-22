@@ -17,7 +17,6 @@ const Stories = () => {
 		const fetchData = async ()=>{
 			const result = await storyRequest.storyFind()
 			const textresult = await storyRequest.storyHomeFind()
-			console.log(textresult)
 			setStoryContent(textresult.data.data.attributes)
 			function filterOutZotero(item){
 				if (item.id !== 1){
@@ -36,12 +35,6 @@ const Stories = () => {
 		<>
 		<div id='stories-page'>
 			<Container>
-				{/* <center> */}
-					{/* <h1>Discover Coin Stories</h1> */}
-					{/* <h1>{storyContent.head}</h1>
-					<h3 className='my-5' dangerouslySetInnerHTML={createMarkup(storyContent.text)}/>
-					<div className='story-text my-5' dangerouslySetInnerHTML={createMarkup(storyContent.sub_text)}/>
-				</center> */}
                 <PageTitleComponent
                     title={storyContent.head}
                     text={storyContent.text}
