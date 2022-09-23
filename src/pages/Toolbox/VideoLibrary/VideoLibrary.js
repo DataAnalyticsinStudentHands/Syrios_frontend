@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import Footer from 'src/components/Footer';
+import Footer from 'src/components/footer/Footer';
 import { Container,Row,Col} from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import VideoLibraryRequest from 'src/api/video-library';
-import LoadingPage from 'src/components/LoadingPage';
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import createMarkup from 'src/utils/Markup';
 
 import Modal from "react-responsive-modal";

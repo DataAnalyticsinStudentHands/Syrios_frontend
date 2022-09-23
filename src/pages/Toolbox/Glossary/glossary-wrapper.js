@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router";
 import { Container, Nav} from 'react-bootstrap';
-import Footer from "../../../components/Footer";
+import Footer from "../../../components/footer/Footer";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SearchBar from "./GlossarySearchBox";
 import { useState,useEffect } from "react";
 import glossaryRequest from "src/api/glossary";
-import LoadingPage from "src/components/LoadingPage";
+import LoadingPage from "src/components/loadingPage/LoadingPage";
 import PageTitleComponent from "src/components/constant/pageTitleText";
 function GlossaryWrapper(){
     const alphabetGroup = ["ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"];

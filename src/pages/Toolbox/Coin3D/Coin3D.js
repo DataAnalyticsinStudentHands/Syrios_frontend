@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from 'src/components/Footer';
-import LoadingPage from 'src/components/LoadingPage.js';
+import Footer from 'src/components/footer/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import coin3DRequest from 'src/api/coin-3d';
 import { useEffect, useState } from 'react';
 import createMarkup from 'src/utils/Markup';

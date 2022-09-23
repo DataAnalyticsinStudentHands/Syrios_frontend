@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style/styles.scss";
 import background from 'src/assets/background.jpg';
 
-import Navbar from 'src/components/Navbar.js';
+import Navbar from 'src/components/navbar/Navbar.js';
 import LandingPage from 'src/pages/LandingPage.js';
 import AboutUs from 'src/pages/AboutUs/AboutUs.js';
 import ContactUs from './pages/ContactUs/ContactUs';
@@ -31,13 +31,13 @@ import Research from './pages/Toolbox/Research/Research';
 import GlossaryWrapper from './pages/Toolbox/Glossary/glossary-wrapper';
 import GlossaryTerm from './pages/Toolbox/Glossary/GlossaryTerm';
 
-import ErrorPage from './components/404';
+import ErrorPage from './components/error/404';
 
 function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
-			<BrowserRouter>
+			<BrowserRouter basename='/dev'>
 				<Navbar />
 				<Routes>
 					<Route exact path='/' element={<LandingPage />} />

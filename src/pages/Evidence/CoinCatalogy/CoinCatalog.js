@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Footer from 'src/components/Footer';
+import Footer from 'src/components/footer/Footer';
 // import { Container, Row, Col} from 'react-bootstrap';
 const CoinCatalog = ()=>{
     return(

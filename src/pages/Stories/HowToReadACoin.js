@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import Footer from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
+import Footer from 'src/components/footer/Footer.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 import StoryComponent from 'src/pages/Stories/StoryComponents.js';
 import storyRequest from 'src/api/story';

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Row, Col} from 'react-bootstrap';
-import Footer from 'src/components/Footer.js';
+import Footer from 'src/components/footer/Footer.js';
 import aboutUsRequest from 'src/api/about-us';
-import LoadingPage from 'src/components/LoadingPage';
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
 function createMarkup(textTran){
   return {__html: textTran};
 }

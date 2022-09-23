@@ -3,16 +3,16 @@ import ReactPlayer from 'react-player';
 // import ReactMarkdown from 'react-markdown';
 import {Container,Row,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import FeedBackicon from 'src/components/FeedBackIcon';
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer.js';
+import FeedBackicon from 'src/components/constant/FeedBackIcon';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
+import Footer from 'src/components/footer/Footer.js';
 
 import createMarkup from 'src/utils/Markup.js';
 import landingRequest from 'src/api/landing';
 
 function ImageIcon(props){
   return(
-    <Col className='bg-white landing-button-size'>
+    <div className='bg-white landing-button-size p-3 m-3'>
         <Link to={props.link}>
           <div className='landing-button-img ' style={{ backgroundImage: `url(${process.env.REACT_APP_strapiURL}${props.imageSrc})` }}>
             <div className='on-hover-dim landing-buttons-text p-3'>
@@ -20,7 +20,7 @@ function ImageIcon(props){
             </div>
           </div>
         </Link>
-    </Col>
+    </div>
   )
 }
 
@@ -37,11 +37,6 @@ function LandingPage() {
     fectchData()
     },[]);
 
-
-  // Render components here
-  //
-  // if loading is true, then display loading page
-  // else display page with navbar and footer
   if (isLoading) {
     return (
       <>
@@ -64,30 +59,23 @@ function LandingPage() {
         </center>
 
         <Container>
-
           <h2 className='text-center'>{landingData.title}</h2>
           <Row className='d-flex justify-content-around mt-5'>
-            {/* This is the video */}
-            <Col xs={12} sm={8} id='landing-video'>
-                  <ReactPlayer 
-                    // width='48.4375vmax'
-                    width="100%"
-                    height="100%"
-                    // width='930px'
-                    // height='523px'
-                    url={landingData.video_link} />
+            <Col xs={12} sm={8} id='landing-video' className='p-3'>
+              <ReactPlayer width="100%" height="100%" url={landingData.video_link} />
             </Col>
             <Col xs={12} sm={4}>
                 <Row className='align-items-center'>
                   {landingData.image_icons.map((icon)=>{
                     return(
-                      <ImageIcon
-                        key={`landing-image-icon-${icon.id}`}
-                        id={icon.id}
-                        link={icon.url_path}
-                        imageSrc={icon.image.data.attributes.url}
-                        text={icon.title}
-                      />
+                      <Col xs={12} sm={6} key={`landing-image-icon-${icon.id}`}>
+                        <ImageIcon
+                          id={icon.id}
+                          link={icon.url_path}
+                          imageSrc={icon.image.data.attributes.url}
+                          text={icon.title}
+                        />
+                      </Col>
                     )
                   })}
                 </Row>
@@ -95,12 +83,7 @@ function LandingPage() {
           </Row>
           {/* Landing paragraph */}
           <Row className='justify-content-md-center mt-5'>
-            <Col>
-                <div 
-                  dangerouslySetInnerHTML={createMarkup(landingData.text)} 
-                  className='landing-text' 
-                />
-            </Col>
+            <Col dangerouslySetInnerHTML={createMarkup(landingData.text)} className='landing-text'/>
           </Row>
         </Container>
       </div>

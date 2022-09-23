@@ -5,8 +5,8 @@ import {
   Col
 } from 'react-bootstrap';
 import evidenceRequest from 'src/api/evidence';
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
+import Footer from 'src/components/footer/Footer.js';
 import { WhiteBGDesign } from 'src/components/constant/WhiteBGDesign';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 const ExploreTheEvidence = () => {

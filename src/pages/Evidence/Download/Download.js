@@ -5,8 +5,8 @@ import { Container, Row, Col, Alert, Form} from 'react-bootstrap';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
+import Footer from 'src/components/footer/Footer';
 import createMarkup from 'src/utils/Markup.js';
 
 import downloadRequest from 'src/api/download';

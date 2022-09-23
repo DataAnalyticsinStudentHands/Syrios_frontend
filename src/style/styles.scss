@@ -33,12 +33,12 @@
 @import '../pages/Resources/TeachingResources/TeachingResources.scss';
 
 //components
-@import '../components/LoadingPage.scss';
-@import '../components/Footer.scss';
-@import '../components/Navbar.scss';
+@import '../components/loadingPage/LoadingPage.scss';
+@import '../components/footer/Footer.scss';
+@import '../components/navbar/Navbar.scss';
 @import '../components/coin/CoinFlip.scss';
 @import '../components/coin/CoinInfo.scss';
-@import '../components/404.scss';
+@import '../components/error/404.scss';
 
 //utils
 @import '../utils/WhitePopUp.scss'

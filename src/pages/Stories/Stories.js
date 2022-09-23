@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import storyRequest from 'src/api/story';
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
+import Footer from 'src/components/footer/Footer';
 import createMarkup from 'src/utils/Markup';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 

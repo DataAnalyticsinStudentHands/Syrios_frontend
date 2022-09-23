@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Footer from 'src/components/Footer';
+import Footer from 'src/components/footer/Footer';
 
 // import baskMap from 'src/assets/base-map.png'
 const MapCoins = ()=>{

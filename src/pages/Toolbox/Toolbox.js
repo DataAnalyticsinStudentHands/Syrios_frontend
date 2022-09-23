@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import toolboxRequest from 'src/api/toolbox';
-import LoadingPage from 'src/components/LoadingPage';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
+import Footer from 'src/components/footer/Footer';
 import { Container, Row, Col} from 'react-bootstrap';
 import { WhiteBGDesign } from 'src/components/constant/WhiteBGDesign';
 import PageTitleComponent from 'src/components/constant/pageTitleText';

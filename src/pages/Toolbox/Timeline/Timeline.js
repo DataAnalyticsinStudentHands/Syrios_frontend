@@ -2,15 +2,15 @@ import React, {useState, useEffect} from 'react';
 import Svg, { Text } from 'react-native-svg';
 import axios from 'axios';
 
-import Footer from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
+import Footer from 'src/components/footer/Footer.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
 import EventInfo from 'src/pages/Toolbox/Timeline/event/Event.js';
 
 import { SetupTimelineBackground } from './TimeLineBackground';
 import { LoadTimelineInfo } from './TimeLineInfo';
 import timelinekey from './res/timelinekey.png'
-import FeedBackicon from 'src/components/FeedBackIcon';
+import FeedBackicon from 'src/components/constant/FeedBackIcon';
 
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.

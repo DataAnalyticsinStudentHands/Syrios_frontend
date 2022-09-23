@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
+import Footer from 'src/components/footer/Footer';
 import { Container, Row, Col} from 'react-bootstrap';
 import zoteroRequest from 'src/api/zotero';
 import researchRequest from 'src/api/research';

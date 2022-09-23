@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import Footer from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
+import Footer from 'src/components/footer/Footer.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 import StoryComponent from './StoryComponents';
 

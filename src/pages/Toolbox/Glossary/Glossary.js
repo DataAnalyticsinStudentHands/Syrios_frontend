@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
-import LoadingPage from 'src/components/LoadingPage.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import glossaryRequest from 'src/api/glossary';
 import { Container, Row, Col, Form, InputGroup, Button, Modal,Tab, Tabs, ListGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';

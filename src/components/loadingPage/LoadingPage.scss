@@ -8,22 +8,22 @@
 	height: 100%;
 
 	z-index: -100;
-	background-image:url("../assets/background.jpg");
+	// background-image:url("../assets/background.jpg");
 }
 
 .loader {
 	position: absolute;
 	margin: auto;
-	left: 50%;
-	top: 50%;
+	left: 45%;
+	top: 40%;
 	-ms-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
 
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #f4f2f0; 
+  border-top: 16px solid #7899a8;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 7.5vmax;
+  height: 7.5vmax;
   animation: spin 2s linear infinite;
 }
 
