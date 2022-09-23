@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Svg, { Text } from 'react-native-svg';
 import axios from 'axios';
-
 import Footer from 'src/components/footer/Footer.js';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
@@ -11,6 +10,7 @@ import { SetupTimelineBackground } from './TimeLineBackground';
 import { LoadTimelineInfo } from './TimeLineInfo';
 import timelinekey from './res/timelinekey.png'
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
+import PageTitleComponent from 'src/components/constant/pageTitleText';
 
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
@@ -182,10 +182,22 @@ const Timeline = () => {
   // const [timeline_description, set_timeline_description] = useState(undefined); // This is the description at the top of the page
   const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined); // This is the event and coins pop ups you see that you can interact with
   // These are the view box dimensions
+  const [timeLineText, setTimelineText] = useState({text:'', subtext:''})
   
+  const params = window.location.href
+  const contentID = params.split('#')[1]
+  if(contentID){
+    const element = document.getElementById(contentID)
+    // console.log(element) // this called 53 times...
+    if(element){
+        element.scrollIntoView({
+          behavior:'auto',
+          block: 'center'});
+    }
+  }
+
 
   const y_offset = 5;
-
   // Coin info setup here. 
   const [show_coin_info, set_show_coin_info] = useState(false);
   const CoinInfoPopupCloseHandler = (e) => { // This is used to show / remove popup on certain conditions
@@ -246,8 +258,9 @@ const Timeline = () => {
         .then((res, err) => {
           if (err) {
             console.error(err);
-          } else {
-
+          } 
+          else {
+            setTimelineText({text:res.data.data.attributes.text,subtext:res.data.data.attributes.subtext})
             var timeline_info_interval = setInterval(function() {
               if (!timeline_background_is_loading) {
                 clearInterval(timeline_info_interval); // WHT IS THIS???
@@ -265,39 +278,14 @@ const Timeline = () => {
     }
   });
 
-  // const [scall, setScall] = useState(0)
-  // const [topDistance, setTopDistance]= useState(undefined)
-  // useEffect(() => {
-
-  //   const ele = document.getElementsByTagName("line")[0]
-  //   if(ele){
-  //   const rect = ele.getBoundingClientRect();
-  //   console.log(rect)
-    
-  //   // top = rect.top + document.body.scrollTop;
-  //   setTopDistance(rect.top)
-  //   }
-
-  // }, [timeline_background]);
-  // useEffect(()=>{
-  //   const handleScroll = event => {
-  //     if(window.scrollY <= topDistance){
-  //       setScall(topDistance-window.scrollY)
-  //     }
-  // };
-
-  // window.addEventListener('scroll', handleScroll);
-  // },[topDistance])
-
-
-
-  // document.addEventListener("DOMContentLoaded", function(){
-  //   let ele = document.getElementsByTagName("line")[0]
-  //   const rect = ele.getBoundingClientRect();
-  //   const top = rect.top + document.body.scrollTop;
-  //   console.log(top)
-  // });
-
+  if (timeline_info_is_loading && timeline_background_is_loading) {
+    return (
+      <>
+        <LoadingPage />
+        <Footer />
+      </>
+    );
+  }
   if (timeline_info_is_loading && timeline_background_is_loading) {
     return (
       <>
@@ -311,19 +299,12 @@ const Timeline = () => {
     <>
       <FeedBackicon formfor='timeline' color='#487848'/>
         <div id='Timeline-page'>
-          <div className='d-flex align-items-center justify-content-center' >
-            <h1 className='text-center' >Coins in Time</h1>
-          </div>
-          <div className='mx-5 px-5' >
-            {/* <p className='text-center story-text' dangerouslySetInnerHTML={createMarkup(timeline_description)} /> */}
-            <h3 className='text-center'>Ancient coins were not minted in a vacuum, but were intricately tied to the political, economic, and socio-cultural systems of their issuing city and the broader empires of which they were a part. This timeline visualizes how the coins minted at Antioch intersected with the people and powers surrounding their production. </h3>
-            <p className='story-text text-center my-5' >
-              <em>Scroll down to explore the changing balance of eastern and western imperial power laying claim to Syria, as well as the events and coins created within this environment.</em>
-            </p>
-            <p className='story-text text-center'>
-              <em>Click on the boxes and coins to learn more.</em>
-            </p>
-          </div>
+          <PageTitleComponent
+            title='Coins in Time'
+            text={timeLineText.text}
+            subtext={timeLineText.subtext}
+            addContanter='true'
+          />
           <div>
             <img src={timelinekey} alt="" style={{width:"70%", marginLeft:"15%"}}/>
           </div>
