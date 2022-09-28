@@ -17,7 +17,6 @@ const Stories = () => {
 		const fetchData = async ()=>{
 			const result = await storyRequest.storyFind()
 			const textresult = await storyRequest.storyHomeFind()
-			console.log(textresult)
 			setStoryContent(textresult.data.data.attributes)
 			function filterOutZotero(item){
 				if (item.id !== 1){
