@@ -36,7 +36,6 @@ const Glossary = () =>{
                 let contentList= []
                 for (let i=0; i<alphabetsArray.length; i++){
                     let alp = {}
-                    // console.log(alphabets[i])
                     const data = await glossaryRequest.glossaryFindStartWIth(alphabetsArray[i])
                     alp['alphabet']=alphabetsArray[i]
                     alp['data'] = data.data
