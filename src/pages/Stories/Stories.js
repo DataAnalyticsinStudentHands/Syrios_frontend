@@ -34,41 +34,23 @@ const Stories = () => {
 	return (
 		<>
 		<div id='stories-page'>
-			<Container>
-				{/* <center> */}
-					{/* <h1>Discover Coin Stories</h1> */}
-					{/* <h1>{storyContent.head}</h1>
-					<h3 className='my-5' dangerouslySetInnerHTML={createMarkup(storyContent.text)}/>
-					<div className='story-text my-5' dangerouslySetInnerHTML={createMarkup(storyContent.sub_text)}/>
-				</center> */}
-                <PageTitleComponent
-                    title={storyContent.head}
-                    text={storyContent.text}
-                    subtext={storyContent.sub_text}
-                />
-				<Row style={{ marginTop: '2vmax'}} className="py-5 align-items-end ">
+			<div style={{width:'80%', marginLeft:'10%'}}>
+                <PageTitleComponent title={storyContent.head} text={storyContent.text} subtext={storyContent.sub_text}/>
+				<Row className="py-5 my-5 align-items-end ">
 					{stories.map((story)=>{
 						return(
 							<Col key={`StoryReader-${story.id}`} >
 								<Link to={`/StoryReader?id=${story.id}`}>
 									<div className='select-story-div '>
-										<img
-											src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`}
-											alt='Story_Image'
-											width={"100%"}
-											// style={{height:"11vmax"}}
-											className ="text-center"
-										/>
-										<p className=' text-center select-story-text'>
-											{story.attributes.name}
-										</p>
+										<img src={`${process.env.REACT_APP_strapiURL}${story.attributes.image.data.attributes.url}`} alt='Story_Image' width={"100%"}className ="text-center"/>
+										<p className='text-center select-story-text mt-5'>{story.attributes.name}</p>
 									</div>
 								</Link>
 							</Col>
 						)
 					})}
 				</Row>
-			</Container>
+			</div>
 		</div>
 		<Footer/>
 		</>

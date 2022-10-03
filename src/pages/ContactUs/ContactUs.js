@@ -51,7 +51,6 @@ function ContactUs(){
     <>
       <FeedBackicon/>
       <div id='contactus-page'>
-        <Container>
             <Row>
                 <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
                     Thanks for contacting us, we will get back to you soon!
@@ -115,13 +114,10 @@ function ContactUs(){
                         <div className="error-message">{formik.errors.writtenMessage}</div>
                         ) : null}
                     </Form.Group>
-                    <button type='submit' className='contact-us-button' disabled={!formik.isValid || submitButton} >
-                        Submit
-                    </button>
+                    <center><button type='submit' className='contact-us-button' disabled={!formik.isValid || submitButton} >Submit</button></center>
                 </Form>
             </Col>
           </Row>
-        </Container>
       </div>
       <Footer />
     </>

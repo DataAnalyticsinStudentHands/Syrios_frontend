@@ -3,7 +3,6 @@ import Footer from 'src/components/footer/Footer';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import coin3DRequest from 'src/api/coin-3d';
 import { useEffect, useState } from 'react';
-import createMarkup from 'src/utils/Markup';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 const Coin3D = ()=>{
     const [isLoading, setIsLoading] = useState(true);

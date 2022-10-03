@@ -2,18 +2,18 @@
 #stories-page{
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  width: 100%;
-	height: 100%;  
+  // width: 100vw;
+	height: 100vh;  
   padding-top: 7.5vmax;
   padding-bottom: 7.5vmax;
   
-  background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png?updated_at=2022-07-18T15:54:23.632Z') center center / cover no-repeat;
+  background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png') right / cover no-repeat;
   mix-blend-mode: multiply;
 
 }
 
 .select-story-div {
-  // position:relative;
+  position:absolute;
   width: 10vmax;
   transition: 0.5s;
   &:hover{
@@ -37,16 +37,7 @@
   transition: 0.5s;
 }
 
-// @media only screen and (max-width: 767px) {
-//   #fp-nav ul li a span,
-//   .fp-slidesNav ul li a span {
-//     background: rgba(0, 0, 0, 0) !important;
-//     transition: 0.5s;
-//   }
-// }
-
-/* This is soooo ghetto, but it works. This is how background images scale properly with fullpage.js */
-
+//for each Story frame
 .section {
   // background-size: cover, auto !important;
   // background-position: 50% 50%, 50% 50% !important;
