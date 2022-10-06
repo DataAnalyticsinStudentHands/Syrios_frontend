@@ -202,7 +202,10 @@ $footerHeight:70px;
     padding-left: 25%;
     padding-right: 25%;
 
-    .glossary-term{
+    .glossary-item{
+        margin-bottom: 2em;
+    }
+        .glossary-term{
         font-size: $syrios-font-size-48;
         font-weight: bold;
         color:#486678;
