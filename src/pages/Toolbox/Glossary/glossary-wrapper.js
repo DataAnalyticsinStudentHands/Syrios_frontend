@@ -17,7 +17,6 @@ function GlossaryWrapper(){
     useEffect(()=>{
 		const fetchData = async ()=>{
 			const result = await glossaryRequest.glossaryHomeFind()
-            console.log(result.data.data.attributes)
 			setGlossary(result.data.data.attributes)
 			setIsLoading(false)
 		}
@@ -34,7 +33,7 @@ function GlossaryWrapper(){
                     icon={ <sup className='story-icon'>&#xe817;</sup>}
                 />
                 <SearchBar/>
-                <Nav variant="tabs" defaultActiveKey="/All" className="d-flex justify-content-center" style={{marginTop:"7.5vmax"}}>
+                <Nav variant="tabs" defaultActiveKey="/All" className="d-flex justify-content-center" style={{marginTop:"3.5vmax"}}>
                     <Nav.Item><Link to="/Toolbox/Glossary/all" eventkey="All" style={{backgroundColor: group ==="all" ? "white":"" }}>All</Link></Nav.Item>
                     {group ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Link to={`/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: group === alphabet ? "white":""}} eventkey={alphabet}>{alphabet}</Link></Nav.Item>)})}</>):(<></>)}
                     {term ? (<>{alphabetGroup.map((alphabet)=>{return(<Nav.Item key={alphabet}><Link to={`/Toolbox/Glossary/${alphabet}`} style={{backgroundColor: alphabet.indexOf(term.charAt(0).toUpperCase()) !==-1 ? "white":""}} eventkey={alphabet}>{alphabet}</Link></Nav.Item>)})}</>):(<></>)}
