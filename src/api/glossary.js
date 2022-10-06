@@ -40,6 +40,11 @@ const glossaryRequest = {
             method:'GET',
         })
     },
+    glossaryFindByTermLocal: (term)=>{
+        return axios(`${process.env.REACT_APP_strapiURLLocal}/api/glossry/by-term/${term}`,{
+            method:'GET',
+        })
+    },
 }
 
 export default glossaryRequest
