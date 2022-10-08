@@ -1,42 +1,28 @@
 import backGround from 'src/assets/background.jpg';
 import { Container, Row } from "react-bootstrap"
+import { HeadComponent } from '../ComponentFunction';
 
-function createMarkup(textTran){
-    return {__html: textTran};
+const TemplateFrame = (props) =>{
+  let zone = props.zone
+  return(
+    <div className='section' style={{ backgroundImage: zone.background == null ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
+      {zone.head.updown_switch ?
+        <Container>
+          <Row className='d-flex justify-content-between align-items-center mb-5'>
+
+          </Row>
+          <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+
+
+        </Container> :
+        <Container>
+          <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          <Row className='d-flex justify-content-between align-items-center'>
+
+          </Row>
+        </Container>
+      }
+    </div>
+    )
   }
-  const TemplateFrame = (zone, index, json_object) =>{
-    console.log(zone)
-      if (zone.head.updown_switch){
-        return(
-          <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == null ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
-          <Container>
-            <Row className='d-flex justify-content-between align-items-center mb-5'>
-  
-            </Row>
-            <Row className='d-flex justify-content-center '>
-                <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-                <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
-            </Row>
-    
-          </Container>
-        </div>
-        )
-      }
-      else{
-        return(
-          <div key={`story_comp_${index}`} className='section' style={{ backgroundImage: zone.background == null ? undefined : `url(${process.env.REACT_APP_strapiURL}${zone.background.url}),url(${backGround})`,backgroundBlendMode:'multiply'}}>
-          <Container>
-            <Row className='d-flex justify-content-center mb-5'>
-                <div dangerouslySetInnerHTML={createMarkup(zone.head.head_main)} className='orange-text main-text text-center'/>
-                <div dangerouslySetInnerHTML={createMarkup(zone.head.head_caption)} className='gray-text caption-text text-center'/>
-            </Row>
-            <Row className='d-flex justify-content-between align-items-center'>
-  
-            </Row>
-          </Container>
-        </div>
-        )
-      }
-  
-    }
-    export default TemplateFrame
+export default TemplateFrame
