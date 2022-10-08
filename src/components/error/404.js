@@ -1,24 +1,20 @@
 import React from 'react';
 
-import Footer from 'src/components/footer/Footer';
-import { Container, Row} from 'react-bootstrap';
+// import Footer from 'src/components/footer/Footer';
+import Footer2 from '../footerv2/Footer2';
 const ErrorPage = ()=>{
     return(
-        <div id='error-page' className='d-flex align-items-center'>
-            <Container>
-                <Row className='mb-5'>
-                    <p className='story-h1 text-center'>
-                        404
-                    </p>
-                </Row>
-                <Row>
-                    <p className='story-h2 text-center my-5'>
-                        Sorry, the page you visited does not exist.
-                    </p>
-                </Row>
-            </Container>
-            <Footer/>
+        <>
+        <div id='error-page'>
+            <center>
+                <h1>404</h1>
+                <h2>Sorry, the page you visited does not exist.</h2>
+            </center>
+
         </div>
+        <Footer2/>
+        </>
+
     )
 }
 export default ErrorPage

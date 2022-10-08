@@ -22,9 +22,11 @@
 
   }
   .feedbackicon{
-    position:absolute;
-    margin-bottom:10%;
-    margin-left: 88%;
+    position:fixed;
+    margin-top: 3.25vh;
+    top:0;
+    right: 0;
+    width: 12.5vmax;
   }
   .feedbacktext{
     font-family: $syrios-garamond-premier-pro;
