@@ -4,7 +4,8 @@ import {Row,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-import Footer from 'src/components/footer/Footer.js';
+// import Footer from 'src/components/footer/Footer.js';
+import Footer from 'src/components/footerv2/Footer2';
 import createMarkup from 'src/utils/Markup.js';
 import landingRequest from 'src/api/landing';
 
@@ -39,15 +40,13 @@ function LandingPage() {
   return (
     <>
     <FeedBackicon url="default"/>
-      <div id='landing-page'>
-        <center>
+      <center>
           <div className='story-text landing-green-paragraph'>
             Welcome to the prototype exhibit of SYRIOS, a digital humanities project of the University of Houston. This live site is not the finished exhibit, but rather an ongoing experiment exploring the intersection of historical material, usability/user-experience research, and web technology. 
            <br/> We welcome your feedback as we continue to develop new content, data, and digital interfaces for the study of ancient Syria and coins.
           </div>
         </center>
-
-        <div style={{width:'80%', marginLeft:'10%'}}>
+      <div id='landing-page'>
           <h2 className='text-center'>{landingData.title}</h2>
           <Row className='d-flex justify-content-around mt-5'>
             <Col xs={12} sm={8} id='landing-video' className='p-3'>
@@ -67,7 +66,6 @@ function LandingPage() {
           </Row>
           <div className='justify-content-center mt-5 landing-text' dangerouslySetInnerHTML={createMarkup(landingData.text)}/>
         </div>
-      </div>
       <Footer />
     </>
   );

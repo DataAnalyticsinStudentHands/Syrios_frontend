@@ -6,7 +6,8 @@ import axios from 'axios';
 import { saveAs } from 'file-saver';
 
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-import Footer from 'src/components/footer/Footer';
+// import Footer from 'src/components/footer/Footer';
+import Footer from 'src/components/footerv2/Footer2';
 import createMarkup from 'src/utils/Markup.js';
 
 import downloadRequest from 'src/api/download';
