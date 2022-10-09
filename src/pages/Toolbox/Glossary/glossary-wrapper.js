@@ -1,7 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router";
 import { Container, Nav} from 'react-bootstrap';
-import Footer from "../../../components/footer/Footer";
+// import Footer from "../../../components/footer/Footer";
+import Footer from "src/components/footerv2/Footer2";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SearchBar from "./GlossarySearchBox";
@@ -24,6 +25,7 @@ function GlossaryWrapper(){
     },[])
 	if (isLoading)return (<><LoadingPage /><Footer /></>);
     return(
+        <>
         <div id='glossary-page'>
             <Container>
                 <PageTitleComponent
@@ -40,8 +42,10 @@ function GlossaryWrapper(){
                 </Nav>
                 <Outlet/>
             </Container>
-                <Footer/>
         </div>
+        <Footer/>
+        </>
+
     )
 
 }

@@ -1,11 +1,9 @@
 
 #landing-page {
-	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
-	width: 100%;
+	padding: 5% 10%;
 	height: 100%;
-	padding-top: 3.75vmax;
-	padding-bottom: 7.5vmax;
+
 	// background: url(src/assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg);
 	background:url('../assets/pages/LandingPageAssets/Full-Screen-BG-Home-Map.jpg')
 }
@@ -14,15 +12,11 @@
 	color:#184818;
 	font-weight:600;
 	width:100%;
-	// margin-left:15%; 
-	// border: 2px solid #aaa;
-
 	padding:2%;
 	padding-left: 25%;
 	padding-right: 25%;
 	margin-bottom: 2%;
 	background: rgba(216, 214, 212,0.3);
-	// background-blend-mode: darken
 }
 
 #landing-video {

@@ -4,7 +4,8 @@ import { Container, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import storyRequest from 'src/api/story';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-import Footer from 'src/components/footer/Footer';
+// import Footer from 'src/components/footer/Footer';
+import Footer from 'src/components/footerv2/Footer2';
 import createMarkup from 'src/utils/Markup';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 
