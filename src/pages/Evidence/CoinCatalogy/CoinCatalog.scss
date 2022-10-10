@@ -4,7 +4,7 @@
 	padding:5% 10%;
 
 	.catalog_section{
-		margin-bottom: 20%;
+		margin-bottom: 15%;
 	}
 
 	.input-addon {
@@ -73,9 +73,8 @@
 
 	}
 	.catalog-carousel-images{
-		margin: 0 2rem;
-		padding: 2rem
-		;
+		margin: 0 1rem;
+		padding: 2rem;
 	}
 	.catalog-carousel-image{
 		background-color: #EDEDED;
@@ -84,7 +83,8 @@
 		;
 	}
 	.catalog-carousel-text{
-		margin-top: 0.5em;
+		margin-top: 0.25em;
+		margin-bottom: 1em;
 		font-family: 'Cormorant Garamond';
 		font-style: normal;
 		font-weight: 600;
@@ -95,9 +95,29 @@
 		color: #7899A8;
 	}
 
-	// #coins_of_the_day{
+	.control-arrow{
+		margin-top: 2em;
+		margin-bottom: 6em;
+		padding: 0 1em;
+		background: rgba(0,0,0,0.5);
+	}
+	.control-dots{
+		.dot{
+			width: 28px;
+			height: 28px;
 
-	// }
+			background: #AFAFAF;
+			opacity: 0.4;
+		}
+		.selected{
+			background: #000000;
+		}
+
+
+	}
+	// .control-prev:before{content: '\e805';}
+	// .control-next:before{content: '\e806';}
+
 	.catalog-content-coin-name{
 		font-family: 'Cormorant Garamond';
 		font-style: italic;
