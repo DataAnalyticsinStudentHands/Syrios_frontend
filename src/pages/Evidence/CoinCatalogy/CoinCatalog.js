@@ -1,22 +1,71 @@
-import React from 'react';
+import React
+// {useState, useEffect} 
+from 'react';
 import Footer from 'src/components/footerv2/Footer2';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
+// import coinSortRequest from 'src/api/coin-sort';
+import Slider from 'react-slick';
 
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Row, Col } from 'react-bootstrap';
 
+
+
 const CoinCatalog = ()=>{
+
+    // const [data, setData] = useState([])
+
+    // useEffect(()=>{
+	// 	const fetchData = async ()=>{
+	// 		const result = await coinSortRequest.coinStotlight()
+    //         console.log(result.data.data)
+    //         setData(result.data.data)
+    //     }
+	// 	fetchData().catch(console.error);    
+    // },[])
+
+    function NextArrow(props){
+        const { className, style, onClick } = props;
+        return (
+            <div
+            className={className}
+            style={{ ...style, display: "block", background: "" }}
+            onClick={onClick}
+            />
+        );
+    }
+    function PrevArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+          <div
+            className={className}
+            style={{ ...style, display: "block", background: "", fontSize:'5rem'}}
+            onClick={onClick}
+          />
+        );
+      }
+    const Slicksettings = {
+        dots: true,
+        // autoplay: true,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // centerMode: true,
+        pauseOnHover: true,
+        lazyLoad: true,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />
+      };
+
+
     return(
         <>
             <FeedBackicon url="default"/>
             <div id='coin-catalog'>
-
                 <div className='catalog_section text-center'>
                     <h1>Explore our Collection</h1>
                     <h3>Our catalog has over 700 coins for you to discover!</h3>
                 
-                    <div class="input-addon">
+                    <div className="input-addon">
                         <div className="input-addon__addon input-addon__addon--prepended icon-entypo-search"/>
                         <input type="text" className="input-addon__input" placeholder='Search by coin name, type, date, and more.'/>
                     </div>
@@ -31,44 +80,19 @@ const CoinCatalog = ()=>{
                 <div className='catalog_section text-center'>
                     <h2 >Spotlight. Trending coins right now</h2>
                     
-                    {/* <div id='catalog-carousel'>
-                        <div id='catalog-carousel-slide1'>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 1</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 2</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 3</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 4</div>
-                            </div>
-
-                        </div>
-
-                    </div> */}
                     <div className='my-5 py-5'>
-                    <Carousel 
-                        autoPlay={false}
-                        infiniteLoop centerMode={false} dynamicHeight={false}
-                        showStatus={false}
-                        interval="5000" transitionTime="500"                
-                    >
-                        <div id='catalog-carousel-slide1'>
+                    <Slider {...Slicksettings}>
+                        {/* {data.map((image)=>{
+                            console.log(image)
+                            return(
+                                <div className='catalog-carousel-images'>
+                                    <div className='catalog-carousel-image'>
+                                        <img src={`${process.env.REACT_APP_strapiURL}${image.attributes.obverse_file.data.attributes.url}`} alt='test_image'width={'100%'}/>
+                                    </div>
+                                    <div className='catalog-carousel-text'>Coin 1</div>
+                                </div>
+                            )
+                        })} */}
                             <div className='catalog-carousel-images'>
                                 <div className='catalog-carousel-image'>
                                     <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
@@ -93,8 +117,7 @@ const CoinCatalog = ()=>{
                                 </div>
                                 <div className='catalog-carousel-text'>Coin 4</div>
                             </div>
-                        </div>
-                        <div id='catalog-carousel-slide1'>
+
                             <div className='catalog-carousel-images'>
                                 <div className='catalog-carousel-image'>
                                     <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
@@ -119,8 +142,7 @@ const CoinCatalog = ()=>{
                                 </div>
                                 <div className='catalog-carousel-text'>Coin 8</div>
                             </div>
-                        </div>
-                    </Carousel>
+                    </Slider>
                     </div>
                     
                 </div>
