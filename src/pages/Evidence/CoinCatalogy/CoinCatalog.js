@@ -45,7 +45,7 @@ const CoinCatalog = ()=>{
       }
     const Slicksettings = {
         dots: true,
-        // autoplay: true,
+        autoplay: true,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
