@@ -67,11 +67,7 @@
 	#catalog-carousel{
 		margin-top: 5%;
 	}
-	#catalog-carousel-slide1{
-		display: flex;
-		flex-direction: row;
 
-	}
 	.catalog-carousel-images{
 		margin: 0 1rem;
 		padding: 2rem;
@@ -95,28 +91,8 @@
 		color: #7899A8;
 	}
 
-	.control-arrow{
-		margin-top: 2em;
-		margin-bottom: 6em;
-		padding: 0 1em;
-		background: rgba(0,0,0,0.5);
-	}
-	.control-dots{
-		.dot{
-			width: 28px;
-			height: 28px;
-
-			background: #AFAFAF;
-			opacity: 0.4;
-		}
-		.selected{
-			background: #000000;
-		}
 
 
-	}
-	// .control-prev:before{content: '\e805';}
-	// .control-next:before{content: '\e806';}
 
 	.catalog-content-coin-name{
 		font-family: 'Cormorant Garamond';
@@ -193,5 +169,30 @@
 	}
 
 		
-}    
+}
+
+.slick-next:before {
+	font-family: "syrios-icon";
+	font-style: normal;
+	font-weight: 600;
+	content: '\e806';
+    font-size: 6rem;
+    line-height: 1;
+    opacity: 1;
+    color: black;
+	padding: 4rem 2rem;
+}
+.slick-prev:before{
+	font-family: "syrios-icon";
+	font-style: normal;
+	font-weight: 600;
+	content: '\e805';
+    font-size: 6rem;
+    line-height: 1;
+    opacity: 1;
+    color: black;
+	padding: 4rem 1rem;
+}
+
+
 
