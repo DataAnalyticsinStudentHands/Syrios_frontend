@@ -1,21 +1,23 @@
 
 #stories-page{
   -webkit-overflow-scrolling: touch;
-	height: 95vh;    
-  padding-top: 7.5vmax;
+	// height: 100vh;
+  min-height: 95vh;    
+  padding: 5% 10%;
   background:url('https://syrios.cs.uh.edu/uploads/Tyche_Antioch_3615c03897.png') right / cover no-repeat;
   mix-blend-mode: multiply;
 
-}
-
-.select-story-div {
-  position:absolute;
-  width: 10vmax;
-  transition: 0.5s;
-  &:hover{
-    width: 12vmax;
+  .select-story-div {
+    // position:absolute;
+    width: 10vmax;
+    transition: 0.5s;
+    &:hover{
+      width: 12vmax;
+    }
   }
 }
+
+
 
 .stories-background{
   // mix-blend-mode: overlay;
