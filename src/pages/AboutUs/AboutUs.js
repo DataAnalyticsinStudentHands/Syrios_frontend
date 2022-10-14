@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Row, Col} from 'react-bootstrap';
-// import Footer from 'src/components/footer/Footer.js';
-import Footer from 'src/components/footerv2/Footer2';
 import aboutUsRequest from 'src/api/about-us';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
 function createMarkup(textTran){
@@ -31,9 +29,8 @@ const About = () => {
     fetchData().catch(console.error);
   },[]);
 
-	if (isLoading)return (<><LoadingPage /><Footer /></>);
+	if (isLoading)return (<LoadingPage />);
   return (
-    <>
       <div id='aboutus-page'>
         <h1 className='text-center'>About Us</h1>
 
@@ -194,8 +191,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
   );
 }
 

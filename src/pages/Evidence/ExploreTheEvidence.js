@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Container,Row,Col} from 'react-bootstrap';
 import evidenceRequest from 'src/api/evidence';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-import Footer from 'src/components/footer/Footer.js';
 import { WhiteBGDesign } from 'src/components/constant/WhiteBGDesign';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 const ExploreTheEvidence = () => {
@@ -17,9 +16,8 @@ const ExploreTheEvidence = () => {
     fetchData()
   },[]);
 
-  if (isLoading)return (<><LoadingPage /><Footer /></>);
+  if (isLoading)return (<LoadingPage />);
   return (
-    <>
       <div id='explore-the-evidence' className='d-flex align-items-center'>
         <Container>
           <PageTitleComponent
@@ -101,8 +99,6 @@ const ExploreTheEvidence = () => {
           </Row>
           </Container>
       </div>
-    <Footer />
-    </>
   );
 }
 

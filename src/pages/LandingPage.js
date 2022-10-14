@@ -4,8 +4,6 @@ import {Row,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-// import Footer from 'src/components/footer/Footer.js';
-import Footer from 'src/components/footerv2/Footer2';
 import createMarkup from 'src/utils/Markup.js';
 import landingRequest from 'src/api/landing';
 
@@ -36,7 +34,7 @@ function LandingPage() {
     fectchData()
     },[]);
 
-  if (isLoading)return (<><LoadingPage /><Footer /></>);
+  if (isLoading)return (<LoadingPage />);
   return (
     <>
     <FeedBackicon url="default"/>
@@ -66,7 +64,6 @@ function LandingPage() {
           </Row>
           <div className='justify-content-center mt-5 landing-text' dangerouslySetInnerHTML={createMarkup(landingData.text)}/>
         </div>
-      <Footer />
     </>
   );
 }

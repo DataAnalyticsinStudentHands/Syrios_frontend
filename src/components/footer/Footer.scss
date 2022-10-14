@@ -43,7 +43,17 @@
     color:#FFFFFF
   }
   
-
+  #creditsAndReferences{
+    overflow-y: scroll;
+    display: flex;
+    padding: 0 10%;
+  }
+  .imageReference{
+    flex: 1;
+  }
+  .otherReference{
+    flex:1;
+  }
   
   #credits-and-references-x-icon {
     position: absolute;
@@ -180,17 +190,9 @@
 
 
 .credits-and-references {
-  // width: 100%;
-  // position: absolute;
-  // bottom: 70px;
-  background: url('../../assets/credits&references.jpg') !important;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // overflow-y: hidden;
-  // overflow-x: hidden;
 
-  // transition: 0.3s;
-  // z-index: 99999;
+  background: url('../../assets/credits&references.jpg') !important;
+
   .x-button{
     position: absolute;
     right: 30px;
@@ -202,4 +204,8 @@
     font-family: $syrios-font-family-syrios-entypo-subset;
     color: #FFFFFF;
   }
+}
+.referenceContent{
+  display: flex;
+  justify-content: space-between;
 }

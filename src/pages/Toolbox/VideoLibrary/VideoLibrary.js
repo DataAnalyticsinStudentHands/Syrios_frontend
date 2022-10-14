@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-// import Footer from 'src/components/footer/Footer';
-import Footer from 'src/components/footerv2/Footer2';
-import { Container,Row,Col} from 'react-bootstrap';
+
+import { Row,Col} from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import VideoLibraryRequest from 'src/api/video-library';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
@@ -56,9 +55,8 @@ const VideoLibrary = ()=>{
         setIsOpen((prev) => !prev)
     }
     
-    if(isLoading) return(<><LoadingPage /><Footer /></>)
+    if(isLoading) return(<LoadingPage />)
     return(
-        <>
         <div id='video-library' >
             <h1 className='text-center mb-5 pb-5'>Video Library</h1>
             {/* <h2 className='text-center mt-5 pt-5'>Coming Soon ...</h2> */}
@@ -95,9 +93,6 @@ const VideoLibrary = ()=>{
                 </>)}
             </Row>
         </div>
-        <Footer/>
-        </>
-        
     )
 }
 export default VideoLibrary

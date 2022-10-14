@@ -33,7 +33,6 @@ const Stories = () => {
 
 	if (isLoading)return (<><LoadingPage /><Footer /></>);
 	return (
-		<>
 		<div id='stories-page'>
 			<div style={{width:'80%', marginLeft:'10%'}}>
                 <PageTitleComponent title={storyContent.head} text={storyContent.text} subtext={storyContent.sub_text}/>
@@ -53,8 +52,6 @@ const Stories = () => {
 				</Row>
 			</div>
 		</div>
-		<Footer/>
-		</>
 	)
 }
 
