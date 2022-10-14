@@ -27,6 +27,7 @@
     "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
+    "react-slick": "^0.29.0",
     "sass": "^1.52.3",
     "web-vitals": "^2.1.2",
     "yup": "^0.32.11"
