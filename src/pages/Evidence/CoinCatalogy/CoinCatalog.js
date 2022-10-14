@@ -8,8 +8,6 @@ import Slider from 'react-slick';
 
 import { Row, Col } from 'react-bootstrap';
 
-
-
 const CoinCatalog = ()=>{
 
     // const [data, setData] = useState([])
@@ -186,7 +184,6 @@ const CoinCatalog = ()=>{
             </div>
             <Footer/>
         </>
-
     )
 }
 export default CoinCatalog

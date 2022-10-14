@@ -6,8 +6,6 @@ import axios from 'axios';
 import { saveAs } from 'file-saver';
 
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-// import Footer from 'src/components/footer/Footer';
-import Footer from 'src/components/footerv2/Footer2';
 import createMarkup from 'src/utils/Markup.js';
 
 import downloadRequest from 'src/api/download';
@@ -55,18 +53,9 @@ function Download(){
     }
   })
 
-  if (isLoading) {
-    return(
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  }
+  if (isLoading) {return(<LoadingPage />);}
 
   return(
-    <>
-
       <div id='download-page'>
           <Row>
               <Alert className='download-alert green-text story-text text-center'  show={show} variant="success" onClose={() => setShow(false)} dismissible>
@@ -139,8 +128,6 @@ function Download(){
           </Row>
         </Container>
       </div>
-      <Footer/>
-    </>
   );
 }
 

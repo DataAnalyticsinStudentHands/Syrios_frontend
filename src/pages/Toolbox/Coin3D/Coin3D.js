@@ -1,6 +1,5 @@
 import React from 'react';
 // import Footer from 'src/components/footer/Footer';
-import Footer from 'src/components/footerv2/Footer2';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import coin3DRequest from 'src/api/coin-3d';
 import { useEffect, useState } from 'react';
@@ -17,9 +16,8 @@ const Coin3D = ()=>{
 		}
 		fetchData().catch(console.error);
     },[])
-    if (isLoading)return (<><LoadingPage /><Footer /></>);
+    if (isLoading)return (<LoadingPage />);
     return(
-        <>
         <div id='coin3d-page'>
                 <PageTitleComponent
                     title={coin3D.title}
@@ -46,11 +44,6 @@ const Coin3D = ()=>{
                 </div>
             </center>
         </div>
-        <Footer/>
-        </>
-        
     )
-
-
 }
 export default Coin3D

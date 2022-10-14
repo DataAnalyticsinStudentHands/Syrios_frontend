@@ -1,11 +1,9 @@
 import React,{useState} from 'react';
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { Container, Row, Col, Form, Alert} from 'react-bootstrap';
+import { Row, Col, Form, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
-import Footer from 'src/components/footer/Footer';
-// import createMarkup from 'src/utils/Markup.js';
 
 // RegEx for phone number validation
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -119,7 +117,6 @@ function ContactUs(){
             </Col>
           </Row>
       </div>
-      <Footer />
     </>
   );
 }

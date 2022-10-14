@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Svg, { Text } from 'react-native-svg';
 import axios from 'axios';
-import Footer from 'src/components/footer/Footer.js';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
 import EventInfo from 'src/pages/Toolbox/Timeline/event/Event.js';
@@ -279,20 +278,7 @@ const Timeline = () => {
   });
 
   if (timeline_info_is_loading && timeline_background_is_loading) {
-    return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  }
-  if (timeline_info_is_loading && timeline_background_is_loading) {
-    return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
+    return (<LoadingPage />);
   }
 
   return (
@@ -330,7 +316,6 @@ const Timeline = () => {
             show={show_event_info}
             eventMetaData={event_meta_data}
           />
-          <Footer />
         </div>
     </>
   );

@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-import Footer from 'src/components/footer/Footer.js';
 import FeedBackicon from 'src/components/constant/FeedBackIcon.js';
 import { CoinGrid } from './CoinSortCoinGrid.js';
 import CoinSortDropDown from './CoinSortDropDown.js';
@@ -589,14 +588,7 @@ const CoinSort = () => {
 
 
 // console.log(dragged_coin_id)
-  if (is_loading) {
-    return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  }
+  if (is_loading) {return (<LoadingPage />);}
 
   return (
     <>
@@ -711,10 +703,8 @@ const CoinSort = () => {
           />
           {/* This is to prevent invisible things from being clickable. Yes I should change the display, but animations are easier wriiten with this */}
           <div style={{zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: '0px', left: '0px'}} />       
-          <Footer/>
         </div>
       </div>
-
     </>
   );
 }

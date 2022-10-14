@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Footer from 'src/components/footer/Footer.js';
-// import Footer from 'src/components/footerv2/Footer2';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 import StoryComponent from './StoryComponents';
