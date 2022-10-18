@@ -12,7 +12,7 @@ import {
   SimplyMappedCoin,
   CoinPileLocations
 } from './CoinUtils.js';
-
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import coinSortRequest from 'src/api/coin-sort'
 // Praise be god to the next maintaner. 
 // You have been blessed
@@ -676,18 +676,42 @@ const CoinSort = () => {
               />
               {(() => {
                 if (show_scale_and_rotate) {
+                  const renderTooltipScale = (props) => (
+                    <Tooltip id="button-tooltip" {...props}>
+                      scale to size
+                    </Tooltip>
+                  );
+                  const renderTooltipFlip = (props) => (
+                    <Tooltip id="button-tooltip" {...props}>
+                      flip the coin
+                    </Tooltip>
+                  );
                   return (
                   <>
                     <div className='coin-sort-menu-vr'>
                       <div className='coin-sort-menu-vr-content'/>
                     </div>
                     <div className='coin-sort-options-icons-div' onClick={() => {set_scale_all(!scale_all);}}>
-                      <i className='demo-icon icon-coin-scale coin-sort-options-icon'>&#xe834;</i>
-                      <p className='blue-text coin-sort-options-icon-text'>SCALE</p>
+                    <OverlayTrigger
+                      placement="bottom"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltipScale}
+                    >
+                      <div className=' coin-sort-options-icon'>
+                        scale<span className='icon-syrios-coin-scale'/>
+                      </div>
+                    </OverlayTrigger>
                     </div>
                     <div className='coin-sort-options-icons-div' onClick={() => {set_rotate_all(!rotate_all);}}>
-                      <i className='demo-icon icon-coin-rotate coin-sort-options-icon'>&#xe833;</i>
-                      <p className='blue-text coin-sort-options-icon-text'>FLIP</p>
+                    <OverlayTrigger
+                      placement="bottom"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltipFlip}
+                    >
+                      <div className=' coin-sort-options-icon'>
+                        flip<span className='icon-syrios-coin-rotate'/>
+                      </div>
+                    </OverlayTrigger>
                     </div>
                   </>
                   );}
