@@ -59,35 +59,23 @@ const VideoLibrary = ()=>{
     return(
         <div id='video-library' >
             <h1 className='text-center mb-5 pb-5'>Video Library</h1>
-            {/* <h2 className='text-center mt-5 pt-5'>Coming Soon ...</h2> */}
-
             <h3 className='text-center'>Watch short informational videos on a wide range of topics related to the study of coins, the ethics of coin collecting, Syrian cultural heritage, and more.</h3>
-            
             <Player open={isOpen} toggleModal={handleOpenModal} url={url} />
-
             <Row className='d-flex justify-content-around '>
                 {videoData.length === 0? (<></>):(<>
                     {videoData.map((video)=>{
                         return(
                             <Col key={video.id} xs={3} className="mt-5 pt-5 text-center">
-                                {video.attributes.video_thumbnail.data? (
-                                    <img 
-                                        src={`${process.env.REACT_APP_strapiURL}${video.attributes.video_thumbnail.data.attributes.url}`} 
-                                        alt={video.attributes.video_thumbnail.data.attributes.alternativeText} 
-                                        onClick={()=>handleOpenModal(video.attributes.video_url)}
-                                        style={{cursor:"pointer", width:"20vmax",height:"15vmax"}}
-                                        className="bg-white p-3"
-                                    />
-                                ):(
-                                    <b className='image-icon text-center' 
-                                        style={{cursor:"pointer", fontSize:"10vmax"}} 
-                                        onClick={()=>handleOpenModal(video.attributes.video_url)}>&#xe81f;
-                                    </b>
-                                )}
-
+                                {video.attributes.video_thumbnail.data
+                                ? <img 
+                                    src={`${process.env.REACT_APP_strapiURL}${video.attributes.video_thumbnail.data.attributes.url}`} 
+                                    alt={video.attributes.video_thumbnail.data.attributes.alternativeText} 
+                                    onClick={()=>handleOpenModal(video.attributes.video_url)}
+                                    style={{cursor:"pointer", width:"20vmax",height:"15vmax"}}
+                                    className="bg-white p-3"/>
+                                :<b className='image-icon text-center' style={{cursor:"pointer", fontSize:"10vmax"}} onClick={()=>handleOpenModal(video.attributes.video_url)}>&#xe81f;</b>}
                                 <h4 className='mt-4'>{video.attributes.video_title || ""}</h4>
                                 <p className='story-caption' dangerouslySetInnerHTML={createMarkup(video.attributes.video_description || "")}/>
-                                
                             </Col>
                         )})}
                 </>)}

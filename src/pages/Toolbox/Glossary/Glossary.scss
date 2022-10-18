@@ -5,7 +5,6 @@ $footerHeight:70px;
     -webkit-overflow-scrolling: touch;
 	padding: 5% 10%;
 	min-height: 95vh;
-	// padding-bottom: 7.5vmax;
 
     // .search{
     //     position: absolute;
@@ -69,13 +68,14 @@ $footerHeight:70px;
             font-size: $syrios-font-size-20;
 
         }
-        & input {text-indent: $syrios-font-size-32;}
-        .search-icon{
+        & input {text-indent: $syrios-font-size-24;}
+        // .search-icon{
 
-            font-style: $syrios-font-style-normal;
-            color: #7899a8;
-            font-size: $syrios-font-size-32;
-        }
+        //     font-style: $syrios-font-style-normal;
+        //     color: #7899a8;
+        //     font-size: $syrios-font-size-32;
+        //     background-color: transparent;
+        // }
         .search-box__input {
             border-color: transparent;
             /* Take available width */
