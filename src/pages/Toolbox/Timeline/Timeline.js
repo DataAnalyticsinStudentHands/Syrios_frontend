@@ -294,15 +294,16 @@ const Timeline = () => {
           <div>
             <img src={timelinekey} alt="" style={{width:"70%", marginLeft:"15%"}}/>
           </div>
+          <div className='sticky-sections'>
+            <div id='time-west'>WEST</div>
+            <div id='time-antioch'>ANTIOCH</div>
+            <div id='time-east'>EAST</div>
+          </div>
           <Svg
             height='100%'
             width='100%'
             viewBox={`0 0 100 ${view_box_total_height}`}
             style={{position: 'relative',}}>
-              <Text x='12' y='4.5' style={{fontSize:"3", fontWeight:"300"}}>WEST</Text>
-              <Text x='40' y='4.5' style={{fontSize:"3", fontWeight:"300"}}>ANTIOCH</Text>
-              <Text x='80' y='4.5' style={{fontSize:"3", fontWeight:"300"}}>EAST</Text>
-
             {timeline_background}
             {timeline_events_and_coins}
           </Svg>

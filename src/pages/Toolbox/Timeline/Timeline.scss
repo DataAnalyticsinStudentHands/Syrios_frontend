@@ -43,3 +43,26 @@
   letter-spacing: 1px;
   // color:#737271;
 }
+.sticky-sections {
+
+  width: 100%;
+  display: flex;
+  text-align:center;
+  font-size: 8rem;
+  font-weight: 100;
+
+  position: sticky;
+  top: 93vh;
+  z-index: 10;
+  
+}
+#time-west{
+  flex-grow: 3;
+}
+#time-antioch{
+  flex-grow: 5;
+}
+#time-east{
+  flex-grow: 4;
+}
+
