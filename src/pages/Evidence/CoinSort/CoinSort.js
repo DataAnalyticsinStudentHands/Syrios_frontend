@@ -674,7 +674,7 @@ const CoinSort = () => {
                 state={of_kind_selection}
                 setState={set_of_kind_selection}
               />
-              {(() => {
+              {/* {(() => {
                 if (show_scale_and_rotate) {
                   const renderTooltipScale = (props) => (
                     <Tooltip id="button-tooltip" {...props}>
@@ -716,7 +716,7 @@ const CoinSort = () => {
                   </>
                   );}
               })
-              ()}
+              ()} */}
             </div>
           </div>
           <CoinGrid

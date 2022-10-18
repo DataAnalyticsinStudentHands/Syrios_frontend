@@ -3,7 +3,7 @@ import qs from 'qs';
 import axios from 'axios';
 
 import CoinInfo, { CoinAlt } from 'src/components/coin/CoinInfo.js';
-
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 // This is JUST the coin scale and flip you see when you put more coins onto the grid.
 export const CoinScaleAndFlip = (props) => {
   const [coin_rotation, set_coin_rotation] = useState('rotateY(0deg)');
@@ -84,6 +84,16 @@ export const CoinScaleAndFlip = (props) => {
     }
   }, [props.scale]); // IGNORE the warning. This is so that scale all can unscale just 1 or 2 coins if needed.
 
+  const renderTooltipScale = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      scale to size
+    </Tooltip>
+  );
+  const renderTooltipFlip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      flip the coin
+    </Tooltip>
+  );
   // Edge case where no image is present.
   if (props.coinMetaData.obverse_file.data == null || props.coinMetaData.reverse_file.data == null)
     return (
@@ -131,16 +141,20 @@ export const CoinScaleAndFlip = (props) => {
           >
           &#xe839;
           </i>
-          <i
-            className='demo-icon coin-info-icon-rotate'
-            onClick={RotateCoin}>
-            &#xe833;
-          </i>   
-          <i
-            className='demo-icon coin-info-scale-icon'
-            onClick={ScaleCoin}>
-            &#xe834;
-          </i>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={renderTooltipFlip}
+          >
+          <i className='demo-icon coin-info-icon-rotate' onClick={RotateCoin}>&#xe833;</i> 
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={renderTooltipScale}
+          >
+          <i className='demo-icon coin-info-scale-icon' onClick={ScaleCoin}>&#xe834;</i>
+          </OverlayTrigger>
         </div>
         <CoinInfo onClose={CoinInfoPopupCloseHandler} show={show_coin_info} coinMetaData={props.coinMetaData} />
       </div>
