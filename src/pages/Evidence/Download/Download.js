@@ -41,7 +41,7 @@ function Download(){
       .required('* Email is required'),
     }),
     onSubmit: (values,{resetForm})=>{
-      axios.post(`${process.env.REACT_APP_strapiURL} /api/download`, values)
+      axios.post(`${process.env.REACT_APP_strapiURL}/api/download`, values)
         .then(resetForm())
         .then(setSubmitButton(true))
         .then(setShow(true))
