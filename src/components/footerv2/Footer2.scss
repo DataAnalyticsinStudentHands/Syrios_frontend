@@ -10,7 +10,7 @@
     }
 
     #footer2-head{
-        font-family: 'Cormorant Garamond';
+        font-family: $syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 700;
         font-size: 40px;
@@ -27,7 +27,7 @@
 
         background: transparent;
 
-        font-family: 'Cormorant Garamond';
+        font-family: $syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 500;
         font-size: 26px;
@@ -43,7 +43,7 @@
     .footer2-link{
         flex: 0 0 25%;
 
-        font-family: 'Cormorant Garamond';
+        font-family: $syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 700;
         font-size: 24px;
@@ -62,7 +62,7 @@
         margin-top: 5%;
         width: 62.5%;
 
-        font-family: 'Cormorant Garamond';
+        font-family: $syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 700;
         font-size: 22px;
@@ -72,8 +72,7 @@
     }
 
     #footer2-licensed{
-
-        font-family: 'Cormorant Garamond';
+        font-family: $syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 400;
         font-size: 24px;
