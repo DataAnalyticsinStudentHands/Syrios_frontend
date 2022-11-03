@@ -27,9 +27,9 @@ function BootstrapNavbar() {
             <NavDropdown.Item as={Link} to='/HowToReadACoin' className='navbar-text'>How to Read a coin</NavDropdown.Item>
             <NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3d</NavDropdown.Item>
             <NavDropdown.Item as={Link} to='/Toolbox/Glossary/all' className='navbar-text'>Glossary</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Download Data</NavDropdown.Item>
             <NavDropdown.Item as={Link} to='/Toolbox/Research' className='navbar-text'>Research</NavDropdown.Item>
             <NavDropdown.Item as={Link} to='/Toolbox/VideoLibrary' className='navbar-text'>Video library</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Download Data</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
