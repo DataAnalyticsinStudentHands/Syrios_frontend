@@ -153,14 +153,7 @@ const StoryReader = () => {
   }
 
   // Render
-  if (isLoading) return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  
-
+  if (isLoading) return (<><LoadingPage /><Footer /></>);
   return (
     <>
       <ReactFullpage

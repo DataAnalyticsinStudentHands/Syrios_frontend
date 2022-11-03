@@ -4,14 +4,14 @@ const Images = (props) =>{
   let zone = props.zone
     return(
       <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
-        {zone.head.updown_switch ?(
+        {zone.head?.updown_switch ?(
           <Container>
             <Row ><ImagesComponent toggleBottom={props.toggleBottom} images = {zone.images} /></Row>
-            <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+            <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head?.head_main} storyCaption = {zone.head?.head_caption}/></Row>
           </Container>
         ):(
           <Container>
-            <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+            <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head?.head_main} storyCaption = {zone.head?.head_caption}/></Row>
             <Row><ImagesComponent toggleBottom={props.toggleBottom} images = {zone.images} /></Row>
           </Container>
         )}

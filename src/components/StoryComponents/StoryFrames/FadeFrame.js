@@ -34,8 +34,9 @@ const FadeButton = (props)=>{
     </Col>
     )
   }
-  if(props.options.length == 2) return(<Row className='justify-content-center fade-2button-row'>{buttonOptin}</Row>)
-  if(props.options.length == 4) return(<Row className='justify-content-around fade-4button-row'>{buttonOptin}</Row>)}
+  if(props.options.length == 2){return(<Row className='justify-content-center fade-2button-row'>{buttonOptin}</Row>)} 
+  else{return(<Row className='justify-content-around fade-4button-row'>{buttonOptin}</Row>)}
+} 
 
 const FadeBody = (props)=>{
   let coin_left = props.coin.coin_left.data.attributes
@@ -131,7 +132,6 @@ function toShow (dom,index, length) {
   if (length == 2){
     let Option0 = dom.childNodes[0]
     let Option1 = dom.childNodes[1]
-
     switch(index){
       case 0:
         Option1.style.opacity = '0.0'
@@ -163,6 +163,77 @@ function toShow (dom,index, length) {
           setTimeout(() => {
             try {
               Option1.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        },400);
+      break;
+  
+      default:
+        console.log('Only take 2 or 4 options')
+    }
+  }
+  if (length == 3){
+    let Option0 = dom.childNodes[0]
+    let Option1 = dom.childNodes[1]
+    let Option2 = dom.childNodes[2]
+
+    switch(index){
+      case 0:
+        Option1.style.opacity = '0.0'
+        Option2.style.opacity = '0.0'
+        setTimeout(()=>{
+          try{
+            Option0.style.display = 'block'
+            Option1.style.display ='none';
+            Option2.style.display ='none';
+          }catch(error){
+            console.error(error)
+          }
+          setTimeout(() => {
+            try {
+              Option0.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        },400);
+        break;
+      case 1:
+        Option0.style.opacity = '0.0'
+        Option2.style.opacity = '0.0'
+        setTimeout(()=>{
+          try{
+            Option0.style.display ='none';
+            Option1.style.display = 'block';
+            Option2.style.display ='none';
+          }catch(error){
+            console.error(error)
+          }
+          setTimeout(() => {
+            try {
+              Option1.style.opacity = '1.0';
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        },400);
+      break;
+      case 2:
+        Option0.style.opacity = '0.0'
+        Option1.style.opacity = '0.0'
+        setTimeout(()=>{
+          try{
+            Option0.style.display ='none';
+            Option1.style.display = 'none';
+            Option2.style.display ='block';
+          }catch(error){
+            console.error(error)
+          }
+          setTimeout(() => {
+            try {
+              Option2.style.opacity = '1.0';
             } catch (error) {
               console.error(error);
             }
@@ -281,7 +352,7 @@ const FadeFrame = (props) =>{
   let zone = props.zone
     return(
       <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
-      {zone.head.updown_switch?(
+      {zone.head?.updown_switch?(
         <Container>
           <Container >
             <div className='fade-front'>
@@ -292,11 +363,11 @@ const FadeFrame = (props) =>{
             <FadeBack toggleBottom={props.toggleBottom} bodys={zone.fades}/>
             <FadeButton options = {zone.fades} />
           </Container>  
-          <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head?.head_main} storyCaption = {zone.head?.head_caption}/></Row>
         </Container>
       ):(
         <Container>
-          <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+          <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head?.head_main} storyCaption = {zone.head?.head_caption}/></Row>
           <Container className="pt-5">
             <div className='fade-front'>
               <div className='d-flex justify-content-between ' style={{height:'22vmax'}}>
