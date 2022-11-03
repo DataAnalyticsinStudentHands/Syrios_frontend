@@ -22,8 +22,10 @@ export const HeadComponent = (props)=>{
 export const TextComponent = (props)=>{
   let component_background = {
     "null":'',
+    "light-white-background":"light-white-background",
     "light-blue-background":"light-blue-background",
     "light-yellow-background":"light-yellow-background",
+    "light-green-background":"light-green-background"
   };
   let text = props.text
     if(text.text==""||text.text==null){

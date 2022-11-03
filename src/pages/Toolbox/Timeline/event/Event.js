@@ -51,7 +51,7 @@ const EventInfo = (props) => {
 
           <div id='event-description' dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
 
-          <div id='light-green-background'>
+          <div className='light-green-background'>
             <div id='event-connections'>
               <p id='event-connections-text' className='gray-text'>
                 TAGS
