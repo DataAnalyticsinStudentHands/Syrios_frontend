@@ -162,6 +162,8 @@ const StoryReader = () => {
         navigationPosition={`right`}
         anchors={storyAnchors}
         autoScrolling = {true}
+        // paddingBottom='5em'
+
         // onLeave={(origin, destination, direction) => {
         //   console.log("onLeave event", { origin, destination, direction });
         // }}

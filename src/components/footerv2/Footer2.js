@@ -3,6 +3,9 @@ import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 import { Link } from 'react-router-dom';
 
 function Footer2(){
+    async function scrollToTop (){
+        document.documentElement.scrollTop = 0;
+    }
     return(
         <div id='footer2'>
             <div id="footer2-Container">
@@ -25,10 +28,10 @@ function Footer2(){
                 <div className="split-half">
                     <div style={{marginTop:'12.5%'}}>
                         <div id="footer2-links">
-                            <Link to='/About' className="footer2-link">About Syrios</Link>
-                            <Link to='/ContactUs' className="footer2-link"> Contact Us</Link>
-                            <Link to='/Evidence/MapCoins' className="footer2-link"> Sitemap</Link>
-                            <Link to='/' className="footer2-link"> Privacy Policy</Link>
+                            <Link to='/About' className="footer2-link" onClick={scrollToTop()}>About Syrios</Link>
+                            <Link to='/ContactUs' className="footer2-link" onClick={scrollToTop()}> Contact Us</Link>
+                            {/* <Link to='/Evidence/MapCoins' className="footer2-link"> Sitemap</Link>
+                            <Link to='/' className="footer2-link"> Privacy Policy</Link> */}
                         </div>
                     </div>
                     <div id="footer2-licensed" style={{marginTop:'30%'}}>
