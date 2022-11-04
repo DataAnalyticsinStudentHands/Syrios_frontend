@@ -34,28 +34,30 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
 
               <div className='col-4'>
                   <div className='references-h3 mb-3'>Coin Images Courtesy of:</div>
-                  {imageReference.map((ref,index)=>{
-                    return(
-                      <div key={index} className='d-flex references-text my-5'>
-                          <a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}<span className='icon-entypo-link-external' style={{color:'#b9ccd7',fontSize:'1.25em'}}/></a>
-                      </div>
-                    )})}
+                  <div id='reference-content'>
+                    {imageReference.map((ref,index)=>{
+                      return(
+                        <div key={index} className='d-flex references-text my-5'>
+                            <a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}<span className='icon-entypo-link-external' style={{color:'#b9ccd7',fontSize:'1.25em'}}/></a>
+                        </div>
+                      )})}
+                  </div>
               </div>
-
-
               <div className='col-7'>
                 <div className='references-h3 mx-4 mb-3'>To read more, check these out:</div>
-                {references.map((ref,index)=>{
-                  return(
-                    <div key={index} className='d-flex references-text my-3' style={{overFlowY:'scroll'}}>
-                      <span xs={1} className='d-flex justify-content-end mx-5' >[{index+1}]</span>
-                      {ref.split("http")[1] 
-                      ? <div xs={11} >
-                          <a href={`http${ref.split("http")[1].split(".</div>")[0]}`} dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}target="_blank" rel="noopener noreferrer"/>
-                        </div>
-                      :<div xs={11} dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}/>}
-                    </div>
-                  )})}
+                <div id='reference-content'>
+                  {references.map((ref,index)=>{
+                    return(
+                      <div key={index} className='d-flex references-text my-3' style={{overFlowY:'scroll'}}>
+                        <span xs={1} className='d-flex justify-content-end mx-5' >[{index+1}]</span>
+                        {ref.split("http")[1] 
+                        ? <div xs={11} >
+                            <a href={`http${ref.split("http")[1].split(".</div>")[0]}`} dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}target="_blank" rel="noopener noreferrer"/>
+                          </div>
+                        :<div xs={11} dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}/>}
+                      </div>
+                    )})}
+                </div>
             </div>
 
           </div>
