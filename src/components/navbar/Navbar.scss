@@ -22,9 +22,9 @@
 }
 
 .dropdown-menu {
-	// background: url("../../assets/dropdown.png");
+	background: url("../../assets/dropdown.png");
 	background-color: #183848;
-	// background-size: cover;
+	background-size: cover;
 	// min-width: 7.5vw;
 	border-radius: 0px 0px 15px 15px;
 	font-family:  $syrios-font-family-garamond-premier-pro;
@@ -42,7 +42,7 @@
     display: block;
     // overflow: hidden;
     opacity: 0;
-	// margin-top: 4vh;
+	margin-top: 3em;
 }
 
 .dropdown.show .dropdown-menu { /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
