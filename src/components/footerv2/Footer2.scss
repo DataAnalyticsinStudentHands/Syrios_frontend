@@ -1,0 +1,90 @@
+#footer2{
+    background: #183848;
+    padding: 5% 10%;
+
+    #footer2-Container{
+        display: flex
+    }
+    .split-half{
+        flex:1
+    }
+
+    #footer2-head{
+        font-family: $syrios-font-family-garamond-premier-pro;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 48px;
+        
+        color: #F4F2F0;
+        }
+    #footer2-email{
+        box-sizing: border-box;
+        width: 62.5%;
+        height: 55px;
+
+        border: 2px solid #FFFFFF;
+
+        background: transparent;
+
+        font-family: $syrios-font-family-garamond-premier-pro;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 31px;
+
+        color: #A8A8A8;
+
+    }
+    #footer2-links{
+        display: flex;
+    }
+    
+    .footer2-link{
+        flex: 0 0 25%;
+
+        font-family: $syrios-font-family-garamond-premier-pro;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+
+        color: #D8D6D4;
+
+        &:hover{
+            color: #486678;
+        }
+
+    }
+
+    #footer2-syrios{
+        margin-top: 5%;
+        width: 62.5%;
+
+        font-family: $syrios-font-family-garamond-premier-pro;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 27px;
+
+        color: #D8D6D4;
+    }
+
+    #footer2-licensed{
+        font-family: $syrios-font-family-garamond-premier-pro;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+    #footer2-logo{
+        margin-top: 3%;
+        width: 50%;
+
+    }
+}
+

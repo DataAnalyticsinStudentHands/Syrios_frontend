@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import toolboxRequest from 'src/api/toolbox';
-import LoadingPage from 'src/components/LoadingPage';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import { Container, Row, Col} from 'react-bootstrap';
 import { WhiteBGDesign } from 'src/components/constant/WhiteBGDesign';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
@@ -18,14 +17,7 @@ const Toolbox = ()=>{
         }
         fetchData()
     },[])
-    if (isLoading){
-        return(
-            <>
-                <LoadingPage/>
-                <Footer/>
-            </>
-        )
-    }
+    if (isLoading){return(<LoadingPage/>)}
     return(
         <div id='tool-box' >
             <Container>
@@ -90,7 +82,6 @@ const Toolbox = ()=>{
                 </Col>
                 </Row>
             </Container>
-            <Footer/>
         </div>
     )
 }

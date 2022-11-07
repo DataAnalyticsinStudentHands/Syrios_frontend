@@ -1,19 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Container,
-  Row,
-  Col
-} from 'react-bootstrap';
+import {Container,Row,Col} from 'react-bootstrap';
 import evidenceRequest from 'src/api/evidence';
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import { WhiteBGDesign } from 'src/components/constant/WhiteBGDesign';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 const ExploreTheEvidence = () => {
-
   const [isLoading, setIsLoading] = useState(true);
   const [evidenceData, setEvidenceData] = useState([])
-
   useEffect(() => {
     async function fetchData(){
       const result = await evidenceRequest.evidenceFind()
@@ -23,35 +16,10 @@ const ExploreTheEvidence = () => {
     fetchData()
   },[]);
 
-  if (isLoading) {
-    return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  }
-
+  if (isLoading)return (<LoadingPage />);
   return (
-    <>
       <div id='explore-the-evidence' className='d-flex align-items-center'>
         <Container>
-          {/* <center>
-            <h1>Explore the Evidence</h1>
-            <div className='px-5 mx-5'>
-              <h3 className='my-5'>
-                Coins can be studied as pieces of art, historical artifacts, and as 
-                objects that once moved through the hands of different 
-                individuals and communities. Most importantly, coins were 
-                produced and used within a context of people, systems, space, and 
-                time.
-              </h3>
-              <div className='story-text my-5' >
-                <em>Select one of the interfaces below to begin exploring the coin evidence 
-                and your own historical applications of the material.</em>
-              </div>
-            </div>
-          </center> */}
           <PageTitleComponent
             title={evidenceData.title}
             text={evidenceData.text}
@@ -131,8 +99,6 @@ const ExploreTheEvidence = () => {
           </Row>
           </Container>
       </div>
-    <Footer />
-    </>
   );
 }
 

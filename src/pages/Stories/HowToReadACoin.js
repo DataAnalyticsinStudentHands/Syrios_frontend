@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import Footer from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 import StoryComponent from 'src/pages/Stories/StoryComponents.js';
 import storyRequest from 'src/api/story';
 import zoteroRequest from 'src/api/zotero';
+import Footer from 'src/components/footer/Footer.js';
 
 const HowToReadACoin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -161,14 +161,7 @@ const HowToReadACoin = () => {
   }
 
   // Render
-  if (isLoading) return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  
-
+  if (isLoading) return (<LoadingPage />);
   return (
     <>
       <ReactFullpage
@@ -197,7 +190,9 @@ const HowToReadACoin = () => {
         isBottomOpen={isBottomOpen}
       />
     </>
+
   );
+  
 }
 
 export default HowToReadACoin;

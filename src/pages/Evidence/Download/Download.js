@@ -5,8 +5,7 @@ import { Container, Row, Col, Alert, Form} from 'react-bootstrap';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import createMarkup from 'src/utils/Markup.js';
 
 import downloadRequest from 'src/api/download';
@@ -42,7 +41,7 @@ function Download(){
       .required('* Email is required'),
     }),
     onSubmit: (values,{resetForm})=>{
-      axios.post(`${process.env.REACT_APP_strapiURL} /api/download`, values)
+      axios.post(`${process.env.REACT_APP_strapiURL}/api/download`, values)
         .then(resetForm())
         .then(setSubmitButton(true))
         .then(setShow(true))
@@ -54,18 +53,9 @@ function Download(){
     }
   })
 
-  if (isLoading) {
-    return(
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  }
+  if (isLoading) {return(<LoadingPage />);}
 
   return(
-    <>
-
       <div id='download-page'>
           <Row>
               <Alert className='download-alert green-text story-text text-center'  show={show} variant="success" onClose={() => setShow(false)} dismissible>
@@ -138,8 +128,6 @@ function Download(){
           </Row>
         </Container>
       </div>
-      <Footer/>
-    </>
   );
 }
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
-import LoadingPage from 'src/components/LoadingPage.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import glossaryRequest from 'src/api/glossary';
 import { Container, Row, Col, Form, InputGroup, Button, Modal,Tab, Tabs, ListGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -36,7 +36,6 @@ const Glossary = () =>{
                 let contentList= []
                 for (let i=0; i<alphabetsArray.length; i++){
                     let alp = {}
-                    // console.log(alphabets[i])
                     const data = await glossaryRequest.glossaryFindStartWIth(alphabetsArray[i])
                     alp['alphabet']=alphabetsArray[i]
                     alp['data'] = data.data

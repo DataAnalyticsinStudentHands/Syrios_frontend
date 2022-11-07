@@ -226,32 +226,12 @@
   font-family: $syrios-garamond-premier-pro-subhead;
   font-style: $syrios-font-style-normal;
   font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-16;
+  font-size: $syrios-font-size-24;
   line-height: $syrios-line-spacing-25;
   letter-spacing: $syrios-character-spacing--20;
   color: #a86818;
-  margin: 11px;
 }
 
-
-// References
-
-// .references-text-ordered-list-number {
-//   font-family: $syrios-garamond-premier-pro-caption;
-//   font-style: $syrios-font-style-normal;
-//   font-weight: $syrios-font-weight-bold;
-//   font-size: $syrios-font-size-16;
-//   line-height: $syrios-line-spacing-15;
-//   letter-spacing: $syrios-character-spacing--10;
-//   color: #1a3847;
-
-//   @media screen and (max-width: 1440px) {
-//     font-size:  $syrios-font-size-16 * 0.75 ;
-//     line-height: $syrios-line-spacing-15 * 0.75;
-//     letter-spacing: $syrios-character-spacing--10 * 0.75 ;
-//   }
-  
-// }
 .references-text {
   font-family: $syrios-garamond-premier-pro-caption;
   font-style: $syrios-font-style-normal;
@@ -346,8 +326,7 @@
   line-height: $syrios-line-spacing-17;
   // letter-spacing: $syrios-character-spacing--80;
   color: #ffffff;
-  // text-transform: $syrios-text-transform-uppercase;
-
+  text-transform: $syrios-text-transform-uppercase;
   &:hover {
     color: #B8CCD8;
     cursor: pointer;

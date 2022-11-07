@@ -1,11 +1,9 @@
 import React,{useState} from 'react';
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { Container, Row, Col, Form, Alert} from 'react-bootstrap';
+import { Row, Col, Form, Alert} from 'react-bootstrap';
 import axios from 'axios';
-import FeedBackicon from 'src/components/FeedBackIcon';
-import Footer from 'src/components/Footer';
-// import createMarkup from 'src/utils/Markup.js';
+import FeedBackicon from 'src/components/constant/FeedBackIcon';
 
 // RegEx for phone number validation
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -51,7 +49,6 @@ function ContactUs(){
     <>
       <FeedBackicon/>
       <div id='contactus-page'>
-        <Container>
             <Row>
                 <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
                     Thanks for contacting us, we will get back to you soon!
@@ -115,15 +112,11 @@ function ContactUs(){
                         <div className="error-message">{formik.errors.writtenMessage}</div>
                         ) : null}
                     </Form.Group>
-                    <button type='submit' className='contact-us-button' disabled={!formik.isValid || submitButton} >
-                        Submit
-                    </button>
+                    <center><button type='submit' className='contact-us-button' disabled={!formik.isValid || submitButton} >Submit</button></center>
                 </Form>
             </Col>
           </Row>
-        </Container>
       </div>
-      <Footer />
     </>
   );
 }

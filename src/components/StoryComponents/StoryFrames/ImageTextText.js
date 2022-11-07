@@ -4,12 +4,6 @@ import createMarkup from 'src/utils/Markup.js';
 
 const ImageTextText = (props) =>{
   let zone = props.zone
-  let grid = {
-    "half": 6,
-    "third": 4,
-    "quarter": 3,
-  };
-
   return(
     <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${process.env.REACT_APP_strapiURL}${zone.background.data.attributes.url})`}}>
     {zone.head.updown_switch ? (
@@ -17,17 +11,17 @@ const ImageTextText = (props) =>{
       <Row className='d-flex justify-content-between align-items-center'>
         {zone.left_right_switch? (
           <Container>
-            <Col xs={`${grid[zone.grid_option]}`}>
-              <Row className=''><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
-              <Row className=''><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+            <Col>
+              <Row><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+              <Row><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
             </Col>
-            <Col><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+            <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
           </Container>
         ):(
           <Container>
-            <Col xs={`${grid[zone.grid_option]}`} ><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
-            <Col className=''>
-              <Row  className='py-5'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+            <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+            <Col>
+              <Row className='py-5'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
               <Row className=' py-5'><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
             </Col>
           </Container>
@@ -40,18 +34,18 @@ const ImageTextText = (props) =>{
         <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
       {zone.left_right_switch? (
         <Row className='d-flex justify-content-around align-items-center'>
-          <Col xs={`${grid[zone.grid_option]}`}>
-            <Row className=''><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
-            <Row className=''><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+          <Col>
+            <Row><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+            <Row><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
           </Col>
-          <Col><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+          <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
         </Row>
         ):(
           <Row className='d-flex justify-content-around align-items-center'>
-            <Col xs={`${grid[zone.grid_option]}`} ><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
-            <Col className=''>
-              <Row  className='py-5'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
-              <Row className=' py-5'><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+            <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+            <Col>
+              <Row className='py-5'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+              <Row className='py-5'><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
             </Col>
           </Row>
         )}

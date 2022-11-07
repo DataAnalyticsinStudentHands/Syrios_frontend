@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import LoadingPage from 'src/components/LoadingPage.js';
-import Footer from 'src/components/Footer';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import { Container, Row, Col} from 'react-bootstrap';
 import zoteroRequest from 'src/api/zotero';
 import researchRequest from 'src/api/research';
@@ -22,9 +21,8 @@ const Research = ()=>{
         fetchData()
     },[])
 
-	if (isLoading)return (<><LoadingPage /><Footer /></>);
+	if (isLoading)return (<LoadingPage />);
     return(
-        <>
         <div id='research' >
             <PageTitleComponent
                 title={research.title}
@@ -66,8 +64,6 @@ const Research = ()=>{
                 )}
             </Container>
         </div>
-        <Footer/>
-        </>
     )
 }
 export default Research

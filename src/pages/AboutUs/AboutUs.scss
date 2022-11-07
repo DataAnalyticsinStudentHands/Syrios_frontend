@@ -1,14 +1,11 @@
 
 #aboutus-page {
-  overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
-	width: 100%;
+  padding: 5% 10%;
 	height: 100%;
-	padding-top: 7.5vmax;
-	padding-bottom: 7.5vmax;
 }
 .aboutus-des{
-  width: 90%;
+  // width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -22,11 +19,11 @@
   width: 70%;
 }
 
-.aboutus-project_director{
-  // font-size: calc(16px + 1vw);
-  // display: flex;
-  width: 90%;  
-}
+// .aboutus-project_director{
+//   font-size: calc(16px + 1vw);
+//   display: flex;
+//   width: 90%;  
+// }
 
 
 .aboutus-avatar{
@@ -43,17 +40,17 @@
 .aboutTable {
   font-size: calc(16px + 1vw);
   display: flex;
-  width: 90%;
   // margin: 2em auto;
   // margin-left: 10%;
 }
 
 .aboutTable_tabs {
   width: 30%;
+
 }
 
 .aboutTable_tab {
-  width: 100%;
+  // width: 100%;
   height: 3em;
   display: flex;
   justify-content: center;
@@ -61,6 +58,7 @@
   color: #737271;
   clip-path: polygon(10% 0%,100% 0,100% 100%, 10% 100%, 0% 90%, 0% 10%);
   background-color: #ffffff;
+  margin-bottom: 1.75em;
 }
 
 .aboutTable_tab:hover {
@@ -75,7 +73,7 @@
 
 .aboutTable_entries { 
   width: 70%;
-  max-height: 20em;
+  max-height: 25em;
   flex-direction: row;
   padding-top: 0.2em;
   overflow-y: scroll;

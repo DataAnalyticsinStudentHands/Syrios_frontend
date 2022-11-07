@@ -29,15 +29,18 @@
 }
 
 .light-blue-background {
-    background-color: rgba(184,204,216,0.5);
+    background-color: rgba(184,204,216,0.35);
     border-radius: 15px;
   }
   .light-yellow-background {
-    background: rgba(248,232,184,0.5);
+    background: rgba(248,232,184,0.35);
     border-radius: 15px;
   }
-
-  #light-green-background {
-    background-color: rgba(200,232,200,0.2);
+  .light-green-background {
+    background-color: rgba(200,232,200,0.35);
+    border-radius: 15px;
+  }
+.light-white-background {
+    background-color: rgba(255,255,255,0.35);
     border-radius: 15px;
   }

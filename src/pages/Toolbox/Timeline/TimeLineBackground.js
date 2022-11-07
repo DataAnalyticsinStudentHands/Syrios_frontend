@@ -192,6 +192,13 @@ export function SetupTimelineBackground(obj) {
       // The text you see every 50 years and the one hyphen at the end of the screen
       jsx_arr.push(
         <Text
+          id={(() => {
+            if (e < 0) {
+              return `${Math.abs(e)}BCE`;
+            } else {
+              return `${Math.abs(e)}CE`;
+            }
+          })()}
           x='98%'
           textAnchor='end'
           fontWeight='thin'

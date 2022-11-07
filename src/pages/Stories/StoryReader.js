@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import Footer from 'src/components/Footer.js';
-import LoadingPage from 'src/components/LoadingPage.js';
+import Footer from 'src/components/footer/Footer.js';
+import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 import StoryComponent from './StoryComponents';
 
@@ -153,14 +153,7 @@ const StoryReader = () => {
   }
 
   // Render
-  if (isLoading) return (
-      <>
-        <LoadingPage />
-        <Footer />
-      </>
-    );
-  
-
+  if (isLoading) return (<><LoadingPage /><Footer /></>);
   return (
     <>
       <ReactFullpage
@@ -169,6 +162,8 @@ const StoryReader = () => {
         navigationPosition={`right`}
         anchors={storyAnchors}
         autoScrolling = {true}
+        // paddingBottom='5em'
+
         // onLeave={(origin, destination, direction) => {
         //   console.log("onLeave event", { origin, destination, direction });
         // }}

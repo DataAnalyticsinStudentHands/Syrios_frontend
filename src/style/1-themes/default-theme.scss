@@ -86,36 +86,37 @@ $syrios-font-weight-black: 900;
 
 $syrios-font-weight-normal: normal;
 
-// $syrios-font-size-14: 1.75em;
-// $syrios-font-size-16: 2em;
-// $syrios-font-size-18: 2.25em;
-// $syrios-font-size-20: 2.5em;
-// $syrios-font-size-22: 2.75em;
-// $syrios-font-size-24: 3em;
-// $syrios-font-size-26: 3.25em;
-// $syrios-font-size-28: 3.5em;
-// $syrios-font-size-30: 3.75em;
-// $syrios-font-size-32: 4em;
-// $syrios-font-size-36: 4.5em;
-// $syrios-font-size-40: 5em;
-// $syrios-font-size-64: 8em;
-// $syrios-font-size-144: 18em;
+$syrios-font-size-14: 1.75rem;
+$syrios-font-size-16: 2rem;
+$syrios-font-size-18: 2.25rem;
+$syrios-font-size-20: 2.5rem;
+$syrios-font-size-22: 2.75rem;
+$syrios-font-size-24: 3rem;
+$syrios-font-size-26: 3.25rem;
+$syrios-font-size-28: 3.5rem;
+$syrios-font-size-30: 3.75rem;
+$syrios-font-size-32: 4rem;
+$syrios-font-size-36: 4.5rem;
+$syrios-font-size-40: 5rem;
+$syrios-font-size-48: 6rem;
+$syrios-font-size-64: 8rem;
+$syrios-font-size-144: 18rem;
 
-$syrios-font-size-14: 0.792vmax;
-$syrios-font-size-16: 0.833vmax;
-$syrios-font-size-18: 0.938vmax;
-$syrios-font-size-20: 1.024vmax;
-$syrios-font-size-22: 1.146vmax;
-$syrios-font-size-24: 1.25vmax;
-$syrios-font-size-26: 1.354vmax;
-$syrios-font-size-28: 1.458vmax;
-$syrios-font-size-30: 1.563vmax;
-$syrios-font-size-32: 1.667vmax;
-$syrios-font-size-36: 1.875vmax;
-$syrios-font-size-40: 2.083vmax;
-$syrios-font-size-48: 2.5vmax;
-$syrios-font-size-64: 3.333vmax;
-$syrios-font-size-144: 7.5vmax;
+// $syrios-font-size-14: 0.792vmax;
+// $syrios-font-size-16: 0.833vmax;
+// $syrios-font-size-18: 0.938vmax;
+// $syrios-font-size-20: 1.024vmax;
+// $syrios-font-size-22: 1.146vmax;
+// $syrios-font-size-24: 1.25vmax;
+// $syrios-font-size-26: 1.354vmax;
+// $syrios-font-size-28: 1.458vmax;
+// $syrios-font-size-30: 1.563vmax;
+// $syrios-font-size-32: 1.667vmax;
+// $syrios-font-size-36: 1.875vmax;
+// $syrios-font-size-40: 2.083vmax;
+// $syrios-font-size-48: 2.5vmax;
+// $syrios-font-size-64: 3.333vmax;
+// $syrios-font-size-144: 7.5vmax;
 
 $syrios-character-spacing-0: 0px;
 $syrios-character-spacing--05: -0.05px;
@@ -128,25 +129,182 @@ $syrios-character-spacing--80: -0.80px;
 
 
 
-// $syrios-line-spacing-15: 15px;
-// $syrios-line-spacing-17: 17px;
-// $syrios-line-spacing-20: 20px;
-// $syrios-line-spacing-25: 25px;
-// $syrios-line-spacing-30: 30px;
-// $syrios-line-spacing-45: 45px;
-// $syrios-line-spacing-75: 75px;
+$syrios-line-spacing-15: 2rem;
+$syrios-line-spacing-17: 2rem;
+$syrios-line-spacing-20: 2.5rem;
+$syrios-line-spacing-25: 3rem;
+$syrios-line-spacing-30: 3.5rem;
+$syrios-line-spacing-45: 5.5rem;
+$syrios-line-spacing-75: 9.5rem;
 
-$syrios-line-spacing-15: 0.792vmax;
-$syrios-line-spacing-17: 0.833vmax;
-$syrios-line-spacing-20: 1.024vmax;
-$syrios-line-spacing-25: 1.042vmax;
-$syrios-line-spacing-30: 1.563vmax;
-$syrios-line-spacing-45: 2.344vmax;
-$syrios-line-spacing-75: 4vmax;
+// $syrios-line-spacing-15: 0.792vmax;
+// $syrios-line-spacing-17: 0.833vmax;
+// $syrios-line-spacing-20: 1.024vmax;
+// $syrios-line-spacing-25: 1.042vmax;
+// $syrios-line-spacing-30: 1.563vmax;
+// $syrios-line-spacing-45: 2.344vmax;
+// $syrios-line-spacing-75: 4vmax;
 
 $syrios-text-transform-uppercase: uppercase;
 $syrios-decoration-underline: underline;
 $syrios-text-script-superscript: superscript;
 
 
+@font-face {
+  font-family: 'syrios-icon';
+  src: url('../font/syrios.eot')format('eot');
+  src: url('../font/syrios.eot') format('embedded-opentype'),
+       url('../font/syrios.woff') format('woff'),
+       url('../font/syrios.ttf') format('truetype'),
+       url('../font/syrios.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.syrios-icon {
+  font-family: "syrios-icon";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* You can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+[class^="icon-"]:after, [class*=" icon-"]:after {
+  font-family: "syrios-icon";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-entypo-arrow-medium-down:after { content: '\e800'; } /* '' */
+.icon-entypo-arrow-medium-left:after { content: '\e801'; } /* '' */
+.icon-entypo-arrow-medium-right:after { content: '\e802'; } /* '' */
+.icon-entypo-arrow-medium-up:after { content: '\e803'; } /* '' */
+.icon-entypo-arrow-thick-down:after { content: '\e804'; } /* '' */
+.icon-entypo-arrow-thick-left:after { content: '\e805'; } /* '' */
+.icon-entypo-arrow-thick-right:after { content: '\e806'; } /* '' */
+.icon-entypo-arrow-thick-up:after { content: '\e807'; } /* '' */
+.icon-entypo-arrow-thin-down:after { content: '\e808'; } /* '' */
+.icon-entypo-arrow-thin-left:after { content: '\e809'; } /* '' */
+.icon-entypo-arrow-thin-right:after { content: '\e80a'; } /* '' */
+.icon-entypo-arrow-thin-up:after { content: '\e80b'; } /* '' */
+.icon-entypo-attachment:after { content: '\e80c'; } /* '' */
+.icon-entypo-collapse:after { content: '\e80d'; } /* '' */
+.icon-entypo-compass:after { content: '\e80e'; } /* '' */
+.icon-entypo-contact:after { content: '\e80f'; } /* '' */
+.icon-entypo-donwload:after { content: '\e810'; } /* '' */
+.icon-dot-3:after { content: '\e811'; } /* '' */
+.icon-entypo-expand:after { content: '\e812'; } /* '' */
+.icon-entypo-focus:after { content: '\e813'; } /* '' */
+.icon-entypo-globe:after { content: '\e814'; } /* '' */
+.icon-entypo-help:after { content: '\e815'; } /* '' */
+.icon-entypo-hourglass:after { content: '\e816'; } /* '' */
+.icon-entypo-info:after { content: '\e817'; } /* '' */
+.icon-entypo-link-external:after { content: '\e818'; } /* '' */
+.icon-entypo-link:after { content: '\e819'; } /* '' */
+.icon-entypo-location:after { content: '\e81a'; } /* '' */
+.icon-entypo-map:after { content: '\e81b'; } /* '' */
+.icon-entypo-media-forward:after { content: '\e81c'; } /* '' */
+.icon-entypo-media-next:after { content: '\e81d'; } /* '' */
+.icon-entypo-media-pause:after { content: '\e81e'; } /* '' */
+.icon-entypo-media-play:after { content: '\e81f'; } /* '' */
+.icon-entypo-media-previous:after { content: '\e820'; } /* '' */
+.icon-entypo-media-record:after { content: '\e821'; } /* '' */
+.icon-entypo-media-rewind:after { content: '\e822'; } /* '' */
+.icon-entypo-media-stop:after { content: '\e823'; } /* '' */
+.icon-entypo-media-volume-0:after { content: '\e824'; } /* '' */
+.icon-entypo-media-volume-1:after { content: '\e825'; } /* '' */
+.icon-entypo-media-volume-2:after { content: '\e826'; } /* '' */
+.icon-entypo-media-volume-3:after { content: '\e827'; } /* '' */
+.icon-entypo-minus:after { content: '\e828'; } /* '' */
+.icon-entypo-plus:after { content: '\e829'; } /* '' */
+.icon-entypo-reference:after { content: '\e82a'; } /* '' */
+.icon-entypo-search:after { content: '\e82b'; } /* '' */
+.icon-entypo-settings:after { content: '\e82c'; } /* '' */
+.icon-entypo-tools:after { content: '\e82d'; } /* '' */
+.icon-entypo-view:after { content: '\e82e'; } /* '' */
+.icon-entypo-warning:after { content: '\e82f'; } /* '' */
+.icon-dot-2:after { content: '\e830'; } /* '' */
+.icon-dot:after { content: '\e831'; } /* '' */
+.icon-syrios-check-medium:after { content: '\e832'; } /* '' */
+.icon-syrios-check-thin:after { content: '\e833'; } /* '' */
+.icon-syrios-circle-medium:after { content: '\e834'; } /* '' */
+.icon-syrios-circle-thick:after { content: '\e835'; } /* '' */
+.icon-syrios-circle-thin:after { content: '\e836'; } /* '' */
+.icon-syrios-coin-hand:after { content: '\e837'; } /* '' */
+.icon-syrios-coin-rotate:after { content: '\e838'; } /* '' */
+.icon-syrios-coin-scale:after { content: '\e839'; } /* '' */
+.icon-syrios-coin-sort1:after { content: '\e83a'; } /* '' */
+.icon-syrios-coin-sort2:after { content: '\e83b'; } /* '' */
+.icon-syrios-coin-timeline:after { content: '\e83c'; } /* '' */
+.icon-syrios-media-play-video:after { content: '\e83d'; } /* '' */
+.icon-syrios-numisma-reverse:after { content: '\e83e'; } /* '' */
+.icon-syrios-numisma-simple:after { content: '\e83f'; } /* '' */
+.icon-syrios-numisma:after { content: '\e840'; } /* '' */
+.icon-syrios-sqaure-medium:after { content: '\e841'; } /* '' */
+.icon-syrios-sqaure-thick:after { content: '\e842'; } /* '' */
+.icon-syrios-sqaure-thin:after { content: '\e843'; } /* '' */
+.icon-syrios-stories-book:after { content: '\e844'; } /* '' */
+.icon-syrios-stories-card:after { content: '\e845'; } /* '' */
+.icon-syrios-x-medium:after { content: '\e846'; } /* '' */
+.icon-syrios-x-thin:after { content: '\e847'; } /* '' */
+.icon-suitcase:after { content: '\e848'; } /* '' */
+.icon-book:after { content: '\e849'; } /* '' */
+.icon-archive:after { content: '\e84a'; } /* '' */
+.icon-share:after { content: '\e84b'; } /* '' */
+.icon-pencil:after { content: '\e84c'; } /* '' */
+.icon-syrios-bullet-round:after { content: '\e84d'; } /* '' */
+.icon-syrios-bullet-square:after { content: '\e84e'; } /* '' */

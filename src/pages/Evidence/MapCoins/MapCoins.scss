@@ -1,8 +1,6 @@
 #map-coins{
-    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     width: 100%;
-    height: 100%;
-    padding-top: 7.5vmax;
-    padding-bottom: 7.5vmax;
+    min-height: 95vh;
+    padding:5% 10%;
 }    

@@ -22,29 +22,31 @@ export const HeadComponent = (props)=>{
 export const TextComponent = (props)=>{
   let component_background = {
     "null":'',
+    "light-white-background":"light-white-background",
     "light-blue-background":"light-blue-background",
     "light-yellow-background":"light-yellow-background",
+    "light-green-background":"light-green-background"
   };
   let text = props.text
-    if(text.text==""||text.text==null){
+    if(text?.text==""||text?.text==null){
       return(
-        <Container className={`${component_background[text.background_color]}`} style={{padding: '20px', paddingTop: '20px'}}>
-          <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(text.caption)} className='story-text text-center'/>
+        <Container className={`${component_background[text?.background_color]}`} style={{padding: '20px', paddingTop: '20px'}}>
+          <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(text?.caption)} className='story-text text-center'/>
         </Container>
       )
     }
     else if (text.caption == "" || text.caption == null){
       return(
         <Container className={`${component_background[text.background_color]}`} style={{padding: '20px', paddingTop: '20px'}}>
-          <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(text.text)} className='story-h3-blue text-center'/>
+          <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(text?.text)} className='story-h3-blue text-center'/>
         </Container>
       )
     }
     else{
       return (
-        <Container className={`${component_background[text.background_color]}`} style={{padding: '20px', paddingTop: '20px'}}>
-          <Row onClick={props.toggleBottom}  dangerouslySetInnerHTML={createMarkup(text.text)} className='quote-text text-center'/>
-          <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(text.caption)} className='quote-credit text-center'/>
+        <Container className={`${component_background[text?.background_color]}`} style={{padding: '20px', paddingTop: '20px'}}>
+          <Row onClick={props.toggleBottom}  dangerouslySetInnerHTML={createMarkup(text?.text)} className='quote-text text-center'/>
+          <Row onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(text?.caption)} className='quote-credit text-center'/>
         </Container>
       )
     }
@@ -54,16 +56,16 @@ export const TextComponent = (props)=>{
 export const ImageComponent =(props)=>{
   // console.log(props.imageWidth)
   let image = props.image
-  let image_size = {
-    "Smallest":"12.5%",
-    "Smaller":"25%",
-    "Small":"37.5%",
-    "Regular":"50%",
-    "Big":"62.5%",
-    "Bigger":"75%",
-    "Biggest":"87.5%",
-    "Full":"100%"
-  }
+  // let image_size = {
+  //   "Smallest":"12.5%",
+  //   "Smaller":"25%",
+  //   "Small":"37.5%",
+  //   "Regular":"50%",
+  //   "Big":"62.5%",
+  //   "Bigger":"75%",
+  //   "Biggest":"87.5%",
+  //   "Full":"100%"
+  // }
   let component_background = {"null":'',"light-blue-background":"light-blue-background","light-yellow-background":"light-yellow-background",};
   // Coin Data
   if((image.image.data === null)){
@@ -74,7 +76,7 @@ export const ImageComponent =(props)=>{
             <img
               src={ `${process.env.REACT_APP_strapiURL}${image.reverse_or_obverse ? image.coin.data.attributes.obverse_file.data.attributes.url : image.coin.data.attributes.reverse_file.data.attributes.url}`}            
               alt={image.coin.data.attributes.obverse_file.data.alternativeText === undefined ? 'img' : image.coin.data.attributes.obverse_file.data.alternativeText}
-              className="mb-1" style={{width: image_size[props.image.size]}}
+              className="mb-1" style={{width: props.image.image_size+'%'}}
             />
           </a>
         </Row>
@@ -82,7 +84,7 @@ export const ImageComponent =(props)=>{
           <div 
             onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
             className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-            style={{width:image_size[props.image.size]}}
+            style={{width: props.image.image_size+'%'}}
             />
         </Row>
       </Col>
@@ -95,19 +97,19 @@ export const ImageComponent =(props)=>{
         <Row className='d-flex justify-content-center align-items-center'>
           {image.additional_link === null ? (
             <img src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`} alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-              className="mb-1" style={{width: image_size[props.image.size]}}/>
+              className="mb-1" style={{width: props.image.image_size+'%'}}/>
           ):(
             <a href={`${image.additional_link}`} target="_blank" rel="noopener noreferrer" className="text-center">
               <img src={`${process.env.REACT_APP_strapiURL}${image.image.data.attributes.url}`}            
                 alt={image.image.data.attributes.alternativeText === undefined ? 'img' : image.image.data.attributes.alternativeText}
-                className="mb-1" style={{width: image_size[props.image.size]}}/></a>
+                className="mb-1" style={{width: props.image.image_size+'%'}}/></a>
           )}
         </Row>
         <Row className={`d-flex justify-content-center align-items-center`} >
           <div 
             onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(image.caption)} 
             className={`story-caption text-center  mt-3 ${image.caption_or_both? "":component_background[image.background_color]}`}
-            style={{width: image_size[props.image.size]}}
+            style={{width: props.image.image_size+'%'}}
             />
         </Row>
       </Col>
