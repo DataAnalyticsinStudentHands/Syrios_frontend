@@ -3,7 +3,7 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style/styles.scss";
 import background from 'src/assets/background.jpg';
-import Navbar from 'src/components/navbar/Navbar.js';
+// import Navbar from 'src/components/navbar/Navbar.js';
 import LandingPage from 'src/pages/LandingPage.js';
 import AboutUs from 'src/pages/AboutUs/AboutUs.js';
 import ContactUs from './pages/ContactUs/ContactUs';
@@ -26,12 +26,48 @@ import GlossaryTerm from './pages/Toolbox/Glossary/GlossaryTerm';
 
 import ErrorPage from './components/error/404';
 import FooterWrapper from './components/footerv2/Footer2Wrapper';
+
+import { Navbar,Nav,NavDropdown,} from 'react-bootstrap';
+import {Link} from "react-router-dom";
+import logo from 'src/assets/logoWhiteText.svg';
+import CoinCatalogComingSoon from './pages/Evidence/CoinCatalogy/CoinCatalogComingSoon';
 function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter basename='/dev'>
-				<Navbar />
+				{/* <Navbar /> */}
+				<Navbar id='navbar' collapseOnSelect expand='md' sticky='top' className='navbar-dark'>
+					<Nav.Link as={Link} to='/'>
+					<img src={logo} alt='SyriosLogoLight'style={{width:'50%'}}/>
+					</Nav.Link>
+				<Navbar.Collapse id='responsive-navbar-nav'>
+					<Nav className='ms-auto'  style={{marginRight:'5.2vmax'}}>
+						<Nav.Link as={Link} to='/' className='navbar-text d-flex align-items-center'>HOME</Nav.Link>
+						<Nav.Link as={Link} to='/Stories' className='navbar-text d-flex align-items-center'>STORIES</Nav.Link>
+					<NavDropdown title='EVIDENCE' className='navbar-text'>
+						<NavDropdown.Item as={Link} to='/Evidence' className='navbar-text '>Overview</NavDropdown.Item>
+						<NavDropdown.Divider />
+						<NavDropdown.Item as={Link} to='/Evidence/CoinSort' className='navbar-text'>Coins in a Pile</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Evidence/MapCoins' className='navbar-text'>Coins on a Map</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Evidence/Timeline' className='navbar-text'>Coins in Time</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Evidence/CoinCatalog' className='navbar-text'>Coins in a Catalog</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Coins as Data</NavDropdown.Item>
+					</NavDropdown>
+					<NavDropdown title='TOOL BOX' className='navbar-text'>
+						<NavDropdown.Item as={Link} to='/Toolbox' className='navbar-text '>Overview</NavDropdown.Item>
+						<NavDropdown.Divider />			
+						<NavDropdown.Item as={Link} to='/HowToReadACoin' className='navbar-text'>How to Read a coin</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3d</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/Glossary/all' className='navbar-text'>Glossary</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Download Data</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/Research' className='navbar-text'>Research</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/VideoLibrary' className='navbar-text'>Video library</NavDropdown.Item>
+					</NavDropdown>
+					</Nav>
+				</Navbar.Collapse>
+				</Navbar>
+
 				<Routes>
 					<Route element={<FooterWrapper/>}>
 						<Route exact path='/' element={<LandingPage />} />
@@ -41,7 +77,7 @@ function App() {
 						<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 						<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 						<Route path='/Evidence/Timeline' element={<Timeline />} />
-						<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
+						<Route path='/Evidence/CoinCatalog' element={<CoinCatalogComingSoon />} />
 						<Route path='/Evidence/Download' element={<Download />} />
 						<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 						<Route path='/Toolbox/Research' element={<Research />} />
