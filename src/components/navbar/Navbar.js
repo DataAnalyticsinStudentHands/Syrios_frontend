@@ -18,7 +18,7 @@ function BootstrapNavbar() {
             <NavDropdown.Item as={Link} to='/Evidence/CoinSort' className='navbar-text'>Coins in a Pile</NavDropdown.Item>
             <NavDropdown.Item as={Link} to='/Evidence/MapCoins' className='navbar-text'>Coins on a Map</NavDropdown.Item>
             <NavDropdown.Item as={Link} to='/Evidence/Timeline' className='navbar-text'>Coins in Time</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to='/Evidence/CoinCatalog' className='navbar-text'>Coins in a Catalog</NavDropdown.Item>
+            {/* <NavDropdown.Item as={Link} to='/Evidence/CoinCatalog' className='navbar-text'>Coins in a Catalog</NavDropdown.Item> */}
             <NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Coins as Data</NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title='TOOL BOX' className='navbar-text'>
