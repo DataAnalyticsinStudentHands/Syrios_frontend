@@ -28,11 +28,12 @@
     font-family: var(--mainFonts);
     width: 250px;
     transition: 0.5s;
+    &:hover{
+      background: #ffffff 0% 0% no-repeat padding-box;
+      color: #7899A8;
+    }
   }
-  .download-button:hover{
-    background: #ffffff 0% 0% no-repeat padding-box;
-    color: #7899A8;
-  }
+  
   #download-alter-text{
     font-family: var(--mainFonts);
   

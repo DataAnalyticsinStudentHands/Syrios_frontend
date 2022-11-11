@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { Container, Row, Col, Alert, Form} from 'react-bootstrap';
+import { Container, Row, Col, Form} from 'react-bootstrap';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
@@ -12,7 +12,6 @@ import downloadRequest from 'src/api/download';
 
 function Download(){
   const [isLoading, setIsLoading] = useState(true);
-  const [submitButton, setSubmitButton] = useState(false)
   const [show, setShow] = useState(false)
   const [downloadPageData, setDownloadPageData] = useState([])
 
@@ -27,12 +26,13 @@ function Download(){
 
   const formik = useFormik({
     initialValues:{
-      fullName:"",
+      // fullName:"",
+      name:"",
       email:"",
     },
     validationSchema:Yup.object({
-      fullName: Yup.string()
-      .min(7, '* Names must have at least 7 characters')
+      name: Yup.string()
+      .min(2, '* Names must have at least 2 characters')
       .max(30, "* Names can't be longer than 30 characters")
       .required('* Full name is required'),
       email:Yup.string()
@@ -41,9 +41,9 @@ function Download(){
       .required('* Email is required'),
     }),
     onSubmit: (values,{resetForm})=>{
-      axios.post(`${process.env.REACT_APP_strapiURL}/api/download`, values)
+
+      axios.post(`${process.env.REACT_APP_strapiURL}/api/user-download`, {data:values})
         .then(resetForm())
-        .then(setSubmitButton(true))
         .then(setShow(true))
         .catch(err =>{console.error(err)})
       saveAs(
@@ -57,15 +57,15 @@ function Download(){
 
   return(
       <div id='download-page'>
-          <Row>
+          {/* <Row>
               <Alert className='download-alert green-text story-text text-center'  show={show} variant="success" onClose={() => setShow(false)} dismissible>
                   Data is downloading ...
               </Alert>
-          </Row>
+          </Row> */}
         <Container className='my-5'>
 
           <center>
-          <h1>Download the Data</h1>
+            <h1>Download the Data</h1>
           </center>
           <Row className='d-flex justify-content-around align-items-center'>
             <Col xs={8}>
@@ -95,16 +95,16 @@ function Download(){
                 <Row className='light-blue-background my-2 d-flex justify-content-center' >
                   <Form className='mx-2 my-3 px-5' onSubmit={formik.handleSubmit}>
                     <Form.Group className='mt-3'>
-                      <Form.Label className='mb-3' htmlFor='fullName'>Full Name</Form.Label>
+                      <Form.Label className='mb-3' htmlFor='name'>Full Name</Form.Label>
                       <Form.Control 
-                        id = "fullName"
+                        id = "name"
                         type='text'
                         onChange={formik.handleChange}
                         onBlur = {formik.handleBlur}
-                        value = {formik.values.fullName}
+                        value = {formik.values.name}
                         className='form-control'
                       />
-                      {formik.touched.fullName && formik.errors.fullName ? <div className="error-message">{formik.errors.fullName}</div>: null}
+                      {formik.touched.name && formik.errors.name ? <div className="error-message">{formik.errors.name}</div>: null}
                     </Form.Group>
                     <Form.Group className='mt-4'>
                       <Form.Label className='mb-3' htmlFor='email'>Email Address</Form.Label>
@@ -118,9 +118,12 @@ function Download(){
                       />
                       {formik.touched.email && formik.errors.email ? <div className="error-message">{formik.errors.email}</div>: null}
                     </Form.Group>
-                      <button type='submit' className='download-button my-5' disabled={!formik.isValid || submitButton}>
+                      {/* <button type='submit' className='download-button my-5' disabled={!formik.isValid}>
                         Download Data
-                      </button>
+                      </button> */}
+                    <center>
+                      { show ? <div className='my-5' style={{fontSize:'18px'}}>Data is downloading </div> : <button type='submit' className='download-button my-5' disabled={!formik.isValid} >Submit</button>}
+                    </center>
                   </Form>
                 </Row>
               </Container>

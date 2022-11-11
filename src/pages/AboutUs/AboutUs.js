@@ -23,7 +23,6 @@ const About = () => {
     async function fetchData (){
       const result = await aboutUsRequest.aboutUsFind()
       const data = result.data.data.attributes
-      console.log(data)
       setAboutUsdata(data)
       setIsLoading(false)
     }
