@@ -17,6 +17,7 @@ const About = () => {
       "Humanities Advisors",
       "Grants & Funding",
       "Museums & Organizations",
+      "Partner"
   ]
   useEffect(() => {
     async function fetchData (){
@@ -121,73 +122,10 @@ const About = () => {
                 </Row>
               ):(<></>)
             }
-
-            {
-              currentTab === "Humanities Advisors" ? (
-                <div className='p-5 m-5'>
-                <h3>SYRIOS is grateful to the following panel of experts, who helped advise on the prototype’s content, design, accessibility, and usability.</h3>
-                {aboutUsData?.humanities_advisors?.map(s=>{
-                return(
-                  <div className='aboutTable-humanities_advisors my-3' key={s.id}>
-                    <div className="story-text">
-                      <p className='story-text-bigger'><strong>{s.caption}</strong></p>
-                      <em>{s.subcaption}</em>
-                      <p dangerouslySetInnerHTML={createMarkup(s.descriotion)} />
-                    </div>
-                  </div>
-                )
-              })}
-                </div>
-              ):(<></>)
-            }
-
-            
-            {currentTab === "Grants & Funding" ? (
-                <div className='p-5 m-5'>
-                <h3>SYRIOS is made possible through the generous support of the several grants and organizations.</h3>
-                <p className='story-text-bigger mt-5'><strong>External Funding</strong></p>
-                {aboutUsData?.grants_and_funding?.map(s=>{
-                  return(
-                    s.external_or_internal ?(<></>):(
-                      <div className='aboutTable-grants_funding story-text' key={s.id}>
-                      {s.year} <span>{s.organization}</span>
-                      </div>)
-                  )
-                })}
-                <p className='story-text-bigger mt-5'><strong>Internal Funding through the University of Houston</strong></p>
-                {aboutUsData?.grants_and_funding?.map(s=>{
-                  return(
-                    s.external_or_internal ? (
-                      <div className='aboutTable-grants_funding story-text' key={s.id}>
-                      {s.external_or_internal ? (<>{s.year} <span>{s.organization}</span></>):(<></>)}
-                      </div>):(<></>))
-                })}
-                </div>
-              ):(<></>)
-            }
-
-            {
-              currentTab === "Museums & Organizations" ? (
-                <div className='p-5 m-5'>
-                  <h3>All photographs of coins featured on SYRIOS are courtesy of the following museums and organizations:</h3>
-                  <div className='my-3 py-3'>
-                    {aboutUsData?.museums_and_organizations?.map(s=>{
-                      return(s.coin_souce ? (<div className='aboutTable-grants_funding story-text-bigger' key={s.id} dangerouslySetInnerHTML={createMarkup(s.coin_souce)}/>):(<></>))
-                    })}
-                  </div>
-                  <h3>We are grateful to the following organizations for the opportunity to present the research and development of SYRIOS:</h3>
-                  <div className='my-3 py-3'>
-                    {aboutUsData?.museums_and_organizations?.map(s=>{
-                      return(
-                        s.coin_souce ? (<></>):(
-                          <div className='aboutTable-grants_funding story-text' key={s.id}>
-                          {s.coin_souce ? (<></>):(<>{s.year} <span>{s.organization}</span></>)}
-                          </div>))
-                    })}
-                  </div>
-                </div>
-              ):(<></>)
-            }
+            {currentTab === "Humanities Advisors" ? (<div dangerouslySetInnerHTML={createMarkup(aboutUsData.humanities_advisors)} className='p-5 m-5'/>):(<></>)}
+            {currentTab === "Grants & Funding" ? (<div dangerouslySetInnerHTML={createMarkup(aboutUsData.grants_and_funding)} className='p-5 m-5'/>):(<></>)}
+            {currentTab === "Museums & Organizations" ? (<div dangerouslySetInnerHTML={createMarkup(aboutUsData.museums_and_organizations)} className='p-5 m-5'/>):(<></>)}
+            {currentTab === "Partner" ? (<div dangerouslySetInnerHTML={createMarkup(aboutUsData.partner)} className='p-5 m-5'/>):(<></>)}
           </div>
         </div>
       </div>
