@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { Row, Col, Form, Alert} from 'react-bootstrap';
+import { Row, Col, Form} from 'react-bootstrap';
 import axios from 'axios';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
 
@@ -10,7 +10,7 @@ const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?
 
 function ContactUs(){
 
-  const [submitButton, setSubmitButton] = useState(false)
+  // const [submitButton, setSubmitButton] = useState(false)
   const [show, setShow] = useState(false)
 
   const formik = useFormik({
@@ -18,11 +18,11 @@ function ContactUs(){
       name:"",
       email:"",
       phone:"",
-      writtenMessage:""
+      message:""
     },
     validationSchema:Yup.object().shape({
         name: Yup.string()
-          .min(7, '*Names must have at least 7 characters')
+          .min(2, '*Names must have at least 2 characters')
           .max(40, "*Names can't be longer than 40 characters")
           .required('* Name is required'),
         email: Yup.string()
@@ -32,14 +32,13 @@ function ContactUs(){
         phone: Yup.string()
           .matches(phoneRegExp, '*Phone number is not valid')
           .required('* Phone number required'),
-        writtenMessage: Yup.string()
+          message: Yup.string()
           .min(7, '*Message must have at least 7 characters')
           .required('*Message required'),
       }),
     onSubmit: (values,{resetForm})=>{
-        axios.post(process.env.REACT_APP_strapiURL + '/api/contact-us', values)
+        axios.post(`${process.env.REACT_APP_strapiURL}/api/user-contact-us`, {data:values})
             .then(resetForm())
-            .then(setSubmitButton(true))
             .then(setShow(true))
             .catch(err =>{console.error(err)})
     }
@@ -49,11 +48,11 @@ function ContactUs(){
     <>
       <FeedBackicon/>
       <div id='contactus-page'>
-            <Row>
+            {/* <Row>
                 <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
                     Thanks for contacting us, we will get back to you soon!
                 </Alert>
-            </Row>
+            </Row> */}
           <Row className='d-flex justify-content-between'>
             <Col xs={3} className=" d-flex align-items-center justify-content-center">
                 <img
@@ -103,16 +102,16 @@ function ContactUs(){
                         <Form.Control
                             as="textarea"
                             rows={8}
-                            name="writtenMessage"
+                            name="message"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
-                            value={formik.values.writtenMessage}
+                            value={formik.values.message}
                         />
-                        {formik.touched.writtenMessage && formik.errors.writtenMessage ? (
-                        <div className="error-message">{formik.errors.writtenMessage}</div>
-                        ) : null}
+                        {formik.touched.message && formik.errors.message ? (<div className="error-message">{formik.errors.message}</div>) : null}
                     </Form.Group>
-                    <center><button type='submit' className='contact-us-button' disabled={!formik.isValid || submitButton} >Submit</button></center>
+                    <center>
+                      { show ? <h3>Thans for Contact Us!</h3> : <button type='submit' className='contact-us-button' disabled={!formik.isValid} >Submit</button>}
+                    </center>
                 </Form>
             </Col>
           </Row>
