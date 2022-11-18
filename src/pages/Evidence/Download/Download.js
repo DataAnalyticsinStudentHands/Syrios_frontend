@@ -25,9 +25,9 @@ function Download(){
 
   return(
       <div id='download-page'>
-            <h1>Download the Data</h1>
+          <h1>Download the Data</h1>
           <Row className='d-flex justify-content-between align-items-center'>
-            <Col xs={8}>
+            <Col sm={12} md={8}>
                 <Row className='d-flex justify-content-around'>
                   <Col xs={3} className='text-center story-icon download-icon'>&#xe810;</Col>
                   <Col xs={9} className='story-text' dangerouslySetInnerHTML={createMarkup(downloadPageData.text) } />
@@ -36,7 +36,7 @@ function Download(){
                   <img alt={'Download'} src={`${process.env.REACT_APP_strapiURL}/uploads/Image_47_89dc6433d0.png?updated_at=2022-04-14T13:41:55.091Z`}/>
                 </Row>
             </Col>
-            <Col xs={3}>
+            <Col sm={12} md={3} >
               <DownloadForm url={downloadPageData.coinData.data.attributes.url}/>
             </Col>
           </Row>
