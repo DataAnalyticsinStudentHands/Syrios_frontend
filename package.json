@@ -5,7 +5,6 @@
   "homepage": "/dev",
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.19",
-    "@hookform/resolvers": "^2.9.10",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -30,8 +29,7 @@
     "react-scripts": "4.0.3",
     "react-slick": "^0.29.0",
     "sass": "^1.52.3",
-    "web-vitals": "^2.1.2",
-    "yup": "^0.32.11"
+    "web-vitals": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
