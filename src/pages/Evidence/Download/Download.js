@@ -25,9 +25,7 @@ function Download(){
 
   return(
       <div id='download-page'>
-          <center>
             <h1>Download the Data</h1>
-          </center>
           <Row className='d-flex justify-content-between align-items-center'>
             <Col xs={8}>
                 <Row className='d-flex justify-content-around'>
