@@ -4,21 +4,6 @@
     margin-left: 10%;
     padding-top: 7.5vmax;
     padding-bottom: 7.5vmax;
-
-    .form-control{
-      font-size: 3em;
-      border: 1px solid #707070;
-      border-radius: 7.5px;
-      font-family: $syrios-font-family-garamond-premier-pro;
-      color: #737271;
-      padding: 0.375rem 2rem;
-
-    }
-    .error-message{
-      font-size: 1.75em;
-      color: red;
-    }
-
   }
   .feedbackicon{
     position:absolute;
@@ -30,4 +15,73 @@
   .feedbacktext{
     font-family: $syrios-garamond-premier-pro;
     font-size: 32pt;
+  }
+  #ContactUsForm{
+    label {
+      line-height: 1;
+      text-align: left;
+      display: block;
+      color: #183848;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    span{
+      font-size: 2.5rem;
+    }
+    .formItem{
+      margin-bottom: 3rem;
+    }
+    .error-message{
+      font-size: 2em;
+      color: red;
+    }
+    input {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid white;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+  
+    input[type="checkbox"]{
+      display: inline-block;
+      width: auto;
+      border: 1px solid #7899a8;
+      color: #183848;
+      font-size: 2rem;
+    }
+  
+    input[type="submit"] {
+      background: #7899A8 0% 0% no-repeat padding-box;
+      color: #ffffff;
+      text-transform: uppercase;
+      border: 1px solid #7899a8;
+      border-radius: 15px;
+      font-size: 2rem;
+      padding: 5px 10px;
+      width: 50%;
+      margin-left: 25%;
+      &:hover{
+        background: #ffffff 0% 0% no-repeat padding-box;
+        color: #7899A8;
+      }
+    }
+    textarea{
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid white;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+    .contacting{
+      color: #183848;
+      font-size: 3rem;
+      text-align: center;
+    }
   }

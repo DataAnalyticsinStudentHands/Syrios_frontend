@@ -7,67 +7,79 @@
   .download-icon {
     font-size: 7vmax;
   }
-  .download-alert{
-    position:absolute;
-    top:10%
-  }
-  #download-sub-title {
-    font-size: large;
-    font-weight: bold;
-  }
-  #download-sub-text {
-    font-size: medium;
-  }
-  .download-button {
-    background: #7899A8 0% 0% no-repeat padding-box;
-    color:#ffffff;
-    opacity: 1;
-    border: 1px solid #7899a8;
-    border-radius: 15px;
-    font-size: 18px;
-    font-family: var(--mainFonts);
-    width: 250px;
-    transition: 0.5s;
-    &:hover{
-      background: #ffffff 0% 0% no-repeat padding-box;
-      color: #7899A8;
-    }
-  }
-  
-  #download-alter-text{
-    font-family: var(--mainFonts);
-  
-  }
-  .form-label{
-    font-family: $syrios-font-family-garamond-premier-pro;
-    font-size: $syrios-font-size-16 ;
-    font-style: $syrios-font-style-normal;
+}
+#downloadNotes{
+  line-height: $syrios-line-spacing-20;
+  font-family: $syrios-font-family-garamond-premier-pro;
+  font-style: $syrios-font-style-normal;
+  font-weight: $syrios-font-weight-semi-bold;
+  font-size: $syrios-font-size-20;
+  color: #183848;
+  text-align:	center;
+  margin-bottom: 10%;
+}
+#downloadForm{
+  background-color: rgba(184,204,216,0.35);
+  border-radius: 15px;
+  padding: 5% 10%;
 
-
+  label {
+    line-height: 1;
+    text-align: left;
+    display: block;
+    color: #183848;
+    font-size: 2.5rem;
+    margin-bottom: 5%;
   }
-  .form-control{
-    font-size: 2em;
-    border: 1px solid #D8D6D4;
-    border-radius: 1px;
-    font-family: $syrios-font-family-garamond-premier-pro;
-    color: #737271;
-    padding: 0.375rem 2rem;
-
+  span{
+    font-size: 2rem;
+  }
+  .formItem{
+    margin-bottom: 5%;
   }
   .error-message{
     font-size: 1.5em;
     color: red;
   }
-
-  .story-download-text b {
-    line-height: $syrios-line-spacing-20;
-    font-family: $syrios-font-family-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-semi-bold;
-    font-size: $syrios-font-size-16;
-    color: #183848;
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 2rem;
   }
 
+  input[type="checkbox"]{
+    display: inline-block;
+    width: auto;
+    border: 1px solid #7899a8;
+    color: #183848;
+    font-size: 2rem;
+  }
+
+  input[type="submit"] {
+    background: #7899A8 0% 0% no-repeat padding-box;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 1px solid #7899a8;
+    border-radius: 15px;
+    font-size: 2rem;
+    padding: 5px 10px;
+
+    &:hover{
+      background: #ffffff 0% 0% no-repeat padding-box;
+      color: #7899A8;
+    }
+  }
+  .downloading{
+    color: #183848;
+    font-size: 3rem;
+    text-align: center;
+
+  }
 }
 
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 import { Link } from 'react-router-dom';
 import SubscriptionButton from './subscriptionButton'
@@ -7,16 +7,6 @@ async function scrollToTop (e){
     document.documentElement.scrollTop = 0;
 }
 function Footer2(){
-
-
-    const [email, setEmail] = useState('')
-
-
-    async function handleSubmit(){
-        
-        console.log(email)
-    }
-
     return(
         <div id='footer2'>
             <div id="footer2-Container">
