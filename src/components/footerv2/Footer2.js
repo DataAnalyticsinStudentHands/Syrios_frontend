@@ -44,7 +44,7 @@ function Footer2(){
                 <div className="split-half">
                     <div style={{marginTop:'12.5%'}}>
                         <div id="footer2-links">
-                            <Link to='/About' className="footer2-link" onClick={(e)=>{scrollToTop(e)}}>About Syrios</Link>
+                            <Link to='/About' className="footer2-link" onClick={(e)=>{scrollToTop(e)}}>About SYRIOS</Link>
                             <Link to='/ContactUs' className="footer2-link" onClick={(e)=>{scrollToTop(e)}}> Contact Us</Link>
                             {/* <Link to='/Evidence/MapCoins' className="footer2-link"> Sitemap</Link>
                             <Link to='/' className="footer2-link"> Privacy Policy</Link> */}
