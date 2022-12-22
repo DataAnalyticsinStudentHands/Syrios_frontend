@@ -1,0 +1,295 @@
+.Coins{
+    height: 100%;
+	padding:5% 10%;
+
+    .filters{
+        margin: 2.5% 0%;
+        position: relative;
+        .filter-head{
+            display: flex;
+            justify-content: space-between;
+
+            h1{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 50px;
+                line-height: 61px;
+    
+                color: #737271;
+            }
+            button{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 40px;
+                line-height: 48px;
+                color: #D8B848;
+                cursor: pointer;
+                border: none;
+                background-color: transparent;
+
+                &:hover{
+                    color: #987818;
+                }
+            }
+        }
+        .filter-body{
+            display: grid;
+            gap: 5em;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+            .filter{
+                position: relative;
+                .filterList{
+                    align-items: center;
+                    display: flex;
+                    gap:10px;
+                    align-self: center;
+                    flex-flow: wrap;
+                    margin-bottom: 24px;
+                    position: relative;
+                    // position: absolute;
+                    z-index: 1;
+            
+                    .filterList-item{
+                        cursor: pointer;
+                        padding: 0.125em 0.25em;
+                        border: 2px solid #737271;
+                        border-radius: 25%;
+            
+                        -webkit-border-radius: 28;
+                        -moz-border-radius: 28;
+                        border-radius: 28px;
+                        color: #737271;
+                        font-size: 24px;
+                        padding: 5px 20px;
+                        margin-top: 10px;
+                        text-decoration: none;
+                          
+                        &:hover {
+                        background: #D8B848;
+                        color: #F4F2F0;
+                        text-decoration: none;
+                        }
+                    }
+
+                    .filterList-one-item{
+                        cursor: default;
+
+                        padding: 0.125em 0.25em;
+                        border: 2px solid #737271;
+                        border-radius: 25%;
+            
+                        -webkit-border-radius: 28;
+                        -moz-border-radius: 28;
+                        border-radius: 28px;
+                        color: #737271;
+                        font-size: 24px;
+                        padding: 5px 20px;
+                        margin-top: 10px;
+                        text-decoration: none;
+                          
+                        &:hover {
+                        background: #D8B848;
+                        color: #F4F2F0;
+                        text-decoration: none;
+                        }
+                    }
+            
+                    
+                }
+                .filter-trigger{
+                    // display: flex;
+                    cursor: pointer;
+                    padding: 1% 5%;
+                    border: 2px solid #737271;
+                    border-radius: 15px;
+
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 36px;
+                    line-height: 44px;
+                    color: #737271;
+                    span{
+                        position: absolute;
+                        right: 0;
+                        font-size: 42px;
+                    }
+
+                    .filter-content{
+                        display: none;
+                        width: 100%;
+                        left: 0;
+                        position: absolute;
+
+                        background-color: #fff;
+                        z-index: 2;
+                        border: 2px solid #737271;
+                        border-radius: 15px;
+    
+                        .filter-content-item{
+                            font-size: 32px;
+                            cursor: pointer;
+                            padding: 1% 5%;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 44px;
+                            color: #737271;
+    
+                            &:hover{
+                                background: #D8B848;
+                                border-radius: 15px;
+                                color: #F4F2F0;
+                            }
+                        }
+                    }
+
+                    &:hover{
+                        background: #D8B848;
+                        color: #F4F2F0;
+                        .filter-content{
+                            display: block;
+                        }
+                    }
+                }
+                .filter-one-content{
+                    padding: 1% 5%;
+                    border: 2px solid #737271;
+                    border-radius: 15px;
+
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 36px;
+                    line-height: 44px;
+                    color: #737271;
+
+
+                    &:hover{
+                        background: #D8B848;
+                        color: #F4F2F0;
+                    }
+                }
+            }
+        }
+
+
+    }
+    // .filterList{
+
+    //     align-items: center;
+    //     display: flex;
+    //     gap:20px;
+    //     align-self: center;
+    //     flex-flow: wrap;
+    //     margin-bottom: 24px;
+    //     z-index: 0;
+
+
+
+    //     .filterList-item{
+    //         cursor: pointer;
+    //         padding: 0.125em 0.25em;
+    //         border: 2px solid #737271;
+    //         border-radius: 25%;
+
+    //         -webkit-border-radius: 36;
+    //         -moz-border-radius: 36;
+    //         border-radius: 36px;
+    //         color: #737271;
+    //         font-size: 32px;
+    //         padding: 5px 20px;
+    //         text-decoration: none;
+              
+              
+    //           &:hover {
+    //             background: #D8B848;
+    //             color: #F4F2F0;
+    //             text-decoration: none;
+    //           }
+    //     }
+
+        
+    // }
+    .results{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 48px;
+        color: #737271;
+
+        margin-bottom: 2.5%;
+
+        display: flex;
+        .filter{
+            position: relative;
+            width: 3em;
+            margin-left: 1em;
+            .filter-trigger{
+                display: flex;
+                cursor: pointer;
+                padding: 1% 5%;
+                border: 2px solid #737271;
+                border-radius: 15px;
+
+                font-style: normal;
+                font-weight: 700;
+                font-size: 36px;
+                line-height: 44px;
+
+                color: #737271;
+                span{
+                    position: absolute;
+                    right: 0;
+                }
+            }
+            .filter-content{
+                
+                display: none;
+                width: 100%;
+
+                /* Position it right below the trigger element */
+                left: 0;
+                padding-top: 0.25rem;
+                position: absolute;
+                top: 100%;
+            
+                /* It should be on the top of other elements */
+                background-color: #fff;
+                z-index: 9999;
+                border: 2px solid #737271;
+                
+
+
+                .filter-content-item{
+                    font-size: 32px;
+                    cursor: pointer;
+                    padding: 1% 5%;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 44px;
+
+                    color: #737271;
+
+                    &:hover{
+                        background: #D8B848;
+                        color: #F4F2F0;
+
+                    }
+                }
+                
+            }
+            &:hover{
+                .filter-trigger{
+                    background: #D8B848;
+                    color: #F4F2F0;
+
+                }
+                .filter-content{
+                    display: block;
+                }
+            }
+        }
+    }
+    #no-coins-return{
+
+    }
+}

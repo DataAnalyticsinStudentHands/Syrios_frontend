@@ -74,20 +74,20 @@
 	}
 	.catalog-carousel-image{
 		background-color: #EDEDED;
-		margin: 0 2rem;
-		padding: 2rem
-		;
+		padding: 2.5rem;
+		align-items: center;
+		display: flex;
+		justify-content: center;  
 	}
+
 	.catalog-carousel-text{
 		margin-top: 0.25em;
 		margin-bottom: 1em;
-		font-family: 'Cormorant Garamond';
 		font-style: normal;
 		font-weight: 600;
 		font-size: 50px;
 		line-height: 61px;
 		text-align: center;
-
 		color: #7899A8;
 	}
 
@@ -95,7 +95,6 @@
 
 
 	.catalog-content-coin-name{
-		font-family: 'Cormorant Garamond';
 		font-style: italic;
 		font-weight: 700;
 		font-size: 44px;
@@ -104,7 +103,6 @@
 		color: #313029;
 	}
 	.catalog-content-coin-date{
-		font-family: 'Cormorant Garamond';
 		font-style: italic;
 		font-weight: 600;
 		font-size: 38px;
@@ -113,7 +111,6 @@
 		color: #7899A8;
 	}
 	.catalog-content-p{
-		font-family: 'Cormorant Garamond';
 		font-style: normal;
 		font-weight: 500;
 		font-size: 34px;
@@ -131,8 +128,6 @@
 		// height: 69px;
 		padding: 0.25em 0.75em;
 		border-radius: 30px 0px;
-
-		font-family: 'Cormorant Garamond';
 		font-style: normal;
 		font-weight: 700;
 		font-size: 36px;

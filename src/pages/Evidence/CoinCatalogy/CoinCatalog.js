@@ -1,25 +1,23 @@
-import React
-// {useState, useEffect} 
-from 'react';
-import Footer from 'src/components/footerv2/Footer2';
+import React, {useState, useEffect} from 'react';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
-// import coinSortRequest from 'src/api/coin-sort';
+import coinCollections from 'src/api/coin-collections';
 import Slider from 'react-slick';
 
 import { Row, Col } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
 const CoinCatalog = ()=>{
 
-    // const [data, setData] = useState([])
+    const [spotLightdata, setSpotLightdata] = useState([])
 
-    // useEffect(()=>{
-	// 	const fetchData = async ()=>{
-	// 		const result = await coinSortRequest.coinStotlight()
-    //         console.log(result.data.data)
-    //         setData(result.data.data)
-    //     }
-	// 	fetchData().catch(console.error);    
-    // },[])
+    useEffect(()=>{
+		const fetchData = async ()=>{
+			const result = await coinCollections.coinSpotLight()
+            // console.log(result.data.data)
+            setSpotLightdata(result.data.data)
+        }
+		fetchData().catch(console.error);    
+    },[])
 
     function NextArrow(props){
         const { className, style, onClick } = props;
@@ -67,11 +65,11 @@ const CoinCatalog = ()=>{
                         <div className="input-addon__addon input-addon__addon--prepended icon-entypo-search"/>
                         <input type="text" className="input-addon__input" placeholder='Search by coin name, type, date, and more.'/>
                     </div>
-                    <Row style={{padding:"0 5%"}}>
-                        <Col><button className='catalog-button'> What is the catalog?</button></Col>
-                        <Col><button className='catalog-button'> Our partners</button></Col>
-                        <Col><button className='catalog-button'> Our research</button></Col>
-                        <Col><button className='catalog-button'> Coin of the day</button></Col>
+                    <Row style={{padding:"5% 5%"}}>
+                        <Col xs={6} sm={3}><button className='catalog-button'> What is the catalog?</button></Col>
+                        <Col xs={6} sm={3}><button className='catalog-button'> Our partners</button></Col>
+                        <Col xs={6} sm={3}><button className='catalog-button'> Our research</button></Col>
+                        <Col xs={6} sm={3}><button className='catalog-button'> Coin of the day</button></Col>
                     </Row>
                 </div>
 
@@ -80,69 +78,20 @@ const CoinCatalog = ()=>{
                     
                     <div className='my-5 py-5'>
                     <Slider {...Slicksettings}>
-                        {/* {data.map((image)=>{
-                            console.log(image)
+                        {spotLightdata.map((image)=>{
                             return(
+                                <Link className="link" to={`/Coin/${image.id}`}>
                                 <div className='catalog-carousel-images'>
                                     <div className='catalog-carousel-image'>
-                                        <img src={`${process.env.REACT_APP_strapiURL}${image.attributes.obverse_file.data.attributes.url}`} alt='test_image'width={'100%'}/>
+                                        <img src={`${process.env.REACT_APP_strapiURL}${image.attributes.obverse_image?.data.attributes.url}`} alt='test_image'width={'100%'}/>
                                     </div>
-                                    <div className='catalog-carousel-text'>Coin 1</div>
+                                    {/* <div className='catalog-carousel-text'>Coin 1</div> */}
                                 </div>
+                            </Link>
                             )
-                        })} */}
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 1</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 2</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 3</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 4</div>
-                            </div>
-
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 5</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 6</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 7</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 8</div>
-                            </div>
+                        })}
                     </Slider>
                     </div>
-                    
                 </div>
 
                 <div className='catalog_section'>
@@ -182,7 +131,6 @@ const CoinCatalog = ()=>{
                 </div>
 
             </div>
-            <Footer/>
         </>
     )
 }

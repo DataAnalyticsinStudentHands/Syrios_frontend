@@ -1,0 +1,38 @@
+.CoinPaginate{
+
+    .pagination {
+        // padding-left: 0;
+        list-style: none;
+        gap: 30px;
+
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+
+        a{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 72px;
+            display: flex;
+            align-items: center;
+
+            color: #696969;
+            transition: 0.1s;
+
+            &:hover{
+                color:#D8D6D4;
+            }
+
+        }   
+        .active a {
+            color: #D8D6D4;
+
+        }
+        
+        .disabled a{
+            color: #D8D6D4;
+        }
+    }
+    
+}
