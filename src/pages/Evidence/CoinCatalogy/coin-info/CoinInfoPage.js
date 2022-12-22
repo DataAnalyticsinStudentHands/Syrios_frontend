@@ -101,21 +101,17 @@ function CoinInfoPage (){
                         <h1>Language:</h1>
                         <p>{data?.attributes?.language?.data?.attributes?.language.length === 0 ? "None" :data?.attributes?.language?.data?.attributes?.language}</p>
                     </div>
-                    <div className='item'>
-                        <h1>Cool Factor:</h1>
-                        <p></p>
-                    </div>
                 </div>
             </div>
             <div className='section2-bottom'>
                 <div className='item'>
-                    Source Image: {data?.attributes?.souce_image}
+                    Source Image: {data?.attributes?.souce_image.length === 0 ? " None" :data?.attributes?.souce_image}
                 </div>
                 <div className='item'>
-                    Rights holder: {data?.attributes?.right_holder}
+                    Rights holder: {data?.attributes?.right_holder.length === 0 ? " None" :data?.attributes?.right_holder}
                 </div>
                 <div className='item'>
-                    Bibliography: {data?.attributes?.reference}
+                    Bibliography: {data?.attributes?.reference.length === 0 ? " None" :data?.attributes?.reference}
                 </div>
                 <div className='backbutton' style={{textAlign:"center"}}>
                     <Link className='BackButton' to={`/Evidence/CoinCatalogDev`}>

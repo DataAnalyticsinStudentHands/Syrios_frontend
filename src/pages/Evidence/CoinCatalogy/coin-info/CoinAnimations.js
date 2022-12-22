@@ -62,14 +62,14 @@ function CoinScaleAndFlip(props) {
               <img
                 alt={props.obverseImg?.data?.attributes}
                 className='coin-info-image-flip coin-info-image-flip-front'
-                src={process.env.REACT_APP_UPLOAD_URL + props.obverseImg?.data?.attributes?.url}
+                src={process.env.REACT_APP_UPLOAD_URL + props?.obverseImg?.data?.attributes?.url}
               />
             </div>
             <div className='flip-box-back'>
               <img
                 alt={props.reverseImg?.data?.attributes}
                 className='coin-info-image-flip coin-info-image-flip-back'
-                src={process.env.REACT_APP_UPLOAD_URL + props.reverseImg?.data?.attributes?.url}
+                src={process.env.REACT_APP_UPLOAD_URL + props?.reverseImg?.data?.attributes?.url}
               />
             </div>
           </div>
