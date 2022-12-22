@@ -12,7 +12,9 @@ import StoryReader from 'src/pages/Stories/StoryReader.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort/CoinSort.js';
 import MapCoins from './pages/Evidence/MapCoins/MapCoins';
-//import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
+import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
+import Coins from './pages/Evidence/CoinCatalogy/CoinList/Coins';
+import CoinInfoPage from './pages/Evidence/CoinCatalogy/coin-info/CoinInfoPage';
 import CoinCatalogComingSoon from './pages/Evidence/CoinCatalogy/CoinCatalogComingSoon';
 import Download from 'src/pages/Evidence/Download/Download.js';
 import Toolbox from './pages/Toolbox/Toolbox';
@@ -79,6 +81,10 @@ function App() {
 						<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 						<Route path='/Evidence/Timeline' element={<Timeline />} />
 						<Route path='/Evidence/CoinCatalog' element={<CoinCatalogComingSoon />} />
+						<Route path='/Evidence/CoinCatalogDev' element={<CoinCatalog />} />
+						<Route path='/Coins' element={<Coins />} />
+						<Route path='/Coin/:id' element={<CoinInfoPage />} />
+
 						<Route path='/Evidence/Download' element={<Download />} />
 						<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 						<Route path='/Toolbox/Research' element={<Research />} />
