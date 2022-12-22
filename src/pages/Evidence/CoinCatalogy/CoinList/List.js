@@ -1,6 +1,6 @@
 import React from "react";
 import "./List.scss";
-import Card from "./Card";
+import { Card } from "./Card";
 
 
 const List = (props) => {

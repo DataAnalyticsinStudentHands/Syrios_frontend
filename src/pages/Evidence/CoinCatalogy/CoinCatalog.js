@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
 import coinCollections from 'src/api/coin-collections';
 import Slider from 'react-slick';
-
+import { SpotlightCard } from './CoinList/Card';
 import { Row, Col } from 'react-bootstrap';
 
-import { Link } from 'react-router-dom';
 const CoinCatalog = ()=>{
 
     const [spotLightdata, setSpotLightdata] = useState([])
@@ -78,18 +77,7 @@ const CoinCatalog = ()=>{
                     
                     <div className='my-5 py-5'>
                     <Slider {...Slicksettings}>
-                        {spotLightdata.map((image)=>{
-                            return(
-                                <Link className="link" to={`/Coin/${image.id}`}>
-                                <div className='catalog-carousel-images'>
-                                    <div className='catalog-carousel-image'>
-                                        <img src={`${process.env.REACT_APP_strapiURL}${image.attributes.obverse_image?.data.attributes.url}`} alt='test_image'width={'100%'}/>
-                                    </div>
-                                    {/* <div className='catalog-carousel-text'>Coin 1</div> */}
-                                </div>
-                            </Link>
-                            )
-                        })}
+                        {spotLightdata.map((coin)=> <SpotlightCard coin={coin}/>)}
                     </Slider>
                     </div>
                 </div>

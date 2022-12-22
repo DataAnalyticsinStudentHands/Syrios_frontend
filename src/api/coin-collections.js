@@ -10,6 +10,11 @@ const coinCollections = {
             populate: [
                 'obverse_image',
                 'reverse_image',
+                'ancient_territory',
+                'mint.modern_name',
+                'mint.modern_country',
+                'material',
+
             ],
             pagination: {
                 page: 1,
