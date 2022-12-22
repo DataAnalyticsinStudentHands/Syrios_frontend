@@ -28,11 +28,11 @@ export const Card = (props) => {
 export const SpotlightCard = (props) =>{
   return(
     <div className="sportlight-card">
-      <Link className="link" to={`/Coin/${props.id}`}>
+      <Link className="link" to={`/Coin/${props?.coin?.id}`}>
       <div className='image'>
             {props?.coin?.obverse_image?.data
               ? <img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.obverse_image?.data?.attributes?.url} alt=""/>
-              :<img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.reverse_image?.data?.attributes?.url}alt=""/>}
+              :<img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.reverse_image?.data?.attributes?.url} alt=""/>}
           </div>
           <h1>{props?.coin?.attributes?.mint?.data?.attributes?.mint} {props?.coin?.attributes?.material?.data?.attributes?.material} {props?.coin?.attributes?.obverse_type.length === 0 ? props?.coin?.attributes?.reverse_type : props?.coin?.attributes?.obverse_type} </h1>
           <h2> Origin: {props?.coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory.length === 0 ? "None" : props?.coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory}</h2>

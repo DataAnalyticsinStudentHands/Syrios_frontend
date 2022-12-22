@@ -77,7 +77,7 @@ const CoinCatalog = ()=>{
                     
                     <div className='my-5 py-5'>
                     <Slider {...Slicksettings}>
-                        {spotLightdata.map((coin)=> <SpotlightCard coin={coin}/>)}
+                        {spotLightdata.map((coin)=> <SpotlightCard coin={coin} key={coin.id}/>)}
                     </Slider>
                     </div>
                 </div>
