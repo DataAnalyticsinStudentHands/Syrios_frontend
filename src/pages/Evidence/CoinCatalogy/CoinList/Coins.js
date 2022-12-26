@@ -7,6 +7,10 @@ const Coins = () => {
   const [coins, setCoins] = useState([])
   const [coinList, setCoinList] = useState([])
   const [coinsPerPage, setCoinsPerPage] = useState(12)
+
+  const [inputText, setInputText] = useState("")
+  const [typesList, setTypesList] = useState({obverse_type:[],reverse_type:[]})
+
   const [filters,setFilters] = useState({
     material:[],
     mint:[],
@@ -15,9 +19,11 @@ const Coins = () => {
     governing_power:[],
     language:[],
     // denomination:[],
-    // obverse_type:[],
-    // reverse_type:[],
-    ancient_territory:[]
+    obverse_type:[],
+    reverse_type:[],
+    ancient_territory:[],
+    from_year:-450,
+    to_year:450
   })
   const [options,setOptions] = useState({
     material:[],
@@ -27,14 +33,14 @@ const Coins = () => {
     governing_power:[],
     language:[],
     // denomination:[],
-    // obverse_type:[],
-    // reverse_type:[],
-    ancient_territory:[]
+    obverse_type:[],
+    reverse_type:[],
+    ancient_territory:[],
   })
   const [refine, setRefine] = useState(false)
   const [collapse, setCollapse] = useState(true)
   const coinsPerPages = [12,24,48,96]
-  
+
   useEffect(()=>{
     const fetchData = async ()=>{
       const result = await coinCollections.coinCollection()
@@ -45,22 +51,15 @@ const Coins = () => {
   },[])
 
   useEffect(()=>{
-    setFilters({
-      material:[],
-      mint:[],
-      // type_category:[],
-      issuing_authority:[],
-      governing_power:[],
-      language:[],
-      // denomination:[],
-      // obverse_type:[],
-      // reverse_type:[],
-      ancient_territory:[]
-    })
-    setCoinList(coins)
-  },[refine, coins])
-
-  useEffect(()=>{
+    function getFilterOptions(filter){
+      let options = []
+      coins.forEach((coin)=>{
+        if (!options.includes(coin?.attributes[filter])){
+          options.push(coin?.attributes?.[filter])
+        }
+      })
+      return options
+    }
     function getDeepFilterOptions(filter){
       let options = []
       coins.forEach((coin)=>{
@@ -78,9 +77,29 @@ const Coins = () => {
       governing_power: getDeepFilterOptions('governing_power'),
       language: getDeepFilterOptions('language'),
       denomination: getDeepFilterOptions('denomination'),
-      ancient_territory: getDeepFilterOptions('ancient_territory')
+      ancient_territory: getDeepFilterOptions('ancient_territory'),
+      obverse_type:getFilterOptions('obverse_type'),
+      reverse_type:getFilterOptions('reverse_type')
     })
   },[coins])
+
+  useEffect(()=>{
+    setFilters({
+      material:[],
+      mint:[],
+      // type_category:[],
+      issuing_authority:[],
+      governing_power:[],
+      language:[],
+      // denomination:[],
+      obverse_type:[],
+      reverse_type:[],
+      ancient_territory:[],
+      from_year:-450,
+      to_year:450
+    })
+    setCoinList(coins)
+  },[refine, coins])
 
   useEffect(()=>{
     var newCoinArray = []
@@ -91,9 +110,11 @@ const Coins = () => {
           (filters.governing_power.length === 0 ? true : filters.governing_power.includes(coin?.attributes?.governing_power?.data?.attributes?.governing_power)) &&
           (filters.language.length === 0 ? true : filters.language.includes(coin?.attributes?.language?.data?.attributes?.language)) &&
           // (filters.denomination.length === 0 ? true : filters.denomination.includes(coin?.attributes?.denomination?.data?.attributes?.denomination)) &&
-          // (filters.obverse_type.length === 0 ? true : filters.obverse_type.includes(coin?.attributes?.obverse_type)) &&
-          // (filters.reverse_type.length === 0 ? true : filters.reverse_type.includes(coin?.attributes?.reverse_type)) &&
-          (filters.ancient_territory.length === 0 ? true : filters.ancient_territory.includes(coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory))
+          (filters.obverse_type.length === 0 ? true : filters.obverse_type.includes(coin?.attributes?.obverse_type)) &&
+          (filters.reverse_type.length === 0 ? true : filters.reverse_type.includes(coin?.attributes?.reverse_type)) &&
+          (filters.ancient_territory.length === 0 ? true : filters.ancient_territory.includes(coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory)) &&
+          (filters.from_year <= coin?.attributes?.from_year) &&
+          (filters.to_year >= coin?.attributes?.to_year)
         ){
         newCoinArray.push(coin)
       }
@@ -101,6 +122,15 @@ const Coins = () => {
     setCoinList(newCoinArray)
   },[options,filters, coins])
   
+  useEffect(()=>{
+    let obverse_types = options.obverse_type.filter(item => item.toLowerCase().includes(inputText))
+    let reverse_types = options.reverse_type.filter(item => item.toLowerCase().includes(inputText))
+    let filterTypes = {
+      obverse_type: [...obverse_types], reverse_type:[...reverse_types]
+    }
+    // console.log(filterTypes)
+    setTypesList(filterTypes)
+  },[inputText,options.obverse_type, options.reverse_type])
 
   function handleAddFilters(e, filter){
     let newFilters= {...filters}
@@ -110,6 +140,7 @@ const Coins = () => {
       newFilters[filter].push(e.target.innerText)
     }
     newOptions[filter] = newOptions[filter].filter(i =>i !== e.target.innerText)
+    setInputText("")
     setFilters(newFilters)
     setOptions(newOptions)
   }
@@ -148,11 +179,13 @@ const Coins = () => {
       </div> 
     )
   }
+
     return (
     <div className='Coins'>
-      {/* <div>
-        <h2>Search results for 'Coins'</h2>
-      </div> */}
+      <div>
+        {/* <h2>Search results for 'Coins'</h2> */}
+        <h3>Coins total: {coinList.length}</h3>
+      </div>
 
       <div className='filters'>
         <div className='filter-head'>
@@ -166,6 +199,9 @@ const Coins = () => {
           {getFilter('Mint', options.mint, 'mint')}
           {/* {getFilter('Type Category', options.type_category, 'type_category')} */}
         </div>
+
+
+
       </div>
       <div className='filters'>
         <div className='filter-head'>
@@ -173,6 +209,7 @@ const Coins = () => {
           <button onClick={()=>setCollapse(!collapse)}> {collapse ? 'Expand' : 'Collapse'}</button>
         </div>
           {collapse ? <></> :
+          <>
             <div className='filter-body'>
               {getFilter('Authority', options.issuing_authority, 'issuing_authority')}
               {getFilter('Governing Power', options.governing_power, 'governing_power')}
@@ -180,6 +217,67 @@ const Coins = () => {
               {/* {getFilter('Denomination', options.denomination, 'denomination')} */}
               {getFilter('Ancient Territory', options.ancient_territory, 'ancient_territory')}
             </div>
+            <div className='filter-second-body'>
+              <div className='filter-year'>
+                <div style={{width:""}}>
+                Date Range: 
+                </div>
+                <div className='filter-from-year'>
+                  {/* <span> BCE</span> */}
+                  <label data-unit={filters.from_year >= 0 ? 'CE' : 'BCE'}>
+                  <input type="number" name="from-year" placeholder="From" step="50" value={filters.from_year} min="-450" max="450" onChange={ e =>{
+                    let newFilters= {...filters}
+                    newFilters.from_year = e.target.value
+                    setFilters(newFilters)
+                  }} />  
+                  </label>
+                </div>
+
+                <div className='filter-to-year'>
+                  <label data-unit={filters.to_year >= 0 ? 'CE' : 'BCE'}>
+                    <input type="number" name="to-year" placeholder="To" step="50" value={filters.to_year} min="-450" max="450" onChange={ e =>{
+                      let newFilters= {...filters}
+                      newFilters.to_year = e.target.value
+                      setFilters(newFilters)
+                    }}/>  
+                  </label>
+                </div>
+
+              </div>
+
+              <div className='filter-search'>
+                <div className='filter-input'>
+                  <input type={'text'} name={'types'} onChange={e=>setInputText(e.target.value)} placeholder="Search by Coin types"/>
+                  {inputText.length === 0 ? <></> :
+                    <div className='filter-content'>
+                      {typesList?.obverse_type?.map((item, index)=>{  
+                        return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,'obverse_type')}} key={item + index}>{item}</div>
+                      })}
+                      {typesList?.reverse_type?.map((item, index)=>{  
+                        return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,'reverse_type')}} key={item + index}>{item}</div>
+                      })}
+                    </div>
+                  }
+                </div>
+                <div className='filterList'>
+                  {filters.obverse_type[0] === undefined ? <></> :(
+                      filters.obverse_type.map((item, index)=>{
+                        return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, 'obverse_type')}} key={item + index}>{item}</span>
+                    }))
+                  }
+                  {filters.obverse_type[0] === undefined ? <></> :(
+                      filters.reverse_type.map((item, index)=>{
+                        return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, 'reverse_type')}} key={item + index}>{item}</span>
+                    }))
+                  }
+                </div>
+              </div>
+              
+
+        </div>
+
+          </>
+
           }
       </div>
 

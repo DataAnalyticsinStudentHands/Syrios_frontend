@@ -1,6 +1,7 @@
 .Coins{
-    height: 100%;
-	padding:5% 10%;
+    min-height: 100vh;
+    padding:5% 10%;
+
 
     .filters{
         margin: 2.5% 0%;
@@ -66,9 +67,9 @@
                         text-decoration: none;
                           
                         &:hover {
-                        background: #D8B848;
-                        color: #F4F2F0;
-                        text-decoration: none;
+                            background: #D8B848;
+                            color: #F4F2F0;
+                            text-decoration: none;
                         }
                     }
 
@@ -170,6 +171,176 @@
                 }
             }
         }
+        .filter-second-body{
+            // display: flex;
+            // justify-content: cen;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 44px;
+            color: #737271;
+            
+            .filter-year{
+                // width: 45%;
+                display: flex;
+                flex-direction: row;
+                // justify-content: space-evenly;
+                align-items: center;
+                gap: 2.5%;
+
+    
+                .filter-from-year{
+                    width: 15%;
+                    label, input {
+                        position: relative;
+                        display: block;
+                    }
+                    label::after {
+                        content: attr(data-unit);
+                        position: absolute;
+                        display: block;
+                        right: 15%;
+                        top: 2%;
+    
+                    }
+    
+                }
+                .filter-to-year{
+                    width: 15%;
+                    label, input {
+                        position: relative;
+                        display: block;
+                    }
+                    label::after {
+                        content: attr(data-unit);
+                        position: absolute;
+                        display: block;
+                        right: 15%;
+                        top: 2%;
+    
+                    }
+                }
+    
+                input{
+                    padding: 0% 2.5%;
+                    // margin-left: 5%;
+                    width: 100%;
+                    border: 2px solid #737271;
+                    border-radius: 15px;
+                    background-color: transparent;
+                }
+            }
+            .filter-search{
+                // width: 50%;
+                // display: flex;
+                // flex-direction: row;
+                // align-items: center;
+                gap: 2.5%;
+                position: relative;
+                margin-top: 5%;
+                
+        
+                input{
+                    padding: 0% 2.5%;
+                    // margin-left: 5%;
+                    width: 100%;
+                    border: 2px solid #737271;
+                    border-radius: 15px;
+                    background-color: transparent;
+                    
+                }
+                .filter-input{
+                    position: relative;
+                    .filter-content{
+                        width: 100%;
+                        position: absolute;
+        
+                        background-color: #fff;
+                        z-index: 2;
+                        border: 2px solid #737271;
+                        border-radius: 15px;
+        
+                        .filter-content-item{
+                            font-size: 28px;
+                            cursor: pointer;
+                            padding: 1% 5%;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 44px;
+                            color: #737271;
+        
+                            &:hover{
+                                background: #D8B848;
+                                border-radius: 15px;
+                                color: #F4F2F0;
+                            }
+                        }
+                    }
+                }
+        
+            
+                .filterList{
+                    align-items: center;
+                    display: flex;
+                    gap:10px;
+                    align-self: center;
+                    flex-flow: wrap;
+                    margin-bottom: 24px;
+                    position: relative;
+                    // position: absolute;
+                    z-index: 1;
+            
+                    .filterList-item{
+                        cursor: pointer;
+                        padding: 0.125em 0.25em;
+                        border: 2px solid #737271;
+                        border-radius: 25%;
+            
+                        -webkit-border-radius: 28;
+                        -moz-border-radius: 28;
+                        border-radius: 28px;
+                        color: #737271;
+                        font-size: 24px;
+                        padding: 5px 20px;
+                        margin-top: 10px;
+                        text-decoration: none;
+                          
+                        &:hover {
+                            background: #D8B848;
+                            color: #F4F2F0;
+                            text-decoration: none;
+                        }
+                    }
+        
+                    .filterList-one-item{
+                        cursor: default;
+        
+                        padding: 0.125em 0.25em;
+                        border: 2px solid #737271;
+                        border-radius: 25%;
+            
+                        -webkit-border-radius: 28;
+                        -moz-border-radius: 28;
+                        border-radius: 28px;
+                        color: #737271;
+                        font-size: 24px;
+                        padding: 5px 20px;
+                        margin-top: 10px;
+                        text-decoration: none;
+                          
+                        &:hover {
+                        background: #D8B848;
+                        color: #F4F2F0;
+                        text-decoration: none;
+                        }
+                    }
+            
+                    
+                }
+            }
+
+        }
+
 
 
     }
@@ -187,7 +358,7 @@
 
     //     .filterList-item{
     //         cursor: pointer;
-    //         padding: 0.125em 0.25em;
+    //         padding: 0.125em 0.25em; 
     //         border: 2px solid #737271;
     //         border-radius: 25%;
 
