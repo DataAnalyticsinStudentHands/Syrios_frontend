@@ -5,6 +5,8 @@ import Slider from 'react-slick';
 import { SpotlightCard } from './CoinList/Card';
 import { Row, Col } from 'react-bootstrap';
 
+import SearchBar from './component/SearchBar';
+
 const CoinCatalog = ()=>{
 
     const [spotLightdata, setSpotLightdata] = useState([])
@@ -59,12 +61,18 @@ const CoinCatalog = ()=>{
                 <div className='catalog_section text-center'>
                     <h1>Explore our Collection</h1>
                     <h3>Our catalog has over 700 coins for you to discover!</h3>
-                
-                    <div className="input-addon">
-                        <div className="input-addon__addon input-addon__addon--prepended icon-entypo-search"/>
-                        <input type="text" className="input-addon__input" placeholder='Search by coin name, type, date, and more.'/>
+
+                    <SearchBar/>
+                    {/* <div className="search-bar">
+                        <div className="search-bar__addon icon-entypo-search"/>
+                        <input type="text" className="search-bar__input" placeholder='Search by coin name, type, date, and more.' />
                     </div>
-                    <Row style={{padding:"5% 5%"}}>
+                    <div className='search-content'>
+
+                    </div> */}
+
+
+                    <Row style={{padding:"2.5% 2.5%"}}>
                         <Col xs={6} sm={3}><button className='catalog-button'> What is the catalog?</button></Col>
                         <Col xs={6} sm={3}><button className='catalog-button'> Our partners</button></Col>
                         <Col xs={6} sm={3}><button className='catalog-button'> Our research</button></Col>

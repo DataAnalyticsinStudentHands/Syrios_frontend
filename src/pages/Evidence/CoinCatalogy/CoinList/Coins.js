@@ -2,194 +2,168 @@ import React, {useState, useEffect} from 'react'
 import "./Coins.scss"
 import coinCollections from 'src/api/coin-collections'
 import CoinPaginate from './CoinPaginate'
+import { useParams } from "react-router-dom";
+
+import Fuse from 'fuse.js'
+import CoinsFiter from './CoinsFilters';
 
 const Coins = () => {
+
+
+  const pattern = useParams().pattern
+  
   const [coins, setCoins] = useState([])
   const [coinList, setCoinList] = useState([])
   const [coinsPerPage, setCoinsPerPage] = useState(12)
+
+
   const [filters,setFilters] = useState({
     material:[],
     mint:[],
-    // type_category:[],
     issuing_authority:[],
     governing_power:[],
     language:[],
-    // denomination:[],
-    // obverse_type:[],
-    // reverse_type:[],
-    ancient_territory:[]
+    ancient_territory:[],
+    from_year:-450,
+    to_year:450
   })
   const [options,setOptions] = useState({
     material:[],
     mint:[],
-    // type_category:[],
     issuing_authority:[],
     governing_power:[],
     language:[],
-    // denomination:[],
+    ancient_territory:[],
     // obverse_type:[],
     // reverse_type:[],
-    ancient_territory:[]
   })
   const [refine, setRefine] = useState(false)
   const [collapse, setCollapse] = useState(true)
   const coinsPerPages = [12,24,48,96]
-  
-  useEffect(()=>{
-    const fetchData = async ()=>{
-      const result = await coinCollections.coinCollection()
-      setCoins(result.data.data)
-      setCoinList(result.data.data)
-    }
-    fetchData().catch(console.error);  
-  },[])
 
   useEffect(()=>{
-    setFilters({
-      material:[],
-      mint:[],
-      // type_category:[],
-      issuing_authority:[],
-      governing_power:[],
-      language:[],
-      // denomination:[],
-      // obverse_type:[],
-      // reverse_type:[],
-      ancient_territory:[]
-    })
-    setCoinList(coins)
-  },[refine, coins])
+    const fetchData = async ()=>{
+        const result = await coinCollections.coinSearch()
+        const fuseOptions = {
+          includeScore: true,
+          shouldSort: true,
+          includeMatches: true,
+          minMatchCharLength: 3,
+          threshold: 0.6,               //At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
+          keys: [
+            "attributes",
+            "attributes.obverse_type",
+            "attributes.reverse_type",
+            "attributes.reference",
+            "attributes.reverse_legend",
+            "attributes.obverse_legend",
+            "attributes.material.data.attributes.material",
+            "attributes.mint.data.attributes.mint",
+            "attributes.issuing_authority.data.attributes.issuing_authority",
+            "attributes.governing_power.data.attributes.governing_power",
+            "attributes.language.data.attributes.language",
+            "attributes.ancient_territory.data.attributes.ancient_territory",
+          ]
+        };
+        const fuse = new Fuse(result.data.data, fuseOptions);
+        let data =fuse.search(pattern)
+        setCoins(data)
+        setCoinList(data)
+    }
+    fetchData().catch(console.error);  
+},[pattern])
+
+  
+
 
   useEffect(()=>{
     function getDeepFilterOptions(filter){
       let options = []
       coins.forEach((coin)=>{
-        if (!options.includes(coin?.attributes[filter]?.data?.attributes[filter])){
-          options.push(coin?.attributes?.[filter]?.data?.attributes[filter])
+        if (
+            !options.includes(coin?.item?.attributes[filter]?.data?.attributes[filter]) &&
+            coin?.item?.attributes[filter]?.data?.attributes[filter] !== undefined
+          ){
+          options.push(coin?.item?.attributes?.[filter]?.data?.attributes[filter])
         }
       })
+      
       return options
     }
-    setOptions({
-      material:getDeepFilterOptions('material'),
-      mint:getDeepFilterOptions('mint'),
-      type_category:getDeepFilterOptions('type_category'),
-      issuing_authority: getDeepFilterOptions('issuing_authority'),
-      governing_power: getDeepFilterOptions('governing_power'),
-      language: getDeepFilterOptions('language'),
-      denomination: getDeepFilterOptions('denomination'),
-      ancient_territory: getDeepFilterOptions('ancient_territory')
-    })
-  },[coins])
+    const getOptionsAndFilter = async ()=>{
+      let options = {
+        material:getDeepFilterOptions('material'),
+        mint:getDeepFilterOptions('mint'),
+        issuing_authority: getDeepFilterOptions('issuing_authority'),
+        governing_power: getDeepFilterOptions('governing_power'),
+        language: getDeepFilterOptions('language'),
+        ancient_territory: getDeepFilterOptions('ancient_territory'),
+      }
+      setOptions(options)
+
+      setFilters({
+        material:[],
+        mint:[],
+        issuing_authority:[],
+        governing_power:[],
+        language:[],
+        ancient_territory:[],
+        from_year:-450,
+        to_year:450
+      })
+    }
+    getOptionsAndFilter();
+
+    
+  },[coins, refine])
+
+
 
   useEffect(()=>{
-    var newCoinArray = []
-    coins.forEach(coin =>{
-      if( (filters.material.length === 0 ? true : filters.material.includes(coin?.attributes?.material?.data?.attributes?.material)) &&
-          (filters.mint.length === 0 ? true : filters.mint.includes(coin?.attributes?.mint?.data?.attributes?.mint)) &&
-          (filters.issuing_authority.length === 0 ? true : filters.issuing_authority.includes(coin?.attributes?.issuing_authority?.data?.attributes?.issuing_authority)) &&
-          (filters.governing_power.length === 0 ? true : filters.governing_power.includes(coin?.attributes?.governing_power?.data?.attributes?.governing_power)) &&
-          (filters.language.length === 0 ? true : filters.language.includes(coin?.attributes?.language?.data?.attributes?.language)) &&
-          // (filters.denomination.length === 0 ? true : filters.denomination.includes(coin?.attributes?.denomination?.data?.attributes?.denomination)) &&
-          // (filters.obverse_type.length === 0 ? true : filters.obverse_type.includes(coin?.attributes?.obverse_type)) &&
-          // (filters.reverse_type.length === 0 ? true : filters.reverse_type.includes(coin?.attributes?.reverse_type)) &&
-          (filters.ancient_territory.length === 0 ? true : filters.ancient_territory.includes(coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory))
+
+    const coinList = async ()=>{
+      const filteredCoins = coins?.filter( coin =>{
+        if( 
+          (filters.material.length === 0 ? true : filters.material.includes(coin?.item?.attributes?.material?.data?.attributes?.material)) &&
+          (filters.mint.length === 0 ? true : filters.mint.includes(coin?.item?.attributes?.mint?.data?.attributes?.mint)) &&
+          (filters.issuing_authority.length === 0 ? true : filters.issuing_authority.includes(coin?.item?.attributes?.issuing_authority?.data?.attributes?.issuing_authority)) &&
+          (filters.governing_power.length === 0 ? true : filters.governing_power.includes(coin?.item?.attributes?.governing_power?.data?.attributes?.governing_power)) &&
+          (filters.language.length === 0 ? true : filters.language.includes(coin?.item?.attributes?.language?.data?.attributes?.language)) &&
+          (filters.ancient_territory.length === 0 ? true : filters.ancient_territory.includes(coin?.item?.attributes?.ancient_territory?.data?.attributes?.ancient_territory)) &&
+          (filters.from_year <= coin?.item?.attributes?.from_year) &&
+          (filters.to_year >= coin?.item?.attributes?.to_year)
         ){
-        newCoinArray.push(coin)
-      }
-    })
-    setCoinList(newCoinArray)
-  },[options,filters, coins])
+          return true
+        }
+        return false;
+      })
+      setCoinList(filteredCoins)
+    }
+    coinList();  
+
+  },[coins, filters])
   
-
-  function handleAddFilters(e, filter){
-    let newFilters= {...filters}
-    let newOptions= {...options}
-
-    if(!newFilters[filter].includes(e.target.innerText)){
-      newFilters[filter].push(e.target.innerText)
-    }
-    newOptions[filter] = newOptions[filter].filter(i =>i !== e.target.innerText)
-    setFilters(newFilters)
-    setOptions(newOptions)
-  }
-
-  function handleDeleteTag(e, filter){
-    let newFilters= {...filters}
-    let newOptions= {...options}
-
-    newFilters[filter] = newFilters[filter].filter(i =>i !== e.target.innerText)
-    if(!newOptions[filter].includes(e.target.innerText)){
-      newOptions[filter].push(e.target.innerText)
-    }
-    setFilters(newFilters)
-    setOptions(newOptions)
-  }
-  function getFilter(title,value,filterType){
-    return(
-      <div className='filter'>
-        <div className='filter-trigger'>
-          {title}
-          <span className='icon-entypo-arrow-thick-down'/>
-          <div className='filter-content'>
-            {value?.map((item, index)=>{  
-              return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,filterType)}} key={item + index}>{item}</div>
-            })}
-          </div>
-        </div>
-        <div className='filterList'>
-          {
-            filters[filterType][0] === undefined ? <></> :(
-              filters[filterType].map((item, index)=>{
-                return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, filterType)}} key={item + index}>{item}</span>
-            }))
-          }
-        </div>
-      </div> 
-    )
-  }
+  
     return (
     <div className='Coins'>
-      {/* <div>
-        <h2>Search results for 'Coins'</h2>
-      </div> */}
-
-      <div className='filters'>
-        <div className='filter-head'>
-          <h1>Filter by</h1>
-          <button onClick={()=>setRefine(!refine)}> Refine results</button>
-        </div>
-
-        <div className='filter-body'>
-
-          {getFilter('Material', options.material, 'material')}
-          {getFilter('Mint', options.mint, 'mint')}
-          {/* {getFilter('Type Category', options.type_category, 'type_category')} */}
-        </div>
-      </div>
-      <div className='filters'>
-        <div className='filter-head'>
-          <h1>Advanced Filters</h1>
-          <button onClick={()=>setCollapse(!collapse)}> {collapse ? 'Expand' : 'Collapse'}</button>
-        </div>
-          {collapse ? <></> :
-            <div className='filter-body'>
-              {getFilter('Authority', options.issuing_authority, 'issuing_authority')}
-              {getFilter('Governing Power', options.governing_power, 'governing_power')}
-              {getFilter('Language', options.language, 'language')}
-              {/* {getFilter('Denomination', options.denomination, 'denomination')} */}
-              {getFilter('Ancient Territory', options.ancient_territory, 'ancient_territory')}
-            </div>
-          }
+      <div>
+      {/* {patternData?.pattern?.length && <h2>Search results for '{patternData?.pattern}'</h2>} */}
+        <h2>Search results for '{pattern}'</h2>
+        <h3>Coins total: {coinList.length}</h3>
       </div>
 
-      {/* {
-        (coinList.length === 0 && Object.values(filters).flat(Infinity).length ===0) ? (
-          <div id='no-coins-return'>
-            No coins match
-          </div>
-        ):(
-          <> */}
+      <CoinsFiter 
+        filters = {filters}
+        options = {options}
+        refine = {refine}
+        collapse = {collapse}
+        setFilters = {setFilters}
+        setOptions = {setOptions}
+        setRefine = {setRefine}
+        setCollapse = {setCollapse}
+      />
+
+              
             <div className='results'>
               Results per page 
               <div className='filter'>
@@ -203,7 +177,8 @@ const Coins = () => {
                   </div>
                 </div>
             </div>
-          <CoinPaginate coinsPerPage={coinsPerPage} coins = {coinList}/>
+            
+          <CoinPaginate coinsPerPage={coinsPerPage} coins = {coinList} filters = {filters}/>
           {/* </>
         )
       } */}
