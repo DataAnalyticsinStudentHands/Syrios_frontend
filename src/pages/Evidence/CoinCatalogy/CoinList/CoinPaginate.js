@@ -6,11 +6,11 @@ const CoinPaginate = (props) => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + props.coinsPerPage;
-  const currentCoins = props.coins.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(props.coins.length / props.coinsPerPage);
+  const currentCoins = props.coins?.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(props.coins?.length / props.coinsPerPage);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * props.coinsPerPage) % props.coins.length;
+    const newOffset = (event.selected * props.coinsPerPage) % props.coins?.item?.length;
     setItemOffset(newOffset);
   };
 

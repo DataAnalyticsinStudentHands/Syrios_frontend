@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Card = (props) => {
   return (
     <div className='coin-card'>
-      <Link className="link" to={`/Coin/${props.id}`}>
+      <Link className="link" to={`/Coin/${props?.id}`}>
           <div className='image'>
             {props?.coin?.obverse_image?.data
               ? <img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.obverse_image?.data?.attributes?.url} alt=""/>

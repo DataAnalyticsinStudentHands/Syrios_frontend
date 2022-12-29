@@ -82,7 +82,7 @@ function App() {
 						<Route path='/Evidence/Timeline' element={<Timeline />} />
 						<Route path='/Evidence/CoinCatalog' element={<CoinCatalogComingSoon />} />
 						<Route path='/Evidence/CoinCatalogDev' element={<CoinCatalog />} />
-						<Route path='/Coins' element={<Coins />} />
+						<Route path='/Coins/:pattern' element={<Coins />} />
 						<Route path='/Coin/:id' element={<CoinInfoPage />} />
 
 						<Route path='/Evidence/Download' element={<Download />} />
