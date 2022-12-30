@@ -15,7 +15,6 @@ import MapCoins from './pages/Evidence/MapCoins/MapCoins';
 import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
 import Coins from './pages/Evidence/CoinCatalogy/CoinList/Coins';
 import CoinInfoPage from './pages/Evidence/CoinCatalogy/coin-info/CoinInfoPage';
-import CoinCatalogComingSoon from './pages/Evidence/CoinCatalogy/CoinCatalogComingSoon';
 import Download from 'src/pages/Evidence/Download/Download.js';
 import Toolbox from './pages/Toolbox/Toolbox';
 import HowToReadACoin from 'src/pages/Stories/HowToReadACoin.js';
@@ -80,8 +79,7 @@ function App() {
 						<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 						<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 						<Route path='/Evidence/Timeline' element={<Timeline />} />
-						<Route path='/Evidence/CoinCatalog' element={<CoinCatalogComingSoon />} />
-						<Route path='/Evidence/CoinCatalogDev' element={<CoinCatalog />} />
+						<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
 						<Route path='/Coins/:params' element={<Coins />} />
 						<Route path='/Coin/:id' element={<CoinInfoPage />} />
 
