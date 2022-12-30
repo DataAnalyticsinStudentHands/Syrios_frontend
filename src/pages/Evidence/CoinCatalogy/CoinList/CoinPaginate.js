@@ -10,7 +10,7 @@ const CoinPaginate = (props) => {
   const pageCount = Math.ceil(props.coins?.length / props.coinsPerPage);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * props.coinsPerPage) % props.coins?.item?.length;
+    const newOffset = (event.selected * props.coinsPerPage) % props.coins?.length;
     setItemOffset(newOffset);
   };
 

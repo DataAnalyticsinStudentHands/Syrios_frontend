@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './SearchBar.scss'
 // import useFetch from 'src/hooks/useFetch';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import qs from 'qs';
 import coinCollections from 'src/api/coin-collections';
 
@@ -28,6 +28,7 @@ const SearchBar = () =>{
     //     {ancient_territories: getKeyTerms(useFetch('/ancient-territories'),'ancient_territory')}
     // ]
 
+    const navigate = useNavigate();
     const [tags, setTages] = useState({
         material:[],
         mint:[],
@@ -50,7 +51,7 @@ const SearchBar = () =>{
     
     const [coins, setCoins] = useState([])
     const [pattern, setPattern] = useState('')
-    // const [url, setUrl] = useState('')
+    const [searchUrl, setSearchUrl] = useState('')
 
     useEffect(()=>{
         const fetchData = async ()=>{
@@ -65,13 +66,10 @@ const SearchBar = () =>{
         function getDeepFilterOptions(filter){
             let options = []
             coins.forEach((coin)=>{
-                if (
-                    !options.includes(coin?.attributes[filter]?.data?.attributes[filter]) && 
+                if (!options.includes(coin?.attributes[filter]?.data?.attributes[filter]) && 
                     coin?.attributes[filter]?.data?.attributes[filter]!== undefined &&
                     coin?.attributes[filter]?.data?.attributes[filter]!== 'Uncertain'
-                ){
-                options.push(coin?.attributes?.[filter]?.data?.attributes[filter])
-                }
+                ){options.push(coin?.attributes?.[filter]?.data?.attributes[filter])}
             })
             return options
         }
@@ -86,26 +84,13 @@ const SearchBar = () =>{
         setTageOptions(data)
     },[coins])
 
-
-    // useEffect(()=>{
-
-    //     // let query = qs.stringify({
-    //     //     pattern,
-    //     //     tags
-    //     // })
-
-    //     // qs.parse(query).pattern.length === 0 ? console.log('first') : console.log('second')
-
-    //     // for (const key in tags) {
-    //     //     tags[key]?.forEach((tag)=>{
-    //     //         query.push(tag)
-    //     //     })
-    //     // }
-
-
-    //     // console.log(query)
-    //     setUrl(pattern)
-    // },[pattern])
+    useEffect(()=>{
+        let newURL = qs.stringify({
+            pattern: pattern,
+            tags:tags
+        })
+        setSearchUrl(newURL)
+    },[tags, pattern])
 
     function handleOnChange(e){
         setPattern(e.target.value)
@@ -120,7 +105,6 @@ const SearchBar = () =>{
         }
         setTages(newTagsObj)
         setTageOptions(newTagOptionsObj)
-
     }
     function deleteTags(obj,tag){
         let newTagsObj = {...tags}
@@ -135,7 +119,7 @@ const SearchBar = () =>{
 
     function GetOptionLi (){
         let li = []
-        for (const key in tagOptions) {
+        for (let key in tagOptions) {
             tagOptions[key]?.forEach((tag)=>{
                 li.push(<li onClick={()=> addTags(key,`${tag}`)} value={tag}>{tag}</li>)
             })
@@ -144,7 +128,7 @@ const SearchBar = () =>{
     }
     function GetTagLi(){
         let li = []
-        for (const key in tags) {
+        for (let key in tags) {
             tags[key]?.forEach((tag)=>{
                 li.push(<li>{tag} <i className='icon-syrios-x-thin' onClick={ () => deleteTags(key,`${tag}`)} /></li>)
             })
@@ -152,40 +136,31 @@ const SearchBar = () =>{
         return li
     }
 
-
     return(
         <div className='search'>
             <div className='tag-content'>
                 <ul>
-                    {/* {tags.map((tag)=><li >{tag} <i className='icon-syrios-x-thin' onClick={ () => deleteTags(`${tag}`)}/></li>)} */}
-                    < GetTagLi/>
+                    <Link className="link icon-entypo-search" to={`/Coins/${searchUrl}`} />
+                    <GetTagLi/>
                     <input 
-                        type="text" className="search-bar__input" 
+                        type="text" className="search-bar__input" id='coin-collection-search'
                         placeholder='Search by coin name, type, date, and more.' 
-                        onChange={e=>handleOnChange(e)
-                    }
+                        onChange={e=>handleOnChange(e)}
+                        onFocus={()=>{
+                            document.getElementById('coin-collection-search').addEventListener('keypress', function (e){
+                                if(e.key === 'Enter'){
+                                    navigate(`/Coins/${searchUrl}`)
+                                }
+                            })
+                        }}
                     />
                 </ul>
             </div>
-            {/* <SearchOptionPool tags = {tagOptions} addTags = {addTags}/> */}
             <div className='tag-options'>
-
+                <p>Common Search Key words</p>
                 <ul>
-                    {/* {tagOptions.mint.map((tag)=>{
-                        return <li onClick={()=> addTags(obj,`${tag}`)} value={tag}>{tag}</li>
-                    })} */}
                     <GetOptionLi />
-
                 </ul>
-            </div>
-
-            <div style={{fontSize:'32px'}}>
-                <Link className="link" to={`/Coins/${pattern}`}>
-                    Search
-
-                </Link>
-
-                
             </div>
         </div>
 

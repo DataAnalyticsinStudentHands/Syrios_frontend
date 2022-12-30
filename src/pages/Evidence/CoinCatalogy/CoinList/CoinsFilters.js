@@ -3,7 +3,6 @@ import React from 'react'
 const CoinsFiter = (props) =>{
 
     // const [collapse, setCollapse] = useState(true)
-
       function handleAddFilters(e, filter){
         let newFilters= {...props.filters}
         let newOptions= {...props.options}
@@ -29,25 +28,40 @@ const CoinsFiter = (props) =>{
       }
       function getFilter(title,value,filterType){
         return(
-          <div className='filter'>
-            <div className='filter-trigger'>
-              {title}
-              <span className='icon-entypo-arrow-thick-down'/>
-              <div className='filter-content'>
-                {value?.map((item, index)=>{  
-                  return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,filterType)}} key={item + index}>{item}</div>
-                })}
-              </div>
-            </div>
-            <div className='filterList'>
-              {
-                props.filters[filterType][0] === undefined ? <></> :(
-                    props.filters[filterType].map((item, index)=>{
-                    return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, filterType)}} key={item + index}>{item}</span>
-                }))
-              }
-            </div>
-          </div> 
+          <>
+            {value?.length === 0 ? (<></>) :           
+              (<>
+                {value?.length === 1 
+                ? <div className='filter'>
+                    <div className='filter-trigger'>
+                      {title} 
+                    </div>
+                    <div className='filterList'>
+                      <span className='filterList-item'>{value[0]}</span>
+                    </div>
+                  </div>
+                : <div className='filter'>
+                    <div className='filter-trigger'>
+                      {title}
+                      <span className='icon-entypo-arrow-thick-down'/>
+                      <div className='filter-content'>
+                        {value?.map((item, index)=>{  
+                          return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,filterType)}} key={item + index}>{item}</div>
+                        })}
+                      </div>
+                    </div>
+                    <div className='filterList'>
+                      {
+                        props.filters[filterType][0] === undefined ? <></> :(
+                            props.filters[filterType].map((item, index)=>{
+                            return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, filterType)}} key={item + index}>{item}</span>
+                        }))
+                      }
+                    </div>
+                  </div>
+                }
+              </>)}
+          </>
         )
       }
 
@@ -59,8 +73,8 @@ const CoinsFiter = (props) =>{
           <button onClick={()=>props.setRefine(!props.refine)}> Refine results</button>
         </div>
         <div className='filter-body'>
-          {getFilter('Material', props.options.material, 'material')}
-          {getFilter('Mint', props.options.mint, 'mint')}
+          {getFilter('Material', props.options?.material, 'material')}
+          {getFilter('Mint', props.options?.mint, 'mint')}
         </div>
       </div>
       <div className='filters'>
@@ -71,10 +85,10 @@ const CoinsFiter = (props) =>{
           {props.collapse ? <></> :
           <>
             <div className='filter-body'>
-              {getFilter('Authority', props.options.issuing_authority, 'issuing_authority')}
-              {getFilter('Governing Power', props.options.governing_power, 'governing_power')}
-              {getFilter('Language', props.options.language, 'language')}
-              {getFilter('Ancient Territory', props.options.ancient_territory, 'ancient_territory')}
+              {getFilter('Authority', props.options?.issuing_authority, 'issuing_authority')}
+              {getFilter('Governing Power', props.options?.governing_power, 'governing_power')}
+              {getFilter('Language', props.options?.language, 'language')}
+              {getFilter('Ancient Territory', props.options?.ancient_territory, 'ancient_territory')}
             </div>
             <div className='filter-second-body'>
               <div className='filter-year'>

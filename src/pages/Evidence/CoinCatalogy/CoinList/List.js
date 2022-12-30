@@ -7,7 +7,7 @@ const List = (props) => {
   return (
     <div className="list">
         {props.coins?.map((coin) =>{
-          return <Card coin={coin?.item?.attributes} id={coin?.item?.id} key={coin?.item?.id}/>
+          return <Card coin={coin?.attributes} id={coin?.id} key={coin?.id}/>
         })}
     </div>
   );
