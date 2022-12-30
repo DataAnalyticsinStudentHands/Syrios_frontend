@@ -14,7 +14,6 @@ const CoinCatalog = ()=>{
     useEffect(()=>{
 		const fetchData = async ()=>{
 			const result = await coinCollections.coinSpotLight()
-            // console.log(result.data.data)
             setSpotLightdata(result.data.data)
         }
 		fetchData().catch(console.error);    
@@ -63,14 +62,6 @@ const CoinCatalog = ()=>{
                     <h3>Our catalog has over 700 coins for you to discover!</h3>
 
                     <SearchBar/>
-                    {/* <div className="search-bar">
-                        <div className="search-bar__addon icon-entypo-search"/>
-                        <input type="text" className="search-bar__input" placeholder='Search by coin name, type, date, and more.' />
-                    </div>
-                    <div className='search-content'>
-
-                    </div> */}
-
 
                     <Row style={{padding:"2.5% 2.5%"}}>
                         <Col xs={6} sm={3}><button className='catalog-button'> What is the catalog?</button></Col>
