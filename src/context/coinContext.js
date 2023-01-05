@@ -3,7 +3,7 @@ import coinCollections from "src/api/coin-collections";
 export const CoinContext = createContext();
 
 function getDeepFilterOptions(arr, filter){
-    let options;
+    let options = [];
     arr?.forEach((coin)=>{
         if (!options.includes(coin?.attributes[filter]?.data?.attributes[filter]) && 
             coin?.attributes[filter]?.data?.attributes[filter] !== undefined &&

@@ -1,8 +1,5 @@
 import React from 'react';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
-
-import { Row, Col } from 'react-bootstrap';
-
 import SearchBar from './component/SearchBar';
 import SpotLight from './component/SpotLight';
 
