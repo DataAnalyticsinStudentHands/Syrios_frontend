@@ -7,9 +7,8 @@ import qs from 'qs';
 import { CoinContext } from 'src/context/coinContext';
 
 const SearchBar = () =>{
-    const { coinsData, coinsKeyTerms, fetchCoinData } = useContext(CoinContext)
-    coinsData ?? fetchCoinData();
-
+    const { coinsKeyTerms, fetchCoinData } = useContext(CoinContext)
+    coinsKeyTerms ?? fetchCoinData();
     const navigate = useNavigate();
     const [tags, setTages] = useState({
         material:[],
@@ -20,10 +19,13 @@ const SearchBar = () =>{
         denomination:[],
         ancient_territory:[],
     })
-    const [tagOptions,setTageOptions] = useState({...coinsKeyTerms})
+    const [tagOptions,setTageOptions] = useState({})
     const [pattern, setPattern] = useState('')
     const [searchUrl, setSearchUrl] = useState('')
 
+    useEffect(() => {
+        setTageOptions(coinsKeyTerms)
+    },[coinsKeyTerms])
     useEffect(()=>{
         let newURL = qs.stringify({
             pattern: pattern,
@@ -75,7 +77,7 @@ const SearchBar = () =>{
         }
         return li
     }
-
+    console.count('searchBar');
     return(
         <div className='search'>
             <div className='tag-content'>
