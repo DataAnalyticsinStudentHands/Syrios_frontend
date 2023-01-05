@@ -29,14 +29,14 @@ export const SpotlightCard = (props) =>{
   return(
     <div className="sportlight-card">
       <Link className="link" to={`/Coin/${props?.coin?.id}`}>
-      <div className='image'>
-            {props?.coin?.obverse_image?.data
-              ? <img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.obverse_image?.data?.attributes?.url} alt=""/>
-              :<img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.reverse_image?.data?.attributes?.url} alt=""/>}
-          </div>
-          <h1>{props?.coin?.attributes?.mint?.data?.attributes?.mint} {props?.coin?.attributes?.material?.data?.attributes?.material} {props?.coin?.attributes?.obverse_type.length === 0 ? props?.coin?.attributes?.reverse_type : props?.coin?.attributes?.obverse_type} </h1>
-          <h2> Origin: {props?.coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory.length === 0 ? "None" : props?.coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory}</h2>
-          <h2>Date:{props?.coin?.attributes?.from_year < 0 ? <>{String(props?.coin?.attributes?.from_year).substring(1)} BCE</>:<>{props?.coin?.attributes?.from_year} CE</>} - {props?.coin?.attributes?.to_year < 0 ? <>{String(props?.coin?.attributes?.to_year).substring(1)} BCE</>:<>{props?.coin?.attributes?.to_year} CE</>}</h2>
+        <div className='image'>
+          {props?.coin?.obverse_image?.data
+            ? <img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.obverse_image?.data?.attributes?.url} alt=""/>
+            :<img src={ process.env.REACT_APP_UPLOAD_URL + props?.coin?.attributes?.reverse_image?.data?.attributes?.url} alt=""/>}
+        </div>
+        <h1>{props?.coin?.attributes?.mint?.data?.attributes?.mint} {props?.coin?.attributes?.material?.data?.attributes?.material} {props?.coin?.attributes?.obverse_type.length === 0 ? props?.coin?.attributes?.reverse_type : props?.coin?.attributes?.obverse_type} </h1>
+        <h2> Origin: {props?.coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory.length === 0 ? "None" : props?.coin?.attributes?.ancient_territory?.data?.attributes?.ancient_territory}</h2>
+        <h2>Date:{props?.coin?.attributes?.from_year < 0 ? <>{String(props?.coin?.attributes?.from_year).substring(1)} BCE</>:<>{props?.coin?.attributes?.from_year} CE</>} - {props?.coin?.attributes?.to_year < 0 ? <>{String(props?.coin?.attributes?.to_year).substring(1)} BCE</>:<>{props?.coin?.attributes?.to_year} CE</>}</h2>
       </Link>
     </div>
   )

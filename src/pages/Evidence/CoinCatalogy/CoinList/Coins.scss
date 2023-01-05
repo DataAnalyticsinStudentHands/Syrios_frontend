@@ -1,8 +1,6 @@
 .Coins{
     min-height: 100vh;
     padding:5% 10%;
-
-
     .filters{
         margin: 2.5% 0%;
         position: relative;
@@ -344,42 +342,7 @@
 
 
     }
-    // .filterList{
 
-    //     align-items: center;
-    //     display: flex;
-    //     gap:20px;
-    //     align-self: center;
-    //     flex-flow: wrap;
-    //     margin-bottom: 24px;
-    //     z-index: 0;
-
-
-
-    //     .filterList-item{
-    //         cursor: pointer;
-    //         padding: 0.125em 0.25em; 
-    //         border: 2px solid #737271;
-    //         border-radius: 25%;
-
-    //         -webkit-border-radius: 36;
-    //         -moz-border-radius: 36;
-    //         border-radius: 36px;
-    //         color: #737271;
-    //         font-size: 32px;
-    //         padding: 5px 20px;
-    //         text-decoration: none;
-              
-              
-    //           &:hover {
-    //             background: #D8B848;
-    //             color: #F4F2F0;
-    //             text-decoration: none;
-    //           }
-    //     }
-
-        
-    // }
     .results{
         font-style: normal;
         font-weight: 600;

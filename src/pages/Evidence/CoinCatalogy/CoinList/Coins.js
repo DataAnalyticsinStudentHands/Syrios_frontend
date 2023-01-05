@@ -1,28 +1,35 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import "./Coins.scss"
-import coinCollections from 'src/api/coin-collections'
+// import coinCollections from 'src/api/coin-collections'
 import CoinPaginate from './CoinPaginate'
 import { useParams } from "react-router-dom";
 
 import Fuse from 'fuse.js'
 import CoinsFiter from './CoinsFilters';
+import Search from './Search';
 import qs from 'qs';
-const Coins = () => {
 
-  const params = qs.parse(useParams().params)  
-  const [coins, setCoins] = useState([])
+import { CoinContext } from 'src/context/coinContext';
+
+function getDeepFilterOptions(arr, filter){
+  let options = []
+  arr.forEach((coin)=>{
+      if (!options.includes(coin?.attributes[filter]?.data?.attributes[filter]) && coin?.attributes[filter]?.data?.attributes[filter] !== undefined){
+          options.push(coin?.attributes?.[filter]?.data?.attributes[filter])
+      }
+  })
+  return options
+}
+
+const Coins = () => {
+  const { coinsData, fetchCoinData } = useContext(CoinContext)
+  coinsData ?? fetchCoinData()
+  const params = qs.parse(useParams().params) 
+  const [searchedData, setSearchedData] = useState([])
   const [coinList, setCoinList] = useState([])
   const [coinsPerPage, setCoinsPerPage] = useState(12)
 
-  const [preOption, setPreOption] = useState({})
-  const [options,setOptions] = useState({
-    material:[],
-    mint:[],
-    issuing_authority:[],
-    governing_power:[],
-    language:[],
-    ancient_territory:[],
-  })
+  const [options,setOptions] = useState({})
 
   const [filters,setFilters] = useState({
     material:[],
@@ -33,19 +40,21 @@ const Coins = () => {
     ancient_territory:[],
     from_year:-450,
     to_year:450,
+    ...params.tags
   })
-  const [refine, setRefine] = useState(false)
-  const [collapse, setCollapse] = useState(true)
+
+  const [searchText, setSearchText] = useState(
+    params.pattern || ""
+);
   const coinsPerPages = [12,24,48,96]
 
   useEffect(()=>{
-    const fetchData = async ()=>{
-      const result = await coinCollections.coinSearch()
+    const searchData = async ()=>{
       const fuseOptions = {
         includeScore: true,
         shouldSort: true,
         includeMatches: true,
-        minMatchCharLength: params?.pattern?.length,
+        minMatchCharLength: searchText.length,
         threshold: 0.25,               //At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
         keys: [
           "attributes",
@@ -62,98 +71,35 @@ const Coins = () => {
           "attributes.ancient_territory.data.attributes.ancient_territory",
         ]
       };
-      const fuse = new Fuse(result.data.data, fuseOptions);
-      let Searchresults = fuse.search(params.pattern)
-      // console.log(Searchresults)
-      let CoinData = params.pattern ? Searchresults.map(Searchresult => Searchresult.item) : result.data.data;
-      // console.log(CoinData)
-      setCoins(CoinData)
-      setCoinList(CoinData)
-  }
-    fetchData().catch(console.error);  
-  },[params.pattern])
+      // const fuse = new Fuse(result.data.data, fuseOptions);
+      const fuse = new Fuse(coinsData, fuseOptions);
+      let Searchresults = fuse.search(searchText) 
+      let searchedData = searchText ? Searchresults.map(Searchresult => Searchresult.item) : coinsData;
+      setSearchedData(searchedData)
+      // console.log(searchedData);
 
-  useEffect(()=>{
-    const getFilters = async ()=>{
-      let PreTags = {...params.tags}
-      let newFiler = {
-        material:[],
-        mint:[],
-        issuing_authority:[],
-        governing_power:[],
-        language:[],
-        ancient_territory:[],
-        from_year:-450,
-        to_year:450,
-        ...PreTags
-      }
-      setFilters(newFiler)
-    }
-    getFilters();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-
-
-  useEffect(()=>{
-    function getDeepFilterOptions(filter){
-      let options = []
-      coins.forEach((coin)=>{
-        if (
-            !options.includes(coin?.attributes[filter]?.data?.attributes[filter]) &&
-            coin?.attributes[filter]?.data?.attributes[filter] !== undefined
-          ){
-          options.push(coin?.attributes?.[filter]?.data?.attributes[filter])
-        }
-      })
-      
-      return options
-    }
-    const getOptions = async ()=>{
       let options = {
-        material:getDeepFilterOptions('material'),
-        mint:getDeepFilterOptions('mint'),
-        issuing_authority: getDeepFilterOptions('issuing_authority'),
-        governing_power: getDeepFilterOptions('governing_power'),
-        language: getDeepFilterOptions('language'),
-        ancient_territory: getDeepFilterOptions('ancient_territory'),
+        material:getDeepFilterOptions(searchedData, 'material'),
+        mint:getDeepFilterOptions(searchedData,'mint'),
+        issuing_authority: getDeepFilterOptions(searchedData,'issuing_authority'),
+        governing_power: getDeepFilterOptions(searchedData,'governing_power'),
+        language: getDeepFilterOptions(searchedData,'language'),
+        ancient_territory: getDeepFilterOptions(searchedData,'ancient_territory'),
       }
       setOptions(options)
-      setPreOption(options)
     }
-    getOptions();
-    
-  },[coins])
+    console.count('searchData');
+    searchData().catch(console.error);
+
+
+  },[searchText, coinsData])
 
 
 
   useEffect(()=>{
-    const getOptionsAndFilter = async ()=>{
-      setOptions(preOption)
-      let PreTags = {...params.tags}
-      let newFiler = {
-        material:[],
-        mint:[],
-        issuing_authority:[],
-        governing_power:[],
-        language:[],
-        ancient_territory:[],
-        from_year:-450,
-        to_year:450,
-        ...PreTags
-      }
-      setFilters(newFiler)
-    
-    }
-    getOptionsAndFilter();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[refine, preOption])
-
-
-
-  useEffect(()=>{
-
     const getCoinList = async ()=>{
-      const filteredCoins = coins?.filter( coin =>{
+      // console.log(searchedData);
+      const filteredCoins = searchedData?.filter( coin =>{
         if( 
           (filters?.material.length === 0 ? true : filters?.material.includes(coin?.attributes?.material?.data?.attributes?.material)) &&
           (filters?.mint.length === 0 ? true : filters?.mint.includes(coin?.attributes?.mint?.data?.attributes?.mint)) &&
@@ -166,50 +112,44 @@ const Coins = () => {
         ){return true}
         return false;
       })
+      // console.log(filteredCoins);
       setCoinList(filteredCoins)
     }
+    console.count('getCoinList');
+
     getCoinList();  
 
-  },[coins, filters])
-  
-  
+  },[searchedData, filters])
+
     return (
     <div className='Coins'>
-      <div>
-        {params.pattern ? <h2>Search results for '{params.pattern}'</h2> : <></>}
-        <h3>Coins total: {coinList.length}</h3>
-      </div>
+
+      <Search coinsLength = {coinList.length} searchText = {searchText} setSearchText={setSearchText}/>
 
       <CoinsFiter 
         filters = {filters}
         options = {options}
-        refine = {refine}
-        collapse = {collapse}
         setFilters = {setFilters}
         setOptions = {setOptions}
-        setRefine = {setRefine}
-        setCollapse = {setCollapse}
       />
 
               
-            <div className='results'>
-              Results per page 
-              <div className='filter'>
-                  <div className='filter-trigger'>
-                    {coinsPerPage} <span className='icon-entypo-arrow-thick-down'/>
-                  </div>
-                  <div className='filter-content'>
-                  {coinsPerPages.map((item)=>{
-                      return <div className='filter-content-item' onClick={(e)=>{setCoinsPerPage(e.target.innerText)}} key={item}>{item}</div>
-                    })}
-                  </div>
-                </div>
+      <div className='results'>
+        Results per page 
+        <div className='filter'>
+            <div className='filter-trigger'>
+              {coinsPerPage} <span className='icon-entypo-arrow-thick-down'/>
             </div>
+            <div className='filter-content'>
+            {coinsPerPages.map((item)=>{
+                return <div className='filter-content-item' onClick={(e)=>{setCoinsPerPage(e.target.innerText)}} key={item}>{item}</div>
+              })}
+            </div>
+          </div>
+      </div>
             
-          <CoinPaginate coinsPerPage={coinsPerPage} coins = {coinList}/>
-          {/* </>
-        )
-      } */}
+      <CoinPaginate coinsPerPage={coinsPerPage} coins ={coinList}/>
+
     </div>
   )
 }

@@ -1,32 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './SearchBar.scss'
 // import useFetch from 'src/hooks/useFetch';
 import { Link, useNavigate } from "react-router-dom";
 import qs from 'qs';
-import coinCollections from 'src/api/coin-collections';
+
+import { CoinContext } from 'src/context/coinContext';
 
 const SearchBar = () =>{
-
-    // const keyTerms = {
-    //     denominations: getKeyTerms( useFetch('/denominations'),'denomination'),
-    //     issuing_authorities: getKeyTerms(useFetch('/issuing-authorities'), 'issuing_authority'),
-    //     languages: getKeyTerms(useFetch('/languages'),'language'),
-    //     materials: getKeyTerms(useFetch('/materials'), 'material'),
-    //     mints: getKeyTerms(useFetch('/mints'),'mint'),
-    //     governing_powers: getKeyTerms(useFetch('/governing-powers'),'governing_power'),
-    //     // obverse_types:getTypeTerms(useFetch('/coin-collections'),'obverse_type')
-    //     ancient_territories: getKeyTerms(useFetch('/ancient-territories'),'ancient_territory')
-    // }
-    // console.log(keyTerms)
-    // const keyTerms = [
-    //     {denominations: getKeyTerms( useFetch('/denominations'),'denomination')},
-    //     {issuing_authorities: getKeyTerms(useFetch('/issuing-authorities'), 'issuing_authority')},
-    //     {languages: getKeyTerms(useFetch('/languages'),'language')},
-    //     {materials: getKeyTerms(useFetch('/materials'), 'material')},
-    //     {mints: getKeyTerms(useFetch('/mints'),'mint')},
-    //     {governing_powers: getKeyTerms(useFetch('/governing-powers'),'governing_power')},
-    //     {ancient_territories: getKeyTerms(useFetch('/ancient-territories'),'ancient_territory')}
-    // ]
+    const { coinsData, coinsKeyTerms, fetchCoinData } = useContext(CoinContext)
+    coinsData ?? fetchCoinData();
 
     const navigate = useNavigate();
     const [tags, setTages] = useState({
@@ -38,51 +20,9 @@ const SearchBar = () =>{
         denomination:[],
         ancient_territory:[],
     })
-
-    const [tagOptions,setTageOptions] = useState({
-        material:[],
-        mint:[],
-        issuing_authority:[],
-        governing_power:[],
-        language:[],
-        denomination:[],
-        ancient_territory:[],
-      })
-    
-    const [coins, setCoins] = useState([])
+    const [tagOptions,setTageOptions] = useState({...coinsKeyTerms})
     const [pattern, setPattern] = useState('')
     const [searchUrl, setSearchUrl] = useState('')
-
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            const result = await coinCollections.coinSearch()
-            let data = result.data.data
-            setCoins(data)
-        }
-        fetchData().catch(console.error);  
-    },[])
-
-    useEffect(()=>{
-        function getDeepFilterOptions(filter){
-            let options = []
-            coins.forEach((coin)=>{
-                if (!options.includes(coin?.attributes[filter]?.data?.attributes[filter]) && 
-                    coin?.attributes[filter]?.data?.attributes[filter]!== undefined &&
-                    coin?.attributes[filter]?.data?.attributes[filter]!== 'Uncertain'
-                ){options.push(coin?.attributes?.[filter]?.data?.attributes[filter])}
-            })
-            return options
-        }
-        let data = {
-            material:getDeepFilterOptions('material'),
-            mint:getDeepFilterOptions('mint'),
-            issuing_authority: getDeepFilterOptions('issuing_authority'),
-            governing_power: getDeepFilterOptions('governing_power'),
-            language: getDeepFilterOptions('language'),
-            ancient_territory: getDeepFilterOptions('ancient_territory'),
-        }
-        setTageOptions(data)
-    },[coins])
 
     useEffect(()=>{
         let newURL = qs.stringify({
@@ -130,7 +70,7 @@ const SearchBar = () =>{
         let li = []
         for (let key in tags) {
             tags[key]?.forEach((tag)=>{
-                li.push(<li>{tag} <i className='icon-syrios-x-thin' onClick={ () => deleteTags(key,`${tag}`)} /></li>)
+                li.push(<li>{tag} <span className='icon-syrios-x-thin' onClick={ () => deleteTags(key,`${tag}`)} /></li>)
             })
         }
         return li
