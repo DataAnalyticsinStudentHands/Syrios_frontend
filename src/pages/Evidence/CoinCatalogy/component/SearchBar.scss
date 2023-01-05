@@ -65,8 +65,13 @@
                 background: #F2F2F2;
                 margin:  1rem 0.75rem;
                 padding:1rem 1.5rem;
-    
-                i{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                span{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     height: 20px;
                     width: 20px;
                     color: #808080;
@@ -76,7 +81,7 @@
                     border-radius: 50%;
                     background: #dfdfdf;
                     justify-content: center;
-                  }
+                }
               }
             input{
                 flex: 1;

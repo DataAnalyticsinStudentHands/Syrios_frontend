@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
+import { useParams } from "react-router-dom";
+import qs from 'qs';
+import { CoinContext } from 'src/context/coinContext';
 
 const CoinsFiter = (props) =>{
 
-    // const [collapse, setCollapse] = useState(true)
+    const [collapse, setCollapse] = useState(true)
+    const params = qs.parse(useParams().params) 
+    const { coinsKeyTerms } = useContext(CoinContext)
+
       function handleAddFilters(e, filter){
         let newFilters= {...props.filters}
         let newOptions= {...props.options}
@@ -28,41 +34,26 @@ const CoinsFiter = (props) =>{
       }
       function getFilter(title,value,filterType){
         return(
-          <>
-            {value?.length === 0 ? (<></>) :           
-              (<>
-                {value?.length === 1 
-                ? <div className='filter'>
-                    <div className='filter-trigger'>
-                      {title} 
-                    </div>
-                    <div className='filterList'>
-                      <span className='filterList-item'>{value[0]}</span>
-                    </div>
-                  </div>
-                : <div className='filter'>
-                    <div className='filter-trigger'>
-                      {title}
-                      <span className='icon-entypo-arrow-thick-down'/>
-                      <div className='filter-content'>
-                        {value?.map((item, index)=>{  
-                          return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,filterType)}} key={item + index}>{item}</div>
-                        })}
-                      </div>
-                    </div>
-                    <div className='filterList'>
-                      {
-                        props.filters[filterType][0] === undefined ? <></> :(
-                            props.filters[filterType].map((item, index)=>{
-                            return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, filterType)}} key={item + index}>{item}</span>
-                        }))
-                      }
-                    </div>
-                  </div>
-                }
-              </>)}
-          </>
-        )
+           <div className='filter'>
+            <div className='filter-trigger'>
+              {title}
+              <span className='icon-entypo-arrow-thick-down'/>
+              <div className='filter-content'>
+                {value?.map((item, index)=>{  
+                  return <div className='filter-content-item' onClick={(e)=>{handleAddFilters(e,filterType)}} key={item + index}>{item}</div>
+                })}
+              </div>
+            </div>
+            <div className='filterList'>
+              {
+                props.filters[filterType][0] === undefined ? <></> :(
+                    props.filters[filterType].map((item, index)=>{
+                    return <span className='icon-syrios-x-thin filterList-item' onClick={(e)=>{handleDeleteTag(e, filterType)}} key={item + index}>{item}</span>
+                }))
+              }
+            </div>
+          </div>
+          )
       }
 
     return(
@@ -70,7 +61,20 @@ const CoinsFiter = (props) =>{
       <div className='filters'>
         <div className='filter-head'>
           <h1>Filter by</h1>
-          <button onClick={()=>props.setRefine(!props.refine)}> Refine results</button>
+          <button onClick={()=>{
+            props.setFilters({
+              material:[],
+              mint:[],
+              issuing_authority:[],
+              governing_power:[],
+              language:[],
+              ancient_territory:[],
+              from_year:-450,
+              to_year:450,
+              ...params.tags
+            })
+            props.setOptions({...coinsKeyTerms})
+          }}> Refine results</button>
         </div>
         <div className='filter-body'>
           {getFilter('Material', props.options?.material, 'material')}
@@ -80,9 +84,9 @@ const CoinsFiter = (props) =>{
       <div className='filters'>
         <div className='filter-head'>
           <h1>Advanced Filters</h1>
-          <button onClick={()=>props.setCollapse(!props.collapse)}> {props.collapse ? 'Expand' : 'Collapse'}</button>
+          <button onClick={()=>setCollapse(prev => !prev)}> {collapse ? 'Expand' : 'Collapse'}</button>
         </div>
-          {props.collapse ? <></> :
+          {collapse ? <></> :
           <>
             <div className='filter-body'>
               {getFilter('Authority', props.options?.issuing_authority, 'issuing_authority')}
