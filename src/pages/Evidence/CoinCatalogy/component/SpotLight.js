@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Slider from 'react-slick';
-// import { SpotlightCard } from './CoinList/Card';
 import { SpotlightCard } from '../CoinList/Card';
 import coinCollections from 'src/api/coin-collections';
 
@@ -37,7 +36,7 @@ const SpotLight = () => {
       }
     const Slicksettings = {
         dots: true,
-        // autoplay: true,
+        autoplay: true,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
