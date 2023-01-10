@@ -37,7 +37,7 @@ const CoinCatalog = ()=>{
                             <h1>Coin name goes here </h1>
                             <h2>Coin date found, location goes here</h2>
                             <p>More detailed coin information goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <button> Learb more</button>
+                            <button> Learn more</button>
                         </div>
                         <div className='right'>
                             <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'/>

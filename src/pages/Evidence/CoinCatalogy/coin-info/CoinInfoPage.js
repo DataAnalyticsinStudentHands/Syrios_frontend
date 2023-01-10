@@ -1,13 +1,13 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useFetch from 'src/hooks/useFetch';
 import "./CoinInfoPage.scss"
-import { Link } from 'react-router-dom';
 import qs from 'qs';
 import CoinScaleAndFlip from './CoinAnimations';
 
 function CoinInfoPage (){
     const id = useParams().id;
+    const navigate = useNavigate();
 
     let query = qs.stringify({
         populate: [
@@ -112,10 +112,8 @@ function CoinInfoPage (){
                 <div className='item'>
                     Bibliography: {coin?.data?.attributes?.reference.length === 0 ? " None" :coin?.data?.attributes?.reference}
                 </div>
-                <div className='backbutton' style={{textAlign:"center"}}>
-                    <Link className='BackButton' to={`/Evidence/CoinCatalogDev`}>
-                        View full catalog
-                    </Link>
+                <div className='BackButton' onClick={()=>navigate(-1)}>
+                    Back to the Catalog
                 </div>
 
             </div>

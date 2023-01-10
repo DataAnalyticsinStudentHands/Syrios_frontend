@@ -71,12 +71,10 @@ const Coins = () => {
           "attributes.ancient_territory.data.attributes.ancient_territory",
         ]
       };
-      // const fuse = new Fuse(result.data.data, fuseOptions);
       const fuse = new Fuse(coinsData, fuseOptions);
       let Searchresults = fuse.search(searchText) 
       let searchedData = searchText ? Searchresults.map(Searchresult => Searchresult.item) : coinsData;
       setSearchedData(searchedData)
-      // console.log(searchedData);
 
       let options = {
         material:getDeepFilterOptions(searchedData, 'material'),
@@ -88,7 +86,7 @@ const Coins = () => {
       }
       setOptions(options)
     }
-    console.count('searchData');
+    // console.count('searchData');
     searchData().catch(console.error);
 
 
@@ -98,7 +96,6 @@ const Coins = () => {
 
   useEffect(()=>{
     const getCoinList = async ()=>{
-      // console.log(searchedData);
       const filteredCoins = searchedData?.filter( coin =>{
         if( 
           (filters?.material.length === 0 ? true : filters?.material.includes(coin?.attributes?.material?.data?.attributes?.material)) &&
@@ -112,10 +109,9 @@ const Coins = () => {
         ){return true}
         return false;
       })
-      // console.log(filteredCoins);
       setCoinList(filteredCoins)
     }
-    console.count('getCoinList');
+    // console.count('getCoinList');
 
     getCoinList();  
 

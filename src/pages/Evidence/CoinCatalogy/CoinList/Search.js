@@ -5,7 +5,7 @@ function Search(props) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log(e.target.nextSibling.value);
+        // console.log(e.target.nextSibling.value);
         props.setSearchText(e.target.nextSibling.value)
     }
 
