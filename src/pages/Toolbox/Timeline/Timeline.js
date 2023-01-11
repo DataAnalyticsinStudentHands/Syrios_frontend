@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Svg, { Text } from 'react-native-svg';
+import Svg from 'react-native-svg';
 import axios from 'axios';
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import CoinInfo from 'src/components/coin/CoinInfo.js';
@@ -10,7 +10,7 @@ import { LoadTimelineInfo } from './TimeLineInfo';
 import timelinekey from './res/timelinekey.png'
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
-
+import qs from 'qs'
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 var events = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
 const default_coin_data = {
@@ -235,12 +235,13 @@ const Timeline = () => {
   useEffect(() => {
     // This is the background
     if (timeline_background_is_loading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/api/timelines')
+      axios.get(process.env.REACT_APP_API_URL + `/timelines`)
         .then((res, err) => {
           if (err) {
             console.error(err);
             return;
           }
+          // console.log(res);
           let result_from_setup_timeline_background = SetupTimelineBackground({res,err, y_offset, });
           // console.log(result_from_setup_timeline_background)
           set_view_box_total_height(result_from_setup_timeline_background.view_box_total_height);
@@ -253,12 +254,39 @@ const Timeline = () => {
 
     // This is the coins and events and connecting stuff **********************
     if (timeline_info_is_loading) {
-      axios.get(process.env.REACT_APP_strapiURL + '/api/timeline-info')
+      let query = qs.stringify({
+        populate: [
+          'zone',
+          'zone.event',
+          'zone.event.tag_subcategory1',
+          'zone.event.tag_subcategory2',
+          'zone.event.governing_powers',
+          'zone.event.topics',
+
+          'zone.coin',
+          'zone.coin.reverse_file',
+          'zone.coin.obverse_file',
+          'zone.coin.type_category',
+          'zone.coin.governing_power',
+          'zone.coin_a',
+          'zone.coin_a.reverse_file',
+          'zone.coin_a.obverse_file',
+          'zone.coin_a.type_category',
+          'zone.coin_a.governing_power',
+          'zone.coin_b',
+          'zone.coin_b.reverse_file',
+          'zone.coin_b.obverse_file',
+          'zone.coin_b.type_category',
+          'zone.coin_b.governing_power',
+        ],
+      });
+      axios.get(process.env.REACT_APP_API_URL + `/timeline-info?${query}`)
         .then((res, err) => {
           if (err) {
             console.error(err);
           } 
           else {
+            // console.log(res.data.data);
             setTimelineText({text:res.data.data.attributes.text,subtext:res.data.data.attributes.subtext})
             var timeline_info_interval = setInterval(function() {
               if (!timeline_background_is_loading) {

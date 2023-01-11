@@ -32,12 +32,14 @@ import FooterWrapper from './components/footerv2/Footer2Wrapper';
 import { Navbar,Nav,NavDropdown,} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import logo from 'src/assets/logoWhiteText.svg';
+import AutoScrollToTop from './utils/ScrollToTop';
 
 function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter basename='/dev'>
+				<AutoScrollToTop>
 				{/* <Navbar /> */}
 				<Navbar id='navbar' collapseOnSelect expand='md' sticky='top' className='navbar-dark'>
 					<Nav.Link as={Link} to='/'>
@@ -60,7 +62,7 @@ function App() {
 						<NavDropdown.Item as={Link} to='/Toolbox' className='navbar-text '>Overview</NavDropdown.Item>
 						<NavDropdown.Divider />			
 						<NavDropdown.Item as={Link} to='/HowToReadACoin' className='navbar-text'>How to Read a coin</NavDropdown.Item>
-						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3d</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3D</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Toolbox/Glossary/all' className='navbar-text'>Glossary</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Download Data</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Toolbox/Research' className='navbar-text'>Research</NavDropdown.Item>
@@ -100,6 +102,7 @@ function App() {
 					<Route path='/StoryReader' element={<StoryReader />} />
 
 				</Routes>
+				</AutoScrollToTop>
 			</BrowserRouter>
 		</div>
 	);

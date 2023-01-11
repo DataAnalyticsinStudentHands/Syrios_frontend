@@ -42,6 +42,7 @@ const StoryReader = () => {
     if (el && e.currentTarget.contains(el)) {
       setIsBottomOpen((prev) => !prev)
     }
+
   }
 
   async function createImageReference(resultData){
@@ -162,13 +163,15 @@ const StoryReader = () => {
         navigationPosition={`right`}
         anchors={storyAnchors}
         autoScrolling = {true}
-        // paddingBottom='5em'
+        padding='5em 0'
 
         // onLeave={(origin, destination, direction) => {
         //   console.log("onLeave event", { origin, destination, direction });
         // }}
         render={({state, fullpageApi}) => {
           // console.log("render prop change", state, fullpageApi);
+          fullpageApi?.setAllowScrolling(!isBottomOpen, 'down')
+
           let storyJSX = [];
           storyFrame.forEach((story,i)=>{storyJSX.push(StoryComponent(story,i,fullpageApi, state,toggleBottom))})
           return (
