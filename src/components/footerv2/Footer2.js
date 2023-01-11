@@ -2,10 +2,10 @@ import React from "react";
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 import { Link } from 'react-router-dom';
 import SubscriptionButton from './subscriptionButton'
-async function scrollToTop (e){
-    // console.log(e)
-    document.documentElement.scrollTop = 0;
-}
+// async function scrollToTop (e){
+//     // console.log(e)
+//     document.documentElement.scrollTop = 0;
+// }
 function Footer2(){
     return(
         <div id='footer2'>
@@ -14,20 +14,6 @@ function Footer2(){
                     <div id="footer2-head" className="mb-5">Get the latest updates!</div>
                     <div style={{width:'62.5%'}} className="my-5">
                         <SubscriptionButton/>
-                        {/* <div className="input-addon">
-                            <input type={'email'} id="footer2-email" placeholder="Enter your email" className="mb-5"/>
-
-                            <input type="email" id="footer2-email" placeholder="Enter your email" className="input-addon__input" 
-                                value={email} onChange={(e)=>{
-                                    setEmail(e.target.value)
-                                }}/>
-                            <div className="input-addon__addon input-addon__addon--appended" onClick={handleSubmit}>
-                                <div id="footer_submit" className="px-3">
-                                Submit
-
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
 
                     <div id='footer2-syrios'>
@@ -44,8 +30,8 @@ function Footer2(){
                 <div className="split-half">
                     <div style={{marginTop:'12.5%'}}>
                         <div id="footer2-links">
-                            <Link to='/About' className="footer2-link" onClick={(e)=>{scrollToTop(e)}}>About Syrios</Link>
-                            <Link to='/ContactUs' className="footer2-link" onClick={(e)=>{scrollToTop(e)}}> Contact Us</Link>
+                            <Link to='/About' className="footer2-link">About SYRIOS</Link>
+                            <Link to='/ContactUs' className="footer2-link">Contact Us</Link>
                             {/* <Link to='/Evidence/MapCoins' className="footer2-link"> Sitemap</Link>
                             <Link to='/' className="footer2-link"> Privacy Policy</Link> */}
                         </div>
