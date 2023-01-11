@@ -26,7 +26,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
           onClose={toggleBottom}
           direction='bottom'
           className='credits-and-references'
-          size={'50vh'}
+          size={'max-content'}
         >
           <button className='x-button reference-tag' onClick={toggleBottom}> &#xe839;</button>
 
