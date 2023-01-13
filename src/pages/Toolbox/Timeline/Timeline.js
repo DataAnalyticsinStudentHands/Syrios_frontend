@@ -258,8 +258,6 @@ const Timeline = () => {
         populate: [
           'zone',
           'zone.event',
-          'zone.event.tag_subcategory1',
-          'zone.event.tag_subcategory2',
           'zone.event.governing_powers',
           'zone.event.topics',
 

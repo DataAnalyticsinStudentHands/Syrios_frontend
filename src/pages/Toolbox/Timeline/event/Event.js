@@ -62,9 +62,7 @@ const EventInfo = (props) => {
                 TAGS
               </p>
               <div id='event-tags' className='my-3'>
-                {/* {loadtags(props.eventMetaData.tag_subcategory1,props.eventMetaData.tag_subcategory2)} */}
                 {loadtags(props.eventMetaData.governing_powers,props.eventMetaData.topics)}
-
               </div>
             </div>
           </div>
