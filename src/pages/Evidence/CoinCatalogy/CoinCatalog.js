@@ -16,21 +16,23 @@ const CoinCatalog = ()=>{
                     <SearchBar/>
 
                     <div className='catalog-buttons'>
-                        <button> What is the catalog?</button>
-                        <button> Our partners</button>
-                        <button> Our research</button>
-                        <button> Coin of the day</button>
+                        <a href='#coin-of-the-day'> Coin of the day</a>
+                        <a href='#what-is-the-catalog'> What is the catalog?</a>
+                        <a href='#our-research'> Our research</a>
+                        <a href='#coin-image-from'> Our partners</a>
                     </div>
                 </div>
 
  
 
                 <div className='catalog-section'>
-                    <h2 >Spotlight. Trending coins right now</h2>
+                    <h2>Spotlight. Trending coins right now</h2>
                     <SpotLight />
                 </div>
 
-                <div className='catalog-section'>
+                <div  className='catalog-section'>
+                <span class="anchor" id='coin-of-the-day'></span>
+
                     <h2>Coins of the day. Past 24 hours</h2>
                     <div className='coins-of-the-day'>
                         <div className='left'>
@@ -45,18 +47,22 @@ const CoinCatalog = ()=>{
                     </div>
                 </div>
 
-                <div className='catalog-section'>
-                    <h2 >What is this catalog?</h2>
+                <div  className='catalog-section'>
+                <span class="anchor" id='what-is-the-catalog'></span>
+
+                    <h2>What is this catalog?</h2>
                     <p>The SYRIOS catalog represents an ongoing effort to bring together examples of all the many and varied coins minted in ancient Syria from 400 BCE to 450 CE. Over 30 different mints produced coins within the region during this period, some of which were intended for local use and others destined to serve an empire.</p>
                     <p>Begin your search by choosing a mint, time period, material, image, issuing authority, or even language.</p>
                 </div>
 
                 <div className='catalog-section'>
-                    <h2 >Our research</h2>
+                    <span class="anchor" id='our-research'></span>
+                    <h2>Our research</h2>
                     <p>Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.</p>
                 </div>
 
                 <div className='catalog-section'>
+                    <span class="anchor" id='coin-image-from'></span>
                     <h2 >Coin images from</h2>
                     <p>Where a drawing appears instead of photograph, no digital image was available through museum or educational organizations. All drawings are based upon published coin type catalogs. Click on this video to learn more about the ethics and legality of coin collecting.</p>
                     <div className='catalog-VideoBox'>
