@@ -2,10 +2,18 @@
     -webkit-overflow-scrolling: touch;
 	height: 100%;
 	padding:5% 10%;
+	scroll-behavior: smooth;
 
 	.catalog-section{
-		margin-bottom: 100px;
+		// margin-bottom: 100px;
 		text-align: center;
+
+		.anchor{
+			display: block;
+			height: 7.5vh; /*same height as header*/
+			margin-top: 7.5vh; /*same height as header*/
+			visibility: hidden;
+		}
 
 		h2{
 			margin-bottom: 50px;
@@ -23,8 +31,9 @@
 			display: flex;
 			justify-content: space-around;
             align-items: center;
+			margin-bottom: 7.5vh;
 
-			button{
+			a{
 				padding: 0.5em 0.75em;
 				border-radius: 15px;
 		
