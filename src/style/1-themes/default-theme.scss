@@ -198,13 +198,11 @@ $syrios-text-script-superscript: superscript;
   font-family: "syrios-icon";
   font-style: normal;
   font-weight: normal;
-  speak: never;
-
   display: inline-block;
   text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
+
+  vertical-align:super;
+
   /* opacity: .8; */
 
   /* For safety - reset parent styles, that can break glyph codes*/
@@ -216,7 +214,7 @@ $syrios-text-script-superscript: superscript;
 
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
+  // margin-left: .2em;
 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */

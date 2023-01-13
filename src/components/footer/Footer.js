@@ -38,7 +38,7 @@ const Footer = ({references,imageReference,isBottomOpen,toggleBottom}) => {
                     {imageReference.map((ref,index)=>{
                       return(
                         <div key={index} className='d-flex references-text my-5'>
-                            <a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}<span className='icon-entypo-link-external' style={{color:'#b9ccd7',fontSize:'1.25em'}}/></a>
+                            <a href={ref.source_image} target="_blank" rel="noopener noreferrer">{ref.right_holder}<span className='icon-entypo-link-external'/></a>
                         </div>
                       )})}
                   </div>

@@ -60,12 +60,14 @@ function ContactUsForm (){
                     {show?  
                         <input type="checkbox" placeholder="Subscription us?" {...register("isSubscription?", {value: true })} disabled/>: 
                         <input type="checkbox" placeholder="Subscription us?" {...register("isSubscription?", {value: true })} />}
-                    <span> Subscrip us to get the latest update!</span>
+                    <span> Subscribe to get the latest update!</span>
                 </div>
-                {show
-                    ? <p className='contacting'>Thanks for contacting us!</p>
-                    :<input type="submit" />
-                }
+                <div className='formItem'>
+                    {show
+                        ? <p className='contacting'>Thanks for contacting us!</p>
+                        :<input type="submit"/>
+                    }
+                </div>
             </form>
         </div>
     )
