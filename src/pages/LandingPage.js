@@ -48,7 +48,7 @@ function LandingPage() {
           <h2 className='text-center'>{landingData.title}</h2>
           <Row className='d-flex justify-content-around mt-5'>
             <Col xs={12} sm={8} id='landing-video' className='p-3'>
-              <ReactPlayer width="100%" height="100%" url={landingData.video_link} />
+              <ReactPlayer width="100%" height="100%" url={landingData.video_link} controls={true} playing={true}/>
             </Col>
             <Col xs={12} sm={4}>
                 <Row className='align-items-center'>
