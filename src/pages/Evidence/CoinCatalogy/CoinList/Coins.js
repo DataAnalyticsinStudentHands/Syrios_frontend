@@ -86,10 +86,7 @@ const Coins = () => {
       }
       setOptions(options)
     }
-    // console.count('searchData');
     searchData().catch(console.error);
-
-
   },[searchText, coinsData])
 
 
@@ -111,8 +108,6 @@ const Coins = () => {
       })
       setCoinList(filteredCoins)
     }
-    // console.count('getCoinList');
-
     getCoinList();  
 
   },[searchedData, filters])
@@ -129,7 +124,6 @@ const Coins = () => {
         setOptions = {setOptions}
       />
 
-              
       <div className='results'>
         Results per page 
         <div className='filter'>

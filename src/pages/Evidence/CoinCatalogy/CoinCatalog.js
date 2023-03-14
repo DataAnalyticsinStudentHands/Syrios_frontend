@@ -23,8 +23,6 @@ const CoinCatalog = ()=>{
                     </div>
                 </div>
 
- 
-
                 <div className='catalog-section'>
                     <h2>Spotlight. Trending coins right now</h2>
                     <SpotLight />

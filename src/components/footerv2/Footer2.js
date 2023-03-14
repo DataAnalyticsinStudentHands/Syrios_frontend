@@ -2,10 +2,7 @@ import React from "react";
 import NEH from 'src/assets/NEH-Preferred-Seal-White.svg';
 import { Link } from 'react-router-dom';
 import SubscriptionButton from './subscriptionButton'
-// async function scrollToTop (e){
-//     // console.log(e)
-//     document.documentElement.scrollTop = 0;
-// }
+
 function Footer2(){
     return(
         <div id='footer2'>

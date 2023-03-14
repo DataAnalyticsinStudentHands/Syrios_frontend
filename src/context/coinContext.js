@@ -17,10 +17,10 @@ function getDeepFilterOptions(arr, filter){
 
 export const CoinContextProvider = ({ children }) => {
     const [coinsData, setCoinsData] = useState(
-        JSON.parse(localStorage.getItem("coins")) || null
+        JSON.parse(sessionStorage.getItem("coins")) || null
     );
     const [coinsKeyTerms, setCoinKeyTerms] = useState(
-        JSON.parse(localStorage.getItem("coinskeyTerms")) || null
+        JSON.parse(sessionStorage.getItem("coinskeyTerms")) || null
     );
 
     const fetchCoinData = async () => {
@@ -39,8 +39,8 @@ export const CoinContextProvider = ({ children }) => {
     }
 
   useEffect(() => {
-    localStorage.setItem("coins", JSON.stringify(coinsData));
-    localStorage.setItem("coinskeyTerms", JSON.stringify(coinsKeyTerms));
+    sessionStorage.setItem("coins", JSON.stringify(coinsData));
+    sessionStorage.setItem("coinskeyTerms", JSON.stringify(coinsKeyTerms));
   }, [coinsData, coinsKeyTerms]);
 
   return (

@@ -36,7 +36,6 @@ const SpotLight = () => {
       }
     const Slicksettings = {
         dots: true,
-        autoplay: true,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
