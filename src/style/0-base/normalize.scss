@@ -120,23 +120,13 @@ a {
 
 }
 
-// a[target='_blank']:after {
-//   content: '\e818';
-//   font-family: $syrios-font-family-syrios-entypo-subset;
-//   color: #7899a8;
-//   :hover{
-//     color:#183848
-//   }
-// }
-
-// a[class='glossary-tag']:after {
-//   content: '\e817';
-//   font-family: $syrios-font-family-syrios-entypo-subset;
-//   color: #7899a8;
-//   :hover{
-//     color: #183848;
-//   }
-// }
+a[target='_blank']:after {
+  content: '\e818';
+  font-family: "syrios-icon";
+  display: inline-block;
+  text-decoration: inherit;
+  vertical-align:super;
+}
 
 /**
  * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
@@ -210,22 +200,7 @@ small {
  * all browsers.
  */
 
-sub,
-sup {
-  // font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-  color:#78a878
-}
 
-sub {
-  bottom: -0.25em;
-}
-
-// sup {
-//   top: -0.25em !important;
-// }
 
 /* Embedded content
 ========================================================================== */

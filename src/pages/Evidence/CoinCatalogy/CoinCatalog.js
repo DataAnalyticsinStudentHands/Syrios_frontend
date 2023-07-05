@@ -1,188 +1,74 @@
-import React
-// {useState, useEffect} 
-from 'react';
-import Footer from 'src/components/footerv2/Footer2';
+import React from 'react';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
-// import coinSortRequest from 'src/api/coin-sort';
-import Slider from 'react-slick';
-
-import { Row, Col } from 'react-bootstrap';
+import SearchBar from './component/SearchBar';
+import SpotLight from './component/SpotLight';
 
 const CoinCatalog = ()=>{
-
-    // const [data, setData] = useState([])
-
-    // useEffect(()=>{
-	// 	const fetchData = async ()=>{
-	// 		const result = await coinSortRequest.coinStotlight()
-    //         console.log(result.data.data)
-    //         setData(result.data.data)
-    //     }
-	// 	fetchData().catch(console.error);    
-    // },[])
-
-    function NextArrow(props){
-        const { className, style, onClick } = props;
-        return (
-            <div
-            className={className}
-            style={{ ...style, display: "block", background: "" }}
-            onClick={onClick}
-            />
-        );
-    }
-    function PrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-          <div
-            className={className}
-            style={{ ...style, display: "block", background: "", fontSize:'5rem'}}
-            onClick={onClick}
-          />
-        );
-      }
-    const Slicksettings = {
-        dots: true,
-        autoplay: true,
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        // centerMode: true,
-        pauseOnHover: true,
-        lazyLoad: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />
-      };
-
-
     return(
         <>
             <FeedBackicon url="default"/>
             <div id='coin-catalog'>
-                <div className='catalog_section text-center'>
+                <div className='catalog-section'>
                     <h1>Explore our Collection</h1>
                     <h3>Our catalog has over 700 coins for you to discover!</h3>
-                
-                    <div className="input-addon">
-                        <div className="input-addon__addon input-addon__addon--prepended icon-entypo-search"/>
-                        <input type="text" className="input-addon__input" placeholder='Search by coin name, type, date, and more.'/>
-                    </div>
-                    <Row style={{padding:"0 5%"}}>
-                        <Col><button className='catalog-button'> What is the catalog?</button></Col>
-                        <Col><button className='catalog-button'> Our partners</button></Col>
-                        <Col><button className='catalog-button'> Our research</button></Col>
-                        <Col><button className='catalog-button'> Coin of the day</button></Col>
-                    </Row>
                 </div>
+                <div className='catalog-section'>
+                    <SearchBar/>
 
-                <div className='catalog_section text-center'>
-                    <h2 >Spotlight. Trending coins right now</h2>
-                    
-                    <div className='my-5 py-5'>
-                    <Slider {...Slicksettings}>
-                        {/* {data.map((image)=>{
-                            console.log(image)
-                            return(
-                                <div className='catalog-carousel-images'>
-                                    <div className='catalog-carousel-image'>
-                                        <img src={`${process.env.REACT_APP_strapiURL}${image.attributes.obverse_file.data.attributes.url}`} alt='test_image'width={'100%'}/>
-                                    </div>
-                                    <div className='catalog-carousel-text'>Coin 1</div>
-                                </div>
-                            )
-                        })} */}
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 1</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 2</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 3</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 4</div>
-                            </div>
-
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 5</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 6</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 7</div>
-                            </div>
-                            <div className='catalog-carousel-images'>
-                                <div className='catalog-carousel-image'>
-                                    <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/>
-                                </div>
-                                <div className='catalog-carousel-text'>Coin 8</div>
-                            </div>
-                    </Slider>
-                    </div>
-                    
-                </div>
-
-                <div className='catalog_section'>
-                    <h2 className='text-center'>Coins of the day. Past 24 hours</h2>
-                    <Row id='coins_of_the_day' className='justify-content-between align-items-center my-5 py-5'>
-                        <Col xs={7}>
-                            <div className='catalog-content-coin-name'> Coin name goes here </div>
-                            <div className='catalog-content-coin-date'>Coin date found, location goes here</div>
-                            <div className='catalog-content-p' >More detailed coin information goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                        </Col>
-                        <Col xs={4}>
-                            <div className='catalog-content-coin-image'><img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'width={'100%'}/></div>
-                        </Col>
-                    </Row>
-                    <div>
-                        <button className='catalog-content-button'>Learn more</button>
+                    <div className='catalog-buttons'>
+                        <a href='#coin-of-the-day'> Coin of the day</a>
+                        <a href='#what-is-the-catalog'> What is the catalog?</a>
+                        <a href='#our-research'> Our research</a>
+                        <a href='#coin-image-from'> Our partners</a>
                     </div>
                 </div>
 
-                <div className='catalog_section text-center'>
-                    <h2 >What is this catalog?</h2>
-                    <div className='catalog-content-p my-5 pt-5'>The SYRIOS catalog represents an ongoing effort to bring together examples of all the many and varied coins minted in ancient Syria from 400 BCE to 450 CE. Over 30 different mints produced coins within the region during this period, some of which were intended for local use and others destined to serve an empire.</div>
-                    <div className='catalog-content-p'>Begin your search by choosing a mint, time period, material, image, issuing authority, or even language.</div>
+                <div className='catalog-section'>
+                    <h2>Spotlight. Trending coins right now</h2>
+                    <SpotLight />
                 </div>
 
-                <div className='catalog_section text-center'>
-                    <h2 >Our research</h2>
-                    <div className='catalog-content-p my-5 py-5'>Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.</div>
+                <div  className='catalog-section'>
+                <span class="anchor" id='coin-of-the-day'></span>
+
+                    <h2>Coins of the day. Past 24 hours</h2>
+                    <div className='coins-of-the-day'>
+                        <div className='left'>
+                            <h1>Coin name goes here </h1>
+                            <h2>Coin date found, location goes here</h2>
+                            <p>More detailed coin information goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <button> Learn more</button>
+                        </div>
+                        <div className='right'>
+                            <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'/>
+                        </div>
+                    </div>
                 </div>
 
-                <div className='catalog_section text-center'>
+                <div  className='catalog-section'>
+                <span class="anchor" id='what-is-the-catalog'></span>
+
+                    <h2>What is this catalog?</h2>
+                    <p>The SYRIOS catalog represents an ongoing effort to bring together examples of all the many and varied coins minted in ancient Syria from 400 BCE to 450 CE. Over 30 different mints produced coins within the region during this period, some of which were intended for local use and others destined to serve an empire.</p>
+                    <p>Begin your search by choosing a mint, time period, material, image, issuing authority, or even language.</p>
+                </div>
+
+                <div className='catalog-section'>
+                    <span class="anchor" id='our-research'></span>
+                    <h2>Our research</h2>
+                    <p>Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.</p>
+                </div>
+
+                <div className='catalog-section'>
+                    <span class="anchor" id='coin-image-from'></span>
                     <h2 >Coin images from</h2>
-                    <div className='catalog-content-p my-5 py-5'>Where a drawing appears instead of photograph, no digital image was available through museum or educational organizations. All drawings are based upon published coin type catalogs. Click on this video to learn more about the ethics and legality of coin collecting.</div>
+                    <p>Where a drawing appears instead of photograph, no digital image was available through museum or educational organizations. All drawings are based upon published coin type catalogs. Click on this video to learn more about the ethics and legality of coin collecting.</p>
                     <div className='catalog-VideoBox'>
                         Video place holder
                     </div>
                 </div>
 
             </div>
-            <Footer/>
         </>
     )
 }

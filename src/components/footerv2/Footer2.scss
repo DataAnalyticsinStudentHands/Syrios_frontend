@@ -3,10 +3,12 @@
     padding: 5% 10%;
 
     #footer2-Container{
-        display: flex
+        display: flex;
+        gap:50px;
+
     }
     .split-half{
-        flex:1
+        flex:1;
     }
 
     #footer2-head{

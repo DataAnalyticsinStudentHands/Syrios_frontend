@@ -2,172 +2,152 @@
     -webkit-overflow-scrolling: touch;
 	height: 100%;
 	padding:5% 10%;
+	scroll-behavior: smooth;
 
-	.catalog_section{
-		margin-bottom: 15%;
-	}
+	.catalog-section{
+		// margin-bottom: 100px;
+		text-align: center;
 
-	.input-addon {
-		display: flex;
-		height: 64px;
-		background: #FFFFFF;
-		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-		border-radius: 15px;
-		margin: 5% 15%;
+		.anchor{
+			display: block;
+			height: 7.5vh; /*same height as header*/
+			margin-top: 7.5vh; /*same height as header*/
+			visibility: hidden;
+		}
 
-		.input-addon__input {
-			border: none;
-			flex: 1;
+		h2{
+			margin-bottom: 50px;
+		}
+		p{
+			font-style: normal;
+			font-weight: 500;
+			font-size: 32px;
+			line-height: 51px;
+			text-align: center;
 
-			font-weight: 400;
-			font-size: 3rem;
-			line-height: 28px;
+			color: #7899A8;
+		}
+		.catalog-buttons{
+			display: flex;
+			justify-content: space-around;
+            align-items: center;
+			margin-bottom: 7.5vh;
 
-			color: #737271;
-			padding: 0 1em;
-
-			&:focus{
-				outline:none;
+			a{
+				padding: 0.5em 0.75em;
+				border-radius: 15px;
+		
+				font-weight: 700;
+				font-size: 3rem;
+				line-height: 36px;
+				text-align: center;
+		
+				// color: #F4F2F0;
+				background: #ffffff 0% 0% no-repeat padding-box;
+				border: 2px solid #7899a8;
+				opacity: 1;
+				transition: 0.5s;
+			  
+				font-family: $syrios-garamond-premier-pro-caption;
+				font-style: $syrios-font-style-normal;
+				color: $syrios-color-7899a8;
+			  
+				&:hover {
+				  color: #ffffff;
+				  background: #7899a8 0% 0% no-repeat padding-box;
+				}
 			}
 		}
-		.input-addon__addon {
+		.spotLight{
+			padding: 0% 5%;
+		}
+		.coins-of-the-day{
+			display: flex;
+			
+            justify-content: space-around;
+			gap: 50px;
+			.left{
+				flex: 4;
+				display: flex;
+				flex-direction: column;
+
+				h1 {
+					font-style: italic;
+					font-weight: 700;
+					font-size: 44px;
+					line-height: 53px;
+					text-align: left;
+
+					color: #313029;
+				}
+				h2{
+					font-style: italic;
+					font-weight: 600;
+					font-size: 38px;
+					line-height: 46px;
+					text-align: left;
+					color: #7899A8;
+				}
+				p{
+					font-style: normal;
+					font-weight: 500;
+					font-size: 34px;
+					line-height: 41px;
+					text-align: left;
+
+					color: #7899A8;
+				}
+				button{
+					margin-top: 30px;
+					padding: 0.25em 0.75em;
+					border-radius: 30px 0px;
+					font-style: normal;
+					font-weight: 700;
+					font-size: 36px;
+					line-height: 44px;
+
+					background: #ffffff 0% 0% no-repeat padding-box;
+					border: 2px solid #7899a8;
+					opacity: 1;
+					transition: 0.5s;
+
+					width: fit-content;
+				
+					color: $syrios-color-7899a8;
+				
+					&:hover {
+						color: #ffffff;
+						background: #7899a8 0% 0% no-repeat padding-box;
+					}
+				}
+			}
+			.right{
+				flex: 2;
+				display: flex;
+                justify-content: center;
+				align-items: center;
+
+				img{
+					width: 100%;
+				}
+			}
+		}
+		.catalog-VideoBox{
+			width: 80%;
+			margin-left: 10%;
+			height: 592px;
+	
+			background: #D9D9D9;
+	
 			align-items: center;
 			display: flex;
 			justify-content: center;
-		}
-		
-		.input-addon__addon--prepended {
-			font-size: 3.5rem;
-		}
-	}
-	.catalog-button{
-		padding: 0.5em 0.75em;
-		border-radius: 15px;
-
-		font-weight: 700;
-		font-size: 3rem;
-		line-height: 36px;
-		text-align: center;
-
-		// color: #F4F2F0;
-		background: #ffffff 0% 0% no-repeat padding-box;
-		border: 2px solid #7899a8;
-		opacity: 1;
-		transition: 0.5s;
-	  
-		font-family: $syrios-garamond-premier-pro-caption;
-		font-style: $syrios-font-style-normal;
-		color: $syrios-color-7899a8;
-	  
-		&:hover {
-		  color: #ffffff;
-		  background: #7899a8 0% 0% no-repeat padding-box;
+	
+			color: #ffffff;
+			font-size: 5rem;
+	
 		}
 	}
-	#catalog-carousel{
-		margin-top: 5%;
-	}
-
-	.catalog-carousel-images{
-		margin: 0 1rem;
-		padding: 2rem;
-	}
-	.catalog-carousel-image{
-		background-color: #EDEDED;
-		margin: 0 2rem;
-		padding: 2rem
-		;
-	}
-	.catalog-carousel-text{
-		margin-top: 0.25em;
-		margin-bottom: 1em;
-		font-family: 'Cormorant Garamond';
-		font-style: normal;
-		font-weight: 600;
-		font-size: 50px;
-		line-height: 61px;
-		text-align: center;
-
-		color: #7899A8;
-	}
-
-
-
-
-	.catalog-content-coin-name{
-		font-family: 'Cormorant Garamond';
-		font-style: italic;
-		font-weight: 700;
-		font-size: 44px;
-		line-height: 53px;
-
-		color: #313029;
-	}
-	.catalog-content-coin-date{
-		font-family: 'Cormorant Garamond';
-		font-style: italic;
-		font-weight: 600;
-		font-size: 38px;
-		line-height: 46px;
-
-		color: #7899A8;
-	}
-	.catalog-content-p{
-		font-family: 'Cormorant Garamond';
-		font-style: normal;
-		font-weight: 500;
-		font-size: 34px;
-		line-height: 41px;
-
-		color: #7899A8;
-	}
-	.catalog-content-coin-image{
-		align-items: center;
-		display: flex;
-		justify-content: center;
-	}
-	.catalog-content-button{
-		// width: 303px;
-		// height: 69px;
-		padding: 0.25em 0.75em;
-		border-radius: 30px 0px;
-
-		font-family: 'Cormorant Garamond';
-		font-style: normal;
-		font-weight: 700;
-		font-size: 36px;
-		line-height: 44px;
-		text-align: center;
-
-		background: #ffffff 0% 0% no-repeat padding-box;
-		border: 2px solid #7899a8;
-		opacity: 1;
-		transition: 0.5s;
-	  
-		color: $syrios-color-7899a8;
-	  
-		&:hover {
-		  color: #ffffff;
-		  background: #7899a8 0% 0% no-repeat padding-box;
-		}
-
-	}
-	.catalog-VideoBox{
-		width: 80%;
-		margin-left: 10%;
-		height: 592px;
-
-		background: #D9D9D9;
-
-		align-items: center;
-		display: flex;
-		justify-content: center;
-
-		color: #ffffff;
-		font-size: 5rem;
-
-	}
-
 		
 }
 

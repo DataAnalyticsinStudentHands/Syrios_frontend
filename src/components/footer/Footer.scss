@@ -211,7 +211,7 @@
 }
 
 #reference-content{
-  overflow-y: scroll;
-  max-height: 30vh;
+  // overflow-y: auto;
+  max-height: max-content;
   padding-right: 2em;
 }

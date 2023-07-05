@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+import { CoinContextProvider } from './context/coinContext';
 ReactDOM.render(
-  <>
-		{/* <meta charSet="utf-8" name="viewport" content="width=device-width, initial-scale=1, user-scalable=flase;"/> */}
+  <CoinContextProvider>
     <App />
-  </>,
+  </CoinContextProvider>
+  ,
   document.getElementById('root')
 );
