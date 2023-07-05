@@ -12,8 +12,9 @@ import StoryReader from 'src/pages/Stories/StoryReader.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort/CoinSort.js';
 import MapCoins from './pages/Evidence/MapCoins/MapCoins';
-//import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
-import CoinCatalogComingSoon from './pages/Evidence/CoinCatalogy/CoinCatalogComingSoon';
+import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
+import Coins from './pages/Evidence/CoinCatalogy/CoinList/Coins';
+import CoinInfoPage from './pages/Evidence/CoinCatalogy/coin-info/CoinInfoPage';
 import Download from 'src/pages/Evidence/Download/Download.js';
 import Toolbox from './pages/Toolbox/Toolbox';
 import HowToReadACoin from 'src/pages/Stories/HowToReadACoin.js';
@@ -31,12 +32,14 @@ import FooterWrapper from './components/footerv2/Footer2Wrapper';
 import { Navbar,Nav,NavDropdown,} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import logo from 'src/assets/logoWhiteText.svg';
+import AutoScrollToTop from './utils/ScrollToTop';
 
 function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
-			<BrowserRouter>
+			<BrowserRouter basename='/dev'>
+				<AutoScrollToTop>
 				{/* <Navbar /> */}
 				<Navbar id='navbar' collapseOnSelect expand='md' sticky='top' className='navbar-dark'>
 					<Nav.Link as={Link} to='/'>
@@ -59,7 +62,7 @@ function App() {
 						<NavDropdown.Item as={Link} to='/Toolbox' className='navbar-text '>Overview</NavDropdown.Item>
 						<NavDropdown.Divider />			
 						<NavDropdown.Item as={Link} to='/HowToReadACoin' className='navbar-text'>How to Read a coin</NavDropdown.Item>
-						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3d</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3D</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Toolbox/Glossary/all' className='navbar-text'>Glossary</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Download Data</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Toolbox/Research' className='navbar-text'>Research</NavDropdown.Item>
@@ -78,7 +81,10 @@ function App() {
 						<Route path='/Evidence/CoinSort' element={<CoinSort />} />
 						<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 						<Route path='/Evidence/Timeline' element={<Timeline />} />
-						<Route path='/Evidence/CoinCatalog' element={<CoinCatalogComingSoon />} />
+						<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
+						<Route path='/Coins/:params' element={<Coins />} />
+						<Route path='/Coin/:id' element={<CoinInfoPage />} />
+
 						<Route path='/Evidence/Download' element={<Download />} />
 						<Route path='/Toolbox/VideoLibrary' element={<VideoLibrary />} />
 						<Route path='/Toolbox/Research' element={<Research />} />
@@ -96,6 +102,7 @@ function App() {
 					<Route path='/StoryReader' element={<StoryReader />} />
 
 				</Routes>
+				</AutoScrollToTop>
 			</BrowserRouter>
 		</div>
 	);
