@@ -17,18 +17,39 @@ const glossaryRequest = {
             method:'GET',
         })
     },
-
     glossaryFind: ()=>{
-        let query = qs.stringify({
-            pagination: {
-              page: 1,
-              pageSize: 2147483647,
-            }
-          });
+        const query = qs.stringify({
+            fields: ["term"],
+        });
         return axios(`${process.env.REACT_APP_strapiURL}/api/glossaries?${query}`,{
             method:'GET',
         })
     },
+    glossarySearch: (text)=>{
+        const query = qs.stringify({
+            fields: ["term"],
+            filters: {
+                term: {
+                    $startsWithi: text,
+                },
+            }
+        });
+        return axios(`${process.env.REACT_APP_strapiURL}/api/glossaries?${query}`,{
+            method:'GET',
+        })
+    },
+
+    // glossaryFind: ()=>{
+    //     let query = qs.stringify({
+    //         pagination: {
+    //           page: 1,
+    //           pageSize: 2147483647,
+    //         }
+    //       });
+    //     return axios(`${process.env.REACT_APP_strapiURL}/api/glossaries?${query}`,{
+    //         method:'GET',
+    //     })
+    // },
 
     glossaryFindStartWIth: (alphabet)=>{
         return axios(`${process.env.REACT_APP_strapiURL}/api/glossry/start-with/${alphabet}`,{
