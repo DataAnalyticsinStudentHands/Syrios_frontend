@@ -12,7 +12,7 @@ const GlossaryTerm = () => {
 		async function fetchData() {
 			if (term) {
 				const results = await glossaryRequest.glossaryFindByTerm(term);
-				setTermData(results.data[0]);
+				setTermData(results.data.data[0].attributes);
 				setIsLoading(false);
 			}
 		}
