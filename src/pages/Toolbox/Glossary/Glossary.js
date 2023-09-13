@@ -1,47 +1,59 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
-import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
 import glossaryRequest from 'src/api/glossary';
-import { Container, Row, Col, Form, InputGroup, Button, Modal,Tab, Tabs, ListGroup} from 'react-bootstrap';
+import { Row, Col, ListGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
-const Glossary = () =>{
+function groupByFL(arr) {
+    return arr.reduce((store, word) => {
+      const letter = word.charAt(0).toUpperCase()
+      const keyStore = (
+        store[letter] || (store[letter] = []) 
+      ); 
+      keyStore.push(word)
+  
+      return store
+    }, {})
+  }
 
-    // const alphabetGroup = ["ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"];
+const Glossary = () =>{
     const [isLoading, setIsLoading] = useState(true)
-    const [glossaryData, setGlossaryData]=useState([])
+    const [glossaryData, setGlossaryData]=useState({})
 
     const {group} = useParams()
 
     useEffect(()=>{
         async function fetchData(){
             if(group === 'all'){
-                const alphabets = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-                let contentList= []
-                for (let i=0; i<alphabets.length; i++){
-                    let alp = {}
-                    // console.log(alphabets[i])
-                    const data = await glossaryRequest.glossaryFindStartWIth(alphabets[i])
-                    alp['alphabet']=alphabets[i]
-                    alp['data'] = data.data
-                    contentList.push(alp)
-                }
-                setGlossaryData(contentList)
+                const {data:{data}} = await glossaryRequest.glossaryFind()
+                const contentList= data.map((glossary)=>{
+                    return glossary.attributes.term
+                })
+                const grouped = groupByFL(contentList)
+                const sorted = Object.keys(grouped)
+                    .sort()
+                    .reduce((obj, key) => {
+                        obj[key] = grouped[key];
+                        return obj;
+                    },{})
+                setGlossaryData(sorted)
                 setIsLoading(false)
             }
             else{
-                // console.log(group)
                 const alphabetsArray = group.split("")
-                let contentList= []
-                for (let i=0; i<alphabetsArray.length; i++){
-                    let alp = {}
-                    const data = await glossaryRequest.glossaryFindStartWIth(alphabetsArray[i])
-                    alp['alphabet']=alphabetsArray[i]
-                    alp['data'] = data.data
-                    contentList.push(alp)
-                }
-                setGlossaryData(contentList)
+                const {data:{data}} = await glossaryRequest.glossarySearch(alphabetsArray)
+                const contentList= data.map((glossary)=>{
+                    return glossary.attributes.term
+                })
+                const grouped = groupByFL(contentList)
+                const sorted = Object.keys(grouped)
+                    .sort()
+                    .reduce((obj, key) => {
+                        obj[key] = grouped[key];
+                        return obj;
+                    },{})
+                setGlossaryData(sorted)
                 setIsLoading(false)
             }
         }
@@ -57,20 +69,19 @@ const Glossary = () =>{
     return(
             <div id='glossary-group' className=''>
                 <ListGroup as='ul'>
-                    {glossaryData.map((alphabet)=>{
-                        return(
-                            <div className='li-wrapper' key={alphabet.alphabet}>
-                                {alphabet.data.length ===0 ?(<></>):(
-                                    <ListGroup.Item key={alphabet.alphabet}>
+                    {
+                        Object.entries(glossaryData).map(([key, value]) => {
+                            return(
+                                <div className='li-wrapper' key={key}>
+                                    <ListGroup.Item key={key}>
                                         <Row className='py-4'>
-                                            <Col xs={2} className="glossary-alphabet d-flex justify-content-center align-items-center">{alphabet.alphabet}</Col>
+                                            <Col xs={2} className="glossary-alphabet d-flex justify-content-center align-items-center">{key}</Col>
                                             <Col xs={8}>
                                                 <Row className='glossary-term'>
-                                                    {alphabet.data.map((item)=>{
+                                                    {value.map((item)=>{
                                                         return(
-                                                            <Col xs={3} key={`${item.id}`}>
-                                                                {item.foreign ? (<Link className='glossary-term-a' style={{fontStyle:"italic"}} to={`/Toolbox/Glossary/term/${item.term}`}>{item.term}</Link>
-                                                                ):(<Link className='glossary-term-a' to={`/Toolbox/Glossary/term/${item.term}`}>{item.term}</Link>)}
+                                                            <Col xs={3} key={`${item}`}>
+                                                                <Link className='glossary-term-a' to={`/Toolbox/Glossary/term/${item}`}>{item}</Link>
                                                             </Col>
                                                         )
                                                     })}
@@ -79,10 +90,10 @@ const Glossary = () =>{
 
                                         </Row>
                                     </ListGroup.Item>
-                                )}
-                            </div>
-                        )
-                    })}
+                                </div>
+                            )
+                        })
+                    }
                 </ListGroup>
             </div>
     )
