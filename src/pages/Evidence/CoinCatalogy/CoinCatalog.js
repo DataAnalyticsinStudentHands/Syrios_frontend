@@ -2,7 +2,7 @@ import React from 'react';
 import FeedBackicon from 'src/components/constant/FeedBackIcon';
 import SearchBar from './component/SearchBar';
 import SpotLight from './component/SpotLight';
-
+import ReactPlayer from 'react-player';
 const CoinCatalog = ()=>{
     return(
         <>
@@ -28,7 +28,7 @@ const CoinCatalog = ()=>{
                     <SpotLight />
                 </div>
 
-                <div  className='catalog-section'>
+                {/* <div  className='catalog-section'>
                 <span className="anchor" id='coin-of-the-day'></span>
 
                     <h2>Coins of the day. Past 24 hours</h2>
@@ -43,7 +43,7 @@ const CoinCatalog = ()=>{
                             <img src={`${process.env.REACT_APP_strapiURL}/uploads/dime_1e86a20b3f.png?updated_at=2022-08-24T01:51:12.499Z`} alt='test_image'/>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div  className='catalog-section'>
                 <span className="anchor" id='what-is-the-catalog'></span>
@@ -64,7 +64,14 @@ const CoinCatalog = ()=>{
                     <h2 >Coin images from</h2>
                     <p>Where a drawing appears instead of photograph, no digital image was available through museum or educational organizations. All drawings are based upon published coin type catalogs. Click on this video to learn more about the ethics and legality of coin collecting.</p>
                     <div className='catalog-VideoBox'>
-                        Video place holder
+                        {/* Video place holder */}
+                        <ReactPlayer
+                            url="https://vimeo.com/833123674"
+                            width='100%'
+                            height='100%'
+                            controls={true}
+                            playing={true}
+                        />
                     </div>
                 </div>
 
