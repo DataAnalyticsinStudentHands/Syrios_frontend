@@ -29,7 +29,7 @@ const CoinCatalog = ()=>{
                 </div>
 
                 <div  className='catalog-section'>
-                <span class="anchor" id='coin-of-the-day'></span>
+                <span className="anchor" id='coin-of-the-day'></span>
 
                     <h2>Coins of the day. Past 24 hours</h2>
                     <div className='coins-of-the-day'>
@@ -46,7 +46,7 @@ const CoinCatalog = ()=>{
                 </div>
 
                 <div  className='catalog-section'>
-                <span class="anchor" id='what-is-the-catalog'></span>
+                <span className="anchor" id='what-is-the-catalog'></span>
 
                     <h2>What is this catalog?</h2>
                     <p>The SYRIOS catalog represents an ongoing effort to bring together examples of all the many and varied coins minted in ancient Syria from 400 BCE to 450 CE. Over 30 different mints produced coins within the region during this period, some of which were intended for local use and others destined to serve an empire.</p>
@@ -54,13 +54,13 @@ const CoinCatalog = ()=>{
                 </div>
 
                 <div className='catalog-section'>
-                    <span class="anchor" id='our-research'></span>
+                    <span className="anchor" id='our-research'></span>
                     <h2>Our research</h2>
                     <p>Every coin from the ancient world has a story to tell. Some coins were minted for provincial governors or imperial states conquering Syria, while others were produced for local cities and communities. Some coins laud kings and emperors, while others celebrate the beliefs and values of the vibrant Syrian population. And yet, whether rich or poor, citizen or foreigner, young or old – all people used coins in their daily lives.</p>
                 </div>
 
                 <div className='catalog-section'>
-                    <span class="anchor" id='coin-image-from'></span>
+                    <span className="anchor" id='coin-image-from'></span>
                     <h2 >Coin images from</h2>
                     <p>Where a drawing appears instead of photograph, no digital image was available through museum or educational organizations. All drawings are based upon published coin type catalogs. Click on this video to learn more about the ethics and legality of coin collecting.</p>
                     <div className='catalog-VideoBox'>
