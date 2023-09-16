@@ -6,6 +6,11 @@ import ReactPlayer from "react-player";
 import coinCollections from "src/api/coin-collections";
 import LoadingPage from "src/components/loadingPage/LoadingPage";
 import { Link } from "react-router-dom";
+import ans_logo from "./res/ans_large.png";
+import berlin_logo from "./res/berlin_logo.svg";
+import french_logo from "./res/french_logo.svg";
+import rpc_logo from "./res/rpc_logo.png";
+
 const CoinCatalog = () => {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -99,6 +104,31 @@ const CoinCatalog = () => {
 					<div className="catalog-section">
 						<span className="anchor" id="anchor-4"></span>
 						<h2>{data.contents[4].title}</h2>
+						<div className="logos">
+							<a href="https://numismatics.org/search/" rel="noreferrer" target="_blank">
+								<img src={ans_logo} alt="ans_logo" style={{
+									width: "100px",
+								}} />
+							</a>
+							<a href="https://www.smb.museum/museen-einrichtungen/muenzkabinett/home/" rel="noreferrer" target="_blank">
+							<img src={berlin_logo} alt="berlin_logo" style={{
+								width: "300px",
+								paddingTop: "20px",					
+							}} />
+							</a>
+							<a href="https://www.bnf.fr/fr/departement-monnaies-medailles-antiques" rel="noreferrer" target="_blank">
+							<img src={french_logo} alt="french_logo" style={{
+								width: "100px",
+								paddingBottom: "20px",					
+
+							}}/>
+							</a>
+							<a href="https://rpc.ashmus.ox.ac.uk/" rel="noreferrer" target="_blank">
+							<img src={rpc_logo} alt="rpc_logo" style={{
+								width: "200px",
+							}} />
+							</a>
+						</div>
 						<p>{data.contents[4].body}</p>
 						<div className="catalog-VideoBox">
                             {data.video_url &&
