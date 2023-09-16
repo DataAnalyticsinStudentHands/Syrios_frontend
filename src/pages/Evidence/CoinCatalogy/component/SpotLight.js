@@ -1,18 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import { SpotlightCard } from '../CoinList/Card';
-import coinCollections from 'src/api/coin-collections';
 
-const SpotLight = () => {
-    const [spotLightdata, setSpotLightdata] = useState([])
-
-    useEffect(()=>{
-		const fetchData = async ()=>{
-			const result = await coinCollections.coinSpotLight()
-            setSpotLightdata(result.data.data)
-        }
-		fetchData().catch(console.error);    
-    },[])
+const SpotLight = (props) => {
+  const { data } = props;
 
     function NextArrow(props){
         const { className, style, onClick } = props;
@@ -47,7 +38,7 @@ const SpotLight = () => {
     };
   return (
         <Slider {...Slicksettings} className="spotLight">
-            {spotLightdata.map((coin)=> <SpotlightCard coin={coin} key={coin.id}/>)}
+            { data.length > 0 && data.map((coin)=> <SpotlightCard coin={coin} key={coin.id}/>)}
         </Slider>
     )
 };
