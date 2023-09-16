@@ -89,6 +89,7 @@ const CoinCatalog = () => {
 						<p>{data.contents[2].body}</p>
 					</div>
 
+
 					<div className="catalog-section">
 						<span className="anchor" id="anchor-3"></span>
 						<h2>{data.contents[3].title}</h2>
@@ -117,3 +118,4 @@ const CoinCatalog = () => {
 	);
 };
 export default CoinCatalog;
+

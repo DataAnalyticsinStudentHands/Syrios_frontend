@@ -8,7 +8,6 @@ function PageTitleComponent(props){
         	<div className='story-text my-5' dangerouslySetInnerHTML={createMarkup(props.subtext)}/>
         </center>
         </div>
-
     )
 }
 export default PageTitleComponent

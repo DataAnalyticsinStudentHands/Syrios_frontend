@@ -6,49 +6,6 @@ $footerHeight:70px;
 	padding: 5% 10%;
 	min-height: 95vh;
 
-    // .search{
-    //     position: absolute;
-    //     color: #aaa;
-    //     font-size: $syrios-font-size-16;
-    //     z-index: 199;
-
-    //     .search-list-group{
-    //         width: 13vmax;
-    //         .glossary-term-a{
-    //             font-size: $syrios-font-size-20;
-    //             &:hover{color: #487848;}
-    //         }
-    //     }
-
-    //     input{
-    //         color: #737271;
-    //         width: 13vmax;
-    //         height: 2.083vmax;
-    //         background: #fcfcfc;
-    //         border: 1px solid #aaa;
-    //         border-radius: 5px;
-    //         box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
-
-    //         font-family: $syrios-garamond-premier-pro;
-    //         font-size: 1.024vmax;
-
-    //     }
-    //     & input {text-indent: $syrios-font-size-32;}
-    //     .search-icon{
-    //         position: absolute;
-    //         // top: 10px;
-    //         left: 10.9375vmax;
-    //         font-family: $syrios-font-family-syrios-entypo-subset;
-    //         font-style: $syrios-font-style-normal;
-    //         color: #7899a8;
-    //         font-size: $syrios-font-size-28;
-    //     }
-
-    // }
-    // .list-group-item.active{
-    //     background-color: #FFFFFF;
-    //     border-color:rgba(0,0,0,.125);
-    // }
     .search-box {
         display: flex;
         font-size: $syrios-font-size-20;
@@ -66,29 +23,24 @@ $footerHeight:70px;
             color: #737271;
             font-family: $syrios-garamond-premier-pro;
             font-size: $syrios-font-size-20;
+            text-indent: $syrios-font-size-24
 
         }
-        & input {text-indent: $syrios-font-size-24;}
-        // .search-icon{
-
-        //     font-style: $syrios-font-style-normal;
-        //     color: #7899a8;
-        //     font-size: $syrios-font-size-32;
-        //     background-color: transparent;
-        // }
         .search-box__input {
             border-color: transparent;
-            /* Take available width */
             flex: 1;
         }
-        datalist{
-            display: block;
-            option{
-                background-color:  #fcfcfc;
-
-            }
-        }
     }
+
+    // .search-box{
+    //     display: flex;
+    //     // flex-direction: row-reverse;
+    //     border: 1px solid #d1d5db;
+    //     .search-box__input {
+    //         border-color: transparent;
+    //         flex: 1;
+    //     }
+    // }
     .result-list{
         
         width: 30%;

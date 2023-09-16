@@ -24,13 +24,6 @@
     color: #ffffff;
     background: #7899a8 0% 0% no-repeat padding-box;
   }
-
-  // @media screen and (max-width: 1440px) {
-  //   width:  450px * 0.75 ;
-  //   height: 60px * 0.75;
-  //   font-size: $syrios-font-size-30 *0.75;
-
-  // }  
 }
 
 
@@ -154,62 +147,11 @@
     opacity: 0;
     z-index: 99999;
     visibility: hidden;
+    white-space: pre-line;
   }
   [data-title] {
       position: relative;
   }
-
-  // .glossary-tooltip-text {
-
-  //   font-family: $syrios-font-family-garamond-premier-pro;
-  //   font-style: $syrios-font-style-normal;
-  //   font-weight: $syrios-font-weight-regular;
-  //   font-size: $syrios-font-size-16;
-  //   line-height: $syrios-line-spacing-30;
-  //   letter-spacing: $syrios-character-spacing--05;
-
-  //   visibility: hidden;
-  //   width: 20vmax; 
-  //   background-color: rgb(0,0,0,0.8);
-  //   color: #fff;
-  //   text-align: left;
-  //   border-radius: 6px;
-  //   padding: 1em;
-
-  //   top: 100%;
-  //   left: 50%;
-  //   margin-left: -10vmax;
-  
-  //   /* Position the tooltip */
-  //   position: absolute;
-  //   z-index: 1;
-
-  //   transition: 0.5s;
-
-  //   &:before{
-  //     content:'';
-  //     display:block;
-  //     // width:0;
-  //     // height:0;
-  //     position:absolute;
-      
-  //     border-left: 8px solid transparent;
-  //     border-right: 8px solid transparent; 
-  //     border-bottom:8px solid rgb(0,0,0,0.8);
-  //     top:-8px;
-  //     left:50%;
-      
-  //   }
-
-  // }
-  // &:hover{
-  //   color:#487848;
-
-  //   .glossary-tooltip-text{
-  //     visibility: visible;
-
-  //   }
-  // }
 }
 
 .external-tag{
