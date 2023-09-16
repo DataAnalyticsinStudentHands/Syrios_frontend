@@ -10,7 +10,7 @@
 
 		.anchor{
 			display: block;
-			height: 7.5vh; /*same height as header*/
+			// height: 7.5vh; /*same height as header*/
 			margin-top: 7.5vh; /*same height as header*/
 			visibility: hidden;
 		}
@@ -118,6 +118,12 @@
 					&:hover {
 						color: #ffffff;
 						background: #7899a8 0% 0% no-repeat padding-box;
+					}
+					a {
+						color: $syrios-color-7899a8;
+						&:hover {
+							color: #ffffff;
+						}
 					}
 				}
 			}
