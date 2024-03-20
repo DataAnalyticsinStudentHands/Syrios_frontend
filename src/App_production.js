@@ -3,7 +3,6 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style/styles.scss";
 import background from 'src/assets/background.jpg';
-// import Navbar from 'src/components/navbar/Navbar.js';
 import LandingPage from 'src/pages/LandingPage.js';
 import AboutUs from 'src/pages/AboutUs/AboutUs.js';
 import ContactUs from './pages/ContactUs/ContactUs';
@@ -31,12 +30,14 @@ import FooterWrapper from './components/footerv2/Footer2Wrapper';
 import { Navbar,Nav,NavDropdown,} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import logo from 'src/assets/logoWhiteText.svg';
+import AutoScrollToTop from './utils/ScrollToTop';
 
 function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
 			<BrowserRouter>
+				<AutoScrollToTop>
 				{/* <Navbar /> */}
 				<Navbar id='navbar' collapseOnSelect expand='md' sticky='top' className='navbar-dark'>
 					<Nav.Link as={Link} to='/'>
@@ -58,12 +59,12 @@ function App() {
 					<NavDropdown title='TOOL BOX' className='navbar-text'>
 						<NavDropdown.Item as={Link} to='/Toolbox' className='navbar-text '>Overview</NavDropdown.Item>
 						<NavDropdown.Divider />			
-						<NavDropdown.Item as={Link} to='/HowToReadACoin' className='navbar-text'>How to Read a coin</NavDropdown.Item>
-						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3d</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/HowToReadACoin' className='navbar-text'>How to Read a Coin</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/Coin3D' className='navbar-text'>Coin in 3D</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Toolbox/Glossary/all' className='navbar-text'>Glossary</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Evidence/Download' className='navbar-text'>Download Data</NavDropdown.Item>
 						<NavDropdown.Item as={Link} to='/Toolbox/Research' className='navbar-text'>Research</NavDropdown.Item>
-						<NavDropdown.Item as={Link} to='/Toolbox/VideoLibrary' className='navbar-text'>Video library</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to='/Toolbox/VideoLibrary' className='navbar-text'>Video Library</NavDropdown.Item>
 					</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>
@@ -96,6 +97,7 @@ function App() {
 					<Route path='/StoryReader' element={<StoryReader />} />
 
 				</Routes>
+				</AutoScrollToTop>
 			</BrowserRouter>
 		</div>
 	);
