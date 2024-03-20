@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FeedBackicon from "src/components/constant/FeedBackIcon";
+import NoFeedBackicon from "src/components/constant/NoFeedBackIcon";
 import SearchBar from "./component/SearchBar";
 import SpotLight from "./component/SpotLight";
 import ReactPlayer from "react-player";
@@ -25,7 +25,7 @@ const CoinCatalog = () => {
 	}, []);
 	return (
 		<>
-			<FeedBackicon url="default" />
+			<NoFeedBackicon url="default" />
 			{loading ? (
 				<LoadingPage />
 			) : (
