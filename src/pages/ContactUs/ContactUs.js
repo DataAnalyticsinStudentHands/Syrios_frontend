@@ -1,12 +1,12 @@
 import React from 'react';
 import { Row, Col} from 'react-bootstrap';
-import FeedBackicon from 'src/components/constant/FeedBackIcon';
+import NoFeedBackicon from 'src/components/constant/NoFeedBackIcon';
 import ContactUsForm from './ContactUsForm';
 
 function ContactUs(){
   return(
     <>
-      <FeedBackicon/>
+      <NoFeedBackicon/>
       <div id='contactus-page'>
           <Row className='d-flex justify-content-between'>
             <Col xs={3} className=" d-flex align-items-center justify-content-center">
