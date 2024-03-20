@@ -37,7 +37,7 @@ function App() {
 	return (
 		<div id='App' style={{ backgroundImage: `url(${background})`}}>
       { /* Change line below: <BrowserRouter basename='/dev'> to deploy on syrios.uh.edu/dev */ }
-			<BrowserRouter basename='/dev'>
+			<BrowserRouter>
 				<AutoScrollToTop>
 				{/* <Navbar /> */}
 				<Navbar id='navbar' collapseOnSelect expand='md' sticky='top' className='navbar-dark'>
