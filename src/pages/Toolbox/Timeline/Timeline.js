@@ -8,7 +8,7 @@ import EventInfo from 'src/pages/Toolbox/Timeline/event/Event.js';
 import { SetupTimelineBackground } from './TimeLineBackground';
 import { LoadTimelineInfo } from './TimeLineInfo';
 import timelinekey from './res/timelinekey.png'
-import FeedBackicon from 'src/components/constant/FeedBackIcon';
+import NoFeedBackIcon from 'src/components/constant/NoFeedBackIcon';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 import qs from 'qs'
 var coins = undefined; // idk why I can't use useState, but I can't. useState becomes undefined for whatever reason, but a pure JS object doesn't.
@@ -309,7 +309,7 @@ const Timeline = () => {
 
   return (
     <>
-      <FeedBackicon formfor='timeline' color='#487848'/>
+      <NoFeedBackIcon formfor='timeline' color='#487848'/>
         <div id='Timeline-page'>
           <PageTitleComponent
             title='Coins in Time'

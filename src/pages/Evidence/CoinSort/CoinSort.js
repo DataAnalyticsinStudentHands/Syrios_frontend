@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import LoadingPage from 'src/components/loadingPage/LoadingPage.js';
-import FeedBackicon from 'src/components/constant/FeedBackIcon.js';
+import NoFeedBackIcon from 'src/components/constant/NoFeedBackIcon.js';
 import { CoinGrid } from './CoinSortCoinGrid.js';
 import CoinSortDropDown from './CoinSortDropDown.js';
 
@@ -592,7 +592,7 @@ const CoinSort = () => {
 
   return (
     <>
-    <FeedBackicon formfor='coinpile'/>
+    <NoFeedBackIcon formfor='coinpile'/>
       <div id='coin-pile-page'>
         <center>
           <h1>Coins in a Pile</h1>
