@@ -1,21 +1,14 @@
 /* The blue box at the top of the screen and its dimensions are defined here */
 
-// .navbar-spacer {
-//   width: 100%;
-//   height: 3.75vmax;
-// }
-
 #navbar {
-	// height: 5vmax;
-	// background: #183848 0% 0% no-repeat padding-box;
 	background: #183848;
-	padding: 1%;
+	padding: 3rem;
 }
 
 /* General navbar styling */
 .navbar-dark .navbar-nav .nav-link {
 	color: white;
-	margin: 0 1em ;
+	margin: 0 1rem ;
 	&:hover{
 		color: #B8CCD8 ;
 	}
@@ -25,7 +18,6 @@
 	background: url("../../assets/dropdown.png");
 	background-color: #183848;
 	background-size: cover;
-	// min-width: 7.5vw;
 	border-radius: 0px 0px 15px 15px;
 	font-family:  $syrios-font-family-garamond-premier-pro;
 }
@@ -36,23 +28,18 @@
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
-
-	// top:0;
-    // max-height: 0;
     display: block;
-    // overflow: hidden;
     opacity: 0;
-	margin-top: 3em;
+	margin-top: 3rem;
+	left: 2rem;
 }
 
 .dropdown.show .dropdown-menu { /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
-    // max-height: 30vh;
     opacity: 1;
 }
 .dropdown-item {
 	color: white ;
-	margin: 2em auto;
-	padding: .25em 1.5em ;
+	padding: 2.5rem 3rem ;
 	transition: 0.3s;
 
 	&:hover {

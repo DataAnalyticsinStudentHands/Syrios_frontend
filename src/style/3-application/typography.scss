@@ -266,9 +266,6 @@
   // }  
 }
 
-
-.dropdown-divider { margin: -2rem 0; }
-
 .navbar-text {
 	// text-align: center;
 	opacity: 1;
@@ -280,7 +277,6 @@
   line-height: $syrios-line-spacing-17;
   // letter-spacing: $syrios-character-spacing--80;
   color: #ffffff;
-  text-transform:capitalize;
   &:hover {
     color: #B8CCD8;
     cursor: pointer;
