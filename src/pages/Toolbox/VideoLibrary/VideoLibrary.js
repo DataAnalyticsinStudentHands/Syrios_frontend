@@ -51,7 +51,7 @@ const VideoLibrary = ()=>{
     },[])
 
     async function handleOpenModal(url){
-        setUrl(url)
+        setUrl("https://syrios.uh.edu/Toolbox/VideoLibrary")
         setIsOpen((prev) => !prev)
     }
     
