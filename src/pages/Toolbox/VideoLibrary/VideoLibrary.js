@@ -11,6 +11,7 @@ import 'react-responsive-modal/styles.css';
 
 function Player(props){
     const { open, toggleModal, url } = props;
+
     return (
         <Modal
         open={open}
@@ -43,7 +44,6 @@ const VideoLibrary = ()=>{
     useEffect(()=>{
         async function fetchData(){
             const result = await VideoLibraryRequest.videoFind()
-            console.log(result.data.data)
             setVideoData(result.data.data)
             setIsLoading(false)
         }
@@ -51,8 +51,12 @@ const VideoLibrary = ()=>{
     },[])
 
     async function handleOpenModal(url){
-        setUrl("https://syrios.uh.edu/Toolbox/VideoLibrary")
-        setIsOpen((prev) => !prev)
+        setUrl(url)
+        setIsOpen(true)
+    }
+
+    async function handleCloseModal() {
+        setIsOpen(false)
     }
     
     if(isLoading) return(<LoadingPage />)
@@ -60,7 +64,7 @@ const VideoLibrary = ()=>{
         <div id='video-library' >
             <h1 className='text-center mb-5 pb-5'>Video Library</h1>
             <h3 className='text-center'>Watch short informational videos on a wide range of topics related to the study of coins, the ethics of coin collecting, Syrian cultural heritage, and more.</h3>
-            <Player open={isOpen} toggleModal={handleOpenModal} url={url} />
+            <Player open={isOpen} toggleModal={handleCloseModal} url={url} />
             <Row className='d-flex justify-content-around '>
                 {videoData.length === 0? (<></>):(<>
                     {videoData.map((video)=>{
