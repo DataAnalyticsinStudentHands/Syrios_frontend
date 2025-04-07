@@ -6,8 +6,13 @@ const storyRequest = {
             method:'GET',
         })
     },
-    storyFind: ()=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/stories?env=${process.env.REACT_APP_environment}`,{
+    storyFind: () => {
+        let environment = ""
+        // if in production we don't show test stories
+        if (process.env.REACT_APP_PRODUCTION === "development")
+            environment = "development"
+            
+        return axios(`${process.env.REACT_APP_strapiURL}/api/stories?env=${environment}`,{
             method:'GET',
         })
     },

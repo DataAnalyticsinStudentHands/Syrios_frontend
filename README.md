@@ -2,7 +2,7 @@
 
 This is the client-side interface for the Syrios project. It is built with Create-React-App. It uses a lightweight [Strapi](https://strapi.io/) content managment system.
 
-A live demo of the development version can be found at: 
+A live demo of the production version is the [Syrios website](https://syrios.uh.edu/)
 
 ## For Developers
 After cloning, run the following inside the project folder.
@@ -12,11 +12,17 @@ npm install
 npm run start
 ```
     
-### Configuration
+### Environment variables
 
-To connect with the Strapi backend, set the strapi url in the .env like so
+We are using [environment variables](https://create-react-app.dev/docs/adding-custom-environment-variables) and the following must exists:
 
-`REACT_APP_strapiURL=http://localhost:1337`
+`REACT_APP_strapiURL=https://syrios.cs.uh.edu`
 
+`REACT_APP_API_URL=https://syrios.cs.uh.edu/api` (is an artifact of earlier devlopment and will be removed in a future version)
 
-For information about deployment, please refer to the [documentation](https://github.com/DataAnalyticsinStudentHands/Syrios_frontend/wiki/Deployment).
+`REACT_APP_UPLOAD_URL=https://syrios.cs.uh.edu`
+
+Optional:
+
+`REACT_APP_PRODUCTION=development` (set to production for production)
+
