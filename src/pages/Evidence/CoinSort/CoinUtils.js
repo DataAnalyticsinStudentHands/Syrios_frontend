@@ -37,6 +37,8 @@ export function DefaultCoinPileGraphingStategy(coin) {
   }
 
   // This function converts the data we recieve from strapi into a more easily parsed data format
+  // older version
+  /*
 export function SimplyMappedCoin(coin, index) {
     return {
       props_index: index,
@@ -48,7 +50,38 @@ export function SimplyMappedCoin(coin, index) {
       size: coin.attributes.diameter
     };
   }
+*/
+// This function converts the data we recieve from strapi into a more easily parsed data format
+export function SimplyMappedCoin(coin, index) {
+  const a = coin?.attributes ?? {};
 
+  // Works for:
+  // 1) old coins API shape: governing_power is a relation { data: { attributes: { governing_power } } }
+  // 2) CoinSort2 normalized shape: governing_power is already a string
+  const governing_power =
+    typeof a.governing_power === 'string'
+      ? a.governing_power
+      : a.governing_power?.data?.attributes?.governing_power;
+
+  // Same idea for material / issuing authority if your CoinSort2 adapter returns strings
+  const material =
+    typeof a.material === 'string' ? a.material : a.material?.data?.attributes?.name;
+
+  const issuing_authority =
+    typeof a.issuing_authority === 'string'
+      ? a.issuing_authority
+      : a.issuing_authority?.data?.attributes?.name;
+
+  return {
+    props_index: index,
+    id: coin.id,
+    from_date: a.from_date ?? a.from_year ?? null,
+    material,
+    issuing_authority,
+    governing_power,
+    size: a.diameter ?? null,
+  };
+}
   
 // This evenly distrubutes the pile locations along the left, bottom, and right side of the CoinPile div.
 export function CoinPileLocations(arr_length) {

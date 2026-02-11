@@ -31,6 +31,9 @@ const filter_selections_query_relation = [null, true, false];
 const with_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
 // const with_selections_query_relation = ['', 'from_date', 'material', 'issuing_authority', 'governing_power.data.attributes.governing_power', 'diameter'];
 const of_kind_no_selections = ['None'];
+// degToRad helper
+const degToRad = (deg) => (deg * Math.PI) / 180;
+
 
 // const of_kind_from_date_selections = [
 // 'None',
@@ -84,6 +87,8 @@ const of_kind_from_date_query_relation = [
   {gte: -400, lte: -301},
   {gte: -300, lte: -201},
   {gte: -200, lte: -101},
+  // gte: -100 to lte: -1 is 100 B.C.E to 1 B.C.E, it was missing
+  { gte: -100, lte: -1 },
   {gte: 1, lte: 99},
   {gte: 100, lte: 199},
   {gte: 200, lte: 299},
@@ -92,12 +97,21 @@ const of_kind_from_date_query_relation = [
 ];
 const of_kind_material_selections = ['None','Gold','Silver','Bronze','Orichalcum','Uncertain'];
 const of_kind_issuing_authority_selections = ['None','Royal','Imperial','Provincial','Civic','Uncertain',];
+
+/*
 const of_kind_governing_power_selections = [];
 (async () => {
   const { data } = await axios.get(`${process.env.REACT_APP_strapiURL}/api/governing-powers`);
   let arr = data.data.map(({ attributes }) => attributes.governing_power);
   of_kind_governing_power_selections.push('None', ...arr);
 })();
+
+// this shouldn't be here. it's running on every hot reload, sometimes multiple times
+// it's not tied to component lifecycle
+// dropdown may render data before it arrives and never forces a re-render when the array mutates
+// mutation based push into array is not react friendly
+*/
+
 const of_kind_size_selections = [
   'None',
   '1mm - 10mm',
@@ -171,7 +185,7 @@ const Coin = (props) => {
 // The first this it does is setup default positioning. This is so coins_pos is insured to be defined for filtration.
 // The next thing done is sorting the coins into different piles. 
 // The last thing done is filtering the coins based on the coin sort options
-function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection) {
+function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, governingPowers) {
   if (!Array.isArray(coins)) return null;
 
   // perform default positioning
@@ -210,7 +224,7 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
         break;
       case sort_selections[4]: // Governing Power
         key = 'governing_power';
-        query_selection = of_kind_governing_power_selections;
+        query_selection = governingPowers ?? ['None'];
         is_match_type = true;
         break;
       case sort_selections[5]: // Size
@@ -265,7 +279,8 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
           break;
         case then_by_selections[4]: // Governing Power
           key = 'governing_power';
-          query_selection = of_kind_governing_power_selections;
+          //query_selection = of_kind_governing_power_selections;
+          query_selection = governingPowers ?? ['None'];
           is_match_type = true;
           break;
         case then_by_selections[5]: // Size
@@ -303,8 +318,14 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
         let degrees_between_pile = 360 / then_by_new_coin_piles.length;
         for (let j = 0; j < then_by_new_coin_piles.length; j++) {
           new_pile_locations.push({
-            x: distance_from_center * Math.cos(degrees_between_pile * j) + center.x,
-            y: distance_from_center * Math.sin(degrees_between_pile * j) + center.y,
+            /*
+              x: distance_from_center * Math.cos(degrees_between_pile * j) + center.x,
+              y: distance_from_center * Math.sin(degrees_between_pile * j) + center.y,
+            */
+           // fixed pile offsets. math.cos and .sin expect radians
+           x: distance_from_center * Math.cos(degToRad(degrees_between_pile * j)) + center.x,
+           y: distance_from_center * Math.sin(degToRad(degrees_between_pile * j)) + center.y,
+           
           });
         }
 
@@ -374,7 +395,14 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
           if (query == null) {
             does_include = coin[coin_key]?.toLowerCase()?.includes(of_kind_selection.toLowerCase()) ?? filter_include;
           } else {
-            does_include = coin[coin_key] >= query.gte && coin[coin_key] <= query.gte;
+            // i think this is a bug.
+            // <= should be query.lte
+            //does_include = coin[coin_key] >= query.gte && coin[coin_key] <= query.gte;
+            // that logic was creating an empty filter
+            // so if gte = -500, it's value >= -500 && value <= -500
+            // which is only true if value = -500
+            // changing to lte fixes it and provides the correct range filtering
+            does_include = coin[coin_key] >= query.gte && coin[coin_key] <= query.lte;
           }
         } catch (err) {}
 
@@ -407,11 +435,13 @@ const CoinPile = (props) => {
         props.thenBySelection, 
         props.filterSelection, 
         props.withSelection, 
-        props.ofKindSelection
+        props.ofKindSelection,
+        props.governingPowers
       )
     );
-  }, [props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection]);
+  }, [props.coins, props.sortSelection, props.thenBySelection, props.filterSelection, props.withSelection, props.ofKindSelection, props.governingPowers]);
 
+  /*
   // Update dimensions on screen resize. Very expensive, so setting dimensions only once is better
   const [dimensions, set_dimensions] = useState({width: 0, height: 0});
   useEffect(() => {
@@ -425,6 +455,40 @@ const CoinPile = (props) => {
   useEffect(() => {
     set_dimensions({width: coin_wrapper_ref?.current?.clientWidth ?? 0, height: coin_wrapper_ref?.current?.clientHeight ?? 0});
   }, [coin_wrapper_ref]);
+  */
+
+  // optimized resizer
+  // Track the pixel size of the pile wrapper so we can convert normalized x/y into screen positions.
+  const [dimensions, set_dimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const el = coin_wrapper_ref.current;
+    if (!el) return;
+
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      set_dimensions({
+        width: Math.round(rect.width),
+        height: Math.round(rect.height),
+      });
+    };
+
+    // Initial measurement
+    update();
+
+    // Observe actual element resizes (more reliable than window "resize")
+    const ro = new ResizeObserver(() => update());
+    ro.observe(el);
+
+    // Optional: also listen to window resize as a cheap fallback
+    window.addEventListener("resize", update);
+
+    return () => {
+      window.removeEventListener("resize", update);
+      ro.disconnect();
+    };
+  }, []);
+
 
   return (
     <div className='coin-sort-pile-wrapper' ref={coin_wrapper_ref}>
@@ -475,6 +539,29 @@ const CoinSort = () => {
   const [of_kind_selection, set_of_kind_selection] = useState(of_kind_no_selections[0]);
   
   const [of_kind_selections, set_of_kind_selections] = useState(of_kind_no_selections);
+  
+    // Governing powers list must be state so React re-renders when it arrives
+  const [governingPowers, setGoverningPowers] = useState(['None']);
+  useEffect(() => {
+    let mounted = true;
+
+    (async () => {
+      try {
+        const { data } = await axios.get(`${process.env.REACT_APP_strapiURL}/api/governing-powers`);
+        const arr =
+          data?.data
+            ?.map(({ attributes }) => attributes?.governing_power)
+            .filter(Boolean) ?? [];
+
+        if (mounted) setGoverningPowers(['None', ...arr]);
+      } catch (err) {
+        // keep a safe fallback
+        if (mounted) setGoverningPowers(['None']);
+      }
+    })();
+
+    return () => { mounted = false; };
+  }, []);
 
   // Fetch ALL the coins and ALL their data.
   useEffect(() => {
@@ -509,8 +596,9 @@ const CoinSort = () => {
           set_of_kind_selection(of_kind_issuing_authority_selections[0]);
           return of_kind_issuing_authority_selections;
         case 'Governing Power':
-          set_of_kind_selection(of_kind_governing_power_selections[0]);
-          return of_kind_governing_power_selections;
+          //set_of_kind_selection(of_kind_governing_power_selections[0]);
+          set_of_kind_selection(governingPowers[0] ?? 'None');
+          return governingPowers;
         case 'Size':
           set_of_kind_selection(of_kind_size_selections[0]);
           return of_kind_size_selections;
@@ -519,9 +607,11 @@ const CoinSort = () => {
           return of_kind_no_selections;
       };
     });
-  }, [with_selection]);
+  }, [with_selection, governingPowers]);
+
 
   const [coinSortData, setCoinSortData] = useState([])
+  /*
   useEffect(() => {
     async function fectCoinSortData(){
       let result = await coinSortRequest.coinSortFind()
@@ -530,7 +620,38 @@ const CoinSort = () => {
     }
 
     fectCoinSortData()
-  });
+  });*/
+
+  // prior code runs on every render, causing infinite loop
+  useEffect(() => {
+  // A simple "is this component still mounted?" flag.
+  // We flip this to false in the cleanup function.
+  // Why? If the request finishes after the component unmounts,
+  // calling setState would trigger React warnings and is wasted work.
+  let mounted = true;
+
+    // We run an async function immediately (IIFE) because useEffect
+    // callbacks themselves can't be marked `async`.
+    (async () => {
+      try {
+        // Fetch the CoinSort configuration object from Strapi
+        const result = await coinSortRequest.coinSortFind();
+        // If the component unmounted while we were waiting, do nothing.
+        if (!mounted) return;
+        // Store the returned attributes in state (this triggers a render).
+        setCoinSortData(result.data.data.attributes);
+      } finally {
+        // `finally` runs whether the request succeeds or throws.
+        // We still want to stop showing the loading UI in either case.
+        // (Optionally, you could also set an error state in `catch`.)        
+        if (mounted) set_is_loading(false);
+      }
+    })();
+    // Cleanup function: runs when the component unmounts
+    // (and also before rerunning this effect if deps change).
+    // This prevents setState from firing after unmount.
+    return () => { mounted = false; };
+  }, []);
 
   // Useeffect that listens to changes on then_by_selection, and sort_selection, and displays the clear button if either then_by or sort_by have non-default content 
   const [show_sort_clear_button, set_show_sort_clear_button] = useState(false);
@@ -617,6 +738,7 @@ const CoinSort = () => {
             filterSelection={filter_selection}
             withSelection={with_selection}
             ofKindSelection={of_kind_selection}
+            governingPowers={governingPowers}            
           />
           {/* <div id='coin-sort-title' className='story-h1 text-center'>
             Coins in a Pile
