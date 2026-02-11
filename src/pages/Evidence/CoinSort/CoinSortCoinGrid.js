@@ -78,11 +78,52 @@ export const CoinScaleAndFlip = (props) => {
     }
   }, [props.rotate]);
 
+  /* deprecated scale code 
   useEffect(() => {
     if ((props.scale && !is_img_scaled) || (!props.scale && is_img_scaled)) {
       ScaleCoin();
     }
   }, [props.scale]); // IGNORE the warning. This is so that scale all can unscale just 1 or 2 coins if needed.
+  */
+
+  // Sync local scale state with parent "scale all" control.
+  // 
+  // We intentionally do NOT call ScaleCoin() here because:
+  // 1) ScaleCoin mutates internal state (is_img_scaled),
+  // 2) Calling it inside useEffect would require adding it as a dependency,
+  // 3) That would cause unnecessary re-renders or potential loops.
+  //
+  // Instead, we replicate the scale logic inline so that this effect
+  // responds deterministically only to `props.scale` changes.
+  // 
+  // This keeps React Hook dependency rules satisfied and prevents
+  // infinite toggling when `is_img_scaled` updates.
+  useEffect(() => {
+    if (props.scale && !is_img_scaled) {
+      // scale up
+      set_dotted_circle_height('80%');
+
+      const box_percent = 100;
+      const box_height_mm = 62.5;
+      let height_of_coin_percent =
+        (box_percent / box_height_mm) * props.coinMetaData.diameter;
+
+      if (!height_of_coin_percent) {
+        height_of_coin_percent = 5;
+      }
+
+      set_img_height(`${height_of_coin_percent}%`);
+      set_is_img_scaled(true);
+    }
+
+    if (!props.scale && is_img_scaled) {
+      // scale down
+      set_dotted_circle_height('0%');
+      set_img_height('100%');
+      set_is_img_scaled(false);
+    }
+  }, [props.scale, props.coinMetaData.diameter, is_img_scaled]);
+
 
   const renderTooltipScale = (props) => (
     <Tooltip id="button-tooltip" {...props}>

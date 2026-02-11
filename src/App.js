@@ -10,6 +10,7 @@ import Stories from 'src/pages/Stories/Stories.js';
 import StoryReader from 'src/pages/Stories/StoryReader.js';
 import ExploreTheEvidence from 'src/pages/Evidence/ExploreTheEvidence.js';
 import CoinSort from 'src/pages/Evidence/CoinSort/CoinSort.js';
+import CoinSort2 from 'src/pages/Evidence/CoinSort/CoinSort2.js';
 import MapCoins from './pages/Evidence/MapCoins/MapCoins';
 import CoinCatalog from './pages/Evidence/CoinCatalogy/CoinCatalog';
 import Coins from './pages/Evidence/CoinCatalogy/CoinList/Coins';
@@ -119,7 +120,7 @@ return (
 			<NavDropdown title='EVIDENCE' className='navbar-text'>
 				<NavDropdown.Item as={Link} to='/Evidence' className='navbar-text '>Overview</NavDropdown.Item>
 				<NavDropdown.Divider />
-				<NavDropdown.Item as={Link} to='/Evidence/CoinSort' className='navbar-text'>Coins in a Pile</NavDropdown.Item>
+				<NavDropdown.Item as={Link} to='/Evidence/CoinSort2' className='navbar-text'>Coins in a Pile</NavDropdown.Item>
 				<NavDropdown.Item as={Link} to='/Evidence/MapCoins' className='navbar-text'>Coins on a Map</NavDropdown.Item>
 				<NavDropdown.Item as={Link} to='/Evidence/Timeline' className='navbar-text'>Coins in Time</NavDropdown.Item>
 				<NavDropdown.Item as={Link} to='/Evidence/CoinCatalog' className='navbar-text'>Coins in a Catalog</NavDropdown.Item>
@@ -145,7 +146,7 @@ return (
 				<Route path='/Stories' element={<Stories />} />
 				<Route path='/Evidence' element={<ExploreTheEvidence />} /> 
 				<Route path='/Toolbox' element={<Toolbox />} />
-				<Route path='/Evidence/CoinSort' element={<CoinSort />} />
+				<Route path='/Evidence/CoinSort2' element={<CoinSort2 />} />				
 				<Route path='/Evidence/MapCoins' element={<MapCoins />} />
 				<Route path='/Evidence/Timeline' element={<Timeline />} />
 				<Route path='/Evidence/CoinCatalog' element={<CoinCatalog />} />
