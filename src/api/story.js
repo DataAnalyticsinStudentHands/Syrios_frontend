@@ -1,46 +1,60 @@
+/**
+ * story.js — Vite Migration Refactor (2026)
+ *
+ * Purpose:
+ * Handles API requests for Story content from the Strapi backend.
+ *
+ * Refactor Summary:
+ * 1. Migrated environment variables
+ *    - Replaced `process.env.REACT_APP_*` with `import.meta.env.VITE_*`
+ *
+ * 2. Simplified Axios usage
+ *    - Converted `axios(url, { method: 'GET' })` to `axios.get(url)`
+ *
+ * 3. Preserved environment filtering logic
+ *    - Maintains behavior where development stories are conditionally included
+ *
+ * Environment Variables Required:
+ * - VITE_STRAPI_URL
+ * - VITE_PRODUCTION (e.g., "development" or "production")
+ *
+ * Notes:
+ * - This file contains no JSX and remains `.js`
+ * - Vite env variables are exposed to the client bundle (not secure)
+ *
+ * Future Improvements:
+ * - Move environment filtering logic to backend
+ * - Centralize axios instance for baseURL reuse
+ * - Add error handling / retries
+ */
+
 import axios from "axios";
-// import qs from "qs";
+
+const baseURL = import.meta.env.VITE_STRAPI_URL;
+const environmentFlag = import.meta.env.VITE_PRODUCTION;
+
 const storyRequest = {
-    storyHomeFind: ()=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/story-home`,{
-            method:'GET',
-        })
-    },
-    storyFind: () => {
-        let environment = ""
-        // if in production we don't show test stories
-        if (process.env.REACT_APP_PRODUCTION === "development")
-            environment = "development"
-            
-        return axios(`${process.env.REACT_APP_strapiURL}/api/stories?env=${environment}`,{
-            method:'GET',
-        })
-    },
+  storyHomeFind: () => {
+    return axios.get(`${baseURL}/api/story-home`);
+  },
 
-    storyFindOne: (id)=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/stories/${id}`,{
-            method:'GET',
-        })
-    },
-    // storyCoinsOfDays: ()=>{
-    //     let query = qs.stringify({
-    //         fields: [
-    //             'id',
-    //             'name','image','image_caption','abstract',
-    //         ],
-    //         filters:{
-    //             abstract:{
-    //                 $notNull: true
-    //             }
-    //         },
-    //         populate: [
-    //             'image',
-    //         ],
-    //     },{encodeValuesOnly: true});
-    //     return axios(`${process.env.REACT_APP_API_URL}/stories?${query}`,{
-    //         method:'GET',
-    //     })
-    // },
+  storyFind: () => {
+    let environment = "";
 
-}
-export default storyRequest
+    // if in development we include dev/test stories
+    if (environmentFlag === "development") {
+      environment = "development";
+    }
+
+    return axios.get(`${baseURL}/api/stories?env=${environment}`);
+  },
+
+  storyFindOne: (id) => {
+    return axios.get(`${baseURL}/api/stories/${id}`);
+  },
+
+  // legacy / optional query block retained for reference
+  // storyCoinsOfDays: () => { ... }
+};
+
+export default storyRequest;

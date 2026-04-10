@@ -1,0 +1,82 @@
+/**
+ * Footer2.jsx — Vite Migration Refactor (2026)
+ *
+ * Purpose:
+ * Secondary footer component that includes:
+ * - subscription signup
+ * - project attribution (NEH)
+ * - navigation links
+ * - licensing information
+ *
+ * Refactor Summary:
+ * 1. Renamed file from `.js` to `.jsx`
+ *    - Required because this component returns JSX
+ *
+ * 2. Verified asset import compatibility with Vite
+ *    - SVG import works correctly via Vite asset handling
+ *
+ * 3. Preserved behavior
+ *    - Layout, links, and content remain unchanged
+ *
+ * Notes:
+ * - Uses React Router `Link`
+ * - Uses local component `SubscriptionButton`
+ * - No environment variables used
+ *
+ * Future Improvements:
+ * - Convert inline styles to CSS classes
+ * - Normalize route casing (`/About`, `/ContactUs`)
+ * - Consider responsive layout tweaks
+ */
+
+import React from "react";
+import NEH from "src/assets/NEH-Preferred-Seal-White.svg";
+import { Link } from "react-router-dom";
+import SubscriptionButton from "./subscriptionButton";
+
+function Footer2() {
+  return (
+    <div id="footer2">
+      <div id="footer2-Container">
+        <div className="split-half">
+          <div id="footer2-head" className="mb-5">
+            Get the latest updates!
+          </div>
+
+          <div style={{ width: "62.5%" }} className="my-5">
+            <SubscriptionButton />
+          </div>
+
+          <div id="footer2-syrios">
+            SYRIOS is a project of the University of Houston. It is made possible through the support of:
+          </div>
+
+          <a href="https://www.neh.gov/">
+            <img src={NEH} id="footer2-logo" alt="NEH Logo" />
+          </a>
+        </div>
+
+        <div className="split-half">
+          <div style={{ marginTop: "12.5%" }}>
+            <div id="footer2-links">
+              <Link to="/About" className="footer2-link">
+                About SYRIOS
+              </Link>
+              <Link to="/ContactUs" className="footer2-link">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+
+          <div id="footer2-licensed" style={{ marginTop: "30%" }}>
+            <strong>SYRIOS is licensed under a</strong> <br />
+            Creative Common Attribution-Non Commercial 3.0 <br />
+            International License (CC BY-NC 3.0).
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Footer2;

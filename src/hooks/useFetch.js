@@ -1,3 +1,5 @@
+// no changes needed for Vite migration
+
 import { useEffect, useState } from "react";
 import { makeRequest } from "../utils/makeRequest";
 

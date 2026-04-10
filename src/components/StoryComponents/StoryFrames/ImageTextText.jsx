@@ -1,0 +1,71 @@
+/**
+ * ImageTextText.jsx — Vite Migration Refactor (2026)
+ *
+ * Changes:
+ * - `.js` → `.jsx`
+ * - `process.env.REACT_APP_strapiURL` → `import.meta.env.VITE_STRAPI_URL`
+ * - removed `.js` extension from Markup import
+ *
+ * Everything else is intentionally preserved.
+ */
+
+import { Container, Row, Col } from "react-bootstrap";
+import { HeadComponent, ImageComponent, TextComponent } from "../ComponentFunction/index";
+import createMarkup from "src/utils/Markup";
+
+const baseURL = import.meta.env.VITE_STRAPI_URL;
+
+const ImageTextText = (props) =>{
+  let zone = props.zone
+  return(
+    <div className='section stories-background' style={{ backgroundImage: zone.background.data === null ? null : `url(${baseURL}${zone.background.data.attributes.url})`}}>
+    {zone.head.updown_switch ? (
+      <Container>
+      <Row className='d-flex justify-content-between align-items-center'>
+        {zone.left_right_switch? (
+          <Container>
+            <Col>
+              <Row><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+              <Row><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+            </Col>
+            <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+          </Container>
+        ):(
+          <Container>
+            <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+            <Col>
+              <Row className='py-5'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+              <Row className=' py-5'><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+            </Col>
+          </Container>
+        )}
+      </Row>
+      <Row className='d-flex justify-content-center mt-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+    </Container>
+    ):(
+      <Container>
+        <Row className='d-flex justify-content-center mb-5'><HeadComponent toggleBottom={props.toggleBottom} storyMain = {zone.head.head_main} storyCaption = {zone.head.head_caption}/></Row>
+      {zone.left_right_switch? (
+        <Row className='d-flex justify-content-around align-items-center'>
+          <Col>
+            <Row><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+            <Row><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+          </Col>
+          <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+        </Row>
+        ):(
+          <Row className='d-flex justify-content-around align-items-center'>
+            <Col xs={`${zone.image_grid}`}><ImageComponent toggleBottom={props.toggleBottom} image={zone.itt_image}/></Col>
+            <Col>
+              <Row className='py-5'><div onClick={props.toggleBottom} dangerouslySetInnerHTML={createMarkup(zone.itt_text.text)} className={ `text-center ${zone.itt_text.text_class}`}/></Row>
+              <Row className='py-5'><TextComponent toggleBottom={props.toggleBottom} text = {zone.itt_texts}/></Row>
+            </Col>
+          </Row>
+        )}
+    </Container>
+    )}
+        {props.index === 0 ? null : (<button onClick={()=>props.fullpageApi.moveTo(1)} className='back-to-top'> BACK TO TOP <b className='back-to-top-icon'>&#xe807;</b></button> )}
+  </div>
+  )
+}
+export default ImageTextText
