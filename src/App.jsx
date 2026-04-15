@@ -1,38 +1,53 @@
 /**
  * App.jsx — Vite Migration + Router Basename Refactor (2026)
  *
- * This file was refactored during the migration from Create React App (CRA) to Vite,
- * and later updated to fix routing behavior across dev and preview/build modes.
+ * PURPOSE:
+ * Root application component responsible for:
+ * - Global application layout
+ * - BrowserRouter setup
+ * - Navbar rendering
+ * - Route definitions
+ * - Shared footer-wrapped layout routes
  *
- * Key Changes:
- * 1. Removed `.js` extensions from imports where appropriate
- *    - Vite requires correct extension handling and does not auto-resolve mismatches like CRA.
+ * ----------------------------------------
+ * 🔧 ROUTING STRATEGY
+ * ----------------------------------------
  *
- * 2. Converted environment variable usage
- *    - Replaced old CRA-style env access with Vite-compatible `import.meta.env.*`.
+ * This app intentionally uses different router basenames by environment:
  *
- * 3. Preserved routing structure while splitting responsibilities
- *    - `AppRoutes` contains route definitions
- *    - `AppShell` contains shared layout, background, navbar, and router wrapper
+ * - Development (`npm run dev`)
+ *   → basename = "/dev"
+ *   → local routes resolve under `/dev/...`
  *
- * 4. Fixed Router basename behavior by environment
- *    - Dev mode uses `/dev` so local development matches the intended route prefix
- *    - Preview/build mode uses the root path `/`
+ * - Preview / Production
+ *   → basename = undefined
+ *   → routes resolve from `/`
  *
- * Why:
- * - The app worked in `npm run dev` but rendered a blank page in `npm run preview`
- *   because the router was still using `/dev` as a basename while preview was served from `/`.
+ * WHY:
+ * - Local development is intentionally served under `/dev`
+ * - Preview/build is served from root `/`
+ * - This preserves the historical route structure used by the app
  *
- * Outcome:
- * - `npm run dev` opens correctly at `/dev`
- * - `npm run build` / `npm run preview` open correctly at `/`
+ * IMPORTANT:
+ * - Do NOT replace this basename logic with `import.meta.env.BASE_URL`
+ *   unless deployment strategy changes
+ * - Doing so would remove the custom `/dev` local route prefix
  *
- * Notes:
+ * ----------------------------------------
+ * 📦 NOTES
+ * ----------------------------------------
+ *
  * - Any file containing JSX must use `.jsx`
- * - If aliasing like `src/...` is used, it must be configured in `vite.config.js`
- * - Sass deprecation warnings are expected and are separate from this refactor
+ * - Alias imports like `src/...` require Vite alias configuration
+ * - This file keeps behavior intentionally stable
  *
- * This refactor is intentionally minimal-behavior-change and focused on compatibility.
+ * ----------------------------------------
+ * 🚀 FUTURE IMPROVEMENTS
+ * ----------------------------------------
+ *
+ * - Add route-level lazy loading
+ * - Add Error Boundary
+ * - Add auth guards if protected routes are introduced
  */
 
 import React from "react";
@@ -72,6 +87,19 @@ import ErrorPage from "./components/error/404";
 import FooterWrapper from "./components/footerv2/Footer2Wrapper";
 import AutoScrollToTop from "./utils/ScrollToTop";
 
+/**
+ * ----------------------------------------
+ * 📍 APP ROUTES
+ * ----------------------------------------
+ *
+ * Route tree for the application.
+ *
+ * Most routes are wrapped in `FooterWrapper`
+ * so they inherit the shared footer layout.
+ *
+ * A couple of routes intentionally sit outside
+ * that wrapper for standalone rendering behavior.
+ */
 function AppRoutes() {
   return (
     <Routes>
@@ -80,6 +108,8 @@ function AppRoutes() {
         <Route path="/Stories" element={<Stories />} />
         <Route path="/Evidence" element={<ExploreTheEvidence />} />
         <Route path="/Toolbox" element={<Toolbox />} />
+
+        {/* Evidence routes */}
         <Route path="/Evidence/CoinSort" element={<CoinSort />} />
         <Route path="/Evidence/MapCoins" element={<MapCoins />} />
         <Route path="/Evidence/Timeline" element={<Timeline />} />
@@ -87,30 +117,58 @@ function AppRoutes() {
         <Route path="/Coins/:params" element={<Coins />} />
         <Route path="/Coin/:id" element={<CoinInfoPage />} />
         <Route path="/Evidence/Download" element={<Download />} />
+
+        {/* Toolbox routes */}
         <Route path="/Toolbox/VideoLibrary" element={<VideoLibrary />} />
         <Route path="/Toolbox/Research" element={<Research />} />
         <Route path="/Toolbox/Coin3D" element={<Coin3D />} />
+
+        {/* Nested glossary routes */}
         <Route element={<GlossaryWrapper />}>
           <Route path="/Toolbox/Glossary/:group" element={<Glossary />} />
           <Route path="/Toolbox/Glossary/term/:term" element={<GlossaryTerm />} />
         </Route>
+
+        {/* Static/info pages */}
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/About" element={<AboutUs />} />
+
+        {/* Catch-all */}
         <Route path="/*" element={<ErrorPage />} />
       </Route>
 
+      {/* Standalone routes outside FooterWrapper */}
       <Route path="/HowToReadACoin" element={<HowToReadACoin />} />
       <Route path="/StoryReader" element={<StoryReader />} />
     </Routes>
   );
 }
 
+/**
+ * ----------------------------------------
+ * 🧱 APP SHELL
+ * ----------------------------------------
+ *
+ * Shared global application shell:
+ * - background image
+ * - BrowserRouter
+ * - navbar
+ * - scroll reset
+ * - route rendering
+ */
 function AppShell({ basename }) {
   return (
     <div id="App" style={{ backgroundImage: `url(${background})` }}>
       <BrowserRouter basename={basename}>
         <AutoScrollToTop>
-          <Navbar id="navbar" collapseOnSelect expand="md" sticky="top" className="navbar-dark">
+          <Navbar
+            id="navbar"
+            collapseOnSelect
+            expand="md"
+            sticky="top"
+            className="navbar-dark"
+          >
+            {/* Logo / home link */}
             <Nav.Link as={Link} to="/">
               <img src={logo} alt="SyriosLogoLight" style={{ width: "50%" }} />
             </Nav.Link>
@@ -120,10 +178,12 @@ function AppShell({ basename }) {
                 <Nav.Link as={Link} to="/" className="navbar-text d-flex align-items-center">
                   HOME
                 </Nav.Link>
+
                 <Nav.Link as={Link} to="/Stories" className="navbar-text d-flex align-items-center">
                   STORIES
                 </Nav.Link>
 
+                {/* Evidence dropdown */}
                 <NavDropdown title="EVIDENCE" className="navbar-text">
                   <NavDropdown.Item as={Link} to="/Evidence" className="navbar-text">
                     Overview
@@ -146,6 +206,7 @@ function AppShell({ basename }) {
                   </NavDropdown.Item>
                 </NavDropdown>
 
+                {/* Toolbox dropdown */}
                 <NavDropdown title="TOOL BOX" className="navbar-text">
                   <NavDropdown.Item as={Link} to="/Toolbox" className="navbar-text">
                     Overview
@@ -181,8 +242,25 @@ function AppShell({ basename }) {
   );
 }
 
+/**
+ * ----------------------------------------
+ * 🚀 ROOT APP
+ * ----------------------------------------
+ *
+ * Keeps the historical `/dev` basename behavior for local development.
+ *
+ * Development:
+ *   /dev
+ *
+ * Preview / build / production:
+ *   /
+ */
 function App() {
-  const basename = import.meta.env.DEV ? "/dev" : undefined;
+  // Detect if we're running under /dev
+  const isDevPath = window.location.pathname.startsWith("/dev");
+
+  const basename = isDevPath ? "/dev" : undefined;
+
   return <AppShell basename={basename} />;
 }
 

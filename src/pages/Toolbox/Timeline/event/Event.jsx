@@ -1,60 +1,98 @@
+/**
+ * Event.jsx — Post Vite Updates (2026)
+ *
+ * Purpose:
+ * Renders the timeline event detail popup.
+ *
+ * Refactor Summary:
+ * 1. Improved Tag Compatibility
+ *    - Supports both raw relation-shaped tags and flatter tag objects
+ *
+ * 2. Improved Safety
+ *    - Guards missing tag arrays and missing text fields
+ *    - Replaces unstable Math.random keys
+ *
+ * 3. Preserved Existing Behavior
+ *    - Popup layout, description rendering, and tag display remain unchanged
+ *
+ * Notes:
+ * - This component does not fetch API data directly
+ * - Works with event metadata shaped by `Timeline.jsx` / `TimeLineInfo.jsx`
+ */
+
 import React from 'react';
 import { createMarkup } from 'src/utils/Markup';
 import WhitePopUp from 'src/utils/WhitePopUp';
 
-function tag(text) {
-  // console.log(text);
-  return (
-    <div key={Math.random()} className='event-tag' style={{ backgroundColor: text.color}}>
-      <p className='tag-text'>
-        {text?.topic?.length > 0 ? text?.topic : ""}
-        {text?.governing_power?.length > 0 ? text?.governing_power : ""}
+function renderTag(tagData, index, prefix) {
+  const text = tagData?.topic?.length > 0
+    ? tagData.topic
+    : tagData?.governing_power?.length > 0
+      ? tagData.governing_power
+      : '';
 
-      </p>
+  if (!text) return null;
+
+  return (
+    <div
+      key={`${prefix}-${tagData.id ?? text}-${index}`}
+      className='event-tag'
+      style={{ backgroundColor: tagData.color }}
+    >
+      <p className='tag-text'>{text}</p>
     </div>
   );
-};
+}
 
-function loadtags(tag1,tag2) { // Split every tag into individual components with delimiter ',' and push the resultant jsx to array
-  let jsxArr = [];
+function loadTags(governingPowers, topics) {
+  const jsxArr = [];
 
-  if (tag1 && tag1.data.length > 0) {
-    tag1.data.forEach((e)=>{
-      if(e.subcategory1 !== null){
-        // jsxArr.push(tag(e.subcategory1));
-        jsxArr.push(tag(e.attributes));
+  const governingPowerRows = Array.isArray(governingPowers?.data)
+    ? governingPowers.data
+    : Array.isArray(governingPowers)
+      ? governingPowers
+      : [];
 
-      }
-    })
-  }
-  if (tag2 && tag2.data.length > 0){
-    tag2.data.forEach((e)=>{
-      // jsxArr.push(tag(e.subcategory2));
-      jsxArr.push(tag(e.attributes));
+  const topicRows = Array.isArray(topics?.data)
+    ? topics.data
+    : Array.isArray(topics)
+      ? topics
+      : [];
 
-    })
-  }
+  governingPowerRows.forEach((item, index) => {
+    const tagData = item?.attributes || item || {};
+    const jsx = renderTag(tagData, index, 'gp');
+    if (jsx) jsxArr.push(jsx);
+  });
+
+  topicRows.forEach((item, index) => {
+    const tagData = item?.attributes || item || {};
+    const jsx = renderTag(tagData, index, 'topic');
+    if (jsx) jsxArr.push(jsx);
+  });
+
   return jsxArr;
 }
 
 const EventInfo = (props) => {
-  const CloseHandler = (e) => {
+  const CloseHandler = () => {
     props.onClose(false);
   };
-  // console.log(props);
-  return (
 
+  const eventMetaData = props.eventMetaData || {};
+
+  return (
     <WhitePopUp show={props.show} onClose={CloseHandler}>
       <div id='event-info'>
         <div id='event-info-inner-div'>
-          {/* title */}
           <div id='event-title'>
-            <p>
-              {props.eventMetaData.title}
-            </p>
+            <p>{eventMetaData.title}</p>
           </div>
 
-          <div id='event-description' dangerouslySetInnerHTML={createMarkup(props.eventMetaData.text)} />
+          <div
+            id='event-description'
+            dangerouslySetInnerHTML={createMarkup(eventMetaData.text || '')}
+          />
 
           <div className='light-green-background'>
             <div id='event-connections'>
@@ -62,11 +100,10 @@ const EventInfo = (props) => {
                 TAGS
               </p>
               <div id='event-tags' className='my-3'>
-                {loadtags(props.eventMetaData.governing_powers,props.eventMetaData.topics)}
+                {loadTags(eventMetaData.governing_powers, eventMetaData.topics)}
               </div>
             </div>
           </div>
-        
         </div>
       </div>
     </WhitePopUp>

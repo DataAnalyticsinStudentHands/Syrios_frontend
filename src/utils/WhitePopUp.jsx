@@ -1,42 +1,71 @@
-import React, { useState, useEffect } from "react";
+/**
+ * WhitePopUp.jsx — Post Vite Updates (2026)
+ *
+ * Purpose:
+ * Renders a reusable white popup with:
+ * - translucent page overlay
+ * - built-in close icon
+ * - outside-click dismissal
+ *
+ * Refactor Summary:
+ * 1. Removed Redundant Local State
+ *    - Uses `props.show` directly instead of mirroring it in local state
+ *
+ * 2. Improved Outside Click Handling
+ *    - Passes `show` into `OutsideClickHandler`
+ *    - Prevents outside-click listeners when popup is not visible
+ *
+ * 3. Preserved Existing Behavior
+ *    - Visual styling, close icon, overlay, and children rendering remain unchanged
+ *
+ * Notes:
+ * - Requires parent to control `show`
+ * - Calls `props.onClose(false)` when dismissed
+ *
+ * Future Improvements:
+ * - Add keyboard Escape-to-close support
+ * - Add optional size variants
+ * - Consider portal rendering if stacking issues appear
+ */
+
+import React from 'react';
 import OutsideClickHandler from 'src/utils/OutsideClickHandler';
 
-// WhitePopUp is a class that wraps information with a white popup and a translucent white background that covers everything but the navbar and footer.
-// Has an X-icon prebuilt and closes on out side click.
+// WhitePopUp wraps content in a white popup with a translucent background.
+// Includes a built-in close icon and closes on outside click.
 
 const WhitePopUp = (props) => {
-  const [show, set_show] = useState(false);
+  const { show = false, onClose, children } = props;
 
-  const CloseHandler = (e) => { 
-    set_show(false);
-    props.onClose(false);
+  const CloseHandler = () => {
+    onClose?.(false);
   };
 
-  useEffect(() => {
-    set_show(props.show);
-  }, [props.show]);
-
-  let display_style = {
+  const display_style = {
     opacity: show ? 1 : 0,
-    zIndex: show ? 1000 : -1000
+    zIndex: show ? 1000 : -1000,
   };
 
   return (
     <>
-      <div className='translucent-white-background' style={display_style}/>
-      <OutsideClickHandler onOutsideClick={CloseHandler}>
-        <div className='snow-white-background' style={display_style}> 
+      <div className='translucent-white-background' style={display_style} />
+
+      <OutsideClickHandler show={show} onOutsideClick={CloseHandler}>
+        <div className='snow-white-background' style={display_style}>
           <div
             className='demo-icon icon-x-medium white-pop-up-x-icon'
-            onClick={CloseHandler}>
-            &#xe838;</div>
+            onClick={CloseHandler}
+          >
+            &#xe838;
+          </div>
+
           <div className='white-pop-up-inner-padding'>
-            {props.children}
+            {children}
           </div>
         </div>
       </OutsideClickHandler>
     </>
   );
-}
+};
 
 export default WhitePopUp;

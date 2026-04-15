@@ -1,21 +1,44 @@
 /**
- * CoinSort.jsx — Vite Migration Refactor (2026)
+ * CoinSort.jsx — Post Vite Updates (2026)
  *
- * Changes:
- * - `.js` → `.jsx`
- * - `process.env.REACT_APP_strapiURL` → `import.meta.env.VITE_STRAPI_URL`
+ * Purpose:
+ * Renders the CoinSort experience using coin-collections as the unified source of truth.
  *
- * All logic, structure, and comments preserved exactly.
+ * Refactor Summary:
+ * 1. Unified Coin Data Model
+ *    - Uses coin-collections as the single source for both pile rendering and grid detail rendering
+ *    - Eliminates the need for CoinGrid to refetch legacy `/api/coins`
+ *
+ * 2. Expanded Coin Adapter
+ *    - Adapts BOTH raw Strapi coin-collections rows and normalized coin-collections records
+ *      into a CoinSort/CoinInfo-compatible shape
+ *    - Includes sorting/filtering fields, thumbnail rendering fields, and detail popup fields
+ *
+ * 3. Centralized API Usage
+ *    - Uses `coinCollectionsRequest.fetchAllForCoinSort()`
+ *    - Uses `coinSortRequest.coinSortFind()` for tooltips/config
+ *    - Uses shared `apiClient` for governing powers
+ *
+ * 4. Preserved UX
+ *    - Existing sorting, filtering, pile behavior, and dropdown UX remain unchanged
+ *
+ * 5. Response Compatibility Fix
+ *    - Supports raw collection rows from `coin-collections.js`
+ *    - Prevents all coins from being filtered out when collection endpoints remain unnormalized
+ *
+ * Notes:
+ * - CoinGrid now receives `coins` directly instead of refetching by ID
+ * - Adapted coins intentionally preserve a legacy-compatible `attributes` shape
+ * - `fetchAllForCoinSort()` currently returns raw Strapi rows by design
+ *
+ * Future Improvements:
+ * - Move governing powers into a dedicated API module
+ * - Normalize CoinInfo to consume a flatter coin model directly
+ * - Extract adapter helpers into a shared utility module if reused elsewhere
+ * - Normalize collection endpoints after downstream callers are fully migrated
  */
 
-// src/pages/.../CoinSort.js
-
-// This is a full refactor of CoinSort that keeps the core UX but replaces the underlying data source with coin-collections
-// last edit: 2026-02-18 by allen martin
-
-import React, { useRef, useEffect, useState } from 'react';
-import axios from 'axios';
-
+import React, { useRef, useEffect, useMemo, useState } from 'react';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import NoFeedBackIcon from 'src/components/constant/NoFeedBackIcon';
 import { CoinGrid } from './CoinSortCoinGrid';
@@ -28,13 +51,14 @@ import {
   CoinPileLocations,
 } from './CoinUtils';
 
-import coinCollectionsRequest from 'src/api/coin-collections'; // ✅ new data source
-import coinSortRequest from 'src/api/coin-sort'; // ✅ keep tooltips/config from existing endpoint
+import apiClient from 'src/api/client';
+import coinCollectionsRequest from 'src/api/coin-collections';
+import coinSortRequest from 'src/api/coin-sort';
 
 const STRAPI_URL = import.meta.env.VITE_STRAPI_URL;
 
 // ─────────────────────────────────────────────────────────────
-// Constants / Enumerations (same UX)
+// Constants / Enumerations
 // ─────────────────────────────────────────────────────────────
 const sort_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
 const then_by_selections = ['None', 'Minting Date', 'Material', 'Issuing Authority', 'Governing Power', 'Size'];
@@ -67,7 +91,7 @@ const of_kind_from_date_query_relation = [
   { gte: -400, lte: -301 },
   { gte: -300, lte: -201 },
   { gte: -200, lte: -101 },
-  { gte: -100, lte: -1 }, // 100 BCE to 1 BCE
+  { gte: -100, lte: -1 },
   { gte: 1, lte: 99 },
   { gte: 100, lte: 199 },
   { gte: 200, lte: 299 },
@@ -105,78 +129,136 @@ const of_kind_size_query_relation = [
 ];
 
 // ─────────────────────────────────────────────────────────────
-// Coin-collections → CoinSort-compatible adapter
-// (keeps ComputeCoinPos + CoinGrid working)
+// Adapter helpers
 // ─────────────────────────────────────────────────────────────
-const safeRelName = (rel, keys = ['name', 'title', 'label', 'governing_power', 'modern_name']) => {
-  const attrs = rel?.data?.attributes;
-  if (!attrs) return null;
-  for (const k of keys) {
-    if (attrs?.[k]) return attrs[k];
+const normalizeCoinRow = (coin) => {
+  if (!coin) return null;
+
+  if (coin?.attributes && typeof coin.attributes === 'object') {
+    return {
+      id: coin.id,
+      ...coin.attributes,
+    };
   }
-  return null;
+
+  return coin;
 };
 
-const safeMediaFormats = (media) => media?.data?.attributes?.formats ?? null;
-const safeMediaAlt = (media) => media?.data?.attributes?.alternativeText ?? '';
+const safeRelData = (rel) => rel?.data ?? null;
+
+const safeRelAttr = (rel, key) => {
+  const data = safeRelData(rel);
+  if (!data) return null;
+
+  if (Array.isArray(data)) return null;
+
+  const attrs = data?.attributes ?? data;
+  return attrs?.[key] ?? null;
+};
+
+const safeNestedRelAttr = (parentRel, childKey, grandchildKey) => {
+  const parent = safeRelData(parentRel);
+  if (!parent || Array.isArray(parent)) return null;
+
+  const parentAttrs = parent?.attributes ?? parent;
+  const childRel = parentAttrs?.[childKey];
+  return safeRelAttr(childRel, grandchildKey);
+};
+
+const safeText = (value) => value ?? '';
+
+const safeMediaData = (media) => media?.data ?? null;
+const safeMediaAttrs = (media) => {
+  const data = safeMediaData(media);
+  if (!data || Array.isArray(data)) return null;
+  return data?.attributes ?? data;
+};
+const safeMediaUrl = (media) => safeMediaAttrs(media)?.url ?? null;
+const safeMediaFormats = (media) => safeMediaAttrs(media)?.formats ?? null;
+
 const safeMediaThumbUrl = (media) => {
-  const formats = media?.data?.attributes?.formats;
-  const url = formats?.thumbnail?.url || formats?.small?.url || media?.data?.attributes?.url;
+  const formats = safeMediaFormats(media);
+  const url = formats?.thumbnail?.url || formats?.small?.url || safeMediaUrl(media);
   return url ? `${STRAPI_URL}${url}` : null;
 };
 
-// Normalizes a coin-collections record into a shape that matches your existing CoinSort assumptions
-const normalizeCoinCollection = (cc) => {
-  const a = cc?.attributes ?? {};
-
-  // coin-sort expects "from_date" for sorting/filtering; coin-collections uses from_year
-  const fromYear = a.from_year ?? null;
-
-  // SimplyMappedCoin historically expects strings for match-type filters/sorts
-  const materialStr = safeRelName(a.material) ?? (a.material?.data?.attributes?.name ?? null);
-  const issuingStr = safeRelName(a.issuing_authority) ?? null;
-  const govStr = safeRelName(a.governing_power, ['governing_power', 'name', 'title']) ?? null;
-
-  // coin-sort expects obverse_file with formats.thumbnail.url (relative url)
-  // We'll provide a compatible structure + a direct thumbnail string for easier use.
-  const obvFormats = safeMediaFormats(a.obverse_image);
-  const obvThumbRelative = obvFormats?.thumbnail?.url || obvFormats?.small?.url || a.obverse_image?.data?.attributes?.url || null;
+const buildLegacyMedia = (media) => {
+  const attrs = safeMediaAttrs(media);
+  if (!attrs) {
+    return { data: null };
+  }
 
   return {
-    id: cc.id,
-    attributes: {
-      // core fields used by positioning/sorting/filtering
-      diameter: a.diameter ?? null,
-      from_date: fromYear,
-      material: materialStr,
-      issuing_authority: issuingStr,
-      governing_power: govStr,
-      // keep other helpful fields if your details UI uses them
-      to_date: a.to_year ?? null,
-
-      // media: legacy-compatible nesting + direct src convenience
-      obverse_file: {
-        data: obvThumbRelative
-          ? {
-              attributes: {
-                formats: obvFormats,
-                alternativeText: safeMediaAlt(a.obverse_image),
-              },
-            }
-          : null,
+    data: {
+      attributes: {
+        ...attrs,
       },
+    },
+  };
+};
 
-      // Convenience: direct thumbnail url for rendering
-      obverse_thumb_src: safeMediaThumbUrl(a.obverse_image),
+// Adapt raw or normalized coin-collections records into a legacy-compatible shape
+// that works with CoinSort positioning AND CoinGrid/CoinInfo.
+const adaptCoinCollectionForCoinSort = (inputCoin) => {
+  const coin = normalizeCoinRow(inputCoin);
+  if (!coin) return null;
+
+  return {
+    id: coin.id,
+    attributes: {
+      // sorting/filtering helpers
+      from_date: coin.from_year ?? null,
+      to_date: coin.to_year ?? null,
+      diameter: coin.diameter ?? null,
+      material: safeRelAttr(coin.material, 'material') ?? safeRelAttr(coin.material, 'name') ?? null,
+      issuing_authority:
+        safeRelAttr(coin.issuing_authority, 'issuing_authority') ??
+        safeRelAttr(coin.issuing_authority, 'name') ??
+        null,
+      governing_power:
+        safeRelAttr(coin.governing_power, 'governing_power') ??
+        safeRelAttr(coin.governing_power, 'name') ??
+        null,
+
+      // detail popup text fields
+      coin_id: coin.coin_id ?? '',
+      from_year: coin.from_year ?? null,
+      to_year: coin.to_year ?? null,
+      date_range: coin.date_range ?? '',
+      obverse_type: safeText(coin.obverse_type),
+      obverse_legend: safeText(coin.obverse_legend),
+      reverse_type: safeText(coin.reverse_type),
+      reverse_legend: safeText(coin.reverse_legend),
+      mint: safeRelAttr(coin.mint, 'mint') ?? '',
+      mint_modern_name: safeNestedRelAttr(coin.mint, 'modern_name', 'modern_name') ?? '',
+      modern_country: safeNestedRelAttr(coin.mint, 'modern_country', 'modern_country') ?? '',
+      ancient_territory: safeRelAttr(coin.ancient_territory, 'ancient_territory') ?? '',
+      issuing_authority_display: safeRelAttr(coin.issuing_authority, 'issuing_authority') ?? '',
+      language: safeRelAttr(coin.language, 'language') ?? '',
+      denomination:
+        safeRelAttr(coin.denomination, 'denomination') ??
+        safeRelAttr(coin.denomination, 'name') ??
+        '',
+      source_image: safeText(coin.source_image),
+      right_holder: safeText(coin.right_holder),
+      reference: safeText(coin.reference),
+
+      // legacy relation objects needed by CoinInfo
+      obverse_file: buildLegacyMedia(coin.obverse_image),
+      reverse_file: buildLegacyMedia(coin.reverse_image),
+      governing_power: coin.governing_power ?? { data: null },
+
+      // convenience fields for pile rendering
+      obverse_thumb_src: safeMediaThumbUrl(coin.obverse_image),
     },
   };
 };
 
 const hasThumb = (coin) => {
-  // Prefer the convenience field (more reliable), fall back to legacy format path
   return Boolean(
     coin?.attributes?.obverse_thumb_src ||
-      coin?.attributes?.obverse_file?.data?.attributes?.formats?.thumbnail?.url
+      coin?.attributes?.obverse_file?.data?.attributes?.formats?.thumbnail?.url ||
+      coin?.attributes?.obverse_file?.data?.attributes?.url
   );
 };
 
@@ -184,27 +266,22 @@ const hasThumb = (coin) => {
 // Coin renderer (pile)
 // ─────────────────────────────────────────────────────────────
 const Coin = ({ id, x, y, display, dimensions, coinMetaData, setDraggedCoinId }) => {
-
-  const diameter = coinMetaData?.attributes?.diameter ?? 10; // fallback so it renders
-  // ADJUST HERE FOR SCALING. IN THIS DATA SOME COINS ARE VERY SMALL RELATIVELY
+  const diameter = coinMetaData?.attributes?.diameter ?? 10;
   const thumbnail_scale = 1.5;
   const MIN_RENDER_SIZE = 32;
   const MAX_RENDER_SIZE = 90;
-
   const MIN_DIAM = 8;
   const MAX_DIAM = 45;
 
   const clamped = Math.min(Math.max(diameter, MIN_DIAM), MAX_DIAM);
-
   const normalized = (clamped - MIN_DIAM) / (MAX_DIAM - MIN_DIAM);
-
   const width = (MIN_RENDER_SIZE + normalized * (MAX_RENDER_SIZE - MIN_RENDER_SIZE)) * thumbnail_scale;
 
   let px = (x ?? 0) * (dimensions?.width ?? 0);
   let py = (y ?? 0) * (dimensions?.height ?? 0);
 
-  if ((px + width) > (dimensions?.width ?? 0)) px = (dimensions?.width ?? 0) - width;
-  if ((py + width) > (dimensions?.height ?? 0)) py = (dimensions?.height ?? 0) - width;
+  if (px + width > (dimensions?.width ?? 0)) px = (dimensions?.width ?? 0) - width;
+  if (py + width > (dimensions?.height ?? 0)) py = (dimensions?.height ?? 0) - width;
   if (px < 0) px = 0;
   if (py < 0) py = 0;
 
@@ -217,7 +294,9 @@ const Coin = ({ id, x, y, display, dimensions, coinMetaData, setDraggedCoinId })
     coinMetaData?.attributes?.obverse_thumb_src ||
     (coinMetaData?.attributes?.obverse_file?.data?.attributes?.formats?.thumbnail?.url
       ? `${STRAPI_URL}${coinMetaData.attributes.obverse_file.data.attributes.formats.thumbnail.url}`
-      : null);
+      : coinMetaData?.attributes?.obverse_file?.data?.attributes?.url
+        ? `${STRAPI_URL}${coinMetaData.attributes.obverse_file.data.attributes.url}`
+        : null);
 
   if (!src) return null;
 
@@ -226,14 +305,12 @@ const Coin = ({ id, x, y, display, dimensions, coinMetaData, setDraggedCoinId })
       className="coin-sort-pile-coin"
       style={{ top: `${py}px`, left: `${px}px` }}
       draggable
-      //onDragStart={() => setDraggedCoinId(id)}
       onDragStart={(e) => {
-      // Required in many browsers for drop to fire
-      e.dataTransfer.setData('text/plain', String(id));
-      e.dataTransfer.effectAllowed = 'copy';
-      setDraggedCoinId(id);
-    }}
-    onDragEnd={() => setDraggedCoinId(undefined)}
+        e.dataTransfer.setData('text/plain', String(id));
+        e.dataTransfer.effectAllowed = 'copy';
+        setDraggedCoinId(id);
+      }}
+      onDragEnd={() => setDraggedCoinId(undefined)}
     >
       <img
         id={`coin-sort-${id}`}
@@ -247,7 +324,7 @@ const Coin = ({ id, x, y, display, dimensions, coinMetaData, setDraggedCoinId })
 };
 
 // ─────────────────────────────────────────────────────────────
-// Positioning / sorting / filtering (mostly unchanged)
+// Positioning / sorting / filtering
 // ─────────────────────────────────────────────────────────────
 function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selection, with_selection, of_kind_selection, governingPowers) {
   if (!Array.isArray(coins)) return null;
@@ -315,10 +392,8 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
           if (typeof v === 'string' && v.toLowerCase().includes(String(query).toLowerCase())) {
             coin_pile.push(tmp_coins[i]);
           }
-        } else {
-          if (typeof v === 'number' && v >= query.gte && v <= query.lte) {
-            coin_pile.push(tmp_coins[i]);
-          }
+        } else if (typeof v === 'number' && v >= query.gte && v <= query.lte) {
+          coin_pile.push(tmp_coins[i]);
         }
       }
       coin_piles.push(coin_pile);
@@ -383,10 +458,8 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
               if (typeof v === 'string' && v.toLowerCase().includes(String(query).toLowerCase())) {
                 new_coin_pile.push(coin);
               }
-            } else {
-              if (typeof v === 'number' && v >= query.gte && v <= query.lte) {
-                new_coin_pile.push(coin);
-              }
+            } else if (typeof v === 'number' && v >= query.gte && v <= query.lte) {
+              new_coin_pile.push(coin);
             }
           }
           then_by_new_coin_piles.push(new_coin_pile);
@@ -476,8 +549,11 @@ function ComputeCoinPos(coins, sort_selection, then_by_selection, filter_selecti
                 }
               } catch (err) {}
 
-              if ((filter_include && !does_include) || (!filter_include && does_include)) coin_pos[1].display = false;
-              else coin_pos[1].display = true;
+              if ((filter_include && !does_include) || (!filter_include && does_include)) {
+                coin_pos[1].display = false;
+              } else {
+                coin_pos[1].display = true;
+              }
 
               return coin_pos;
             })
@@ -561,14 +637,11 @@ const CoinPile = (props) => {
 };
 
 // ─────────────────────────────────────────────────────────────
-// CoinSort2 main component
+// Main component
 // ─────────────────────────────────────────────────────────────
 const CoinSort = () => {
   const [is_loading, set_is_loading] = useState(true);
-
-  const [coins, set_coins] = useState(undefined);
-  const [has_fetched_coins, set_has_fetched_coins] = useState(false);
-
+  const [coins, set_coins] = useState([]);
   const [scale_all] = useState(false);
   const [rotate_all] = useState(false);
   const ShowScaleAndRotate = () => {};
@@ -583,58 +656,58 @@ const CoinSort = () => {
   const [of_kind_selection, set_of_kind_selection] = useState(of_kind_no_selections[0]);
   const [of_kind_selections, set_of_kind_selections] = useState(of_kind_no_selections);
 
-  // Governing powers list must be state so React re-renders when it arrives
   const [governingPowers, setGoverningPowers] = useState(['None']);
+  const [coinSortData, setCoinSortData] = useState({});
+
   useEffect(() => {
     let mounted = true;
-    (async () => {
+
+    async function loadData() {
       try {
-        const { data } = await axios.get(`${STRAPI_URL}/api/governing-powers`);
-        const arr =
-          data?.data?.map(({ attributes }) => attributes?.governing_power).filter(Boolean) ?? [];
-        if (mounted) setGoverningPowers(['None', ...arr]);
-      } catch (err) {
-        if (mounted) setGoverningPowers(['None']);
-      }
-    })();
-    return () => {
-      mounted = false;
-    };
-  }, []);
+        const [governingRes, collectionsRes, sortRes] = await Promise.all([
+          apiClient.get('/api/governing-powers', {
+            meta: { useCache: true, cacheTtlMs: 1000 * 60 * 30, normalize: false },
+          }),
+          coinCollectionsRequest.fetchAllForCoinSort(),
+          coinSortRequest.coinSortFind(),
+        ]);
 
-  // ✅ Fetch from coin-collections (new source)
-  useEffect(() => {
-    const FetchCollections = async () => {
-      const res = await coinCollectionsRequest.fetchAllForCoinSort?.();
-      const rows = Array.isArray(res?.data?.data) ? res.data.data : [];
-      const normalized = rows.map(normalizeCoinCollection).filter(hasThumb);
-
-      set_coins(normalized);
-      set_has_fetched_coins(true);
-    };
-
-    if (!has_fetched_coins) FetchCollections().catch((e) => console.error(e));
-  }, [has_fetched_coins]);
-
-  // Tooltips/config (keep existing coin-sort singleton)
-  const [coinSortData, setCoinSortData] = useState([]);
-  useEffect(() => {
-    let mounted = true;
-    (async () => {
-      try {
-        const result = await coinSortRequest.coinSortFind();
         if (!mounted) return;
-        setCoinSortData(result?.data?.data?.attributes ?? {});
+
+        const governingArr =
+          governingRes?.data?.data
+            ?.map(({ attributes }) => attributes?.governing_power)
+            .filter(Boolean) ?? [];
+
+        const rows = Array.isArray(collectionsRes?.data?.data) ? collectionsRes.data.data : [];
+        const adaptedCoins = rows.map(adaptCoinCollectionForCoinSort).filter(Boolean).filter(hasThumb);
+
+        setGoverningPowers(['None', ...governingArr]);
+        set_coins(adaptedCoins);
+        setCoinSortData(sortRes?.data?.data?.attributes ?? sortRes?.data?.data ?? {});
+      } catch (error) {
+        console.error('Failed to load CoinSort data:', error);
+        if (mounted) {
+          setGoverningPowers(['None']);
+          set_coins([]);
+          setCoinSortData({});
+        }
       } finally {
         if (mounted) set_is_loading(false);
       }
-    })();
+    }
+
+    loadData();
+
     return () => {
       mounted = false;
     };
   }, []);
 
-  // With → Of Kind selections
+  const coinLookup = useMemo(() => {
+    return new Map((coins || []).map((coin) => [String(coin.id), coin]));
+  }, [coins]);
+
   useEffect(() => {
     set_of_kind_selections(() => {
       switch (with_selection) {
@@ -663,7 +736,6 @@ const CoinSort = () => {
     });
   }, [with_selection, governingPowers]);
 
-  // Clear buttons
   const [show_sort_clear_button, set_show_sort_clear_button] = useState(false);
   useEffect(() => {
     set_show_sort_clear_button(sort_selection !== sort_selections[0] || then_by_selection !== then_by_selections[0]);
@@ -760,7 +832,12 @@ const CoinSort = () => {
                 }}
               />
 
-              <CoinSortDropDown title="With:" selections={with_selections} state={with_selection} setState={set_with_selection} />
+              <CoinSortDropDown
+                title="With:"
+                selections={with_selections}
+                state={with_selection}
+                setState={set_with_selection}
+              />
 
               <CoinSortDropDown
                 title="Of Kind:"
@@ -776,6 +853,7 @@ const CoinSort = () => {
             rotateAll={rotate_all}
             scaleAll={scale_all}
             showScaleAndRotate={ShowScaleAndRotate}
+            coinLookup={coinLookup}
           />
 
           <div style={{ zIndex: -100, position: 'fixed', width: '100vw', height: '100vh', top: 0, left: 0 }} />

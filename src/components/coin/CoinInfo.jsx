@@ -1,5 +1,5 @@
 /**
- * CoinInfo.jsx — Vite Migration Refactor (2026)
+ * CoinInfo.jsx — Post Vite Updates (2026)
  *
  * Purpose:
  * Renders the coin detail popup, including:
@@ -9,30 +9,32 @@
  * - helper formatting functions used by coin detail views
  *
  * Refactor Summary:
- * 1. Renamed file from `.js` to `.jsx`
- *    - Required because this file contains JSX and Vite does not allow JSX in `.js`
- *
- * 2. Migrated environment variables
- *    - Replaced `process.env.REACT_APP_strapiURL` with `import.meta.env.VITE_STRAPI_URL`
- *
- * 3. Preserved existing behavior
- *    - All helper exports, popup behavior, coin flip behavior, scale toggle behavior,
+ * 1. Preserved Existing Behavior
+ *    - Popup behavior, image flip behavior, scale toggle behavior,
  *      metadata rendering, and reference rendering remain functionally the same
  *
- * 4. Reduced direct prop mutation risk
- *    - Avoids mutating `props.coinMetaData` when computing the coin title
+ * 2. Improved Data Shape Tolerance
+ *    - Added light compatibility handling for values that may arrive either as:
+ *        • legacy Strapi relation objects
+ *        • flattened strings from future normalization work
+ *
+ * 3. Preserved Existing Media Assumptions
+ *    - Image fields still use the current nested media shape:
+ *        obverse_file.data.attributes.url
+ *        reverse_file.data.attributes.url
  *
  * Notes:
- * - `src` alias import is preserved and assumes alias exists in `vite.config.js`
- * - Existing naming quirks and data assumptions were preserved to avoid behavioral changes
+ * - This component does not fetch API data directly
+ * - It depends on the shape of `coinMetaData` provided by parent components
+ * - Full normalization migration should happen upstream before changing this component further
  *
  * Environment Variables Required:
  * - VITE_STRAPI_URL
  *
  * Future Improvements:
- * - Split helpers into a dedicated non-JSX utility module if desired
- * - Add stronger null guards around nested Strapi media fields
- * - Convert repeated metadata rows into mapped config for easier maintenance
+ * - Add a full coin adapter layer so view components no longer care about Strapi shape
+ * - Normalize nested media access
+ * - Convert repeated metadata rows into a mapped config for easier maintenance
  */
 
 import React, { useEffect, useState } from "react";
@@ -151,6 +153,19 @@ export function CoinAlt(coin) {
     : coin.alternativeText;
 }
 
+/**
+ * Helper:
+ * Allows metadata fields to work whether they arrive as:
+ * - a plain string
+ * - a legacy Strapi relation object
+ */
+function getRelationDisplayValue(value, nestedKey) {
+  if (value == null) return "N/A";
+  if (typeof value === "string") return value;
+
+  return value?.data?.attributes?.[nestedKey] ?? "N/A";
+}
+
 function CoinScaleAndFlip(props) {
   const { coinMetaData } = props;
 
@@ -183,9 +198,6 @@ function CoinScaleAndFlip(props) {
     } else {
       set_dotted_circle_height("80%");
 
-      // Preserved from original implementation.
-      // Height math is intentionally retained even though the calculated value
-      // is not currently applied to a rendered style.
       const box_percent = 100;
       const box_height_mm = 62.5;
       let height_of_coin_percent = (box_percent / box_height_mm) * coinMetaData.diameter;
@@ -244,7 +256,6 @@ function CoinScaleAndFlip(props) {
         </div>
       </div>
 
-      {/** Scale and Rotate buttons. Must render after coin image. */}
       <div className="demo-icon coin-info-icon-rotate" onClick={RotateCoin}>
         &#xe833;
       </div>
@@ -341,7 +352,7 @@ const CoinInfo = (props) => {
             <div className="coin-info-detail-text text-left mb-5">
               GOVERNING POWER:
               <span style={{ marginLeft: "0.5em" }} className="coin-info-detail-content">
-                {coinMetaData.governing_power.data?.attributes.governing_power ?? "N/A"}
+                {getRelationDisplayValue(coinMetaData.governing_power, "governing_power")}
               </span>
             </div>
 

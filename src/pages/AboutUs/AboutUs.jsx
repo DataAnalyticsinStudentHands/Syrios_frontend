@@ -33,15 +33,18 @@ const About = () => {
       "Partner"
   ]
 
-  useEffect(() => {
-    async function fetchData (){
-      const result = await aboutUsRequest.aboutUsFind()
-      const data = result.data.data.attributes
-      setAboutUsdata(data)
-      setIsLoading(false)
-    }
-    fetchData().catch(console.error);
-  },[]);
+useEffect(() => {
+  async function fetchData (){
+    const result = await aboutUsRequest.aboutUsFind()
+
+    // NEW normalized shape
+    const data = result.data.data
+
+    setAboutUsdata(data)
+    setIsLoading(false)
+  }
+  fetchData().catch(console.error);
+},[]);
 
 	if (isLoading) return (<LoadingPage />);
 

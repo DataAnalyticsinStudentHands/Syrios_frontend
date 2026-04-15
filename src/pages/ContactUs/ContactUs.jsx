@@ -1,11 +1,24 @@
 /**
- * ContactUs.jsx — Vite Migration Refactor (2026)
+ * ContactUs.jsx — Post Vite Updates (2026)
  *
- * Changes:
- * - `.js` → `.jsx`
- * - `process.env.REACT_APP_strapiURL` → `import.meta.env.VITE_STRAPI_URL`
+ * Purpose:
+ * Renders the Contact Us page layout and contact form.
  *
- * Everything else is intentionally preserved.
+ * Refactor Summary:
+ * 1. Vite Environment Compatibility
+ *    - Uses `import.meta.env.VITE_STRAPI_URL` for static asset URL construction
+ *
+ * 2. Preserved Existing Behavior
+ *    - Layout, logo rendering, and contact form integration remain unchanged
+ *
+ * Notes:
+ * - This component does not fetch API data directly
+ * - No response normalization changes are required
+ * - The logo path is currently hardcoded to a known uploaded asset
+ *
+ * Future Improvements:
+ * - Move the contact page logo into CMS content instead of hardcoding the upload path
+ * - Add safer image fallback handling if the asset is missing
  */
 
 import React from 'react';
@@ -15,15 +28,15 @@ import ContactUsForm from './ContactUsForm';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
-function ContactUs(){
-  return(
+function ContactUs() {
+  return (
     <>
-      <NoFeedBackicon/>
+      <NoFeedBackicon />
       <div id='contactus-page'>
         <Row className='d-flex justify-content-between'>
-          <Col xs={3} className=" d-flex align-items-center justify-content-center">
+          <Col xs={3} className='d-flex align-items-center justify-content-center'>
             <img
-              alt={"contact"}
+              alt='contact'
               src={`${baseURL}/uploads/logoside_5b293d0769.png?`}
               height='85%'
             />

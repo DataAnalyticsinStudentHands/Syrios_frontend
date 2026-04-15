@@ -1,44 +1,49 @@
 /**
- * coin-3d.js — Vite Migration Refactor (2026)
+ * coin-3d.js — Post Vite Updates (2026)
  *
  * Purpose:
  * Handles API requests for 3D coin data from the Strapi backend.
  *
  * Refactor Summary:
- * 1. Migrated environment variables
- *    - Replaced `process.env.REACT_APP_strapiURL` with `import.meta.env.VITE_STRAPI_URL`
- *
- * 2. Simplified Axios usage
- *    - Converted `axios(url, { method: 'GET' })` to `axios.get(url)`
- *
- * 3. Preserved API behavior
- *    - Endpoint and response handling remain unchanged
- *
- * Environment Variables Required:
- * - VITE_STRAPI_URL
- *
- * Notes:
- * - This file contains no JSX and remains `.js`
- * - `coin3DFindLocal` is for local Strapi development
- * - Vite env variables are exposed to the client bundle (not secure)
+ * 1. Centralized API Client
+ * 2. Retry + Timeout Support
+ * 3. Environment-Gated Local Access
+ * 4. Caching + Response Normalization (NEW)
  *
  * Future Improvements:
- * - Centralize base URL using a shared axios instance
- * - Add error handling / retries
- * - Gate local endpoints behind environment flags
+ * - Request batching for large asset sets
  */
 
 import axios from "axios";
+import apiClient from "./client";
+import { CACHE_TTL, requestOptions } from "./request-options";
 
-const baseURL = import.meta.env.VITE_STRAPI_URL;
+const allowLocalStrapi = import.meta.env.VITE_ENABLE_LOCAL_STRAPI === "true";
+const localStrapiURL =
+  import.meta.env.VITE_LOCAL_STRAPI_URL || "http://localhost:1337";
 
 const coin3DRequest = {
+  /**
+   * Fetch 3D coin data from production Strapi
+   * - Enables caching (3D metadata is stable)
+   * - Enables normalization
+   */
   coin3DFind: () => {
-    return axios.get(`${baseURL}/api/coin-3d`);
+    return apiClient.get("/api/coin-3d", {
+      meta: requestOptions.cachedNormalized(CACHE_TTL.LONG),
+    });
   },
 
   coin3DFindLocal: async () => {
-    return await axios.get("http://localhost:1337/api/coin-3d");
+    if (!allowLocalStrapi) {
+      throw new Error(
+        "Local Strapi endpoint is disabled. Set VITE_ENABLE_LOCAL_STRAPI=true to enable it."
+      );
+    }
+
+    return axios.get(`${localStrapiURL}/api/coin-3d`, {
+      timeout: Number(import.meta.env.VITE_API_TIMEOUT_MS || 10000),
+    });
   },
 };
 
