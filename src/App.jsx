@@ -9,29 +9,24 @@
  * - Route definitions
  * - Shared footer-wrapped layout routes
  *
+ *
  * ----------------------------------------
  * 🔧 ROUTING STRATEGY
  * ----------------------------------------
  *
- * This app intentionally uses different router basenames by environment:
- *
- * - Development (`npm run dev`)
- *   → basename = "/dev"
- *   → local routes resolve under `/dev/...`
- *
- * - Preview / Production
- *   → basename = undefined
- *   → routes resolve from `/`
+ * Behavior:
+ * - local dev runs at `/`
+ * - Apache-proxied dev runs at `/dev`
+ * - build/preview run at `/`
  *
  * WHY:
  * - Local development is intentionally served under `/dev`
+ * - Development server view is served at /dev/ via reverse proxy
  * - Preview/build is served from root `/`
  * - This preserves the historical route structure used by the app
  *
  * IMPORTANT:
- * - Do NOT replace this basename logic with `import.meta.env.BASE_URL`
- *   unless deployment strategy changes
- * - Doing so would remove the custom `/dev` local route prefix
+ * - Router basename is controlled by `VITE_PROXY_DEV`.
  *
  * ----------------------------------------
  * 📦 NOTES
