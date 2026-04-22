@@ -37,6 +37,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:proxy": "vite --mode proxydev",
     "build": "vite build",
     "preview": "vite preview"
   },

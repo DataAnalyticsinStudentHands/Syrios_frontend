@@ -1,38 +1,12 @@
 /**
- * App.jsx — Vite Migration + Router Basename Refactor (2026)
+ * App.jsx — Vite migration + router basename configuration
  *
- * This file was refactored during the migration from Create React App (CRA) to Vite,
- * and later updated to fix routing behavior across dev and preview/build modes.
+ * Behavior:
+ * - local dev runs at `/`
+ * - Apache-proxied dev runs at `/dev`
+ * - build/preview run at `/`
  *
- * Key Changes:
- * 1. Removed `.js` extensions from imports where appropriate
- *    - Vite requires correct extension handling and does not auto-resolve mismatches like CRA.
- *
- * 2. Converted environment variable usage
- *    - Replaced old CRA-style env access with Vite-compatible `import.meta.env.*`.
- *
- * 3. Preserved routing structure while splitting responsibilities
- *    - `AppRoutes` contains route definitions
- *    - `AppShell` contains shared layout, background, navbar, and router wrapper
- *
- * 4. Fixed Router basename behavior by environment
- *    - Dev mode uses `/dev` so local development matches the intended route prefix
- *    - Preview/build mode uses the root path `/`
- *
- * Why:
- * - The app worked in `npm run dev` but rendered a blank page in `npm run preview`
- *   because the router was still using `/dev` as a basename while preview was served from `/`.
- *
- * Outcome:
- * - `npm run dev` opens correctly at `/dev`
- * - `npm run build` / `npm run preview` open correctly at `/`
- *
- * Notes:
- * - Any file containing JSX must use `.jsx`
- * - If aliasing like `src/...` is used, it must be configured in `vite.config.js`
- * - Sass deprecation warnings are expected and are separate from this refactor
- *
- * This refactor is intentionally minimal-behavior-change and focused on compatibility.
+ * Router basename is controlled by `VITE_PROXY_DEV`.
  */
 
 import React from "react";
@@ -182,7 +156,7 @@ function AppShell({ basename }) {
 }
 
 function App() {
-  const basename = import.meta.env.DEV ? "/dev" : undefined;
+  const basename = import.meta.env.VITE_PROXY_DEV === "true" ? "/dev" : undefined;
   return <AppShell basename={basename} />;
 }
 
