@@ -1,19 +1,38 @@
 /**
- * CoinCatalog.jsx — Media URL Safety & Rendering Fix (2026)
+ * CoinCatalog.jsx — Post Vite Updates (2026)
  *
- * Changes:
- * - Added `joinUrl()` helper for safe URL construction
- * - Fixed Coin of the Day image rendering
- * - Ensured compatibility with Strapi relative media URLs
- * - Left layout and structure unchanged (min-diff)
+ * Purpose:
+ * Renders the main coin catalog page using content from `coin-collections.js`.
  *
- * Why:
- * - Direct string concatenation caused malformed image URLs
- * - Coin of the Day image failed even when data existed
+ * Refactor Summary:
+ * 1. Response Normalization Compatibility
+ *    - Updated coin collection page access from:
+ *        response.data.data.attributes
+ *      → to:
+ *        response.data.data
+ *    - Aligns with normalized `coinCollectionPage()` response shape
  *
- * Outcome:
- * - Coin of the Day image renders reliably
- * - Consistent behavior with Card.jsx and CoinAnimations.jsx
+ * 2. Preserved Media Rendering Safety
+ *    - Retains `joinUrl()` helper for reliable Strapi relative media URL handling
+ *
+ * 3. Preserved UI + Behavior
+ *    - Layout, spotlight rendering, contents navigation, Coin of the Day,
+ *      and video behavior unchanged
+ *
+ * Data Shape (Post-Normalization):
+ * - `coinCollectionPage()` now returns:
+ *     response.data.data → flattened page entity
+ * - Nested relations/media still remain nested and are accessed via:
+ *     relation.data.attributes...
+ *
+ * Notes:
+ * - `contents`, `spotlight`, and `coin_of_the_day` remain relation-shaped
+ * - Coin of the Day nested media still uses `.data.attributes.url`
+ *
+ * Future Improvements:
+ * - Normalize nested media / relation objects
+ * - Normalize spotlight relation payloads
+ * - Extract catalog fetch into reusable CMS hook
  */
 
 import React, { useState, useEffect } from "react";
@@ -55,7 +74,9 @@ const CoinCatalog = () => {
     const fetchData = async () => {
       try {
         const response = await coinCollections.coinCollectionPage();
-        setData(response?.data?.data?.attributes || {});
+
+        // Updated for normalized response
+        setData(response?.data?.data || {});
       } catch (error) {
         console.error("Failed to load coin catalog:", error);
         setData({

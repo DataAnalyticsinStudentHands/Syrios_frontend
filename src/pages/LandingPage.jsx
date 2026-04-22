@@ -1,3 +1,41 @@
+/**
+ * LandingPage.jsx — Post Vite Updates (2026)
+ *
+ * Purpose:
+ * Renders the main landing page using CMS-driven content from Strapi.
+ *
+ * Refactor Summary:
+ * 1. Response Normalization Compatibility
+ *    - Updated data access from:
+ *        result.data.data.attributes
+ *      → to:
+ *        result.data.data
+ *    - Aligns with new normalization layer in `client.js`
+ *
+ * 2. Preserved UI + Behavior
+ *    - All layout, rendering, and component structure unchanged
+ *    - Only data extraction logic updated
+ *
+ * 3. Improved Safety
+ *    - Added defensive checks for malformed API responses
+ *    - Prevents runtime crashes if data is missing
+ *
+ * Data Shape (Post-Normalization):
+ * - result.data.data → flattened Strapi entity
+ * - Nested media still accessed via:
+ *     image.data.attributes.url
+ *
+ * Notes:
+ * - Image URLs still require manual prefixing with VITE_STRAPI_URL
+ * - Nested media is NOT normalized (intentional)
+ * - Component expects normalized API responses from landing.js
+ *
+ * Future Improvements:
+ * - Normalize nested media (remove `.data.attributes`)
+ * - Create reusable hook for CMS data fetching
+ * - Add skeleton loading instead of full-page loader
+ */
+
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Row, Col } from 'react-bootstrap';
@@ -41,14 +79,16 @@ function LandingPage() {
     async function fetchData() {
       try {
         const result = await landingRequest.landingdFind();
-        const attributes = result?.data?.data?.attributes;
 
-        if (attributes) {
+        // ✅ Updated for normalized response
+        const data = result?.data?.data;
+
+        if (data) {
           setLandingData({
-            title: attributes.title || '',
-            video_link: attributes.video_link || '',
-            text: attributes.text || '',
-            image_icons: attributes.image_icons || [],
+            title: data.title || '',
+            video_link: data.video_link || '',
+            text: data.text || '',
+            image_icons: data.image_icons || [],
           });
         } else {
           console.error('Landing data missing or malformed:', result);

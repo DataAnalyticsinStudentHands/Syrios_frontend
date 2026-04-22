@@ -1,4 +1,49 @@
-import { useEffect, useState } from 'react';
+/**
+ * HowToReadACoin.jsx — Post Vite + Fullpage Stabilization Upgrade (2026)
+ *
+ * Purpose:
+ * Renders interactive story experience using Strapi + Zotero data.
+ *
+ * Refactor Summary:
+ * 1. Response Compatibility
+ *    - Supports BOTH:
+ *        a) raw Strapi entity access: result.data.data.attributes
+ *        b) normalized entity access: result.data.data
+ *    - Prevents regressions across mixed migration states
+ *
+ * 2. Fullpage Stability Fix
+ *    - Prevents @fullpage/react-fullpage from initializing before valid slides exist
+ *    - Ensures anchors and slides are synchronized before mount
+ *    - Prevents render-time fullpage side effects
+ *
+ * 3. Safe Async Handling
+ *    - Adds mounted guard to prevent state updates after unmount
+ *    - Wraps all async pipelines in try/catch
+ *
+ * 4. Zotero Performance Upgrade
+ *    - Uses Promise.all for parallel bibliography requests
+ *
+ * 5. Defensive Data Access
+ *    - Handles missing `zone`, `references`, and nested coin data safely
+ *    - Supports partially normalized nested Strapi relations
+ *
+ * 6. Preserved Existing Behavior
+ *    - Fullpage story navigation
+ *    - Footer references and image sourcing
+ *    - Bottom drawer toggle behavior
+ *
+ * Notes:
+ * - This file contains JSX and must remain `.jsx`
+ * - Fullpage requires valid section children before initialization
+ * - Anchors MUST match the number of rendered story slides
+ *
+ * Future Improvements:
+ * - Add caching for Zotero responses
+ * - Move heavy parsing (image refs) to backend
+ * - Normalize story structure further (remove deep nesting)
+ */
+
+import { useEffect, useRef, useState } from 'react';
 
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import ReactFullpage from '@fullpage/react-fullpage';
@@ -9,180 +54,221 @@ import Footer from 'src/components/footer/Footer';
 
 const HowToReadACoin = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [storyFrame, setStoryFrame] = useState([])
-  const [storyAnchors, setStoryAnchors]=useState([])
-  const [storyReference, setStoryReference] = useState([])
-  const [storyImageSouce, setStoryImageSouce]= useState([])
-  const [isBottomOpen, setIsBottomOpen] = useState(false)
+  const [storyFrame, setStoryFrame] = useState([]);
+  const [storyAnchors, setStoryAnchors] = useState([]);
+  const [storyReference, setStoryReference] = useState([]);
+  const [storyImageSouce, setStoryImageSouce] = useState([]);
+  const [isBottomOpen, setIsBottomOpen] = useState(false);
 
+  const fullpageApiRef = useRef(null);
 
-  useEffect(()=>{
-    async function fetchData(){
-      // if(isLoading === false) setIsLoading(true);
-      const result = await storyRequest.storyFindOne('1')
-      createImageReference(result.data.data.attributes)
-      createZoteroReference(result.data.data.attributes)
-      createAnchors(result.data.data.attributes)
-      setStoryFrame(result.data.data.attributes.zone)
-      setIsLoading(false)
+  useEffect(() => {
+    let mounted = true;
+
+    async function fetchData() {
+      try {
+        const result = await storyRequest.storyFindOne('1');
+
+        // Support BOTH shapes:
+        // 1) Strapi raw:        result.data.data.attributes
+        // 2) normalized/newer:  result.data.data
+        const rawData = result?.data?.data;
+        const data =
+          rawData?.attributes && typeof rawData.attributes === 'object'
+            ? { ...rawData.attributes, id: rawData.id }
+            : rawData || {};
+
+        if (!mounted) return;
+
+        const zone = Array.isArray(data?.zone) ? data.zone : [];
+        const anchors = createAnchors(data, zone);
+
+        setStoryFrame(zone);
+        setStoryAnchors(anchors);
+
+        await Promise.all([
+          createImageReference(data, mounted),
+          createZoteroReference(data, mounted),
+        ]);
+      } catch (error) {
+        console.error('Failed to load story:', error);
+        if (mounted) {
+          setStoryFrame([]);
+          setStoryAnchors([]);
+          setStoryReference([]);
+          setStoryImageSouce([]);
+        }
+      } finally {
+        if (mounted) setIsLoading(false);
+      }
     }
-    fetchData().catch(console.error);
-  },[])
+
+    fetchData();
+
+    return () => {
+      mounted = false;
+      fullpageApiRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const api = fullpageApiRef.current;
+    if (!api) return;
+
+    try {
+      api.setAllowScrolling(!isBottomOpen, 'down');
+      api.setKeyboardScrolling(!isBottomOpen, 'down');
+    } catch (err) {
+      console.error('Failed to update fullpage scrolling:', err);
+    }
+  }, [isBottomOpen]);
 
   const toggleBottom = (e) => {
-    const el = e.target.closest("button.reference-tag");
-    if (el && e.currentTarget.contains(el)) {
-      setIsBottomOpen((prev) => !prev)
+    const el = e?.target?.closest?.('button.reference-tag');
+    if (el && e.currentTarget?.contains?.(el)) {
+      setIsBottomOpen((prev) => !prev);
     }
-  }
+  };
 
-  async function createImageReference(resultData){
-    let imgRef=[]
-    resultData.zone.forEach((frame)=>{
-      //coin-compare
-      if(frame.cc_coin){
-        let ref = {}
-        ref['right_holder']=frame.cc_coin.coin.data.attributes.right_holder
-        ref['source_image']=frame.cc_coin.coin.data.attributes.source_image
-        imgRef.push(ref)
-      }
-      //scale-frame
-      else if(frame.scale_coin_left && frame.scale_coin_right){
-        let ref1 = {}
-        let ref2 = {}
-        ref1['right_holder']=frame.scale_coin_left.coin.data.attributes.right_holder
-        ref1['source_image']=frame.scale_coin_left.coin.data.attributes.source_image
-        ref2['right_holder']=frame.scale_coin_right.coin.data.attributes.right_holder
-        ref2['source_image']=frame.scale_coin_right.coin.data.attributes.source_image
-        imgRef.push(ref1,ref2)
-      }
-      //fades-frame
-      else if(frame.fades){
-        frame.fades.forEach((fade)=>{
-          let ref1 = {}
-          let ref2 = {}
-          ref1['right_holder']=fade.coin_left.data.attributes.right_holder
-          ref1['source_image']=fade.coin_left.data.attributes.source_image
-          ref2['right_holder']=fade.coin_right.data.attributes.right_holder
-          ref2['source_image']=fade.coin_right.data.attributes.source_image
-          imgRef.push(ref1,ref2)
-        })
-      }
-      //flip-frame
-      else if(frame.flip_coin_left && frame.flip_coin_right){
-        let ref1 = {}
-        let ref2 = {}
-        ref1['right_holder']=frame.flip_coin_left.coin.data.attributes.right_holder
-        ref1['source_image']=frame.flip_coin_left.coin.data.attributes.source_image
-        ref2['right_holder']=frame.flip_coin_right.coin.data.attributes.right_holder
-        ref2['source_image']=frame.flip_coin_right.coin.data.attributes.source_image
-        imgRef.push(ref1,ref2)
-      }
-      else if(frame.images){
-        frame.images.forEach((image)=>{
-          let ref = {}
-          if(image.coin.data){
-          ref['right_holder']=image.coin.data.attributes.right_holder
-          ref['source_image']=image.coin.data.attributes.source_image
-          imgRef.push(ref)
-          }
-        })
-      }
-      else if(frame.it_image){
-        let ref = {}
-        if(frame.it_image.coin.data){
-          ref['right_holder']=frame.it_image.coin.data.attributes.right_holder
-          ref['source_image']=frame.it_image.coin.data.attributes.source_image
-          imgRef.push(ref)
+  async function createImageReference(data, mounted) {
+    try {
+      let imgRef = [];
+
+      const getAttrs = (obj) => {
+        if (!obj) return null;
+        if (obj?.data?.attributes) return obj.data.attributes;
+        if (obj?.data) return obj.data;
+        if (obj?.attributes) return obj.attributes;
+        return obj;
+      };
+
+      const pushRef = (coinObj) => {
+        const coinData = getAttrs(coinObj);
+        if (!coinData) return;
+
+        imgRef.push({
+          right_holder: coinData?.right_holder,
+          source_image: coinData?.source_image,
+        });
+      };
+
+      (Array.isArray(data?.zone) ? data.zone : []).forEach((frame) => {
+        if (!frame) return;
+
+        if (frame.cc_coin) {
+          pushRef(frame.cc_coin.coin);
+        } else if (frame.scale_coin_left && frame.scale_coin_right) {
+          pushRef(frame.scale_coin_left.coin);
+          pushRef(frame.scale_coin_right.coin);
+        } else if (Array.isArray(frame.fades)) {
+          frame.fades.forEach((fade) => {
+            pushRef(fade?.coin_left);
+            pushRef(fade?.coin_right);
+          });
+        } else if (frame.flip_coin_left && frame.flip_coin_right) {
+          pushRef(frame.flip_coin_left.coin);
+          pushRef(frame.flip_coin_right.coin);
+        } else if (Array.isArray(frame.images)) {
+          frame.images.forEach((img) => {
+            pushRef(img?.coin);
+          });
+        } else if (frame.it_image) {
+          pushRef(frame.it_image.coin);
+        } else if (frame.iti_image_left && frame.iti_image_right) {
+          pushRef(frame.iti_image_left.coin);
+          pushRef(frame.iti_image_right.coin);
         }
-      }
-      else if(frame.iti_image_left && frame.iti_image_right){
-        let ref1 = {}
-        if(frame.iti_image_left.coin.data){
-          ref1['right_holder']=frame.iti_image_left.coin.data.attributes.right_holder
-          ref1['source_image']=frame.iti_image_left.coin.data.attributes.source_image
-        }
-        let ref2 = {}
-        if(frame.iti_image_right.coin.data){
-          ref2['right_holder']=frame.iti_image_right.coin.data.attributes.right_holder
-          ref2['source_image']=frame.iti_image_right.coin.data.attributes.source_image
-        }
-        imgRef.push(ref1,ref2)
-      }
-    })
-    //sort the array
-    function compare(a,b){
-      if ( a.right_holder < b.right_holder ){return -1;}
-      if ( a.right_holder > b.right_holder ){return 1;}
-      return 0;
-    }
+      });
 
-    imgRef = imgRef.sort(compare)
-    imgRef = [...new Map(imgRef.map(item =>[item['right_holder'], item])).values()];// Deduplication
-    imgRef = imgRef.filter(function(obj){return obj.right_holder!=='NA'}) //delete NA value
-    setStoryImageSouce(imgRef)
+      imgRef = imgRef
+        .filter((r) => r?.right_holder && r.right_holder !== 'NA')
+        .sort((a, b) => String(a.right_holder).localeCompare(String(b.right_holder)));
+
+      imgRef = [...new Map(imgRef.map((item) => [item.right_holder, item])).values()];
+
+      if (mounted) setStoryImageSouce(imgRef);
+    } catch (err) {
+      console.error('Image reference build failed:', err);
+      if (mounted) setStoryImageSouce([]);
+    }
   }
 
-  async function createZoteroReference(resultData){
-    let itemkeys = []
-    resultData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
-    let bibArr = []
-    for (const itemkey of itemkeys){
-      const data = await zoteroRequest.getOneItemBib(itemkey)
-      bibArr.push(data.data)
-    }
-    bibArr = bibArr.sort()
-    setStoryReference(bibArr)
+  async function createZoteroReference(data, mounted) {
+    try {
+      const refs = Array.isArray(data?.references?.data) ? data.references.data : [];
 
-    // let itemkeys = []
-    // resultData.references.data.forEach((reference)=>{itemkeys.push(reference.attributes.item_key)})
-    // let zoteroReference = []
-    // for (const itemkey of itemkeys){
-    //   const data = await zoteroRequest.getOneItem(itemkey)
-    //   zoteroReference.push(data.data)
-    // }
-    //   //order Bib by last name
-    //   function compare(a,b){
-    //     if ( a.data.creators[0].lastName < b.data.creators[0].lastName ){return -1;}
-    //     if ( a.data.creators[0].lastName > b.data.creators[0].lastName ){return 1;}
-    //     return 0;
-    // }
-    // zoteroReference = zoteroReference.sort(compare)
-    // setStoryReference(zoteroReference)
+      const itemkeys = refs
+        .map((ref) => ref?.attributes?.item_key || ref?.item_key)
+        .filter(Boolean);
+
+      const responses = await Promise.all(
+        itemkeys.map((key) => zoteroRequest.getOneItemBib(key))
+      );
+
+      const bibArr = responses
+        .map((res) => res?.data)
+        .filter(Boolean)
+        .sort();
+
+      if (mounted) setStoryReference(bibArr);
+    } catch (err) {
+      console.error('Zotero reference build failed:', err);
+      if (mounted) setStoryReference([]);
+    }
   }
 
-  async function createAnchors(resultData){
-    let arrAnchros = []
-    for (let i=0; i<resultData.zone.length;i++){
-      let title = resultData.name.replace(/\s/g, '')
-      arrAnchros.push(title+'-slides-' +i)
-    }
-    setStoryAnchors(arrAnchros)
+  function createAnchors(data, zone) {
+    const base = String(data?.name || 'HowToReadACoin')
+      .replace(/\s/g, '')
+      .replace(/[^a-zA-Z0-9-_]/g, '');
+
+    return zone.map((_, i) => `${base || 'HowToReadACoin'}-slides-${i}`);
   }
 
-  // Render
-  if (isLoading) return (<LoadingPage />);
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
+  const hasFrames = Array.isArray(storyFrame) && storyFrame.length > 0;
+  const hasMatchingAnchors =
+    Array.isArray(storyAnchors) && storyAnchors.length === storyFrame.length;
+
   return (
     <>
-      <ReactFullpage
-        licenseKey = {'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
-        navigation = {true}
-        navigationPosition={`right`}
-        anchors={storyAnchors}
-        autoScrolling = {true}
-        // onLeave={(origin, destination, direction) => {
-        //   console.log("onLeave event", { origin, destination, direction });
-        // }}
-        render={({state, fullpageApi}) => {
-          let storyJSX = [];
-          storyFrame.forEach((story,i)=>{storyJSX.push(StoryComponent(story,i,fullpageApi, state,toggleBottom))})
-          return (
-            <ReactFullpage.Wrapper>
-               {storyJSX}
-            </ReactFullpage.Wrapper>
-          );
-        }}
-      />	
+      {hasFrames && hasMatchingAnchors ? (
+        <ReactFullpage
+          licenseKey={'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
+          navigation={true}
+          navigationPosition="right"
+          anchors={storyAnchors}
+          autoScrolling={true}
+          render={({ state, fullpageApi }) => {
+            if (fullpageApi && fullpageApiRef.current !== fullpageApi) {
+              fullpageApiRef.current = fullpageApi;
+            }
+
+            const storyJSX = (storyFrame || [])
+              .map((story, i) => {
+                try {
+                  return StoryComponent(story, i, fullpageApi, state, toggleBottom);
+                } catch (err) {
+                  console.error(`Failed to render story slide ${i}:`, err);
+                  return null;
+                }
+              })
+              .filter(Boolean);
+
+            return (
+              <ReactFullpage.Wrapper>
+                {storyJSX}
+              </ReactFullpage.Wrapper>
+            );
+          }}
+        />
+      ) : (
+        <div style={{ minHeight: '60vh' }} />
+      )}
+
       <Footer
         references={storyReference}
         imageReference={storyImageSouce}
@@ -190,9 +276,7 @@ const HowToReadACoin = () => {
         isBottomOpen={isBottomOpen}
       />
     </>
-
   );
-  
-}
+};
 
 export default HowToReadACoin;

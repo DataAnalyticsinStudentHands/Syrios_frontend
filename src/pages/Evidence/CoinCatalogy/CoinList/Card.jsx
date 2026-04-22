@@ -1,23 +1,35 @@
 /**
- * Card.jsx — Image Handling Refactor (2026)
+ * Card.jsx — Post Vite Updates (2026)
  *
- * Changes:
- * - Unified coin data access (`coin` vs `coin.attributes`)
- * - Added defensive media resolution:
- *   - supports thumbnail, small, and original formats
- *   - supports precomputed `obverse_thumb_src` (CoinSort compatibility)
- * - Added safe URL join to prevent malformed paths
- * - Fixed missing images in:
- *   - Spotlight cards
- *   - Coin list/grid views
+ * Purpose:
+ * Renders reusable coin card views for list/grid and spotlight contexts.
  *
- * Why:
- * - Spotlight and List passed different data shapes into Card
- * - Original implementation assumed a single Strapi response format
- * - Resulted in missing images on main catalog page
+ * Refactor Summary:
+ * 1. Hybrid Data Shape Compatibility
+ *    - Supports both:
+ *        • raw Strapi collection rows (`coin.attributes`)
+ *        • normalized coin objects (`coin`)
  *
- * Outcome:
- * - Cards now render images reliably across all entry points
+ * 2. Safer Media Resolution
+ *    - Supports:
+ *        • precomputed `obverse_thumb_src`
+ *        • thumbnail format
+ *        • small format
+ *        • original uploaded media URL
+ *    - Uses safe URL joining to avoid malformed paths
+ *
+ * 3. Preserved Existing Behavior
+ *    - Card and spotlight layouts remain unchanged
+ *    - Link behavior and metadata rendering remain unchanged
+ *
+ * Notes:
+ * - This component acts as a compatibility layer during staged normalization
+ * - Nested relations/media are still relation-shaped and accessed via `.data.attributes`
+ *
+ * Future Improvements:
+ * - Normalize nested relation/media data
+ * - Move shared coin display helpers into a reusable utility module
+ * - Add explicit fallback artwork for missing images
  */
 
 import React from "react";
@@ -35,6 +47,9 @@ const joinUrl = (base, path) => {
   return `${cleanBase}/${cleanPath}`;
 };
 
+/**
+ * Supports both raw collection rows and normalized coin objects
+ */
 const getCoinData = (coin) => coin?.attributes || coin || {};
 
 const getMediaUrl = (media) => {
@@ -50,15 +65,15 @@ const getCoinImageUrl = (coin) => {
   const c = getCoinData(coin);
 
   return (
+    c?.obverse_thumb_src ||
     joinUrl(uploadBaseURL, getMediaUrl(c?.obverse_image)) ||
     joinUrl(uploadBaseURL, getMediaUrl(c?.reverse_image)) ||
-    c?.obverse_thumb_src ||
     ""
   );
 };
 
 const getCoinId = (coin, fallbackId) => {
-  return coin?.id || coin?.attributes?.id || fallbackId;
+  return coin?.id || fallbackId;
 };
 
 const getCoinTitle = (coin) => {
@@ -70,7 +85,7 @@ const getCoinTitle = (coin) => {
   const reverseType = c?.reverse_type || "";
   const typeText = obverseType?.length === 0 ? reverseType : obverseType;
 
-  return `${mint} ${material} ${typeText}`.trim();
+  return `${mint} ${material} ${typeText}`.trim() || "Coin";
 };
 
 const getAncientTerritory = (coin) => {

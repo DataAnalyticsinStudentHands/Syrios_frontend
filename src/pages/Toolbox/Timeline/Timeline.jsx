@@ -1,12 +1,40 @@
 /**
- * Timeline.jsx — Vite Migration Refactor (2026)
+ * Timeline.jsx — Post Vite Updates (2026)
  *
- * Changes:
- * - removed `react-native-svg` dependency in favor of native `<svg>`
- * - `process.env.REACT_APP_API_URL` → `import.meta.env.VITE_API_URL`
- * - removed `.js` extension from JSX imports where applicable
+ * Purpose:
+ * Renders the "Coins in Time" interactive timeline, including:
+ * - background SVG bands
+ * - interactive event markers
+ * - interactive coin markers
+ * - coin and event popup detail views
  *
- * All logic preserved.
+ * Refactor Summary:
+ * 1. Safe Async Loading
+ *    - Replaced chained `axios.then()` flow with async/await
+ *    - Adds try/catch/finally and mounted guards
+ *
+ * 2. Removed Global Mutable State
+ *    - Replaced module-level `coins` / `events` variables with component state
+ *
+ * 3. Response Compatibility
+ *    - Supports normalized/safe singleton handling for timeline-info text
+ *    - Uses updated `LoadTimelineInfo()` output shape for popup metadata
+ *
+ * 4. Improved React Behavior
+ *    - Adds proper dependency array to `useEffect`
+ *    - Prevents repeated network requests on every render
+ *
+ * 5. Preserved Existing Behavior
+ *    - Layout, SVG rendering, popup behavior, and background construction remain unchanged
+ *
+ * Notes:
+ * - `timelines` background response still uses the existing shape expected by `SetupTimelineBackground`
+ * - `timeline-info` still preserves nested relations/media for coins/events
+ *
+ * Future Improvements:
+ * - Move timeline API calls into a shared API module using `apiClient`
+ * - Replace default popup objects with lighter fallbacks
+ * - Remove polling dependency between background/info builds entirely
  */
 
 import React, { useState, useEffect } from 'react';
@@ -23,9 +51,6 @@ import PageTitleComponent from 'src/components/constant/pageTitleText';
 import qs from 'qs';
 
 const apiURL = import.meta.env.VITE_API_URL;
-
-var coins = undefined;
-var events = undefined;
 
 const default_coin_data = {
   reverse_type: 'Tyche holding sceptre and cornucopia',
@@ -180,138 +205,153 @@ const default_event_data = {
 const Timeline = () => {
   const [timeline_background_is_loading, set_timeline_background_is_loading] = useState(true);
   const [timeline_info_is_loading, set_timeline_info_is_loading] = useState(true);
+
   const [view_box_min_height, set_view_box_min_height] = useState(0);
   const [view_box_total_height, set_view_box_total_height] = useState(0);
+
   const [timeline_background, set_timeline_background] = useState(undefined);
   const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined);
   const [timeLineText, setTimelineText] = useState({ text: '', subtext: '' });
 
-  const params = window.location.href;
-  const contentID = params.split('#')[1];
-  if (contentID) {
-    const element = document.getElementById(contentID);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'auto',
-        block: 'center',
-      });
-    }
-  }
+  const [coins, setCoins] = useState([]);
+  const [events, setEvents] = useState([]);
 
   const y_offset = 5;
 
   const [show_coin_info, set_show_coin_info] = useState(false);
+  const [coin_meta_data, set_coin_meta_data] = useState(default_coin_data);
+
+  const [show_event_info, set_show_event_info] = useState(false);
+  const [event_meta_data, set_event_meta_data] = useState(default_event_data);
+
   const CoinInfoPopupCloseHandler = (e) => {
     set_show_coin_info(e);
   };
 
-  const [coin_meta_data, set_coin_meta_data] = useState(default_coin_data);
-  const update_coin_info = (img_dom_obj) => {
-    let id = parseInt(img_dom_obj.target.id);
-
-    set_coin_meta_data(
-      coins.filter((e) => {
-        return e.id === id;
-      })[0]
-    );
-    set_show_coin_info(true);
-  };
-
-  const [show_event_info, set_show_event_info] = useState(false);
   const EventInfoPopupCloseHandler = (e) => {
     set_show_event_info(e);
   };
 
-  const [event_meta_data, set_event_meta_data] = useState(default_event_data);
-  const update_event_info = (event_dom_obj) => {
-    let id = parseInt(event_dom_obj.target.id);
+  const update_coin_info = (img_dom_obj) => {
+    const id = parseInt(img_dom_obj.target.id, 10);
+    const match = coins.find((e) => e.id === id);
 
-    set_event_meta_data(
-      events.filter((e) => {
-        return e.data.id === id;
-      })[0].data.attributes
-    );
-    set_show_event_info(true);
+    if (match) {
+      set_coin_meta_data(match);
+      set_show_coin_info(true);
+    }
+  };
+
+  const update_event_info = (event_dom_obj) => {
+    const id = parseInt(event_dom_obj.target.id, 10);
+    const match = events.find((e) => e.id === id);
+
+    if (match) {
+      set_event_meta_data(match);
+      set_show_event_info(true);
+    }
   };
 
   useEffect(() => {
-    if (timeline_background_is_loading) {
-      axios.get(`${apiURL}/timelines`).then((res, err) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
+    let mounted = true;
 
-        let result_from_setup_timeline_background = SetupTimelineBackground({
-          res,
-          err,
+    async function fetchTimeline() {
+      try {
+        const backgroundRes = await axios.get(`${apiURL}/timelines`);
+
+        if (!mounted) return;
+
+        const backgroundSetup = SetupTimelineBackground({
+          res: backgroundRes,
           y_offset,
         });
 
-        set_view_box_total_height(result_from_setup_timeline_background.view_box_total_height);
-        set_view_box_min_height(result_from_setup_timeline_background.view_box_min_height);
-        set_timeline_background(result_from_setup_timeline_background.jsx_arr);
+        set_view_box_total_height(backgroundSetup.view_box_total_height);
+        set_view_box_min_height(backgroundSetup.view_box_min_height);
+        set_timeline_background(backgroundSetup.jsx_arr);
         set_timeline_background_is_loading(false);
-      });
-    }
 
-    if (timeline_info_is_loading) {
-      let query = qs.stringify({
-        populate: [
-          'zone',
-          'zone.event',
-          'zone.event.governing_powers',
-          'zone.event.topics',
-          'zone.coin',
-          'zone.coin.reverse_file',
-          'zone.coin.obverse_file',
-          'zone.coin.type_category',
-          'zone.coin.governing_power',
-          'zone.coin_a',
-          'zone.coin_a.reverse_file',
-          'zone.coin_a.obverse_file',
-          'zone.coin_a.type_category',
-          'zone.coin_a.governing_power',
-          'zone.coin_b',
-          'zone.coin_b.reverse_file',
-          'zone.coin_b.obverse_file',
-          'zone.coin_b.type_category',
-          'zone.coin_b.governing_power',
-        ],
-      });
+        const query = qs.stringify({
+          populate: [
+            'zone',
+            'zone.event',
+            'zone.event.governing_powers',
+            'zone.event.topics',
+            'zone.coin',
+            'zone.coin.reverse_file',
+            'zone.coin.obverse_file',
+            'zone.coin.type_category',
+            'zone.coin.governing_power',
+            'zone.coin_a',
+            'zone.coin_a.reverse_file',
+            'zone.coin_a.obverse_file',
+            'zone.coin_a.type_category',
+            'zone.coin_a.governing_power',
+            'zone.coin_b',
+            'zone.coin_b.reverse_file',
+            'zone.coin_b.obverse_file',
+            'zone.coin_b.type_category',
+            'zone.coin_b.governing_power',
+          ],
+        });
 
-      axios.get(`${apiURL}/timeline-info?${query}`).then((res, err) => {
-        if (err) {
-          console.error(err);
-        } else {
-          setTimelineText({
-            text: res.data.data.attributes.text,
-            subtext: res.data.data.attributes.subtext,
-          });
+        const infoRes = await axios.get(`${apiURL}/timeline-info?${query}`);
 
-          var timeline_info_interval = setInterval(function () {
-            if (!timeline_background_is_loading) {
-              clearInterval(timeline_info_interval);
-              let tmp = LoadTimelineInfo({
-                res,
-                y_offset,
-                view_box_min_height,
-                coins,
-                events,
-                update_coin_info,
-                update_event_info,
-              });
-              set_timeline_events_and_coins(tmp.jsx_arr);
-              coins = tmp.coin_info_arr;
-              events = tmp.event_info_arr;
+        if (!mounted) return;
 
-              set_timeline_info_is_loading(false);
-            }
-          }, 200);
+        const infoData = infoRes?.data?.data?.attributes || infoRes?.data?.data || {};
+
+        setTimelineText({
+          text: infoData?.text || '',
+          subtext: infoData?.subtext || '',
+        });
+
+        const tmp = LoadTimelineInfo({
+          res: infoRes,
+          y_offset,
+          view_box_min_height: backgroundSetup.view_box_min_height,
+          update_coin_info,
+          update_event_info,
+        });
+
+        set_timeline_events_and_coins(tmp.jsx_arr);
+        setCoins(tmp.coin_info_arr);
+        setEvents(tmp.event_info_arr);
+        set_timeline_info_is_loading(false);
+      } catch (error) {
+        console.error('Failed to load timeline:', error);
+        if (mounted) {
+          set_timeline_background([]);
+          set_timeline_events_and_coins([]);
+          setCoins([]);
+          setEvents([]);
+          setTimelineText({ text: '', subtext: '' });
+          set_timeline_background_is_loading(false);
+          set_timeline_info_is_loading(false);
         }
-      });
+      }
     }
-  });
+
+    fetchTimeline();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    const params = window.location.href;
+    const contentID = params.split('#')[1];
+    if (contentID) {
+      const element = document.getElementById(contentID);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'auto',
+          block: 'center',
+        });
+      }
+    }
+  }, []);
 
   if (timeline_info_is_loading && timeline_background_is_loading) {
     return <LoadingPage />;
@@ -327,14 +367,17 @@ const Timeline = () => {
           subtext={timeLineText.subtext}
           addContanter="true"
         />
+
         <div>
           <img src={timelinekey} alt="" style={{ width: '70%', marginLeft: '15%' }} />
         </div>
+
         <div className="sticky-sections">
           <div id="time-west">WEST</div>
           <div id="time-antioch">ANTIOCH</div>
           <div id="time-east">EAST</div>
         </div>
+
         <svg
           height="100%"
           width="100%"
@@ -344,11 +387,13 @@ const Timeline = () => {
           {timeline_background}
           {timeline_events_and_coins}
         </svg>
+
         <CoinInfo
           onClose={CoinInfoPopupCloseHandler}
           show={show_coin_info}
           coinMetaData={coin_meta_data}
         />
+
         <EventInfo
           onClose={EventInfoPopupCloseHandler}
           show={show_event_info}

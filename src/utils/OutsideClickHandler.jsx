@@ -1,26 +1,53 @@
+/**
+ * OutsideClickHandler.jsx — Post Vite Updates (2026)
+ *
+ * Purpose:
+ * Detects clicks outside of a wrapped element and triggers a callback.
+ *
+ * Improvements:
+ * 1. Uses `pointerdown` instead of `click`
+ *    - More responsive (fires earlier than click)
+ *
+ * 2. Supports conditional activation via `show`
+ *    - Prevents unnecessary event listeners when not needed
+ *
+ * 3. Safer event handling
+ *    - Guards against null refs
+ *    - Prevents stale callback issues
+ *
+ * Notes:
+ * - Commonly used for dropdowns, modals, tooltips
+ * - Should wrap only the interactive region
+ */
+
 import { useEffect, useRef } from 'react';
 
-const OutsideClickHandler = (props) => {
+const OutsideClickHandler = ({ children, onOutsideClick, show = true }) => {
   const ref = useRef(null);
-  const { onOutsideClick } = props;
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onOutsideClick && onOutsideClick();
+    if (!show) return;
+
+    const handlePointerDown = (event) => {
+      if (!ref.current) return;
+
+      if (!ref.current.contains(event.target)) {
+        onOutsideClick?.();
       }
     };
-    document.addEventListener('click', handleClickOutside, true);
+
+    document.addEventListener('pointerdown', handlePointerDown, true);
+
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('pointerdown', handlePointerDown, true);
     };
-  }, [ onOutsideClick ]);
+  }, [show, onOutsideClick]);
 
   return (
-    <div ref={ref} style={{ opacity: 1 }}>
-      {props.children}
-    </div> 
+    <div ref={ref}>
+      {children}
+    </div>
   );
-}
+};
 
 export default OutsideClickHandler;

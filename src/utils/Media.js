@@ -1,42 +1,40 @@
 /**
- * media.js — Centralized Media Utilities (Planned Integration) (2026)
+ * media.js — Centralized Media Utilities (2026)
  *
- * PURPOSE:
- * This file provides a single, consistent way to resolve media URLs
- * and extract image data from Strapi responses across the application.
+ * Purpose:
+ * Provides shared helpers for resolving Strapi media URLs and entity shapes.
  *
- * STATUS:
- * ⚠️ Not yet fully integrated — safe to adopt incrementally.
+ * Why this exists:
+ * - Different components currently access media in different ways
+ * - Strapi data may arrive as:
+ *   - entity
+ *   - entity.attributes
+ * - Media may exist in:
+ *   - thumbnail format
+ *   - small format
+ *   - original upload
  *
- * WHY THIS EXISTS:
- * - Multiple components currently implement their own image logic
- * - Strapi responses vary in shape:
- *   - coin vs coin.attributes
- *   - thumbnail vs small vs original
- * - Bugs previously caused:
- *   - Missing images (Spotlight, Catalog)
- *   - Invalid src (NaN warnings)
- *   - Incorrect base URLs
- *
- * WHAT THIS SOLVES:
- * - Normalizes Strapi media handling
+ * What this solves:
  * - Prevents malformed URLs
- * - Supports multiple response shapes
- * - Provides safe fallbacks
+ * - Standardizes media access
+ * - Reduces repeated null checks
+ * - Supports hybrid raw/normalized entity shapes
  *
- * FUTURE PLAN:
- * - Replace all inline media logic in:
- *   - Card.jsx
- *   - CoinAnimations.jsx
- *   - CoinCatalog.jsx
- *   - CoinSort components
- * - Standardize image handling across entire app
+ * Safe adoption plan:
+ * - Card.jsx
+ * - Coin animations / flip views
+ * - Coin catalog pages
+ * - CoinSort components
+ *
+ * Notes:
+ * - This does not normalize media into a new schema
+ * - It only provides safe read helpers around current Strapi shapes
  */
 
 const BASE_URL = import.meta.env.VITE_STRAPI_URL || "";
 
 /**
- * Safely joins base URL + relative path
+ * Safely joins the Strapi base URL to a relative media path
  */
 export const joinUrl = (path) => {
   if (!path || typeof path !== "string") return "";
@@ -49,17 +47,20 @@ export const joinUrl = (path) => {
 };
 
 /**
- * Normalizes coin or entity shape
- * Handles both:
- *   coin
- *   coin.attributes
+ * Normalizes entity access for either:
+ * - entity
+ * - entity.attributes
  */
 export const getEntity = (obj) => {
   return obj?.attributes || obj || {};
 };
 
 /**
- * Extracts best available media URL from a Strapi media object
+ * Returns the best available relative media URL from a Strapi media relation
+ * Prefers:
+ * - thumbnail
+ * - small
+ * - original
  */
 export const getMediaUrl = (media) => {
   return (
@@ -71,28 +72,32 @@ export const getMediaUrl = (media) => {
 };
 
 /**
- * Returns full resolved URL for a media object
+ * Returns the best available full media URL
  */
 export const getFullMediaUrl = (media) => {
   return joinUrl(getMediaUrl(media));
 };
 
 /**
- * Extracts best coin image (obverse → reverse fallback)
+ * Returns the preferred coin image URL
+ * Prefers:
+ * - precomputed thumbnail src
+ * - obverse image
+ * - reverse image
  */
 export const getCoinImage = (coin) => {
   const c = getEntity(coin);
 
   return (
+    c?.obverse_thumb_src ||
     getFullMediaUrl(c?.obverse_image) ||
     getFullMediaUrl(c?.reverse_image) ||
-    c?.obverse_thumb_src || // CoinSort compatibility
     ""
   );
 };
 
 /**
- * Extract alt text safely
+ * Safely extracts alt text from a Strapi media relation
  */
 export const getAltText = (media, fallback = "image") => {
   return (
@@ -103,8 +108,8 @@ export const getAltText = (media, fallback = "image") => {
 };
 
 /**
- * Extract entity ID safely
+ * Safely extracts the entity ID
  */
 export const getId = (obj, fallback = null) => {
-  return obj?.id || obj?.attributes?.id || fallback;
+  return obj?.id || fallback;
 };

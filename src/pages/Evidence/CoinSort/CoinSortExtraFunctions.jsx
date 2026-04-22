@@ -1,119 +1,124 @@
 /**
- * CoinSortExtraFunctions.jsx — Vite Migration Refactor (2026)
+ * CoinSortExtraFunctions.jsx — Post Vite Updates (2026)
  *
- * Changes:
- * - `.js` → `.jsx`
- * - removed `.js` extension from JSX/util imports
+ * Purpose:
+ * Provides CoinSort helper UI components such as tooltips and main text rendering.
  *
- * All logic, structure, and comments preserved exactly.
+ * Refactor Summary:
+ * 1. Preserved Existing Behavior
+ *    - Tooltip modal rendering and main text rendering remain unchanged
+ *
+ * 2. Minor Fixes
+ *    - Corrected `console.err` to `console.error`
+ *
+ * Notes:
+ * - This module does not fetch API data directly
+ * - No Strapi normalization changes are required here
  */
 
 import React from 'react';
-
 import WhitePopUp from 'src/utils/WhitePopUp';
 import Markup from 'src/utils/Markup';
 
 export const ToolTipsBoxJSX = (props) => {
   if (props?.toolTips?.title == null) return <div></div>;
+
   let jsx = undefined;
   const toolTips = props.toolTips;
-  // Three tooltip types possible. Need to be prepared to parse all three
-  if (toolTips?.grid_1x1 != null && 
-    toolTips?.grid_2x1 != null && 
-    toolTips?.grid_3x1 != null && 
-    toolTips?.grid_2x2 != null && 
-    toolTips?.grid_3x2 != null && 
-    toolTips?.grid_6x3 != null) { // Arrangment
+
+  if (
+    toolTips?.grid_1x1 != null &&
+    toolTips?.grid_2x1 != null &&
+    toolTips?.grid_3x1 != null &&
+    toolTips?.grid_2x2 != null &&
+    toolTips?.grid_3x2 != null &&
+    toolTips?.grid_6x3 != null
+  ) {
     jsx = (
       <div className='coin-sort-tool-tips'>
-        <div className='coin-sort-tool-tips-title'>
-          {toolTips.title}
+        <div className='coin-sort-tool-tips-title'>{toolTips.title}</div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{ color: '#183848' }}>1 x 1 Grid:</strong> {toolTips.grid_1x1}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>1 x 1 Grid:</strong> {toolTips.grid_1x1}
+          <strong style={{ color: '#183848' }}>2 x 1 Grid:</strong> {toolTips.grid_2x1}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>2 x 1 Grid:</strong> {toolTips.grid_2x1}
+          <strong style={{ color: '#183848' }}>3 x 1 Grid:</strong> {toolTips.grid_3x1}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>3 x 1 Grid:</strong> {toolTips.grid_3x1}
+          <strong style={{ color: '#183848' }}>2 x 2 Grid:</strong> {toolTips.grid_2x2}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>2 x 2 Grid:</strong> {toolTips.grid_2x2}
+          <strong style={{ color: '#183848' }}>3 x 2 Grid:</strong> {toolTips.grid_3x2}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>3 x 2 Grid:</strong> {toolTips.grid_3x2}
-        </div>
-        <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>6 x 3 Grid:</strong> {toolTips.grid_6x3}
+          <strong style={{ color: '#183848' }}>6 x 3 Grid:</strong> {toolTips.grid_6x3}
         </div>
       </div>
     );
-  } else if (toolTips?.sub_title != null &&
+  } else if (
+    toolTips?.sub_title != null &&
     toolTips?.minting_date != null &&
     toolTips?.material != null &&
     toolTips?.issuing_authority != null &&
     toolTips?.governing_power != null &&
-    toolTips?.size != null) { // Sorting
+    toolTips?.size != null
+  ) {
     jsx = (
       <div className='coin-sort-tool-tips'>
-        <div className='coin-sort-tool-tips-title'>
-          {toolTips.title}
+        <div className='coin-sort-tool-tips-title'>{toolTips.title}</div>
+        <div className='coin-sort-tool-tips-text'>{toolTips.sub_title}</div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{ color: '#183848' }}>Minting Date:</strong> {toolTips.minting_date}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          {toolTips.sub_title}
+          <strong style={{ color: '#183848' }}>Material:</strong> {toolTips.material}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Minting Date:</strong> {toolTips.minting_date}
+          <strong style={{ color: '#183848' }}>Issuing Authority:</strong> {toolTips.issuing_authority}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Material:</strong> {toolTips.material}
+          <strong style={{ color: '#183848' }}>Governing Power:</strong> {toolTips.governing_power}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Issuing Authority:</strong> {toolTips.issuing_authority}
-        </div>
-        <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Governing Power:</strong> {toolTips.governing_power}
-        </div>
-        <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Size:</strong> {toolTips.size}
+          <strong style={{ color: '#183848' }}>Size:</strong> {toolTips.size}
         </div>
       </div>
     );
-  } else if (toolTips?.sub_title != null &&
+  } else if (
+    toolTips?.sub_title != null &&
     toolTips?.minting_date != null &&
     toolTips?.material != null &&
     toolTips?.issuing_authority != null &&
     toolTips?.governing_power != null &&
-    toolTips?.type != null) { // Filtering
+    toolTips?.type != null
+  ) {
     jsx = (
       <div className='coin-sort-tool-tips'>
-        <div className='coin-sort-tool-tips-title'>
-          {toolTips.title}
+        <div className='coin-sort-tool-tips-title'>{toolTips.title}</div>
+        <div className='coin-sort-tool-tips-text'>{toolTips.sub_title}</div>
+        <div className='coin-sort-tool-tips-text'>
+          <strong style={{ color: '#183848' }}>Minting Date:</strong> {toolTips.minting_date}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          {toolTips.sub_title}
+          <strong style={{ color: '#183848' }}>Material:</strong> {toolTips.material}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Minting Date:</strong> {toolTips.minting_date}
+          <strong style={{ color: '#183848' }}>Issuing Authority:</strong> {toolTips.issuing_authority}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Material:</strong> {toolTips.material}
+          <strong style={{ color: '#183848' }}>Governing Power:</strong> {toolTips.governing_power}
         </div>
         <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Issuing Authority:</strong> {toolTips.issuing_authority}
-        </div>
-        <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Governing Power:</strong> {toolTips.governing_power}
-        </div>
-        <div className='coin-sort-tool-tips-text'>
-          <strong style={{color: '#183848'}}>Type:</strong> {toolTips.type}
+          <strong style={{ color: '#183848' }}>Type:</strong> {toolTips.type}
         </div>
       </div>
     );
   } else {
-    console.err('Tool tip with this set of objects is not setup:', toolTips);
+    console.error('Tool tip with this set of objects is not setup:', toolTips);
   }
+
   const CloseHandler = () => {
     props.onClose(false);
   };
@@ -123,7 +128,7 @@ export const ToolTipsBoxJSX = (props) => {
       {jsx}
     </WhitePopUp>
   );
-}
+};
 
 export const MainText = (props) => {
   return (
@@ -132,8 +137,11 @@ export const MainText = (props) => {
         <div id='coin-sort-main-text-title'>
           {props.content?.title}
         </div>
-        <div id='coin-sort-main-text' dangerouslySetInnerHTML={Markup(props.content?.text)}/>
+        <div
+          id='coin-sort-main-text'
+          dangerouslySetInnerHTML={Markup(props.content?.text)}
+        />
       </div>
     </div>
   );
-}
+};
