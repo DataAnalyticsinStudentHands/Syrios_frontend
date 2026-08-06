@@ -49,13 +49,9 @@
  * - Add optional cache invalidation for editor/admin workflows
  */
 
-import axios from "axios";
-import apiClient from "./client";
+import apiClient, { localStrapiRequest } from "./client";
 import { CACHE_TTL, requestOptions } from "./request-options";
 
-const allowLocalStrapi = import.meta.env.VITE_ENABLE_LOCAL_STRAPI === "true";
-const localStrapiURL =
-  import.meta.env.VITE_LOCAL_STRAPI_URL || "http://localhost:1337";
 
 const landingRequest = {
   /**
@@ -77,14 +73,9 @@ const landingRequest = {
    * - Kept raw for local debugging consistency
    */
   landingFindLocal: async () => {
-    if (!allowLocalStrapi) {
-      throw new Error(
-        "Local Strapi endpoint is disabled. Set VITE_ENABLE_LOCAL_STRAPI=true to enable it."
-      );
-    }
-
-    return axios.get(`${localStrapiURL}/api/landing-page`, {
-      timeout: Number(import.meta.env.VITE_API_TIMEOUT_MS || 10000),
+    return localStrapiRequest({
+      method: "get",
+      url: "/api/landing-page",
     });
   },
 };

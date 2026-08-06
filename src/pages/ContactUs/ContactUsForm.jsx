@@ -11,10 +11,8 @@
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import submissionRequest from 'src/api/submissions';
 import { phoneRegExp, emailRegExp, nameRegExp } from 'src/utils/RegExpRules';
-
-const baseURL = import.meta.env.VITE_STRAPI_URL;
 
 function ContactUsForm() {
     const [show, setShow] = useState(false);
@@ -28,10 +26,13 @@ function ContactUsForm() {
         }
     });
 
-    const onSubmit = (data) => {
-        axios.post(`${baseURL}/api/user-contact-us`, { data: data })
-            .then(() => setShow(true))
-            .catch(err => { console.error(err) });
+    const onSubmit = async (data) => {
+        try {
+            await submissionRequest.contact(data);
+            setShow(true);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (

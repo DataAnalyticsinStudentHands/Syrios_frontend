@@ -63,12 +63,23 @@ import axios from "axios";
 import { buildCacheKey, getCache, setCache } from "./cache";
 import { normalizeStrapiResponse } from "./normalize";
 
+export const STRAPI_URL =
+  import.meta.env.VITE_STRAPI_URL ||
+  import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, "") ||
+  "";
+
+export const LOCAL_STRAPI_URL =
+  import.meta.env.VITE_LOCAL_STRAPI_URL || "http://localhost:1337";
+
+export const LOCAL_STRAPI_ENABLED =
+  import.meta.env.VITE_ENABLE_LOCAL_STRAPI === "true";
+
 /**
  * Create a shared Axios instance
  * - Centralizes baseURL and timeout configuration
  */
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_STRAPI_URL,
+  baseURL: STRAPI_URL,
   timeout: Number(import.meta.env.VITE_API_TIMEOUT_MS || 10000),
 });
 
@@ -99,6 +110,10 @@ const shouldRetry = (error) => {
   if (!error) return false;
 
   const status = error.response?.status;
+  const method = (error.config?.method || "get").toLowerCase();
+
+  // Retrying a write can duplicate a successfully processed submission.
+  if (!["get", "head", "options"].includes(method)) return false;
 
   if (error.code === "ECONNABORTED") return true;
   if (!error.response) return true;
@@ -106,6 +121,31 @@ const shouldRetry = (error) => {
   if (status === 429) return true;
 
   return false;
+};
+
+/**
+ * Execute an explicitly requested local-Strapi call through the same client.
+ * Local calls therefore receive the same timeout, retry, cache, and response
+ * behavior as production calls.
+ */
+export const localStrapiRequest = (config) => {
+  if (!LOCAL_STRAPI_ENABLED) {
+    return Promise.reject(
+      new Error(
+        "Local Strapi endpoint is disabled. Set VITE_ENABLE_LOCAL_STRAPI=true to enable it."
+      )
+    );
+  }
+
+  return apiClient({
+    ...config,
+    meta: {
+      useCache: false,
+      normalize: false,
+      ...(config.meta || {}),
+    },
+    baseURL: LOCAL_STRAPI_URL,
+  });
 };
 
 /**
@@ -128,7 +168,12 @@ const getRequestCacheKey = (config) => {
  * - If cached response exists, short-circuits request by attaching cached response
  */
 apiClient.interceptors.request.use((config) => {
-  const meta = config.meta || {};
+  const meta = {
+    useCache: false,
+    normalize: false,
+    ...(config.meta || {}),
+  };
+  config.meta = meta;
   const method = (config.method || "get").toLowerCase();
 
   if (meta.useCache && method === "get") {

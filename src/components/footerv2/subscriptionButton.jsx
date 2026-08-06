@@ -27,15 +27,12 @@
  * Future Improvements:
  * - Add loading state
  * - Add success/error UI feedback
- * - Move API call to shared request layer
  */
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import submissionRequest from "src/api/submissions";
 import { emailRegExp } from "src/utils/RegExpRules";
-
-const baseURL = import.meta.env.VITE_STRAPI_URL;
 
 function SubscriptionButton() {
   const [show, setShow] = useState(false);
@@ -47,8 +44,8 @@ function SubscriptionButton() {
   } = useForm({ defaultValues: { email: "" } });
 
   const onSubmit = (data) => {
-    axios
-      .post(`${baseURL}/api/user-subscription`, { data })
+    submissionRequest
+      .subscription(data)
       .then(() => setShow(true))
       .catch((err) => {
         console.error(err);

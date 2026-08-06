@@ -194,6 +194,16 @@ const coinCollectionsRequest = {
       meta: requestOptions.cached(CACHE_TTL.LONG),
     });
   },
+
+  /**
+   * Fetch governing powers used by CoinSort controls.
+   * Kept raw because the current options adapter reads Strapi attributes.
+   */
+  fetchGoverningPowers: () => {
+    return apiClient.get("/api/governing-powers", {
+      meta: requestOptions.cached(CACHE_TTL.LONG),
+    });
+  },
 };
 
 export default coinCollectionsRequest;

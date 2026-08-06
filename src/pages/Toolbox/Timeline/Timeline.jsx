@@ -32,13 +32,12 @@
  * - `timeline-info` still preserves nested relations/media for coins/events
  *
  * Future Improvements:
- * - Move timeline API calls into a shared API module using `apiClient`
  * - Replace default popup objects with lighter fallbacks
  * - Remove polling dependency between background/info builds entirely
  */
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import timelineRequest from 'src/api/timeline';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import CoinInfo from 'src/components/coin/CoinInfo';
 import EventInfo from 'src/pages/Toolbox/Timeline/event/Event';
@@ -48,10 +47,6 @@ import { LoadTimelineInfo } from './TimeLineInfo';
 import timelinekey from './res/timelinekey.png';
 import NoFeedBackIcon from 'src/components/constant/NoFeedBackIcon';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
-import qs from 'qs';
-
-const apiURL = import.meta.env.VITE_API_URL;
-
 const default_coin_data = {
   reverse_type: 'Tyche holding sceptre and cornucopia',
   mint: 'Antioch',
@@ -257,7 +252,7 @@ const Timeline = () => {
 
     async function fetchTimeline() {
       try {
-        const backgroundRes = await axios.get(`${apiURL}/timelines`);
+        const backgroundRes = await timelineRequest.background();
 
         if (!mounted) return;
 
@@ -271,31 +266,7 @@ const Timeline = () => {
         set_timeline_background(backgroundSetup.jsx_arr);
         set_timeline_background_is_loading(false);
 
-        const query = qs.stringify({
-          populate: [
-            'zone',
-            'zone.event',
-            'zone.event.governing_powers',
-            'zone.event.topics',
-            'zone.coin',
-            'zone.coin.reverse_file',
-            'zone.coin.obverse_file',
-            'zone.coin.type_category',
-            'zone.coin.governing_power',
-            'zone.coin_a',
-            'zone.coin_a.reverse_file',
-            'zone.coin_a.obverse_file',
-            'zone.coin_a.type_category',
-            'zone.coin_a.governing_power',
-            'zone.coin_b',
-            'zone.coin_b.reverse_file',
-            'zone.coin_b.obverse_file',
-            'zone.coin_b.type_category',
-            'zone.coin_b.governing_power',
-          ],
-        });
-
-        const infoRes = await axios.get(`${apiURL}/timeline-info?${query}`);
+        const infoRes = await timelineRequest.info();
 
         if (!mounted) return;
 

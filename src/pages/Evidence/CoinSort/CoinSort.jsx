@@ -32,7 +32,6 @@
  * - `fetchAllForCoinSort()` currently returns raw Strapi rows by design
  *
  * Future Improvements:
- * - Move governing powers into a dedicated API module
  * - Normalize CoinInfo to consume a flatter coin model directly
  * - Extract adapter helpers into a shared utility module if reused elsewhere
  * - Normalize collection endpoints after downstream callers are fully migrated
@@ -51,7 +50,6 @@ import {
   CoinPileLocations,
 } from './CoinUtils';
 
-import apiClient from 'src/api/client';
 import coinCollectionsRequest from 'src/api/coin-collections';
 import coinSortRequest from 'src/api/coin-sort';
 
@@ -665,9 +663,7 @@ const CoinSort = () => {
     async function loadData() {
       try {
         const [governingRes, collectionsRes, sortRes] = await Promise.all([
-          apiClient.get('/api/governing-powers', {
-            meta: { useCache: true, cacheTtlMs: 1000 * 60 * 30, normalize: false },
-          }),
+          coinCollectionsRequest.fetchGoverningPowers(),
           coinCollectionsRequest.fetchAllForCoinSort(),
           coinSortRequest.coinSortFind(),
         ]);

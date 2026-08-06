@@ -28,11 +28,12 @@
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import { STRAPI_URL } from 'src/api/client';
+import submissionRequest from 'src/api/submissions';
 import { saveAs } from 'file-saver';
 import { emailRegExp, nameRegExp } from 'src/utils/RegExpRules';
 
-const baseURL = import.meta.env.VITE_STRAPI_URL;
+const baseURL = STRAPI_URL;
 
 function DownloadForm(props) {
   const [show, setShow] = useState(false);
@@ -50,7 +51,7 @@ function DownloadForm(props) {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post(`${baseURL}/api/user-download`, { data });
+      await submissionRequest.download(data);
 
       if (props.url) {
         saveAs(`${baseURL}${props.url}`, 'AntiochCoins.zip');
