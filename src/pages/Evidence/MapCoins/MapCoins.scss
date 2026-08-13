@@ -882,7 +882,7 @@
 
   /* Map markers */
   .map-coins__coin-marker {
-    position: relative;
+    position: absolute;
     width: 13rem;
     height: 13rem;
     padding: 0;
@@ -890,20 +890,29 @@
     background: transparent;
     cursor: pointer;
     filter: drop-shadow(0 0.7rem 0.7rem rgba(default-theme.$syrios-color-313029, 0.35));
-    transition: filter 200ms ease, transform 240ms ease;
+    transition: filter 200ms ease;
     animation: map-coins-marker-in 360ms ease both;
 
     &:hover,
     &:focus-visible {
       z-index: 5;
       filter: drop-shadow(0 1rem 1rem rgba(default-theme.$syrios-color-313029, 0.5));
-      transform: scale(1.08);
     }
 
     &:focus-visible {
       outline: 0.25rem solid default-theme.$syrios-color-183848;
       outline-offset: 0.15rem;
       border-radius: 2px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      .map-coins__coin-marker-stack,
+      .map-coins__quantity-marker,
+      .map-coins__composition-marker,
+      .map-coins__comparison-marker {
+        transform: translate(-50%, -50%) scale(1.08);
+      }
     }
   }
 
@@ -915,6 +924,7 @@
     top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: transform 240ms ease;
   }
 
   .map-coins__coin-marker-image,
@@ -1381,10 +1391,8 @@
 @keyframes map-coins-marker-in {
   from {
     opacity: 0;
-    transform: scale(0.72);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
