@@ -1,12 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
 import { CoinContextProvider } from './context/coinContext.jsx';
-ReactDOM.render(
+
+const root = createRoot(document.getElementById('root'));
+
+root.render(
   <CoinContextProvider>
     <App />
-  </CoinContextProvider>
-  ,
-  document.getElementById('root')
+  </CoinContextProvider>,
 );
