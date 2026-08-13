@@ -1,24 +1,27 @@
-@import '../../0-base/_base-dir.scss';
-@import '../../1-themes/_themes-dir.scss';
+@use '../../0-base/_base-dir.scss';
+@use '../../1-themes/_themes-dir.scss';
+@use "../../0-base/base-utility-functions";
+@use "../../1-themes/default-theme";
 
-$syrios-text-font-family: $syrios-font-family-garamond-premier-pro;
-$syrios-text-base-font-size: $syrios-theme-base-font-size;
+
+$syrios-text-font-family: default-theme.$syrios-font-family-garamond-premier-pro;
+$syrios-text-base-font-size: default-theme.$syrios-theme-base-font-size;
 
 // Data for each Type Style defined in the Style Sheet.
 $syrios-font-size-data: (
-  heading1: syrios-rem(96px),
-  heading2: syrios-rem(60px),
-  heading3: syrios-rem(48px),
-  heading4: syrios-rem(34px),
-  heading5: syrios-rem(24px), 
-  heading6: syrios-rem(20px),
-  subtitle2: syrios-rem(14px),
-  subtitle1: syrios-rem(16px),
-  body2: syrios-rem(14px),
-  body1: syrios-rem(16px),
-  caption: syrios-rem(13.712px),
-  overline: syrios-rem(13.712px),
-  list: syrios-rem(16px)
+  heading1: base-utility-functions.syrios-rem(96px),
+  heading2: base-utility-functions.syrios-rem(60px),
+  heading3: base-utility-functions.syrios-rem(48px),
+  heading4: base-utility-functions.syrios-rem(34px),
+  heading5: base-utility-functions.syrios-rem(24px),
+  heading6: base-utility-functions.syrios-rem(20px),
+  subtitle2: base-utility-functions.syrios-rem(14px),
+  subtitle1: base-utility-functions.syrios-rem(16px),
+  body2: base-utility-functions.syrios-rem(14px),
+  body1: base-utility-functions.syrios-rem(16px),
+  caption: base-utility-functions.syrios-rem(13.712px),
+  overline: base-utility-functions.syrios-rem(13.712px),
+  list: base-utility-functions.syrios-rem(16px)
 ) !default;
 
 // Data for each Type Style defined in the Style Sheet.

@@ -1,3 +1,5 @@
+@use "../../../style/1-themes/default-theme";
+
 #coin-catalog{
     -webkit-overflow-scrolling: touch;
 	height: 100%;
@@ -48,9 +50,9 @@
 				opacity: 1;
 				transition: 0.5s;
 			  
-				font-family: $syrios-garamond-premier-pro-caption;
-				font-style: $syrios-font-style-normal;
-				color: $syrios-color-7899a8;
+				font-family: default-theme.$syrios-garamond-premier-pro-caption;
+				font-style: default-theme.$syrios-font-style-normal;
+				color: default-theme.$syrios-color-7899a8;
 			  
 				&:hover {
 				  color: #ffffff;
@@ -113,14 +115,14 @@
 
 					width: fit-content;
 				
-					color: $syrios-color-7899a8;
+					color: default-theme.$syrios-color-7899a8;
 				
 					&:hover {
 						color: #ffffff;
 						background: #7899a8 0% 0% no-repeat padding-box;
 					}
 					a {
-						color: $syrios-color-7899a8;
+						color: default-theme.$syrios-color-7899a8;
 						&:hover {
 							color: #ffffff;
 						}

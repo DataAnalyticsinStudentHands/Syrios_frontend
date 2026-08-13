@@ -1,3 +1,5 @@
+@use "../../../style/1-themes/default-theme";
+
 #map-coins {
   -webkit-overflow-scrolling: touch;
   width: 100%;
@@ -14,20 +16,20 @@
     margin: 0 auto;
     padding: clamp(1.25rem, 2vw, 2.5rem);
     overflow: hidden;
-    border: 1px solid rgba($syrios-color-a86818, 0.42);
+    border: 1px solid rgba(default-theme.$syrios-color-a86818, 0.42);
     border-radius: 3px;
     background:
-      linear-gradient(135deg, rgba($syrios-color-f8e8b8, 0.28), transparent 42%),
-      rgba($syrios-color-f4f2f0, 0.97);
+      linear-gradient(135deg, rgba(default-theme.$syrios-color-f8e8b8, 0.28), transparent 42%),
+      rgba(default-theme.$syrios-color-f4f2f0, 0.97);
     box-shadow:
-      0 2.5rem 6rem rgba($syrios-color-183848, 0.2),
-      0 0 0 1rem rgba($syrios-color-f4f2f0, 0.45);
+      0 2.5rem 6rem rgba(default-theme.$syrios-color-183848, 0.2),
+      0 0 0 1rem rgba(default-theme.$syrios-color-f4f2f0, 0.45);
 
     &::before {
       position: absolute;
       inset: 0.7rem;
       z-index: 0;
-      border: 1px dashed rgba($syrios-color-a86818, 0.3);
+      border: 1px dashed rgba(default-theme.$syrios-color-a86818, 0.3);
       content: '';
       pointer-events: none;
     }
@@ -49,15 +51,15 @@
 
     h3 {
       margin: 0.35rem 0 0;
-      color: $syrios-color-183848;
-      font-family: $syrios-garamond-premier-pro-display;
+      color: default-theme.$syrios-color-183848;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
       font-size: clamp(3rem, 4vw, 5.4rem);
       line-height: 1;
     }
 
     p {
       margin: 0 0 0.35rem;
-      color: $syrios-color-737271;
+      color: default-theme.$syrios-color-737271;
       font-size: clamp(1.6rem, 1.5vw, 2rem);
       letter-spacing: 0.04em;
       white-space: nowrap;
@@ -65,7 +67,7 @@
   }
 
   .map-coins__eyebrow {
-    color: $syrios-color-a86818;
+    color: default-theme.$syrios-color-a86818;
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -76,9 +78,9 @@
     height: clamp(430px, 58vw, 690px);
     min-height: 430px;
     overflow: hidden;
-    border: 1px solid rgba($syrios-color-183848, 0.36);
-    background: $syrios-color-b8ccd8;
-    box-shadow: inset 0 0 0 1px rgba($syrios-color-ffffff, 0.4);
+    border: 1px solid rgba(default-theme.$syrios-color-183848, 0.36);
+    background: default-theme.$syrios-color-b8ccd8;
+    box-shadow: inset 0 0 0 1px rgba(default-theme.$syrios-color-ffffff, 0.4);
   }
 
   .map-coins__viewport {
@@ -94,21 +96,21 @@
     justify-content: center;
     gap: 1.5rem;
     padding: 3rem;
-    background: linear-gradient(145deg, $syrios-color-b8ccd8, $syrios-color-f0e0c0);
-    color: $syrios-color-183848;
+    background: linear-gradient(145deg, default-theme.$syrios-color-b8ccd8, default-theme.$syrios-color-f0e0c0);
+    color: default-theme.$syrios-color-183848;
     font-size: clamp(2rem, 2vw, 2.8rem);
     text-align: center;
   }
 
   .map-coins__status--error {
-    color: $syrios-color-a85828;
+    color: default-theme.$syrios-color-a85828;
   }
 
   .map-coins__status-mark {
     width: 2.5rem;
     height: 2.5rem;
-    border: 0.35rem solid rgba($syrios-color-183848, 0.25);
-    border-top-color: $syrios-color-a86818;
+    border: 0.35rem solid rgba(default-theme.$syrios-color-183848, 0.25);
+    border-top-color: default-theme.$syrios-color-a86818;
     border-radius: 50%;
     animation: map-coins-spin 0.9s linear infinite;
   }
@@ -116,7 +118,7 @@
   .map-coins__caption {
     max-width: 70rem;
     margin: 1.75rem auto 0.5rem;
-    color: $syrios-color-486678;
+    color: default-theme.$syrios-color-486678;
     font-size: clamp(1.8rem, 1.7vw, 2.4rem);
     line-height: 1.35;
     text-align: center;
@@ -127,14 +129,14 @@
     width: 4.6rem;
     height: 4.6rem;
     padding: 0;
-    border: 0.3rem solid $syrios-color-f8e8b8;
+    border: 0.3rem solid default-theme.$syrios-color-f8e8b8;
     border-radius: 50%;
     background:
-      radial-gradient(circle at 38% 34%, $syrios-color-e8d078 0 12%, transparent 13%),
-      radial-gradient(circle, $syrios-color-d8a048 0 46%, $syrios-color-987818 48% 63%, $syrios-color-f8e8b8 65% 69%, $syrios-color-a86818 71%);
+      radial-gradient(circle at 38% 34%, default-theme.$syrios-color-e8d078 0 12%, transparent 13%),
+      radial-gradient(circle, default-theme.$syrios-color-d8a048 0 46%, default-theme.$syrios-color-987818 48% 63%, default-theme.$syrios-color-f8e8b8 65% 69%, default-theme.$syrios-color-a86818 71%);
     box-shadow:
-      0 0.6rem 1.4rem rgba($syrios-color-313029, 0.42),
-      0 0 0 0 rgba($syrios-color-a86818, 0.4);
+      0 0.6rem 1.4rem rgba(default-theme.$syrios-color-313029, 0.42),
+      0 0 0 0 rgba(default-theme.$syrios-color-a86818, 0.4);
     cursor: pointer;
     animation: map-coins-pulse 2.6s ease-out infinite;
 
@@ -143,14 +145,14 @@
       inset: 50% auto auto 50%;
       width: 1.1rem;
       height: 1.5rem;
-      border-right: 0.22rem solid rgba($syrios-color-313029, 0.62);
-      border-bottom: 0.22rem solid rgba($syrios-color-313029, 0.62);
+      border-right: 0.22rem solid rgba(default-theme.$syrios-color-313029, 0.62);
+      border-bottom: 0.22rem solid rgba(default-theme.$syrios-color-313029, 0.62);
       content: '';
       transform: translate(-58%, -58%) rotate(-18deg);
     }
 
     &:focus-visible {
-      outline: 0.35rem solid $syrios-color-183848;
+      outline: 0.35rem solid default-theme.$syrios-color-183848;
       outline-offset: 0.35rem;
     }
   }
@@ -159,22 +161,22 @@
     .mapboxgl-popup-content {
       min-width: 21rem;
       padding: 1.4rem 1.6rem;
-      border: 1px solid rgba($syrios-color-a86818, 0.4);
+      border: 1px solid rgba(default-theme.$syrios-color-a86818, 0.4);
       border-radius: 2px;
-      background: rgba($syrios-color-f4f2f0, 0.97);
-      box-shadow: 0 1rem 2.5rem rgba($syrios-color-183848, 0.24);
+      background: rgba(default-theme.$syrios-color-f4f2f0, 0.97);
+      box-shadow: 0 1rem 2.5rem rgba(default-theme.$syrios-color-183848, 0.24);
     }
 
     .mapboxgl-popup-tip {
-      border-top-color: rgba($syrios-color-f4f2f0, 0.97);
+      border-top-color: rgba(default-theme.$syrios-color-f4f2f0, 0.97);
     }
   }
 
   .map-coins__popup {
     display: grid;
     gap: 0.35rem;
-    color: $syrios-color-183848;
-    font-family: $syrios-font-family-garamond-premier-pro;
+    color: default-theme.$syrios-color-183848;
+    font-family: default-theme.$syrios-font-family-garamond-premier-pro;
     font-size: 1.6rem;
 
     strong {
@@ -184,7 +186,7 @@
   }
 
   .map-coins__popup-label {
-    color: $syrios-color-a86818;
+    color: default-theme.$syrios-color-a86818;
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -194,7 +196,7 @@
   .mapboxgl-ctrl-group,
   .mapboxgl-ctrl-attrib {
     border-radius: 2px;
-    background: rgba($syrios-color-f4f2f0, 0.94);
+    background: rgba(default-theme.$syrios-color-f4f2f0, 0.94);
   }
 
   @media (max-width: 680px) {
@@ -239,13 +241,13 @@
 @keyframes map-coins-pulse {
   0%, 35% {
     box-shadow:
-      0 0.6rem 1.4rem rgba($syrios-color-313029, 0.42),
-      0 0 0 0 rgba($syrios-color-a86818, 0.38);
+      0 0.6rem 1.4rem rgba(default-theme.$syrios-color-313029, 0.42),
+      0 0 0 0 rgba(default-theme.$syrios-color-a86818, 0.38);
   }
 
   80%, 100% {
     box-shadow:
-      0 0.6rem 1.4rem rgba($syrios-color-313029, 0.42),
-      0 0 0 1.8rem rgba($syrios-color-a86818, 0);
+      0 0.6rem 1.4rem rgba(default-theme.$syrios-color-313029, 0.42),
+      0 0 0 1.8rem rgba(default-theme.$syrios-color-a86818, 0);
   }
 }

@@ -1,5 +1,8 @@
+@use "../../../style/1-themes/default-theme";
+@use "../../../style/3-application/app";
 
-$footerHeight:70px;
+
+app.$footerHeight:70px;
 
 #glossary-page{
     -webkit-overflow-scrolling: touch;
@@ -8,7 +11,7 @@ $footerHeight:70px;
 
     .search-box {
         display: flex;
-        font-size: $syrios-font-size-20;
+        font-size: default-theme.$syrios-font-size-20;
         width: 30%;
         margin-left: 35%;
         height: 3em;
@@ -21,9 +24,9 @@ $footerHeight:70px;
 
         input{
             color: #737271;
-            font-family: $syrios-garamond-premier-pro;
-            font-size: $syrios-font-size-20;
-            text-indent: $syrios-font-size-24
+            font-family: default-theme.$syrios-garamond-premier-pro;
+            font-size: default-theme.$syrios-font-size-20;
+            text-indent: default-theme.$syrios-font-size-24
 
         }
         .search-box__input {
@@ -49,7 +52,7 @@ $footerHeight:70px;
 
     }
     .result-list-item{
-        font-size: $syrios-font-size-20;
+        font-size: default-theme.$syrios-font-size-20;
         z-index: 100;
 
     }
@@ -60,13 +63,13 @@ $footerHeight:70px;
         background-color: #FFFFFF;
         align-items: center;
 
-        font-family: $syrios-garamond-premier-pro;
-        font-style: $syrios-font-style-italic;
-        font-weight: $syrios-font-weight-regular;
-        font-size: $syrios-font-size-28;
-        line-height: $syrios-line-spacing-30;
-        letter-spacing: $syrios-character-spacing-0;
-        color: $syrios-color-78a878;
+        font-family: default-theme.$syrios-garamond-premier-pro;
+        font-style: default-theme.$syrios-font-style-italic;
+        font-weight: default-theme.$syrios-font-weight-regular;
+        font-size: default-theme.$syrios-font-size-28;
+        line-height: default-theme.$syrios-line-spacing-30;
+        letter-spacing: default-theme.$syrios-character-spacing-0;
+        color: default-theme.$syrios-color-78a878;
       }
 
     .nav-tabs{
@@ -78,7 +81,7 @@ $footerHeight:70px;
                 clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
                 width: 6.5vmax;
                 color:#737271;
-                font-size:$syrios-font-size-20;
+                font-size:default-theme.$syrios-font-size-20;
                 &:hover{
                     background-color: white;
                 }  
@@ -167,20 +170,20 @@ $footerHeight:70px;
     margin-bottom: 7.5vmax;
 
     .glossary-alphabet{
-        font-family: $syrios-garamond-premier-pro;
-        font-style: $syrios-font-style-normal;
-        font-weight: $syrios-font-weight-bold;
-        font-size: $syrios-font-size-40;
-        line-height: $syrios-line-spacing-30;
-        color: $syrios-color-486678;
+        font-family: default-theme.$syrios-garamond-premier-pro;
+        font-style: default-theme.$syrios-font-style-normal;
+        font-weight: default-theme.$syrios-font-weight-bold;
+        font-size: default-theme.$syrios-font-size-40;
+        line-height: default-theme.$syrios-line-spacing-30;
+        color: default-theme.$syrios-color-486678;
     }
     .glossary-term{
         a{
-            font-family: $syrios-garamond-premier-pro;
+            font-family: default-theme.$syrios-garamond-premier-pro;
             // font-style: $syrios-font-style-italic;
-            font-weight: $syrios-font-weight-regular;
-            font-size: $syrios-font-size-28;
-            line-height: $syrios-line-spacing-30;
+            font-weight: default-theme.$syrios-font-weight-regular;
+            font-size: default-theme.$syrios-font-size-28;
+            line-height: default-theme.$syrios-line-spacing-30;
             color: #78a878;
             & :hover{
                 color: #487848;
@@ -204,26 +207,26 @@ $footerHeight:70px;
         margin-bottom: 2em;
     }
         .glossary-term{
-        font-size: $syrios-font-size-48;
+        font-size: default-theme.$syrios-font-size-48;
         font-weight: bold;
         color:#486678;
     }
     .glossary-basic{
-        font-size: $syrios-font-size-24;
+        font-size: default-theme.$syrios-font-size-24;
         color:#737271;
     }
     .glossary-title{
         color: #b85828;
-        font-size: $syrios-font-size-32;
+        font-size: default-theme.$syrios-font-size-32;
     }
     .glossary-body{
         color:#737271;
-        font-size: $syrios-font-size-24;
+        font-size: default-theme.$syrios-font-size-24;
     }
     .glossary-related-word{
         a{
             color: #78a878;
-            font-size: $syrios-font-size-28;
+            font-size: default-theme.$syrios-font-size-28;
         }
 
     }

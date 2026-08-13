@@ -1,3 +1,5 @@
+@use "../../../style/1-themes/default-theme";
+
 
 #Timeline-page{
 	-webkit-overflow-scrolling: touch;
@@ -35,11 +37,11 @@
 .tooltip-inner{
   padding:0.25rem 2rem;
   // background-color: rgba(0,0,0,0.9);
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-24;
-  line-height: $syrios-line-spacing-45;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-24;
+  line-height: default-theme.$syrios-line-spacing-45;
   letter-spacing: 1px;
   // color:#737271;
 }

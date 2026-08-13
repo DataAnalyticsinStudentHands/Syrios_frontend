@@ -2,19 +2,21 @@
 // @import '../0-base/_base-dir.scss';
 @use "sass:math";
 
-@import '../1-themes/_themes-dir.scss'; //color font
+@use '../1-themes/_themes-dir.scss'; //color font
+@use "../1-themes/default-theme";
+
 // @import '../2-foundations/_foundations-dir.scss'; //spacing
 
 .landing-buttons-text {
 	text-align: center;
 	text-decoration: none !important;
   
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-32;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-ffffff;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-semi-bold;
+  font-size: default-theme.$syrios-font-size-32;
+  line-height: default-theme.$syrios-line-spacing-30;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
+  color: default-theme.$syrios-color-ffffff;
 
   // @media screen and (max-width: 1440px) {
   //   font-size: $syrios-font-size-30 * 0.75 ;
@@ -24,11 +26,11 @@
 }
 
 .quote-text {
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-40;
-  line-height: $syrios-line-spacing-45;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-40;
+  line-height: default-theme.$syrios-line-spacing-45;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #486678;
 
 
@@ -40,25 +42,25 @@
   // }
 }
 .quote-credit {
-  font-family: $syrios-font-family-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing--05;
+  font-family: default-theme.$syrios-font-family-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-30;
+  letter-spacing: default-theme.$syrios-character-spacing--05;
   color: #737271;
 }
 
 .story-caption {
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-18;
-  line-height: $syrios-line-spacing-20;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-18;
+  line-height: default-theme.$syrios-line-spacing-20;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #737271;
 }
 
 .story-icon{
-  font-family: $syrios-font-family-syrios-entypo-subset;
+  font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
   color: #7899a8;
   left: -0.2em;
 }
@@ -94,11 +96,11 @@
 }
 
 .story-text {
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-24;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing--05;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-24;
+  line-height: default-theme.$syrios-line-spacing-30;
+  letter-spacing: default-theme.$syrios-character-spacing--05;
   color: #737271;
 
   // @media screen and (max-width: 1440px) {
@@ -108,8 +110,8 @@
 }
 
 .story-text-bigger {
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
   font-size: 1.5vmax;
   line-height: 2.25vmax;
   color: #737271;
@@ -121,50 +123,50 @@
 }
 
 .story-h1 {
-  font-family: $syrios-garamond-premier-pro-display;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
   font-weight: 300;
-  font-size: $syrios-font-size-144;
+  font-size: default-theme.$syrios-font-size-144;
   // line-height: $syrios-line-spacing-75;
-  letter-spacing: $syrios-character-spacing-0;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #486678;
 
 }
 
 .story-h2 {
-  font-family: $syrios-garamond-premier-pro-display;
-  font-weight: $syrios-font-weight-light;
-  font-size: $syrios-font-size-64;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-weight: default-theme.$syrios-font-weight-light;
+  font-size: default-theme.$syrios-font-size-64;
   line-height: 1em;
-  letter-spacing: $syrios-character-spacing-0;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #a85828;
   text-align: center;
 }
 
 .story-h3 {
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-40;
-  line-height: $syrios-line-spacing-45;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-40;
+  line-height: default-theme.$syrios-line-spacing-45;
   color: #737271;
 }
 
 .story-h3-blue {
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-40;
-  line-height: $syrios-line-spacing-45;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-40;
+  line-height: default-theme.$syrios-line-spacing-45;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #486678;
 }
 
 .story-h4 {
-  font-family: $syrios-garamond-premier-pro-subhead;
-  font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-25;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro-subhead;
+  font-weight: default-theme.$syrios-font-weight-semi-bold;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-25;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #a86818;
-  text-transform: $syrios-text-transform-uppercase;
+  text-transform: default-theme.$syrios-text-transform-uppercase;
 
 }
 
@@ -183,28 +185,28 @@
 // }
 
 .landing-text{
-  font-family: $syrios-garamond-premier-pro;
-  font-size: $syrios-font-size-24;
-  line-height: $syrios-line-spacing-30;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-size: default-theme.$syrios-font-size-24;
+  line-height: default-theme.$syrios-line-spacing-30;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color: #486678;
 }
 
 .select-story-text {
-  font-family: $syrios-garamond-premier-pro-subhead;
-  font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-24;
-  line-height: $syrios-line-spacing-25;
-  letter-spacing: $syrios-character-spacing--20;
+  font-family: default-theme.$syrios-garamond-premier-pro-subhead;
+  font-weight: default-theme.$syrios-font-weight-semi-bold;
+  font-size: default-theme.$syrios-font-size-24;
+  line-height: default-theme.$syrios-line-spacing-25;
+  letter-spacing: default-theme.$syrios-character-spacing--20;
   color: #a86818;
 }
 
 .references-text {
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-weight: $syrios-font-weight-normal;
-  font-size: $syrios-font-size-18;
-  line-height: $syrios-line-spacing-15;
-  letter-spacing: $syrios-character-spacing--10;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-weight: default-theme.$syrios-font-weight-normal;
+  font-size: default-theme.$syrios-font-size-18;
+  line-height: default-theme.$syrios-line-spacing-15;
+  letter-spacing: default-theme.$syrios-character-spacing--10;
   color: #183848;
 
   a {
@@ -215,10 +217,10 @@
   }
 }
 .references-h3 {
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-32;
-  line-height: $syrios-line-spacing-30;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-semi-bold;
+  font-size: default-theme.$syrios-font-size-32;
+  line-height: default-theme.$syrios-line-spacing-30;
   color: #ffffff;
 
   // @media screen and (max-width: 1440px) {
@@ -228,11 +230,11 @@
 }
 
 .icon-caption{
-  font-family: $syrios-garamond-premier-pro;
-  font-weight: $syrios-font-weight-regular;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-20;
-  letter-spacing: $syrios-character-spacing--50;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-20;
+  letter-spacing: default-theme.$syrios-character-spacing--50;
   color: #a86818;
 
   // @media screen and (max-width: 1440px) {
@@ -247,13 +249,13 @@
   opacity: 1;
   transition: 0.5s;
   
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-18;
-  line-height: $syrios-line-spacing-17;
-  letter-spacing: $syrios-character-spacing--80;
-  color: $syrios-color-ffffff;
-  text-transform: $syrios-text-transform-uppercase;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  font-size: default-theme.$syrios-font-size-18;
+  line-height: default-theme.$syrios-line-spacing-17;
+  letter-spacing: default-theme.$syrios-character-spacing--80;
+  color: default-theme.$syrios-color-ffffff;
+  text-transform: default-theme.$syrios-text-transform-uppercase;
   &:hover {
     color: #b8ccd8;
     cursor: pointer;
@@ -271,10 +273,10 @@
 	opacity: 1;
   transition: 0.3s;
   
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-17;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-17;
   // letter-spacing: $syrios-character-spacing--80;
   color: #ffffff;
   &:hover {

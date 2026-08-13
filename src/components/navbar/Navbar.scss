@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 /* The blue box at the top of the screen and its dimensions are defined here */
 
 #navbar {
@@ -19,7 +21,7 @@
 	background-color: #183848;
 	background-size: cover;
 	border-radius: 0px 0px 15px 15px;
-	font-family:  $syrios-font-family-garamond-premier-pro;
+	font-family:  default-theme.$syrios-font-family-garamond-premier-pro;
 }
 
 .dropdown .dropdown-menu {

@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 
 .coin-info-url {
   color: #173847 !important;
@@ -43,20 +45,20 @@
   
 }
 .coin-info-title{
-  font-family: $syrios-garamond-premier-pro;
-  font-size: $syrios-font-size-36 ;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-600;
-  line-height: $syrios-line-spacing-30;
-  color: $syrios-color-183848;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-size: default-theme.$syrios-font-size-36 ;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-600;
+  line-height: default-theme.$syrios-line-spacing-30;
+  color: default-theme.$syrios-color-183848;
 }
 .coin-info-subtitle{
-  font-family: $syrios-garamond-premier-pro;
-  font-size: $syrios-font-size-28 ;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-600;
-  line-height: $syrios-line-spacing-30;
-  color: $syrios-color-183848;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-size: default-theme.$syrios-font-size-28 ;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-600;
+  line-height: default-theme.$syrios-line-spacing-30;
+  color: default-theme.$syrios-color-183848;
 }
 .coin-info-basic{
     display: grid;
@@ -67,54 +69,54 @@
   grid-template-columns: 1fr 1fr;
 }
 .coin-info-basic-text{
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-400;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-20;
-  color: $syrios-color-737271;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-400;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-20;
+  color: default-theme.$syrios-color-737271;
 }
 .coin-info-basic-content{
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-600;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-20;
-  color: $syrios-color-183848;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-600;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-20;
+  color: default-theme.$syrios-color-183848;
 }
 
 .coin-info-detail-text{
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-400;
-  font-size: $syrios-font-size-22;
-  line-height: $syrios-line-spacing-20;
-  color: $syrios-color-737271;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-400;
+  font-size: default-theme.$syrios-font-size-22;
+  line-height: default-theme.$syrios-line-spacing-20;
+  color: default-theme.$syrios-color-737271;
 }
 .coin-info-detail-content{
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-600;
-  font-size: $syrios-font-size-22;
-  line-height: $syrios-line-spacing-20;
-  color: $syrios-color-183848;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-600;
+  font-size: default-theme.$syrios-font-size-22;
+  line-height: default-theme.$syrios-line-spacing-20;
+  color: default-theme.$syrios-color-183848;
 }
 
 .coin-info-reference-text{
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-400;
-  font-size: $syrios-font-size-18;
-  line-height: $syrios-line-spacing-20;
-  color: $syrios-color-737271;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-400;
+  font-size: default-theme.$syrios-font-size-18;
+  line-height: default-theme.$syrios-line-spacing-20;
+  color: default-theme.$syrios-color-737271;
 }
 .coin-info-reference-content{
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-600;
-  font-size: $syrios-font-size-16;
-  line-height: $syrios-line-spacing-20;
-  color: $syrios-color-183848;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-600;
+  font-size: default-theme.$syrios-font-size-16;
+  line-height: default-theme.$syrios-line-spacing-20;
+  color: default-theme.$syrios-color-183848;
 }
 
 
@@ -141,7 +143,7 @@
   // margin: 15px;
 
   color: #7899A8;
-  font-size: $syrios-font-size-48;
+  font-size: default-theme.$syrios-font-size-48;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -157,7 +159,7 @@
   // margin: 15px;
 
   color: #7899A8;
-  font-size: $syrios-font-size-48;
+  font-size: default-theme.$syrios-font-size-48;
   cursor: pointer;
   transition: 0.3s;
 }

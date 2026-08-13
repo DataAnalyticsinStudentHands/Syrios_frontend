@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 
 #stories-page{
   -webkit-overflow-scrolling: touch;
@@ -46,8 +48,8 @@
     position: absolute;
     right: 20px;
     bottom: 80px;
-    font-family: $syrios-garamond-premier-pro-caption;
-    font-weight: $syrios-font-weight-medium;
+    font-family: default-theme.$syrios-garamond-premier-pro-caption;
+    font-weight: default-theme.$syrios-font-weight-medium;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 2px;
@@ -61,7 +63,7 @@
   }
 }
 .back-to-top-icon{
-  font-family: $syrios-font-family-syrios-entypo-subset;
+  font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
   color: #FFFFFF;
   background-color:  #D8A048;
   border-radius: 50%;

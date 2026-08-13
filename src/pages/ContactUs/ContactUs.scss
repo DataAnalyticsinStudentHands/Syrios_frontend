@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 #contactus-page {
     -webkit-overflow-scrolling: touch;
     width: 80%;
@@ -13,7 +15,7 @@
     width: 12.5vmax;
   }
   .feedbacktext{
-    font-family: $syrios-garamond-premier-pro;
+    font-family: default-theme.$syrios-garamond-premier-pro;
     font-size: 32pt;
   }
   #ContactUsForm{

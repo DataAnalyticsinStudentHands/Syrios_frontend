@@ -1,3 +1,5 @@
+@use "../../../style/1-themes/default-theme";
+
 
 #download-page {
   -webkit-overflow-scrolling: touch;
@@ -9,11 +11,11 @@
   }
 }
 #downloadNotes{
-  line-height: $syrios-line-spacing-20;
-  font-family: $syrios-font-family-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-semi-bold;
-  font-size: $syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-20;
+  font-family: default-theme.$syrios-font-family-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-semi-bold;
+  font-size: default-theme.$syrios-font-size-20;
   color: #183848;
   text-align:	center;
   margin-bottom: 10%;

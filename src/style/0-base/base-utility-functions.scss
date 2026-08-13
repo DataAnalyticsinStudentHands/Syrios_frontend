@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "sass:meta";
+@use "../1-themes/default-theme";
+
 @use "sass:math";
 $syrios-default-browser-font-size: 16;
 
@@ -6,7 +10,7 @@ $syrios-default-browser-font-size: 16;
 /// @return {Number} The converted value in rem.
 
 @function syrios-rem($value) {
-  $unit: unit($value);
+  $unit: math.unit($value);
 
   @if $value == 0 {
     @return 0;
@@ -26,14 +30,14 @@ $syrios-default-browser-font-size: 16;
 /// @return {Number} The converted value in ems.
 
 @function syrios-em($value) {
-  $unit: unit($value);
+  $unit: math.unit($value);
 
   @if $value == 0 {
     @return 0;
   } @else if $unit == 'em' {
     @return $value;
   } @else if $unit == 'rem' {
-    @return $value / 1rem * 1em * ($syrios-theme-base-font-size / $syrios-default-browser-font-size);
+    @return $value / 1rem * 1em * (default-theme.$syrios-theme-base-font-size / $syrios-default-browser-font-size);
   } @else if $unit == 'px' {
     @return $value / $syrios-default-browser-font-size * 1em;
   } @else {
@@ -48,7 +52,7 @@ $syrios-default-browser-font-size: 16;
 /// @return {String} The list of names in the map.
 
 @function syrios-available-names($map, $level: 1) {
-  @if type-of($map) != 'map' {
+  @if meta.type-of($map) != 'map' {
     @return null;
   }
 
@@ -65,7 +69,10 @@ $syrios-default-browser-font-size: 16;
     $i: 1;
 
     @each $key, $value in $map {
-      $sep: if($i < length($map), ', ', '');
+      $sep: '';
+      @if $i < list.length($map) {
+        $sep: ', ';
+      }
       $output: $output + '#{$key}#{$sep}#{syrios-available-names($value, $level + 1)}';
       $i: $i + 1;
     }

@@ -1,3 +1,6 @@
+@use "../../../style/1-themes/default-theme";
+@use "../../../style/3-application/app";
+
 /* All font styles needed: 
 story-h2 (Big Orange Text)
 story-h3 (Gray Text)
@@ -125,9 +128,9 @@ story-download-text (dark blue text)
   // grid-area: 2 / 1 / 3 / 2; 
   transition: 0.3s;
 
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-regular;
   color: #7899A8;
   font-size: 1.2em;
 }
@@ -145,10 +148,10 @@ story-download-text (dark blue text)
 }
 
 .coin-sort-dropdown-title-text {
-  font-family: $syrios-font-family-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
-  color: $syrios-color-737271;
+  font-family: default-theme.$syrios-font-family-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-regular;
+  color: default-theme.$syrios-color-737271;
 
   margin-bottom: 0px;
   font-size: 2em;
@@ -190,9 +193,9 @@ story-download-text (dark blue text)
   font-size: 1.4em;
   margin: 5px;
 
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-regular;
   color: #7899A8;
 }
 
@@ -251,13 +254,13 @@ story-download-text (dark blue text)
 }
 
 .coin-sort-dropdown-item-text {
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-normal;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-normal;
   font-size: 1.4em;
-  line-height: $syrios-line-spacing-15;
-  letter-spacing: $syrios-character-spacing--10;
-  color: $syrios-color-183848;
+  line-height: default-theme.$syrios-line-spacing-15;
+  letter-spacing: default-theme.$syrios-character-spacing--10;
+  color: default-theme.$syrios-color-183848;
   padding-top: 5px;
   margin-bottom: -15px;
   margin-left: 15px;
@@ -272,9 +275,9 @@ story-download-text (dark blue text)
 .coin-sort-clear-button {
   margin-top: -10px;
 
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-normal;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-normal;
   color: #a85828;
 
   cursor: pointer;
@@ -291,9 +294,9 @@ story-download-text (dark blue text)
   // position: fixed;
   position: absolute;
 
-  top: $footerHeight;
+  top: app.$footerHeight;
   display: flex;
-  height: calc(100vh - 2 * $footerHeight);
+  height: calc(100vh - 2 * app.$footerHeight);
   width: 100vw;
 
   transition: 0.1s;

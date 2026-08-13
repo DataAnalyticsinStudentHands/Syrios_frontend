@@ -1,48 +1,48 @@
 // Design System
-@import './0-base/_base-dir.scss';
-@import './1-themes/_themes-dir.scss';
-@import './2-foundations/_foundations-dir.scss';
-@import './3-application/_application-dir.scss';
-@import './4-components/_components-dir.scss';
+@use '0-base/_base-dir.scss';
+@use '1-themes/_themes-dir.scss';
+@use '2-foundations/_foundations-dir.scss';
+@use '3-application/_application-dir.scss';
+@use '4-components/_components-dir.scss';
 
 //pages
-@import '../pages/LandingPage.scss';
-@import '../pages/ContactUs/ContactUs.scss';
-@import '../pages/AboutUs/AboutUs.scss';
+@use '../pages/LandingPage.scss';
+@use '../pages/ContactUs/ContactUs.scss';
+@use '../pages/AboutUs/AboutUs.scss';
 
-@import '../pages/Stories/Stories.scss';
+@use '../pages/Stories/Stories.scss';
 
-@import '../pages/Toolbox/Toolbox.scss';
-@import '../pages/Toolbox/Glossary/Glossary.scss';
-@import '../pages/Toolbox/Timeline/Timeline.scss';
-@import '../pages/Toolbox/Timeline/event/Event.scss';
-@import '../pages/Toolbox/Research/Research.scss';
-@import '../pages/Toolbox/Coin3D/Coin3D.scss';
+@use '../pages/Toolbox/Toolbox.scss';
+@use '../pages/Toolbox/Glossary/Glossary.scss';
+@use '../pages/Toolbox/Timeline/Timeline.scss';
+@use '../pages/Toolbox/Timeline/event/Event.scss';
+@use '../pages/Toolbox/Research/Research.scss';
+@use '../pages/Toolbox/Coin3D/Coin3D.scss';
 
 
-@import '../pages/Toolbox/VideoLibrary/VideoLibrary.scss';
+@use '../pages/Toolbox/VideoLibrary/VideoLibrary.scss';
 
-@import '../pages/Evidence/ExploreTheEvidence.scss';
-@import '../pages/Evidence/CoinSort/CoinSort.scss';
-@import '../pages/Evidence/CoinSort/CoinSortCoinGrid.scss';
-@import '../pages/Evidence/CoinSort/CoinSortExtraFunctions.scss';
-@import '../pages/Evidence/Download/Download.scss';
-@import '../pages/Evidence/MapCoins/MapCoins.scss';
-@import '../pages/Evidence/CoinCatalogy/CoinCatalog.scss';
+@use '../pages/Evidence/ExploreTheEvidence.scss';
+@use '../pages/Evidence/CoinSort/CoinSort.scss';
+@use '../pages/Evidence/CoinSort/CoinSortCoinGrid.scss';
+@use '../pages/Evidence/CoinSort/CoinSortExtraFunctions.scss';
+@use '../pages/Evidence/Download/Download.scss';
+@use '../pages/Evidence/MapCoins/MapCoins.scss';
+@use '../pages/Evidence/CoinCatalogy/CoinCatalog.scss';
 // @import '../pages/Evidence/CoinCatalogy/coin-info/CoinInfoPage.scss';
-@import '../pages/Resources/TeachingResources/TeachingResources.scss';
+@use '../pages/Resources/TeachingResources/TeachingResources.scss';
 
 //components
-@import '../components/loadingPage/LoadingPage.scss';
-@import '../components/footer/Footer.scss';
-@import '../components/footerv2/Footer2.scss';
-@import '../components/navbar/Navbar.scss';
-@import '../components/coin/CoinFlip.scss';
-@import '../components/coin/CoinInfo.scss';
-@import '../components/error/404.scss';
+@use '../components/loadingPage/LoadingPage.scss';
+@use '../components/footer/Footer.scss';
+@use '../components/footerv2/Footer2.scss';
+@use '../components/navbar/Navbar.scss';
+@use '../components/coin/CoinFlip.scss';
+@use '../components/coin/CoinInfo.scss';
+@use '../components/error/404.scss' as error-page;
 
 //utils
-@import '../utils/WhitePopUp.scss';
+@use '../utils/WhitePopUp.scss';
 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css)

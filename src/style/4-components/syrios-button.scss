@@ -1,6 +1,8 @@
-@import '../0-base/_base-dir.scss';
-@import '../1-themes/_themes-dir.scss';
-@import '../2-foundations/_foundations-dir.scss';
+@use '../0-base/_base-dir.scss';
+@use '../1-themes/_themes-dir.scss';
+@use '../2-foundations/_foundations-dir.scss';
+@use "../1-themes/default-theme";
+
 
 
 .story-end-frame-button {
@@ -12,13 +14,13 @@
   height: 3vmax;
   transition: 0.5s;
 
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-30;
-  line-height: $syrios-line-spacing-45;
-  letter-spacing: $syrios-character-spacing-0;
-  color: $syrios-color-7899a8;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  font-size: default-theme.$syrios-font-size-30;
+  line-height: default-theme.$syrios-line-spacing-45;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
+  color: default-theme.$syrios-color-7899a8;
 
   &:hover {
     color: #ffffff;
@@ -36,13 +38,13 @@
   height: 3.125vmax;
   transition: 0.5s;
 
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-24;
-  line-height: $syrios-line-spacing-25;
-  letter-spacing: $syrios-character-spacing--20;
-  color: $syrios-color-7899a8;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  font-size: default-theme.$syrios-font-size-24;
+  line-height: default-theme.$syrios-line-spacing-25;
+  letter-spacing: default-theme.$syrios-character-spacing--20;
+  color: default-theme.$syrios-color-7899a8;
 
   &:hover {
     color: #ffffff;
@@ -59,12 +61,12 @@
   height: 1.5625vmax;
   transition: 0.5s;
 
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-25;
-  letter-spacing: $syrios-character-spacing--20;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-25;
+  letter-spacing: default-theme.$syrios-character-spacing--20;
   color: #ffffff;
 
   &:hover{
@@ -81,12 +83,12 @@
   height: 1.5625vmax;
   transition: 0.5s;
 
-  font-family: $syrios-garamond-premier-pro-caption;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  font-size: $syrios-font-size-20;
-  line-height: $syrios-line-spacing-25;
-  letter-spacing: $syrios-character-spacing--20;
+  font-family: default-theme.$syrios-garamond-premier-pro-caption;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  font-size: default-theme.$syrios-font-size-20;
+  line-height: default-theme.$syrios-line-spacing-25;
+  letter-spacing: default-theme.$syrios-character-spacing--20;
   color: #7899a8;
 
   &:hover{
@@ -100,7 +102,7 @@
 }
 
 .reference-tag{
-  font-family: $syrios-garamond-premier-pro;
+  font-family: default-theme.$syrios-garamond-premier-pro;
   background-color: transparent;
   border: none;
   color:#78a878;
@@ -110,7 +112,7 @@
   
   & sup{
     color: #78a878;
-    font-style: $syrios-font-style-normal;
+    font-style: default-theme.$syrios-font-style-normal;
     &:hover{color:#487848}
   }
 }
@@ -133,12 +135,12 @@
     padding: 1em;
     border-radius: 6px;
 
-    font-size: $syrios-font-size-16;
-    font-family: $syrios-font-family-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-regular;
-    line-height: $syrios-line-spacing-30;
-    letter-spacing: $syrios-character-spacing--05;
+    font-size: default-theme.$syrios-font-size-16;
+    font-family: default-theme.$syrios-font-family-garamond-premier-pro;
+    font-style: default-theme.$syrios-font-style-normal;
+    font-weight: default-theme.$syrios-font-weight-regular;
+    line-height: default-theme.$syrios-line-spacing-30;
+    letter-spacing: default-theme.$syrios-character-spacing--05;
 
     width: 20vmax; 
     top: 100%;

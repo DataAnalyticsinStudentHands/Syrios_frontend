@@ -1,23 +1,25 @@
+@use "functions";
+
 .icon-size-xsmall {
-  font-size: syrios-icon-size(xsmall) !important;
+  font-size: functions.syrios-icon-size(xsmall) !important;
 }
 
 .icon-size-small {
-  font-size: syrios-icon-size(small) !important;
+  font-size: functions.syrios-icon-size(small) !important;
 }
 
 .icon-size-medium {
-  font-size: syrios-icon-size(medium) !important;
+  font-size: functions.syrios-icon-size(medium) !important;
 }
 
 .icon-size-large {
-  font-size: syrios-icon-size(large) !important;
+  font-size: functions.syrios-icon-size(large) !important;
 }
 
 .icon-size-xlarge {
-  font-size: syrios-icon-size(xlarge) !important;
+  font-size: functions.syrios-icon-size(xlarge) !important;
 }
 
 .icon-size-xxlarge {
-  font-size: syrios-icon-size(xxlarge) !important;
+  font-size: functions.syrios-icon-size(xxlarge) !important;
 }
