@@ -401,7 +401,9 @@ const MapCoins = () => {
   const [mapStatus, setMapStatus] = useState('waiting-data');
   const [coinStatus, setCoinStatus] = useState('loading');
   const [coins, setCoins] = useState([]);
-  const [controlsOpen, setControlsOpen] = useState(true);
+  const [controlsOpen, setControlsOpen] = useState(
+    () => typeof window === 'undefined' || !window.matchMedia('(max-width: 767.98px)').matches,
+  );
   const [representation, setRepresentation] = useState('images');
   const [compositionDimension, setCompositionDimension] = useState('material');
   const [placeMode, setPlaceMode] = useState('both');
@@ -587,9 +589,14 @@ const MapCoins = () => {
     const bounds = new mapboxgl.LngLatBounds();
     coinGroups.forEach((group) => bounds.extend(group.coordinates));
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const controlPadding = controlsOpen ? Math.min(380, Math.max(120, window.innerWidth * 0.55)) : 90;
+    const mobileLayout = window.matchMedia('(max-width: 767.98px)').matches;
+    const controlPadding = controlsOpen && !mobileLayout
+      ? Math.min(380, Math.max(120, window.innerWidth * 0.55))
+      : 90;
     mapRef.current.fitBounds(bounds, {
-      padding: { top: 90, right: 90, bottom: 90, left: controlPadding },
+      padding: mobileLayout
+        ? { top: 70, right: 45, bottom: controlsOpen ? 260 : 120, left: 45 }
+        : { top: 90, right: 90, bottom: 90, left: controlPadding },
       maxZoom: 7,
       duration: reducedMotion ? 0 : 1800,
       essential: false,

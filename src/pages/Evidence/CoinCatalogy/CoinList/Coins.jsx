@@ -156,23 +156,19 @@ const Coins = () => {
       />
 
       <div className='results'>
-        Results per page
-        <div className='filter'>
-          <div className='filter-trigger'>
-            {coinsPerPage} <span className='icon-entypo-arrow-thick-down' />
-          </div>
-          <div className='filter-content'>
+        <label className='results-per-page'>
+          <span>Results per page</span>
+          <select
+            value={coinsPerPage}
+            onChange={(event) => setCoinsPerPage(Number(event.target.value))}
+          >
             {coinsPerPages.map((item) => (
-              <div
-                key={item}
-                className='filter-content-item'
-                onClick={(e) => setCoinsPerPage(Number(e.target.innerText))}
-              >
+              <option value={item} key={item}>
                 {item}
-              </div>
+              </option>
             ))}
-          </div>
-        </div>
+          </select>
+        </label>
       </div>
 
       <CoinPaginate coinsPerPage={coinsPerPage} coins={coinList} />

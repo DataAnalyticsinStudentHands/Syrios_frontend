@@ -426,4 +426,116 @@
     #no-coins-return{
 
     }
+}.Coins {
+    .filter-select-label,
+    .results-per-page {
+        color: #737271;
+        display: grid;
+        font-size: 3rem;
+        font-weight: 700;
+        gap: 0.75rem;
+
+        select {
+            background: transparent;
+            border: 2px solid #737271;
+            border-radius: 15px;
+            color: #737271;
+            min-height: 48px;
+            padding: 0.5rem 1rem;
+            width: 100%;
+        }
+    }
+
+    .results-per-page {
+        align-items: center;
+        display: flex;
+
+        select {
+            width: auto;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .Coins {
+        padding: 4rem 2rem;
+
+        .filters {
+            margin: 3rem 0;
+
+            .filter-head {
+                align-items: flex-start;
+                gap: 1.5rem;
+
+                h1 {
+                    font-size: 3.5rem;
+                    line-height: 1.1;
+                }
+
+                button {
+                    font-size: 2.25rem;
+                    line-height: 1.2;
+                    min-height: 44px;
+                    text-align: right;
+                }
+            }
+
+            .filter-body {
+                gap: 2rem;
+                grid-template-columns: 1fr;
+            }
+
+            .filter-second-body {
+                font-size: 2.25rem;
+                line-height: 1.3;
+
+                .filter-year {
+                    align-items: stretch;
+                    display: grid;
+                    gap: 1rem;
+                    grid-template-columns: 1fr 1fr;
+
+                    > div:first-child {
+                        grid-column: 1 / -1;
+                    }
+
+                    .filter-from-year,
+                    .filter-to-year {
+                        width: 100%;
+                    }
+
+                    input {
+                        min-height: 48px;
+                    }
+                }
+            }
+        }
+
+        .filter-select-label {
+            font-size: 2.25rem;
+        }
+
+        .filterList .filterList-item {
+            background: transparent;
+            font-size: 1.75rem !important;
+            min-height: 40px;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .results {
+            display: block;
+            font-size: 2.25rem;
+            line-height: 1.3;
+        }
+
+        .results-per-page {
+            align-items: stretch;
+            flex-direction: column;
+            font-size: 2.25rem;
+
+            select {
+                width: 100%;
+            }
+        }
+    }
 }

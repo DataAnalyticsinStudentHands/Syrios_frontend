@@ -343,21 +343,32 @@ const Timeline = () => {
           <img src={timelinekey} alt="" style={{ width: '70%', marginLeft: '15%' }} />
         </div>
 
-        <div className="sticky-sections">
-          <div id="time-west">WEST</div>
-          <div id="time-antioch">ANTIOCH</div>
-          <div id="time-east">EAST</div>
-        </div>
+        <p className="timeline-mobile-hint">
+          Swipe horizontally to explore the full chronology. Tap a coin or event for details.
+        </p>
 
-        <svg
-          height="100%"
-          width="100%"
-          viewBox={`0 0 100 ${view_box_total_height}`}
-          style={{ position: 'relative' }}
+        <div
+          className="timeline-explorer"
+          tabIndex="0"
+          role="region"
+          aria-label="Interactive coin timeline"
         >
-          {timeline_background}
-          {timeline_events_and_coins}
-        </svg>
+          <div className="sticky-sections">
+            <div id="time-west">WEST</div>
+            <div id="time-antioch">ANTIOCH</div>
+            <div id="time-east">EAST</div>
+          </div>
+
+          <svg
+            height="100%"
+            width="100%"
+            viewBox={`0 0 100 ${view_box_total_height}`}
+            style={{ position: 'relative' }}
+          >
+            {timeline_background}
+            {timeline_events_and_coins}
+          </svg>
+        </div>
 
         <CoinInfo
           onClose={CoinInfoPopupCloseHandler}

@@ -218,29 +218,33 @@ const DropBox = (props) => {
   const [on_drag_style, set_on_drag_style] = useState(undefined);
 
   return (
-    <div className="coin-sort-drag-coin-box" style={on_drag_style}>
-      <p className="coin-sort-drag-coin-box-text">DRAG COIN HERE</p>
-
-      <div
-        className="coin-sort-drag-coin-box-hover-element"
-        onDragEnter={(e) => {
-          e.preventDefault();
-          set_on_drag_style({
-            backgroundColor: 'rgba(119, 153, 168, 0.74)',
-            color: 'white',
-          });
-        }}
-        onDragOver={(e) => {
-          e.preventDefault();
-        }}
-        onDragLeave={() => set_on_drag_style({})}
-        onDrop={(e) => {
-          e.preventDefault();
-          set_on_drag_style({});
-          props.onDrop?.();
-        }}
-      />
-    </div>
+    <button
+      type="button"
+      className="coin-sort-drag-coin-box"
+      style={on_drag_style}
+      aria-disabled={props.disabled}
+      onClick={() => {
+        if (!props.disabled) props.onDrop?.();
+      }}
+      onDragEnter={(event) => {
+        event.preventDefault();
+        set_on_drag_style({
+          backgroundColor: 'rgba(119, 153, 168, 0.74)',
+          color: 'white',
+        });
+      }}
+      onDragOver={(event) => event.preventDefault()}
+      onDragLeave={() => set_on_drag_style({})}
+      onDrop={(event) => {
+        event.preventDefault();
+        set_on_drag_style({});
+        props.onDrop?.();
+      }}
+    >
+      <span className="coin-sort-drag-coin-box-text">
+        {props.disabled ? 'SELECT A COIN FROM THE PILE' : 'ADD SELECTED COIN'}
+      </span>
+    </button>
   );
 };
 
@@ -275,7 +279,7 @@ export const CoinGrid = (props) => {
         if (coin_ids.length === 0) {
           return (
             <div id='coin-sort-drag-box-full'>
-              <DropBox onDrop={AddCoin} />
+              <DropBox onDrop={AddCoin} disabled={props.coinToAdd == null} />
             </div>
           );
         }
@@ -298,7 +302,7 @@ export const CoinGrid = (props) => {
             jsx.push(
               <div id={`${css_id}${jsx.length + 1}`} className={`${css_id}styling`} key={`drop-${jsx.length + 1}`}>
                 <div className='coin-sort-drag-box-in-coin-grid'>
-                  <DropBox onDrop={AddCoin} />
+                  <DropBox onDrop={AddCoin} disabled={props.coinToAdd == null} />
                 </div>
               </div>
             );

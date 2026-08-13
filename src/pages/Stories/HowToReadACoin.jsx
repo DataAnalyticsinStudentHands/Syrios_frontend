@@ -242,6 +242,7 @@ const HowToReadACoin = () => {
           navigationPosition="right"
           anchors={storyAnchors}
           autoScrolling={true}
+          responsiveWidth={768}
           render={({ state, fullpageApi }) => {
             if (fullpageApi && fullpageApiRef.current !== fullpageApi) {
               fullpageApiRef.current = fullpageApi;

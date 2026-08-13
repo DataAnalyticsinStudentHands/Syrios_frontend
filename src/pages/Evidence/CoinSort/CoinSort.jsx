@@ -263,7 +263,7 @@ const hasThumb = (coin) => {
 // ─────────────────────────────────────────────────────────────
 // Coin renderer (pile)
 // ─────────────────────────────────────────────────────────────
-const Coin = ({ id, x, y, display, dimensions, coinMetaData, setDraggedCoinId }) => {
+const Coin = ({ id, x, y, display, dimensions, coinMetaData, selectedCoinId, setDraggedCoinId }) => {
   const diameter = coinMetaData?.attributes?.diameter ?? 10;
   const thumbnail_scale = 1.5;
   const MIN_RENDER_SIZE = 32;
@@ -298,23 +298,36 @@ const Coin = ({ id, x, y, display, dimensions, coinMetaData, setDraggedCoinId })
 
   if (!src) return null;
 
+  const selectCoin = () => setDraggedCoinId(id);
+  const coinName = coinMetaData?.attributes?.name || `Coin ${id}`;
+
   return (
     <div
-      className="coin-sort-pile-coin"
+      className={`coin-sort-pile-coin ${String(selectedCoinId) === String(id) ? 'is-selected' : ''}`}
       style={{ top: `${py}px`, left: `${px}px` }}
       draggable
+      role="button"
+      tabIndex={0}
+      aria-label={`Select ${coinName} for the study area`}
+      aria-pressed={String(selectedCoinId) === String(id)}
+      onClick={selectCoin}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectCoin();
+        }
+      }}
       onDragStart={(e) => {
         e.dataTransfer.setData('text/plain', String(id));
         e.dataTransfer.effectAllowed = 'copy';
-        setDraggedCoinId(id);
+        selectCoin();
       }}
-      onDragEnd={() => setDraggedCoinId(undefined)}
     >
       <img
         id={`coin-sort-${id}`}
         className="coin-sort-pile-coin-image"
         src={src}
-        alt={coinMetaData?.attributes?.obverse_file?.data?.attributes?.alternativeText ?? ''}
+        alt={coinMetaData?.attributes?.obverse_file?.data?.attributes?.alternativeText || coinName}
         width={width}
       />
     </div>
@@ -626,6 +639,7 @@ const CoinPile = (props) => {
             display={coins_pos?.get(coin.id)?.display ?? true}
             x={coins_pos?.get(coin.id)?.x}
             y={coins_pos?.get(coin.id)?.y}
+            selectedCoinId={props.selectedCoinId}
             setDraggedCoinId={props.setDraggedCoinId}
           />
         ))}
@@ -757,10 +771,15 @@ const CoinSort = () => {
           <h3 className="mb-5 pb-5">Explore the SYRIOS Collection</h3>
         </center>
 
-        <div style={{ width: '50%', marginLeft: '25%' }}>
+        <div className="coin-sort-instructions">
           <ol>
             <li className="story-text mb-5">
-              Drag coins from the pile on the edges into this center area to study them more closely.
+              <span className="coin-sort-instruction--desktop">
+                Drag coins from the pile on the edges into the center study area.
+              </span>
+              <span className="coin-sort-instruction--mobile">
+                Tap a coin to select it, then tap Add selected coin in the study area.
+              </span>
             </li>
             <li className="story-text mb-5">Click on a coin to see complete details.</li>
             <li className="story-text mb-5">
@@ -775,6 +794,7 @@ const CoinSort = () => {
 
           <CoinPile
             coins={coins}
+            selectedCoinId={dragged_coin_id}
             setDraggedCoinId={SetDraggedCoinId}
             sortSelection={sort_selection}
             thenBySelection={then_by_selection}

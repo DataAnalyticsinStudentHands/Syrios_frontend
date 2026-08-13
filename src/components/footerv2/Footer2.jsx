@@ -43,7 +43,7 @@ function Footer2() {
             Get the latest updates!
           </div>
 
-          <div style={{ width: "62.5%" }} className="my-5">
+          <div className="footer2-signup my-5">
             <SubscriptionButton />
           </div>
 
@@ -57,7 +57,7 @@ function Footer2() {
         </div>
 
         <div className="split-half">
-          <div style={{ marginTop: "12.5%" }}>
+          <div className="footer2-nav-wrap">
             <div id="footer2-links">
               <Link to="/About" className="footer2-link">
                 About SYRIOS
@@ -68,7 +68,7 @@ function Footer2() {
             </div>
           </div>
 
-          <div id="footer2-licensed" style={{ marginTop: "30%" }}>
+          <div id="footer2-licensed" className="footer2-license">
             <strong>SYRIOS is licensed under a</strong> <br />
             Creative Common Attribution-Non Commercial 3.0 <br />
             International License (CC BY-NC 3.0).

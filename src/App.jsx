@@ -172,17 +172,22 @@ function AppShell({ basename }) {
           <Navbar
             id="navbar"
             collapseOnSelect
-            expand="md"
+            expand="lg"
             sticky="top"
             className="navbar-dark"
           >
             {/* Logo / home link */}
-            <Nav.Link as={Link} to="/">
-              <img src={logo} alt="SyriosLogoLight" style={{ width: "50%" }} />
-            </Nav.Link>
+            <Navbar.Brand as={Link} to="/" className="syrios-navbar__brand">
+              <img src={logo} alt="Syrios home" />
+            </Navbar.Brand>
+
+            <Navbar.Toggle
+              aria-controls="responsive-navbar-nav"
+              aria-label="Toggle site navigation"
+            />
 
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="ms-auto" style={{ marginRight: "5.2vmax" }}>
+              <Nav className="ms-auto syrios-navbar__links">
                 <Nav.Link as={Link} to="/" className="navbar-text d-flex align-items-center">
                   HOME
                 </Nav.Link>

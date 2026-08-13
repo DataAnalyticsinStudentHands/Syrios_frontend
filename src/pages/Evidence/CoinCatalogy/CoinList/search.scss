@@ -34,4 +34,15 @@
             }
         }
     }
+}@media (max-width: 767.98px) {
+  .info .sub-info {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .search {
+      min-height: 48px;
+      width: 100%;
+    }
+  }
 }

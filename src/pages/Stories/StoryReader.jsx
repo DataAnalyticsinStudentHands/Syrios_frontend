@@ -249,6 +249,7 @@ const StoryReader = () => {
           navigationPosition={'right'}
           anchors={storyAnchors}
           autoScrolling={true}
+          responsiveWidth={768}
           padding="5em 0"
           render={({ state, fullpageApi }) => {
             if (fullpageApi && fullpageApiRef.current !== fullpageApi) {

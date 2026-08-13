@@ -36,8 +36,7 @@ const CoinsFiter = (props) => {
   const params = qs.parse(useParams().params);
   const { coinsKeyTerms } = useContext(CoinContext);
 
-  function handleAddFilters(e, filter) {
-    const value = e.target.innerText;
+  function handleAddFilters(value, filter) {
 
     const newFilters = { ...props.filters };
     const newOptions = { ...props.options };
@@ -52,8 +51,7 @@ const CoinsFiter = (props) => {
     props.setOptions(newOptions);
   }
 
-  function handleDeleteTag(e, filter) {
-    const value = e.target.innerText;
+  function handleDeleteTag(value, filter) {
 
     const newFilters = { ...props.filters };
     const newOptions = { ...props.options };
@@ -71,39 +69,37 @@ const CoinsFiter = (props) => {
   function getFilter(title, value, filterType) {
     return (
       <div className='filter'>
-        <div className='filter-trigger'>
-          {title}
-          <span className='icon-entypo-arrow-thick-down' />
-          <div className='filter-content'>
+        <label className='filter-select-label'>
+          <span>{title}</span>
+          <select
+            value=''
+            aria-label={`Filter coins by ${title}`}
+            onChange={(event) => handleAddFilters(event.target.value, filterType)}
+          >
+            <option value=''>Choose {title.toLowerCase()}</option>
             {value?.map((item, index) => {
               return (
-                <div
-                  className='filter-content-item'
-                  onClick={(e) => {
-                    handleAddFilters(e, filterType);
-                  }}
-                  key={item + index}
-                >
+                <option value={item} key={item + index}>
                   {item}
-                </div>
+                </option>
               );
             })}
-          </div>
-        </div>
+          </select>
+        </label>
 
         <div className='filterList'>
           {(props.filters[filterType] || []).length === 0 ? null : (
             props.filters[filterType].map((item, index) => {
               return (
-                <span
+                <button
+                  type='button'
                   className='icon-syrios-x-thin filterList-item'
-                  onClick={(e) => {
-                    handleDeleteTag(e, filterType);
-                  }}
+                  aria-label={`Remove ${item} filter`}
+                  onClick={() => handleDeleteTag(item, filterType)}
                   key={item + index}
                 >
                   {item}
-                </span>
+                </button>
               );
             })
           )}

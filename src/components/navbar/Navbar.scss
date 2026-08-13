@@ -47,4 +47,91 @@
 		background: none;
 		color: #B8CCD8;
 	}
+}.syrios-navbar__brand {
+	align-items: center;
+	display: flex;
+	margin-right: 2rem;
+	padding: 0;
+	width: clamp(160px, 18vw, 280px);
+
+	img {
+		display: block;
+		width: 100%;
+	}
+}
+
+.syrios-navbar__links {
+	margin-right: 5.2vmax;
+}
+
+#navbar .navbar-toggler {
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	border-radius: 0;
+	padding: 0.75rem;
+}
+
+@media (max-width: 991.98px) {
+	#navbar {
+		box-shadow: 0 3px 12px rgba(10, 30, 41, 0.25);
+		min-height: 64px;
+		padding: 1.5rem 2rem;
+	}
+
+	.syrios-navbar__brand {
+		margin-right: 1rem;
+		width: min(48vw, 210px);
+	}
+
+	#navbar .navbar-toggler {
+		align-items: center;
+		display: flex;
+		height: 44px;
+		justify-content: center;
+		width: 44px;
+	}
+
+	#responsive-navbar-nav {
+		max-height: calc(100dvh - 64px);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+
+	.syrios-navbar__links {
+		margin: 1.5rem 0 0;
+		padding-bottom: 2rem;
+	}
+
+	.navbar-dark .navbar-nav .nav-link {
+		margin: 0;
+		min-height: 44px;
+		padding: 1.5rem 1rem;
+		width: 100%;
+	}
+
+	.dropdown .dropdown-menu,
+	.dropdown.show .dropdown-menu {
+		background-color: rgba(7, 31, 44, 0.55);
+		border: 0;
+		border-left: 2px solid #7899a8;
+		border-radius: 0;
+		box-shadow: none;
+		left: auto;
+		margin: 0 0 1rem 1rem;
+		opacity: 1;
+		position: static;
+		transform: none;
+	}
+
+	.dropdown-item {
+		font-size: 2rem;
+		line-height: 1.2;
+		min-height: 44px;
+		padding: 1.5rem 2rem;
+		white-space: normal;
+	}
+
+	.dropdown-divider {
+		border-color: rgba(255, 255, 255, 0.24);
+		margin: 0;
+	}
 }
