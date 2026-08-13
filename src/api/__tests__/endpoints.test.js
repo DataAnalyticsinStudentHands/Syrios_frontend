@@ -92,6 +92,11 @@ describe("Strapi endpoint contracts", () => {
       /^\/api\/coin-collections\?/,
     ],
     [
+      "Coin map catalog",
+      () => coinCollectionsRequest.fetchLocatedForMap(),
+      /^\/api\/coin-collections\?/,
+    ],
+    [
       "CoinSort catalog",
       () => coinCollectionsRequest.fetchAllForCoinSort(),
       /^\/api\/coin-collections\?/,

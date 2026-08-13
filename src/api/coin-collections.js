@@ -81,6 +81,21 @@ const fullCoinPopulate = {
 };
 
 /**
+ * Lean population map for the temporary Mapbox demonstration.
+ * Coin coordinates live on the mint relation; only obverse media and the
+ * mint's modern-place relations are needed to render and describe markers.
+ */
+const mapCoinPopulate = {
+  obverse_image: true,
+  mint: {
+    populate: {
+      modern_name: true,
+      modern_country: true,
+    },
+  },
+};
+
+/**
  * Population map for the main coin collection landing page
  * - `contents` is preserved as-is
  * - `spotlight` receives full related coin data
@@ -148,6 +163,25 @@ const coinCollectionsRequest = {
     const query = qs.stringify(
       {
         populate: fullCoinPopulate,
+        pagination: { page: 1, pageSize: 2147483647 },
+      },
+      { encodeValuesOnly: true }
+    );
+
+    return apiClient.get(`/api/coin-collections?${query}`, {
+      meta: requestOptions.cached(CACHE_TTL.LONG),
+    });
+  },
+
+  /**
+   * Fetch the catalog records used by the temporary coin-location map.
+   * The component discards records whose mint has no valid coordinate pair.
+   * The raw collection shape is retained for consistency with catalog callers.
+   */
+  fetchLocatedForMap: () => {
+    const query = qs.stringify(
+      {
+        populate: mapCoinPopulate,
         pagination: { page: 1, pageSize: 2147483647 },
       },
       { encodeValuesOnly: true }
