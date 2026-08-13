@@ -1,15 +1,26 @@
 /**
- * Temporary Coins on a Map preview.
+ * Interactive visual showcase for the temporary Coins on a Map page.
  *
- * Located catalog coins are grouped by their mint coordinates so hundreds of
- * coins sharing Antioch's exact point remain usable. Each location marker uses
- * normalized obverse artwork and exposes every coin in a small popup browser.
+ * This uses mint-origin coordinates from the current catalog. It intentionally
+ * does not describe the markers as discovery sites, movement, or circulation.
  */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import coinCollections from 'src/api/coin-collections';
-import { getAltText, getFullMediaUrl } from 'src/utils/Media';
+import MapControls from './MapControls';
+import {
+  FILTER_DIMENSIONS,
+  MAP_DATE_RANGE,
+  filterLocatedCoins,
+  formatTimelineYear,
+  getCategoryColor,
+  getCompositionEntries,
+  getDimensionOptions,
+  getFilterOptions,
+  groupCoinsByMint,
+  normalizeLocatedCoins,
+} from './mapCoinData';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const ANTIOCH = {
@@ -32,84 +43,39 @@ const DESTINATION_VIEW = {
   bearing: -12,
 };
 
-const relationAttributes = (relation) => relation?.data?.attributes || {};
+const createEmptyFilters = () => Object.fromEntries(
+  FILTER_DIMENSIONS.map((dimension) => [dimension.key, []]),
+);
 
-const humanizeCoinId = (value) => {
-  if (!value) return 'Catalog coin';
-  return value.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+const DEFAULT_COMPARISON = {
+  enabled: false,
+  dimension: 'material',
+  a: '',
+  b: '',
 };
 
-const formatYear = (year) => {
-  if (year == null || year === '') return null;
-  const numericYear = Number(year);
-  if (!Number.isFinite(numericYear)) return null;
-  if (numericYear < 0) return `${Math.abs(numericYear)} BCE`;
-  if (numericYear === 0) return null;
-  return `${numericYear} CE`;
+const markerSize = (count, maximum, min = 48, max = 106) => {
+  if (maximum <= 1) return min;
+  return min + (max - min) * Math.sqrt(count / maximum);
 };
 
-const formatDateRange = (fromYear, toYear) => {
-  const from = formatYear(fromYear);
-  const to = formatYear(toYear);
-  if (from && to && from !== to) return `${from}–${to}`;
-  return from || to || 'Date not recorded';
-};
-
-export const groupLocatedCoins = (rows = []) => {
-  const groups = new Map();
-
-  rows.forEach((row) => {
-    const attributes = row?.attributes || {};
-    const mint = relationAttributes(attributes.mint);
-    if (mint.latitude == null || mint.longitude == null) {
-      return;
-    }
-    const latitude = Number(mint.latitude);
-    const longitude = Number(mint.longitude);
-
-    if (
-      !Number.isFinite(latitude)
-      || !Number.isFinite(longitude)
-      || latitude < -90
-      || latitude > 90
-      || longitude < -180
-      || longitude > 180
-    ) {
-      return;
-    }
-
-    const key = `${mint.mint || 'Unknown mint'}|${latitude}|${longitude}`;
-    const obverseImage = attributes.obverse_image;
-    const modernName = relationAttributes(mint.modern_name).modern_name;
-    const modernCountry = relationAttributes(mint.modern_country).modern_country;
-
-    if (!groups.has(key)) {
-      groups.set(key, {
-        key,
-        name: mint.mint || 'Unknown mint',
-        coordinates: [longitude, latitude],
-        modernName: modernName || '',
-        modernCountry: modernCountry || '',
-        coins: [],
-      });
-    }
-
-    groups.get(key).coins.push({
-      id: row.id,
-      coinId: attributes.coin_id,
-      title: attributes.obverse_type || humanizeCoinId(attributes.coin_id),
-      dateRange: formatDateRange(attributes.from_year, attributes.to_year),
-      imageUrl: getFullMediaUrl(obverseImage),
-      imageAlt: getAltText(obverseImage, `Obverse of ${humanizeCoinId(attributes.coin_id)}`),
-    });
+const conicGradient = (entries, total) => {
+  if (total === 0) return '#737271';
+  let cursor = 0;
+  const segments = entries.map((entry) => {
+    const start = cursor;
+    cursor += (entry.count / total) * 100;
+    return `${entry.color} ${start.toFixed(2)}% ${cursor.toFixed(2)}%`;
   });
+  return `conic-gradient(${segments.join(', ')})`;
+};
 
-  return [...groups.values()]
-    .map((group) => ({
-      ...group,
-      coins: group.coins.sort((a, b) => Number(Boolean(b.imageUrl)) - Number(Boolean(a.imageUrl))),
-    }))
-    .sort((a, b) => b.coins.length - a.coins.length || a.name.localeCompare(b.name));
+const appendTextRow = (list, labelText) => {
+  const term = document.createElement('dt');
+  term.textContent = labelText;
+  const value = document.createElement('dd');
+  list.append(term, value);
+  return value;
 };
 
 const createCoinPopup = (group) => {
@@ -120,39 +86,56 @@ const createCoinPopup = (group) => {
 
   const label = document.createElement('span');
   label.className = 'map-coins__popup-label';
-  label.textContent = `${group.coins.length.toLocaleString()} located ${group.coins.length === 1 ? 'coin' : 'coins'}`;
-
+  label.textContent = `${group.coins.length.toLocaleString()} visible ${group.coins.length === 1 ? 'coin' : 'coins'}`;
   const title = document.createElement('strong');
   title.textContent = group.name;
-
   const place = document.createElement('span');
   place.className = 'map-coins__popup-place';
   place.textContent = [group.modernName, group.modernCountry].filter(Boolean).join(', ') || 'Modern location not recorded';
 
   const viewer = document.createElement('div');
   viewer.className = 'map-coins__coin-viewer';
-
   const imageWrap = document.createElement('div');
   imageWrap.className = 'map-coins__popup-image-wrap';
   const image = document.createElement('img');
   image.className = 'map-coins__popup-image';
   image.loading = 'lazy';
+  const imageFallback = document.createElement('span');
+  imageFallback.className = 'map-coins__popup-image-fallback';
+  imageFallback.textContent = 'No obverse image';
   image.addEventListener('error', () => {
     image.hidden = true;
     imageFallback.hidden = false;
   });
-  const imageFallback = document.createElement('span');
-  imageFallback.className = 'map-coins__popup-image-fallback';
-  imageFallback.textContent = 'No obverse image';
   imageWrap.append(image, imageFallback);
 
   const coinTitle = document.createElement('span');
   coinTitle.className = 'map-coins__popup-coin-title';
   const coinDate = document.createElement('span');
   coinDate.className = 'map-coins__popup-coin-date';
+
+  const metadata = document.createElement('dl');
+  metadata.className = 'map-coins__popup-metadata';
+  const materialValue = appendTextRow(metadata, 'Material');
+  const authorityValue = appendTextRow(metadata, 'Authority');
+  const powerValue = appendTextRow(metadata, 'Governing power');
+  const denominationValue = appendTextRow(metadata, 'Denomination');
+  const languageValue = appendTextRow(metadata, 'Language');
+
+  const reference = document.createElement('p');
+  reference.className = 'map-coins__popup-reference';
+  const rightsHolder = document.createElement('p');
+  rightsHolder.className = 'map-coins__popup-rights';
+
+  const links = document.createElement('div');
+  links.className = 'map-coins__popup-links';
   const detailLink = document.createElement('a');
-  detailLink.className = 'map-coins__popup-link';
-  detailLink.textContent = 'View catalog record';
+  detailLink.textContent = 'Catalog record';
+  const sourceLink = document.createElement('a');
+  sourceLink.textContent = 'Image source';
+  sourceLink.target = '_blank';
+  sourceLink.rel = 'noreferrer';
+  links.append(detailLink, sourceLink);
 
   const navigation = document.createElement('div');
   navigation.className = 'map-coins__popup-navigation';
@@ -181,8 +164,17 @@ const createCoinPopup = (group) => {
     }
     coinTitle.textContent = coin?.title || 'Catalog coin';
     coinDate.textContent = coin?.dateRange || 'Date not recorded';
+    materialValue.textContent = coin?.material || 'Not recorded';
+    authorityValue.textContent = coin?.authority || 'Not recorded';
+    powerValue.textContent = coin?.power || 'Not recorded';
+    denominationValue.textContent = coin?.denomination || 'Not recorded';
+    languageValue.textContent = coin?.language || 'Not recorded';
+    reference.textContent = coin?.reference ? `Reference: ${coin.reference}` : 'Reference not recorded';
+    rightsHolder.textContent = coin?.rightHolder ? `Rights holder: ${coin.rightHolder}` : 'Rights holder not recorded';
     counter.textContent = `${activeIndex + 1} / ${group.coins.length}`;
     detailLink.href = `${routePrefix}/Coin/${coin.id}`;
+    sourceLink.hidden = !coin?.sourceImage;
+    sourceLink.href = coin?.sourceImage || '#';
   };
 
   previousButton.addEventListener('click', () => {
@@ -195,21 +187,32 @@ const createCoinPopup = (group) => {
   });
 
   if (group.coins.length < 2) navigation.hidden = true;
-  viewer.append(imageWrap, coinTitle, coinDate, navigation, detailLink);
+  viewer.append(imageWrap, coinTitle, coinDate, metadata, reference, rightsHolder, navigation, links);
   content.append(label, title, place, viewer);
   renderActiveCoin();
   return content;
 };
 
-const createCoinMarkerElement = (group) => {
-  const element = document.createElement('button');
-  element.type = 'button';
-  element.className = 'map-coins__coin-marker';
-  element.setAttribute(
-    'aria-label',
-    `Browse ${group.coins.length} ${group.coins.length === 1 ? 'coin' : 'coins'} from ${group.name}`,
-  );
+const createPlaceLabel = (group, placeMode) => {
+  const label = document.createElement('span');
+  label.className = 'map-coins__marker-place';
+  const modern = [group.modernName, group.modernCountry].filter(Boolean).join(', ');
 
+  if (placeMode === 'ancient') {
+    label.textContent = group.name;
+  } else if (placeMode === 'modern') {
+    label.textContent = modern || group.name;
+  } else {
+    const ancientName = document.createElement('strong');
+    ancientName.textContent = group.name;
+    const modernName = document.createElement('span');
+    modernName.textContent = modern || 'Modern location not recorded';
+    label.append(ancientName, modernName);
+  }
+  return label;
+};
+
+const createImageVisual = (group) => {
   const stack = document.createElement('span');
   stack.className = 'map-coins__coin-marker-stack';
   const imageCoins = group.coins.filter((coin) => coin.imageUrl).slice(0, 3);
@@ -231,13 +234,138 @@ const createCoinMarkerElement = (group) => {
       stack.append(image);
     });
   }
+  return stack;
+};
 
-  const count = document.createElement('span');
-  count.className = 'map-coins__coin-marker-count';
-  count.textContent = group.coins.length.toLocaleString();
-  count.setAttribute('aria-hidden', 'true');
-  element.append(stack, count);
+const createQuantityVisual = (group, maximum) => {
+  const visual = document.createElement('span');
+  visual.className = 'map-coins__quantity-marker';
+  visual.style.setProperty('--marker-size', `${markerSize(group.coins.length, maximum)}px`);
+  visual.textContent = group.coins.length.toLocaleString();
+  return visual;
+};
+
+const createCompositionVisual = (group, dimension, maximum) => {
+  const visual = document.createElement('span');
+  const entries = getCompositionEntries(group.coins, dimension);
+  visual.className = 'map-coins__composition-marker';
+  visual.style.setProperty('--marker-size', `${markerSize(group.coins.length, maximum)}px`);
+  visual.style.background = conicGradient(entries, group.coins.length);
+  const center = document.createElement('span');
+  center.textContent = group.coins.length.toLocaleString();
+  visual.append(center);
+  return visual;
+};
+
+const createComparisonVisual = (group, comparison, maximum) => {
+  const visual = document.createElement('span');
+  visual.className = 'map-coins__comparison-marker';
+  const size = markerSize(group.coins.length, maximum, 38, 70);
+  visual.style.setProperty('--comparison-size', `${size}px`);
+
+  [comparison.a, comparison.b].forEach((value, index) => {
+    const half = document.createElement('span');
+    const count = group.coins.filter((coin) => coin[comparison.dimension] === value).length;
+    half.style.background = getCategoryColor(value, index);
+    half.textContent = count.toLocaleString();
+    half.setAttribute('aria-label', `${value}: ${count} coins`);
+    visual.append(half);
+  });
+  return visual;
+};
+
+const createCoinMarkerElement = ({
+  group,
+  representation,
+  compositionDimension,
+  placeMode,
+  comparison,
+  maximum,
+}) => {
+  const element = document.createElement('button');
+  element.type = 'button';
+  element.className = `map-coins__coin-marker map-coins__coin-marker--${representation} map-coins__coin-marker--${placeMode}`;
+  element.setAttribute(
+    'aria-label',
+    `Browse ${group.coins.length} ${group.coins.length === 1 ? 'coin' : 'coins'} from ${group.name}`,
+  );
+
+  const isComparison = comparison.enabled && comparison.a && comparison.b;
+  if (isComparison) {
+    element.append(createComparisonVisual(group, comparison, maximum));
+  } else if (representation === 'quantity') {
+    element.append(createQuantityVisual(group, maximum));
+  } else if (representation === 'composition') {
+    element.append(createCompositionVisual(group, compositionDimension, maximum));
+  } else {
+    element.append(createImageVisual(group));
+    const count = document.createElement('span');
+    count.className = 'map-coins__coin-marker-count';
+    count.textContent = group.coins.length.toLocaleString();
+    count.setAttribute('aria-hidden', 'true');
+    element.append(count);
+  }
+
+  element.append(createPlaceLabel(group, placeMode));
   return element;
+};
+
+const MapLegend = ({
+  representation,
+  compositionDimension,
+  comparison,
+  visibleCoins,
+  groups,
+}) => {
+  const comparisonReady = comparison.enabled && comparison.a && comparison.b;
+  const entries = useMemo(
+    () => getCompositionEntries(visibleCoins, compositionDimension).slice(0, 7),
+    [compositionDimension, visibleCoins],
+  );
+  const missingImages = visibleCoins.filter((coin) => !coin.imageUrl).length;
+  const incompleteMetadata = visibleCoins.filter((coin) => !coin.denomination || !coin.language).length;
+
+  return (
+    <aside className='map-coins__legend' aria-label='Map legend'>
+      <span className='map-coins__legend-eyebrow'>Live legend</span>
+      {comparisonReady ? (
+        <>
+          <strong>Paired comparison</strong>
+          {[comparison.a, comparison.b].map((value, index) => (
+            <span className='map-coins__legend-entry' key={value}>
+              <i style={{ background: getCategoryColor(value, index) }} />
+              {value}
+            </span>
+          ))}
+        </>
+      ) : representation === 'composition' ? (
+        <>
+          <strong>{compositionDimension} composition</strong>
+          {entries.map((entry) => (
+            <span className='map-coins__legend-entry' key={entry.label}>
+              <i style={{ background: entry.color }} />
+              {entry.label} <small>{entry.count}</small>
+            </span>
+          ))}
+        </>
+      ) : representation === 'quantity' ? (
+        <>
+          <strong>Coins per mint</strong>
+          <span className='map-coins__quantity-key'><i /><i />Marker area follows quantity</span>
+        </>
+      ) : (
+        <>
+          <strong>Obverse coin markers</strong>
+          <span>Images are normalized to a common marker size.</span>
+        </>
+      )}
+      <div className='map-coins__legend-summary'>
+        <strong>{visibleCoins.length.toLocaleString()} coins · {groups.length} mints</strong>
+        <span>{missingImages} without obverse image</span>
+        <span>{incompleteMetadata} with partial denomination/language data</span>
+      </div>
+    </aside>
+  );
 };
 
 const MapCoins = () => {
@@ -245,36 +373,47 @@ const MapCoins = () => {
   const mapRef = useRef(null);
   const [mapStatus, setMapStatus] = useState('loading');
   const [coinStatus, setCoinStatus] = useState('loading');
-  const [coinGroups, setCoinGroups] = useState([]);
+  const [coins, setCoins] = useState([]);
+  const [controlsOpen, setControlsOpen] = useState(true);
+  const [representation, setRepresentation] = useState('images');
+  const [compositionDimension, setCompositionDimension] = useState('material');
+  const [placeMode, setPlaceMode] = useState('both');
+  const [filters, setFilters] = useState(createEmptyFilters);
+  const [timeRange, setTimeRange] = useState({ start: MAP_DATE_RANGE.min, end: MAP_DATE_RANGE.max });
+  const [playing, setPlaying] = useState(false);
+  const [comparison, setComparison] = useState(DEFAULT_COMPARISON);
 
-  const locatedCoinCount = useMemo(
-    () => coinGroups.reduce((total, group) => total + group.coins.length, 0),
-    [coinGroups],
+  const filterOptions = useMemo(() => Object.fromEntries(
+    FILTER_DIMENSIONS.map((dimension) => [dimension.key, getFilterOptions(coins, dimension.key)]),
+  ), [coins]);
+
+  const comparisonOptions = useMemo(
+    () => getDimensionOptions(coins, comparison.dimension),
+    [coins, comparison.dimension],
   );
 
-  const imageCount = useMemo(
-    () => coinGroups.reduce(
-      (total, group) => total + group.coins.filter((coin) => coin.imageUrl).length,
-      0,
-    ),
-    [coinGroups],
-  );
+  const visibleCoins = useMemo(() => filterLocatedCoins(coins, {
+    filters,
+    timeRange,
+    comparison,
+  }), [coins, comparison, filters, timeRange]);
+
+  const coinGroups = useMemo(() => groupCoinsByMint(visibleCoins), [visibleCoins]);
+  const maximumGroupCount = Math.max(1, ...coinGroups.map((group) => group.coins.length));
 
   useEffect(() => {
     let cancelled = false;
-
     const fetchLocatedCoins = async () => {
       try {
         const response = await coinCollections.fetchLocatedForMap();
         if (cancelled) return;
-        setCoinGroups(groupLocatedCoins(response?.data?.data || []));
+        setCoins(normalizeLocatedCoins(response?.data?.data || []));
         setCoinStatus('ready');
       } catch (error) {
         console.error('Unable to load located coins for the map:', error);
         if (!cancelled) setCoinStatus('error');
       }
     };
-
     fetchLocatedCoins();
     return () => {
       cancelled = true;
@@ -282,8 +421,22 @@ const MapCoins = () => {
   }, []);
 
   useEffect(() => {
-    const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+    if (!playing) return undefined;
+    const timer = window.setInterval(() => {
+      setTimeRange((current) => {
+        const width = Math.min(140, Math.max(80, current.end - current.start));
+        const nextStart = current.start + 20;
+        if (nextStart + width > MAP_DATE_RANGE.max) {
+          return { start: MAP_DATE_RANGE.min, end: MAP_DATE_RANGE.min + width };
+        }
+        return { start: nextStart, end: nextStart + width };
+      });
+    }, 900);
+    return () => window.clearInterval(timer);
+  }, [playing]);
 
+  useEffect(() => {
+    const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
     if (!accessToken) {
       setMapStatus('missing-token');
       return undefined;
@@ -291,7 +444,6 @@ const MapCoins = () => {
 
     mapboxgl.accessToken = accessToken;
     let flyToTimer;
-
     try {
       const map = new mapboxgl.Map({
         container: mapContainerRef.current,
@@ -300,7 +452,6 @@ const MapCoins = () => {
         attributionControl: false,
         cooperativeGestures: true,
       });
-
       mapRef.current = map;
       map.addControl(new mapboxgl.NavigationControl({ showCompass: true }), 'top-right');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'metric' }), 'bottom-left');
@@ -313,7 +464,6 @@ const MapCoins = () => {
           'high-color': '#b8ccd8',
           'horizon-blend': 0.16,
         });
-
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         flyToTimer = window.setTimeout(() => {
           map.flyTo({
@@ -338,13 +488,19 @@ const MapCoins = () => {
   }, []);
 
   useEffect(() => {
-    if (mapStatus !== 'ready' || coinGroups.length === 0 || !mapRef.current) return undefined;
-
+    if (mapStatus !== 'ready' || !mapRef.current) return undefined;
     const markers = coinGroups.map((group) => {
-      const element = createCoinMarkerElement(group);
+      const element = createCoinMarkerElement({
+        group,
+        representation,
+        compositionDimension,
+        placeMode,
+        comparison,
+        maximum: maximumGroupCount,
+      });
       const popup = new mapboxgl.Popup({
-        offset: 52,
-        maxWidth: '32rem',
+        offset: 62,
+        maxWidth: '37rem',
         closeButton: true,
         className: 'map-coins__site-popup',
       }).setDOMContent(createCoinPopup(group));
@@ -354,17 +510,56 @@ const MapCoins = () => {
         .setPopup(popup)
         .addTo(mapRef.current);
     });
-
     return () => markers.forEach((marker) => marker.remove());
-  }, [coinGroups, mapStatus]);
+  }, [coinGroups, comparison, compositionDimension, mapStatus, maximumGroupCount, placeMode, representation]);
+
+  const toggleFilter = (dimension, option) => {
+    setFilters((current) => {
+      const selected = current[dimension];
+      return {
+        ...current,
+        [dimension]: selected.includes(option)
+          ? selected.filter((value) => value !== option)
+          : [...selected, option],
+      };
+    });
+  };
+
+  const togglePlayback = () => {
+    setPlaying((current) => {
+      if (!current && timeRange.end - timeRange.start > 180) {
+        setTimeRange({ start: MAP_DATE_RANGE.min, end: MAP_DATE_RANGE.min + 100 });
+      }
+      return !current;
+    });
+  };
+
+  const applyPreset = (preset) => {
+    setPlaying(false);
+    setFilters(createEmptyFilters());
+    setTimeRange({ start: MAP_DATE_RANGE.min, end: MAP_DATE_RANGE.max });
+    if (preset === 'metals') {
+      setComparison({ enabled: true, dimension: 'material', a: 'Gold', b: 'Bronze' });
+    } else if (preset === 'authority') {
+      setComparison({ enabled: true, dimension: 'authority', a: 'Royal', b: 'Imperial' });
+    } else if (preset === 'powers') {
+      setComparison({ enabled: true, dimension: 'power', a: 'Seleucid', b: 'Roman Principate' });
+    } else if (preset === 'timeline') {
+      setComparison(DEFAULT_COMPARISON);
+      setRepresentation('quantity');
+      setTimeRange({ start: MAP_DATE_RANGE.min, end: MAP_DATE_RANGE.min + 100 });
+      setPlaying(true);
+    }
+  };
 
   const showAllLocations = () => {
     if (!mapRef.current || coinGroups.length === 0) return;
     const bounds = new mapboxgl.LngLatBounds();
     coinGroups.forEach((group) => bounds.extend(group.coordinates));
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const controlPadding = controlsOpen ? Math.min(380, Math.max(120, window.innerWidth * 0.55)) : 90;
     mapRef.current.fitBounds(bounds, {
-      padding: { top: 90, right: 90, bottom: 90, left: 90 },
+      padding: { top: 90, right: 90, bottom: 90, left: controlPadding },
       maxZoom: 7,
       duration: reducedMotion ? 0 : 1800,
       essential: false,
@@ -378,15 +573,12 @@ const MapCoins = () => {
   return (
     <div id='map-coins'>
       <h1 className='text-center'>Coins on a Map</h1>
-
-      <h2 className='map-coins__coming-soon text-center'>
-        Coming Soon...
-      </h2>
+      <h2 className='map-coins__coming-soon text-center'>Coming Soon...</h2>
 
       <section className='map-coins__frame' aria-labelledby='antioch-map-title'>
         <div className='map-coins__frame-header'>
           <div>
-            <span className='map-coins__eyebrow'>Live catalog preview</span>
+            <span className='map-coins__eyebrow'>Live visual showcase</span>
             <h3 id='antioch-map-title'>{ANTIOCH.name}</h3>
           </div>
           <div className='map-coins__header-actions'>
@@ -397,7 +589,7 @@ const MapCoins = () => {
               onClick={showAllLocations}
               disabled={coinGroups.length === 0 || mapStatus !== 'ready'}
             >
-              Show all mint locations
+              Show all visible mints
             </button>
           </div>
         </div>
@@ -405,7 +597,7 @@ const MapCoins = () => {
         <div className='map-coins__viewport-wrap'>
           <div
             ref={mapContainerRef}
-            className='map-coins__viewport'
+            className={`map-coins__viewport map-coins__viewport--${placeMode}`}
             role='region'
             aria-label={`Interactive coin map centered on ${ANTIOCH.name}`}
           />
@@ -416,7 +608,6 @@ const MapCoins = () => {
               Preparing the ancient landscape...
             </div>
           )}
-
           {(mapStatus === 'missing-token' || mapStatus === 'error') && (
             <div className='map-coins__status map-coins__status--error' role='alert'>
               {unavailableMessage}
@@ -424,22 +615,59 @@ const MapCoins = () => {
           )}
 
           {mapStatus === 'ready' && (
-            <aside className={`map-coins__data-summary map-coins__data-summary--${coinStatus}`}>
-              {coinStatus === 'loading' && 'Loading located coins…'}
-              {coinStatus === 'error' && 'Coin locations are temporarily unavailable.'}
-              {coinStatus === 'ready' && (
-                <>
-                  <strong>{locatedCoinCount.toLocaleString()} located coins</strong>
-                  <span>{coinGroups.length} mint locations · {imageCount.toLocaleString()} obverse images</span>
-                </>
-              )}
-            </aside>
+            <>
+              <MapControls
+                open={controlsOpen}
+                onToggleOpen={() => setControlsOpen((value) => !value)}
+                representation={representation}
+                onRepresentationChange={setRepresentation}
+                compositionDimension={compositionDimension}
+                onCompositionDimensionChange={setCompositionDimension}
+                placeMode={placeMode}
+                onPlaceModeChange={setPlaceMode}
+                filters={filters}
+                filterOptions={filterOptions}
+                onToggleFilter={toggleFilter}
+                onClearFilters={() => setFilters(createEmptyFilters())}
+                timeRange={timeRange}
+                onTimeRangeChange={(value) => {
+                  setPlaying(false);
+                  setTimeRange(value);
+                }}
+                playing={playing}
+                onTogglePlayback={togglePlayback}
+                comparison={comparison}
+                comparisonOptions={comparisonOptions}
+                onComparisonChange={setComparison}
+                onApplyPreset={applyPreset}
+                visibleCount={visibleCoins.length}
+                totalCount={coins.length}
+              />
+              <MapLegend
+                representation={representation}
+                compositionDimension={compositionDimension}
+                comparison={comparison}
+                visibleCoins={visibleCoins}
+                groups={coinGroups}
+              />
+            </>
+          )}
+
+          {mapStatus === 'ready' && coinStatus === 'loading' && (
+            <div className='map-coins__data-toast'>Loading catalog data…</div>
+          )}
+          {mapStatus === 'ready' && coinStatus === 'error' && (
+            <div className='map-coins__data-toast map-coins__data-toast--error'>Coin data is temporarily unavailable.</div>
+          )}
+          {coinStatus === 'ready' && visibleCoins.length === 0 && (
+            <div className='map-coins__empty-state'>No coins match these controls.</div>
           )}
         </div>
 
-        <p className='map-coins__caption'>
-          Markers group catalog coins that share a mint location. Select a marker to browse every located record from that mint.
-        </p>
+        <div className='map-coins__caption'>
+          <p>Explore mint-origin data with live visual controls. Markers do not represent archaeological discovery sites or circulation.</p>
+          <span>{formatTimelineYear(timeRange.start)} – {formatTimelineYear(timeRange.end)}</span>
+        </div>
       </section>
     </div>
   );

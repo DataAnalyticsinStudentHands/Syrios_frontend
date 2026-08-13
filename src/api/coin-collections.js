@@ -81,9 +81,9 @@ const fullCoinPopulate = {
 };
 
 /**
- * Lean population map for the temporary Mapbox demonstration.
- * Coin coordinates live on the mint relation; only obverse media and the
- * mint's modern-place relations are needed to render and describe markers.
+ * Focused population map for the temporary Mapbox visual showcase.
+ * Coordinates live on the mint relation; classification relations support
+ * marker compositions, comparisons, filters, legends, and detailed popups.
  */
 const mapCoinPopulate = {
   obverse_image: true,
@@ -93,6 +93,13 @@ const mapCoinPopulate = {
       modern_country: true,
     },
   },
+  material: true,
+  issuing_authority: true,
+  governing_power: true,
+  ancient_territory: true,
+  denomination: true,
+  language: true,
+  type_categories: true,
 };
 
 /**
