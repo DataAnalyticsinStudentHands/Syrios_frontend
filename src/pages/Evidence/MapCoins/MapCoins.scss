@@ -138,6 +138,196 @@
     filter: saturate(0.9) hue-rotate(6deg);
   }
 
+  .map-coins__loading-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    padding: clamp(3rem, 7vw, 8rem);
+    background:
+      radial-gradient(circle at 50% 38%, rgba(default-theme.$syrios-color-f8e8b8, 0.84) 0, rgba(default-theme.$syrios-color-f8e8b8, 0.24) 22rem, transparent 38rem),
+      linear-gradient(145deg, default-theme.$syrios-color-b8ccd8 0%, default-theme.$syrios-color-f0e0c0 58%, default-theme.$syrios-color-f4f2f0 100%);
+    color: default-theme.$syrios-color-183848;
+    text-align: center;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      pointer-events: none;
+    }
+
+    &::before {
+      inset: clamp(1.2rem, 2vw, 2.4rem);
+      border: 1px dashed rgba(default-theme.$syrios-color-a86818, 0.38);
+    }
+
+    &::after {
+      right: -10%;
+      bottom: -24rem;
+      width: 68rem;
+      height: 42rem;
+      border: 1px solid rgba(default-theme.$syrios-color-183848, 0.13);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 7rem rgba(default-theme.$syrios-color-183848, 0.035),
+        0 0 0 14rem rgba(default-theme.$syrios-color-183848, 0.025);
+      transform: rotate(-12deg);
+    }
+
+    h4 {
+      position: relative;
+      z-index: 1;
+      max-width: 72rem;
+      margin: 0.7rem 0 0.9rem;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(3.3rem, 5vw, 6rem);
+      font-weight: 500;
+      line-height: 0.98;
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      max-width: 58rem;
+      margin: 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.76);
+      font-size: clamp(1.55rem, 1.7vw, 1.9rem);
+      line-height: 1.5;
+    }
+  }
+
+  .map-coins__loading-art {
+    position: relative;
+    z-index: 1;
+    width: clamp(13rem, 18vw, 17rem);
+    height: clamp(13rem, 18vw, 17rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.8rem);
+  }
+
+  .map-coins__loading-orbit {
+    position: absolute;
+    inset: 0;
+    border: 1px dashed rgba(default-theme.$syrios-color-a86818, 0.58);
+    border-radius: 50%;
+    animation: map-coins-orbit 9s linear infinite;
+
+    &::before,
+    &::after {
+      position: absolute;
+      border-radius: 50%;
+      background: default-theme.$syrios-color-a86818;
+      box-shadow: 0 0 0 0.45rem rgba(default-theme.$syrios-color-a86818, 0.16);
+      content: '';
+    }
+
+    &::before {
+      top: -0.35rem;
+      left: 50%;
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+
+    &::after {
+      right: -0.25rem;
+      bottom: 28%;
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+  }
+
+  .map-coins__loading-coin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7.4rem;
+    height: 7.4rem;
+    border: 0.2rem solid rgba(default-theme.$syrios-color-f8e8b8, 0.72);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 40% 34%, rgba(default-theme.$syrios-color-ffffff, 0.76) 0 5%, transparent 6%),
+      radial-gradient(circle at 50% 50%, transparent 0 41%, rgba(default-theme.$syrios-color-a86818, 0.5) 43% 48%, transparent 50%),
+      radial-gradient(circle at 34% 28%, default-theme.$syrios-color-f8e8b8, default-theme.$syrios-color-a86818 58%, default-theme.$syrios-color-a85828 100%);
+    box-shadow:
+      inset -0.7rem -0.8rem 1.3rem rgba(default-theme.$syrios-color-183848, 0.26),
+      0 1.2rem 2.4rem rgba(default-theme.$syrios-color-183848, 0.22);
+  }
+
+  .map-coins__loading-coin--one {
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    animation: map-coins-coin-one 3.2s ease-in-out infinite;
+  }
+
+  .map-coins__loading-coin--two {
+    z-index: 2;
+    width: 6.2rem;
+    height: 6.2rem;
+    opacity: 0.74;
+    transform: translate(-112%, -28%) rotate(-18deg);
+    animation: map-coins-coin-two 3.2s 0.18s ease-in-out infinite;
+  }
+
+  .map-coins__loading-coin--three {
+    z-index: 1;
+    width: 5.4rem;
+    height: 5.4rem;
+    opacity: 0.56;
+    transform: translate(18%, -75%) rotate(18deg);
+    animation: map-coins-coin-three 3.2s 0.36s ease-in-out infinite;
+  }
+
+  .map-coins__loading-eyebrow {
+    position: relative;
+    z-index: 1;
+    color: default-theme.$syrios-color-a86818;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .map-coins__loading-stages {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto minmax(8rem, 18rem) auto;
+    gap: 1rem;
+    width: min(100%, 36rem);
+    margin-top: clamp(2.5rem, 4vw, 4rem);
+    color: rgba(default-theme.$syrios-color-183848, 0.5);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    > span.is-active,
+    > span.is-complete {
+      color: default-theme.$syrios-color-183848;
+    }
+
+    > i {
+      height: 0.3rem;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(default-theme.$syrios-color-183848, 0.18);
+
+      span {
+        display: block;
+        width: 46%;
+        height: 100%;
+        border-radius: inherit;
+        background: default-theme.$syrios-color-a86818;
+        animation: map-coins-loading-progress 1.6s ease-in-out infinite;
+      }
+    }
+  }
+
   .map-coins__status {
     position: absolute;
     inset: 0;
@@ -154,7 +344,21 @@
   }
 
   .map-coins__status--error {
+    flex-direction: column;
     color: default-theme.$syrios-color-a85828;
+
+    strong {
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(2.8rem, 4vw, 4.6rem);
+      font-weight: 500;
+    }
+
+    span {
+      max-width: 48rem;
+      color: default-theme.$syrios-color-183848;
+      font-size: 1.7rem;
+      line-height: 1.5;
+    }
   }
 
   .map-coins__status-mark {
@@ -1120,6 +1324,9 @@
 
   @media (prefers-reduced-motion: reduce) {
     .map-coins__status-mark,
+    .map-coins__loading-orbit,
+    .map-coins__loading-coin,
+    .map-coins__loading-stages > i span,
     .map-coins__coin-marker {
       animation: none;
     }
@@ -1133,6 +1340,37 @@
     .map-coins__comparison-marker > span {
       transition: none;
     }
+  }
+}
+
+@keyframes map-coins-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes map-coins-coin-one {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-0.7rem); }
+}
+
+@keyframes map-coins-coin-two {
+  0%, 100% { transform: translate(-112%, -28%) rotate(-18deg) translateY(0); }
+  50% { transform: translate(-112%, -28%) rotate(-18deg) translateY(0.5rem); }
+}
+
+@keyframes map-coins-coin-three {
+  0%, 100% { transform: translate(18%, -75%) rotate(18deg) translateY(0); }
+  50% { transform: translate(18%, -75%) rotate(18deg) translateY(-0.45rem); }
+}
+
+@keyframes map-coins-loading-progress {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-110%);
+  }
+  50% { opacity: 1; }
+  100% {
+    opacity: 0.5;
+    transform: translateX(230%);
   }
 }
 

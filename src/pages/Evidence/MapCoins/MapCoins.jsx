@@ -368,10 +368,37 @@ const MapLegend = ({
   );
 };
 
+const MapLoadingScreen = ({ phase, coinCount = 0 }) => {
+  const loadingCatalog = phase === 'catalog';
+
+  return (
+    <div className='map-coins__loading-screen' role='status' aria-live='polite'>
+      <div className='map-coins__loading-art' aria-hidden='true'>
+        <span className='map-coins__loading-coin map-coins__loading-coin--one' />
+        <span className='map-coins__loading-coin map-coins__loading-coin--two' />
+        <span className='map-coins__loading-coin map-coins__loading-coin--three' />
+        <i className='map-coins__loading-orbit' />
+      </div>
+      <span className='map-coins__loading-eyebrow'>Coins on a Map</span>
+      <h4>{loadingCatalog ? 'Gathering the coin catalog' : 'Drawing the ancient landscape'}</h4>
+      <p>
+        {loadingCatalog
+          ? 'Loading locations, obverse images, dates, and classifications from Strapi.'
+          : `Positioning ${coinCount.toLocaleString()} located coins and preparing the interactive controls.`}
+      </p>
+      <div className='map-coins__loading-stages' aria-hidden='true'>
+        <span className={loadingCatalog ? 'is-active' : 'is-complete'}>Catalog</span>
+        <i><span /></i>
+        <span className={loadingCatalog ? '' : 'is-active'}>Map</span>
+      </div>
+    </div>
+  );
+};
+
 const MapCoins = () => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-  const [mapStatus, setMapStatus] = useState('loading');
+  const [mapStatus, setMapStatus] = useState('waiting-data');
   const [coinStatus, setCoinStatus] = useState('loading');
   const [coins, setCoins] = useState([]);
   const [controlsOpen, setControlsOpen] = useState(true);
@@ -436,6 +463,9 @@ const MapCoins = () => {
   }, [playing]);
 
   useEffect(() => {
+    if (coinStatus !== 'ready' || !mapContainerRef.current) return undefined;
+    setMapStatus('loading');
+
     const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
     if (!accessToken) {
       setMapStatus('missing-token');
@@ -485,7 +515,7 @@ const MapCoins = () => {
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, [coinStatus]);
 
   useEffect(() => {
     if (mapStatus !== 'ready' || !mapRef.current) return undefined;
@@ -595,17 +625,23 @@ const MapCoins = () => {
         </div>
 
         <div className='map-coins__viewport-wrap'>
-          <div
-            ref={mapContainerRef}
-            className={`map-coins__viewport map-coins__viewport--${placeMode}`}
-            role='region'
-            aria-label={`Interactive coin map centered on ${ANTIOCH.name}`}
-          />
+          {coinStatus === 'ready' && (
+            <div
+              ref={mapContainerRef}
+              className={`map-coins__viewport map-coins__viewport--${placeMode}`}
+              role='region'
+              aria-label={`Interactive coin map centered on ${ANTIOCH.name}`}
+            />
+          )}
 
-          {mapStatus === 'loading' && (
-            <div className='map-coins__status' role='status'>
-              <span className='map-coins__status-mark' aria-hidden='true' />
-              Preparing the ancient landscape...
+          {coinStatus === 'loading' && <MapLoadingScreen phase='catalog' />}
+          {coinStatus === 'ready' && mapStatus === 'loading' && (
+            <MapLoadingScreen phase='map' coinCount={coins.length} />
+          )}
+          {coinStatus === 'error' && (
+            <div className='map-coins__status map-coins__status--error' role='alert'>
+              <strong>We could not load the coin catalog.</strong>
+              <span>Please refresh the page to try the Strapi request again.</span>
             </div>
           )}
           {(mapStatus === 'missing-token' || mapStatus === 'error') && (
@@ -653,12 +689,6 @@ const MapCoins = () => {
             </>
           )}
 
-          {mapStatus === 'ready' && coinStatus === 'loading' && (
-            <div className='map-coins__data-toast'>Loading catalog data…</div>
-          )}
-          {mapStatus === 'ready' && coinStatus === 'error' && (
-            <div className='map-coins__data-toast map-coins__data-toast--error'>Coin data is temporarily unavailable.</div>
-          )}
           {coinStatus === 'ready' && visibleCoins.length === 0 && (
             <div className='map-coins__empty-state'>No coins match these controls.</div>
           )}
