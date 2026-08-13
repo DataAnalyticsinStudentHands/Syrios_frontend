@@ -12,10 +12,6 @@
     font-family: default-theme.$syrios-font-family-garamond-premier-pro;
   }
 
-  .map-coins__coming-soon {
-    margin: clamp(2rem, 3vw, 4rem) 0 clamp(3rem, 5vw, 6rem);
-  }
-
   .map-coins__frame {
     position: relative;
     width: min(100%, 1380px);

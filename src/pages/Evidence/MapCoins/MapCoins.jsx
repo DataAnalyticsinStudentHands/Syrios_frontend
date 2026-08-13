@@ -603,8 +603,6 @@ const MapCoins = () => {
   return (
     <div id='map-coins'>
       <h1 className='text-center'>Coins on a Map</h1>
-      <h2 className='map-coins__coming-soon text-center'>Coming Soon...</h2>
-
       <section className='map-coins__frame' aria-labelledby='antioch-map-title'>
         <div className='map-coins__frame-header'>
           <div>
