@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   COMPOSITION_DIMENSIONS,
   FILTER_DIMENSIONS,
@@ -51,6 +51,9 @@ const MapControls = ({
   totalCount,
 }) => {
   const activeFilterCount = Object.values(filters).reduce((total, selected) => total + selected.length, 0);
+  const [expandedFilters, setExpandedFilters] = useState(() => new Set(
+    FILTER_DIMENSIONS.slice(0, 3).map((dimension) => dimension.key),
+  ));
 
   return (
     <aside className={`map-coins__controls ${open ? 'is-open' : 'is-collapsed'}`} aria-label='Map controls'>
@@ -164,8 +167,21 @@ const MapControls = ({
               </button>
             </div>
             <div className='map-coins__filter-groups'>
-              {FILTER_DIMENSIONS.map((dimension, index) => (
-                <details key={dimension.key} defaultOpen={index < 3}>
+              {FILTER_DIMENSIONS.map((dimension) => (
+                <details
+                  key={dimension.key}
+                  open={expandedFilters.has(dimension.key)}
+                  onToggle={(event) => {
+                    const isOpen = event.currentTarget.open;
+                    setExpandedFilters((current) => {
+                      if (current.has(dimension.key) === isOpen) return current;
+                      const next = new Set(current);
+                      if (isOpen) next.add(dimension.key);
+                      else next.delete(dimension.key);
+                      return next;
+                    });
+                  }}
+                >
                   <summary>
                     {dimension.label}
                     {filters[dimension.key].length > 0 && <span>{filters[dimension.key].length}</span>}
