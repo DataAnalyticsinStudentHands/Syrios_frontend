@@ -304,8 +304,11 @@ story-download-text (dark blue text)
 }
 
 .coin-sort-pile {
+  flex: 1 1 auto;
+  min-width: 0;
   position: relative;
   transition: 0.1s;
+  width: 100%;
 }
 
 // @media only screen and (max-width: $tooSmallForPileScreenSize) {
@@ -339,6 +342,7 @@ story-download-text (dark blue text)
 // }
 
 .coin-sort-pile-coin-image {
+  max-width: none;
   position: relative;
   object-fit: cover;
 
