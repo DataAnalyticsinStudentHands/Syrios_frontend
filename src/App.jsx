@@ -68,7 +68,6 @@ import HowToReadACoin from "./pages/Stories/HowToReadACoin";
 
 import ExploreTheEvidence from "./pages/Evidence/ExploreTheEvidence";
 import CoinSort from "./pages/Evidence/CoinSort/CoinSort";
-import MapCoins from "./pages/Evidence/MapCoins/MapCoins";
 import CoinCatalog from "./pages/Evidence/CoinCatalogy/CoinCatalog";
 import Coins from "./pages/Evidence/CoinCatalogy/CoinList/Coins";
 import CoinInfoPage from "./pages/Evidence/CoinCatalogy/coin-info/CoinInfoPage";
@@ -86,6 +85,8 @@ import GlossaryTerm from "./pages/Toolbox/Glossary/GlossaryTerm";
 import ErrorPage from "./components/error/404";
 import FooterWrapper from "./components/footerv2/Footer2Wrapper";
 import AutoScrollToTop from "./utils/ScrollToTop";
+
+const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
 
 /**
  * ----------------------------------------
@@ -111,7 +112,14 @@ function AppRoutes() {
 
         {/* Evidence routes */}
         <Route path="/Evidence/CoinSort" element={<CoinSort />} />
-        <Route path="/Evidence/MapCoins" element={<MapCoins />} />
+        <Route
+          path="/Evidence/MapCoins"
+          element={(
+            <React.Suspense fallback={null}>
+              <MapCoins />
+            </React.Suspense>
+          )}
+        />
         <Route path="/Evidence/Timeline" element={<Timeline />} />
         <Route path="/Evidence/CoinCatalog" element={<CoinCatalog />} />
         <Route path="/Coins/:params" element={<Coins />} />
