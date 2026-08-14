@@ -19,6 +19,7 @@ import {
   serializeCuratorDraft,
   suggestCuratorCoins,
 } from './coinCuratorData';
+import { buildCoinCuratorPdfDocument } from './coinCuratorPdf';
 
 const STAGES = Object.freeze([
   { key: 'inquiry', label: 'Inquiry' },
@@ -559,7 +560,19 @@ function ExhibitObject({ coin, index, entry }) {
   );
 }
 
-function ReviewStage({ inquiry, draft, selectedCoins, rubric, onBack, onPrint, onRestart }) {
+function ReviewStage({
+  inquiry,
+  draft,
+  selectedCoins,
+  rubric,
+  pdfExport,
+  onBack,
+  onDownloadPdf,
+  onPrint,
+  onRestart,
+}) {
+  const exportingPdf = pdfExport.status === 'generating';
+
   return (
     <section className='coin-curator__stage coin-curator__stage--review' aria-labelledby='coin-curator-stage-title'>
       <div className='coin-curator__stage-heading coin-curator__screen-only'>
@@ -585,7 +598,27 @@ function ReviewStage({ inquiry, draft, selectedCoins, rubric, onBack, onPrint, o
         </aside>
         <div className='coin-curator__review-actions'>
           <h3>{rubric.score === rubric.total ? 'The exhibition structure is complete.' : 'The exhibition can still be strengthened.'}</h3>
-          <p>You may print an in-progress draft or return to any earlier stage. Missing writing is labeled honestly in the preview.</p>
+          <p>You may download or print an in-progress draft, or return to any earlier stage. Missing writing is labeled honestly in the exported work.</p>
+          <div className='coin-curator__pdf-export' aria-busy={exportingPdf}>
+            <button
+              type='button'
+              className='coin-curator__primary-button'
+              disabled={exportingPdf}
+              aria-describedby='coin-curator-pdf-status'
+              onClick={onDownloadPdf}
+            >
+              {exportingPdf ? 'Preparing PDF...' : 'Download exhibition PDF'}
+            </button>
+            <p
+              id='coin-curator-pdf-status'
+              className={`coin-curator__pdf-status is-${pdfExport.status}`}
+              role={pdfExport.status === 'error' ? 'alert' : 'status'}
+              aria-live='polite'
+              aria-atomic='true'
+            >
+              {pdfExport.message}
+            </p>
+          </div>
           <button type='button' className='coin-curator__primary-button' onClick={onPrint}>Print exhibition</button>
           <button type='button' className='coin-curator__secondary-button' onClick={onBack}>Return to writing</button>
           <button type='button' className='coin-curator__text-button' onClick={onRestart}>Start a new exhibition</button>
@@ -682,6 +715,7 @@ const CoinCurator = () => {
   const [filter, setFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(CANDIDATE_BATCH_SIZE);
   const [announcement, setAnnouncement] = useState('');
+  const [pdfExport, setPdfExport] = useState({ status: 'idle', message: '' });
   const stageHeadingRef = useRef(null);
 
   useEffect(() => {
@@ -883,6 +917,60 @@ const CoinCurator = () => {
 
   const updateField = (field, value) => setDraft((current) => ({ ...current, [field]: value }));
 
+  const downloadExhibitionPdf = async () => {
+    if (pdfExport.status === 'generating') return;
+
+    setPdfExport({ status: 'generating', message: 'Preparing the exhibition and coin images.' });
+
+    try {
+      // The PDF engine is intentionally loaded only after the student requests a
+      // download, keeping the main exhibition-builder bundle responsive.
+      const { downloadLearningArtifactPdf } = await import('src/utils/learningArtifactPdf');
+      // Build the PDF from the normalized draft instead of the DOM so student prose,
+      // catalog citations, and missing-value labels are exported exactly and testably.
+      const pdfDocument = buildCoinCuratorPdfDocument({
+        draft,
+        inquiry,
+        selectedCoins,
+        comparisonRows,
+        rubric,
+        siteOrigin: `${window.location.origin}${import.meta.env.DEV ? '/dev' : ''}`,
+        generatedAt: new Date(),
+      });
+
+      // The shared generator owns image fetching, pagination, and the browser download;
+      // progress is mirrored here so screen-reader users are not left waiting silently.
+      const result = await downloadLearningArtifactPdf(pdfDocument, {
+        onProgress: ({ phase, completed, total }) => {
+          const count = Number.isFinite(completed) && Number.isFinite(total) && total > 0
+            ? ` ${completed} of ${total}`
+            : '';
+          const message = phase === 'images'
+            ? `Preparing coin images${count}.`
+            : phase === 'complete'
+              ? 'Starting the PDF download.'
+              : `Laying out the exhibition${count}.`;
+          setPdfExport({ status: 'generating', message });
+        },
+      });
+
+      const pageText = result.pageCount
+        ? ` (${result.pageCount} ${result.pageCount === 1 ? 'page' : 'pages'})`
+        : '';
+      const imageText = result.omittedImageCount
+        ? ` ${result.omittedImageCount} unavailable ${result.omittedImageCount === 1 ? 'image was' : 'images were'} labeled in the PDF.`
+        : '';
+      const message = `Exhibition PDF downloaded${pageText}.${imageText}`;
+      setPdfExport({ status: 'success', message });
+      setAnnouncement(message);
+    } catch (error) {
+      console.error('Coin Curator could not create the PDF:', error);
+      const message = 'The PDF could not be created. Your locally saved exhibition is unchanged; please try again.';
+      setPdfExport({ status: 'error', message });
+      setAnnouncement(message);
+    }
+  };
+
   const restart = () => {
     if (hasDraftWork(draft) && !window.confirm('Clear this locally saved exhibition and begin again?')) return;
     try { window.localStorage.removeItem(CURATOR_DRAFT_STORAGE_KEY); } catch { /* no-op */ }
@@ -890,6 +978,7 @@ const CoinCurator = () => {
     setRestoredDraft(null);
     setSearch('');
     setFilter('all');
+    setPdfExport({ status: 'idle', message: '' });
     setStage('inquiry');
     setAnnouncement('Local exhibition draft cleared.');
   };
@@ -974,7 +1063,9 @@ const CoinCurator = () => {
             draft={draft}
             selectedCoins={selectedCoins}
             rubric={rubric}
+            pdfExport={pdfExport}
             onBack={() => changeStage('thesis')}
+            onDownloadPdf={downloadExhibitionPdf}
             onPrint={() => window.print()}
             onRestart={restart}
           />
