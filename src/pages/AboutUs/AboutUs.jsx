@@ -11,7 +11,9 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import aboutUsRequest from 'src/api/about-us';
+import allenMartinPortrait from 'src/assets/pages/AboutUs/allen-martin.jpg';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
+import { buildStudentCollaborators, buildStudentLeads } from './aboutUsTeamData';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
@@ -47,6 +49,9 @@ useEffect(() => {
 },[]);
 
 	if (isLoading) return (<LoadingPage />);
+
+  const studentLeads = buildStudentLeads(aboutUsData?.student_lead || []);
+  const studentCollaborators = buildStudentCollaborators(aboutUsData?.student_collaborators || []);
 
   return (
     <div id='aboutus-page'>
@@ -92,39 +97,61 @@ useEffect(() => {
         ))}
       </div>
 
-      <h2 className='my-5 py-5 text-center'>Acknowledgments</h2>
+      <h2 id='about-acknowledgments' className='my-5 py-5 text-center'>Acknowledgments</h2>
 
-      <div className='aboutTable'>
+      <section className='aboutTable' aria-labelledby='about-acknowledgments'>
         <div className='aboutTable_tabs'>
           {tableTab.map((t,index)=>(
-            <div
+            <button
+              type='button'
               className={`aboutTable_tab ${currentTab === t ? "aboutTable_tab--active":""}`}
               key={index}
+              aria-pressed={currentTab === t}
               onClick={()=> setCurrentTab(t)}
             >
-              <p>{t}</p>
-            </div>
+              <span>{t}</span>
+            </button>
           ))}
         </div>
 
         <div className='aboutTable_entries'>
 
           {currentTab === "Student Leads" && (
-            aboutUsData?.student_lead?.map(s=>(
-              <Row className='aboutTable-student_leads d-flex justify-content-around' key={s.id}>
-                <Col xs={3}>
-                  <img
-                    src={`${baseURL}${s.picture.data?.attributes.url}`}
-                    alt={s.picture.data?.attributes.alternativeText ?? ""}
-                    width="100%"
-                    className="aboutus-avatar"
-                  />
+            studentLeads.map(s=>(
+              <Row
+                className={'aboutTable-student_leads d-flex justify-content-around' + (s.isLocalProfile ? ' aboutTable-student_leads--featured' : '')}
+                key={s.id}
+              >
+                <Col xs={3} className='aboutTable-student_leads__portrait'>
+                  {s.isLocalProfile || s.picture?.data?.attributes?.url ? (
+                    <img
+                      src={s.isLocalProfile ? allenMartinPortrait : `${baseURL}${s.picture.data.attributes.url}`}
+                      alt={s.isLocalProfile ? 'Allen Martin' : (s.picture?.data?.attributes?.alternativeText || s.name || '')}
+                      width="100%"
+                      className={'aboutus-avatar' + (s.isLocalProfile ? ' aboutus-avatar--portrait' : '')}
+                      loading='lazy'
+                      decoding='async'
+                    />
+                  ) : (
+                    <div
+                      className='aboutus-avatar aboutus-avatar--placeholder'
+                      role='img'
+                      aria-label={`${s.name || 'Student lead'} portrait unavailable`}
+                    >
+                      <span aria-hidden='true'>?</span>
+                    </div>
+                  )}
                 </Col>
 
-                <Col xs={8} className="story-text">
+                <Col xs={8} className="story-text aboutTable-student_leads__details">
                   <p className='story-text-bigger'><strong>{s.name}</strong></p>
-                  <em dangerouslySetInnerHTML={createMarkup(s.detail)}/>
+                  {s.isLocalProfile ? (
+                    <p className='aboutTable-student_leads__position'><em>{s.detail}</em></p>
+                  ) : (
+                    <em dangerouslySetInnerHTML={createMarkup(s.detail)}/>
+                  )}
                   <p>{s.role}</p>
+                  {s.affiliation ? <p className='aboutTable-student_leads__affiliation'>{s.affiliation}</p> : null}
                 </Col>
               </Row>
             ))
@@ -132,7 +159,7 @@ useEffect(() => {
 
           {currentTab === "Student Collaborators" && (
             <Row className='aboutTable-collaborators p-5 m-5'>
-              {aboutUsData?.student_collaborators?.map(s=>(
+              {studentCollaborators.map(s=>(
                 <Col xs={6} className="story-text mb-5" key={s.id}>
                   <p className='story-text-bigger'><strong>{s.caption}</strong></p>
                   <em>{s.subcaption}</em>
@@ -159,7 +186,7 @@ useEffect(() => {
           )}
 
         </div>
-      </div>
+      </section>
     </div>
   );
 }
