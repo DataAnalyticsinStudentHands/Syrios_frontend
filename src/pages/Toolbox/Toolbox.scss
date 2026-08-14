@@ -1,20 +1,283 @@
 @use "../../style/1-themes/default-theme";
 
-#tool-box{
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-      height: 100%;
-      padding-top: 7.5vmax;
-      padding-bottom: 7.5vmax;
-  
-    .image-icon{
-      font-size:120px;
-      border-style: double;
-      border-color:#7899a8;
-      border-radius: 50%;
-      font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
-      color: rgba(255,255,255,1);
-      background-color: #7899a8;
-    }
-}    
+#tool-box {
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  min-height: 100%;
+  padding-block: 7.5vmax;
 
+  .image-icon {
+    font-size: 120px;
+    border: double #7899a8;
+    border-radius: 50%;
+    font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
+    color: #fff;
+    background-color: #7899a8;
+  }
+}
+
+.toolbox-section-heading {
+  max-width: 58rem;
+  margin: 0 auto clamp(2rem, 4vw, 3.25rem);
+  text-align: center;
+
+  h2 {
+    margin: 0 0 1rem;
+    color: default-theme.$syrios-color-183848;
+    font-family: default-theme.$syrios-garamond-premier-pro-display;
+    font-size: clamp(2.2rem, 4vw, 3.7rem);
+    font-weight: 400;
+    line-height: 1.05;
+  }
+
+  > p:last-child {
+    margin: 0 auto;
+    color: default-theme.$syrios-color-737271;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    line-height: 1.55;
+  }
+}
+
+.toolbox-section-heading__eyebrow {
+  margin: 0 0 0.75rem;
+  color: default-theme.$syrios-color-a86818;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.toolbox-section-heading--compact {
+  margin-bottom: 2rem;
+}
+
+.toolbox-learning-labs {
+  position: relative;
+  margin: clamp(3rem, 7vw, 6rem) 0;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  overflow: hidden;
+  border: 1px solid rgba(166, 104, 24, 0.38);
+  background:
+    radial-gradient(circle at 9% 4%, rgba(216, 160, 72, 0.17), transparent 30%),
+    linear-gradient(145deg, rgba(248, 232, 184, 0.38), rgba(244, 242, 240, 0.86) 48%, rgba(184, 204, 216, 0.3));
+  box-shadow: 0 18px 50px rgba(24, 56, 72, 0.09);
+
+  &::before {
+    position: absolute;
+    inset: 0.45rem;
+    border: 1px dashed rgba(166, 104, 24, 0.28);
+    content: '';
+    pointer-events: none;
+  }
+}
+
+.toolbox-learning-labs__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
+  gap: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+.toolbox-learning-card {
+  --toolbox-card-accent: #486678;
+  --toolbox-card-soft: #e7eef2;
+
+  display: flex;
+  min-width: 0;
+  min-height: 29rem;
+  padding: clamp(1.25rem, 2.5vw, 1.8rem);
+  flex-direction: column;
+  color: default-theme.$syrios-color-183848;
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--toolbox-card-accent) 58%, white);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 28px rgba(24, 56, 72, 0.1);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: default-theme.$syrios-color-183848;
+    text-decoration: none;
+    border-color: var(--toolbox-card-accent);
+    box-shadow: 0 16px 34px rgba(24, 56, 72, 0.16);
+  }
+
+  &:focus-visible {
+    outline: 3px solid default-theme.$syrios-color-d8a048;
+    outline-offset: 4px;
+  }
+
+  h3 {
+    margin: 1.35rem 0 0.8rem;
+    color: default-theme.$syrios-color-183848;
+    font-family: default-theme.$syrios-garamond-premier-pro-display;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  > p {
+    margin: 0;
+    color: #53636b;
+    font-size: 1.02rem;
+    line-height: 1.52;
+  }
+}
+
+.toolbox-learning-card--coin-curator {
+  --toolbox-card-accent: #987818;
+  --toolbox-card-soft: #f8e8b8;
+}
+
+.toolbox-learning-card--archive-lab {
+  --toolbox-card-accent: #a85828;
+  --toolbox-card-soft: #f2ded0;
+}
+
+.toolbox-learning-card__topline {
+  display: flex;
+  min-height: 2.35rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--toolbox-card-accent);
+}
+
+.toolbox-learning-card__step {
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.toolbox-learning-card__phase {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.toolbox-learning-card__emblem {
+  display: grid;
+  width: 6.2rem;
+  height: 6.2rem;
+  margin-top: 1.1rem;
+  place-items: center;
+  color: var(--toolbox-card-accent);
+  border: 4px double var(--toolbox-card-accent);
+  border-radius: 50%;
+  background: var(--toolbox-card-soft);
+  font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.toolbox-learning-card__highlights {
+  display: flex;
+  margin: 1.35rem 0 1.5rem;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+
+  li {
+    padding: 0.35rem 0.65rem;
+    color: var(--toolbox-card-accent);
+    border: 1px solid var(--toolbox-card-accent);
+    border-radius: 999px;
+    background: var(--toolbox-card-soft);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+.toolbox-learning-card__cta {
+  display: flex;
+  min-height: 44px;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--toolbox-card-accent);
+  border-top: 1px solid color-mix(in srgb, var(--toolbox-card-accent) 42%, white);
+  font-size: 0.96rem;
+  font-weight: 700;
+
+  span {
+    font-size: 1.4rem;
+  }
+}
+
+.toolbox-reference-tools {
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid rgba(115, 114, 113, 0.3);
+}
+
+.toolbox-grid {
+  row-gap: clamp(3rem, 6vw, 5rem);
+}
+
+.toolbox-grid__column {
+  display: flex;
+  justify-content: center;
+
+  > center {
+    width: 100%;
+  }
+
+  a:focus-visible {
+    outline: 3px solid default-theme.$syrios-color-d8a048;
+    outline-offset: 5px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .toolbox-learning-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  #tool-box {
+    padding-block: 5rem;
+  }
+
+  .toolbox-learning-labs {
+    margin-block: 3rem 4rem;
+    padding: 1.35rem;
+  }
+
+  .toolbox-learning-labs__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbox-learning-card {
+    min-height: 0;
+    padding: 1.25rem;
+  }
+
+  .toolbox-learning-card__emblem {
+    width: 5.4rem;
+    height: 5.4rem;
+    font-size: 2.35rem;
+  }
+
+  .toolbox-learning-card__cta {
+    width: 100%;
+  }
+
+  .toolbox-grid__column {
+    padding-inline: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolbox-learning-card {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}
