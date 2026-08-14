@@ -1,0 +1,1699 @@
+@use '../../../style/1-themes/default-theme';
+
+#coin-detective {
+  width: 100%;
+  min-height: 95vh;
+  padding: clamp(4.5rem, 7vw, 9rem) clamp(1.4rem, 4.5vw, 7rem) clamp(7rem, 10vw, 13rem);
+  color: default-theme.$syrios-color-183848;
+
+  button,
+  input,
+  textarea {
+    font-family: default-theme.$syrios-font-family-garamond-premier-pro;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  [tabindex='-1'] {
+    &:focus-visible {
+      outline: 0.3rem solid default-theme.$syrios-color-d8a048;
+      outline-offset: 0.3rem;
+    }
+  }
+
+  [tabindex='-1']:focus {
+    outline: none;
+  }
+
+  .coin-detective__shell {
+    position: relative;
+    width: min(100%, 1320px);
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgba(default-theme.$syrios-color-a86818, 0.42);
+    border-radius: 3px;
+    background:
+      linear-gradient(135deg, rgba(default-theme.$syrios-color-f8e8b8, 0.25), transparent 34rem),
+      rgba(default-theme.$syrios-color-f4f2f0, 0.98);
+    box-shadow:
+      0 2.8rem 7rem rgba(default-theme.$syrios-color-183848, 0.2),
+      0 0 0 1rem rgba(default-theme.$syrios-color-f4f2f0, 0.42);
+
+    &::before {
+      position: absolute;
+      inset: 0.8rem;
+      z-index: 0;
+      border: 1px dashed rgba(default-theme.$syrios-color-a86818, 0.25);
+      content: '';
+      pointer-events: none;
+    }
+  }
+
+  .coin-detective__eyebrow,
+  .coin-detective__section-heading > span,
+  .coin-detective__question-meta > span:first-child {
+    color: default-theme.$syrios-color-a86818;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coin-detective__primary-button,
+  .coin-detective__secondary-button {
+    display: inline-flex;
+    min-height: 4.7rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.8rem;
+    border-radius: 2px;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+    }
+  }
+
+  .coin-detective__primary-button {
+    border: 1px solid default-theme.$syrios-color-183848;
+    background: default-theme.$syrios-color-183848;
+    color: default-theme.$syrios-color-ffffff;
+    box-shadow: 0 1rem 2.5rem rgba(default-theme.$syrios-color-183848, 0.16);
+
+    &:hover:not(:disabled) {
+      background: default-theme.$syrios-color-486678;
+      color: default-theme.$syrios-color-ffffff;
+    }
+  }
+
+  .coin-detective__secondary-button {
+    border: 1px solid rgba(default-theme.$syrios-color-183848, 0.6);
+    background: transparent;
+    color: default-theme.$syrios-color-183848;
+
+    &:hover:not(:disabled) {
+      background: default-theme.$syrios-color-183848;
+      color: default-theme.$syrios-color-ffffff;
+    }
+  }
+
+  .coin-detective__text-button {
+    min-height: 4.4rem;
+    padding: 0.7rem 0.4rem;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    font-size: 1.55rem;
+    font-weight: 700;
+  }
+
+  .coin-detective__welcome,
+  .coin-detective__case-header,
+  .coin-detective__progress,
+  .coin-detective__stage,
+  .coin-detective__reveal {
+    position: relative;
+    z-index: 1;
+  }
+
+  .coin-detective__welcome {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(48rem, 1.14fr);
+    gap: clamp(3rem, 5vw, 7rem);
+    padding: clamp(3rem, 6vw, 7rem);
+  }
+
+  .coin-detective__welcome-copy {
+    align-self: center;
+    padding: 2rem 0;
+
+    h1 {
+      margin: 1rem 0 2rem;
+      color: default-theme.$syrios-color-183848;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(5.6rem, 8vw, 10rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.82;
+    }
+  }
+
+  .coin-detective__lede {
+    max-width: 62rem;
+    margin: 0;
+    color: rgba(default-theme.$syrios-color-183848, 0.82);
+    font-size: clamp(1.8rem, 2vw, 2.25rem);
+    line-height: 1.55;
+  }
+
+  .coin-detective__principle {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.45rem;
+    max-width: 54rem;
+    margin-top: 3.5rem;
+    padding: 2.1rem 2.3rem;
+    border-left: 0.45rem solid default-theme.$syrios-color-a86818;
+    background: rgba(default-theme.$syrios-color-f0e0c0, 0.68);
+
+    strong {
+      font-size: 1.9rem;
+    }
+
+    span {
+      color: rgba(default-theme.$syrios-color-183848, 0.76);
+      font-size: 1.6rem;
+      line-height: 1.45;
+    }
+  }
+
+  .coin-detective__mode-panel {
+    align-self: center;
+    padding: clamp(2.2rem, 3vw, 3.6rem);
+    border: 1px solid rgba(default-theme.$syrios-color-183848, 0.2);
+    background: rgba(default-theme.$syrios-color-ffffff, 0.8);
+    box-shadow: 0 1.8rem 4rem rgba(default-theme.$syrios-color-183848, 0.1);
+  }
+
+  .coin-detective__section-heading {
+    h3 {
+      margin: 0.7rem 0 0;
+      color: default-theme.$syrios-color-183848;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(3.2rem, 4vw, 5rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    p {
+      max-width: 76rem;
+      margin: 0.8rem 0 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.7);
+      font-size: 1.6rem;
+      line-height: 1.45;
+    }
+  }
+
+  .coin-detective__mode-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2.2rem;
+  }
+
+  .coin-detective__mode {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.35rem 1.5rem;
+    width: 100%;
+    min-height: 12rem;
+    padding: 1.7rem 1.9rem;
+    border: 1px solid rgba(default-theme.$syrios-color-183848, 0.2);
+    border-radius: 2px;
+    background: rgba(default-theme.$syrios-color-f4f2f0, 0.66);
+    color: default-theme.$syrios-color-183848;
+    text-align: left;
+    transition: background 180ms ease, border 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+
+    > span {
+      grid-column: 1;
+      color: default-theme.$syrios-color-a86818;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    strong {
+      grid-column: 1;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+
+    p {
+      grid-column: 1;
+      margin: 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.72);
+      font-size: 1.45rem;
+      line-height: 1.35;
+    }
+
+    small {
+      grid-row: 1 / span 3;
+      grid-column: 2;
+      align-self: center;
+      max-width: 8rem;
+      color: default-theme.$syrios-color-737271;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      text-align: right;
+    }
+
+    &:hover:not(:disabled),
+    &.is-selected {
+      border-color: default-theme.$syrios-color-a86818;
+      background: default-theme.$syrios-color-f8e8b8;
+      box-shadow: inset 0.45rem 0 0 default-theme.$syrios-color-a86818;
+      transform: translateX(0.25rem);
+    }
+  }
+
+  .coin-detective__start-button {
+    width: 100%;
+    margin-top: 1.7rem;
+  }
+
+  .coin-detective__data-note {
+    margin: 1.5rem 0 0;
+    color: default-theme.$syrios-color-737271;
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+
+  .coin-detective__how-it-works {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    padding-top: clamp(1rem, 2vw, 2.5rem);
+
+    article {
+      display: grid;
+      grid-template-columns: 5rem 1fr;
+      gap: 0 1.4rem;
+      padding: 2rem;
+      border-top: 1px solid rgba(default-theme.$syrios-color-a86818, 0.44);
+
+      > span {
+        grid-row: 1 / span 2;
+        color: default-theme.$syrios-color-a86818;
+        font-family: default-theme.$syrios-garamond-premier-pro-display;
+        font-size: 3.2rem;
+      }
+
+      strong {
+        font-size: 1.8rem;
+      }
+
+      p {
+        margin: 0.3rem 0 0;
+        color: rgba(default-theme.$syrios-color-183848, 0.7);
+        font-size: 1.45rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  .coin-detective__case-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.4rem clamp(2rem, 4vw, 5rem);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+    background: default-theme.$syrios-color-183848;
+    color: default-theme.$syrios-color-ffffff;
+
+    > div {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      span {
+        color: default-theme.$syrios-color-e8c078;
+        font-size: 1.25rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      strong {
+        font-family: default-theme.$syrios-garamond-premier-pro-display;
+        font-size: 2.15rem;
+        font-weight: 500;
+      }
+    }
+
+    .coin-detective__text-button {
+      justify-self: end;
+    }
+  }
+
+  .coin-detective__back-link {
+    justify-self: start;
+    color: default-theme.$syrios-color-ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-underline-offset: 0.4rem;
+  }
+
+  .coin-detective__progress {
+    padding: 1.9rem clamp(2rem, 4vw, 5rem);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.13);
+    background: rgba(default-theme.$syrios-color-ffffff, 0.7);
+
+    ol {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: min(100%, 72rem);
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      color: rgba(default-theme.$syrios-color-183848, 0.45);
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: calc(50% + 4.2rem);
+        width: calc(100% - 8.4rem);
+        height: 1px;
+        background: rgba(default-theme.$syrios-color-183848, 0.18);
+        content: '';
+      }
+
+      &:last-child::after {
+        display: none;
+      }
+
+      > span {
+        display: inline-flex;
+        width: 2.8rem;
+        height: 2.8rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        font-size: 1.25rem;
+      }
+
+      &.is-current {
+        color: default-theme.$syrios-color-a86818;
+      }
+
+      &.is-complete {
+        color: default-theme.$syrios-color-487848;
+
+        > span {
+          background: default-theme.$syrios-color-487848;
+          color: default-theme.$syrios-color-ffffff;
+        }
+      }
+    }
+  }
+
+  .coin-detective__stage,
+  .coin-detective__reveal-hero {
+    display: grid;
+    grid-template-columns: minmax(38rem, 0.9fr) minmax(0, 1.1fr);
+    min-height: 72rem;
+  }
+
+  .coin-detective__viewer {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2.4rem, 4vw, 5rem);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(default-theme.$syrios-color-f8e8b8, 0.19), transparent 26rem),
+      linear-gradient(145deg, default-theme.$syrios-color-183848, default-theme.$syrios-color-313029);
+    color: default-theme.$syrios-color-ffffff;
+  }
+
+  .coin-detective__viewer-heading {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    span {
+      color: default-theme.$syrios-color-e8c078;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    strong {
+      max-width: 42rem;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(2.3rem, 3vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.05;
+    }
+  }
+
+  .coin-detective__image-stage {
+    position: relative;
+    display: flex;
+    width: min(100%, 48rem);
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      position: absolute;
+      border: 1px solid rgba(default-theme.$syrios-color-f8e8b8, 0.16);
+      border-radius: 50%;
+      content: '';
+      pointer-events: none;
+    }
+
+    &::before {
+      inset: 4%;
+    }
+
+    &::after {
+      inset: 13%;
+      border-style: dashed;
+    }
+
+    img {
+      position: relative;
+      z-index: 1;
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      filter: drop-shadow(0 2.2rem 2.5rem rgba(0, 0, 0, 0.4));
+      transform: scale(1);
+      transition: transform 500ms cubic-bezier(0.2, 0.75, 0.2, 1);
+    }
+
+    &.is-zoomed img {
+      transform: scale(1.42);
+    }
+  }
+
+  .coin-detective__face-label {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1rem;
+    z-index: 2;
+    color: rgba(default-theme.$syrios-color-ffffff, 0.7);
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coin-detective__image-missing {
+    color: rgba(default-theme.$syrios-color-ffffff, 0.7);
+    font-size: 1.5rem;
+  }
+
+  .coin-detective__face-switcher {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: min(100%, 38rem);
+    margin-top: 2.6rem;
+    border: 1px solid rgba(default-theme.$syrios-color-ffffff, 0.32);
+
+    button {
+      min-height: 4.7rem;
+      padding: 0.8rem 1.4rem;
+      border: 0;
+      background: transparent;
+      color: rgba(default-theme.$syrios-color-ffffff, 0.7);
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      + button {
+        border-left: 1px solid rgba(default-theme.$syrios-color-ffffff, 0.32);
+      }
+
+      &.is-active {
+        background: default-theme.$syrios-color-f8e8b8;
+        color: default-theme.$syrios-color-183848;
+      }
+    }
+  }
+
+  .coin-detective__workspace {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(3rem, 5vw, 6rem);
+    background: rgba(default-theme.$syrios-color-f4f2f0, 0.92);
+
+    h2 {
+      margin: 1rem 0 1.3rem;
+      color: default-theme.$syrios-color-183848;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(3.6rem, 4.8vw, 5.8rem);
+      font-weight: 400;
+      line-height: 0.98;
+    }
+
+    > p {
+      max-width: 65rem;
+      margin: 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.72);
+      font-size: 1.7rem;
+      line-height: 1.5;
+    }
+  }
+
+  .coin-detective__prompt-list {
+    display: grid;
+    gap: 0.8rem;
+    margin: 2.8rem 0;
+
+    article {
+      display: grid;
+      grid-template-columns: 4.4rem 1fr;
+      gap: 1.2rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.15);
+
+      > span {
+        display: flex;
+        width: 3.6rem;
+        height: 3.6rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(default-theme.$syrios-color-a86818, 0.55);
+        border-radius: 50%;
+        color: default-theme.$syrios-color-a86818;
+        font-size: 1.2rem;
+      }
+
+      strong {
+        font-size: 1.7rem;
+      }
+
+      p {
+        margin: 0.25rem 0 0;
+        color: rgba(default-theme.$syrios-color-183848, 0.68);
+        font-size: 1.45rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  .coin-detective__notes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    > span {
+      font-size: 1.7rem;
+      font-weight: 700;
+
+      small {
+        color: default-theme.$syrios-color-737271;
+        font-weight: 400;
+      }
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 12rem;
+      padding: 1.2rem 1.4rem;
+      resize: vertical;
+      border: 1px solid rgba(default-theme.$syrios-color-183848, 0.35);
+      border-radius: 2px;
+      background: default-theme.$syrios-color-ffffff;
+      color: default-theme.$syrios-color-183848;
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+
+    > small {
+      color: default-theme.$syrios-color-737271;
+      font-size: 1.25rem;
+    }
+  }
+
+  .coin-detective__stage-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+    margin-top: 2.6rem;
+  }
+
+  .coin-detective__stage-actions--split {
+    justify-content: space-between;
+  }
+
+  .coin-detective__question-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    > span:last-child {
+      color: default-theme.$syrios-color-737271;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+
+  .coin-detective__question-progress {
+    width: 100%;
+    height: 0.35rem;
+    margin: 1.4rem 0 3rem;
+    overflow: hidden;
+    background: rgba(default-theme.$syrios-color-183848, 0.13);
+
+    span {
+      display: block;
+      height: 100%;
+      background: default-theme.$syrios-color-a86818;
+      transition: width 350ms ease;
+    }
+  }
+
+  .coin-detective__question {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    legend {
+      width: 100%;
+      margin: 0;
+      color: default-theme.$syrios-color-183848;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(3.5rem, 4.6vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+  }
+
+  .coin-detective__question-note {
+    margin: 1.4rem 0 2.5rem;
+    color: rgba(default-theme.$syrios-color-183848, 0.68);
+    font-size: 1.5rem;
+    line-height: 1.45;
+  }
+
+  .coin-detective__choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+
+    label {
+      position: relative;
+      display: grid;
+      grid-template-columns: 2.6rem 1fr;
+      min-height: 7rem;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(default-theme.$syrios-color-183848, 0.25);
+      border-radius: 2px;
+      background: rgba(default-theme.$syrios-color-ffffff, 0.78);
+      cursor: pointer;
+      transition: background 180ms ease, border 180ms ease, transform 180ms ease;
+
+      input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+
+        &:focus-visible + span {
+          outline: 0.3rem solid default-theme.$syrios-color-d8a048;
+          outline-offset: 0.3rem;
+        }
+      }
+
+      > span {
+        display: block;
+        width: 2.2rem;
+        height: 2.2rem;
+        border: 1px solid rgba(default-theme.$syrios-color-183848, 0.55);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 0.45rem transparent;
+      }
+
+      strong {
+        font-size: 1.65rem;
+        font-weight: 600;
+      }
+
+      &:hover,
+      &.is-selected {
+        border-color: default-theme.$syrios-color-a86818;
+        background: default-theme.$syrios-color-f8e8b8;
+        transform: translateY(-1px);
+      }
+
+      &.is-selected > span {
+        background: default-theme.$syrios-color-a86818;
+        box-shadow: inset 0 0 0 0.45rem default-theme.$syrios-color-f8e8b8;
+      }
+    }
+  }
+
+  .coin-detective__hint {
+    min-height: 8rem;
+    margin-top: 2rem;
+
+    p {
+      margin: 0.8rem 0 0;
+      padding: 1.2rem 1.5rem;
+      border-left: 0.35rem solid default-theme.$syrios-color-d8a048;
+      background: rgba(default-theme.$syrios-color-f8e8b8, 0.65);
+      color: rgba(default-theme.$syrios-color-183848, 0.76);
+      font-size: 1.45rem;
+      line-height: 1.45;
+    }
+  }
+
+  .coin-detective__reveal {
+    background: rgba(default-theme.$syrios-color-f4f2f0, 0.96);
+  }
+
+  .coin-detective__reveal-hero {
+    min-height: 66rem;
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.14);
+  }
+
+  .coin-detective__catalog-id {
+    color: default-theme.$syrios-color-737271 !important;
+    font-size: 1.35rem !important;
+    letter-spacing: 0.05em;
+  }
+
+  .coin-detective__score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+
+    > div:first-child {
+      display: flex;
+      flex-direction: column;
+
+      strong {
+        font-family: default-theme.$syrios-garamond-premier-pro-display;
+        font-size: clamp(3.6rem, 5vw, 5.4rem);
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      span {
+        color: default-theme.$syrios-color-737271;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .coin-detective__score-ring {
+    position: relative;
+    display: flex;
+    width: 8rem;
+    height: 8rem;
+    flex: 0 0 8rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: conic-gradient(default-theme.$syrios-color-a86818 var(--score), rgba(default-theme.$syrios-color-183848, 0.12) 0);
+
+    &::before {
+      position: absolute;
+      inset: 0.8rem;
+      border-radius: 50%;
+      background: default-theme.$syrios-color-f4f2f0;
+      content: '';
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+  }
+
+  .coin-detective__score-note {
+    margin-top: 1.6rem !important;
+    font-size: 1.45rem !important;
+  }
+
+  .coin-detective__reveal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.4rem;
+  }
+
+  .coin-detective__evidence,
+  .coin-detective__catalog-evidence,
+  .coin-detective__context,
+  .coin-detective__comparison {
+    padding: clamp(3.5rem, 5vw, 6.5rem);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.14);
+  }
+
+  .coin-detective__evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.7rem;
+
+    article {
+      padding: 2rem;
+      border: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+      background: rgba(default-theme.$syrios-color-ffffff, 0.72);
+
+      > span {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      > strong {
+        display: block;
+        margin: 0.6rem 0 1.4rem;
+        font-family: default-theme.$syrios-garamond-premier-pro-display;
+        font-size: 2.7rem;
+        font-weight: 500;
+      }
+
+      &.is-match {
+        border-top: 0.4rem solid default-theme.$syrios-color-487848;
+
+        > span {
+          color: default-theme.$syrios-color-487848;
+        }
+      }
+
+      &.is-rethink {
+        border-top: 0.4rem solid default-theme.$syrios-color-a85828;
+
+        > span {
+          color: default-theme.$syrios-color-a85828;
+        }
+      }
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 0;
+
+      div {
+        min-width: 0;
+      }
+
+      dt {
+        color: default-theme.$syrios-color-737271;
+        font-size: 1.25rem;
+        font-weight: 400;
+      }
+
+      dd {
+        margin: 0.3rem 0 0;
+        overflow-wrap: anywhere;
+        font-size: 1.55rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .coin-detective__catalog-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    margin-top: 2.8rem;
+  }
+
+  .coin-detective__metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+    border-left: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+
+    div {
+      min-width: 0;
+      padding: 1.35rem 1.5rem;
+      border-right: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+      border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+    }
+
+    dt {
+      color: default-theme.$syrios-color-737271;
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+
+    dd {
+      margin: 0.3rem 0 0;
+      overflow-wrap: anywhere;
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+  }
+
+  .coin-detective__descriptions {
+    display: grid;
+    gap: 1.2rem;
+
+    article {
+      padding: 2rem 2.2rem;
+      border-left: 0.4rem solid default-theme.$syrios-color-a86818;
+      background: rgba(default-theme.$syrios-color-f0e0c0, 0.62);
+
+      > span {
+        color: default-theme.$syrios-color-a86818;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      strong {
+        display: block;
+        margin-top: 0.45rem;
+        font-family: default-theme.$syrios-garamond-premier-pro-display;
+        font-size: 2.45rem;
+        font-weight: 500;
+        line-height: 1.15;
+      }
+
+      p {
+        margin: 0.8rem 0 0;
+        color: rgba(default-theme.$syrios-color-183848, 0.72);
+        font-size: 1.45rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  .coin-detective__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 0;
+
+    span {
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(default-theme.$syrios-color-183848, 0.3);
+      border-radius: 99rem;
+      background: rgba(default-theme.$syrios-color-ffffff, 0.7);
+      font-size: 1.3rem;
+    }
+  }
+
+  .coin-detective__field-notes {
+    padding: 3rem clamp(3.5rem, 5vw, 6.5rem);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.14);
+    background: default-theme.$syrios-color-183848;
+    color: default-theme.$syrios-color-ffffff;
+
+    > span {
+      color: default-theme.$syrios-color-e8c078;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    blockquote {
+      max-width: 95rem;
+      margin: 1rem 0 0;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(2.4rem, 3vw, 3.8rem);
+      line-height: 1.25;
+      white-space: pre-wrap;
+    }
+  }
+
+  .coin-detective__context-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.8rem;
+  }
+
+  .coin-detective__context-card {
+    display: flex;
+    min-height: 24rem;
+    flex-direction: column;
+    padding: 2.2rem;
+    border-top: 0.4rem solid default-theme.$syrios-color-a86818;
+    background: default-theme.$syrios-color-ffffff;
+    box-shadow: 0 1.4rem 3rem rgba(default-theme.$syrios-color-183848, 0.08);
+
+    > span {
+      color: default-theme.$syrios-color-a86818;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    > strong {
+      margin-top: 0.6rem;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: 2.5rem;
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    > div {
+      flex: 1;
+    }
+
+    p {
+      color: rgba(default-theme.$syrios-color-183848, 0.7);
+      font-size: 1.45rem;
+      line-height: 1.45;
+    }
+
+    a {
+      align-self: flex-start;
+      color: default-theme.$syrios-color-183848;
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-underline-offset: 0.4rem;
+    }
+  }
+
+  .coin-detective__sources {
+    display: grid;
+    grid-template-columns: minmax(24rem, 0.55fr) minmax(0, 1.45fr);
+    gap: 3rem;
+    padding: clamp(3.5rem, 5vw, 6.5rem);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.14);
+    background: rgba(default-theme.$syrios-color-b8ccd8, 0.28);
+
+    > div > span {
+      color: default-theme.$syrios-color-a86818;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0.7rem 0 0;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: 3.2rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    dl {
+      margin: 0;
+
+      div {
+        display: grid;
+        grid-template-columns: 14rem 1fr;
+        gap: 1.5rem;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.16);
+      }
+
+      dt {
+        color: default-theme.$syrios-color-737271;
+        font-size: 1.35rem;
+      }
+
+      dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+        font-size: 1.5rem;
+      }
+
+      a {
+        color: default-theme.$syrios-color-183848;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .coin-detective__comparison-invite {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: clamp(3.5rem, 5vw, 6.5rem);
+    border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.14);
+    background: default-theme.$syrios-color-f0e0c0;
+
+    span {
+      color: default-theme.$syrios-color-a86818;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0.5rem 0;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: 3rem;
+      font-weight: 500;
+    }
+
+    p {
+      max-width: 75rem;
+      margin: 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.7);
+      font-size: 1.45rem;
+    }
+
+    button {
+      flex: 0 0 auto;
+    }
+  }
+
+  .coin-detective__comparison-coins {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2.8rem;
+
+    .coin-detective__viewer {
+      min-height: 40rem;
+    }
+  }
+
+  .coin-detective__viewer--compact {
+    padding: 2.2rem;
+
+    .coin-detective__viewer-heading {
+      margin-bottom: 1rem;
+    }
+
+    .coin-detective__image-stage {
+      width: min(100%, 29rem);
+    }
+
+    .coin-detective__face-switcher {
+      width: min(100%, 28rem);
+      margin-top: 1rem;
+    }
+  }
+
+  .coin-detective__versus {
+    color: default-theme.$syrios-color-a86818;
+    font-family: default-theme.$syrios-garamond-premier-pro-display;
+    font-size: 2.2rem;
+    font-style: italic;
+  }
+
+  .coin-detective__comparison-table {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+    border-left: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+  }
+
+  .coin-detective__comparison-row {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.55fr) repeat(2, minmax(0, 1fr));
+
+    > * {
+      min-width: 0;
+      padding: 1.15rem 1.4rem;
+      overflow-wrap: anywhere;
+      border-right: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+      border-bottom: 1px solid rgba(default-theme.$syrios-color-183848, 0.18);
+      font-size: 1.4rem;
+    }
+
+    &.is-different {
+      background: rgba(default-theme.$syrios-color-f8e8b8, 0.42);
+    }
+  }
+
+  .coin-detective__comparison-row--header {
+    background: default-theme.$syrios-color-183848;
+    color: default-theme.$syrios-color-ffffff;
+    font-weight: 700;
+  }
+
+  .coin-detective__comparison-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    margin-top: 1.7rem;
+
+    a {
+      color: default-theme.$syrios-color-183848;
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-underline-offset: 0.4rem;
+    }
+  }
+
+  .coin-detective__finish-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    padding: clamp(3rem, 4vw, 5rem);
+  }
+
+  .coin-detective__loading,
+  .coin-detective__error {
+    position: relative;
+    display: flex;
+    width: min(100%, 1120px);
+    min-height: 72vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding: clamp(3rem, 7vw, 8rem);
+    overflow: hidden;
+    border: 1px solid rgba(default-theme.$syrios-color-a86818, 0.4);
+    background:
+      radial-gradient(circle at 50% 35%, rgba(default-theme.$syrios-color-f8e8b8, 0.82), transparent 28rem),
+      linear-gradient(145deg, default-theme.$syrios-color-b8ccd8, default-theme.$syrios-color-f0e0c0 62%, default-theme.$syrios-color-f4f2f0);
+    color: default-theme.$syrios-color-183848;
+    text-align: center;
+
+    &::before {
+      position: absolute;
+      inset: 1.2rem;
+      border: 1px dashed rgba(default-theme.$syrios-color-a86818, 0.35);
+      content: '';
+      pointer-events: none;
+    }
+
+    h1 {
+      position: relative;
+      max-width: 80rem;
+      margin: 1rem 0;
+      font-family: default-theme.$syrios-garamond-premier-pro-display;
+      font-size: clamp(4rem, 7vw, 7.5rem);
+      font-weight: 400;
+      line-height: 0.95;
+    }
+
+    p {
+      position: relative;
+      max-width: 65rem;
+      margin: 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.72);
+      font-size: 1.7rem;
+      line-height: 1.5;
+    }
+
+    button {
+      position: relative;
+      margin-top: 2.5rem;
+    }
+  }
+
+  .coin-detective__loading-art {
+    position: relative;
+    width: 18rem;
+    height: 18rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .coin-detective__loading-coin {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 12rem;
+    height: 12rem;
+    border: 0.5rem double rgba(default-theme.$syrios-color-a86818, 0.68);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 43% 37%, rgba(default-theme.$syrios-color-ffffff, 0.7), transparent 1.2rem),
+      radial-gradient(circle, default-theme.$syrios-color-e8c078, default-theme.$syrios-color-a86818);
+    box-shadow: 0 1.4rem 3rem rgba(default-theme.$syrios-color-183848, 0.2);
+    animation: coin-detective-pulse 2s ease-in-out infinite alternate;
+  }
+
+  .coin-detective__loading-lens {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 9rem;
+    height: 9rem;
+    border: 0.9rem solid default-theme.$syrios-color-183848;
+    border-radius: 50%;
+    background: rgba(default-theme.$syrios-color-b8ccd8, 0.3);
+    box-shadow: inset 0 0 0 0.3rem rgba(default-theme.$syrios-color-ffffff, 0.5);
+
+    &::after {
+      position: absolute;
+      right: -4.7rem;
+      bottom: -3.3rem;
+      width: 6.2rem;
+      height: 1.2rem;
+      border-radius: 99rem;
+      background: default-theme.$syrios-color-183848;
+      content: '';
+      transform: rotate(45deg);
+      transform-origin: left center;
+    }
+  }
+
+  @keyframes coin-detective-pulse {
+    from {
+      transform: rotate(-4deg) scale(0.97);
+    }
+    to {
+      transform: rotate(4deg) scale(1.03);
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  #coin-detective {
+    .coin-detective__welcome {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__welcome-copy {
+      text-align: center;
+
+      .coin-detective__lede,
+      .coin-detective__principle {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+
+    .coin-detective__stage,
+    .coin-detective__reveal-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__viewer {
+      min-height: 58rem;
+    }
+
+    .coin-detective__image-stage {
+      width: min(100%, 42rem);
+    }
+
+    .coin-detective__catalog-layout,
+    .coin-detective__sources {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__context-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__context-card {
+      min-height: 0;
+    }
+
+    .coin-detective__comparison-invite {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  #coin-detective {
+    padding: 2rem 0 6rem;
+
+    .coin-detective__shell {
+      border-right: 0;
+      border-left: 0;
+      box-shadow: none;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .coin-detective__welcome {
+      gap: 2rem;
+      padding: 3rem 1.6rem;
+    }
+
+    .coin-detective__welcome-copy h1 {
+      font-size: clamp(5.4rem, 20vw, 8rem);
+    }
+
+    .coin-detective__mode-panel {
+      padding: 1.5rem;
+    }
+
+    .coin-detective__mode {
+      grid-template-columns: 1fr;
+
+      small {
+        grid-row: auto;
+        grid-column: 1;
+        max-width: none;
+        text-align: left;
+      }
+    }
+
+    .coin-detective__how-it-works {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__case-header {
+      grid-template-columns: auto 1fr auto;
+      gap: 0.8rem;
+      padding: 1.2rem 1.4rem;
+
+      > div span {
+        display: none;
+      }
+
+      > div strong {
+        font-size: 1.65rem;
+        text-align: center;
+      }
+
+      .coin-detective__text-button,
+      .coin-detective__back-link {
+        min-width: 4.4rem;
+        font-size: 0;
+      }
+
+      .coin-detective__back-link::before {
+        font-size: 2.2rem;
+        content: '\2190';
+      }
+
+      .coin-detective__text-button::before {
+        font-size: 1.4rem;
+        content: 'Close';
+      }
+    }
+
+    .coin-detective__progress {
+      padding: 1.4rem 1rem;
+
+      li {
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 1.2rem;
+
+        &::after {
+          left: calc(50% + 2.4rem);
+          width: calc(100% - 4.8rem);
+        }
+      }
+    }
+
+    .coin-detective__viewer {
+      min-height: 50rem;
+      padding: 2rem 1.6rem;
+    }
+
+    .coin-detective__viewer-heading {
+      margin-bottom: 1rem;
+
+      .coin-detective__text-button {
+        font-size: 1.3rem;
+        white-space: nowrap;
+      }
+    }
+
+    .coin-detective__image-stage {
+      width: min(100%, 34rem);
+    }
+
+    .coin-detective__workspace {
+      padding: 3.4rem 1.7rem;
+    }
+
+    .coin-detective__workspace h2,
+    .coin-detective__question legend {
+      font-size: clamp(3.4rem, 11vw, 4.6rem);
+    }
+
+    .coin-detective__choices,
+    .coin-detective__evidence-grid,
+    .coin-detective__metadata {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__stage-actions--split,
+    .coin-detective__reveal-actions,
+    .coin-detective__finish-actions {
+      align-items: stretch;
+      flex-direction: column-reverse;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    .coin-detective__evidence,
+    .coin-detective__catalog-evidence,
+    .coin-detective__context,
+    .coin-detective__comparison,
+    .coin-detective__sources,
+    .coin-detective__comparison-invite {
+      padding: 3.5rem 1.7rem;
+    }
+
+    .coin-detective__field-notes {
+      padding: 3rem 1.7rem;
+    }
+
+    .coin-detective__comparison-coins {
+      grid-template-columns: 1fr;
+    }
+
+    .coin-detective__versus {
+      text-align: center;
+    }
+
+    .coin-detective__comparison-row {
+      grid-template-columns: minmax(9rem, 0.6fr) repeat(2, minmax(0, 1fr));
+
+      > * {
+        padding: 0.9rem 0.7rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    .coin-detective__comparison-links {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .coin-detective__sources dl div {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .coin-detective__loading,
+    .coin-detective__error {
+      min-height: 80vh;
+      border-right: 0;
+      border-left: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #coin-detective {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@media print {
+  #navbar,
+  footer,
+  #coin-detective .coin-detective__case-header,
+  #coin-detective .coin-detective__progress,
+  #coin-detective .coin-detective__reveal-actions,
+  #coin-detective .coin-detective__finish-actions,
+  #coin-detective .coin-detective__comparison-invite,
+  #coin-detective .coin-detective__face-switcher,
+  #coin-detective .coin-detective__text-button {
+    display: none !important;
+  }
+
+  #coin-detective {
+    padding: 0;
+
+    .coin-detective__shell {
+      width: 100%;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .coin-detective__reveal-hero,
+    .coin-detective__stage {
+      grid-template-columns: 1fr 1fr;
+      min-height: 0;
+    }
+
+    .coin-detective__viewer {
+      min-height: 34rem;
+      print-color-adjust: exact;
+    }
+
+    .coin-detective__image-stage {
+      width: 26rem;
+    }
+
+    .coin-detective__workspace,
+    .coin-detective__evidence,
+    .coin-detective__catalog-evidence,
+    .coin-detective__context,
+    .coin-detective__sources,
+    .coin-detective__comparison {
+      padding: 2rem;
+    }
+
+    .coin-detective__context-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
