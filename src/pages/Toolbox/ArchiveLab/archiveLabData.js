@@ -294,9 +294,9 @@ export const buildArchiveSample = (
       sampleSize: sample.length,
       sampleIds: sample.map(identity),
       sampledAt: cleanText(options.sampledAt),
-      filterLabel: 'Entire fetched catalog; no completeness exclusions',
-      filterRule: 'Records remain eligible when focus fields, images, or citations are incomplete.',
-      orderingRule: 'Saved record IDs stay frozen in order; missing IDs are filled by a stable FNV-1a hash of seed, inquiry, and catalog record ID.',
+      filterLabel: 'All catalog records, including those with missing information',
+      filterRule: 'A coin stays in the sample even when some details, images, or source information are missing. Missing information is part of what you are studying.',
+      orderingRule: 'After the sample is created, the same coins stay in the same order. If a saved coin is no longer available, the lab uses the same repeatable rule to choose a replacement, so refreshing the page does not quietly change your evidence.',
     },
   };
 };

@@ -172,8 +172,8 @@ describe('reproducible sampling', () => {
     const sample = buildArchiveSample(records, 'authority-research');
     expect(sample.records).toHaveLength(ARCHIVE_SAMPLE_SIZE);
     expect(sample.metadata.populationSize).toBe(40);
-    expect(sample.metadata.filterRule).toMatch(/remain eligible/i);
-    expect(sample.metadata.orderingRule).toMatch(/hash/i);
+    expect(sample.metadata.filterRule).toMatch(/stays in the sample/i);
+    expect(sample.metadata.orderingRule).toMatch(/repeatable rule/i);
   });
 
   it('is deterministic for the same seed and inquiry', () => {

@@ -224,20 +224,20 @@ function SampleStage({ sample, matrix, inquiry, usability, onBack, onContinue, h
   return (
     <section className='archive-lab__stage' aria-labelledby='archive-sample-heading'>
       <header className='archive-lab__stage-heading'>
-        <p className='archive-lab__eyebrow'>2 · Inspect the sampling frame</p>
-        <h2 id='archive-sample-heading' ref={headingRef} tabIndex='-1'>A reproducible sample with its gaps intact</h2>
-        <p>These are catalog observations. Counts describe this sample only; they do not estimate ancient minting, survival, circulation, or importance.</p>
+        <p className='archive-lab__eyebrow'>2 · Review the records chosen for your sample</p>
+        <h2 id='archive-sample-heading' ref={headingRef} tabIndex='-1'>A sample that keeps missing information visible</h2>
+        <p>These counts describe only the coins selected from this catalog. They do not tell us how many coins were originally made, how many survived, how widely they traveled, or how important they were in the ancient world.</p>
       </header>
 
       <dl className='archive-lab__sample-meta'>
-        <div><dt>Sample</dt><dd>{sample.metadata.sampleSize} / {sample.metadata.populationSize}</dd></div>
-        <div><dt>Seed</dt><dd>{sample.metadata.seed}</dd></div>
-        <div><dt>Filter</dt><dd>{sample.metadata.filterLabel}</dd></div>
-        <div><dt>Order</dt><dd>Stable ID hash</dd></div>
+        <div><dt>Records selected</dt><dd>{sample.metadata.sampleSize} of {sample.metadata.populationSize}</dd></div>
+        <div><dt>Sample code</dt><dd>{sample.metadata.seed}</dd></div>
+        <div><dt>Records considered</dt><dd>{sample.metadata.filterLabel}</dd></div>
+        <div><dt>Record order</dt><dd>Kept the same each time</dd></div>
       </dl>
 
       <div className='archive-lab__guardrail' role='note'>
-        <strong>Integrity guardrail</strong>
+        <strong>How your sample stays consistent</strong>
         <p>{sample.metadata.filterRule} {sample.metadata.orderingRule}</p>
       </div>
 
