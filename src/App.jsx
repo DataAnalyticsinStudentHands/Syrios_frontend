@@ -58,6 +58,7 @@ import "./style/styles.scss";
 
 import background from "./assets/background.jpg";
 import logo from "./assets/logoWhiteText.svg";
+import LoadingPage from "./components/loadingPage/LoadingPage";
 
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs/AboutUs";
@@ -141,7 +142,7 @@ function AppRoutes() {
         <Route
           path="/Toolbox/CoinCurator"
           element={(
-            <React.Suspense fallback={null}>
+            <React.Suspense fallback={<LoadingPage variant='coin-curator' />}>
               <CoinCurator />
             </React.Suspense>
           )}

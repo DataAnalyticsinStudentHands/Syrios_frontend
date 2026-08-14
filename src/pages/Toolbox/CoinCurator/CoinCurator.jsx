@@ -983,7 +983,7 @@ const CoinCurator = () => {
     setAnnouncement('Local exhibition draft cleared.');
   };
 
-  if (status === 'loading') return <div id='coin-curator' aria-busy='true'><LoadingPage /></div>;
+  if (status === 'loading') return <div id='coin-curator'><LoadingPage variant='coin-curator' /></div>;
   if (status === 'error' || status === 'empty') return <LoadFailure kind={status} onRetry={() => setLoadAttempt((value) => value + 1)} />;
 
   return (

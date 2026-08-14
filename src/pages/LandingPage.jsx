@@ -103,7 +103,7 @@ function LandingPage() {
     fetchData();
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='home' />;
 
   return (
     <>
