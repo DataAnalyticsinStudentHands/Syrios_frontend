@@ -88,6 +88,7 @@ import AutoScrollToTop from "./utils/ScrollToTop";
 
 const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
 const CoinDetective = React.lazy(() => import("./pages/Toolbox/CoinDetective/CoinDetective"));
+const CoinCurator = React.lazy(() => import("./pages/Toolbox/CoinCurator/CoinCurator"));
 
 /**
  * ----------------------------------------
@@ -133,6 +134,14 @@ function AppRoutes() {
           element={(
             <React.Suspense fallback={null}>
               <CoinDetective />
+            </React.Suspense>
+          )}
+        />
+        <Route
+          path="/Toolbox/CoinCurator"
+          element={(
+            <React.Suspense fallback={null}>
+              <CoinCurator />
             </React.Suspense>
           )}
         />
@@ -239,6 +248,9 @@ function AppShell({ basename }) {
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/Toolbox/CoinDetective" className="navbar-text">
                     Coin Detective
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Toolbox/CoinCurator" className="navbar-text">
+                    Coin Curator
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/Toolbox/Coin3D" className="navbar-text">
                     Coin in 3D
