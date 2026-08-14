@@ -151,7 +151,6 @@ useEffect(() => {
                     <em dangerouslySetInnerHTML={createMarkup(s.detail)}/>
                   )}
                   <p>{s.role}</p>
-                  {s.affiliation ? <p className='aboutTable-student_leads__affiliation'>{s.affiliation}</p> : null}
                 </Col>
               </Row>
             ))

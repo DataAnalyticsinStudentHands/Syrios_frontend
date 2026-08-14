@@ -14,7 +14,6 @@ describe('About page team overrides', () => {
       name: 'Allen Martin',
       detail: 'Full Stack Developer, 2026 - Current',
       role: 'BS in Computer Science, University of Houston',
-      affiliation: 'Founder, Ronin Kinetic eSports',
     }));
     expect(leads[1].name).toBe('Existing Lead');
   });
