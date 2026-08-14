@@ -11,7 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import aboutUsRequest from 'src/api/about-us';
-import allenMartinPortrait from 'src/assets/pages/AboutUs/allen-martin.jpg';
+import allenMartinPortrait from 'src/assets/pages/AboutUs/allen-martin-pencil.jpg';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import { buildStudentCollaborators, buildStudentLeads } from './aboutUsTeamData';
 
@@ -119,7 +119,7 @@ useEffect(() => {
           {currentTab === "Student Leads" && (
             studentLeads.map(s=>(
               <Row
-                className={'aboutTable-student_leads d-flex justify-content-around' + (s.isLocalProfile ? ' aboutTable-student_leads--featured' : '')}
+                className='aboutTable-student_leads d-flex justify-content-around'
                 key={s.id}
               >
                 <Col xs={3} className='aboutTable-student_leads__portrait'>
@@ -128,7 +128,7 @@ useEffect(() => {
                       src={s.isLocalProfile ? allenMartinPortrait : `${baseURL}${s.picture.data.attributes.url}`}
                       alt={s.isLocalProfile ? 'Allen Martin' : (s.picture?.data?.attributes?.alternativeText || s.name || '')}
                       width="100%"
-                      className={'aboutus-avatar' + (s.isLocalProfile ? ' aboutus-avatar--portrait' : '')}
+                      className='aboutus-avatar'
                       loading='lazy'
                       decoding='async'
                     />

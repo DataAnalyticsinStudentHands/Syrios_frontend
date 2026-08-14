@@ -33,14 +33,6 @@
   // width: 100%;
 
 }
-.aboutus-avatar--portrait {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: center 47%;
-  box-shadow: 0 0.65rem 1.6rem rgba(24, 56, 72, 0.16);
-}
 .aboutus-avatar--placeholder {
   display: grid;
   width: 100%;
@@ -119,12 +111,6 @@
   padding: .5em;
   display: flex;
   align-items: center;
-}
-.aboutTable-student_leads--featured {
-  margin-bottom: 1em;
-  border-left: 0.25rem solid #a86818;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 0.5rem 1.5rem rgba(24, 56, 72, 0.09);
 }
 .aboutTable-student_leads__portrait {
   display: flex;
