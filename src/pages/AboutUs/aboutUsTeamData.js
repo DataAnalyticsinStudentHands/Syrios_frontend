@@ -4,7 +4,7 @@ export const ALLEN_MARTIN_LEAD = Object.freeze({
   id: 'allen-martin-local',
   name: 'Allen Martin',
   detail: 'Full Stack Developer, 2026 - Current',
-  role: 'BS in Computer Science',
+  role: 'BS in Computer Science, University of Houston',
   affiliation: 'Founder, Ronin Kinetic eSports',
   isLocalProfile: true,
 });
