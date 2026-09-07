@@ -87,6 +87,7 @@ import FooterWrapper from "./components/footerv2/Footer2Wrapper";
 import AutoScrollToTop from "./utils/ScrollToTop";
 
 const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
+const CoinDetective = React.lazy(() => import("./pages/Toolbox/CoinDetective/CoinDetective"));
 
 /**
  * ----------------------------------------
@@ -127,6 +128,14 @@ function AppRoutes() {
         <Route path="/Evidence/Download" element={<Download />} />
 
         {/* Toolbox routes */}
+        <Route
+          path="/Toolbox/CoinDetective"
+          element={(
+            <React.Suspense fallback={null}>
+              <CoinDetective />
+            </React.Suspense>
+          )}
+        />
         <Route path="/Toolbox/VideoLibrary" element={<VideoLibrary />} />
         <Route path="/Toolbox/Research" element={<Research />} />
         <Route path="/Toolbox/Coin3D" element={<Coin3D />} />
@@ -227,6 +236,9 @@ function AppShell({ basename }) {
                   <NavDropdown.Divider />
                   <NavDropdown.Item as={Link} to="/HowToReadACoin" className="navbar-text">
                     How to Read a Coin
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Toolbox/CoinDetective" className="navbar-text">
+                    Coin Detective
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/Toolbox/Coin3D" className="navbar-text">
                     Coin in 3D
