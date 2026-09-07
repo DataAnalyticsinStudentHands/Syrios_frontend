@@ -1,6 +1,6 @@
-@import '../0-base/_base-dir.scss';
-@import '../1-themes/_themes-dir.scss';
-@import '../2-foundations/_foundations-dir.scss';
+@use '../0-base/_base-dir.scss';
+@use '../1-themes/_themes-dir.scss';
+@use '../2-foundations/_foundations-dir.scss';
 
 // .syrios-checkbox-container {
 //   display: flex;

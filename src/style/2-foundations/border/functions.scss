@@ -1,14 +1,18 @@
+@use "sass:map";
+@use "sass:meta";
+@use "syrios-border";
+
 /// Returns the border-weight value for a given variant.
 ///
 /// @param {String} $variant - The key for the given variant.
 /// @return {Number} The spacing for the variant (in milliseconds).
 
 @function syrios-border-weight($variant: thin) {
-  $fetched-value: map-get($syrios-border-weight-data, $variant);
+  $fetched-value: map.get(syrios-border.$syrios-border-weight-data, $variant);
 
-  @if type-of($fetched-value) == number {
+  @if meta.type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
-    @error 'border-weight variant `#{$variant}` not found. Available variants: #{$syrios-border-weight-data}';
+    @error 'border-weight variant `#{$variant}` not found. Available variants: #{syrios-border.$syrios-border-weight-data}';
   }
 }

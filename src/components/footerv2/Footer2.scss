@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 #footer2{
     background: #183848;
     padding: 5% 10%;
@@ -12,7 +14,7 @@
     }
 
     #footer2-head{
-        font-family: $syrios-font-family-garamond-premier-pro;
+        font-family: default-theme.$syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 700;
         font-size: 40px;
@@ -30,7 +32,7 @@
 
         background: transparent;
 
-        font-family: $syrios-font-family-garamond-premier-pro;
+        font-family: default-theme.$syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 500;
         font-size: 26px;
@@ -47,7 +49,7 @@
     .footer2-link{
         flex: 0 0 25%;
 
-        font-family: $syrios-font-family-garamond-premier-pro;
+        font-family: default-theme.$syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 700;
         font-size: 24px;
@@ -66,7 +68,7 @@
         margin-top: 5%;
         width: 62.5%;
 
-        font-family: $syrios-font-family-garamond-premier-pro;
+        font-family: default-theme.$syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 700;
         font-size: 22px;
@@ -76,7 +78,7 @@
     }
 
     #footer2-licensed{
-        font-family: $syrios-font-family-garamond-premier-pro;
+        font-family: default-theme.$syrios-font-family-garamond-premier-pro;
         font-style: normal;
         font-weight: 400;
         font-size: 24px;
@@ -138,3 +140,119 @@
       }
 }
 
+#footer2 {
+    .footer2-signup {
+        width: 62.5%;
+    }
+
+    .footer2-nav-wrap {
+        margin-top: 12.5%;
+    }
+
+    .footer2-license {
+        margin-top: 30%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    #footer2 {
+        padding: 6rem 4rem;
+
+        #footer2-Container {
+            gap: 4rem;
+        }
+
+        .footer2-signup,
+        #footer2-syrios {
+            width: 100%;
+        }
+
+        #footer2-logo {
+            width: min(75%, 320px);
+        }
+
+        #footer2-links {
+            gap: 2rem;
+        }
+
+        .footer2-link {
+            flex: 1 1 0;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    #footer2 {
+        padding: 5rem 2.5rem;
+
+        #footer2-Container {
+            display: block;
+        }
+
+        .split-half + .split-half {
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+            margin-top: 5rem;
+            padding-top: 4rem;
+        }
+
+        #footer2-head {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem !important;
+        }
+
+        .footer2-signup {
+            margin-bottom: 3rem !important;
+            margin-top: 3rem !important;
+        }
+
+        #footer2-email {
+            font-size: 2rem;
+            height: 48px;
+            min-width: 0;
+            width: 100%;
+        }
+
+        #footer2-syrios {
+            font-size: 2.25rem;
+            line-height: 1.45;
+        }
+
+        #footer2-logo {
+            margin-top: 2.5rem;
+            width: min(80%, 280px);
+        }
+
+        .footer2-nav-wrap,
+        .footer2-license {
+            margin-top: 0;
+        }
+
+        #footer2-links {
+            align-items: stretch;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .footer2-link {
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            display: flex;
+            font-size: 2.5rem;
+            justify-content: flex-start;
+            min-height: 48px;
+            text-align: left;
+        }
+
+        #footer2-licensed {
+            font-size: 2rem;
+            line-height: 1.45;
+            margin-top: 4rem;
+            text-align: left;
+        }
+
+        .input-addon {
+            width: 100%;
+        }
+    }
+}

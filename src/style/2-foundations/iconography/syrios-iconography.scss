@@ -1,12 +1,14 @@
-@import '../../0-base/_base-dir.scss';
-@import '../../1-themes/_themes-dir.scss';
+@use '../../0-base/_base-dir.scss';
+@use '../../1-themes/_themes-dir.scss';
+@use "../space/functions";
 
-$syrios-icon-xsmall: syrios-space(space-12);
-$syrios-icon-small: syrios-space(space-16);
-$syrios-icon-medium: syrios-space(space-24);
-$syrios-icon-large: syrios-space(space-32);
-$syrios-icon-xlarge: syrios-space(space-40);
-$syrios-icon-xxlarge: syrios-space(space-48);
+
+$syrios-icon-xsmall: functions.syrios-space(space-12);
+$syrios-icon-small: functions.syrios-space(space-16);
+$syrios-icon-medium: functions.syrios-space(space-24);
+$syrios-icon-large: functions.syrios-space(space-32);
+$syrios-icon-xlarge: functions.syrios-space(space-40);
+$syrios-icon-xxlarge: functions.syrios-space(space-48);
 
 $syrios-iconography-size: (
   xsmall: $syrios-icon-xsmall,

@@ -93,3 +93,42 @@
     }
 
 }
+@media (max-width: 767.98px) {
+  .search {
+    .tag-content {
+      font-size: 2rem;
+
+      ul {
+        margin: 1rem 0;
+        padding: 0.75rem;
+
+        li {
+          margin: 0.5rem;
+          padding: 0.75rem 1rem;
+        }
+
+        input {
+          flex-basis: 100%;
+          font-size: 2rem;
+          margin: 0.5rem;
+          min-height: 48px;
+          min-width: 0;
+          padding: 1rem;
+        }
+      }
+    }
+
+    .tag-options {
+      font-size: 2rem;
+
+      ul {
+        margin: 1rem 0;
+
+        li {
+          min-height: 44px;
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@use "../../../style/1-themes/default-theme";
+
 // ********************** TUTORIAL TEXT CSS ********************** //
 #coin-sort-main-text-wrapper {
   position: relative;
@@ -19,18 +21,18 @@
 }
 
 #coin-sort-main-text-title {
-  font-family: $syrios-garamond-premier-pro-display;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-light;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-light;
   font-size: 4em;
   color: #1a3847;
 }
 
 #coin-sort-main-text ol li {
-  font-family: $syrios-garamond-premier-pro-display;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-light;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-light;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color:#696969;
   font-size: 2em;
 }
@@ -45,10 +47,10 @@
   margin: -20px 0px 0px 0px;
 
   font-size: 1.8em;
-  font-family: $syrios-garamond-premier-pro-display;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-medium;
-  line-height: $syrios-line-spacing-30;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-medium;
+  line-height: default-theme.$syrios-line-spacing-30;
 }
 
 .coin-sort-tool-tips-title {
@@ -86,18 +88,18 @@
 }
 
 #coin-sort-main-text-title {
-  font-family: $syrios-garamond-premier-pro-display;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-light;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-light;
   font-size: 4em;
   color: #1a3847;
 }
 
 #coin-sort-main-text ol li {
-  font-family: $syrios-garamond-premier-pro-display;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-light;
-  letter-spacing: $syrios-character-spacing-0;
+  font-family: default-theme.$syrios-garamond-premier-pro-display;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-light;
+  letter-spacing: default-theme.$syrios-character-spacing-0;
   color:#696969;
   font-size: 2em;
 }

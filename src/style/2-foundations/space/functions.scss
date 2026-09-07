@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "sass:meta";
+@use "syrios-space";
+
 
 /// Returns the spacing value for a given variant.
 ///
@@ -5,12 +9,12 @@
 /// @return {Number} The spacing for the variant in px.
 
 @function syrios-space($space: $space-08) {
-  $fetched-value: map-get($syrios-spacing-data, $space);
+  $fetched-value: map.get(syrios-space.$syrios-spacing-data, $space);
 
-  @if type-of($fetched-value) == number {
+  @if meta.type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
-    @error 'Spacing variant `#{$space}` not found. Available variants: #{$syrios-spacing-data}';
+    @error 'Spacing variant `#{$space}` not found. Available variants: #{syrios-space.$syrios-spacing-data}';
   }
 }
 
@@ -22,10 +26,10 @@
 
 
 @function syrios-container-inset($type: m, $space: default) {
-  $fetched-space: map-get(map-get($syrios-container-inset, $type), $space);
+  $fetched-space: map.get(map.get(syrios-space.$syrios-container-inset, $type), $space);
 
-  @if map-has-key($syrios-container-inset, $fetched-space) {
-    $fetched-space: map-get(map-get($syrios-container-inset, $fetched-space), $space);
+  @if map.has-key(syrios-space.$syrios-container-inset, $fetched-space) {
+    $fetched-space: map.get(map.get(syrios-space.$syrios-container-inset, $fetched-space), $space);
   }
 
   @return $fetched-space;

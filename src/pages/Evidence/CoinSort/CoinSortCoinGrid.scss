@@ -1,3 +1,5 @@
+@use "../../../style/1-themes/default-theme";
+
 #coin-sort-drag-coin-box-outer-div {
   position: relative;
   margin-top: 2em;
@@ -38,9 +40,9 @@
 }
 
 .coin-sort-drag-coin-box-text {
-  font-family: $syrios-garamond-premier-pro;
-  font-style: $syrios-font-style-normal;
-  font-weight: $syrios-font-weight-regular;
+  font-family: default-theme.$syrios-garamond-premier-pro;
+  font-style: default-theme.$syrios-font-style-normal;
+  font-weight: default-theme.$syrios-font-weight-regular;
   font-size: 1.4em;
 
   text-align: center;

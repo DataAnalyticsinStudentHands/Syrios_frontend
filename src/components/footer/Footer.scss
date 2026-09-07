@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 
 #footer {
   position: fixed;
@@ -80,22 +82,22 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
   
-    font-family: $syrios-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-regular;
-    font-size: $syrios-font-size-20;
-    letter-spacing: $syrios-character-spacing-0;
+    font-family: default-theme.$syrios-garamond-premier-pro;
+    font-style: default-theme.$syrios-font-style-normal;
+    font-weight: default-theme.$syrios-font-weight-regular;
+    font-size: default-theme.$syrios-font-size-20;
+    letter-spacing: default-theme.$syrios-character-spacing-0;
   }
   
   .credits-and-references-list-items p {
-    font-family: $syrios-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-regular;
-    font-size: $syrios-font-size-24;
-    line-height: $syrios-line-spacing-30;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
-    font-size: $syrios-font-size-16;
+    font-family: default-theme.$syrios-garamond-premier-pro;
+    font-style: default-theme.$syrios-font-style-normal;
+    font-weight: default-theme.$syrios-font-weight-regular;
+    font-size: default-theme.$syrios-font-size-24;
+    line-height: default-theme.$syrios-line-spacing-30;
+    letter-spacing: default-theme.$syrios-character-spacing-0;
+    color: default-theme.$syrios-color-183848;
+    font-size: default-theme.$syrios-font-size-16;
   }
   
   .credits-and-references-list-items p a {
@@ -106,13 +108,13 @@
     word-wrap: break-word;
     transition: 0.3s;
    
-    font-family: $syrios-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-regular;
+    font-family: default-theme.$syrios-garamond-premier-pro;
+    font-style: default-theme.$syrios-font-style-normal;
+    font-weight: default-theme.$syrios-font-weight-regular;
     font-size: 16px;
-    line-height: $syrios-line-spacing-30;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
+    line-height: default-theme.$syrios-line-spacing-30;
+    letter-spacing: default-theme.$syrios-character-spacing-0;
+    color: default-theme.$syrios-color-183848;
   }
   
   .credits-and-references-list-items p a:hover {
@@ -153,13 +155,13 @@
     margin-left: 2em;
     font-size: 0.8em;
    
-    font-family: $syrios-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-regular;
-    font-size: $syrios-font-size-24;
-    line-height: $syrios-line-spacing-30;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
+    font-family: default-theme.$syrios-garamond-premier-pro;
+    font-style: default-theme.$syrios-font-style-normal;
+    font-weight: default-theme.$syrios-font-weight-regular;
+    font-size: default-theme.$syrios-font-size-24;
+    line-height: default-theme.$syrios-line-spacing-30;
+    letter-spacing: default-theme.$syrios-character-spacing-0;
+    color: default-theme.$syrios-color-183848;
   }
   
   .credits-and-references-list-item::before {
@@ -169,13 +171,13 @@
     width: 2em;
     margin-left: -2em;
     
-    font-family: $syrios-garamond-premier-pro;
-    font-style: $syrios-font-style-normal;
-    font-weight: $syrios-font-weight-regular;
-    font-size: $syrios-font-size-24;
-    line-height: $syrios-line-spacing-30;
-    letter-spacing: $syrios-character-spacing-0;
-    color: $syrios-color-183848;
+    font-family: default-theme.$syrios-garamond-premier-pro;
+    font-style: default-theme.$syrios-font-style-normal;
+    font-weight: default-theme.$syrios-font-weight-regular;
+    font-size: default-theme.$syrios-font-size-24;
+    line-height: default-theme.$syrios-line-spacing-30;
+    letter-spacing: default-theme.$syrios-character-spacing-0;
+    color: default-theme.$syrios-color-183848;
   }
   
   .credits-and-references-list-item-href {
@@ -201,7 +203,7 @@
     font-size: 32px;
     margin-top:20px;
 
-    font-family: $syrios-font-family-syrios-entypo-subset;
+    font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
     color: #FFFFFF;
   }
 }

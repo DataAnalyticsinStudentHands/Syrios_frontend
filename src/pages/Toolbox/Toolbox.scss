@@ -1,3 +1,5 @@
+@use "../../style/1-themes/default-theme";
+
 #tool-box{
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -10,7 +12,7 @@
       border-style: double;
       border-color:#7899a8;
       border-radius: 50%;
-      font-family: $syrios-font-family-syrios-entypo-subset;
+      font-family: default-theme.$syrios-font-family-syrios-entypo-subset;
       color: rgba(255,255,255,1);
       background-color: #7899a8;
     }

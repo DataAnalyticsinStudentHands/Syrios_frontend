@@ -2,4 +2,21 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+  }@media (max-width: 991.98px) {
+  .list {
+    gap: 2rem;
   }
+}
+
+@media (max-width: 767.98px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 479.98px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,22 +1,24 @@
-@import '../../0-base/_base-dir.scss';
-@import '../../1-themes/_themes-dir.scss';
+@use '../../0-base/_base-dir.scss';
+@use '../../1-themes/_themes-dir.scss';
+@use "../../0-base/base-utility-functions";
 
-$syrios-space-01:  syrios-rem(1px); // 1px
-$syrios-space-02:  syrios-rem(2px); // 2px
-$syrios-space-04:  syrios-rem(4px); // 4px
-$syrios-space-08:  syrios-rem(8px); // 8px
-$syrios-space-12:  syrios-rem(12px); // 12px
-$syrios-space-16:  syrios-rem(16px); // 16px
-$syrios-space-20:  syrios-rem(20px); // 20px
-$syrios-space-24:  syrios-rem(24px); // 24px
-$syrios-space-32:  syrios-rem(32px); // 32px
-$syrios-space-40:  syrios-rem(40px); // 40px
-$syrios-space-48:  syrios-rem(48px); // 48px
-$syrios-space-64:  syrios-rem(64px);  // 64px
-$syrios-space-80:  syrios-rem(80px);  // 80px
-$syrios-space-96:  syrios-rem(96px);  // 96px
-$syrios-space-128: syrios-rem(128px); // 128px
-$syrios-space-160: syrios-rem(160px); // 160px
+
+$syrios-space-01:  base-utility-functions.syrios-rem(1px); // 1px
+$syrios-space-02:  base-utility-functions.syrios-rem(2px); // 2px
+$syrios-space-04:  base-utility-functions.syrios-rem(4px); // 4px
+$syrios-space-08:  base-utility-functions.syrios-rem(8px); // 8px
+$syrios-space-12:  base-utility-functions.syrios-rem(12px); // 12px
+$syrios-space-16:  base-utility-functions.syrios-rem(16px); // 16px
+$syrios-space-20:  base-utility-functions.syrios-rem(20px); // 20px
+$syrios-space-24:  base-utility-functions.syrios-rem(24px); // 24px
+$syrios-space-32:  base-utility-functions.syrios-rem(32px); // 32px
+$syrios-space-40:  base-utility-functions.syrios-rem(40px); // 40px
+$syrios-space-48:  base-utility-functions.syrios-rem(48px); // 48px
+$syrios-space-64:  base-utility-functions.syrios-rem(64px);  // 64px
+$syrios-space-80:  base-utility-functions.syrios-rem(80px);  // 80px
+$syrios-space-96:  base-utility-functions.syrios-rem(96px);  // 96px
+$syrios-space-128: base-utility-functions.syrios-rem(128px); // 128px
+$syrios-space-160: base-utility-functions.syrios-rem(160px); // 160px
 
 $syrios-spacing-data: (
   none: 0,

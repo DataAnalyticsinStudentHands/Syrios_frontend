@@ -1,16 +1,79 @@
-import axios from "axios";
+/**
+ * download.js — Post Vite Updates (2026)
+ *
+ * Purpose:
+ * Handles API requests for downloadable dataset content from the Strapi backend.
+ *
+ * Refactor Summary:
+ * 1. Centralized API Client
+ *    - Replaced direct Axios usage with shared `apiClient`
+ *    - Removes duplicated base URL logic across API modules
+ *
+ * 2. Retry + Timeout Support
+ *    - Inherits retry logic, timeout handling, and error behavior from `client.js`
+ *
+ * 3. Environment-Gated Local Access
+ *    - Local Strapi endpoint is now gated behind:
+ *        • `VITE_ENABLE_LOCAL_STRAPI`
+ *    - Prevents accidental usage in production builds
+ *
+ * 4. Caching + Response Normalization
+ *    - Enables in-memory caching for stable download page content
+ *    - Enables Strapi response normalization for easier frontend consumption
+ *
+ * 5. Preserved API Behavior
+ *    - Endpoint remains unchanged
+ *    - Local development behavior remains unchanged
+ *
+ * Environment Variables Required:
+ * - VITE_STRAPI_URL              (string)  → Base API URL
+ * - VITE_ENABLE_LOCAL_STRAPI     (boolean) → Enable local endpoint
+ * - VITE_LOCAL_STRAPI_URL        (string)  → Local Strapi URL (optional)
+ * - VITE_API_TIMEOUT_MS          (number)  → Timeout (inherited)
+ * - VITE_API_RETRY_COUNT         (number)  → Retry count (inherited)
+ * - VITE_API_RETRY_DELAY_MS      (number)  → Retry delay (inherited)
+ *
+ * Notes:
+ * - This file contains no JSX and remains `.js`
+ * - Uses shared Axios client for consistency across API modules
+ * - Local endpoint throws explicit error if not enabled
+ * - Production request now opts into cache + normalization
+ * - Vite env variables are exposed to the client bundle (not secure)
+ *
+ * Future Improvements:
+ * - Add local response normalization helper if needed for dev parity
+ * - Add download metadata validation before rendering
+ * - Add optional cache invalidation for editor/admin workflows
+ */
+
+import apiClient, { localStrapiRequest } from "./client";
+import { CACHE_TTL, requestOptions } from "./request-options";
+
 
 const downloadRequest = {
-    downloadFind: ()=>{
-        return axios(`${process.env.REACT_APP_strapiURL}/api/download`,{
-            method:'GET',
-        })
-    },
-    downloadFindLocal: async()=>{
-        return await axios( 'http://localhost:1337/api/download',{
-            method:'GET',
-        })
-    }
-}
+  /**
+   * Fetch downloadable dataset content from production Strapi
+   * - Uses shared API client (retry + timeout enabled)
+   * - Enables caching for stable page content
+   * - Enables Strapi response normalization
+   */
+  downloadFind: () => {
+    return apiClient.get("/api/download", {
+      meta: requestOptions.cachedNormalized(CACHE_TTL.VERY_LONG),
+    });
+  },
 
-export default downloadRequest
+  /**
+   * Fetch downloadable dataset content from local Strapi instance
+   * - Only allowed when explicitly enabled via env flag
+   * - Kept raw for local debugging consistency
+   */
+  downloadFindLocal: async () => {
+    return localStrapiRequest({
+      method: "get",
+      url: "/api/download",
+    });
+  },
+};
+
+export default downloadRequest;

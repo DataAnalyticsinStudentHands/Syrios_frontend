@@ -35,4 +35,24 @@
         }
     }
     
+}@media (max-width: 767.98px) {
+  .CoinPaginate {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1rem 0;
+
+    .pagination {
+      gap: 1.5rem;
+      justify-content: flex-start;
+      min-width: max-content;
+
+      a {
+        font-size: 3rem;
+        line-height: 44px;
+        min-height: 44px;
+        min-width: 36px;
+        justify-content: center;
+      }
+    }
+  }
 }

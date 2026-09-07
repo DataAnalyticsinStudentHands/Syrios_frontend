@@ -1,4 +1,6 @@
+@use "functions";
+
 
 @mixin syrios-border($width: thin, $color: primary, $type: solid) {
-  border: syrios-border-weight($width) syrios-color(border, $color) $type; 
+  border: functions.syrios-border-weight($width) syrios-color(border, $color) $type;
 }

@@ -1,0 +1,1028 @@
+/*
+ * Shared responsive layer.
+ *
+ * The original application was composed primarily for large displays. These
+ * rules establish predictable mobile sizing and provide safe defaults for old
+ * pages while individual, interaction-heavy features retain their own styles.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#App {
+  max-width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@media (max-width: 991.98px) {
+  h1 {
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.95;
+  }
+
+  h2 {
+    font-size: clamp(4.5rem, 9vw, 7rem);
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: clamp(3.5rem, 7vw, 5rem);
+  }
+
+  .container {
+    width: min(100% - 4rem, 100%);
+    max-width: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    scroll-padding-top: 8rem;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+
+  button,
+  [role="button"],
+  input:not([type="checkbox"]):not([type="radio"]),
+  select {
+    min-height: 44px;
+  }
+
+  #landing-page,
+  #stories-page,
+  #evidence-page,
+  #toolbox-page,
+  #coin-catalog,
+  #contact-page,
+  .about-us-page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+/* Fluid type shared by CMS-authored content. */
+@media (max-width: 991.98px) {
+  .story-h1 {
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.95;
+  }
+
+  .story-h2 {
+    font-size: clamp(4.5rem, 9vw, 7rem);
+  }
+
+  .story-h3,
+  .story-h3-blue,
+  .quote-text {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1.15;
+  }
+
+  .story-text-bigger {
+    font-size: clamp(2.25rem, 3vw, 3rem);
+    line-height: 1.45;
+  }
+}
+
+.coin-sort-instruction--mobile,
+.timeline-mobile-hint {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  #landing-page,
+  #aboutus-page,
+  #contactus-page,
+  #stories-page,
+  #glossary-page,
+  #research,
+  #video-library,
+  #coin3d-page,
+  #download-page,
+  #coin-catalog {
+    padding: 4rem 2rem;
+  }
+
+  #explore-the-evidence,
+  #tool-box,
+  #coin-pile-page,
+  #Timeline-page {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+  }
+
+  .landing-text,
+  .story-text,
+  #downloadNotes {
+    font-size: 2.25rem;
+    line-height: 1.5;
+  }
+
+  /* Landing */
+  #landing-page {
+    background-position: center top;
+
+    > h2 {
+      margin-bottom: 3rem;
+    }
+  }
+
+  #landing-video {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin-bottom: 3rem;
+    padding: 0.75rem !important;
+  }
+
+  .landing-button-size {
+    aspect-ratio: 1;
+    height: auto;
+    margin: 1.25rem auto !important;
+    max-width: 240px;
+    width: min(64vw, 240px);
+  }
+
+  .landing-buttons-text {
+    font-size: 2.75rem;
+    line-height: 1.1;
+  }
+
+  .landing-green-paragraph {
+    padding: 2.5rem;
+  }
+
+  /* Overview icon grids */
+  #explore-the-evidence,
+  #tool-box {
+    .image-icon {
+      font-size: clamp(64px, 24vw, 100px);
+    }
+
+    .row {
+      row-gap: 3rem;
+    }
+  }
+
+  /* About */
+  .aboutus-des {
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .aboutus-logo {
+    width: min(46vw, 180px);
+  }
+
+  .aboutus-description {
+    width: 100%;
+  }
+
+  .aboutus-project_director {
+    .row {
+      display: block !important;
+      margin: 0 0 4rem !important;
+      padding: 0 !important;
+    }
+
+    [class*='col-'] {
+      max-width: none;
+      width: 100%;
+    }
+
+    .col-4 {
+      margin: 0 auto 2rem;
+      max-width: 220px;
+    }
+  }
+
+  .aboutTable {
+    display: block;
+  }
+
+  .aboutTable_tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    scroll-snap-type: x proximity;
+    width: 100%;
+  }
+
+  .aboutTable_tab {
+    clip-path: none;
+    flex: 0 0 auto;
+    height: auto;
+    margin: 0;
+    min-height: 48px;
+    min-width: 150px;
+    padding: 1rem 1.5rem;
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .aboutTable_entries {
+    border-radius: 0;
+    max-height: none;
+    overflow: visible;
+    padding: 1.5rem;
+    width: 100%;
+
+    .row,
+    [class*='col-'] {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  /* Contact and download forms */
+  #contactus-page {
+    margin-left: 0;
+    width: 100%;
+
+    > .row {
+      display: block !important;
+    }
+
+    [class*='col-'] {
+      max-width: none;
+      width: 100%;
+    }
+
+    .col-3 {
+      margin: 0 auto 2rem;
+      max-width: 120px;
+
+      img {
+        height: auto;
+      }
+    }
+  }
+
+  .feedbackicon {
+    margin-top: 1rem;
+    width: 7rem;
+  }
+
+  #ContactUsForm {
+    label,
+    .contacting {
+      font-size: 2.25rem;
+    }
+
+    input,
+    textarea {
+      font-size: 2rem;
+      min-height: 48px;
+    }
+
+    input[type='submit'] {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  #downloadForm {
+    padding: 3rem 2rem;
+
+    label {
+      font-size: 2.25rem;
+    }
+  }
+
+  /* Story chooser */
+  #stories-page {
+    background-position: 58% center;
+
+    > .row {
+      display: grid !important;
+      gap: 3rem 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    > .row > .col {
+      padding: 0;
+      width: 100%;
+    }
+
+    .select-story-div,
+    .select-story-div:hover {
+      width: 100%;
+    }
+
+    .select-story-text {
+      font-size: 2.25rem;
+      line-height: 1.2;
+      margin-top: 1.5rem !important;
+    }
+  }
+
+  /* Glossary: search first, horizontally scrollable alphabet second. */
+  #glossary-page {
+    .search-box {
+      font-size: 2rem;
+      height: 48px;
+      margin-left: 0;
+      width: 100%;
+
+      input {
+        font-size: 2rem;
+        min-width: 0;
+        text-indent: 1rem;
+      }
+    }
+
+    .result-list {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .nav-tabs {
+      flex-wrap: nowrap;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      overflow-x: auto;
+      padding: 0 2rem;
+      scrollbar-width: thin;
+
+      .nav-item {
+        flex: 0 0 auto;
+
+        a {
+          clip-path: none;
+          min-height: 44px;
+          padding: 1rem 1.5rem;
+          width: auto;
+        }
+      }
+    }
+
+    button {
+      font-size: 2.5rem;
+    }
+  }
+
+  #glossary-group {
+    .glossary-alphabet {
+      font-size: 4rem;
+    }
+
+    .glossary-term a {
+      font-size: 2.5rem;
+      line-height: 1.4;
+    }
+  }
+
+  #glossary-term {
+    margin-bottom: 0;
+    padding: 5rem 2rem;
+
+    .glossary-term {
+      font-size: 4.5rem;
+    }
+
+    .glossary-basic,
+    .glossary-body {
+      font-size: 2.25rem;
+      line-height: 1.5;
+    }
+  }
+
+  /* Timeline: keep the visualization legible and let the user pan it. */
+  #Timeline-page {
+    overflow: hidden;
+
+    > div:first-of-type img {
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+  }
+
+  .timeline-mobile-hint {
+    background: rgba(184, 204, 216, 0.45);
+    color: #183848;
+    display: block;
+    font-size: 2rem;
+    margin: 2rem;
+    padding: 1.5rem;
+  }
+
+  .timeline-explorer {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+    width: 100%;
+
+    &:focus-visible {
+      outline: 3px solid #a86818;
+      outline-offset: -3px;
+    }
+
+    svg {
+      max-width: none;
+      min-width: 1040px;
+      width: 1040px;
+    }
+  }
+
+  .sticky-sections {
+    background: rgba(244, 242, 240, 0.92);
+    font-size: 2.5rem;
+    min-width: 1040px;
+    position: sticky;
+    top: 0;
+    width: 1040px;
+  }
+
+  .timeline-legend {
+    bottom: auto;
+    margin: 1rem 2rem;
+    position: relative;
+    right: auto;
+  }
+
+  /* Catalog landing */
+  #coin-catalog {
+    .catalog-section {
+      margin-bottom: 6rem;
+
+      h2 {
+        margin-bottom: 2.5rem;
+      }
+
+      p {
+        font-size: 2.25rem;
+        line-height: 1.5;
+      }
+
+      .catalog-buttons {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 4rem;
+
+        a {
+          align-items: center;
+          display: flex;
+          font-size: 2.25rem;
+          justify-content: center;
+          line-height: 1.2;
+          min-height: 48px;
+        }
+      }
+
+      .coins-of-the-day {
+        flex-direction: column-reverse;
+        gap: 2.5rem;
+
+        .left {
+          h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+          }
+
+          h2 {
+            font-size: 3rem;
+            line-height: 1.2;
+          }
+
+          p {
+            font-size: 2.25rem;
+            line-height: 1.5;
+          }
+
+          button {
+            font-size: 2.25rem;
+            line-height: 1.2;
+            width: 100%;
+          }
+        }
+
+        .right img {
+          margin: 0 auto;
+          max-height: 340px;
+          object-fit: contain;
+        }
+      }
+
+      .catalog-VideoBox {
+        aspect-ratio: 16 / 9;
+        height: auto;
+      }
+
+      .logos {
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        a {
+          flex: 1 1 120px;
+        }
+      }
+    }
+  }
+
+  .slick-prev,
+  .slick-next {
+    z-index: 2;
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    font-size: 4rem;
+    padding: 1rem;
+  }
+
+  /* Coin pile: sequential panels and a touch-select study workflow. */
+  .coin-sort-instructions {
+    margin: 0 auto 3rem;
+    max-width: 720px;
+    padding: 0 2rem;
+    width: 100%;
+  }
+
+  .coin-sort-instruction--desktop {
+    display: none;
+  }
+
+  .coin-sort-instruction--mobile {
+    display: inline;
+  }
+
+  #coin-sort-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 2rem 4rem;
+  }
+
+  .coin-sort-pile-wrapper {
+    border: 1px solid rgba(120, 153, 168, 0.65);
+    height: 52rem;
+    order: 1;
+    overflow: hidden;
+    position: relative;
+    top: auto;
+    width: 100%;
+  }
+
+  .coin-sort-pile {
+    height: 100%;
+    width: 100%;
+  }
+
+  .coin-sort-pile-coin {
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+
+    &:focus-visible,
+    &.is-selected {
+      outline: 4px solid #d8a048;
+      outline-offset: 3px;
+      z-index: 20;
+    }
+  }
+
+  .coin-sort-pile-coin-image:hover {
+    transform: none;
+  }
+
+  #coin-sort-options-wrapper {
+    order: 2;
+    width: 100%;
+  }
+
+  #coin-sort-options {
+    align-items: stretch;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .coin-sort-menu-vr {
+    display: none;
+  }
+
+  .coin-sort-dropdown-outermost-div {
+    min-width: 0;
+  }
+
+  .coin-sort-dropdown-title-text {
+    font-size: 2rem;
+  }
+
+  .coin-sort-dropdown-bar {
+    min-height: 44px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .coin-sort-dropdow-bar-text {
+    font-size: 1.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coin-sort-dropdown {
+    left: 0;
+    max-width: calc(100vw - 6rem);
+    top: 100%;
+    width: 260px;
+    z-index: 40;
+  }
+
+  #coin-sort-drag-coin-box-outer-div {
+    margin-top: 0;
+    order: 3;
+    width: 100%;
+  }
+
+  #coin-sort-drag-box-full {
+    height: 18rem;
+    width: 100%;
+  }
+
+  .coin-sort-drag-coin-box {
+    appearance: none;
+    font-size: 2rem;
+    min-height: 88px;
+    padding: 2rem;
+
+    &[aria-disabled='true'] {
+      cursor: default;
+      opacity: 0.72;
+    }
+  }
+
+  #coin-sort-grid-arrangement-wrapper {
+    overflow-x: hidden;
+  }
+
+  #coin-sort-grid-6x3-arrangement,
+  #coin-sort-grid-3x2-arrangement,
+  #coin-sort-grid-2x2-arrangement,
+  #coin-sort-grid-3x1-arrangement,
+  #coin-sort-grid-2x1-arrangement,
+  #coin-sort-grid-1x1-arrangement {
+    aspect-ratio: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    max-width: none;
+    width: 100%;
+
+    > * {
+      aspect-ratio: 1;
+      grid-area: auto !important;
+      min-width: 0;
+    }
+  }
+
+  /* Coin detail modal becomes a phone-sized sheet. */
+  .snow-white-background {
+    height: calc(100dvh - 2rem);
+    max-width: calc(100vw - 2rem);
+    overflow: hidden;
+    width: calc(100vw - 2rem);
+  }
+
+  .white-pop-up-inner-padding {
+    height: 100%;
+    overflow-y: auto;
+    padding: 5rem 2rem 2rem;
+  }
+
+  .white-pop-up-x-icon,
+  .coin-info-x-icon {
+    align-items: center;
+    display: flex;
+    font-size: 4rem;
+    height: 48px;
+    justify-content: center;
+    right: 0;
+    top: 0;
+    width: 48px;
+  }
+
+  .coin-info {
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+  }
+
+  .coin-info-title {
+    font-size: 3.5rem;
+    line-height: 1.15;
+  }
+
+  .coin-info-basic,
+  .coin-info-detail {
+    display: block;
+  }
+
+  .coin-info-image {
+    height: min(72vw, 320px);
+    margin-bottom: 3rem;
+  }
+
+  .coin-info-basic-left,
+  .coin-info-basic-right,
+  .coin-info-detail-left,
+  .coin-info-detail-right {
+    width: 100%;
+  }
+
+  .coin-info-detail-text,
+  .coin-info-detail-content,
+  .coin-info-basic-text,
+  .coin-info-basic-content {
+    font-size: 2rem;
+    line-height: 1.35;
+  }
+
+  /* Map controls become a bottom sheet, keeping the map visible. */
+  #map-coins {
+    padding: 4rem 1.2rem 5rem;
+
+    .map-coins__viewport-wrap {
+      height: min(72dvh, 650px);
+      min-height: 520px;
+    }
+
+    .map-coins__controls {
+      border-right: 0;
+      border-top: 1px solid rgba(168, 104, 24, 0.45);
+      bottom: 0;
+      box-shadow: 0 -1.2rem 2.8rem rgba(24, 56, 72, 0.2);
+      height: min(68%, 520px);
+      inset: auto 0 0;
+      transition: height 280ms ease;
+      width: 100%;
+
+      &.is-collapsed {
+        height: 5.6rem;
+        width: 100%;
+
+        .map-coins__controls-toggle {
+          height: 5.6rem;
+          justify-content: space-between;
+          padding: 1rem 1.5rem;
+          writing-mode: horizontal-tb;
+        }
+      }
+    }
+
+    .map-coins__controls-toggle {
+      flex: 0 0 5.6rem;
+      justify-content: space-between;
+      min-height: 5.6rem;
+      width: 100%;
+    }
+
+    .map-coins__controls-body {
+      overscroll-behavior: contain;
+    }
+
+    .map-coins__legend {
+      bottom: 6.5rem;
+      max-height: 18rem;
+      right: 0.8rem;
+      width: calc(100% - 1.6rem);
+    }
+
+    .map-coins__controls.is-open ~ .map-coins__legend {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .map-coins__site-popup .mapboxgl-popup-content {
+      max-height: 54dvh;
+      min-width: min(30rem, calc(100vw - 4rem));
+      width: min(38rem, calc(100vw - 4rem));
+    }
+
+    .map-coins__coin-viewer {
+      grid-template-columns: 8rem minmax(0, 1fr);
+    }
+
+    .map-coins__popup-image-wrap {
+      height: 8rem;
+      width: 8rem;
+    }
+  }
+}
+
+@media (max-width: 479.98px) {
+  #stories-page > .row {
+    grid-template-columns: 1fr;
+  }
+
+  #coin-sort-options {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-explorer svg,
+  .sticky-sections {
+    min-width: 920px;
+    width: 920px;
+  }
+}
+@media (max-width: 767.98px) {
+  /* Fullpage stories switch to normal document scrolling at this breakpoint. */
+  .fp-responsive {
+    .fp-section,
+    .fp-slide,
+    .fp-tableCell {
+      height: auto !important;
+      min-height: 100dvh;
+    }
+  }
+
+  .section {
+    background-position: center;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 4rem 1.5rem 8rem;
+
+    .container {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .col-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    img[style] {
+      height: auto !important;
+      max-height: 30dvh;
+      object-fit: contain;
+      width: auto !important;
+    }
+
+    [style*='height: 22vmax'] {
+      height: auto !important;
+      min-height: 32dvh;
+    }
+
+    .back-to-top {
+      bottom: 5.5rem;
+      right: 1rem;
+    }
+  }
+
+  .sclae_front,
+  .scale_back {
+    height: min(34vw, 150px);
+  }
+
+  .scale-icon,
+  .scale-text {
+    position: static;
+  }
+
+  .scale-text {
+    margin-top: 1rem;
+  }
+
+  .row-light-blue-background,
+  .row-scare-content {
+    bottom: auto;
+    height: auto;
+    min-height: 20rem;
+    top: auto;
+  }
+
+  .fade-2button-row,
+  .fade-4button-row {
+    bottom: auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 1rem 0;
+    position: static;
+  }
+
+  .fade-2button-row > .col-2,
+  .fade-4button-row > .col-2 {
+    flex: 0 0 auto;
+    max-width: none;
+    width: auto;
+  }
+
+  #footer {
+    z-index: 1000;
+
+    #footer-links {
+      height: 56px;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    button {
+      min-height: 44px;
+    }
+  }
+
+  .credits-and-references {
+    max-height: 82dvh !important;
+    overflow-y: auto !important;
+
+    .x-button {
+      align-items: center;
+      display: flex;
+      height: 48px;
+      justify-content: center;
+      margin: 0;
+      right: 0;
+      top: 0;
+      width: 48px;
+      z-index: 2;
+    }
+  }
+
+  .referenceContent {
+    display: block;
+    padding: 5rem 2rem 3rem !important;
+
+    > .col-4,
+    > .col-7 {
+      max-width: none;
+      width: 100%;
+    }
+
+    > .col-7 {
+      margin-top: 4rem;
+    }
+  }
+
+  #reference-content {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .references-h3 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-left: 0 !important;
+  }
+
+  .references-text {
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+}

@@ -1,13 +1,17 @@
+@use "sass:map";
+@use "sass:meta";
+@use "syrios-iconography";
+
 /// Returns the ssize for the specified icon
 /// @param {String} $size [base] - The icon's size.
 /// @return {Number} The size value.
 
 @function syrios-icon-size($size: small) {
-  $fetched-value: map-get($syrios-iconography-size, $size);
+  $fetched-value: map.get(syrios-iconography.$syrios-iconography-size, $size);
 
-  @if type-of($fetched-value) == number {
+  @if meta.type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
-    @error 'Shadow variant `#{$size}` not found. Available variants: #{$syrios-iconography-size}';
+    @error 'Shadow variant `#{$size}` not found. Available variants: #{syrios-iconography.$syrios-iconography-size}';
   }
 }

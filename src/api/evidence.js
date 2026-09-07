@@ -1,22 +1,93 @@
-import axios from "axios";
-import qs from "qs";
-const evidenceRequest = {
-    evidenceFind: ()=>{
-        let query = qs.stringify({
-            populate: [
-                'image_icon',
-                'image_icon.image',
-              ],
-        })
-        return axios(`${process.env.REACT_APP_strapiURL}/api/explore-the-evidence?${query}`,{
-            method:'GET',
-        })
-    },
-    evidenceFindLocal: async()=>{
-        return await axios( 'http://localhost:1337/api/explore-the-evidence',{
-            method:'GET',
-        })
-    }
-}
+/**
+ * evidence.js — Post Vite Updates (2026)
+ *
+ * Purpose:
+ * Handles API requests for "Explore the Evidence" content from the Strapi backend.
+ *
+ * Refactor Summary:
+ * 1. Centralized API Client
+ *    - Replaced direct Axios usage with shared `apiClient`
+ *    - Eliminates duplicated base URL handling across API modules
+ *
+ * 2. Retry + Timeout Support
+ *    - Inherits retry logic, timeout handling, and error behavior from `client.js`
+ *
+ * 3. Preserved Query Structure
+ *    - Maintains qs-based population of related image fields
+ *    - Ensures nested media (image_icon.image) is properly resolved
+ *
+ * 4. Environment-Gated Local Access
+ *    - Local Strapi endpoint is now gated behind:
+ *        • `VITE_ENABLE_LOCAL_STRAPI`
+ *    - Prevents accidental usage in production builds
+ *
+ * 5. Caching + Response Normalization
+ *    - Enables in-memory caching for stable evidence page content
+ *    - Enables Strapi response normalization for easier frontend consumption
+ *
+ * 6. Preserved API Behavior
+ *    - Endpoint remains unchanged
+ *    - Local development behavior remains unchanged
+ *
+ * Environment Variables Required:
+ * - VITE_STRAPI_URL              (string)  → Base API URL
+ * - VITE_ENABLE_LOCAL_STRAPI     (boolean) → Enable local endpoint
+ * - VITE_LOCAL_STRAPI_URL        (string)  → Local Strapi URL (optional)
+ * - VITE_API_TIMEOUT_MS          (number)  → Timeout (inherited)
+ * - VITE_API_RETRY_COUNT         (number)  → Retry count (inherited)
+ * - VITE_API_RETRY_DELAY_MS      (number)  → Retry delay (inherited)
+ *
+ * Notes:
+ * - This file contains no JSX and remains `.js`
+ * - Uses `qs` for safe nested query string construction
+ * - Uses shared Axios client for consistency across API modules
+ * - Local endpoint throws explicit error if not enabled
+ * - Production request now opts into cache + normalization
+ * - Vite env variables are exposed to the client bundle (not secure)
+ *
+ * Future Improvements:
+ * - Add local response normalization helper if needed for dev parity
+ * - Expand explicit populate if additional nested media is introduced
+ * - Add optional cache invalidation for editor/admin workflows
+ */
 
-export default evidenceRequest
+import qs from "qs";
+import apiClient, { localStrapiRequest } from "./client";
+import { CACHE_TTL, requestOptions } from "./request-options";
+
+
+const evidenceRequest = {
+  /**
+   * Fetch "Explore the Evidence" content from production Strapi
+   * - Uses shared API client (retry + timeout enabled)
+   * - Includes population of nested image relations
+   * - Enables caching for stable page content
+   * - Enables Strapi response normalization
+   */
+  evidenceFind: () => {
+    const query = qs.stringify(
+      {
+        populate: ["image_icon", "image_icon.image"],
+      },
+      { encodeValuesOnly: true }
+    );
+
+    return apiClient.get(`/api/explore-the-evidence?${query}`, {
+      meta: requestOptions.cachedNormalized(CACHE_TTL.LONG),
+    });
+  },
+
+  /**
+   * Fetch "Explore the Evidence" content from local Strapi instance
+   * - Only allowed when explicitly enabled via env flag
+   * - Kept raw for local debugging consistency
+   */
+  evidenceFindLocal: async () => {
+    return localStrapiRequest({
+      method: "get",
+      url: "/api/explore-the-evidence",
+    });
+  },
+};
+
+export default evidenceRequest;
