@@ -230,7 +230,7 @@ const StoryReader = () => {
   if (isLoading) {
     return (
       <>
-        <LoadingPage />
+        <LoadingPage variant='story-reader' />
         <Footer />
       </>
     );

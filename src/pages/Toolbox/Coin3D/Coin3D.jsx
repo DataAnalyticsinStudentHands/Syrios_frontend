@@ -54,7 +54,7 @@ const Coin3D = () => {
     fetchData();
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='coin-3d' />;
 
   return (
     <div id='coin3d-page'>

@@ -324,8 +324,8 @@ const Timeline = () => {
     }
   }, []);
 
-  if (timeline_info_is_loading && timeline_background_is_loading) {
-    return <LoadingPage />;
+  if (timeline_info_is_loading || timeline_background_is_loading) {
+    return <LoadingPage variant='coin-time' phase={timeline_background_is_loading ? undefined : 'evidence'} />;
   }
 
   return (

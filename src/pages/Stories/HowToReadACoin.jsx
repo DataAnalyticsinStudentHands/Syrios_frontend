@@ -226,7 +226,7 @@ const HowToReadACoin = () => {
   }
 
   if (isLoading) {
-    return <LoadingPage />;
+    return <LoadingPage variant='how-to-read' />;
   }
 
   const hasFrames = Array.isArray(storyFrame) && storyFrame.length > 0;

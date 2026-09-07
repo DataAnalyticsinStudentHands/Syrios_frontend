@@ -33,6 +33,14 @@
   // width: 100%;
 
 }
+.aboutus-avatar--placeholder {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  color: #486678;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
 .aboutus-avatar__image{
   border-radius: 50%;
   height: 100%;
@@ -50,6 +58,9 @@
 }
 
 .aboutTable_tab {
+  width: 100%;
+  appearance: none;
+  border: 0;
   // width: 100%;
   height: 3em;
   display: flex;
@@ -58,6 +69,7 @@
   color: #737271;
   clip-path: polygon(10% 0%,100% 0,100% 100%, 10% 100%, 0% 90%, 0% 10%);
   background-color: #ffffff;
+  font: inherit;
   margin-bottom: 1.75em;
 }
 
@@ -68,7 +80,12 @@
 
 .aboutTable_tab--active {
   background-color: rgba(184,204,216,0.5);
-  pointer-events: none;
+  cursor: default;
+}
+
+.aboutTable_tab:focus-visible {
+  outline: 0.2rem solid #a86818;
+  outline-offset: 0.2rem;
 }
 
 .aboutTable_entries { 
@@ -94,6 +111,18 @@
   padding: .5em;
   display: flex;
   align-items: center;
+}
+.aboutTable-student_leads__portrait {
+  display: flex;
+  max-width: 18rem;
+  align-items: center;
+  justify-content: center;
+}
+.aboutTable-student_leads__details {
+  min-width: 0;
+}
+.aboutTable-student_leads__position {
+  margin-bottom: 0.65rem;
 }
 .aboutTable-collaborators {
   // padding: .5em;

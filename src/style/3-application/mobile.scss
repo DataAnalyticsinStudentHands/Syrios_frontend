@@ -256,6 +256,7 @@ textarea {
     padding: 1rem 1.5rem;
     scroll-snap-align: start;
     text-align: center;
+    width: auto;
   }
 
   .aboutTable_entries {
@@ -272,6 +273,23 @@ textarea {
       max-width: none;
       width: 100%;
     }
+  }
+
+  .aboutTable-student_leads {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  #aboutus-page .aboutTable-student_leads__portrait {
+    flex: 0 0 auto;
+    margin: 0 auto !important;
+    max-width: 180px;
+    width: min(52vw, 180px) !important;
+  }
+
+  .aboutTable-student_leads__details {
+    text-align: center;
   }
 
   /* Contact and download forms */
