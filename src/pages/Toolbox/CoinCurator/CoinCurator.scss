@@ -1147,6 +1147,36 @@
       width: 100%;
       margin-top: 1rem;
     }
+
+    .coin-curator__pdf-export {
+      margin-top: 1rem;
+
+      button {
+        margin-top: 0;
+      }
+    }
+
+    .coin-curator__pdf-status {
+      min-height: 2.2rem;
+      margin: 0.8rem 0 0;
+      color: rgba(default-theme.$syrios-color-183848, 0.78);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.4;
+
+      &.is-idle:empty {
+        min-height: 0;
+        margin: 0;
+      }
+
+      &.is-success {
+        color: default-theme.$syrios-color-184818;
+      }
+
+      &.is-error {
+        color: default-theme.$syrios-color-a85828;
+      }
+    }
   }
 
   .coin-curator__exhibition {

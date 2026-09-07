@@ -27,7 +27,6 @@
  *
  * Future Improvements:
  * - Replace `<center>` (deprecated HTML) with CSS flexbox
- * - Add alt text support via props
  * - Add validation for `props.imageSrc`
  */
 
@@ -41,7 +40,7 @@ export const WhiteBGDesign = (props) => {
     <center>
       <Link to={props.link}>
         <img
-          alt={"missing alt"}
+          alt={props.altText || props.title || ""}
           src={`${baseURL}${props.imageSrc}`}
           style={{
             height: props.height ?? "auto",

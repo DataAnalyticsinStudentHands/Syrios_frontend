@@ -58,6 +58,7 @@ import "./style/styles.scss";
 
 import background from "./assets/background.jpg";
 import logo from "./assets/logoWhiteText.svg";
+import LoadingPage from "./components/loadingPage/LoadingPage";
 
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs/AboutUs";
@@ -89,6 +90,7 @@ import AutoScrollToTop from "./utils/ScrollToTop";
 const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
 const CoinDetective = React.lazy(() => import("./pages/Toolbox/CoinDetective/CoinDetective"));
 const CoinCurator = React.lazy(() => import("./pages/Toolbox/CoinCurator/CoinCurator"));
+const ArchiveLab = React.lazy(() => import("./pages/Toolbox/ArchiveLab/ArchiveLab"));
 
 /**
  * ----------------------------------------
@@ -140,8 +142,16 @@ function AppRoutes() {
         <Route
           path="/Toolbox/CoinCurator"
           element={(
-            <React.Suspense fallback={null}>
+            <React.Suspense fallback={<LoadingPage variant='coin-curator' />}>
               <CoinCurator />
+            </React.Suspense>
+          )}
+        />
+        <Route
+          path="/Toolbox/ArchiveLab"
+          element={(
+            <React.Suspense fallback={null}>
+              <ArchiveLab />
             </React.Suspense>
           )}
         />
@@ -251,6 +261,9 @@ function AppShell({ basename }) {
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/Toolbox/CoinCurator" className="navbar-text">
                     Coin Curator
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Toolbox/ArchiveLab" className="navbar-text">
+                    Archive Lab
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/Toolbox/Coin3D" className="navbar-text">
                     Coin in 3D

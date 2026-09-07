@@ -879,6 +879,23 @@
     margin-top: 2.4rem;
   }
 
+  .coin-detective__pdf-status {
+    min-height: 2rem;
+    margin: 1rem 0 0;
+    color: rgba(default-theme.$syrios-color-183848, 0.78);
+    font-size: 1.35rem;
+    line-height: 1.45;
+
+    &.is-success {
+      color: #31694f;
+    }
+
+    &.is-error {
+      color: default-theme.$syrios-color-a86818;
+      font-weight: 700;
+    }
+  }
+
   .coin-detective__evidence,
   .coin-detective__catalog-evidence,
   .coin-detective__context,

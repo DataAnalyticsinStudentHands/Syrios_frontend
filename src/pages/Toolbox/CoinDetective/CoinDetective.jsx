@@ -11,6 +11,7 @@ import {
   normalizeDetectiveCoins,
   scoreDetectiveAnswers,
 } from './coinDetectiveData';
+import { buildCoinDetectivePdfDocument } from './coinDetectivePdf';
 
 const MODE_OPTIONS = Object.values(COIN_DETECTIVE_MODES);
 const STAGES = [
@@ -410,6 +411,44 @@ function RevealStage({
   const matchPercent = score.total ? Math.round((score.correct / score.total) * 100) : 0;
   const modernPlace = [coin.modernName, coin.modernCountry].filter(Boolean).join(', ');
 
+  const [pdfStatus, setPdfStatus] = useState({ state: 'idle', message: '' });
+
+  useEffect(() => {
+    setPdfStatus({ state: 'idle', message: '' });
+  }, [coin.id]);
+
+  const handleDownloadPdf = async () => {
+    if (pdfStatus.state === 'generating') return;
+    setPdfStatus({ state: 'generating', message: 'Preparing your illustrated case file...' });
+
+    try {
+      // The exporter is loaded only after a click, keeping the normal investigation
+      // light while still producing a real, paginated PDF instead of a print dialog.
+      const { downloadLearningArtifactPdf } = await import('src/utils/learningArtifactPdf');
+      const pdfDocument = buildCoinDetectivePdfDocument({
+        coin,
+        comparison,
+        mode,
+        questions,
+        answers,
+        notes,
+        siteOrigin: typeof window === 'undefined'
+          ? ''
+          : `${window.location.origin}${import.meta.env.DEV ? '/dev' : ''}`,
+      });
+      const result = await downloadLearningArtifactPdf(pdfDocument);
+      const imageMessage = result.omittedImageCount
+        ? ` ${result.omittedImageCount} remote image${result.omittedImageCount === 1 ? '' : 's'} could not be embedded; source details remain in the PDF.`
+        : '';
+      setPdfStatus({
+        state: 'success',
+        message: `Downloaded ${result.fileName}.${imageMessage}`,
+      });
+    } catch (error) {
+      console.error('Coin Detective PDF export failed:', error);
+      setPdfStatus({ state: 'error', message: 'The PDF could not be created. Please try the download again.' });
+    }
+  };
   return (
     <div className='coin-detective__reveal'>
       <section className='coin-detective__reveal-hero' aria-labelledby='coin-detective-reveal-title'>
@@ -430,8 +469,25 @@ function RevealStage({
           <p className='coin-detective__score-note'>A mismatch is useful evidence: revisit which clues were visible and which facts required external documentation.</p>
           <div className='coin-detective__reveal-actions'>
             <Link className='coin-detective__primary-button' to={`/Coin/${coin.id}`}>Open full catalog record</Link>
+            <button
+              type='button'
+              className='coin-detective__secondary-button'
+              onClick={handleDownloadPdf}
+              disabled={pdfStatus.state === 'generating'}
+              aria-describedby='coin-detective-pdf-status'
+            >
+              {pdfStatus.state === 'generating' ? 'Preparing PDF...' : 'Download case PDF'}
+            </button>
+
             <button type='button' className='coin-detective__secondary-button' onClick={() => window.print()}>Print case summary</button>
           </div>
+          <p
+            id='coin-detective-pdf-status'
+            className={`coin-detective__pdf-status is-${pdfStatus.state}`}
+            role={pdfStatus.state === 'error' ? 'alert' : 'status'}
+            aria-live='polite'
+          >{pdfStatus.message}</p>
+
         </div>
       </section>
 
