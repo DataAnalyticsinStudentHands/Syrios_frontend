@@ -13,33 +13,22 @@
  * 🔧 ROUTING STRATEGY
  * ----------------------------------------
  *
- * This app intentionally uses different router basenames by environment:
+ * The router basename follows Vite's configured base URL:
  *
- * - Development (`npm run dev`)
- *   → basename = "/dev"
- *   → local routes resolve under `/dev/...`
+ * - Local development (`npm run dev`)
+ *   → Vite base = "/"
+ *   → Router basename = undefined
  *
- * - Preview / Production
- *   → basename = undefined
- *   → routes resolve from `/`
+ * - Staging (`npm run build:staging`)
+ *   → Vite base = "/dev/"
+ *   → Router basename = "/dev"
  *
- * WHY:
- * - Local development is intentionally served under `/dev`
- * - Preview/build is served from root `/`
- * - This preserves the historical route structure used by the app
+ * - Production (`npm run build`)
+ *   → Vite base = "/"
+ *   → Router basename = undefined
  *
- * IMPORTANT:
- * - Do NOT replace this basename logic with `import.meta.env.BASE_URL`
- *   unless deployment strategy changes
- * - Doing so would remove the custom `/dev` local route prefix
- *
- * ----------------------------------------
- * 📦 NOTES
- * ----------------------------------------
- *
- * - Any file containing JSX must use `.jsx`
- * - Alias imports like `src/...` require Vite alias configuration
- * - This file keeps behavior intentionally stable
+ * Vite's `import.meta.env.BASE_URL` is the single source of truth
+ * for the application's deployment path.
  *
  * ----------------------------------------
  * 🚀 FUTURE IMPROVEMENTS
@@ -260,19 +249,17 @@ function AppShell({ basename }) {
  * 🚀 ROOT APP
  * ----------------------------------------
  *
- * Keeps the historical `/dev` basename behavior for local development.
+ * Vite controls the deployment base:
  *
- * Development:
- *   /dev
- *
- * Preview / build / production:
+ * Local development / production:
  *   /
+ *
+ * Staging:
+ *   /dev/
  */
 function App() {
-  // Detect if we're running under /dev
-  const isDevPath = window.location.pathname.startsWith("/dev");
-
-  const basename = isDevPath ? "/dev" : undefined;
+  const baseUrl = import.meta.env.BASE_URL;
+  const basename = baseUrl === "/" ? undefined : baseUrl.replace(/\/$/, "");
 
   return <AppShell basename={basename} />;
 }
