@@ -208,9 +208,6 @@ const Timeline = () => {
   const [timeline_events_and_coins, set_timeline_events_and_coins] = useState(undefined);
   const [timeLineText, setTimelineText] = useState({ text: '', subtext: '' });
 
-  const [coins, setCoins] = useState([]);
-  const [events, setEvents] = useState([]);
-
   const y_offset = 5;
 
   const [show_coin_info, set_show_coin_info] = useState(false);
@@ -227,24 +224,14 @@ const Timeline = () => {
     set_show_event_info(e);
   };
 
-  const update_coin_info = (img_dom_obj) => {
-    const id = parseInt(img_dom_obj.target.id, 10);
-    const match = coins.find((e) => e.id === id);
-
-    if (match) {
-      set_coin_meta_data(match);
-      set_show_coin_info(true);
-    }
+  const update_coin_info = (coin) => {
+    set_coin_meta_data(coin);
+    set_show_coin_info(true);
   };
 
-  const update_event_info = (event_dom_obj) => {
-    const id = parseInt(event_dom_obj.target.id, 10);
-    const match = events.find((e) => e.id === id);
-
-    if (match) {
-      set_event_meta_data(match);
-      set_show_event_info(true);
-    }
+  const update_event_info = (event) => {
+    set_event_meta_data(event);
+    set_show_event_info(true);
   };
 
   useEffect(() => {
@@ -286,16 +273,12 @@ const Timeline = () => {
         });
 
         set_timeline_events_and_coins(tmp.jsx_arr);
-        setCoins(tmp.coin_info_arr);
-        setEvents(tmp.event_info_arr);
         set_timeline_info_is_loading(false);
       } catch (error) {
         console.error('Failed to load timeline:', error);
         if (mounted) {
           set_timeline_background([]);
           set_timeline_events_and_coins([]);
-          setCoins([]);
-          setEvents([]);
           setTimelineText({ text: '', subtext: '' });
           set_timeline_background_is_loading(false);
           set_timeline_info_is_loading(false);

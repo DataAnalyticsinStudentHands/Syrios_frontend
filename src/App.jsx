@@ -76,6 +76,7 @@ import FooterWrapper from "./components/footerv2/Footer2Wrapper";
 import AutoScrollToTop from "./utils/ScrollToTop";
 
 const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
+const isStaging = import.meta.env.MODE === "staging";
 
 /**
  * ----------------------------------------
@@ -101,6 +102,16 @@ function AppRoutes() {
 
         {/* Evidence routes */}
         <Route path="/Evidence/CoinSort" element={<CoinSort />} />
+        {isStaging && (
+          <Route
+            path="/Evidence/MapCoins"
+            element={(
+              <React.Suspense fallback={null}>
+                <MapCoins />
+                      </React.Suspense>
+            )}
+          />
+        )}
         <Route
           path="/Evidence/MapCoins"
           element={(
@@ -194,9 +205,11 @@ function AppShell({ basename }) {
                   <NavDropdown.Item as={Link} to="/Evidence/CoinSort" className="navbar-text">
                     Coins in a Pile
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/Evidence/MapCoins" className="navbar-text">
-                    Coins on a Map
-                  </NavDropdown.Item>
+                  {isStaging && (
+                    <NavDropdown.Item as={Link} to="/Evidence/MapCoins" className="navbar-text">
+                      Coins on a Map
+                    </NavDropdown.Item>
+                  )}
                   <NavDropdown.Item as={Link} to="/Evidence/Timeline" className="navbar-text">
                     Coins in Time
                   </NavDropdown.Item>
