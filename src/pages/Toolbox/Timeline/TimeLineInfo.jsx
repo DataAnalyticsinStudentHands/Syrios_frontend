@@ -34,7 +34,6 @@
  * - Timeline SVG children must have stable unique keys across all branches
  *
  * Future Improvements:
- * - Deduplicate `coin_info_arr` and `event_info_arr` if repeated popup records are unnecessary
  * - Move key-building into a small shared helper if additional timeline object types are added
  * - Normalize nested Strapi relation access into a reusable utility
  */
@@ -56,19 +55,12 @@ export function LoadTimelineInfo(obj) {
   const coin_stroke_width = 0.5;
 
   const jsx_arr = [];
-  const coin_info_arr = [];
-  const event_info_arr = [];
 
   const SetupCoin = (e) => {
     const coin_pair = e.coin_pair == null ? undefined : e.coin_pair;
     const coinEntity = e.coin?.data?.attributes || e.coin || {};
     const coinId = e.coin?.data?.id || e.coin?.id || e.id;
     const timelineNodeId = e.id ?? 'unknown';
-
-    coin_info_arr.push({
-      ...coinEntity,
-      id: coinId,
-    });
 
     const obverse = coinEntity?.obverse_file?.data?.attributes;
     const reverse = coinEntity?.reverse_file?.data?.attributes;
@@ -84,7 +76,12 @@ export function LoadTimelineInfo(obj) {
           strokeWidth=".5"
           cx={e.x - coin_size / 5}
           cy={e.y + Math.abs(view_box_min_height) + y_offset * 1.7 - coin_size / 2}
-          onClick={update_coin_info}
+          onClick={() =>
+            update_coin_info({
+              ...coinEntity,
+              id: coinId,
+            })
+          }
           r={coin_size / 2.5}
         />
       );
@@ -100,7 +97,12 @@ export function LoadTimelineInfo(obj) {
         width={coin_size}
         height={coin_size}
         href={`${baseURL}${obverse?.url || reverse?.url || ''}`}
-        onClick={update_coin_info}
+        onClick={() =>
+          update_coin_info({
+            ...coinEntity,
+            id: coinId,
+          })
+        }
       />
     );
   };
@@ -151,11 +153,6 @@ export function LoadTimelineInfo(obj) {
         const eventAttrs = e.event?.data?.attributes || e.event || {};
         const eventId = e.event?.data?.id || e.event?.id || e.id;
 
-        event_info_arr.push({
-          ...eventAttrs,
-          id: eventId,
-        });
-
         const size_of_event = 2.3;
 
         const renderTooltip = (props) => (
@@ -181,7 +178,12 @@ export function LoadTimelineInfo(obj) {
               fill={eventAttrs.color}
               stroke="black"
               strokeWidth="0.1"
-              onClick={update_event_info}
+              onClick={() =>
+                update_event_info({
+                  ...eventAttrs,
+                  id: eventId,
+                })
+              }
             />
           </OverlayTrigger>
         );
@@ -193,5 +195,5 @@ export function LoadTimelineInfo(obj) {
     }
   });
 
-  return { jsx_arr, coin_info_arr, event_info_arr };
+  return { jsx_arr };
 }
