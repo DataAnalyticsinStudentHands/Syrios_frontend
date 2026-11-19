@@ -15,12 +15,13 @@
  *    - Replaced `process.env.REACT_APP_strapiURL` with `import.meta.env.VITE_STRAPI_URL`
  *
  * 3. Preserved behavior
- *    - Layout, styling, routing, and HTML rendering remain unchanged
+ *    - Layout and styling are preserved; CMS HTML and navigation use shared guards
  *
  * Notes:
  * - Uses `dangerouslySetInnerHTML` via `createMarkup`
  * - Assumes Strapi media URLs are relative paths
  * - Uses React Router `Link`
+ * - Unsafe CMS destinations stay on the current route instead of becoming links
  *
  * Environment Variables Required:
  * - VITE_STRAPI_URL
@@ -33,13 +34,14 @@
 
 import { Link } from "react-router-dom";
 import createMarkup from "src/utils/Markup";
+import { getSafeNavigationUrl } from 'src/utils/urls';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
 export const WhiteBGDesign = (props) => {
   return (
     <center>
-      <Link to={props.link}>
+      <Link to={getSafeNavigationUrl(props.link) ?? '#'}>
         <img
           alt={"missing alt"}
           src={`${baseURL}${props.imageSrc}`}

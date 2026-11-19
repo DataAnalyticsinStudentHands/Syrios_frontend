@@ -60,7 +60,7 @@ const Toolbox = () => {
   }, []);
 
   if (isLoading) {
-    return <LoadingPage />;
+    return <LoadingPage variant='toolbox' />;
   }
 
   const icons = toolboxData?.image_icons || [];

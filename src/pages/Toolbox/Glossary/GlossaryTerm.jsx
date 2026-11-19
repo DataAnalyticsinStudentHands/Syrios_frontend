@@ -34,6 +34,7 @@ import React, { useState, useEffect } from "react";
 import glossaryRequest from "src/api/glossary";
 import createMarkup from "src/utils/Markup";
 import { Link, useParams } from "react-router-dom";
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
 
 function normalizeGlossaryRow(row) {
   if (!row) return {};
@@ -58,34 +59,34 @@ const GlossaryTerm = () => {
   const { term } = useParams();
 
   useEffect(() => {
+    let active = true;
     async function fetchData() {
       setIsLoading(true);
 
       try {
         if (term) {
           const results = await glossaryRequest.glossaryFindByTerm(term);
+          if (!active) return;
           const rawRow = results?.data?.data?.[0] || {};
           setTermData(normalizeGlossaryRow(rawRow));
         } else {
           setTermData({});
         }
       } catch (error) {
+        if (!active) return;
         console.error('Failed to load glossary term:', error);
         setTermData({});
       } finally {
-        setIsLoading(false);
+        if (active) setIsLoading(false);
       }
     }
 
     fetchData();
+    return () => { active = false; };
   }, [term]);
 
   if (isLoading) {
-    return (
-      <div id="glossary-loading">
-        <div className="loader" />
-      </div>
-    );
+    return <LoadingPage variant='glossary' compact title='Opening the glossary entry' />;
   }
 
   const relatedWords = Array.isArray(termData.glossaries) ? termData.glossaries : [];

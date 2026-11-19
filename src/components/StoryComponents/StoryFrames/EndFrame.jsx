@@ -21,25 +21,21 @@
  * Notes:
  * - Uses react-bootstrap Container/Col layout
  * - Uses React Router Link for navigation
- * - Uses dangerouslySetInnerHTML through a local helper
+ * - Uses dangerouslySetInnerHTML through the shared CMS sanitizer
  *
  * Environment Variables Required:
  * - VITE_STRAPI_URL
  *
  * Future Improvements:
- * - Move createMarkup to shared util consistently
  * - Replace empty fragment branches with null
  * - Add stronger null guards for nested background media data
  */
 
 import { Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import createMarkup from 'src/utils/Markup';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
-
-function createMarkup(textTran) {
-  return { __html: textTran };
-}
 
 const End_Frame = (props) => {
   const zone = props.zone;

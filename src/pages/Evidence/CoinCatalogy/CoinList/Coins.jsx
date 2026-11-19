@@ -25,7 +25,7 @@
  * - Normalize Fuse search structure
  */
 
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useMemo } from 'react'
 import "./Coins.scss"
 import CoinPaginate from './CoinPaginate'
 import { useParams } from "react-router-dom";
@@ -34,6 +34,7 @@ import CoinsFiter from './CoinsFilters';
 import Search from './Search';
 import qs from 'qs';
 import { CoinContext } from "src/context/coinContext";
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
 
 /**
  * Helper for safe deep relation access
@@ -56,18 +57,16 @@ function getDeepFilterOptions(arr, filter) {
 }
 
 const Coins = () => {
-  const { coinsData, fetchCoinData } = useContext(CoinContext);
+  const { coinsData, fetchCoinData, coinsStatus } = useContext(CoinContext);
 
   useEffect(() => {
-    if (!coinsData) {
-      fetchCoinData();
+    if (!coinsData && coinsStatus === 'idle') {
+      fetchCoinData().catch(() => {});
     }
-  }, [coinsData]);
+  }, [coinsData, coinsStatus, fetchCoinData]);
 
   const params = qs.parse(useParams().params);
 
-  const [searchedData, setSearchedData] = useState([]);
-  const [coinList, setCoinList] = useState([]);
   const [coinsPerPage, setCoinsPerPage] = useState(12);
 
   const [options, setOptions] = useState({});
@@ -87,7 +86,7 @@ const Coins = () => {
   const [searchText, setSearchText] = useState(params.pattern || "");
   const coinsPerPages = [12, 24, 48, 96];
 
-  useEffect(() => {
+  const searchedData = useMemo(() => {
     const fuseOptions = {
       includeScore: true,
       threshold: 0.25,
@@ -108,25 +107,26 @@ const Coins = () => {
 
     const fuse = new Fuse(coinsData || [], fuseOptions);
 
-    let results = searchText
+    return searchText
       ? fuse.search(searchText).map(r => r.item)
-      : coinsData;
-
-    setSearchedData(results);
-
-    setOptions({
-      material: getDeepFilterOptions(results, 'material'),
-      mint: getDeepFilterOptions(results, 'mint'),
-      issuing_authority: getDeepFilterOptions(results, 'issuing_authority'),
-      governing_power: getDeepFilterOptions(results, 'governing_power'),
-      language: getDeepFilterOptions(results, 'language'),
-      ancient_territory: getDeepFilterOptions(results, 'ancient_territory'),
-    });
-
+      : coinsData || [];
   }, [searchText, coinsData]);
 
   useEffect(() => {
-    const filteredCoins = searchedData?.filter((coin) => {
+    setOptions({
+      material: getDeepFilterOptions(searchedData, 'material'),
+      mint: getDeepFilterOptions(searchedData, 'mint'),
+      issuing_authority: getDeepFilterOptions(searchedData, 'issuing_authority'),
+      governing_power: getDeepFilterOptions(searchedData, 'governing_power'),
+      language: getDeepFilterOptions(searchedData, 'language'),
+      ancient_territory: getDeepFilterOptions(searchedData, 'ancient_territory'),
+    });
+  }, [searchedData]);
+
+  // Derive results synchronously so newly loaded/cached data never flashes a
+  // misleading zero count while a second effect catches up with the collection.
+  const coinList = useMemo(() => (
+    searchedData.filter((coin) => {
       return (
         (filters.material.length === 0 || filters.material.includes(getRel(coin, "material"))) &&
         (filters.mint.length === 0 || filters.mint.includes(getRel(coin, "mint"))) &&
@@ -137,11 +137,22 @@ const Coins = () => {
         (filters.from_year <= coin?.attributes?.from_year) &&
         (filters.to_year >= coin?.attributes?.to_year)
       );
-    });
+    })
+  ), [searchedData, filters]);
 
-    setCoinList(filteredCoins || []);
+  if (!coinsData && coinsStatus === 'error') {
+    return (
+      <div className='Coins' role='alert'>
+        <h2>We could not load the coin catalog.</h2>
+        <p>Please try again to browse and filter the collection.</p>
+        <button type='button' onClick={() => fetchCoinData().catch(() => {})}>Try again</button>
+      </div>
+    );
+  }
 
-  }, [searchedData, filters]);
+  if (!coinsData) {
+    return <LoadingPage variant='coin-results' compact title='Gathering the coin catalog' />;
+  }
 
   return (
     <div className='Coins'>
@@ -171,7 +182,13 @@ const Coins = () => {
         </label>
       </div>
 
-      <CoinPaginate coinsPerPage={coinsPerPage} coins={coinList} />
+      {coinList.length > 0 ? (
+        <CoinPaginate coinsPerPage={coinsPerPage} coins={coinList} />
+      ) : (
+        <p role='status'>
+          {coinsData.length === 0 ? 'The coin catalog is currently empty.' : 'No coins match these filters.'}
+        </p>
+      )}
 
     </div>
   );

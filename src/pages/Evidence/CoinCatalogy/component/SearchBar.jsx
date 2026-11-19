@@ -17,8 +17,12 @@ import qs from "qs";
 import { CoinContext } from "src/context/coinContext";
 
 const SearchBar = () => {
-	const { coinsKeyTerms, fetchCoinData } = useContext(CoinContext);
-	coinsKeyTerms ?? fetchCoinData();
+	const { coinsKeyTerms, fetchCoinData, coinsStatus } = useContext(CoinContext);
+	useEffect(() => {
+		if (!coinsKeyTerms && (coinsStatus === 'idle' || coinsStatus === 'ready')) {
+			fetchCoinData().catch(() => {});
+		}
+	}, [coinsKeyTerms, coinsStatus, fetchCoinData]);
 	const [tags, setTages] = useState({
 		material: [],
 		mint: [],

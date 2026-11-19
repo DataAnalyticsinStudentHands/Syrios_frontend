@@ -68,6 +68,7 @@ function CoinInfoPage() {
 
   useEffect(() => {
     let mounted = true;
+    setIsLoading(true);
 
     async function fetchData() {
       try {
@@ -91,7 +92,7 @@ function CoinInfoPage() {
     };
   }, [id]);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='coin-detail' />;
 
   if (!coin) {
     return (

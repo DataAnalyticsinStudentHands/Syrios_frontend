@@ -13,8 +13,8 @@
  *    - Aligns with new normalization layer in `client.js`
  *
  * 2. Preserved UI + Behavior
- *    - All layout, rendering, and component structure unchanged
- *    - Only data extraction logic updated
+ *    - Layout and component structure are preserved
+ *    - Shared helpers sanitize CMS text and validate card destinations
  *
  * 3. Improved Safety
  *    - Added defensive checks for malformed API responses
@@ -43,12 +43,13 @@ import { Link } from 'react-router-dom';
 import NoFeedBackIcon from 'src/components/constant/NoFeedBackIcon';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
 import createMarkup from 'src/utils/Markup';
+import { getSafeNavigationUrl } from 'src/utils/urls';
 import landingRequest from 'src/api/landing';
 
 function ImageIcon(props) {
   return (
     <div className='bg-white landing-button-size p-3 m-3'>
-      <Link to={props.link}>
+      <Link to={getSafeNavigationUrl(props.link) ?? '#'}>
         <div
           className='landing-button-img'
           style={{
@@ -103,7 +104,7 @@ function LandingPage() {
     fetchData();
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='home' />;
 
   return (
     <>

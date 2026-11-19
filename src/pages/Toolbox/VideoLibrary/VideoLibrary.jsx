@@ -99,7 +99,7 @@ const VideoLibrary = () => {
     setIsOpen(false);
   }
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='video' />;
 
   return (
     <div id='video-library'>

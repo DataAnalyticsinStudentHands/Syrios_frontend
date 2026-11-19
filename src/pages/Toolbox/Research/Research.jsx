@@ -24,6 +24,7 @@
  *
  * Notes:
  * - `zoteroRequest.getAllitems()` remains separate from Strapi normalization
+ * - Bibliography HTML and URLs use shared guards even though the group is public
  * - `researchRequest.researchFind()` is assumed to return a normalized singleton response
  *
  * Future Improvements:
@@ -38,6 +39,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import zoteroRequest from 'src/api/zotero';
 import researchRequest from 'src/api/research';
 import createMarkup from 'src/utils/Markup';
+import { getSafeWebUrl } from 'src/utils/urls';
 import PageTitleComponent from 'src/components/constant/pageTitleText';
 
 const Research = () => {
@@ -69,7 +71,7 @@ const Research = () => {
     fetchData();
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='research' />;
 
   return (
     <div id='research'>
@@ -111,7 +113,7 @@ const Research = () => {
                 {bib.bib.split("http")[1] ? (
                   <Col xs={10}>
                     <a
-                      href={`http${bib.bib.split("http")[1].split(".</div>")[0]}`}
+                      href={getSafeWebUrl(`http${bib.bib.split("http")[1].split(".</div>")[0]}`) ?? undefined}
                       dangerouslySetInnerHTML={createMarkup(bib.bib.split("http")[0])}
                       target="_blank"
                       rel="noopener noreferrer"

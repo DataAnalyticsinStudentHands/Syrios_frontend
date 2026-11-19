@@ -21,7 +21,7 @@
  *    - Prevents crashes if stored JSON is malformed
  *
  * 3. Preserved Existing Behavior
- *    - Context shape and fetch behavior remain unchanged
+ *    - Existing context values and raw collection fetch format remain available
  *    - Filter option extraction logic remains functionally the same
  *
  * Data Shape Notes:
@@ -33,10 +33,9 @@
  * Future Improvements:
  * - Introduce a coin adapter layer to flatten collection records
  * - Move sessionStorage helpers into a shared utility
- * - Add loading/error state to the context provider
  */
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import coinCollections from "src/api/coin-collections";
 
 export const CoinContext = createContext();
@@ -78,36 +77,59 @@ function getDeepFilterOptions(arr, filter) {
 }
 
 export const CoinContextProvider = ({ children }) => {
-  const [coinsData, setCoinsData] = useState(
-    safeParseSessionStorage("coins", null)
-  );
+  const [coinsData, setCoinsData] = useState(() => {
+    const stored = safeParseSessionStorage("coins", null);
+    return Array.isArray(stored) ? stored : null;
+  });
 
-  const [coinsKeyTerms, setCoinKeyTerms] = useState(
+  const [coinsKeyTerms, setCoinKeyTerms] = useState(() =>
     safeParseSessionStorage("coinskeyTerms", null)
   );
+  // Null means the catalog has not loaded; [] is a completed, empty catalog.
+  // Track failures separately so a failed request never looks like zero results.
+  const [coinsStatus, setCoinsStatus] = useState(() => coinsData ? 'ready' : 'idle');
+  const [coinsError, setCoinsError] = useState(null);
+  const pendingRequest = useRef(null);
 
   /**
    * Fetch full coin collection data
    * - Intentionally consumes raw Strapi collection rows
    * - Derives reusable filter key terms from the same dataset
    */
-  const fetchCoinData = async () => {
-    const res = await coinCollections.coinCollection();
-    const rows = res?.data?.data || [];
+  const fetchCoinData = useCallback(() => {
+    // The overview search and results can both request the same collection.
+    if (pendingRequest.current) return pendingRequest.current;
+    setCoinsStatus('loading');
+    setCoinsError(null);
 
-    setCoinsData(rows);
+    pendingRequest.current = Promise.resolve()
+      .then(() => coinCollections.coinCollection())
+      .then((res) => {
+        const rows = res?.data?.data;
+        if (!Array.isArray(rows)) throw new Error('The coin catalog response was invalid.');
 
-    const options = {
-      material: getDeepFilterOptions(rows, "material"),
-      mint: getDeepFilterOptions(rows, "mint"),
-      issuing_authority: getDeepFilterOptions(rows, "issuing_authority"),
-      governing_power: getDeepFilterOptions(rows, "governing_power"),
-      language: getDeepFilterOptions(rows, "language"),
-      ancient_territory: getDeepFilterOptions(rows, "ancient_territory"),
-    };
+        const options = {
+          material: getDeepFilterOptions(rows, "material"),
+          mint: getDeepFilterOptions(rows, "mint"),
+          issuing_authority: getDeepFilterOptions(rows, "issuing_authority"),
+          governing_power: getDeepFilterOptions(rows, "governing_power"),
+          language: getDeepFilterOptions(rows, "language"),
+          ancient_territory: getDeepFilterOptions(rows, "ancient_territory"),
+        };
 
-    setCoinKeyTerms(options);
-  };
+        setCoinsData(rows);
+        setCoinKeyTerms(options);
+        setCoinsStatus('ready');
+      })
+      .catch((error) => {
+        setCoinsError(error);
+        setCoinsStatus('error');
+        throw error;
+      })
+      .finally(() => { pendingRequest.current = null; });
+
+    return pendingRequest.current;
+  }, []);
 
   /**
    * Persist fetched coin data + derived key terms for the current session
@@ -118,7 +140,7 @@ export const CoinContextProvider = ({ children }) => {
   }, [coinsData, coinsKeyTerms]);
 
   return (
-    <CoinContext.Provider value={{ coinsData, coinsKeyTerms, fetchCoinData }}>
+    <CoinContext.Provider value={{ coinsData, coinsKeyTerms, fetchCoinData, coinsStatus, coinsError }}>
       {children}
     </CoinContext.Provider>
   );

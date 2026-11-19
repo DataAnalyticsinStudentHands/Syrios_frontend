@@ -6,12 +6,13 @@
  * - process.env → import.meta.env
  * - removed `.js` from Markup import
  *
- * Everything else is intentionally untouched.
+ * Captions use the shared HTML sanitizer; CMS source links require HTTP(S).
  */
 
 import { Container, Row, Col} from "react-bootstrap"
 import { HeadComponent } from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup';
+import { getSafeWebUrl } from 'src/utils/urls';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
@@ -28,7 +29,7 @@ const FlipCoinImage = (props)=>{
         <div className='flip-box-inner'>
           <div className='flip-box-front justify-content-center align-items-center'>
             <Row>
-              <a href={`${sourUrl}`} target="_blank" rel="noopener noreferrer">
+              <a href={getSafeWebUrl(sourUrl) ?? undefined} target="_blank" rel="noopener noreferrer">
                 <img 
                   src={`${baseURL}${coin_obverse_url}`} 
                   alt={coin_obverse_alt}
@@ -47,7 +48,7 @@ const FlipCoinImage = (props)=>{
           </div>
           <div className='flip-box-back'>
             <Row>
-              <a href={`${sourUrl}`} target="_blank" rel="noopener noreferrer">
+              <a href={getSafeWebUrl(sourUrl) ?? undefined} target="_blank" rel="noopener noreferrer">
                 <img 
                   src={`${baseURL}${coin_reverse_url}`} 
                   alt={coin_reverse_alt}

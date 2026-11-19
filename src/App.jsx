@@ -74,6 +74,7 @@ import GlossaryTerm from "./pages/Toolbox/Glossary/GlossaryTerm";
 import ErrorPage from "./components/error/404";
 import FooterWrapper from "./components/footerv2/Footer2Wrapper";
 import AutoScrollToTop from "./utils/ScrollToTop";
+import LoadingPage from "./components/loadingPage/LoadingPage";
 
 const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
 const isStaging = import.meta.env.MODE === "staging";
@@ -91,7 +92,7 @@ const isStaging = import.meta.env.MODE === "staging";
  * A couple of routes intentionally sit outside
  * that wrapper for standalone rendering behavior.
  */
-function AppRoutes() {
+export function AppRoutes() {
   return (
     <Routes>
       <Route element={<FooterWrapper />}>
@@ -102,24 +103,17 @@ function AppRoutes() {
 
         {/* Evidence routes */}
         <Route path="/Evidence/CoinSort" element={<CoinSort />} />
+        {/* Gate the route itself so direct production URLs cannot bypass the hidden menu. */}
         {isStaging && (
           <Route
             path="/Evidence/MapCoins"
             element={(
-              <React.Suspense fallback={null}>
+              <React.Suspense fallback={<LoadingPage variant='map' />}>
                 <MapCoins />
-                      </React.Suspense>
+              </React.Suspense>
             )}
           />
         )}
-        <Route
-          path="/Evidence/MapCoins"
-          element={(
-            <React.Suspense fallback={null}>
-              <MapCoins />
-            </React.Suspense>
-          )}
-        />
         <Route path="/Evidence/Timeline" element={<Timeline />} />
         <Route path="/Evidence/CoinCatalog" element={<CoinCatalog />} />
         <Route path="/Coins/:params" element={<Coins />} />

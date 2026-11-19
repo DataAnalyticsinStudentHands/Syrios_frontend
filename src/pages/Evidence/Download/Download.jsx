@@ -64,7 +64,7 @@ function Download() {
   }, []);
 
   if (isLoading) {
-    return <LoadingPage />;
+    return <LoadingPage variant='coin-data' />;
   }
 
   return (

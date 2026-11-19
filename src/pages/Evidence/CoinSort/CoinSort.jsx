@@ -760,7 +760,7 @@ const CoinSort = () => {
     );
   }, [filter_selection, with_selection, of_kind_selection, of_kind_selections]);
 
-  if (is_loading) return <LoadingPage />;
+  if (is_loading) return <LoadingPage variant='coin-pile' />;
 
   return (
     <>

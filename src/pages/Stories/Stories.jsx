@@ -76,7 +76,7 @@ const Stories = () => {
   if (isLoading) {
     return (
       <>
-        <LoadingPage />
+        <LoadingPage variant='stories' />
         <Footer />
       </>
     );

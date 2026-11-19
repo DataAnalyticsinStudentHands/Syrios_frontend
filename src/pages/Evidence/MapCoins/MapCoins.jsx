@@ -18,6 +18,7 @@ import {
   getCompositionEntries,
   getDimensionOptions,
   getFilterOptions,
+  getSafeSourceUrl,
   groupCoinsByMint,
   normalizeLocatedCoins,
 } from './mapCoinData';
@@ -78,7 +79,7 @@ const appendTextRow = (list, labelText) => {
   return value;
 };
 
-const createCoinPopup = (group) => {
+export const createCoinPopup = (group) => {
   let activeIndex = 0;
   const routePrefix = window.location.pathname.startsWith('/dev') ? '/dev' : '';
   const content = document.createElement('div');
@@ -134,7 +135,7 @@ const createCoinPopup = (group) => {
   const sourceLink = document.createElement('a');
   sourceLink.textContent = 'Image source';
   sourceLink.target = '_blank';
-  sourceLink.rel = 'noreferrer';
+  sourceLink.rel = 'noopener noreferrer';
   links.append(detailLink, sourceLink);
 
   const navigation = document.createElement('div');
@@ -173,8 +174,14 @@ const createCoinPopup = (group) => {
     rightsHolder.textContent = coin?.rightHolder ? `Rights holder: ${coin.rightHolder}` : 'Rights holder not recorded';
     counter.textContent = `${activeIndex + 1} / ${group.coins.length}`;
     detailLink.href = `${routePrefix}/Coin/${coin.id}`;
-    sourceLink.hidden = !coin?.sourceImage;
-    sourceLink.href = coin?.sourceImage || '#';
+    const sourceUrl = getSafeSourceUrl(coin?.sourceImage);
+    sourceLink.hidden = !sourceUrl;
+    if (sourceUrl) {
+      sourceLink.href = sourceUrl;
+    } else {
+      // The popup is reused across coins; hiding it alone retains the prior URL.
+      sourceLink.removeAttribute('href');
+    }
   };
 
   previousButton.addEventListener('click', () => {
