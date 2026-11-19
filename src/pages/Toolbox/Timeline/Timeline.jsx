@@ -307,8 +307,10 @@ const Timeline = () => {
     }
   }, []);
 
-  if (timeline_info_is_loading && timeline_background_is_loading) {
-    return <LoadingPage />;
+  // Keep the loading screen until both real requests finish; do not expose an
+  // empty timeline while the background is ready but evidence is still loading.
+  if (timeline_info_is_loading || timeline_background_is_loading) {
+    return <LoadingPage variant='coin-time' phase={timeline_background_is_loading ? 'timeline' : 'evidence'} />;
   }
 
   return (

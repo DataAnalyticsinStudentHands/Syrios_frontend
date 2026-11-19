@@ -12,7 +12,7 @@
  *    - Prevents regressions across mixed migration states
  *
  * 2. Fullpage Stability Fix
- *    - Prevents @fullpage/react-fullpage from initializing before valid slides exist
+ *    - Prevents the story scroller from initializing before valid slides exist
  *    - Ensures anchors and slides are synchronized before mount
  *    - Prevents render-time fullpage side effects
  *
@@ -46,7 +46,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
-import ReactFullpage from '@fullpage/react-fullpage';
+import ReactFullpage from 'src/components/StoryScroller/StoryScroller';
 import StoryComponent from 'src/pages/Stories/StoryComponents';
 import storyRequest from 'src/api/story';
 import zoteroRequest from 'src/api/zotero';
@@ -87,8 +87,8 @@ const HowToReadACoin = () => {
         setStoryAnchors(anchors);
 
         await Promise.all([
-          createImageReference(data, mounted),
-          createZoteroReference(data, mounted),
+          createImageReference(data, () => mounted),
+          createZoteroReference(data, () => mounted),
         ]);
       } catch (error) {
         console.error('Failed to load story:', error);
@@ -130,7 +130,7 @@ const HowToReadACoin = () => {
     }
   };
 
-  async function createImageReference(data, mounted) {
+  async function createImageReference(data, isCurrent) {
     try {
       let imgRef = [];
 
@@ -186,14 +186,14 @@ const HowToReadACoin = () => {
 
       imgRef = [...new Map(imgRef.map((item) => [item.right_holder, item])).values()];
 
-      if (mounted) setStoryImageSouce(imgRef);
+      if (isCurrent()) setStoryImageSouce(imgRef);
     } catch (err) {
       console.error('Image reference build failed:', err);
-      if (mounted) setStoryImageSouce([]);
+      if (isCurrent()) setStoryImageSouce([]);
     }
   }
 
-  async function createZoteroReference(data, mounted) {
+  async function createZoteroReference(data, isCurrent) {
     try {
       const refs = Array.isArray(data?.references?.data) ? data.references.data : [];
 
@@ -210,10 +210,11 @@ const HowToReadACoin = () => {
         .filter(Boolean)
         .sort();
 
-      if (mounted) setStoryReference(bibArr);
+      // The request can outlive this route; check its effect's current state.
+      if (isCurrent()) setStoryReference(bibArr);
     } catch (err) {
       console.error('Zotero reference build failed:', err);
-      if (mounted) setStoryReference([]);
+      if (isCurrent()) setStoryReference([]);
     }
   }
 
@@ -226,7 +227,7 @@ const HowToReadACoin = () => {
   }
 
   if (isLoading) {
-    return <LoadingPage />;
+    return <LoadingPage variant='how-to-read' />;
   }
 
   const hasFrames = Array.isArray(storyFrame) && storyFrame.length > 0;
@@ -237,6 +238,7 @@ const HowToReadACoin = () => {
     <>
       {hasFrames && hasMatchingAnchors ? (
         <ReactFullpage
+          contentKey={storyFrame}
           licenseKey={'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
           navigation={true}
           navigationPosition="right"

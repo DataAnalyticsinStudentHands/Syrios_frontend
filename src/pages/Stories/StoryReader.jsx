@@ -6,7 +6,7 @@
  *
  * Refactor Summary:
  * 1. Fullpage Stability Fix
- *    - Prevents @fullpage/react-fullpage from initializing before valid slides exist
+ *    - Prevents the story scroller from initializing before valid slides exist
  *    - Ensures anchors and slides are always synchronized
  *    - Filters invalid/null slide renders to prevent runtime crashes
  *
@@ -52,7 +52,7 @@ import { useLocation } from 'react-router-dom';
 
 import Footer from 'src/components/footer/Footer';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
-import ReactFullpage from '@fullpage/react-fullpage';
+import ReactFullpage from 'src/components/StoryScroller/StoryScroller';
 import StoryComponent from './StoryComponents';
 
 import storyRequest from 'src/api/story';
@@ -72,6 +72,7 @@ const StoryReader = () => {
 
   useEffect(() => {
     let mounted = true;
+    setIsLoading(true);
 
     async function fetchData() {
       try {
@@ -92,8 +93,8 @@ const StoryReader = () => {
         setStoryAnchors(anchors);
 
         await Promise.all([
-          createImageReference(data, mounted),
-          createZoteroReference(data, mounted),
+          createImageReference(data, () => mounted),
+          createZoteroReference(data, () => mounted),
         ]);
       } catch (error) {
         console.error('Failed to load story reader:', error);
@@ -135,7 +136,7 @@ const StoryReader = () => {
     }
   };
 
-  async function createImageReference(data, mounted) {
+  async function createImageReference(data, isCurrent) {
     try {
       let imgRef = [];
 
@@ -191,14 +192,14 @@ const StoryReader = () => {
 
       imgRef = [...new Map(imgRef.map((item) => [item.right_holder, item])).values()];
 
-      if (mounted) setStoryImageSouce(imgRef);
+      if (isCurrent()) setStoryImageSouce(imgRef);
     } catch (err) {
       console.error('Failed to build image references:', err);
-      if (mounted) setStoryImageSouce([]);
+      if (isCurrent()) setStoryImageSouce([]);
     }
   }
 
-  async function createZoteroReference(data, mounted) {
+  async function createZoteroReference(data, isCurrent) {
     try {
       const refs = Array.isArray(data?.references?.data) ? data.references.data : [];
 
@@ -212,10 +213,12 @@ const StoryReader = () => {
 
       const bibArr = responses.map((res) => res.data).filter(Boolean).sort();
 
-      if (mounted) setStoryReference(bibArr);
+      // Read the live effect guard after Zotero settles: a copied boolean would
+      // let the previous story overwrite the current story's citations.
+      if (isCurrent()) setStoryReference(bibArr);
     } catch (err) {
       console.error('Failed to build Zotero references:', err);
-      if (mounted) setStoryReference([]);
+      if (isCurrent()) setStoryReference([]);
     }
   }
 
@@ -230,7 +233,7 @@ const StoryReader = () => {
   if (isLoading) {
     return (
       <>
-        <LoadingPage />
+        <LoadingPage variant='story-reader' />
         <Footer />
       </>
     );
@@ -244,6 +247,7 @@ const StoryReader = () => {
     <>
       {hasFrames && hasMatchingAnchors ? (
         <ReactFullpage
+          contentKey={storyFrame}
           licenseKey={'K3HO6-208O9-6QK0J-JZ1VH-RRWIO'}
           navigation={true}
           navigationPosition={'right'}

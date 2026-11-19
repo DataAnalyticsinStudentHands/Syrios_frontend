@@ -26,6 +26,7 @@
  * Notes:
  * - This component does not fetch API data directly
  * - It depends on the shape of `coinMetaData` provided by parent components
+ * - CMS source and metadata links use the shared HTTP(S) URL validator
  * - Full normalization migration should happen upstream before changing this component further
  *
  * Environment Variables Required:
@@ -39,6 +40,7 @@
 
 import React, { useEffect, useState } from "react";
 import WhitePopUp from "src/utils/WhitePopUp";
+import { getSafeWebUrl } from 'src/utils/urls';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
@@ -127,18 +129,10 @@ export function IfEmptyReturnNone(str) {
 }
 
 export function IfUrlHrefElseString(str) {
-  function isUrl(string) {
-    try {
-      const url = new URL(string);
-      return url.protocol === "http:" || url.protocol === "https:";
-    } catch (_) {
-      return false;
-    }
-  }
-
-  if (isUrl(str)) {
+  const href = getSafeWebUrl(str);
+  if (href) {
     return (
-      <a className="coin-info-url" href={str}>
+      <a className="coin-info-url" href={href}>
         {str}
       </a>
     );
@@ -391,7 +385,7 @@ const CoinInfo = (props) => {
             SOURCE IMAGE:
             <span style={{ marginLeft: "0.25em" }} className="coin-info-reference-content">
               {coinMetaData.source_image ? (
-                <a href={coinMetaData.source_image} target="_blank" rel="noopener noreferrer">
+                <a href={getSafeWebUrl(coinMetaData.source_image) ?? undefined} target="_blank" rel="noopener noreferrer">
                   {coinMetaData.source_image}
                 </a>
               ) : null}

@@ -9,7 +9,7 @@
  * - background image
  * - back-to-top navigation
  *
- * Migration Changes Only:
+ * Migration Notes:
  * 1. File must be renamed from `.js` to `.jsx`
  *    - Required because this file contains JSX and Vite does not allow JSX in `.js`
  *
@@ -19,9 +19,9 @@
  * 3. Removed explicit `.js` extension from Markup import
  *    - Vite-safe import resolution
  *
- * Behavior:
- * - All existing DOM manipulation, fade switching, layout branching,
- *   and rendering behavior are intentionally preserved as-is.
+ * Security:
+ * - CMS captions use the shared HTML sanitizer and source links require HTTP(S).
+ * - Fade switching and layout interactions retain their existing behavior.
  */
 
  /* eslint-disable eqeqeq */
@@ -29,6 +29,7 @@ import { Container, Row, Col} from "react-bootstrap"
 
 import { HeadComponent} from "../ComponentFunction/index";
 import createMarkup from 'src/utils/Markup';
+import { getSafeWebUrl } from 'src/utils/urls';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
@@ -96,7 +97,7 @@ const FadeBody = (props)=>{
     <>      
       <Col xs={3} className={`px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`} >
         <Row>
-          <a href={`${sourUrl_left}`} target="_blank" rel="noopener noreferrer" className={`text-center`}>
+          <a href={getSafeWebUrl(sourUrl_left) ?? undefined} target="_blank" rel="noopener noreferrer" className={`text-center`}>
             <img 
               src={`${baseURL}${coin_left_url}`} 
               alt={coin_left_alt}
@@ -120,7 +121,7 @@ const FadeBody = (props)=>{
       </Col>
       <Col xs={3} className={` px-3 ${props.coin.caption_or_all? 'light-blue-background':''}`}>
         <Row>
-          <a href={`${sourUrl_right}`} target="_blank" rel="noopener noreferrer" className={`text-center`}>
+          <a href={getSafeWebUrl(sourUrl_right) ?? undefined} target="_blank" rel="noopener noreferrer" className={`text-center`}>
             <img 
               src={`${baseURL}${coin_right_url}`} 
               alt={coin_right_alt}

@@ -2,11 +2,41 @@ import { describe, expect, it } from 'vitest';
 import {
   filterLocatedCoins,
   getCompositionEntries,
+  getSafeSourceUrl,
   groupCoinsByMint,
   normalizeLocatedCoins,
 } from './mapCoinData';
 
 const relation = (attributes) => ({ data: { attributes } });
+
+describe('map image source URLs', () => {
+  it.each([
+    ['https://museum.example/coin/1?view=front#image', 'https://museum.example/coin/1?view=front#image'],
+    ['http://museum.example/coin/2', 'http://museum.example/coin/2'],
+    ['  HTTPS://MUSEUM.EXAMPLE/coin/3  ', 'https://museum.example/coin/3'],
+  ])('preserves a navigable HTTP source: %s', (value, expected) => {
+    expect(getSafeSourceUrl(value)).toBe(expected);
+  });
+
+  it.each([
+    'javascript:alert(document.domain)',
+    'JaVaScRiPt:alert(1)',
+    'java\nscript:alert(1)',
+    'data:text/html,<script>alert(1)</script>',
+    'vbscript:msgbox(1)',
+    'ftp://museum.example/coin/1',
+    '//museum.example/coin/1',
+    '/coin/1',
+    'coin/1',
+    'https://',
+    '',
+    null,
+    undefined,
+    { href: 'https://museum.example/coin/1' },
+  ])('rejects an unsafe or invalid source: %s', (value) => {
+    expect(getSafeSourceUrl(value)).toBeNull();
+  });
+});
 
 const row = ({
   id,

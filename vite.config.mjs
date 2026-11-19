@@ -9,12 +9,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { publicEnvironmentGuard } from './scripts/publicEnvironment.mjs'
 
 export default defineConfig(({ mode }) => ({
-  // Staging is deployed under /dev/; production and local development use /.
+  // MODE selects asset/router URLs at build time; container runtime variables
+  // cannot change the embedded /dev/ staging prefix after the build.
   base: mode === 'staging' ? '/dev/' : '/',
 
-  plugins: [react()],
+  plugins: [react(), publicEnvironmentGuard()],
 
   resolve: {
     alias: {
@@ -27,6 +29,7 @@ export default defineConfig(({ mode }) => ({
   },
 
   preview: {
+    // Local preview only; the PM2 configurations serve published builds.
     host: 'localhost',
     port: 4173,
     strictPort: true,

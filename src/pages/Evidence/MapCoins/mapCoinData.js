@@ -1,4 +1,5 @@
 import { getAltText, getFullMediaUrl } from 'src/utils/Media';
+export { getSafeWebUrl as getSafeSourceUrl } from 'src/utils/urls';
 
 export const MAP_DATE_RANGE = Object.freeze({ min: -336, max: 408 });
 

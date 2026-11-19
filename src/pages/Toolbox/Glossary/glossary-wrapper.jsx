@@ -70,7 +70,7 @@ function GlossaryWrapper() {
     fetchData().catch(console.error);
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='glossary' />;
 
   return (
     <div id="glossary-page">

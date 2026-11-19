@@ -38,6 +38,7 @@ import React, { useState, useEffect } from 'react';
 import glossaryRequest from 'src/api/glossary';
 import { Row, Col, ListGroup } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
+import LoadingPage from 'src/components/loadingPage/LoadingPage';
 
 function getGlossaryTerm(row) {
   return row?.term || row?.attributes?.term || '';
@@ -78,11 +79,13 @@ const Glossary = () => {
   const { group } = useParams();
 
   useEffect(() => {
+    let active = true;
     async function fetchData() {
       setIsLoading(true);
 
       try {
         const result = await glossaryRequest.glossaryFind();
+        if (!active) return;
         const rows = result?.data?.data || [];
 
         let contentList = rows
@@ -109,22 +112,20 @@ const Glossary = () => {
 
         setGlossaryData(sorted);
       } catch (err) {
+        if (!active) return;
         console.error('Glossary load failed:', err);
         setGlossaryData({});
       } finally {
-        setIsLoading(false);
+        if (active) setIsLoading(false);
       }
     }
 
     fetchData();
+    return () => { active = false; };
   }, [group]);
 
   if (isLoading) {
-    return (
-      <div id="glossary-loading">
-        <div className="loader" />
-      </div>
-    );
+    return <LoadingPage variant='glossary' compact title='Gathering the glossary terms' />;
   }
 
   return (

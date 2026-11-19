@@ -17,6 +17,7 @@ Antioch_Dataset_08242020.zip
 
 # production
 /build
+/build-staging
 
 # misc
 .DS_Store

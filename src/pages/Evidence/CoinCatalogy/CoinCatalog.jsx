@@ -109,7 +109,7 @@ const CoinCatalog = () => {
     <>
       <NoFeedBackicon url="default" />
       {loading ? (
-        <LoadingPage />
+        <LoadingPage variant='coin-catalog' />
       ) : (
         <div id="coin-catalog">
           <div className="catalog-section">

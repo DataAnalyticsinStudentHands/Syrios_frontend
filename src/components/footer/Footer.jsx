@@ -13,8 +13,8 @@
  *    - Removed explicit `.js` extension from `Markup` import for Vite-safe resolution
  *
  * 3. Preserved behavior
- *    - Drawer behavior, toggle behavior, conditional rendering,
- *      reference formatting, and attribution links remain unchanged
+ *    - Drawer interactions and reference formatting are preserved
+ *    - Shared guards sanitize bibliography HTML and restrict source links to HTTP(S)
  *
  * Notes:
  * - Uses `react-modern-drawer` and its stylesheet directly
@@ -32,6 +32,7 @@ import React from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import createMarkup from "src/utils/Markup";
+import { getSafeWebUrl } from 'src/utils/urls';
 
 const Footer = ({ references, imageReference, isBottomOpen, toggleBottom }) => {
   const hasReferences =
@@ -78,7 +79,7 @@ const Footer = ({ references, imageReference, isBottomOpen, toggleBottom }) => {
                   return (
                     <div key={index} className="d-flex references-text my-5">
                       <a
-                        href={ref.source_image}
+                        href={getSafeWebUrl(ref.source_image) ?? undefined}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -110,7 +111,7 @@ const Footer = ({ references, imageReference, isBottomOpen, toggleBottom }) => {
                       {ref.split("http")[1] ? (
                         <div xs={11}>
                           <a
-                            href={`http${ref.split("http")[1].split(".</div>")[0]}`}
+                            href={getSafeWebUrl(`http${ref.split("http")[1].split(".</div>")[0]}`) ?? undefined}
                             dangerouslySetInnerHTML={createMarkup(ref.split("http")[0])}
                             target="_blank"
                             rel="noopener noreferrer"

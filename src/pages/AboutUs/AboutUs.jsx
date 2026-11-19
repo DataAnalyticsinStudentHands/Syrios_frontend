@@ -12,15 +12,13 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import aboutUsRequest from 'src/api/about-us';
 import LoadingPage from 'src/components/loadingPage/LoadingPage';
+import createMarkup from 'src/utils/Markup';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
 
-function createMarkup(textTran){
-  return {__html: textTran};
-}
-
 const About = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [aboutUsData, setAboutUsdata] = useState([])
   const [currentTab, setCurrentTab] = useState("Student Leads")
 
@@ -34,19 +32,33 @@ const About = () => {
   ]
 
 useEffect(() => {
-  async function fetchData (){
-    const result = await aboutUsRequest.aboutUsFind()
-
-    // NEW normalized shape
-    const data = result.data.data
-
-    setAboutUsdata(data)
-    setIsLoading(false)
+  let mounted = true;
+  async function fetchData() {
+    try {
+      const result = await aboutUsRequest.aboutUsFind();
+      const data = result?.data?.data;
+      if (!data) throw new Error('About Us information is unavailable');
+      if (mounted) setAboutUsdata(data);
+    } catch (error) {
+      console.error('Failed to load About Us:', error);
+      if (mounted) setLoadError(true);
+    } finally {
+      if (mounted) setIsLoading(false);
+    }
   }
-  fetchData().catch(console.error);
+  fetchData();
+  return () => { mounted = false; };
 },[]);
 
-	if (isLoading) return (<LoadingPage />);
+	if (isLoading) return (<LoadingPage variant='about' />);
+  if (loadError) {
+    return (
+      <div id='aboutus-page' role='alert'>
+        <h1 className='text-center'>About Us</h1>
+        <p>We could not load the team information. Please refresh the page to try again.</p>
+      </div>
+    );
+  }
 
   return (
     <div id='aboutus-page'>

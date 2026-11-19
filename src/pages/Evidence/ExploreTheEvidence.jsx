@@ -59,7 +59,7 @@ const ExploreTheEvidence = () => {
     fetchData();
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading) return <LoadingPage variant='evidence' />;
 
   const icons = evidenceData?.image_icon || [];
 

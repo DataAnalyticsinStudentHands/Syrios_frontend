@@ -11,7 +11,7 @@
  * Refactor Summary:
  * 1. Renamed file from `.js` to `.jsx` (contains JSX)
  * 2. Replaced `process.env.REACT_APP_strapiURL` with `import.meta.env.VITE_STRAPI_URL`
- * 3. Preserved all rendering logic and layout behavior
+ * 3. Shared guards sanitize CMS HTML and validate source/navigation URLs
  *
  * Notes:
  * - Uses react-bootstrap layout
@@ -22,12 +22,10 @@
  */
 
 import { Container, Row, Col } from "react-bootstrap";
+import createMarkup from 'src/utils/Markup';
+import { getSafeNavigationUrl, getSafeWebUrl } from 'src/utils/urls';
 
 const baseURL = import.meta.env.VITE_STRAPI_URL;
-
-function createMarkup(textTran) {
-  return { __html: textTran };
-}
 
 export function IsEmptyOrWhiteSpace(str) {
   return str === null ? true : (str.match(/^\s*$/) || []).length > 0;
@@ -115,7 +113,7 @@ export const ImageComponent = (props) => {
     return (
       <Col className={image.caption_or_both ? component_background[image.background_color] : ""}>
         <Row className="justify-content-center align-items-center">
-          <a href={image.coin.data.attributes.source_image} target="_blank" rel="noopener noreferrer">
+          <a href={getSafeWebUrl(image.coin.data.attributes.source_image) ?? undefined} target="_blank" rel="noopener noreferrer">
             <img
               src={`${baseURL}${
                 image.reverse_or_obverse
@@ -149,7 +147,7 @@ export const ImageComponent = (props) => {
     <Col className={image.caption_or_both ? component_background[image.background_color] : ""}>
       <Row className="d-flex justify-content-center">
         {image.additional_link ? (
-          <a href={image.additional_link} target="_blank" rel="noopener noreferrer">
+          <a href={getSafeNavigationUrl(image.additional_link) ?? undefined} target="_blank" rel="noopener noreferrer">
             <img
               src={`${baseURL}${image.image.data.attributes.url}`}
               alt={image.image.data.attributes.alternativeText ?? "img"}
