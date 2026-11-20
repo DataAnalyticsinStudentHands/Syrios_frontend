@@ -40,7 +40,7 @@
  */
 
 import React from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link, useLocation } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/styles.scss";
@@ -75,9 +75,13 @@ import ErrorPage from "./components/error/404";
 import FooterWrapper from "./components/footerv2/Footer2Wrapper";
 import AutoScrollToTop from "./utils/ScrollToTop";
 import LoadingPage from "./components/loadingPage/LoadingPage";
+import useXRSupport from "./hooks/useXRSupport";
 
 const MapCoins = React.lazy(() => import("./pages/Evidence/MapCoins/MapCoins"));
 const isStaging = import.meta.env.MODE === "staging";
+const CoinSortXR = isStaging
+  ? React.lazy(() => import("./pages/Evidence/CoinSortXR/CoinSortXR"))
+  : null;
 
 /**
  * ----------------------------------------
@@ -140,6 +144,16 @@ export function AppRoutes() {
       </Route>
 
       {/* Standalone routes outside FooterWrapper */}
+      {isStaging && (
+        <Route
+          path="/Evidence/CoinSortXR"
+          element={(
+            <React.Suspense fallback={<LoadingPage variant='coin-3d' />}>
+              <CoinSortXR />
+            </React.Suspense>
+          )}
+        />
+      )}
       <Route path="/HowToReadACoin" element={<HowToReadACoin />} />
       <Route path="/StoryReader" element={<StoryReader />} />
     </Routes>
@@ -158,11 +172,18 @@ export function AppRoutes() {
  * - scroll reset
  * - route rendering
  */
+function StandardNavigation({ children }) {
+  const { pathname } = useLocation();
+  return isStaging && pathname.replace(/\/$/, '') === '/Evidence/CoinSortXR' ? null : children;
+}
+
 function AppShell({ basename }) {
+  const xrSupport = useXRSupport(isStaging);
   return (
     <div id="App" style={{ backgroundImage: `url(${background})` }}>
       <BrowserRouter basename={basename}>
         <AutoScrollToTop>
+          <StandardNavigation>
           <Navbar
             id="navbar"
             collapseOnSelect
@@ -199,6 +220,11 @@ function AppShell({ basename }) {
                   <NavDropdown.Item as={Link} to="/Evidence/CoinSort" className="navbar-text">
                     Coins in a Pile
                   </NavDropdown.Item>
+                  {isStaging && xrSupport.supported && (
+                    <NavDropdown.Item as={Link} to="/Evidence/CoinSortXR" className="navbar-text">
+                      CoinSort XR
+                    </NavDropdown.Item>
+                  )}
                   {isStaging && (
                     <NavDropdown.Item as={Link} to="/Evidence/MapCoins" className="navbar-text">
                       Coins on a Map
@@ -243,6 +269,7 @@ function AppShell({ basename }) {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
+          </StandardNavigation>
 
           <AppRoutes />
         </AutoScrollToTop>

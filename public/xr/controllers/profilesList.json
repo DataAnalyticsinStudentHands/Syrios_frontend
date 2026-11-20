@@ -1,0 +1,5 @@
+{
+  "meta-quest-touch-plus": { "path": "meta-quest-touch-plus/profile.json" },
+  "meta-quest-touch-plus-v2": { "path": "meta-quest-touch-plus-v2/profile.json" },
+  "oculus-touch-v3": { "path": "oculus-touch-v3/profile.json" }
+}
