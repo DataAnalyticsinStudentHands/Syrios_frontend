@@ -58,6 +58,18 @@ the server refreshes its asset list. A host receiving prebuilt assets can instal
 runtime dependencies with `npm ci --omit=dev`; building locally requires the full
 development installation.
 
+### CoinSort XR
+
+CoinSort XR is a staging-only Meta Quest/WebXR test experience at `/dev/Evidence/CoinSortXR`. For local headset testing, start Vite in staging mode:
+
+```bash
+npm run dev -- --mode staging
+```
+
+Its Evidence menu option appears only in a secure browser that reports support for immersive VR; this checks headset availability rather than physical headset wear. Entering XR requires a button press. The route and menu are unavailable in production and ordinary development mode. Vite still copies the static models and licenses in `public/xr/` into build output; those files do not enable the experience.
+
+See [CoinSort XR setup, controls, capture storage, and testing](src/pages/Evidence/CoinSortXR/README.md) for the feature documentation.
+
 ## Production
 
 Create the production build with:

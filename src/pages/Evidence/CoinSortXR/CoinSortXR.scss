@@ -1,0 +1,31 @@
+.coinsort-xr {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 1.5rem;
+  background: #101e28;
+  color: #f5eddb;
+  font-family: system-ui, sans-serif;
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  // Preserve a real drawing surface for WebXR without showing a 2D preview.
+  &__canvas { position: fixed; inset: 0; width: 100vw; height: 100dvh; overflow: hidden; visibility: hidden; pointer-events: none; }
+  &__canvas--active { visibility: visible; }
+  &__canvas canvas { display: block; width: 100%; height: 100%; }
+  &__entry { position: relative; z-index: 1; display: flex; align-items: center; flex-direction: column; gap: 1rem; max-width: 34rem; text-align: center; }
+  &__button { min-height: 60px; padding: 1rem 2rem; border: 1px solid #d7b77b; border-radius: .4rem; background: #d7b77b; color: #14272e; font-size: 1.2rem; font-weight: 650; cursor: pointer; }
+  &__button:hover { background: #e5c891; }
+  &__button:disabled { opacity: .55; cursor: wait; }
+  &__button:focus-visible, &__photo:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+  &__status, &__error { margin: 0; font-size: 1rem; line-height: 1.5; }
+  &__status { color: #bcc8cc; }
+  &__error { color: #ffc5b5; }
+  &__photo { padding: .5rem; color: #e5c891; font-size: 1rem; text-underline-offset: 4px; }
+  &__downloads { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; max-height: 55dvh; overflow-y: auto; }
+  &__clear { flex-basis: 100%; border: 0; padding: .6rem; background: transparent; color: #bbc8cc; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  &__clear:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+}
